@@ -1,0 +1,32 @@
+[build]
+  publish ="public/"
+  command = "sed -i s/HEADER_PLACEHOLDER/pixie:${BASIC_AUTH}/g netlify.toml && yarn install && yarn lint && gatsby build"
+
+[context.deploy-preview.environment]
+  ALGOLIA_INDEX_NAME = "dev_docs"
+  GATSBY_ALGOLIA_APP_ID = "VOOICTLFVP"
+  # Search only key, not secret since it's exposed in the UI.
+  GATSBY_ALGOLIA_SEARCH_KEY = "92973309d40d2a51481496457640361a"
+
+[context.branch-deploy.environment]
+  DEPLOY_ENV = "main"
+  ALGOLIA_INDEX_NAME = "dev_docs"
+  GATSBY_ALGOLIA_APP_ID = "VOOICTLFVP"
+  # Search only key, not secret since it's exposed in the UI.
+  GATSBY_ALGOLIA_SEARCH_KEY = "92973309d40d2a51481496457640361a"
+
+[context.production]
+  # No password on prod.
+  command = "sed -i 's|HEADER_PLACEHOLDER||g' netlify.toml && yarn install && yarn lint && gatsby build"
+
+[context.production.environment]
+  DEPLOY_ENV = "prod"
+  GATSBY_ALGOLIA_INDEX_NAME = "prod_docs"
+  GATSBY_ALGOLIA_APP_ID = "VOOICTLFVP"
+  # Search only key, not secret since it's exposed in the UI.
+  GATSBY_ALGOLIA_SEARCH_KEY = "92973309d40d2a51481496457640361a"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Basic-Auth = "HEADER_PLACEHOLDER"

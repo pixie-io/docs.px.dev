@@ -1,0 +1,5420 @@
+{
+  "udfDocs": {
+    "udf": [
+      {
+        "name": "add",
+        "brief": "Arithmetically add the arguments or concatenate the strings.",
+        "desc": "This function is implicitly invoked by the + operator.\n      If both types are strings, then will concate the strings. Trying to\n      add any other type to a string will cause an error",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.sum = df.a + df.b\nExplicit call.\ndf.sum = px.add(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The value to be added to.",
+              "type": "INT64"
+            },
+            {
+              "ident": "b",
+              "desc": "The value to add to the first argument.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The sum of a and b.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "add",
+        "brief": "Arithmetically add the arguments or concatenate the strings.",
+        "desc": "This function is implicitly invoked by the + operator.\n      If both types are strings, then will concate the strings. Trying to\n      add any other type to a string will cause an error",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.sum = df.a + df.b\nExplicit call.\ndf.sum = px.add(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The value to be added to.",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "b",
+              "desc": "The value to add to the first argument.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The sum of a and b.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "add",
+        "brief": "Arithmetically add the arguments or concatenate the strings.",
+        "desc": "This function is implicitly invoked by the + operator.\n      If both types are strings, then will concate the strings. Trying to\n      add any other type to a string will cause an error",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.sum = df.a + df.b\nExplicit call.\ndf.sum = px.add(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The value to be added to.",
+              "type": "INT64"
+            },
+            {
+              "ident": "b",
+              "desc": "The value to add to the first argument.",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "The sum of a and b.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "add",
+        "brief": "Arithmetically add the arguments or concatenate the strings.",
+        "desc": "This function is implicitly invoked by the + operator.\n      If both types are strings, then will concate the strings. Trying to\n      add any other type to a string will cause an error",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.sum = df.a + df.b\nExplicit call.\ndf.sum = px.add(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The value to be added to.",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "b",
+              "desc": "The value to add to the first argument.",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "The sum of a and b.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "add",
+        "brief": "Arithmetically add the arguments or concatenate the strings.",
+        "desc": "This function is implicitly invoked by the + operator.\n      If both types are strings, then will concate the strings. Trying to\n      add any other type to a string will cause an error",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.sum = df.a + df.b\nExplicit call.\ndf.sum = px.add(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The value to be added to.",
+              "type": "TIME64NS"
+            },
+            {
+              "ident": "b",
+              "desc": "The value to add to the first argument.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The sum of a and b.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "add",
+        "brief": "Arithmetically add the arguments or concatenate the strings.",
+        "desc": "This function is implicitly invoked by the + operator.\n      If both types are strings, then will concate the strings. Trying to\n      add any other type to a string will cause an error",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.sum = df.a + df.b\nExplicit call.\ndf.sum = px.add(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The value to be added to.",
+              "type": "INT64"
+            },
+            {
+              "ident": "b",
+              "desc": "The value to add to the first argument.",
+              "type": "TIME64NS"
+            }
+          ],
+          "retval": {
+            "desc": "The sum of a and b.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "add",
+        "brief": "Arithmetically add the arguments or concatenate the strings.",
+        "desc": "This function is implicitly invoked by the + operator.\n      If both types are strings, then will concate the strings. Trying to\n      add any other type to a string will cause an error",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.sum = df.a + df.b\nExplicit call.\ndf.sum = px.add(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The value to be added to.",
+              "type": "STRING"
+            },
+            {
+              "ident": "b",
+              "desc": "The value to add to the first argument.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The sum of a and b.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "subtract",
+        "brief": "Arithmetically subtract the first argument by the second argument.",
+        "desc": "This function is implicitly invoked by the - operator.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.subtracted = df.a - df.b\n# Explicit call.\ndf.subtracted = px.subtract(df.a, df.b)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The value to be subtracted from.",
+              "type": "INT64"
+            },
+            {
+              "ident": "b",
+              "desc": "The value to subtract.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "`a` with `b` subtracted from it.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "subtract",
+        "brief": "Arithmetically subtract the first argument by the second argument.",
+        "desc": "This function is implicitly invoked by the - operator.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.subtracted = df.a - df.b\n# Explicit call.\ndf.subtracted = px.subtract(df.a, df.b)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The value to be subtracted from.",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "b",
+              "desc": "The value to subtract.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "`a` with `b` subtracted from it.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "subtract",
+        "brief": "Arithmetically subtract the first argument by the second argument.",
+        "desc": "This function is implicitly invoked by the - operator.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.subtracted = df.a - df.b\n# Explicit call.\ndf.subtracted = px.subtract(df.a, df.b)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The value to be subtracted from.",
+              "type": "INT64"
+            },
+            {
+              "ident": "b",
+              "desc": "The value to subtract.",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "`a` with `b` subtracted from it.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "subtract",
+        "brief": "Arithmetically subtract the first argument by the second argument.",
+        "desc": "This function is implicitly invoked by the - operator.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.subtracted = df.a - df.b\n# Explicit call.\ndf.subtracted = px.subtract(df.a, df.b)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The value to be subtracted from.",
+              "type": "TIME64NS"
+            },
+            {
+              "ident": "b",
+              "desc": "The value to subtract.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "`a` with `b` subtracted from it.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "subtract",
+        "brief": "Arithmetically subtract the first argument by the second argument.",
+        "desc": "This function is implicitly invoked by the - operator.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.subtracted = df.a - df.b\n# Explicit call.\ndf.subtracted = px.subtract(df.a, df.b)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The value to be subtracted from.",
+              "type": "TIME64NS"
+            },
+            {
+              "ident": "b",
+              "desc": "The value to subtract.",
+              "type": "TIME64NS"
+            }
+          ],
+          "retval": {
+            "desc": "`a` with `b` subtracted from it.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "subtract",
+        "brief": "Arithmetically subtract the first argument by the second argument.",
+        "desc": "This function is implicitly invoked by the - operator.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.subtracted = df.a - df.b\n# Explicit call.\ndf.subtracted = px.subtract(df.a, df.b)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The value to be subtracted from.",
+              "type": "INT64"
+            },
+            {
+              "ident": "b",
+              "desc": "The value to subtract.",
+              "type": "TIME64NS"
+            }
+          ],
+          "retval": {
+            "desc": "`a` with `b` subtracted from it.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "subtract",
+        "brief": "Arithmetically subtract the first argument by the second argument.",
+        "desc": "This function is implicitly invoked by the - operator.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.subtracted = df.a - df.b\n# Explicit call.\ndf.subtracted = px.subtract(df.a, df.b)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The value to be subtracted from.",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "b",
+              "desc": "The value to subtract.",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "`a` with `b` subtracted from it.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "divide",
+        "brief": "Arithmetically divide the two arguments.",
+        "desc": "This function is implicitly invoked by the / operator.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.div = df.a / df.b\n# Explicit call.\ndf.div = px.divide(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The value to divide.",
+              "type": "INT64"
+            },
+            {
+              "ident": "arg2",
+              "desc": "The value to divide the first argument by.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The value of arg1 divided by arg2.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "divide",
+        "brief": "Arithmetically divide the two arguments.",
+        "desc": "This function is implicitly invoked by the / operator.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.div = df.a / df.b\n# Explicit call.\ndf.div = px.divide(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The value to divide.",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "arg2",
+              "desc": "The value to divide the first argument by.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The value of arg1 divided by arg2.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "divide",
+        "brief": "Arithmetically divide the two arguments.",
+        "desc": "This function is implicitly invoked by the / operator.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.div = df.a / df.b\n# Explicit call.\ndf.div = px.divide(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The value to divide.",
+              "type": "INT64"
+            },
+            {
+              "ident": "arg2",
+              "desc": "The value to divide the first argument by.",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "The value of arg1 divided by arg2.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "divide",
+        "brief": "Arithmetically divide the two arguments.",
+        "desc": "This function is implicitly invoked by the / operator.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.div = df.a / df.b\n# Explicit call.\ndf.div = px.divide(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The value to divide.",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "arg2",
+              "desc": "The value to divide the first argument by.",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "The value of arg1 divided by arg2.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "multiply",
+        "brief": "Multiplies the arguments.",
+        "desc": "Multiplies the two values together. Accessible using the `*` operator syntax.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.mult = df.duration * 2\n# Explicit call.\ndf.mult = px.multiply(df.duration, 2)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The first value to multiply.",
+              "type": "INT64"
+            },
+            {
+              "ident": "b",
+              "desc": "The second value to multiply.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The product of `a` and `b`.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "multiply",
+        "brief": "Multiplies the arguments.",
+        "desc": "Multiplies the two values together. Accessible using the `*` operator syntax.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.mult = df.duration * 2\n# Explicit call.\ndf.mult = px.multiply(df.duration, 2)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The first value to multiply.",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "b",
+              "desc": "The second value to multiply.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The product of `a` and `b`.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "multiply",
+        "brief": "Multiplies the arguments.",
+        "desc": "Multiplies the two values together. Accessible using the `*` operator syntax.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.mult = df.duration * 2\n# Explicit call.\ndf.mult = px.multiply(df.duration, 2)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The first value to multiply.",
+              "type": "INT64"
+            },
+            {
+              "ident": "b",
+              "desc": "The second value to multiply.",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "The product of `a` and `b`.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "multiply",
+        "brief": "Multiplies the arguments.",
+        "desc": "Multiplies the two values together. Accessible using the `*` operator syntax.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.mult = df.duration * 2\n# Explicit call.\ndf.mult = px.multiply(df.duration, 2)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The first value to multiply.",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "b",
+              "desc": "The second value to multiply.",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "The product of `a` and `b`.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "modulo",
+        "brief": "Calculates the remainder of the division of the two numbers",
+        "desc": "Calculates the remainder of dividing the first argument by the second argument. Same results as the C++ modulo operator. Accessible using the `%` syntax.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.duration_mod_5s = df.duration % px.seconds(5)\n# Explicit call.\ndf.duration_mod_5s = px.modulo(df.duration, px.seconds(5))\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The dividend.",
+              "type": "TIME64NS"
+            },
+            {
+              "ident": "n",
+              "desc": "The divisor.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The remainder of dividing `a` by `n`",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "modulo",
+        "brief": "Calculates the remainder of the division of the two numbers",
+        "desc": "Calculates the remainder of dividing the first argument by the second argument. Same results as the C++ modulo operator. Accessible using the `%` syntax.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.duration_mod_5s = df.duration % px.seconds(5)\n# Explicit call.\ndf.duration_mod_5s = px.modulo(df.duration, px.seconds(5))\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The dividend.",
+              "type": "TIME64NS"
+            },
+            {
+              "ident": "n",
+              "desc": "The divisor.",
+              "type": "TIME64NS"
+            }
+          ],
+          "retval": {
+            "desc": "The remainder of dividing `a` by `n`",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "modulo",
+        "brief": "Calculates the remainder of the division of the two numbers",
+        "desc": "Calculates the remainder of dividing the first argument by the second argument. Same results as the C++ modulo operator. Accessible using the `%` syntax.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.duration_mod_5s = df.duration % px.seconds(5)\n# Explicit call.\ndf.duration_mod_5s = px.modulo(df.duration, px.seconds(5))\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The dividend.",
+              "type": "INT64"
+            },
+            {
+              "ident": "n",
+              "desc": "The divisor.",
+              "type": "TIME64NS"
+            }
+          ],
+          "retval": {
+            "desc": "The remainder of dividing `a` by `n`",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "modulo",
+        "brief": "Calculates the remainder of the division of the two numbers",
+        "desc": "Calculates the remainder of dividing the first argument by the second argument. Same results as the C++ modulo operator. Accessible using the `%` syntax.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.duration_mod_5s = df.duration % px.seconds(5)\n# Explicit call.\ndf.duration_mod_5s = px.modulo(df.duration, px.seconds(5))\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The dividend.",
+              "type": "INT64"
+            },
+            {
+              "ident": "n",
+              "desc": "The divisor.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The remainder of dividing `a` by `n`",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "ceil",
+        "brief": "Compute the ceiling of the value.",
+        "examples": [
+          {
+            "value": "```\ndf.b = px.ceil(df.a)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The value to take the ceiling of.",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "The ceiling of arg1.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "floor",
+        "brief": "Compute the floor of the value.",
+        "examples": [
+          {
+            "value": "```\ndf.b = px.floor(df.a)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The value to take the floor of.",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "The floor of arg1.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "logicalOr",
+        "brief": "Boolean ORs the passed in values.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.can_filter_or_has_data = df.can_filter or df.has_data\n# Explicit call.\ndf.can_filter_or_has_data = px.logicalOr(df.can_filter, df.has_data)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "desc": "Left side of the OR.",
+              "type": "INT64"
+            },
+            {
+              "ident": "b2",
+              "desc": "Right side of the OR.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "True if either expression is Truthy or both expressions are Truthy, otherwise False.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "logicalOr",
+        "brief": "Boolean ORs the passed in values.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.can_filter_or_has_data = df.can_filter or df.has_data\n# Explicit call.\ndf.can_filter_or_has_data = px.logicalOr(df.can_filter, df.has_data)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "desc": "Left side of the OR.",
+              "type": "BOOLEAN"
+            },
+            {
+              "ident": "b2",
+              "desc": "Right side of the OR.",
+              "type": "BOOLEAN"
+            }
+          ],
+          "retval": {
+            "desc": "True if either expression is Truthy or both expressions are Truthy, otherwise False.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "logicalAnd",
+        "brief": "Boolean ANDs the passed in values.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.can_filter_and_has_data = df.can_filter and df.has_data\n# Explicit call.\ndf.can_filter_and_has_data = px.logicalAnd(df.can_filter, df.has_data)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "desc": "Left side of the AND.",
+              "type": "INT64"
+            },
+            {
+              "ident": "b2",
+              "desc": "Right side of the AND.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "True if both expressions are Truthy otherwise False.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "logicalAnd",
+        "brief": "Boolean ANDs the passed in values.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.can_filter_and_has_data = df.can_filter and df.has_data\n# Explicit call.\ndf.can_filter_and_has_data = px.logicalAnd(df.can_filter, df.has_data)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "desc": "Left side of the AND.",
+              "type": "BOOLEAN"
+            },
+            {
+              "ident": "b2",
+              "desc": "Right side of the AND.",
+              "type": "BOOLEAN"
+            }
+          ],
+          "retval": {
+            "desc": "True if both expressions are Truthy otherwise False.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "logicalNot",
+        "brief": "Boolean NOTs the passed in value.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.not_can_filter = not df.can_filter\n# Explicit call.\ndf.not_can_filter = px.logicalNot(df.can_filter)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "desc": "The value to Invert.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "True if input is Falsey otherwise False.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "logicalNot",
+        "brief": "Boolean NOTs the passed in value.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.not_can_filter = not df.can_filter\n# Explicit call.\ndf.not_can_filter = px.logicalNot(df.can_filter)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "desc": "The value to Invert.",
+              "type": "BOOLEAN"
+            }
+          ],
+          "retval": {
+            "desc": "True if input is Falsey otherwise False.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "negate",
+        "brief": "Negates the passed in value.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.negative_latency_ms = -df.latency_ms\n# Explicit call.\ndf.negative_latency_ms = px.negate(df.latency_ms)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "desc": "The value to negate.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "`b1` with a flipped negative sign.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "negate",
+        "brief": "Negates the passed in value.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.negative_latency_ms = -df.latency_ms\n# Explicit call.\ndf.negative_latency_ms = px.negate(df.latency_ms)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "desc": "The value to negate.",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "`b1` with a flipped negative sign.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "invert",
+        "brief": "Invert the bits of the given value.",
+        "examples": [
+          {
+            "value": "```\ndf.inverted = px.invert(df.a)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The value to invert.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The inverted form of arg1.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "equal",
+        "brief": "Returns whether the values are equal.",
+        "desc": "Determines whether the values are equal. Passing in floating-point values might lead to false negatives. Use `px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.success_http = df.http_status == 200\n# Explicit call.\ndf.success_http = px.equal(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "type": "INT64"
+            },
+            {
+              "ident": "b2",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "equal",
+        "brief": "Returns whether the values are equal.",
+        "desc": "Determines whether the values are equal. Passing in floating-point values might lead to false negatives. Use `px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.success_http = df.http_status == 200\n# Explicit call.\ndf.success_http = px.equal(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "type": "STRING"
+            },
+            {
+              "ident": "b2",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "equal",
+        "brief": "Returns whether the values are equal.",
+        "desc": "Determines whether the values are equal. Passing in floating-point values might lead to false negatives. Use `px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.success_http = df.http_status == 200\n# Explicit call.\ndf.success_http = px.equal(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "type": "BOOLEAN"
+            },
+            {
+              "ident": "b2",
+              "type": "BOOLEAN"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "equal",
+        "brief": "Returns whether the values are equal.",
+        "desc": "Determines whether the values are equal. Passing in floating-point values might lead to false negatives. Use `px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.success_http = df.http_status == 200\n# Explicit call.\ndf.success_http = px.equal(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "type": "BOOLEAN"
+            },
+            {
+              "ident": "b2",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "equal",
+        "brief": "Returns whether the values are equal.",
+        "desc": "Determines whether the values are equal. Passing in floating-point values might lead to false negatives. Use `px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.success_http = df.http_status == 200\n# Explicit call.\ndf.success_http = px.equal(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "type": "INT64"
+            },
+            {
+              "ident": "b2",
+              "type": "BOOLEAN"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "equal",
+        "brief": "Returns whether the values are equal.",
+        "desc": "Determines whether the values are equal. Passing in floating-point values might lead to false negatives. Use `px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.success_http = df.http_status == 200\n# Explicit call.\ndf.success_http = px.equal(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "type": "INT64"
+            },
+            {
+              "ident": "b2",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "equal",
+        "brief": "Returns whether the values are equal.",
+        "desc": "Determines whether the values are equal. Passing in floating-point values might lead to false negatives. Use `px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.success_http = df.http_status == 200\n# Explicit call.\ndf.success_http = px.equal(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "b2",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "equal",
+        "brief": "Returns whether the values are equal.",
+        "desc": "Determines whether the values are equal. Passing in floating-point values might lead to false negatives. Use `px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.success_http = df.http_status == 200\n# Explicit call.\ndf.success_http = px.equal(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "type": "UINT128"
+            },
+            {
+              "ident": "b2",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "equal",
+        "brief": "Returns whether the values are equal.",
+        "desc": "Determines whether the values are equal. Passing in floating-point values might lead to false negatives. Use `px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.success_http = df.http_status == 200\n# Explicit call.\ndf.success_http = px.equal(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "type": "TIME64NS"
+            },
+            {
+              "ident": "b2",
+              "type": "TIME64NS"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "equal",
+        "brief": "Return whether the two values are approximately equal.",
+        "desc": "Returns whether or not the two given values are approximately equal to each other, where the values have an absolute difference of less than 1E-9.",
+        "examples": [
+          {
+            "value": "```\ndf.equals = px.approxEqual(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The value to be compared to.",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "arg2",
+              "desc": "The value which should be compared to the first argument.",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "Boolean of whether the two arguments are approximately equal.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "notEqual",
+        "brief": "Returns whether the values are not equal.",
+        "desc": "Determines whether the values are not equal. Passing in floating-point values might lead to false positives. Use `not px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.failed_http = df.http_status != 200\n# Explicit call.\ndf.failed_http = px.notEqual(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "type": "INT64"
+            },
+            {
+              "ident": "b2",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is not equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "notEqual",
+        "brief": "Returns whether the values are not equal.",
+        "desc": "Determines whether the values are not equal. Passing in floating-point values might lead to false positives. Use `not px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.failed_http = df.http_status != 200\n# Explicit call.\ndf.failed_http = px.notEqual(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "type": "STRING"
+            },
+            {
+              "ident": "b2",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is not equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "notEqual",
+        "brief": "Returns whether the values are not equal.",
+        "desc": "Determines whether the values are not equal. Passing in floating-point values might lead to false positives. Use `not px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.failed_http = df.http_status != 200\n# Explicit call.\ndf.failed_http = px.notEqual(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "type": "BOOLEAN"
+            },
+            {
+              "ident": "b2",
+              "type": "BOOLEAN"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is not equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "notEqual",
+        "brief": "Returns whether the values are not equal.",
+        "desc": "Determines whether the values are not equal. Passing in floating-point values might lead to false positives. Use `not px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.failed_http = df.http_status != 200\n# Explicit call.\ndf.failed_http = px.notEqual(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "type": "BOOLEAN"
+            },
+            {
+              "ident": "b2",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is not equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "notEqual",
+        "brief": "Returns whether the values are not equal.",
+        "desc": "Determines whether the values are not equal. Passing in floating-point values might lead to false positives. Use `not px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.failed_http = df.http_status != 200\n# Explicit call.\ndf.failed_http = px.notEqual(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "type": "INT64"
+            },
+            {
+              "ident": "b2",
+              "type": "BOOLEAN"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is not equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "notEqual",
+        "brief": "Returns whether the values are not equal.",
+        "desc": "Determines whether the values are not equal. Passing in floating-point values might lead to false positives. Use `not px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.failed_http = df.http_status != 200\n# Explicit call.\ndf.failed_http = px.notEqual(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "type": "INT64"
+            },
+            {
+              "ident": "b2",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is not equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "notEqual",
+        "brief": "Returns whether the values are not equal.",
+        "desc": "Determines whether the values are not equal. Passing in floating-point values might lead to false positives. Use `not px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.failed_http = df.http_status != 200\n# Explicit call.\ndf.failed_http = px.notEqual(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "b2",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is not equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "notEqual",
+        "brief": "Returns whether the values are not equal.",
+        "desc": "Determines whether the values are not equal. Passing in floating-point values might lead to false positives. Use `not px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.failed_http = df.http_status != 200\n# Explicit call.\ndf.failed_http = px.notEqual(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "type": "TIME64NS"
+            },
+            {
+              "ident": "b2",
+              "type": "TIME64NS"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is not equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "approxEqual",
+        "brief": "Return whether the two values are approximately equal.",
+        "desc": "Returns whether or not the two given values are approximately equal to each other, where the values have an absolute difference of less than 1E-9.",
+        "examples": [
+          {
+            "value": "```\ndf.equals = px.approxEqual(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The value to be compared to.",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "arg2",
+              "desc": "The value which should be compared to the first argument.",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "Boolean of whether the two arguments are approximately equal.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "greaterThan",
+        "brief": "Compare whether the first argument is greater than the second argument.",
+        "desc": "This function is implicitly invoked by the \u003e operator.",
+        "examples": [
+          {
+            "value": "```\n# Implict call.\ndf.gt = df.a \u003e df.b\nExplicit call.\ndf.gt = px.greaterThan(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The value to be compared to.",
+              "type": "INT64"
+            },
+            {
+              "ident": "arg2",
+              "desc": "The value to check if it is greater than the first argument.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "Boolean of whether arg1 is greater than arg2.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "greaterThan",
+        "brief": "Compare whether the first argument is greater than the second argument.",
+        "desc": "This function is implicitly invoked by the \u003e operator.",
+        "examples": [
+          {
+            "value": "```\n# Implict call.\ndf.gt = df.a \u003e df.b\nExplicit call.\ndf.gt = px.greaterThan(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The value to be compared to.",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "arg2",
+              "desc": "The value to check if it is greater than the first argument.",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "Boolean of whether arg1 is greater than arg2.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "greaterThan",
+        "brief": "Compare whether the first argument is greater than the second argument.",
+        "desc": "This function is implicitly invoked by the \u003e operator.",
+        "examples": [
+          {
+            "value": "```\n# Implict call.\ndf.gt = df.a \u003e df.b\nExplicit call.\ndf.gt = px.greaterThan(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The value to be compared to.",
+              "type": "STRING"
+            },
+            {
+              "ident": "arg2",
+              "desc": "The value to check if it is greater than the first argument.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "Boolean of whether arg1 is greater than arg2.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "greaterThanEqual",
+        "brief": "Compare whether the first argument is greater than or equal to the second argument.",
+        "desc": "This function is implicitly invoked by the \u003e= operator.",
+        "examples": [
+          {
+            "value": "```\n# Implict call.\ndf.gte = df.a \u003e= df.b\nExplicit call.\ndf.gte = px.greaterThanEqual(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The value to be compared to.",
+              "type": "INT64"
+            },
+            {
+              "ident": "arg2",
+              "desc": "The value to check if it is greater than or equal to the first argument.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "Boolean of whether arg1 is greater than or equal to arg2.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "greaterThanEqual",
+        "brief": "Compare whether the first argument is greater than or equal to the second argument.",
+        "desc": "This function is implicitly invoked by the \u003e= operator.",
+        "examples": [
+          {
+            "value": "```\n# Implict call.\ndf.gte = df.a \u003e= df.b\nExplicit call.\ndf.gte = px.greaterThanEqual(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The value to be compared to.",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "arg2",
+              "desc": "The value to check if it is greater than or equal to the first argument.",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "Boolean of whether arg1 is greater than or equal to arg2.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "greaterThanEqual",
+        "brief": "Compare whether the first argument is greater than the second argument.",
+        "desc": "This function is implicitly invoked by the \u003e operator.",
+        "examples": [
+          {
+            "value": "```\n# Implict call.\ndf.gt = df.a \u003e df.b\nExplicit call.\ndf.gt = px.greaterThan(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The value to be compared to.",
+              "type": "STRING"
+            },
+            {
+              "ident": "arg2",
+              "desc": "The value to check if it is greater than the first argument.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "Boolean of whether arg1 is greater than arg2.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "greaterThanEqual",
+        "brief": "Compare whether the first argument is greater than the second argument.",
+        "desc": "This function is implicitly invoked by the \u003e operator.",
+        "examples": [
+          {
+            "value": "```\n# Implict call.\ndf.gt = df.a \u003e df.b\nExplicit call.\ndf.gt = px.greaterThan(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The value to be compared to.",
+              "type": "TIME64NS"
+            },
+            {
+              "ident": "arg2",
+              "desc": "The value to check if it is greater than the first argument.",
+              "type": "TIME64NS"
+            }
+          ],
+          "retval": {
+            "desc": "Boolean of whether arg1 is greater than arg2.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "lessThan",
+        "brief": "Returns which value is less than the other.",
+        "examples": [
+          {
+            "value": "```\n# Implict call.\ndf.lt = df.a \u003c df.b\nExplicit call.\ndf.lt = px.lessThan(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "desc": "Left side of the expression.",
+              "type": "INT64"
+            },
+            {
+              "ident": "b2",
+              "desc": "Right side of the expression.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "Whether the left side is less than the right.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "lessThan",
+        "brief": "Returns which value is less than the other.",
+        "examples": [
+          {
+            "value": "```\n# Implict call.\ndf.lt = df.a \u003c df.b\nExplicit call.\ndf.lt = px.lessThan(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "desc": "Left side of the expression.",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "b2",
+              "desc": "Right side of the expression.",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "Whether the left side is less than the right.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "lessThan",
+        "brief": "Returns which value is less than the other.",
+        "examples": [
+          {
+            "value": "```\n# Implict call.\ndf.lt = df.a \u003c df.b\nExplicit call.\ndf.lt = px.lessThan(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "desc": "Left side of the expression.",
+              "type": "STRING"
+            },
+            {
+              "ident": "b2",
+              "desc": "Right side of the expression.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "Whether the left side is less than the right.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "lessThanEqual",
+        "brief": "Returns which value is less than or equal to the the other.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.lte = df.cpu1 \u003c= df.cpu2\n# Explicit call.\ndf.lte = px.lessThanOrEqual(df.cpu1, df.cup2)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "desc": "Left side of the expression.",
+              "type": "INT64"
+            },
+            {
+              "ident": "b2",
+              "desc": "Right side of the expression.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "Whether the left side is less than or equal to the right.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "lessThanEqual",
+        "brief": "Returns which value is less than or equal to the the other.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.lte = df.cpu1 \u003c= df.cpu2\n# Explicit call.\ndf.lte = px.lessThanOrEqual(df.cpu1, df.cup2)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "desc": "Left side of the expression.",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "b2",
+              "desc": "Right side of the expression.",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "Whether the left side is less than or equal to the right.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "lessThanEqual",
+        "brief": "Returns which value is less than or equal to the the other.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.lte = df.cpu1 \u003c= df.cpu2\n# Explicit call.\ndf.lte = px.lessThanOrEqual(df.cpu1, df.cup2)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "desc": "Left side of the expression.",
+              "type": "TIME64NS"
+            },
+            {
+              "ident": "b2",
+              "desc": "Right side of the expression.",
+              "type": "TIME64NS"
+            }
+          ],
+          "retval": {
+            "desc": "Whether the left side is less than or equal to the right.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "lessThanEqual",
+        "brief": "Returns which value is less than the other.",
+        "examples": [
+          {
+            "value": "```\n# Implict call.\ndf.lt = df.a \u003c df.b\nExplicit call.\ndf.lt = px.lessThan(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "desc": "Left side of the expression.",
+              "type": "STRING"
+            },
+            {
+              "ident": "b2",
+              "desc": "Right side of the expression.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "Whether the left side is less than the right.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "bin",
+        "brief": "Rounds value to the nearest multiple.",
+        "desc": "Takes the passed in value(s) and bin them to the nearest multiple of a bin.",
+        "examples": [
+          {
+            "value": "```\n# bin column b to multiples of 50\ndf.a = px.bin(df.b, 50)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "value",
+              "desc": "The value to bin.",
+              "type": "INT64"
+            },
+            {
+              "ident": "bin",
+              "desc": "The bin value to clip to.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The value rounded down to the nearest multiple of bin.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "bin",
+        "brief": "Rounds value to the nearest multiple.",
+        "desc": "Takes the passed in value(s) and bin them to the nearest multiple of a bin.",
+        "examples": [
+          {
+            "value": "```\n# bin column b to multiples of 50\ndf.a = px.bin(df.b, 50)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "value",
+              "desc": "The value to bin.",
+              "type": "INT64"
+            },
+            {
+              "ident": "bin",
+              "desc": "The bin value to clip to.",
+              "type": "TIME64NS"
+            }
+          ],
+          "retval": {
+            "desc": "The value rounded down to the nearest multiple of bin.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "bin",
+        "brief": "Rounds value to the nearest multiple.",
+        "desc": "Takes the passed in value(s) and bin them to the nearest multiple of a bin.",
+        "examples": [
+          {
+            "value": "```\n# bin column b to multiples of 50\ndf.a = px.bin(df.b, 50)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "value",
+              "desc": "The value to bin.",
+              "type": "TIME64NS"
+            },
+            {
+              "ident": "bin",
+              "desc": "The bin value to clip to.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The value rounded down to the nearest multiple of bin.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "bin",
+        "brief": "Rounds value to the nearest multiple.",
+        "desc": "Takes the passed in value(s) and bin them to the nearest multiple of a bin.",
+        "examples": [
+          {
+            "value": "```\n# bin column b to multiples of 50\ndf.a = px.bin(df.b, 50)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "value",
+              "desc": "The value to bin.",
+              "type": "TIME64NS"
+            },
+            {
+              "ident": "bin",
+              "desc": "The bin value to clip to.",
+              "type": "TIME64NS"
+            }
+          ],
+          "retval": {
+            "desc": "The value rounded down to the nearest multiple of bin.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "bin",
+        "brief": "Rounds value to the nearest multiple.",
+        "desc": "Takes the passed in value(s) and bin them to the nearest multiple of a bin.",
+        "examples": [
+          {
+            "value": "```\n# bin column b to multiples of 50\ndf.a = px.bin(df.b, 50)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "value",
+              "desc": "The value to bin.",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "bin",
+              "desc": "The bin value to clip to.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The value rounded down to the nearest multiple of bin.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "round",
+        "brief": "Rounds the float to the nearest decimal places.",
+        "desc": "Rounds the float to the nearest decimal place and returns value as a string. Used to clean up the data shown in tables. Set decimals to `0` if you want to round to the nearest int value.",
+        "examples": [
+          {
+            "value": "```\ndf.cpu1 = 0.248\ndf.cpu1 = px.round(df.cpu1, 2) # 0.25\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "value",
+              "desc": "The value to round.",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "decimals",
+              "desc": "Number of decimal places to round to. `0` =\u003e round to nearest int.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "Float rounded to the specified decimal place as a string.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "mean",
+        "brief": "Calculate the arithmetic mean.",
+        "desc": "Calculates the arithmetic mean by summing the values then dividing by the number of values.",
+        "examples": [
+          {
+            "value": "```\ndf = df.agg(mean=('latency_ms', px.mean))\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "arg",
+              "desc": "The data to average.",
+              "type": "FLOAT64"
+            }
+          ],
+          "result": {
+            "desc": "The mean of the data.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "mean",
+        "brief": "Calculate the arithmetic mean.",
+        "desc": "Calculates the arithmetic mean by summing the values then dividing by the number of values.",
+        "examples": [
+          {
+            "value": "```\ndf = df.agg(mean=('latency_ms', px.mean))\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "arg",
+              "desc": "The data to average.",
+              "type": "INT64"
+            }
+          ],
+          "result": {
+            "desc": "The mean of the data.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "mean",
+        "brief": "Calculate the arithmetic mean.",
+        "desc": "Calculates the arithmetic mean by summing the values then dividing by the number of values.",
+        "examples": [
+          {
+            "value": "```\ndf = df.agg(mean=('latency_ms', px.mean))\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "arg",
+              "desc": "The data to average.",
+              "type": "BOOLEAN"
+            }
+          ],
+          "result": {
+            "desc": "The mean of the data.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "sum",
+        "brief": "Calculate the arithmetic sum of the grouped values.",
+        "examples": [
+          {
+            "value": "```\ndf = df.agg(sum=('latency_ms', px.sum))\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "arg",
+              "desc": "The group to sum.",
+              "type": "FLOAT64"
+            }
+          ],
+          "result": {
+            "desc": "The sum of the data.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "sum",
+        "brief": "Calculate the arithmetic sum of the grouped values.",
+        "examples": [
+          {
+            "value": "```\ndf = df.agg(sum=('latency_ms', px.sum))\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "arg",
+              "desc": "The group to sum.",
+              "type": "INT64"
+            }
+          ],
+          "result": {
+            "desc": "The sum of the data.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "sum",
+        "brief": "Calculate the arithmetic sum of the grouped values.",
+        "examples": [
+          {
+            "value": "```\ndf = df.agg(sum=('latency_ms', px.sum))\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "arg",
+              "desc": "The group to sum.",
+              "type": "BOOLEAN"
+            }
+          ],
+          "result": {
+            "desc": "The sum of the data.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "max",
+        "brief": "Returns the maximum in the group.",
+        "examples": [
+          {
+            "value": "```\ndf = df.agg(max_latency=('latency_ms', px.max))\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "arg",
+              "desc": "The data on which to apply the function.",
+              "type": "FLOAT64"
+            }
+          ],
+          "result": {
+            "desc": "The maximum value in the group.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "max",
+        "brief": "Returns the maximum in the group.",
+        "examples": [
+          {
+            "value": "```\ndf = df.agg(max_latency=('latency_ms', px.max))\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "arg",
+              "desc": "The data on which to apply the function.",
+              "type": "INT64"
+            }
+          ],
+          "result": {
+            "desc": "The maximum value in the group.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "max",
+        "brief": "Returns the maximum in the group.",
+        "examples": [
+          {
+            "value": "```\ndf = df.agg(max_latency=('latency_ms', px.max))\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "arg",
+              "desc": "The data on which to apply the function.",
+              "type": "TIME64NS"
+            }
+          ],
+          "result": {
+            "desc": "The maximum value in the group.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "min",
+        "brief": "Returns the minimum in the group.",
+        "examples": [
+          {
+            "value": "```\ndf = df.agg(min_latency=('latency_ms', px.min))\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "arg",
+              "desc": "The data on which to apply the function.",
+              "type": "FLOAT64"
+            }
+          ],
+          "result": {
+            "desc": "The minimum.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "min",
+        "brief": "Returns the minimum in the group.",
+        "examples": [
+          {
+            "value": "```\ndf = df.agg(min_latency=('latency_ms', px.min))\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "arg",
+              "desc": "The data on which to apply the function.",
+              "type": "INT64"
+            }
+          ],
+          "result": {
+            "desc": "The minimum.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "min",
+        "brief": "Returns the minimum in the group.",
+        "examples": [
+          {
+            "value": "```\ndf = df.agg(min_latency=('latency_ms', px.min))\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "arg",
+              "desc": "The data on which to apply the function.",
+              "type": "TIME64NS"
+            }
+          ],
+          "result": {
+            "desc": "The minimum.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "count",
+        "brief": "Returns number of rows in the aggregate group.",
+        "desc": "This function counts the number of rows in the aggregate group. The count of rows is independent of which column this function is applied to. Each column should return the same number of rows.",
+        "examples": [
+          {
+            "value": "```\ndf = df.agg(throughput_total=('latency_ms', px.count))\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "arg",
+              "desc": "The data on which to apply the function.",
+              "type": "FLOAT64"
+            }
+          ],
+          "result": {
+            "desc": "The count.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "count",
+        "brief": "Returns number of rows in the aggregate group.",
+        "desc": "This function counts the number of rows in the aggregate group. The count of rows is independent of which column this function is applied to. Each column should return the same number of rows.",
+        "examples": [
+          {
+            "value": "```\ndf = df.agg(throughput_total=('latency_ms', px.count))\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "arg",
+              "desc": "The data on which to apply the function.",
+              "type": "INT64"
+            }
+          ],
+          "result": {
+            "desc": "The count.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "count",
+        "brief": "Returns number of rows in the aggregate group.",
+        "desc": "This function counts the number of rows in the aggregate group. The count of rows is independent of which column this function is applied to. Each column should return the same number of rows.",
+        "examples": [
+          {
+            "value": "```\ndf = df.agg(throughput_total=('latency_ms', px.count))\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "arg",
+              "desc": "The data on which to apply the function.",
+              "type": "TIME64NS"
+            }
+          ],
+          "result": {
+            "desc": "The count.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "count",
+        "brief": "Returns number of rows in the aggregate group.",
+        "desc": "This function counts the number of rows in the aggregate group. The count of rows is independent of which column this function is applied to. Each column should return the same number of rows.",
+        "examples": [
+          {
+            "value": "```\ndf = df.agg(throughput_total=('latency_ms', px.count))\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "arg",
+              "desc": "The data on which to apply the function.",
+              "type": "BOOLEAN"
+            }
+          ],
+          "result": {
+            "desc": "The count.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "count",
+        "brief": "Returns number of rows in the aggregate group.",
+        "desc": "This function counts the number of rows in the aggregate group. The count of rows is independent of which column this function is applied to. Each column should return the same number of rows.",
+        "examples": [
+          {
+            "value": "```\ndf = df.agg(throughput_total=('latency_ms', px.count))\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "arg",
+              "desc": "The data on which to apply the function.",
+              "type": "STRING"
+            }
+          ],
+          "result": {
+            "desc": "The count.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "count",
+        "brief": "Returns number of rows in the aggregate group.",
+        "desc": "This function counts the number of rows in the aggregate group. The count of rows is independent of which column this function is applied to. Each column should return the same number of rows.",
+        "examples": [
+          {
+            "value": "```\ndf = df.agg(throughput_total=('latency_ms', px.count))\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "arg",
+              "desc": "The data on which to apply the function.",
+              "type": "UINT128"
+            }
+          ],
+          "result": {
+            "desc": "The count.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "quantiles",
+        "brief": "Approximates the distribution of the aggregated data.",
+        "desc": "Calculates several useful percentiles of the aggregated data using [tdigest](https://github.com/tdunning/t-digest). Returns a serialized JSON object with the keys for 1%, 10%, 50%, 90%, and 99%. You can use `px.pluck_float64` to grab the specific values from the result.",
+        "examples": [
+          {
+            "value": "```\n# Calculate the quantiles.\ndf = df.agg(latency_dist=('latency_ms', px.quantiles))\n# Pluck p99 from the quantiles.\ndf.p99 = px.pluck_float64(df.latency_dist, 'p99')\n\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "val",
+              "desc": "The data to calculate the quantiles distribution.",
+              "type": "INT64"
+            }
+          ],
+          "result": {
+            "desc": "The quantiles data, serialized as a JSON dictionary.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "quantiles",
+        "brief": "Approximates the distribution of the aggregated data.",
+        "desc": "Calculates several useful percentiles of the aggregated data using [tdigest](https://github.com/tdunning/t-digest). Returns a serialized JSON object with the keys for 1%, 10%, 50%, 90%, and 99%. You can use `px.pluck_float64` to grab the specific values from the result.",
+        "examples": [
+          {
+            "value": "```\n# Calculate the quantiles.\ndf = df.agg(latency_dist=('latency_ms', px.quantiles))\n# Pluck p99 from the quantiles.\ndf.p99 = px.pluck_float64(df.latency_dist, 'p99')\n\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "val",
+              "desc": "The data to calculate the quantiles distribution.",
+              "type": "FLOAT64"
+            }
+          ],
+          "result": {
+            "desc": "The quantiles data, serialized as a JSON dictionary.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pluck",
+        "brief": "Grabs the value for the key value the serialized JSON string and returns as a string.",
+        "desc": "Convenience method to handle grabbing keys from a serialized JSON string. The function parses the JSON string and attempts to find the key. If the key is not found, an empty string is returned.\nThis function returns the value as a string. If you want an int, use `px.pluck_int64`. If you want a float, use `px.pluck_float64`.",
+        "examples": [
+          {
+            "value": "```\ndf.quantiles = '{\"p50\": 5.1, \"p90\": 10}'\ndf.p50 = px.pluck(df.quantiles, 'p50') # \"5.1\", as a string.\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "json_str",
+              "desc": "JSON data serialized as a string.",
+              "type": "STRING"
+            },
+            {
+              "ident": "key",
+              "desc": "The key to get the value for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The value for the key as a string.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pluck_int64",
+        "brief": "Grabs the value for the key from the serialized JSON string and returns as an int.",
+        "desc": "Convenience method to handle grabbing keys from a serialized JSON string. The function parses the JSON string and attempts to find the key. If the key is not found, 0 is returned. If the key is found, but the value cannot be parsed as an int, returns a 0.\nThis function returns the value as an int. If you want a string, use `px.pluck`. If you want a float, use `px.pluck_float64`.",
+        "examples": [
+          {
+            "value": "```\ndf.http_data = '{\"status_code\": 200, \"p50_latency\": 5.1}'\ndf.status_code = px.pluck_int64(df.http_data, 'status_code') # 200\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "json_str",
+              "desc": "JSON data serialized as a string.",
+              "type": "STRING"
+            },
+            {
+              "ident": "key",
+              "desc": "The key to get the value for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The value for the key as an int.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "pluck_float64",
+        "brief": "Grabs the value for the key from the serialized JSON string and returns as a float.",
+        "desc": "Convenience method to handle grabbing keys from a serialized JSON string. The function parses the JSON string and attempts to find the key. If the key is not found, 0.0 is returned. If the key is found, but the value cannot be parsed as an int, returns a 0.0.\nThis function returns the value as a float. If you want a string, use `px.pluck`. If you want an int, use `px.pluck_int64`.",
+        "examples": [
+          {
+            "value": "```\ndf.http_data = '{\"status_code\": 200, \"p50_latency\": 5.1}'\ndf.p50_latency = px.pluck_float64(df.http_data, 'p50_latency') # 5.1\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "json_str",
+              "desc": "JSON data serialized as a string.",
+              "type": "STRING"
+            },
+            {
+              "ident": "key",
+              "desc": "The key to get the value for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The value for the key as a float",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "contains",
+        "brief": "Returns whether the first string contains the second string.",
+        "examples": [
+          {
+            "value": "```\nmatching_df = matching_df[px.contains(matching_df.svc_names, 'my_svc')]\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The string that should contain the second string.",
+              "type": "STRING"
+            },
+            {
+              "ident": "arg2",
+              "desc": "The string that should be contained in the first string.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "A boolean of whether the first string contains the second string.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "length",
+        "brief": "Returns the length of the string",
+        "examples": [
+          {
+            "value": "```\ndf.service = 'checkout'\ndf.length = px.length(df.service) # 8\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "s",
+              "desc": "The string to get the length of",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The length of the string.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "find",
+        "brief": "Find the index of the first occurrence of the substring.",
+        "desc": "Returns the index of the first occurrence of the substring in the given string. If no match is found, returns -1.",
+        "examples": [
+          {
+            "value": "```\ndf.svc_name = \"pixie-labs\"\ndf.found = px.find(df.svc_name, '-labs') # 5\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The string to search through.",
+              "type": "STRING"
+            },
+            {
+              "ident": "arg2",
+              "desc": "The substring to find.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The index of the first occurence of the substring. -1 if no match is found.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "substring",
+        "brief": "Returns the specified substring from the string",
+        "desc": "Extracts the substring from the string starting at index `pos` and for `length` characters. If `pos \u003e len(string)`, `px.substr` returns the empty string. If `pos \u003c len(string)` but `pos + length \u003e len(string)`, `px.substr` returns the maximum length substring starting at `pos`",
+        "examples": [
+          {
+            "value": "```\ndf.service = 'checkout'\ndf.str = px.substring(df.service, 1, 5) # 'hecko'\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "string",
+              "desc": "The string to get the substring from.",
+              "type": "STRING"
+            },
+            {
+              "ident": "pos",
+              "desc": "The position to start the substring, inclusive.",
+              "type": "INT64"
+            },
+            {
+              "ident": "length",
+              "desc": "The length of the substring to return.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The substring from `string`.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "tolower",
+        "brief": "Transforms all uppercase ascii characters in the string to lowercase.",
+        "examples": [
+          {
+            "value": "```\ndf.service  = \"Kelvin\"\ndf.lower = px.tolower(df.service) # \"kelvin\"\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "string",
+              "desc": "The string to transform.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "`string` with all uppercase ascii converted to lowercase.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "toupper",
+        "brief": "Transforms all lowercase ascii characters in the string to uppercase.",
+        "examples": [
+          {
+            "value": "```\ndf.service = Kelvin\ndf.upper = px.toupper(df.service) # \"KELVIN\"\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "string",
+              "desc": "The string to transform.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "`string` with all lowercase ascii converted to uppercase.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "trim",
+        "brief": "Trim ascii whitespace from before and after the string content.",
+        "desc": "Returns a copy of the string with the white space before and after the string trimmed away. Does not affect whitespace in between words.",
+        "examples": [
+          {
+            "value": "```\ndf.service = \"        pl/kelvin \"\ndf.trimmed = px.trim(df.service) # \"pl/kelvin\"\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "string",
+              "desc": "The string to transform.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The string but with leading and trailing whitespace removed.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "strip_prefix",
+        "brief": "Strips the specified prefix from the string.",
+        "desc": "Returns the string with the prefix removed. Will return the same string if the prefix not found.",
+        "examples": [
+          {
+            "value": "```\n# df.service is `pl/kelvin`\ndf.removed_pl = px.strip_prefix('pl/', df.service) # \"kelvin\"\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "prefix",
+              "desc": "The prefix to remove.",
+              "type": "STRING"
+            },
+            {
+              "ident": "string",
+              "desc": "The string value to strip the prefix from.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "`string` with `prefix` removed from the beginning if it existed.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "hex_to_ascii",
+        "brief": "Convert an input hex sequence in ASCII to bytes.",
+        "desc": "This function converts an input hex sequence in ASCII to bytes. The input must be a well-formed hex representation, with optional separator.If the input is invalid, it will return an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.asciiBytes = px.hex_to_ascii(df.resp)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The ascii hex sequence to convert to bytes.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The input converted to a sequence of bytes, or empty string if invalid.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "bytes_to_hex",
+        "brief": "Convert an input bytes in hex string.",
+        "desc": "This function converts an input bytes sequence in hex string.",
+        "examples": [
+          {
+            "value": "```\ndf.hex = px.bytes_to_hex(df.resp)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The bytes sequence.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The input converted to a hex string.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "asid",
+        "brief": "Get the agent ID.",
+        "desc": "Get the agent ID of the node that the data originated from.",
+        "examples": [
+          {
+            "value": "```\ndf.agent = px.asid()\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "retval": {
+            "desc": "The agent ID.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "container_id_to_status",
+        "brief": "Get the status of the container given the container ID.",
+        "desc": "Get the status of the container given the container ID. The status is the K8s state of either 'Running', 'Waiting', 'Terminated' or 'Unknown'. It may be paired with additional information such as a message and reason explaining why the container is in that state.",
+        "examples": [
+          {
+            "value": "```\ndf.status = px.container_id_to_status(df.id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "id",
+              "desc": "The ID of the container to get the status of.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The status of the container.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "container_id_to_start_time",
+        "brief": "Get the start time of a container from its ID.",
+        "desc": "Gets the start time (in nanosecond unix time format) of a container from its container ID.",
+        "examples": [
+          {
+            "value": "```\ndf.container_start_time = px.container_id_to_start_time(df.container_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "container_id",
+              "desc": "The Container ID of the Container to get the start time for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The start time (as an integer) for the Container ID passed in.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "container_id_to_stop_time",
+        "brief": "Get the stop time of a container from its ID.",
+        "desc": "Gets the stop time (in nanosecond unix time format) of a container from its container ID.",
+        "examples": [
+          {
+            "value": "```\ndf.container_stop_time = px.container_id_to_stop_time(df.container_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "container_id",
+              "desc": "The Container ID of the Container to get the stop time for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The stop time (as an integer) for the Container ID passed in.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "container_name_to_container_id",
+        "brief": "Get the id of a container from its name.",
+        "desc": "Gets the kubernetes ID for the container from its name.",
+        "examples": [
+          {
+            "value": "```\ndf.container_id = px.container_name_to_container_id(df.container_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "container_name",
+              "desc": "The name of the container to get the ID for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s container ID for the container name passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "container_name_to_start_time",
+        "brief": "Get the start time of a container from its name.",
+        "desc": "Gets the start time (in nanosecond unix time format) of a container from its name.",
+        "examples": [
+          {
+            "value": "```\ndf.container_start_time = px.container_name_to_start_time(df.container_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "container_name",
+              "desc": "The name of the Container to get the start time for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The start time (as an integer) for the Container name passed in.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "container_name_to_stop_time",
+        "brief": "Get the stop time of a container from its name.",
+        "desc": "Gets the stop time (in nanosecond unix time format) of a container from its name.",
+        "examples": [
+          {
+            "value": "```\ndf.container_stop_time = px.container_name_to_stop_time(df.container_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "container_name",
+              "desc": "The name of the Container to get the stop time for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The stop time (as an integer) for the Container name passed in.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "ip_to_pod_id",
+        "brief": "Convert IP address to the kubernetes pod ID that runs the backing service.",
+        "desc": "Converts the IP address into a kubernetes pod ID for that IP address if it exists, otherwise returns an empty string. Converting to a pod ID means you can then extract the corresponding service name using `px.pod_id_to_service_name`.\nNote that this will not be able to convert IP addresses into DNS names generally as this is limited to internal Kubernetes state.",
+        "examples": [
+          {
+            "value": "```\n# Convert to the Kubernetes pod ID.\ndf.pod_id = px.ip_to_pod_id(df.remote_addr)\n# Convert the ID to a readable name.\ndf.service = px.pod_id_to_service_name(df.pod_id)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_ip",
+              "desc": "The IP of a pod to convert.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The Kubernetes ID of the pod if it exists, otherwise an empty string.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pod_id_to_pod_name",
+        "brief": "Get the name of a pod from its pod ID.",
+        "desc": "Gets the kubernetes name for the pod from its pod ID.",
+        "examples": [
+          {
+            "value": "```\ndf.pod_name = px.pod_id_to_pod_name(df.pod_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_id",
+              "desc": "The pod ID of the pod to get the name for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s pod name for the pod ID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pod_id_to_namespace",
+        "brief": "Get the Kubernetes namespace from a pod ID.",
+        "desc": "Gets the Kubernetes namespace that the Pod ID belongs to.",
+        "examples": [
+          {
+            "value": "```\ndf.namespace = px.pod_id_to_namespace(df.pod_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_id",
+              "desc": "The Pod ID of the Pod to get the namespace for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s namespace for the Pod ID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pod_id_to_node_name",
+        "brief": "Get the name of the node a pod ID is running on.",
+        "desc": "Gets the Kubernetes name for the node that the Pod (specified by Pod ID) is running on.",
+        "examples": [
+          {
+            "value": "```\ndf.node_name = px.pod_id_to_node_name(df.pod_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_id",
+              "desc": "The Pod ID of the Pod to get the node name for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s node name for the Pod ID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pod_id_to_start_time",
+        "brief": "Get the start time of a pod from its ID.",
+        "desc": "Gets the start time (in nanosecond unix time format) of a pod from its pod ID.",
+        "examples": [
+          {
+            "value": "```\ndf.pod_start_time = px.pod_id_to_start_time(df.pod_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_id",
+              "desc": "The Pod ID of the Pod to get the start time for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The start time (as an integer) for the Pod ID passed in.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "pod_id_to_stop_time",
+        "brief": "Get the stop time of a pod from its ID.",
+        "desc": "Gets the stop time (in nanosecond unix time format) of a pod from its pod ID.",
+        "examples": [
+          {
+            "value": "```\ndf.pod_stop_time = px.pod_id_to_stop_time(df.pod_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_id",
+              "desc": "The Pod ID of the Pod to get the stop time for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The stop time (as an integer) for the Pod ID passed in.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "pod_id_to_service_name",
+        "brief": "Get the service name for a given pod ID.",
+        "desc": "Gets the Kubernetes service name for the service associated to the pod. If there is no service associated to this pod, then this function returns an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.service_name = px.pod_id_to_service_name(df.pod_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_id",
+              "desc": "The Pod ID of the Pod to get service name for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s service name for the Pod ID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pod_id_to_service_id",
+        "brief": "Get the service ID for a given pod ID.",
+        "desc": "Gets the Kubernetes service ID for the service associated to the pod. If there is no service associated to this pod, then this function returns an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.service_id = px.pod_id_to_service_id(df.pod_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_id",
+              "desc": "The Pod ID of the Pod to get service ID for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s service ID for the Pod ID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "ip_to_service_id",
+        "brief": "Get the service ID for a given pod IP.",
+        "desc": "Converts the IP address into a Kubernetes service ID for the service associated to the pod. If there is no service associated with the given IP address, return an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.service_id = px.ip_to_service_id(df.remote_addr)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_ip",
+              "desc": "The IP of a pod to convert.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The service id if it exists, otherwise an empty string.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pod_name_to_namespace",
+        "brief": "Get the Kubernetes namespace from a pod name.",
+        "desc": "Gets the Kubernetes namespace that the pod belongs to.",
+        "examples": [
+          {
+            "value": "```\ndf.namespace = px.pod_name_to_namespace(df.pod_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_name",
+              "desc": "The name of the Pod to get the namespace for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s namespace for the pod passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pod_name_to_pod_id",
+        "brief": "Get the id of a pod from its name.",
+        "desc": "Gets the kubernetes ID for the pod from its name.",
+        "examples": [
+          {
+            "value": "```\ndf.pod_id = px.pod_name_to_pod_id(df.pod_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_name",
+              "desc": "The name of the pod to get the ID for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s pod ID for the pod name passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pod_name_to_pod_ip",
+        "brief": "Get the IP address of a pod from its name.",
+        "desc": "Gets the IP address for the pod from its name.",
+        "examples": [
+          {
+            "value": "```\ndf.pod_ip = px.pod_name_to_pod_ip(df.pod_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_name",
+              "desc": "The name of the pod to get the IP for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The pod IP for the pod name passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pod_name_to_service_name",
+        "brief": "Get the service name for a given pod name.",
+        "desc": "Gets the Kubernetes service name for the service associated to the pod. If there is no service associated to this pod, then this function returns an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.service_name = px.pod_name_to_service_name(df.pod_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_name",
+              "desc": "The name of the Pod to get service name for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s service name for the Pod name passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pod_name_to_service_id",
+        "brief": "Get the service ID for a given pod name.",
+        "desc": "Gets the Kubernetes service ID for the service associated to the pod. If there is no service associated to this pod, then this function returns an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.service_id = px.pod_name_to_service_id(df.pod_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_id",
+              "desc": "The name of the Pod to get service ID for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s service ID for the Pod name passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pod_name_to_start_time",
+        "brief": "Get the start time of a pod from its name.",
+        "desc": "Gets the start time (in nanosecond unix time format) of a pod from its name.",
+        "examples": [
+          {
+            "value": "```\ndf.pod_start_time = px.pod_name_to_start_time(df.pod_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_name",
+              "desc": "The name of the Pod to get the start time for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The start time (as an integer) for the Pod name passed in.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "pod_name_to_stop_time",
+        "brief": "Get the stop time of a pod from its name.",
+        "desc": "Gets the stop time (in nanosecond unix time format) of a pod from its name.",
+        "examples": [
+          {
+            "value": "```\ndf.pod_stop_time = px.pod_name_to_stop_time(df.pod_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_name",
+              "desc": "The name of the Pod to get the stop time for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The stop time (as an integer) for the Pod name passed in.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "pod_name_to_status",
+        "brief": "Get status information about the given pod.",
+        "desc": "Gets the Kubernetes status information for the pod with the given name. The status is a subset of the Kubernetes PodStatus object returned as JSON. The keys included are state, message, and reason. See https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#podstatus-v1-core for more info about this object. ",
+        "examples": [
+          {
+            "value": "```\ndf.pod_status = px.pod_name_to_pod_status(df.pod_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_name",
+              "desc": "The name of the pod to get the PodStatus for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The Kubernetes PodStatus for the Pod passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "service_id_to_service_name",
+        "brief": "Convert the kubernetes service ID to service name.",
+        "desc": "Converts the kubernetes service ID to the name of the service. If the ID is not found in our mapping, then returns an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.service = px.service_id_to_service_name(df.service_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "service_id",
+              "desc": "The service ID to get the service name for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The service name or an empty string if service_id not found.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "service_name_to_service_id",
+        "brief": "Convert the service name to the service ID.",
+        "desc": "Converts the service name to the corresponding kubernetes service ID. If the name is not found in our mapping, the function returns an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.service_id = px.service_name_to_service_id(df.service)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "service_name",
+              "desc": "The service to get the service ID.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The kubernetes service ID for the service passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "service_name_to_namespace",
+        "brief": "Gets the namespace from the service name.",
+        "desc": "Extracts the namespace from the service name. It expects the service name to come in the format`\u003cnamespace\u003e/\u003cservice_name\u003e`, otherwise it'll return an empty string.",
+        "examples": [
+          {
+            "value": "```\n# df.service is `pl/kelvin`\ndf.namespace = px.service_name_to_namespace(df.service) # \"pl\"\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "service_name",
+              "desc": "The service to extract the namespace.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The namespace of the service.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "upid_to_asid",
+        "brief": "Get the Pixie Agent ID from the UPID.",
+        "desc": "Gets the Pixie Agent ID from the given Unique Process ID (UPID). The Pixie Agent ID signifies which Pixie Agent is tracing the given process.",
+        "examples": [
+          {
+            "value": "```\ndf.agent_id = px.upid_to_asid(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The UPID of the process to get the Pixie Agent ID for.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The Pixie Agent ID for the UPID passed in.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "upid_to_container_id",
+        "brief": "Get the Kubernetes container ID from a UPID.",
+        "desc": "Gets the Kubernetes container ID for the container the process with the given Unique Process ID (UPID) is running on. If the UPID has no associated Kubernetes container, this function will return an empty string",
+        "examples": [
+          {
+            "value": "```\ndf.container_id = px.upid_to_container_id(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The UPID of the process to get the container ID for.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s container ID for the UPID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "upid_to_cmdline",
+        "brief": "Get the command line arguments used to start a UPID.",
+        "desc": "Get the command line arguments used to start the process with the given Unique Process ID (UPID).",
+        "examples": [
+          {
+            "value": "```\ndf.cmdline = px.upid_to_cmdline(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The UPID to get the command line arguments for.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The command line arguments for the UPID passed in, as a string.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "upid_to_container_name",
+        "brief": "Get the Kubernetes container name from a UPID.",
+        "desc": "Gets the Kubernetes container name for the container the process with the given Unique Process ID (UPID) is running on. If the UPID has no associated Kubernetes container, this function will return an empty string",
+        "examples": [
+          {
+            "value": "```\ndf.container_name = px.upid_to_container_name(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The UPID of the process to get the container name for.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s container name for the UPID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "upid_to_hostname",
+        "brief": "Get the Hostname from a UPID.",
+        "desc": "Gets the name of the host the process with the given Unique Process ID (UPID) is running on. Equivalent to running `hostname` in a shell on the node the process is running on.",
+        "examples": [
+          {
+            "value": "```\ndf.hostname = px.upid_to_hostname(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The UPID of the process to get the hostname for.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The hostname for the UPID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "upid_to_namespace",
+        "brief": "Get the Kubernetes namespace from a UPID.",
+        "desc": "Gets the Kubernetes namespace for the process with the given Unique Process ID (UPID). If the process is not running within a kubernetes context, this function will return an empty string",
+        "examples": [
+          {
+            "value": "```\ndf.namespace = px.upid_to_namespace(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The UPID of the process to get the namespace for.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s namespace for the UPID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "upid_to_node_name",
+        "brief": "Get the Node Name from a UPID.",
+        "desc": "Gets the Kubernetes name of the node the process with the given Unique Process ID (UPID) is running on.",
+        "examples": [
+          {
+            "value": "```\ndf.node_name = px.upid_to_node_name(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The UPID of the process to get the node name for.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The name of the node for the UPID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "upid_to_pid",
+        "brief": "Get the PID of the process for the given UPID.",
+        "desc": "Get the process ID for the process the Unique Process ID (UPID) refers to. Note that the UPID is unique across all hosts/containers, whereas the PID could be the same between different hosts/containers",
+        "examples": [
+          {
+            "value": "```\ndf.pid = px.upid_to_pid(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The UPID of the process to get the PID for.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The PID for the UPID passed in.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "upid_to_pod_id",
+        "brief": "Get the Kubernetes Pod ID from a UPID.",
+        "desc": "Gets the Kubernetes pod ID for the pod the process with the given Unique Process ID (UPID) is running on. If the UPID has no associated Kubernetes Pod, this function will return an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.pod_id = px.upid_to_pod_id(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The UPID of the process to get the pod ID for.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s pod ID for the UPID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "upid_to_pod_name",
+        "brief": "Get the Kubernetes Pod Name from a UPID.",
+        "desc": "Gets the name of Kubernetes pod the process with the given Unique Process ID (UPID) is running on. If the UPID has no associated Kubernetes Pod, this function will return an empty string",
+        "examples": [
+          {
+            "value": "```\ndf.pod_name = px.upid_to_pod_name(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The UPID of the process to get the pod name for.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s pod name for the UPID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "upid_to_pod_qos",
+        "brief": "Get the Kubernetes QOS class for the UPID.",
+        "desc": "Gets the Kubernetes QOS class for the pod the given Unique Process ID (UPID) is running on. The QOS Class is one of \"Guaranteed\", \"Burstable\", or \"BestEffort\". See https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/ for more info.",
+        "examples": [
+          {
+            "value": "```\ndf.pod_qos = px.upid_to_pod_qos(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The UPID to get the Pod QOS class for.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The Kubernetes Pod QOS class for the UPID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "upid_to_pod_status",
+        "brief": "Get status information about the pod of a UPID.",
+        "desc": "Gets the Kubernetes status information for the pod the given Unique Process ID (UPID) is running on. The status is a subset of the Kubernetes PodStatus object returned as JSON. The keys included are state, message, and reason. See https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#podstatus-v1-core for more info about this object. If the UPID has no associated kubernetes pod, this will return an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.pod_status = px.upid_to_pod_status(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The UPID to get the PodStatus for.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The Kubernetes PodStatus for the UPID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "upid_to_service_name",
+        "brief": "Get the Service Name from a UPID.",
+        "desc": "Gets the Kubernetes Service Name for the process with the given Unique Process ID (UPID). If the given process doesn't have an associated Kubernetes service, this function returns an empty string",
+        "examples": [
+          {
+            "value": "```\ndf.service_name = px.upid_to_service_name(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The UPID of the process to get the service name for.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The Kubernetes Service Name for the UPID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "upid_to_service_id",
+        "brief": "Get the Service ID from a UPID.",
+        "desc": "Gets the Kubernetes Service ID for the process with the given Unique Process ID (UPID). If the given process doesn't have an associated Kubernetes service, this function returns an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.service_id = px.upid_to_service_id(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The UPID of the process to get the service ID for.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The kubernetes service ID for the UPID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "upid_to_string",
+        "brief": "Get a stringified version of the UPID.",
+        "desc": "Stringifies a UPID The string format of the UPID is `asid:pid:start_time`, where asid is the Pixie Agent unique ID that uniquely determines which Pixie Agent traces this UPID, pid is the process ID from the host, and start_time is the unix time the process started.",
+        "examples": [
+          {
+            "value": "```\ndf.upid_str = px.upid_to_string(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The UPID to stringify.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The stringified UPID.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "_exec_hostname",
+        "brief": "Get the hostname of the machine.",
+        "desc": "Get the hostname of the machine that the data originated from.",
+        "examples": [
+          {
+            "value": "```\ndf.hostname = px._exec_hostname()\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "retval": {
+            "desc": "The hostname of the machine.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "nslookup",
+        "brief": "Perform a DNS lookup for the value (experimental).",
+        "desc": "Experimental UDF to perform a DNS lookup for a given value.",
+        "examples": [
+          {
+            "value": "```\ndf.hostname = px.nslookup(df.ip_addr)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "addr",
+              "desc": "An IP address",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The hostname.",
+            "type": "STRING"
+          }
+        }
+      }
+    ]
+  },
+  "mutationDocs": [
+    {
+      "body": {
+        "name": "pxtrace.DeleteTracepoint",
+        "brief": "Deletes a tracepoint.",
+        "desc": "Deletes the tracepoint with the provided name, should it exist.  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "name",
+            "desc": "The name of the tracepoint.",
+            "types": [
+              "str"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "body": {
+        "name": "pxtrace.UpsertTracepoint",
+        "brief": "Deploys a tracepoint on a process and collects the traced data into a table.",
+        "desc": "Deploys the tracepoint on the process (UPID) for the specified amount of time (TTL). The provided name uniquely identifies the tracepoint, and is used to manage the tracepoint (e.g. future calls to `UpsertTracepoint` or `DeleteTracepoint`.) A call to `UpsertTracepoint` on an existing tracepoint resets the TTL, but otherwise has no effect. A call to `UpsertTracepoint` on an existing tracepoint with a different tracepoint function will fail. UpsertTracepoint automatically creates a table with the provided name should it not exist; if the table exists but has a different schema, the deployment will fail.  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "name",
+            "desc": "The name of the tracepoint. Should be unique with the probe_fn.",
+            "types": [
+              "str"
+            ]
+          },
+          {
+            "ident": "table_name",
+            "desc": "The table name to write the results. The table is created if it does not exist. The table schema must match if the table does exist.",
+            "types": [
+              "str"
+            ]
+          },
+          {
+            "ident": "probe_fn",
+            "desc": "The tracepoint function.",
+            "types": [
+              "px.ProbeFn"
+            ]
+          },
+          {
+            "ident": "target",
+            "desc": "The process or shared object to trace as specified by unique Vizier PID.",
+            "types": [
+              "Union[px.UPID,px.SharedObject,px.Pod,pxtrace.Process]"
+            ]
+          },
+          {
+            "ident": "ttl",
+            "desc": "The length of time that a tracepoint will stay alive, after which it will be removed.",
+            "types": [
+              "px.Duration"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "tracepointDecoratorDocs": [
+    {
+      "body": {
+        "name": "pxtrace.probe",
+        "brief": "Decorates a tracepoint definition.",
+        "desc": "Specifies the decorated function as a tracepoint on the `trace_fn` name. Automatically figures out the language based on the functon specified.  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "trace_fn",
+            "desc": "The func to trace. For go, the format is `\u003cpackage_name\u003e.\u003cfunc_name\u003e`.",
+            "types": [
+              "str"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "The wrapped probe function.",
+          "types": [
+            "Func"
+          ]
+        }
+      }
+    }
+  ],
+  "tracepointFieldDocs": [
+    {
+      "body": {
+        "name": "pxtrace.PodProcess",
+        "brief": "Creates a Tracepoint target for a process.",
+        "desc": "Defines a tracepoint target for a process based on the pod and if that's not specific enough a container and process path.  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "pod_name",
+            "desc": "The name of the pod running the target process. Must be of the format \u003cnamespace\u003e/\u003cpod\u003e. You may also use the prefix of the pod name to avoid writing the kubernetes generated check-sum.",
+            "types": [
+              "str"
+            ]
+          },
+          {
+            "ident": "container_name",
+            "desc": "The name of the container that's running the process. Specify this argument if a pod has more than one containers. The compiler will error out if a pod has multiple containers and this is not specified.",
+            "types": [
+              "str, optional"
+            ]
+          },
+          {
+            "ident": "process_name",
+            "desc": "A regexp that matches any substrings of the command line of the target process. Specify this if a container has more than one process. The compiler will error out if a container has multiple processes and this is not specified.",
+            "types": [
+              "str, optional"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "A pointer to that Process that can be passed as a target to UpsertTracepoint.",
+          "types": [
+            "ProcessTarget"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "pxtrace.ArgExpr",
+        "brief": "Specifies a function argument to trace.",
+        "desc": "Extracts the function argument, as specified by the provided expression. Traceable types are base types (`int`, `float`, etc.), strings and byte arrays. Base-type arguments are specified directly (`arg1`), while struct members are accessed using dotted notation (`arg1.foo`). The dot operator works on both pointer and non-pointer types.  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "expr",
+            "desc": "The expression to evaluate.",
+            "types": [
+              "str"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "A materialized column pointer to use in output table definitions.",
+          "types": [
+            "px.TracingField"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "pxtrace.kprobe",
+        "brief": "Defines a kprobe target for an UpsertTracepoint.",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [],
+        "returnType": {
+          "desc": "KProbe target that can be passed into UpsertTracepoint.",
+          "types": [
+            "KProbeTarget"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "pxtrace.SharedObject",
+        "brief": "Defines a shared object target for Tracepoints.",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "name",
+            "desc": "The name of the shared object.",
+            "types": [
+              "str"
+            ]
+          },
+          {
+            "ident": "upid",
+            "desc": "A process which loads the shared object.",
+            "types": [
+              "px.UPID"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "A pointer to the SharedObject that can be passed as a target to UpsertTracepoint.",
+          "types": [
+            "SharedObject"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "pxtrace.FunctionLatency",
+        "brief": "Specifies a function latency to trace.",
+        "desc": "Computes the function latency, from entry to return. The measured latency includes includes time spent in sub-calls.  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [],
+        "returnType": {
+          "desc": "A materialized column pointer to use in output table definitions.",
+          "types": [
+            "px.TracingField"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "pxtrace.RetExpr",
+        "brief": "Specifies a function return value to trace.",
+        "desc": "Extracts data from the function return value, as specified by the provided expression. Traceable types are the same as in `ArgExpr`. Return values are accessed by index (`$0` for the first return value, `$1` for the second return value, etc.). In Golang, the first index value is the number of arguments, excluding the receiver. For example, the return value for `fun Sum(a int, b int) int` is `$2`. Return values that are structs may be accessed using dotted notation, similar to `ArgExpr`, (e.g. `$0.foo`).  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "expr",
+            "desc": "The expression to evaluate.",
+            "types": [
+              "str"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "A materialized column pointer to use in output table definitions.",
+          "types": [
+            "px.TracingField"
+          ]
+        }
+      }
+    }
+  ],
+  "dataframeOpDocs": [
+    {
+      "body": {
+        "name": "Filter",
+        "brief": "Returns a DataFrame with only those rows that match the condition.",
+        "desc": "Filters for the rows in the DataFrame that match the boolean condition. Will error out if you don't pass in a boolean expression. The functions available are defined in [UDFs](/reference/pxl/udf).     ",
+        "examples": [
+          {
+            "value": "```\ndf = px.DataFrame('http_events')\n# Filter for only http requests that are greater than 100 milliseconds\ndf = df[df['http_resp_latency_ns'] \u003e 100 * 1000 * 1000]\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "key",
+            "desc": "DataFrame expression that evaluates to a bool. Filter keeps any row that causes the expression to evaluate to True.",
+            "types": [
+              "ScalarExpression"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "DataFrame with only those rows that return True for the expression.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "Stream",
+        "brief": "Execute this DataFrame in streaming mode.",
+        "desc": "Returns the input DataFrame, but set to streaming mode. Streaming queries execute indefinitely, as opposed to batch queries which return a finite result.     ",
+        "examples": [
+          {
+            "value": "```\ndf = px.DataFrame('http_events').stream()\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [],
+        "returnType": {
+          "desc": "the parent DataFrame in streaming mode.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "Rolling Window",
+        "brief": "Groups the data by rolling windows.",
+        "desc": "Rolls up data into groups based on the rolling window that it belongs to. Used to define window aggregates, the streaming analog of batch aggregates.      ",
+        "examples": [
+          {
+            "value": "```\ndf = px.DataFrame('process_stats')\ndf = df.rolling('2s').agg(...)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "window",
+            "desc": "the size of the rolling window.",
+            "types": [
+              "px.Duration"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "DataFrame grouped into rolling windows. Must apply either a groupby or an aggregate on the returned DataFrame.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "Union",
+        "brief": "Unions the passed in dataframes with this DataFrame.",
+        "desc": "Unions the rows of the passed in DataFrames with this DataFrame. The passed in DataFrames. must have the same relation or `append` will throw a compilation error. Use `merge` to combine DataFrames with different relations.  If there is a time column in the relation, `append` sorts the Unioned data by time. If there is no time column, then append will simply return a DataFrame with each DataFrame stacked on the other.     ",
+        "examples": [
+          {
+            "value": "```\ndf1 = px.DataFrame('process_stats', start_time='-10m', end_time='-9m')\ndf2 = px.DataFrame('process_stats', start_time='-1m')\ndf = df1.append(df2)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "other",
+            "desc": "The DataFrame to union with this one, relation must be the same.",
+            "types": [
+              "px.DataFrame"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "This DataFrame unioned with the passed in argument.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "Group By",
+        "brief": "Groups the data in preparation for an aggregate.",
+        "desc": "Groups the data by the unique values in the passed in columns. At the current time we do not support standalone groupings, you must always follow the groupby() call with a call to `agg()`.     ",
+        "examples": [
+          {
+            "value": "```\n# Group by UPID and calculate maximum user time for the each\n# UPID group.\ndf = px.DataFrame('process_stats')\ndf = df.groupby('upid').agg(cpu_utime=('cpu_utime_ns', px.max))\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "columns",
+            "desc": "DataFrame columns to group by, either as a string or a list.",
+            "types": [
+              "Union[str,List[str]]"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "Grouped DataFrame. Must be followed by a call to `agg()`.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "Drop",
+        "brief": "Drops the specified columns from the DataFrame.",
+        "desc": "Returns a DataFrame with the specified columns dropped. Useful for removing columns you don't want to see in the final table result.  See `keep()` on how to specify which columns to keep.     ",
+        "examples": [
+          {
+            "value": "```\ndf = px.DataFrame('process_stats', select=['upid', 'cpu_ktime_ns', 'cpu_utime_ns'])\n# Drop upid from df.\ndf = df.drop('upid')\n```"
+          },
+          {
+            "value": "```\ndf = px.DataFrame('process_stats', select=['upid', 'cpu_ktime_ns', 'cpu_utime_ns'])\n# Drop upid an cpu_ktime_ns from df.\ndf = df.drop(['upid', 'cpu_ktime_ns'])\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "columns",
+            "desc": "DataFrame columns to drop, either as a string or a list.",
+            "types": [
+              "Union[str,List[str]]"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "DataFrame with the specified columns removed.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "Join",
+        "brief": "Merges the input DataFrame with this one using a database-style join.",
+        "desc": "Joins this DataFrame with the passed in right DataFrame according to the specified Join type. The DataFrame that we apply this on is the left DataFrame. The one passed in as an argument is the right DataFrame. If the join keys do not have the same type, this will error out.      ",
+        "examples": [
+          {
+            "value": "```\n# Group by UPID and calculate maximum user time for the each\n# UPID group.\nleft_df = px.DataFrame('process_stats', start_time='-10s')\nleft_df = left_df.groupby('upid').agg(cpu_utime=('cpu_utime_ns', px.max))\nright_df = px.DataFrame('http_events', start_time='-10s')\nright_df = right_df.groupby('upid').agg(count=('http_resp_body', px.count))\ndf = left_df.merge(right_df, how='inner', left_on='upid', right_on='upid',suffixes=['', '_x'])\n# df relation = ['upid', 'cpu_utime', 'upid_x', 'count']\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "right",
+            "desc": "The DataFrame to join with this DataFrame.",
+            "types": [
+              "px.DataFrame"
+            ]
+          },
+          {
+            "ident": "how",
+            "desc": "the Type of merge to perform. * inner: use the intersection of the left and right keys. * outer: use the union of the left and right keys. * left: use the keys from the left DataFrame. * right: use the keys from the right DataFrame.",
+            "types": [
+              "['inner', 'outer', 'left', 'right'], default 'inner'"
+            ]
+          },
+          {
+            "ident": "left_on",
+            "desc": "Column name from this DataFrame.",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "ident": "right_on",
+            "desc": "Column name from the right DataFarme to join on. Must be the same type as the `left_on` column.",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "ident": "suffixes",
+            "desc": "The suffixes to apply to duplicate columns.",
+            "types": [
+              "Tuple[string, string], default ['_x', '_y']"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "Merged DataFrame with the relation [left_join_col, ...remaining_left_columns, ...remaining_right_columns].",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "DataFrame",
+        "brief": "Sets up a DataFrame object from the specified table.",
+        "desc": "Sets up the loading procedure of the table into the rest of the execution engine. The returned value can be transformed, aggregated and filtered using the DataFrame methods.  Note that we are not actually loading data until the entire query is compiled, meaning that running this by itself won't do anything until a full pipeline is constructed.  DataFrame is able to load in any set of tables. See `px.GetSchemas()` for a list of tables and the columns that can be loaded.     ",
+        "examples": [
+          {
+            "value": "```\n# Select all columns\ndf = px.DataFrame('http_events', start_time='-5m')\n```"
+          },
+          {
+            "value": "```\n# Select subset of columns.\ndf = px.DataFrame('http_events', select=['upid', 'http_req_body'], start_time='-5m')\n```"
+          },
+          {
+            "value": "```\n# Absolute time specification.\ndf = px.DataFrame('http_events', start_time='2020-07-13 18:02:5.00 -0700')\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "table",
+            "desc": "The table name to load.",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "ident": "select",
+            "desc": "The columns of the table to load. Leave empty if you want to select all.",
+            "types": [
+              "List[str]]"
+            ]
+          },
+          {
+            "ident": "start_time",
+            "desc": "The earliest timestamp of data to load. Can be a relative time ie \"-5m\" or an absolute time in the following format \"2020-07-13 18:02:5.00 +0000\".",
+            "types": [
+              "px.Time"
+            ]
+          },
+          {
+            "ident": "end_time",
+            "desc": "The last timestamp of data to load. Can be a relative time ie \"-5m\" or an absolute time in the following format \"2020-07-13 18:02:5.00 +0000\".",
+            "types": [
+              "px.Time"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "DataFrame loaded from the table with the specified columns and time period.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "Agg",
+        "brief": "Aggregates the data based on the expressions.",
+        "desc": "Computes the aggregate expressions on the data. If the preceding operator is a groupby, then we evaluate the aggregate expression in each group. If not, we calculate the aggregate expression using all of the preceding data. If no arguments specified and the call follows a grouped DataFrame, then agg() returns the unique groups. If following a non-grouped DataFrame agg() with no args will yield a compilation error.  Each aggregate expression is simply the aggregate function applied to a column, formatted as `\u003cout_col_name\u003e=(\"\u003ccolumn_name\u003e\", \u003cfunction\u003e)`. A list of functions are available in the [UDA docs](/reference/pxl/udf)     ",
+        "examples": [
+          {
+            "value": "```\n# Group by UPID and calculate maximum user time for the each\n# UPID group.\ndf = px.DataFrame('process_stats')\ndf = df.groupby('upid').agg(cpu_utime=('cpu_utime_ns', px.max))\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "**kwargs",
+            "desc": "The column, aggregate function pair that make up the expression to apply, assigned to the output column name. `\u003cout_col_name\u003e=(\"\u003ccolumn_name\u003e\", \u003cfunction\u003e)`. If this value is empty, it will return the unique groups in the previous DataFrame.",
+            "types": [
+              "Tuple[string, AggFn]"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "DataFrame with aggregated expressions evaluated containing the groups (if any) followed by the output column aggregate expression names.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "Metadata",
+        "brief": "Creates the specified metadata as a column.",
+        "desc": "Shorthand for exposing metadata columns in the DataFrame. Each metadata type can be converted from some sets of other metadata types that already exist in the DataFrame.  Attempting to convert to a metadata type that doesn't have the source column will raise a compiler error.  Available keys (and any aliases) as well as the source columns. \n* container_id (): Sources: \"upid\" \n* service_id: Sources: \"upid\",\"service_name\" \n* pod_id: Sources: \"upid\",\"pod_name\" \n* deployment_id: Sources: \"upid\",\"deployment_name\" \n* service_name (\"service\"): Sources: \"upid\",\"service_id\" \n* pod_name (\"pod\"): Sources: \"upid\",\"pod_id\" \n* deployment_name (\"deployment\"): Sources: \"upid\",\"deployment_id\" \n* namespace: Sources: \"upid\" \n* node_name (\"node\"): Sources: \"upid\" \n* hostname (\"host\"): Sources: \"upid\" \n* container_name (\"container\"): Sources: \"upid\" \n* cmdline (\"cmd\"): Sources: \"upid\" \n* asid: Sources: \"upid\" \n* pid: Sources: \"upid\"      ",
+        "examples": [
+          {
+            "value": "```\ndf = px.DataFrame('http_events', start_time='-5m')\n# Filter only for data that matches the metadata service.\n# df.ctx['service'] pulls the service column into the DataFrame.\ndf = df[df.ctx['service'] == \"pl/vizier-metadata\"]\n```"
+          },
+          {
+            "value": "```\ndf = px.DataFrame('http_events', start_time='-5m')\n# Add the service column from the metadata object.\ndf.service = df.ctx['service']\n# Group by the service.\ndf = df.groupby('service').agg(req_count=('service', px.count))\n```"
+          },
+          {
+            "value": "```\n# Where metadata context can fail.\ndf = px.DataFrame('http_events', start_time='-5m')\n# Dropping upid so we remove the \"source\" column we could use\ndf = df.drop('upid')\n# FAILS: no source column available for the metadata conversion.\ndf.service = df.ctx['service']\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "metadata",
+            "desc": "The metadata property you wish to access. Function will throw an error if it doesn't exist.",
+            "types": [
+              "string"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "Column that represents the metadata in the DataFrame. Can be used in a DataFrame expression.",
+          "types": [
+            "px.Column"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "Limit",
+        "brief": "Return the first n rows.",
+        "desc": "Returns a DataFrame with the first n rows of data.     ",
+        "examples": [
+          {
+            "value": "```\ndf = px.DataFrame('http_events')\n# Keep only the first 100 http requests.\ndf = df.head(100)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "n",
+            "desc": "The number of rows to return. If not set, default is 5.",
+            "types": [
+              "int"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "DataFrame with the first n rows.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "Keep",
+        "brief": "Keeps only the specified columns.",
+        "desc": "Returns a DataFrame with only the specified columns. Useful for pruning columns to a small set before data is displayed. See `drop()` on how to drop specific columns instead.     ",
+        "examples": [
+          {
+            "value": "```\ndf = px.DataFrame('process_stats', select=['upid', 'cpu_ktime_ns', 'rss_bytes'])\n# Keep only the upid and rss_bytes columns\ndf = df[['upid', 'rss_bytes']]\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "columns",
+            "desc": "DataFrame columns to keep.",
+            "types": [
+              "List[str]"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "DataFrame with the specified columns removed.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "Map",
+        "brief": "Sets up the runtime expression and assigns the result to the specified column.",
+        "desc": "Adds a column with the specified name and the expression that evaluates to the column value. The evaluation of this expression happens inside of the Pixie engine (Carnot) thus cannot be directly accessed during compilation.  The expression can be a scalar value, a column from the same dataframe, or a [UDF](/reference/pxl/udf) function call. The syntax can be either `df['colname'] = expr` or `df.colname = expr`, the second option is simply syntactic sugar. The first form is slightly more expressive as you can set column names with spaces.       ",
+        "examples": [
+          {
+            "value": "```\ndf = px.DataFrame('process_stats')\n# Map scalar value to a column.\ndf['number'] = 12\n```"
+          },
+          {
+            "value": "```\ndf = px.DataFrame('http_events')\ndf.svc = df.ctx['svc']\n# Map column to another column name.\ndf.resp_body = df.http_resp_body\n```"
+          },
+          {
+            "value": "```\ndf = px.DataFrame('http_events')\n# Map expression to the column.\ndf['latency_ms'] = df['http_resp_latency_ns'] / 1.0e9\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "column_name",
+            "desc": "The name of the column to assign this value.",
+            "types": [
+              "str"
+            ]
+          },
+          {
+            "ident": "expr",
+            "desc": "The expression to evaluate in Carnot.",
+            "types": [
+              "ScalarExpression"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "DataFrame with the new column added.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    }
+  ],
+  "compileFnDocs": [
+    {
+      "body": {
+        "name": "px.days",
+        "brief": "Gets the specified number of days.",
+        "examples": [
+          {
+            "value": "```\n# Returns 2 days.\ntime = px.days(2)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "unit",
+            "desc": "The number of days to render.",
+            "types": [
+              "int"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "Duration representing `unit` days.",
+          "types": [
+            "px.Duration"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.minutes",
+        "brief": "Gets the specified number of minutes.",
+        "examples": [
+          {
+            "value": "```\n# Returns 2 minutes.\ntime = px.minutes(2)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "unit",
+            "desc": "The number of minutes to render.",
+            "types": [
+              "int"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "Duration representing `unit` minutes.",
+          "types": [
+            "px.Duration"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.hours",
+        "brief": "Gets the specified number of hours.",
+        "examples": [
+          {
+            "value": "```\n# Returns 2 hours.\ntime = px.hours(2)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "unit",
+            "desc": "The number of hours to render.",
+            "types": [
+              "int"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "Duration representing `unit` hours.",
+          "types": [
+            "px.Duration"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.strptime",
+        "brief": "Parse a datestring into a px.Time.",
+        "desc": "Parse a datestring using a standard time format template into an internal time representation. The format must follow the C strptime format, outlined in this document: https://pubs.opengroup.org/onlinepubs/009695399/functions/strptime.html   ",
+        "examples": [
+          {
+            "value": "```\ntime = px.strptime(\"2020-03-12 19:39:59 -0200\", \"%Y-%m-%d %H:%M:%S %z\")\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "date_string",
+            "desc": "The time as a string, should match the format object.",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "ident": "format",
+            "desc": "The string format according to the C strptime format https://pubs.opengroup.org/onlinepubs/009695399/functions/strptime.html",
+            "types": [
+              "string"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "The time value represented in the data.",
+          "types": [
+            "px.Time"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.now",
+        "brief": "Get the current time.",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [],
+        "returnType": {
+          "desc": "The current time as defined at the start of compilation.",
+          "types": [
+            "px.Time"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.microseconds",
+        "brief": "Gets the specified number of microseconds.",
+        "examples": [
+          {
+            "value": "```\n# Returns 2 microseconds.\ntime = px.microseconds(2)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "unit",
+            "desc": "The number of microseconds to render.",
+            "types": [
+              "int"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "Duration representing `unit` microseconds.",
+          "types": [
+            "px.Duration"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.uint128",
+        "brief": "Parse the UUID string into a UInt128.",
+        "desc": "Parse the UUID string of canonical textual representation into a 128bit integer (ie \"123e4567-e89b-12d3-a456-426614174000\"). Errors out if the string is not the correct format.   ",
+        "examples": [
+          {
+            "value": "```\nval = px.uint128(\"123e4567-e89b-12d3-a456-426614174000\")\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "uuid",
+            "desc": "the uuid in canoncial uuid4 format (\"123e4567-e89b-12d3-a456-426614174000\")",
+            "types": [
+              "string"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "The uuid as a uint128.",
+          "types": [
+            "uint128"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.make_upid",
+        "brief": "Create a UPID from its components to represent a process.",
+        "desc": "Creates a UPID object from asid, pid, and time started in nanoseconds. UPID stands for unique PID and is a Pixie concept to ensure tracked processes are unique in time and across nodes.  Note: Creating this value from scratch might be very difficult, espeically given the nanosecond timestamp. It's probably only useful if you find the UPID printed out as it's consitituent components.  In most situations, you might find that `px.uint128` is a better option as we often render UPID as uuid.   ",
+        "examples": [
+          {
+            "value": "```\nval = px.make_upid(123, 456, 1598419816000000)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "asid",
+            "desc": "The ID of the node, according to the Pixie metadata service. Stands for Agent short ID.",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "ident": "pid",
+            "desc": "The PID of the process on the node.",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "ident": "ts_ns",
+            "desc": "The start time of the process in unix time.",
+            "types": [
+              "int"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "The represented UPID.",
+          "types": [
+            "px.UPID"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.seconds",
+        "brief": "Gets the specified number of seconds.",
+        "examples": [
+          {
+            "value": "```\n# Returns 2 seconds.\ntime = px.seconds(2)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "unit",
+            "desc": "The number of seconds to render.",
+            "types": [
+              "int"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "Duration representing `unit` seconds.",
+          "types": [
+            "px.Duration"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.milliseconds",
+        "brief": "Gets the specified number of milliseconds.",
+        "examples": [
+          {
+            "value": "```\n# Returns 2 milliseconds.\ntime = px.milliseconds(2)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "unit",
+            "desc": "The number of milliseconds to render.",
+            "types": [
+              "int"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "Duration representing `unit` milliseconds.",
+          "types": [
+            "px.Duration"
+          ]
+        }
+      }
+    }
+  ],
+  "goApiDocs": [
+    {
+      "packageName": "pxapi",
+      "funcs": [],
+      "types": [
+        {
+          "def": {
+            "name": "type Client",
+            "declaration": "type Client struct {\n\n}\n",
+            "docstring": "Client is the base client to use pixie cloud + vizier.\n"
+          },
+          "methods": [
+            {
+              "name": "func NewClient",
+              "declaration": "func NewClient(ctx context.Context, opts ...ClientOption) (*Client, error)",
+              "docstring": "NewClient creates a new Pixie API Client.\n"
+            },
+            {
+              "name": "func ListViziers",
+              "declaration": "func (c *Client) ListViziers(ctx context.Context) ([]VizierInfo, error)",
+              "docstring": "ListViziers gets a list of Viziers registered with Pixie.\n"
+            },
+            {
+              "name": "func NewVizierClient",
+              "declaration": "func (c *Client) NewVizierClient(ctx context.Context, vizierID string) (*VizierClient, error)",
+              "docstring": "NewVizierClient creates a new vizier client, for the passed in vizierID.\n"
+            }
+          ]
+        },
+        {
+          "def": {
+            "name": "type ClientOption",
+            "declaration": "type ClientOption func(client *Client)",
+            "docstring": "ClientOption configures options on the client.\n"
+          },
+          "methods": [
+            {
+              "name": "func WithAPIKey",
+              "declaration": "func WithAPIKey(auth string) ClientOption",
+              "docstring": "WithAPIKey is the option to specify the API key to use.\n"
+            },
+            {
+              "name": "func WithBearerAuth",
+              "declaration": "func WithBearerAuth(auth string) ClientOption",
+              "docstring": "WithBearerAuth is the option to specify bearer auth to use.\n"
+            },
+            {
+              "name": "func WithCloudAddr",
+              "declaration": "func WithCloudAddr(cloudAddr string) ClientOption",
+              "docstring": "WithCloudAddr is the option to specify cloud address to use.\n"
+            }
+          ]
+        },
+        {
+          "def": {
+            "name": "type ResultsStats",
+            "declaration": "type ResultsStats struct {\nAcceptedBytes    int64\nTotalBytes       int64\nExecutionTime    time.Duration\nCompilationTime  time.Duration\nBytesProcessed   int64\nRecordsProcessed int64\n}",
+            "docstring": "ResultsStats stores statistics about the data.\n"
+          },
+          "methods": []
+        },
+        {
+          "def": {
+            "name": "type ScriptResults",
+            "declaration": "type ScriptResults struct {\n\n}\n",
+            "docstring": "ScriptResults tracks the results of a script, and provides mechanisms to cancel, etc.\n"
+          },
+          "methods": [
+            {
+              "name": "func Close",
+              "declaration": "func (s ScriptResults) Close() error",
+              "docstring": "Close will terminate the call.\n"
+            },
+            {
+              "name": "func Stats",
+              "declaration": "func (s *ScriptResults) Stats() *ResultsStats",
+              "docstring": "Stats returns the execution and script stats.\n"
+            },
+            {
+              "name": "func Stream",
+              "declaration": "func (s *ScriptResults) Stream() error",
+              "docstring": "Stream will start streaming the results. Since the API is streaming fist, even a non streaming\nscript requires this to be called to get all the results.\n"
+            }
+          ]
+        },
+        {
+          "def": {
+            "name": "type TableMuxer",
+            "declaration": "type TableMuxer interface {\nAcceptTable(ctx context.Context, metadata types.TableMetadata) (TableRecordHandler, error)\n}// AcceptTable is passed the table information, if nil is returned then the table stream is ignored.\n",
+            "docstring": "TableMuxer is an interface to route tables to the correct handler.\n"
+          },
+          "methods": []
+        },
+        {
+          "def": {
+            "name": "type TableRecordHandler",
+            "declaration": "type TableRecordHandler interface {\nHandleInit(ctx context.Context, metadata types.TableMetadata) error\nHandleRecord(ctx context.Context, record *types.Record) error\nHandleDone(ctx context.Context) error\n}// HandleInit is called to initialize the table handler interface.\n// HandleDone is called when the table streaming has been completed.\n",
+            "docstring": "TableRecordHandler is an interface that processes a table record-wise.\n"
+          },
+          "methods": []
+        },
+        {
+          "def": {
+            "name": "type VizierClient",
+            "declaration": "type VizierClient struct {\n\n}\n",
+            "docstring": "VizierClient is the client for a single vizier.\n"
+          },
+          "methods": [
+            {
+              "name": "func ExecuteScript",
+              "declaration": "func (v *VizierClient) ExecuteScript(ctx context.Context, pxl string, mux TableMuxer) (*ScriptResults, error)",
+              "docstring": "ExecuteScript runs the script on vizier.\n"
+            }
+          ]
+        },
+        {
+          "def": {
+            "name": "type VizierInfo",
+            "declaration": "type VizierInfo struct {\nName         string\nID           string\nStatus       VizierStatus\nVersion      string\nDirectAccess bool\n}// Name of the vizier.\n// DirectAccess says the cluster has direct access mode enabled. This means the data transfer will bypass the cloud.\n",
+            "docstring": "VizierInfo has information of a single Vizier.\n"
+          },
+          "methods": []
+        },
+        {
+          "def": {
+            "name": "type VizierStatus",
+            "declaration": "type VizierStatus string",
+            "docstring": "VizierStatus stores the enumeration of all vizier statuses.\n"
+          },
+          "methods": []
+        }
+      ]
+    },
+    {
+      "packageName": "pxapi/types",
+      "funcs": [],
+      "types": [
+        {
+          "def": {
+            "name": "type BooleanValue",
+            "declaration": "type BooleanValue struct {\nValueType\n\n}\n",
+            "docstring": "BooleanValue is the concrete type that holds an boolean value.\n"
+          },
+          "methods": [
+            {
+              "name": "func NewBooleanValue",
+              "declaration": "func NewBooleanValue(schema *ColSchema) *BooleanValue",
+              "docstring": "NewBooleanValue constructs a BooleanValue.\n"
+            },
+            {
+              "name": "func ScanBool",
+              "declaration": "func (v *BooleanValue) ScanBool(data bool)",
+              "docstring": "ScanBool scans bool value and write it to the internal data.\n"
+            },
+            {
+              "name": "func SemanticType",
+              "declaration": "func (v BooleanValue) SemanticType() SemanticType",
+              "docstring": "SemanticType returns the Pixie semantic type.\n"
+            },
+            {
+              "name": "func String",
+              "declaration": "func (v BooleanValue) String() string",
+              "docstring": "String returns the string representation.\n"
+            },
+            {
+              "name": "func Type",
+              "declaration": "func (v BooleanValue) Type() DataType",
+              "docstring": "Type returns the Pixie data type.\n"
+            },
+            {
+              "name": "func Value",
+              "declaration": "func (v BooleanValue) Value() bool",
+              "docstring": "Value returns the data as a bool\n"
+            }
+          ]
+        },
+        {
+          "def": {
+            "name": "type ColSchema",
+            "declaration": "type ColSchema struct {\nName         string\nType         DataType\nSemanticType SemanticType\n}// Name of the column.\n// SemanticType of the column.\n",
+            "docstring": "ColSchema has the per column schema.\n"
+          },
+          "methods": []
+        },
+        {
+          "def": {
+            "name": "type DataType",
+            "declaration": "type DataType = vizierapipb.DataType",
+            "docstring": "DataType referes to the underlying Pixie datatype.\n"
+          },
+          "methods": []
+        },
+        {
+          "def": {
+            "name": "type Datum",
+            "declaration": "type Datum interface {\nString() string\nType() DataType\nSemanticType() SemanticType\n}// String returns the string representation, regardless of the type.\n// TODO(zasgar): Enabled the formatted value interface. The goal for this function\n// will be to provide the canonical value with units.\n// FormattedValue() FormattedValue\n// SemanticType returns the Pixie semantic type.\n",
+            "docstring": "Datum is a base type use to wrap all underlying Pixie types.\n"
+          },
+          "methods": []
+        },
+        {
+          "def": {
+            "name": "type Float64Value",
+            "declaration": "type Float64Value struct {\nValueType\n\n}\n",
+            "docstring": "Float64Value is the concrete type that holds an float64 value.\n"
+          },
+          "methods": [
+            {
+              "name": "func NewFloat64Value",
+              "declaration": "func NewFloat64Value(schema *ColSchema) *Float64Value",
+              "docstring": "NewFloat64Value constructs a Float64Value.\n"
+            },
+            {
+              "name": "func ScanFloat64",
+              "declaration": "func (v *Float64Value) ScanFloat64(data float64)",
+              "docstring": "ScanFloat64 stores the float64 data.\n"
+            },
+            {
+              "name": "func SemanticType",
+              "declaration": "func (v Float64Value) SemanticType() SemanticType",
+              "docstring": "SemanticType returns the Pixie semantic type.\n"
+            },
+            {
+              "name": "func String",
+              "declaration": "func (v Float64Value) String() string",
+              "docstring": "String returns the string representation.\n"
+            },
+            {
+              "name": "func Type",
+              "declaration": "func (v Float64Value) Type() DataType",
+              "docstring": "Type returns the Pixie data type.\n"
+            },
+            {
+              "name": "func Value",
+              "declaration": "func (v Float64Value) Value() float64",
+              "docstring": "Value returns the data as a float64.\n"
+            }
+          ]
+        },
+        {
+          "def": {
+            "name": "type Int64Value",
+            "declaration": "type Int64Value struct {\nValueType\n\n}\n",
+            "docstring": "Int64Value is the concrete type that holds an int64 value.\n"
+          },
+          "methods": [
+            {
+              "name": "func NewInt64Value",
+              "declaration": "func NewInt64Value(schema *ColSchema) *Int64Value",
+              "docstring": "NewInt64Value constructs an Int64Value.\n"
+            },
+            {
+              "name": "func ScanInt64",
+              "declaration": "func (v *Int64Value) ScanInt64(data int64)",
+              "docstring": "ScanIn64 writes the int64 to the internal data structure.\n"
+            },
+            {
+              "name": "func SemanticType",
+              "declaration": "func (v Int64Value) SemanticType() SemanticType",
+              "docstring": "SemanticType returns the Pixie semantic type.\n"
+            },
+            {
+              "name": "func String",
+              "declaration": "func (v Int64Value) String() string",
+              "docstring": "String returns the string representation.\n"
+            },
+            {
+              "name": "func Type",
+              "declaration": "func (v Int64Value) Type() DataType",
+              "docstring": "Type returns the Pixie data type.\n"
+            },
+            {
+              "name": "func Value",
+              "declaration": "func (v Int64Value) Value() int64",
+              "docstring": "Value returns the data as an int64.\n"
+            }
+          ]
+        },
+        {
+          "def": {
+            "name": "type Record",
+            "declaration": "type Record struct {\nData [ // Data is the array index type erased values.\n]Datum\nTableMetadata *TableMetadata\n}// TableMetadata stores a pointer to underlying table metadata.\n",
+            "docstring": "Record stores information about a single record.\n"
+          },
+          "methods": [
+            {
+              "name": "func GetDatum",
+              "declaration": "func (r *Record) GetDatum(colName string) Datum",
+              "docstring": "GetDatum returns the value of the given column.\n"
+            },
+            {
+              "name": "func GetDatumByIdx",
+              "declaration": "func (r *Record) GetDatumByIdx(idx int64) Datum",
+              "docstring": "GetDatumByIdx returns the data at a given column index.\n"
+            }
+          ]
+        },
+        {
+          "def": {
+            "name": "type SemanticType",
+            "declaration": "type SemanticType = vizierapipb.SemanticType",
+            "docstring": "SemanticType stores semantic information about the underlying data. For example, the value represents a throughput,\nor K8s entity, etc.\n"
+          },
+          "methods": []
+        },
+        {
+          "def": {
+            "name": "type StringValue",
+            "declaration": "type StringValue struct {\nValueType\n\n}\n",
+            "docstring": "StringValue is the concrete type that holds an string value.\n"
+          },
+          "methods": [
+            {
+              "name": "func NewStringValue",
+              "declaration": "func NewStringValue(schema *ColSchema) *StringValue",
+              "docstring": "NewStringValue constructs a StringValue.\n"
+            },
+            {
+              "name": "func ScanString",
+              "declaration": "func (v *StringValue) ScanString(data string)",
+              "docstring": "ScanString store the passed in string.\n"
+            },
+            {
+              "name": "func SemanticType",
+              "declaration": "func (v StringValue) SemanticType() SemanticType",
+              "docstring": "SemanticType returns the Pixie semantic type.\n"
+            },
+            {
+              "name": "func String",
+              "declaration": "func (v StringValue) String() string",
+              "docstring": "String returns the string representation.\n"
+            },
+            {
+              "name": "func Type",
+              "declaration": "func (v StringValue) Type() DataType",
+              "docstring": "Type returns the Pixie data type.\n"
+            },
+            {
+              "name": "func Value",
+              "declaration": "func (v StringValue) Value() string",
+              "docstring": "Value returns the string.\n"
+            }
+          ]
+        },
+        {
+          "def": {
+            "name": "type TableMetadata",
+            "declaration": "type TableMetadata struct {\nName    string\nColInfo [ // Name of the TableMetadata.\n// ColInfo has the array index schemas of each column.\n]ColSchema\n}",
+            "docstring": "TableMetadata contains the table metadata state.\n"
+          },
+          "methods": [
+            {
+              "name": "func IndexOf",
+              "declaration": "func (t *TableMetadata) IndexOf(colName string) int64",
+              "docstring": "IndexOf returns the index of a column by name. -1 is returned if the column does not exist.\n"
+            }
+          ]
+        },
+        {
+          "def": {
+            "name": "type Time64NSValue",
+            "declaration": "type Time64NSValue struct {\nValueType\n\n}\n",
+            "docstring": "Time64NSValue is the concrete type that holds an time value.\n"
+          },
+          "methods": [
+            {
+              "name": "func NewTime64NSValue",
+              "declaration": "func NewTime64NSValue(schema *ColSchema) *Time64NSValue",
+              "docstring": "NewTime64NSValue constructs a NewTime64NSValue.\n"
+            },
+            {
+              "name": "func ScanInt64",
+              "declaration": "func (v *Time64NSValue) ScanInt64(data int64)",
+              "docstring": "ScanInt64 stores the int64 data.\n"
+            },
+            {
+              "name": "func SemanticType",
+              "declaration": "func (v Time64NSValue) SemanticType() SemanticType",
+              "docstring": "SemanticType returns the Pixie semantic type.\n"
+            },
+            {
+              "name": "func String",
+              "declaration": "func (v Time64NSValue) String() string",
+              "docstring": "String returns the string representation.\n"
+            },
+            {
+              "name": "func Type",
+              "declaration": "func (v Time64NSValue) Type() DataType",
+              "docstring": "Type returns the Pixie data type.\n"
+            },
+            {
+              "name": "func Value",
+              "declaration": "func (v Time64NSValue) Value() time.Time",
+              "docstring": "Value returns the data as a time.\n"
+            }
+          ]
+        },
+        {
+          "def": {
+            "name": "type UInt128Value",
+            "declaration": "type UInt128Value struct {\nValueType\n\n}\n",
+            "docstring": "Time64NSValue is the concrete type that holds an time value.\n"
+          },
+          "methods": [
+            {
+              "name": "func NewUint128Value",
+              "declaration": "func NewUint128Value(schema *ColSchema) *UInt128Value",
+              "docstring": "NewUint128Value constructs a UInt128Value.\n"
+            },
+            {
+              "name": "func ScanUInt128",
+              "declaration": "func (v *UInt128Value) ScanUInt128(data *vizierapipb.UInt128)",
+              "docstring": "ScanUInt128 stores the passed in proto UInt128.\n"
+            },
+            {
+              "name": "func SemanticType",
+              "declaration": "func (v UInt128Value) SemanticType() SemanticType",
+              "docstring": "SemanticType returns the Pixie semantic type.\n"
+            },
+            {
+              "name": "func String",
+              "declaration": "func (v UInt128Value) String() string",
+              "docstring": "String returns the string representation.\n"
+            },
+            {
+              "name": "func Type",
+              "declaration": "func (v UInt128Value) Type() DataType",
+              "docstring": "Type returns the Pixie data type.\n"
+            },
+            {
+              "name": "func Value",
+              "declaration": "func (v UInt128Value) Value() []byte",
+              "docstring": "Value returns the data as bytes.\n"
+            }
+          ]
+        },
+        {
+          "def": {
+            "name": "type ValueType",
+            "declaration": "type ValueType struct{ ColInfo *ColSchema }",
+            "docstring": "ValueType is the shared structure of values.\n"
+          },
+          "methods": [
+            {
+              "name": "func SemanticType",
+              "declaration": "func (v ValueType) SemanticType() SemanticType",
+              "docstring": "SemanticType returns the Pixie semantic type.\n"
+            },
+            {
+              "name": "func Type",
+              "declaration": "func (v ValueType) Type() DataType",
+              "docstring": "Type returns the Pixie data type.\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "packageName": "pxapi/errdefs",
+      "funcs": [],
+      "types": [
+        {
+          "def": {
+            "name": "Variables",
+            "declaration": "// ErrStreamAlreadyClosed is invoked when trying to read a stream that has been closed or cancelled.\nvar ErrStreamAlreadyClosed\n// ErrUnImplemented is used for unimplemented features.\nvar ErrUnImplemented\n// ErrInternalMissingTableMetadata specifies an internal error has occurred where the table metadata is missing.\nvar ErrInternalMissingTableMetadata\n// ErrInternalDuplicateTableMetadata specifies an internal error has occurred where the table metadata has shown up multiple times.\nvar ErrInternalDuplicateTableMetadata\n// ErrInternalMismatchedType specifies an internal error has occurred where the table types don't match up between metadata and the various batches.\nvar ErrInternalMismatchedType\n// ErrInternalUnImplementedType specifies an internal error has occurred where the types used by the Pixie API are not supported by this client version.\n// Most likely a client version update will fix the problem.\nvar ErrInternalUnImplementedType\n// ErrInternalDataAfterEOS got data after EOS.\nvar ErrInternalDataAfterEOS\n"
+          },
+          "methods": []
+        }
+      ]
+    }
+  ],
+  "pyApiDocs": {
+    "funcs": [
+      {
+        "name": "def build_pxl_exception",
+        "declaration": "def build_pxl_exception(query: str, err: src.api.public.vizierapipb.vizierapi_pb2.Status, cluster_id: str) -\u003e Exception"
+      }
+    ],
+    "classes": [
+      {
+        "def": {
+          "name": "class Client",
+          "declaration": "Client(token: str, server_url: str = 'work.withpixie.ai', channel_fn: Callable[[str], grpc.Channel] = None, conn_channel_fn: Callable[[str], grpc.aio._base_channel.Channel] = None)",
+          "docstring": "Client is the main entry point to the Pixie API.\n\nTo setup the client, you need to generate an API token\nand pass it in as the first argument.\nSee: https://docs.pixielabs.ai/reference/api/quick-start/\nfor more info."
+        },
+        "methods": [
+          {
+            "name": "def connect_to_cluster",
+            "declaration": "def connect_to_cluster(self, cluster: Union[str, pixie.Cluster]) -\u003e pixie.Conn",
+            "docstring": "Connect to a cluster.\n\nReturns a connection object that you can use to create `ScriptExecutor`s.\nYou may pass in a `ClusterID` string or a `Cluster` object that comes\nfrom `list_all_healthy_clusters()`."
+          },
+          {
+            "name": "def list_healthy_clusters",
+            "declaration": "def list_healthy_clusters(self) -\u003e List[pixie.Cluster]",
+            "docstring": "Lists all of the healthy clusters that you can access."
+          }
+        ]
+      },
+      {
+        "def": {
+          "name": "class Cluster",
+          "declaration": "Cluster(cluster_id: str, cluster_info: src.api.public.cloudapipb.cloudapi_pb2.ClusterInfo)",
+          "docstring": "Cluster contains information users need about a specific cluster.\n\nMainly a convenience wrapper around the protobuf message so you\ncan access the name in a simple format."
+        },
+        "methods": [
+          {
+            "name": "def name",
+            "declaration": "def name(self) -\u003e str",
+            "docstring": "Returns the name if that info exists, otherwise returns the id."
+          },
+          {
+            "name": "def passthrough",
+            "declaration": "def passthrough(self) -\u003e bool"
+          }
+        ]
+      },
+      {
+        "def": {
+          "name": "class Conn",
+          "declaration": "Conn(token: str, pixie_url: str, cluster_id: str, cluster_info: src.api.public.cloudapipb.cloudapi_pb2.ClusterInfo = None, channel_fn: Callable[[str], grpc.aio._base_channel.Channel] = None, direct: bool = False)",
+          "docstring": "The logical representation of a connection.\n\nHolds the authorization information and handles the creation\nof an authorized gRPC channel."
+        },
+        "methods": [
+          {
+            "name": "def name",
+            "declaration": "def name(self) -\u003e str",
+            "docstring": "Get the name of the cluster for this connection."
+          },
+          {
+            "name": "def prepare_script",
+            "declaration": "def prepare_script(self, script_str: str) -\u003e pixie.ScriptExecutor",
+            "docstring": "Create a new ScriptExecutor for the script to run on this connection."
+          }
+        ]
+      },
+      {
+        "def": {
+          "name": "class ScriptExecutor",
+          "declaration": "ScriptExecutor(conn: pixie.Conn, pxl: str)",
+          "docstring": "ScriptExecutor encapsulates the connection logic to Pixie instances.\n\nIf you want to get Pixie data, you will need to initialize `ScriptExecutor` with\nthe clusters and PxL script then call `results()` for the desired table name and\niterate the results.\n\nNote: you can only invoke `results()`, `run()`,and `run_async()` once on a\n`ScriptExecutor` object. If you need to exeucte a script multiple times,\nyou must create a new `ScriptExecutor` object and setup any data processing\nagain. We rely on iterators that must close when a script stops running\nand cannot allow multiple runs per object."
+        },
+        "methods": [
+          {
+            "name": "def add_callback",
+            "declaration": "def add_callback(self, table_name: str, fn: Callable[[pixie.Row], NoneType]) -\u003e NoneType",
+            "docstring": "Adds a callback fn that will be invoked on every row of `table_name` as\nthey arrive.\n\nCallbacks are not invoked until you call `run()` (or `run_async()`) on\nthe object.\n\nIf you `add_callback` on a table not produced by the script, `run()`(or `run_async()`) will\nraise a ValueError when the underlying gRPC channel closes.\n\nThe internals of `ScriptExecutor` use the python async api and the callback `fn`\nwill be called concurrently while the ScriptExecutor is running. Note that callbacks\nthemselves should not be async functions.\n\nCallbacks will block the rest of script execution so expensive and unending\ncallbacks should not be used.\n\nRaises:\n    ValueError: If called on a table that's already been passed as arg to\n        `subscribe` or `add_callback`.\n    ValueError: If called after `run()` or `run_async()` for a particular\n        `ScriptExecutor`"
+          },
+          {
+            "name": "def results",
+            "declaration": "def results(self, table_name: str) -\u003e List[pixie.Row]",
+            "docstring": "Runs script and return results for the table.\nExamples:\n    for row in script.results(\"http_table\"):\n        print(row)\nRaises:\n    ValueError: If `table_name` is never sent during lifetime of script.\n    ValueError: If called after `run()` or `run_async()` for a particular\n        `ScriptExecutor`."
+          },
+          {
+            "name": "def run",
+            "declaration": "def run(self) -\u003e NoneType",
+            "docstring": "Executes the script synchronously.\n\nCalls `run_async()` but hides the asyncio details from users.\nIf any errors occur over the lifetime of any connection, this will raise an error.\n\nRaises:\n    ValueError: If any callbacks are on tables that a `ScriptExecutor` never receives.\n    ValueError: If called after `run()` or `run_async()` for a particular\n        `ScriptExecutor`."
+          },
+          {
+            "name": "def run_async",
+            "declaration": "def run_async(self) -\u003e NoneType",
+            "docstring": "Runs the script asynchronously using asyncio.\n\nSame as `run()` except you can directly control whether other tasks\nshould be run concurrently while the script  is running.\n\nRaises:\n    ValueError: If any callbacks are on tables that a `ScriptExecutor` never receives.\n    ValueError: If called after `run()` or `run_async()` for a particular\n        `ScriptExecutor`."
+          },
+          {
+            "name": "def subscribe",
+            "declaration": "def subscribe(self, table_name: str) -\u003e pixie.TableSub",
+            "docstring": "Returns an async generator that outputs rows for the table.\n\nRaises:\n    ValueError: If called on a table that's already been passed as arg to\n        `subscribe` or `add_callback`.\n    ValueError: If called after `run()` or `run_async()` for a particular\n        `ScriptExecutor`"
+          },
+          {
+            "name": "def subscribe_all_tables",
+            "declaration": "def subscribe_all_tables(self) -\u003e Callable[[], AsyncGenerator[pixie.TableSub, NoneType]]",
+            "docstring": "Returns an async generator that outputs table subscriptions as they arrive.\n\nYou can use this generator to call PxL scripts without knowing the tables\nthat are output beforehand. If you do know the tables beforehand, you should\n`subscribe`, `add_callback` or even `results` instead to prevent your api from\nkeeping data for tables that you don't use.\n\nThis generator will only start iterating after `run_async()` has been\ncalled. For the best performance, you will want to call the consumer of\nthe object returned by `subscribe_all_tables` concurrently with `run_async()`"
+          }
+        ]
+      },
+      {
+        "def": {
+          "name": "class TableSub",
+          "declaration": "TableSub(name: str, table_gen: AsyncGenerator[Union[pixie._TableStream, Literal['ERROR']], NoneType])",
+          "docstring": "TableSub is an async generator that yields rows for table.\n\nYou should avoid directly initializing TableSub objects. Instead, you\nshould create a ScriptExecutor object and `ScriptExecutor.subscribe()` to a specific table or\n`ScriptExecutor.subscribe_all_tables()`. This avoids the complexity involved in creating this\nobject.\n\nFor more advanced users: the TableSub object is a promise that a table with the specified name\nwill be yielded by the `table_gen`. If the table does not get yielded, the async generator will\nthrow an error when the `table_gen` exits."
+        }
+      },
+      {
+        "def": {
+          "name": "class Row",
+          "declaration": "Row(table: _TableStream, data: List[Any])",
+          "docstring": "Row represents a row of data for a particular table. You can easily access\ndata in the row by using the column name from the associated table.\n\nSpecifically designed to avoid allocation memory for the relation for each row.\n\nExamples:\n  \u003e\u003e\u003e tableA = Table(\"a\", relation=((\"cola\",int), (\"colb\", int), (\"colc\", string)))\n  \u003e\u003e\u003e row = Row(tableA, [1,2,\"three\"])\n  \u003e\u003e\u003e row[\"cola\"]\n  1\n  \u003e\u003e\u003e row[\"colb\"]\n  2\n  \u003e\u003e\u003e row[\"colc\"]\n  \"three\"\n  \u003e\u003e\u003e row\n  { \"cola\": 1, \"colb\": 2, \"colc\": \"three\" }"
+        }
+      },
+      {
+        "def": {
+          "name": "class PxLError",
+          "declaration": "PxLError(*args, **kwargs)",
+          "docstring": "Common base class for all non-exit exceptions."
+        }
+      }
+    ]
+  }
+}

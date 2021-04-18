@@ -1,0 +1,87 @@
+# Copyright 2018- The Pixie Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# SPDX-License-Identifier: Apache-2.0
+
+package(default_visibility = ["//visibility:public"])
+
+load("@io_bazel_rules_docker//container:image.bzl", "container_image")
+load("@io_bazel_rules_docker//container:layer.bzl", "container_layer")
+load("@io_bazel_rules_docker//container:container.bzl", "container_push")
+
+genrule(
+    name = "customer_docs_bundle",
+    srcs = [
+        "yarn.lock",
+    ] + glob([
+        "*.js",
+        "*.json",
+        "src/**",
+        "content/**",
+    ]),
+    outs = ["bundle.tar.gz"],
+    cmd = """
+      export PATH=/usr/local/bin:/opt/node/bin:$$PATH
+      export HOME=`mktemp -d` # This makes node-gyp happy.
+      export PL_DIST_BUNDLE_OUTPUT=`pwd`/$(RULEDIR)
+      export TMPPATH=`mktemp -d`
+
+      cp -aL `pwd`/* $${TMPPATH}
+      pushd $${TMPPATH}/docs/customer >& /dev/null
+
+      trap 'cat build.log' ERR
+
+      yarn install &> build.log
+      yarn build &>> build.log
+
+      tar -czf $${PL_DIST_BUNDLE_OUTPUT}/bundle.tar.gz public;
+      popd &> /dev/null
+
+      rm -rf $${TMPPATH}
+    """,
+    output_to_bindir = 1,  # We treat "outputs" as binaries.
+)
+
+container_layer(
+    name = "conf",
+    directory = "/usr/local/openresty/nginx/conf",
+    files = [
+        "nginx.conf",
+    ],
+)
+
+container_layer(
+    name = "customer_docs_assets",
+    directory = "/assets",
+    tars = [":customer_docs_bundle"],
+)
+
+container_image(
+    name = "customer_docs_prod_image",
+    base = "@openresty//image",
+    layers = [
+        ":conf",
+        ":customer_docs_assets",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+container_push(
+    name = "push_customer_docs_prod_image",
+    format = "Docker",
+    image = ":customer_docs_prod_image",
+    registry = "gcr.io",
+    repository = "pl-dev-infra/customer_docs_prod_image",
+    tag = "{STABLE_BUILD_TAG}",
+)

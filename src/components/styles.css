@@ -1,0 +1,69 @@
+/*
+ * Copyright 2018- The Pixie Authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+.image-s {
+    max-width: 30%;
+    margin: 0 auto;
+}
+
+.image-m {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.image-l {
+    max-width: 75%;
+    margin: 0 auto;
+}
+
+.toc-anchor {
+    display: block;
+    height: 74px;
+    margin-top: -74px;
+    visibility: hidden;
+}
+
+a.toc-anchor {
+    display: inline;
+    visibility: visible;
+}
+
+a.toc-anchor::before {
+    content: 'X'
+}
+
+.doc-image {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    max-width: 100%;
+}
+
+.clear {
+    clear: both;
+}
+
+@media (max-width: 1280px) {
+    body.search-menu-open {
+        overflow: hidden;
+    }
+}
+
+.custom-table .MuiTableCell-root {
+    font-size: inherit;
+    line-height: 24px;
+}
