@@ -72,7 +72,7 @@ const FooterLinks = () => {
         <a href='//pixielabs.ai/terms'>TERMS & PRIVACY</a>
       </li>
       <li>
-        <a href='//pixielabs.ai/community'>COMMUNITY</a>
+        <a href='https://px.dev/community'>COMMUNITY</a>
       </li>
       <li>
         <a href='//pixielabs.ai/careers'>CAREERS</a>
