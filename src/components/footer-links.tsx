@@ -69,7 +69,10 @@ const FooterLinks = () => {
         </a>
       </li>
       <li>
-        <a href='//pixielabs.ai/terms'>TERMS & PRIVACY</a>
+        <a href='https://newrelic.com/termsandconditions/terms'>TERMS OF SERVICE</a>
+      </li>
+      <li>
+        <a href='https://newrelic.com/termsandconditions/privacy'>PRIVACY POLICY</a>
       </li>
       <li>
         <a href='https://px.dev/community'>COMMUNITY</a>
