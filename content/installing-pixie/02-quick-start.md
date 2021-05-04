@@ -5,7 +5,9 @@ metaDescription: "Getting started guide to setup Pixie"
 order: 2
 ---
 
-Please review Pixie's [requirements](/installing-pixie/requirements) to make sure that your Kubernetes cluster is supported. 
+Please review Pixie's [requirements](/installing-pixie/requirements) to make sure that your Kubernetes cluster is supported.
+
+These directions are for installing the hosted version of Pixie. A self-hosted install script is in the works. Track the status [here](https://github.com/pixie-labs/pixie/issues/238).
 
 ## 1. Signup
 
@@ -16,6 +18,7 @@ Visit our [product page](https://work.withpixie.ai/) and sign up with your googl
 You can install Pixie's CLI tool in one of 4 ways:
 
 ### Using the install script (easiest)
+
 ``` bash
 # Copy and run command to install the Pixie CLI.
 bash -c "$(curl -fsSL https://withpixie.ai/install.sh)"
@@ -74,10 +77,11 @@ On Linux, run:
 ```bash
 `minikube start --driver=kvm2 --cpus=4 --memory=6000 --driver=kvm2 -p=<cluster-name>`
 ```
+
 The default `docker` driver is not currently supported, so using the `kvm2` driver is important.
 
-
 On Mac, run:
+
 ```bash
 `minikube start --driver=hyperkit --cpus=4 --memory=6000 -p=<cluster-name>`
 ```
@@ -114,6 +118,7 @@ For more CLI deployment configuration options, see [here](/installing-pixie/inst
 ## 5. Run a script
 
 Use `px run` to run a script to demonstrate observability. The `demo_script` script shows the latency and request path of http traffic hitting your cluster.
+
 ``` bash
 # List built-in scripts
 px scripts list
@@ -121,11 +126,13 @@ px scripts list
 # Run a script
 px run px/demo_script
 ```
+
 For more information, checkout our [CLI guide](/using-pixie/using-cli/) or see our [PxL script documentation](/reference/pxl/), but first, go on to the next step and explore our web app.
 
 ## 6. Explore the web app
 
 Open [Pixie's live UI](https://work.withpixie.ai) in a new tab.
+
 1. After reviewing the hints, click the X in the upper left hand corner of the screen.
 2. Select your cluster (you may see other clusters from members of your organization).
 3. Now, select a script, e.g. `px/demo_script` or `px/http_data`.
