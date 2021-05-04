@@ -54,10 +54,10 @@ export default function SearchProvider({ children }) {
   const [term, setTerm] = React.useState('');
   const [searchQuery, setSearchQuery] = React.useState('');
   const client = algoliasearch(
-    process.env.GATSBY_ALGOLIA_APP_ID,
-    process.env.GATSBY_ALGOLIA_SEARCH_KEY,
+    process.env.ALGOLIA_APP_ID,
+    process.env.ALGOLIA_SEARCH_KEY,
   );
-  const index = client.initIndex(process.env.GATSBY_ALGOLIA_INDEX_NAME);
+  const index = client.initIndex(process.env.DEPLOY_ENV === 'prod' ? process.env.ALGOLIA_PROD_INDEX_NAME : process.env.ALGOLIA_DEV_INDEX_NAME);
 
   const [results, setResults] = useState([]);
   const [noOfHits, setNoOfHits] = useState(0);
