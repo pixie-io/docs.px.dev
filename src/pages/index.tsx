@@ -436,8 +436,14 @@ const IndexPage = withStyles((theme: Theme) => ({
                   <div className={classes.codeRenderer}>
                     <CodeRenderer code={bashCode} language='bash' />
                     <Typography variant='body2' className={classes.smallText}>
-                      Run this to download the PX CLI and install Pixie.
-                      No code changes needed. For more details read&nbsp;
+                      Run this to download the PX CLI and install the hosted version of Pixie.
+                      No code changes needed. (Self-hosted install script&nbsp;
+                        <AnchorTag
+                        href='https://github.com/pixie-labs/pixie/issues/238'
+                      >
+                      coming soon
+                      </AnchorTag>).
+                      Full Quick Start guide&nbsp;
                       <AnchorTag
                         href='https://work.withpixie.ai/docs/installing-pixie/quick-start/'
                       >
