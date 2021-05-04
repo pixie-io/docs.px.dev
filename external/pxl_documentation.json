@@ -5303,7 +5303,7 @@
         "def": {
           "name": "class Client",
           "declaration": "Client(token: str, server_url: str = 'work.withpixie.ai', channel_fn: Callable[[str], grpc.Channel] = None, conn_channel_fn: Callable[[str], grpc.aio._base_channel.Channel] = None)",
-          "docstring": "Client is the main entry point to the Pixie API.\n\nTo setup the client, you need to generate an API token\nand pass it in as the first argument.\nSee: https://docs.pixielabs.ai/reference/api/quick-start/\nfor more info."
+          "docstring": "Client is the main entry point to the Pixie API.\n\nTo setup the client, you need to generate an API token\nand pass it in as the first argument.\nSee: https://docs.px.dev/reference/api/quick-start/\nfor more info."
         },
         "methods": [
           {
