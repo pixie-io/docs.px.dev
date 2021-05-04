@@ -1,6 +1,6 @@
-# [docs.pixielabs.ai](http://docs.pixielabs.ai/) &middot; [![Netlify Status](https://api.netlify.com/api/v1/badges/e79c5a8a-187a-43ef-a133-492e099a0f5f/deploy-status)](https://app.netlify.com/sites/pixie-docs/deploys) <a href="https://twitter.com/intent/follow?screen_name=pixie_run"><img src="https://img.shields.io/twitter/follow/pixie_run.svg?label=Follow%20@pixie_run" alt="Follow @pixie_run" /></a>
+# [docs.px.dev](http://docs.px.dev/) &middot; [![Netlify Status](https://api.netlify.com/api/v1/badges/e79c5a8a-187a-43ef-a133-492e099a0f5f/deploy-status)](https://app.netlify.com/sites/pixie-docs/deploys) <a href="https://twitter.com/intent/follow?screen_name=pixie_run"><img src="https://img.shields.io/twitter/follow/pixie_run.svg?label=Follow%20@pixie_run" alt="Follow @pixie_run" /></a>
 
-This repo contains the source code and content for the [Pixie Docs](http://docs.pixielabs.ai/) website.
+This repo contains the source code and content for the [Pixie Docs](http://docs.px.dev/) website.
 
 ## Reporting Issues
 

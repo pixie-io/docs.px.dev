@@ -39,8 +39,8 @@ function SEO({
     '@context': 'http://schema.org',
     '@type': 'Organization',
     legalName: 'Pixie Labs',
-    url: 'https://docs.pixielabs.ai/',
-    logo: 'https://docs.pixielabs.ai/logo.svg',
+    url: 'https://docs.px.dev/',
+    logo: 'https://docs.px.dev/logo.svg',
     foundingDate: 'august 2018',
     founders: [{
       '@type': 'Person',
@@ -105,11 +105,11 @@ function SEO({
         },
         {
           property: 'og:url',
-          content: 'https://docs.pixielabs.ai/',
+          content: 'https://docs.px.dev/',
         },
         {
           property: 'og:image',
-          content: 'https://docs.pixielabs.ai/logo.svg',
+          content: 'https://docs.px.dev/logo.svg',
         },
         {
           property: 'og:image:alt',
@@ -129,7 +129,7 @@ function SEO({
         },
         {
           name: 'twitter:image',
-          content: 'https://docs.pixielabs.ai/logo.svg',
+          content: 'https://docs.px.dev/logo.svg',
         },
         {
           name: 'twitter:image:alt',

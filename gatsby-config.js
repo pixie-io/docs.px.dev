@@ -96,7 +96,7 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-react-helmet-canonical-urls',
     options: {
-      siteUrl: 'https://docs.pixielabs.ai',
+      siteUrl: 'https://docs.px.dev',
     },
   },
   {
