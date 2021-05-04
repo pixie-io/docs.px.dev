@@ -32,15 +32,10 @@ import CodeRenderer from 'components/mdxComponents/codeRenderer';
 import SEO from 'components/seo';
 import { urlFromSlug } from 'components/utils';
 import { Layout } from 'components';
-import cdiImg from '../images/command-driven-interfaces.png';
-import piImg from '../images/progressive-instrumentation.png';
-import ecImg from '../images/edge-compute.png';
 
 import opbrImg from '../images/page-ornaments/ornament-page-bottom-right.svg';
 
 import nextBtn from '../images/btn-next-icon.svg';
-import lowerLine from '../images/lower-connector-line.svg';
-import upperLine from '../images/upper-connector-line.svg';
 import ornamentLeft from '../images/ornament-left.svg';
 import ornamentRight from '../images/ornament-right.svg';
 import AnchorTag from '../components/mdxComponents/anchor';
@@ -386,7 +381,7 @@ const IndexPage = withStyles((theme: Theme) => ({
             >
               <Grid item xs={12} md={6}>
                 <Typography variant='h1' className={classes.mainHeading}>
-                  Instantly debug your applications on Kubernetes
+                  Instant open-source debugging for your applications on Kubernetes
                 </Typography>
                 <Typography variant='body1'>
                   Learn how to install Pixie, run scripts and write your own playbooks.
@@ -485,129 +480,6 @@ const IndexPage = withStyles((theme: Theme) => ({
                 </Grid>
               ))}
 
-            </Grid>
-          </Container>
-          <Container className={classes.middle_container}>
-            <Typography variant='h1' className={classes.sectionHeading}>
-              Under the hood of our
-              <br />
-              Auto-Telemetry Platform
-            </Typography>
-            <Grid
-              container
-              direction='row'
-              justify='center'
-              alignItems='stretch'
-            >
-              <Grid item xs={12} md={1} />
-              <Grid item xs={12} md={4}>
-                <img src={cdiImg} alt='' className={classes.heading_image} />
-              </Grid>
-              <Grid item xs={12} md={1} />
-              <Grid item xs={12} md={5}>
-                <Box className={classes.image_description}>
-                  <Typography
-                    variant='h2'
-                    className={classes.image_title}
-                  >
-                    Command Driven Interfaces
-                  </Typography>
-                  <Typography variant='body1'>
-                    Programmatically access data via the Pixie CLI and pre-built
-                    Pixie UI dashboards designed to allow you to debug scenarios
-                    faster than any other developer tool.
-                  </Typography>
-                </Box>
-              </Grid>
-              <Grid item xs={12} md={1} />
-            </Grid>
-            <Grid
-              container
-              direction='row'
-              justify='center'
-              alignItems='stretch'
-            >
-              <Box clone order={{ xs: 5, sm: 5, md: 1 }}>
-                <Grid item xs={12} md={1} />
-              </Box>
-              <Box clone order={{ xs: 4, sm: 4, md: 2 }}>
-                <Grid item xs={12} md={4}>
-                  <Box className={classes.image_description}>
-                    <Typography
-                      variant='h2'
-                      className={classes.image_title}
-                    >
-                      In-Cluster Edge Compute
-                    </Typography>
-                    <Typography variant='body1'>
-                      Pixie Command Module is deployed in your K8s cluster to
-                      isolate data storage and computation within your
-                      environment for drastically better intelligence,
-                      performance & security.
-                    </Typography>
-                  </Box>
-                </Grid>
-              </Box>
-              <Box clone order={{ xs: 3, sm: 5, md: 3 }}>
-                <Grid item xs={12} md={1} />
-              </Box>
-              <Box clone order={{ xs: 2, sm: 2, md: 4 }}>
-                <Grid item xs={12} md={5}>
-                  <Box style={{ position: 'relative' }}>
-                    <Hidden smDown implementation='css'>
-                      <img
-                        className={classes.upper_connector_line}
-                        src={upperLine}
-                      />
-                      <img
-                        className={classes.lower_connector_line}
-                        src={lowerLine}
-                      />
-                    </Hidden>
-                    <img
-                      src={ecImg}
-                      alt=''
-                      className={classes.heading_image}
-                    />
-                  </Box>
-                </Grid>
-              </Box>
-              <Box clone order={{ xs: 1, sm: 1, md: 5 }}>
-                <Grid item xs={12} md={1} />
-              </Box>
-            </Grid>
-            <Grid
-              container
-              direction='row'
-              justify='center'
-              alignItems='stretch'
-            >
-              <Grid item xs={12} md={1} />
-              <Grid item xs={12} md={4}>
-                <img src={piImg} alt='' className={classes.heading_image} />
-              </Grid>
-              <Grid item xs={12} md={1} />
-              <Grid item xs={12} md={5}>
-                <Box className={classes.image_description}>
-                  <Typography
-                    variant='h2'
-                    className={classes.image_title}
-                  >
-                    Progressive Instrumentation
-                  </Typography>
-                  <Typography variant='body1'>
-                    <u>Out of the box visibility:</u>
-                    &nbsp;Pixie Edge Modules (
-                    <strong>“PEMs”</strong>
-                    ) collect full body request traces (via eBPF),
-                    system metrics, custom metrics, logs & K8s events
-                    without the need for code-changes and at less
-                    than 5% overhead.
-
-                  </Typography>
-                </Box>
-              </Grid>
-              <Grid item xs={12} md={1} />
             </Grid>
           </Container>
           <Container>
