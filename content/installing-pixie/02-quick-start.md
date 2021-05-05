@@ -75,7 +75,7 @@ You can use Minikube to set-up a local K8s environment.
 On Linux, run:
 
 ```bash
-`minikube start --driver=kvm2 --cpus=4 --memory=6000 --driver=kvm2 -p=<cluster-name>`
+minikube start --driver=kvm2 --cpus=4 --memory=6000 -p=<cluster-name>
 ```
 
 The default `docker` driver is not currently supported, so using the `kvm2` driver is important.
@@ -83,7 +83,7 @@ The default `docker` driver is not currently supported, so using the `kvm2` driv
 On Mac, run:
 
 ```bash
-`minikube start --driver=hyperkit --cpus=4 --memory=6000 -p=<cluster-name>`
+minikube start --driver=hyperkit --cpus=4 --memory=6000 -p=<cluster-name>
 ```
 
 More detailed instructions are available [here](/installing-pixie/install-guides/minikube-setup).
