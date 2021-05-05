@@ -36,7 +36,7 @@ helm repo add pixie https://pixie-helm-charts.storage.googleapis.com
 helm repo update
 
 # install the Pixie chart
-helm install pixie pixie/pixie-chart --set deployKey=<deploy-key-goes-here> --namespace pl --create-namespace
+helm install pixie pixie/pixie-chart --set deployKey=<deploy-key-goes-here> --namespace <desired-namespace> --create-namespace
 ```
 
 ## 4. Verify
