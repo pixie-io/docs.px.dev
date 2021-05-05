@@ -22,14 +22,14 @@ const containers = require('remark-containers');
 const config = require('./config');
 
 let algoliaApiKey = process.env.ALGOLIA_DEV_API_KEY;
-let algoliaIndex = process.env.ALGOLIA_DEV_INDEX_NAME;
-switch (process.env.DEPLOY_ENV) {
+let algoliaIndex = process.env.GATSBY_ALGOLIA_DEV_INDEX_NAME;
+switch (process.env.GATSBY_DEPLOY_ENV) {
   case 'main':
     algoliaApiKey = process.env.ALGOLIA_MAIN_API_KEY;
     break;
   case 'prod':
     algoliaApiKey = process.env.ALGOLIA_PROD_API_KEY;
-    algoliaIndex = process.env.ALGOLIA_PROD_INDEX_NAME;
+    algoliaIndex = process.env.GATSBY_ALGOLIA_PROD_INDEX_NAME;
     break;
   default:
     // Assume dev environment.
@@ -40,7 +40,7 @@ const algolia = {
   // all the GraphQL data.
   resolve: 'gatsby-plugin-algolia',
   options: {
-    appId: process.env.ALGOLIA_APP_ID,
+    appId: process.env.GATSBY_ALGOLIA_APP_ID,
     // Use Admin API key without GATSBY_ prefix, so that the key isn't exposed in the application.
     // Tip: use Search API key with GATSBY_ prefix to access the service from within components.
     apiKey: algoliaApiKey,
@@ -156,7 +156,7 @@ const plugins = [
   'gatsby-plugin-meta-redirect',
 ];
 
-if ('ALGOLIA_APP_ID' in process.env) {
+if ('GATSBY_ALGOLIA_APP_ID' in process.env) {
   plugins.push(algolia);
 }
 

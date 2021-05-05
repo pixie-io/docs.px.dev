@@ -3,14 +3,14 @@
   command = "sed -i s/HEADER_PLACEHOLDER/pixie:${BASIC_AUTH}/g netlify.toml && yarn install && yarn lint && gatsby build"
 
 [context.branch-deploy.environment]
-  DEPLOY_ENV = "main"
+  GATSBY_DEPLOY_ENV = "main"
 
 [context.production]
   # No password on prod.
   command = "sed -i 's|HEADER_PLACEHOLDER||g' netlify.toml && yarn install && yarn lint && gatsby build"
 
 [context.production.environment]
-  DEPLOY_ENV = "prod"
+  GATSBY_DEPLOY_ENV = "prod"
 
 [[headers]]
   for = "/*"
