@@ -16,8 +16,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-require('dotenv')
-  .config();
+if (!process.env.NETLIFY) {
+  require('dotenv')
+    .config();
+}
+
 const containers = require('remark-containers');
 const config = require('./config');
 
