@@ -24,11 +24,12 @@ To run minikube, your mac will need a way to run a Linux VM. We recommend hyperk
 
 ## Create Cluster
 
-Run `minikube start --cpus=4 --memory=6000 -p=<cluster-name>`. To deploy a specific K8s version [supported by Pixie](/installing-pixie/requirements), also add the following flag `--kubernetes-version=v1.12.0`.
+Run `minikube start --driver=<kvm2|hyperkit> --cpus=4 --memory=6000 -p=<cluster-name>`. 
+Linux users should use the `kvm2`driver and Mac users should use the `hyperkit` driver. Other drivers, including the `docker` driver, are not supported.
 
-Linux users: The `docker` driver is not supported, so also add `--driver=kvm2` to the minikube start command.
+CPU and memory requirements are set to accommodate the included demo application.
 
-Note: CPU and memory requirements are set to accommodate the included demo application.
+To deploy a specific K8s version [supported by Pixie](/installing-pixie/requirements), also add the following flag `--kubernetes-version=v1.12.0`.
 
 ## Verify
 
