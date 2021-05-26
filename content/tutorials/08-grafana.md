@@ -5,7 +5,7 @@ metaDescription: "Using Pixie's Grafana Datasource Plugin"
 order: 8
 ---
 
-This tutorial will demonstrate how to use the Pixie datasource plugin to visualize data from the Pixie observability platform in Grafana.
+This tutorial will demonstrate how to use the Pixie datasource plugin to visualize data from Pixie in Grafana.
 
 ::: div image-xl
 <svg title='' src='grafana/grafana.png'/>
@@ -15,11 +15,11 @@ This tutorial will demonstrate how to use the Pixie datasource plugin to visuali
 
 - A Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using our [install guides](/installing-pixie/quick-start/).
 
-- A [Grafana account](https://grafana.com/get/) with the Pixie datasource plugin installed. For installation directions, see the [instructions](https://github.com/pixie-labs/grafana-plugin/#installing-the-plugin-on-an-existing-grafana-with-the-cli) on GitHub.
+- A [Grafana server](https://grafana.com/get/) with the Pixie datasource plugin installed. For installation directions, see the [instructions](https://github.com/pixie-labs/grafana-plugin/#installing-the-plugin-on-an-existing-grafana-with-the-cli) on GitHub.
 
 ## Add Pixie as a datasource
 
-Before you can create your first dashboard, you need to add Pixie as a datasource:
+Before you can create a dashboard, you will need to add Pixie as a datasource:
 
 1. With Grafana open, select the cog icon from the left-side menu to show the configuration options.
 
@@ -31,7 +31,7 @@ Before you can create your first dashboard, you need to add Pixie as a datasourc
 
 3. Click **Add data source** to see a list of all supported data sources.
 
-4. Search for "Pixie Grafana Datasource Plugin" and press the **Select** button. The datasource configuration page will open.
+4. Search for **"Pixie Grafana Datasource Plugin"** and press the **Select** button. The datasource configuration page will open.
 
 ::: div image-l
 <svg title='' src='grafana/plugin.png'/>
@@ -45,7 +45,7 @@ Before you can create your first dashboard, you need to add Pixie as a datasourc
 
 6. Select the **Save & Test** button.
 
-## Add a Pixie panel to a dashboard
+## Create a Pixie panel
 
 First, let's create a dashboard:
 
@@ -65,15 +65,9 @@ Next, let's add a panel:
 <svg title='' src='datasource-selector.png'/>
 :::
 
-## Add a query
+### Time series graph of HTTP throughput
 
-The plugin uses the Pixie Language ([PxL](https://docs.pixielabs.ai/using-pixie/pxl-overview/)) to query telemetry data collected by the Pixie platform.
-
-### Timeseries graph of throughput
-
-The following PxL query outputs a table of timeseries data for overall HTTP request throughput (for all HTTP requests that Pixie has automatically traced in your cluster).
-
-This query uses the Grafana macros `__time_from` and `__interval` to add dashboard context to the query. The Pixie datasource plugin supports several macros, details [here](reference/plugins/grafana/#macros).
+1. Copy & paste the following query into the Query Editor.
 
 ```python
 # Import Pixie's module for querying data.
@@ -82,6 +76,7 @@ import px
 # Load data from Pixie's `http_events` table into a Dataframe.
 df = px.DataFrame(table='http_events', start_time=__time_from)
 
+# Bin the 'time_' column using the interval provided by Grafana.
 df.timestamp = px.bin(df.time_, __interval)
 
 # Group data by unique 'timestamp' and count the total number of
@@ -102,11 +97,15 @@ per_ns_df.request_throughput = per_ns_df.request_throughput * 1e9
 px.display(per_ns_df['time_', 'request_throughput'])
 ```
 
-1. Copy & paste this query into the Query Editor.
+This plugin uses the Pixie Language ([PxL](https://docs.pixielabs.ai/using-pixie/pxl-overview/)) to query telemetry data collected by the Pixie platform.
+
+The above PxL query outputs a table of timeseries data showing overall HTTP request throughput. Request throughput is calculated by counting the number HTTP requests that Pixie automatically traces in your cluster.
+
+This query uses the `__time_from` and `__interval` macros to add dashboard context to the query. See the full [list of macros](reference/plugins/grafana/#macros) supported by this plugin.
 
 2. On the Panel tab, under the **Visualization** drop-down menu, select **Time series**.
 
-3. Add units to the graph on the **Field** tab, under the **Standard options** drop-down menu, select **Unit** > **requests/sec**.
+3. Add units to the graph: on the **Field** tab, under the **Standard options** drop-down menu, under the **Unit** menu, select **requests/sec**.
 
 You should see something similar to the following:
 
@@ -116,9 +115,11 @@ You should see something similar to the following:
 
 4. Select **Apply** to save the panel.
 
-### Timeseries graph of throughput per service
+### Time series graph of HTTP throughput per service
 
-The following PxL query outputs a table of timeseries data for HTTP request throughput per service.
+1. Create a new panel following the directions in the previous section.
+
+2. Copy & paste this query into the Query Editor.
 
 ```python
 # Import Pixie's module for querying data.
@@ -131,6 +132,7 @@ df = px.DataFrame(table='http_events', start_time=__time_from)
 df.service = df.ctx['service']
 df.namespace = df.ctx['namespace']
 
+# Bin the 'time_' column using the interval provided by Grafana.
 df.timestamp = px.bin(df.time_, __interval)
 
 # Group data by unique pairings of 'timestamp' and 'service'
@@ -151,13 +153,11 @@ per_ns_df.time_ = per_ns_df.timestamp
 px.display(per_ns_df['time_', 'service', 'request_throughput'])
 ```
 
-1. Create a new panel following the directions in the previous section.
-
-2. Copy & paste this query into the Query Editor.
+This PxL query outputs a table of timeseries data for HTTP request throughput per service
 
 3. On the Panel tab, under the **Visualization** drop-down menu, select **Time series**.
 
-4. Add units to the graph on the **Field** tab, under the **Standard options** drop-down menu, select **Unit** > **requests/sec**.
+4. Add units to the graph on the **Field** tab, under the **Standard options** drop-down menu, under the **Unit** menu, select **requests/sec**.
 
 You should see something similar to the following:
 

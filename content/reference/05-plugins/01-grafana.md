@@ -45,21 +45,21 @@ Grafana uses macros to add dashboard context to a query. The following macros ar
 
 ```python
 import px
-df = px.DataFrame(table='http_events', start_time= __time_from())
+df = px.DataFrame(table='http_events', start_time= __time_from)
 ```
 
 - `__time_to` will be replaced by the end of the currently active time selection. Example usage:
 
 ```python
 import px
-df = px.DataFrame(table='http_events', start_time= __time_from(), end_time=__time_to())
+df = px.DataFrame(table='http_events', start_time= __time_from, end_time=__time_to)
 ```
 
 - `__interval` will be replaced by the suggested duration between time points. Interval is set by the Grafana UI in the **Query options** section in the **Query** tab. Example usage:
 
 ```python
 import px
-df = px.DataFrame(table='http_events', start_time= __time_from(), end_time=__time_to())
+df = px.DataFrame(table='http_events', start_time= __time_from, end_time=__time_to)
 df.timestamp = px.bin(df.time_, __interval)
 per_ns_df = df.groupby(['timestamp', 'service']).agg(
         throughput_total=('latency', px.count)
