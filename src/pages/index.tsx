@@ -438,11 +438,12 @@ const IndexPage = withStyles((theme: Theme) => ({
                     <Typography variant='body2' className={classes.smallText}>
                       Run this to download the PX CLI and install the hosted version of Pixie.
                       No code changes needed. (Self-hosted install script&nbsp;
-                        <AnchorTag
+                      <AnchorTag
                         href='https://github.com/pixie-labs/pixie/issues/238'
                       >
-                      coming soon
-                      </AnchorTag>).
+                        coming soon
+                      </AnchorTag>
+                      ).
                       Full Quick Start guide&nbsp;
                       <AnchorTag
                         href='https://work.withpixie.ai/docs/installing-pixie/quick-start/'
