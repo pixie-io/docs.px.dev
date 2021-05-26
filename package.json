@@ -97,7 +97,7 @@
     "start": "gatsby develop",
     "develop": "gatsby develop",
     "dev": "gatsby develop",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx -c .eslintrc.json src *.js; git ls-files '**/*.tsx' '**/*.ts' '**/*.js' '**/*.jsx' '**/*.scss' '**/*.py' | xargs -l1 tools/licenses/checker.py -f"
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx -c .eslintrc.json src *.js && git ls-files '**/*.tsx' '**/*.ts' '**/*.js' '**/*.jsx' '**/*.scss' '**/*.py' | xargs -n1 tools/licenses/checker.py -f"
   },
   "devDependencies": {
     "@types/node": "^12.12.31",
