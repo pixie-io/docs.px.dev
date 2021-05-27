@@ -105,13 +105,7 @@ kubectl log create-admin-job-<pod_string> -n plc
 export PL_CLOUD_ADDR=dev.withpixie.dev
 ```
 
-2. Manually authenticate using:
-
-```bash
-px auth login --manual
-```
-
-3. Finally, install Pixie's CLI tool in one of four ways:
+2. Install Pixie's CLI tool in one of four ways:
 
 ### Using the install script (easiest)
 
