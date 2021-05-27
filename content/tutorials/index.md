@@ -13,4 +13,5 @@ In this section you learn how to use Pixie:
 - [Running the Script Dev Environment](/tutorials/script-dev-environment)
 - [Slack Alerts using the Pixie API](/tutorials/slackbot-alert)
 - [Profiling with Flamegraphs](/tutorials/profiler)
+- [Grafana Datasource Plugin](/tutorials/grafana)
 - [Script of the Week](/tutorials/script-of-the-week)
