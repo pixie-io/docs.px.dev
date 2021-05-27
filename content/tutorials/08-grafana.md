@@ -107,11 +107,19 @@ This query uses the `__time_from` and `__interval` macros to add dashboard conte
 
 3. Add units to the graph: on the **Field** tab, under the **Standard options** drop-down menu, under the **Unit** menu, select **requests/sec**.
 
-You should see something similar to the following:
+You should see data plotted over time, but the exact numbers will vary depending on the traffic in your cluster.
 
 ::: div image-xl
 <svg title='' src='throughput.png'/>
 :::
+
+If you don't see any data in your graph, try:
+
+- Changing the [current time range](https://grafana.com/docs/grafana/latest/dashboards/time-range-controls/#current-time-range) to the "Last 5 minutes".
+
+- Switching to the **Table** visualization to make sure that the query is returning some sort of data in table form.
+
+- Making sure that your cluster has HTTP traffic that Pixie can automatically trace. Instructions for installing a demo application with HTTP traffic can be found [here](https://docs.px.dev/installing-pixie/quick-start/#start-a-demo-app). If you're using your own application, double check that [Pixie supports the protocols](https://docs.px.dev/about-pixie/observability/) for the traffic in your cluster.
 
 4. Select **Apply** to save the panel.
 
@@ -159,7 +167,7 @@ This PxL query outputs a table of timeseries data for HTTP request throughput pe
 
 4. Add units to the graph on the **Field** tab, under the **Standard options** drop-down menu, under the **Unit** menu, select **requests/sec**.
 
-You should see something similar to the following:
+You should see data plotted over time, but the exact numbers will vary depending on the traffic in your cluster.
 
 ::: div image-xl
 <svg title='' src='service-throughput.png'/>
@@ -208,7 +216,7 @@ px.display(df)
 
 4. Flip the bar chart orientation to horizontal to more easily read the service names. On the **Field** tab, under the **Display** drop-down menu, select **Orientation** > **Horizontal**.
 
-You should see something similar to the following:
+You should see data plotted over time, but the exact numbers will vary depending on the traffic in your cluster.
 
 ::: div image-xl
 <svg title='' src='http-errors.png'/>

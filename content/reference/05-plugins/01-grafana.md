@@ -35,7 +35,7 @@ The plugin uses the Pixie Language (PxL) to query telemetry data collected by th
 
 If there are syntax errors in your PxL query, Grafana will display an error message.
 
-If an output table has a column containing timestamps, the plugin will sort the table by the timestamp column.
+If an output table has a column containing timestamps, the plugin will sort the table by the first timestamp column.
 
 Grafana requires wide table format to visualize data in a Graph or Time series. If a query output table has a column of timestamps with the heading `time_`, it will automatically convert the table to wide if necessary.
 
