@@ -5,15 +5,87 @@ metaDescription: "Getting started guide to setup Pixie"
 order: 2
 ---
 
-Please review Pixie's [requirements](/installing-pixie/requirements) to make sure that your Kubernetes cluster is supported.
+Get Pixie fully-managed with [Pixie Community Cloud](https://docs.pixielabs.ai/installing-pixie/quick-start/) (free forever) or run on your own infrastructure with the following self-managed option.
 
-These directions are for installing the hosted version of Pixie. A self-hosted install script is in the works. Track the status [here](https://github.com/pixie-labs/pixie/issues/238).
+Pixie can be installed in many different Kubernetes environments. Please refer to Pixie's [requirements](/installing-pixie/requirements) to make sure that your Kubernetes cluster is supported.
 
-## 1. Signup
+## 1. Setup a sandbox (optional)
 
-Visit our [product page](https://work.withpixie.ai/) and sign up with your google or gsuite account.
+### Setup a local K8s environment
 
-## 2. Install the CLI
+On Linux, run:
+
+```bash
+minikube start --driver=kvm2 --cpus=4 --memory=6000 -p=<cluster-name>
+```
+
+The default `docker` driver is not currently supported, so using the `kvm2` driver is important.
+
+On Mac, run:
+
+```bash
+minikube start --driver=hyperkit --cpus=4 --memory=6000 -p=<cluster-name>
+```
+
+More detailed instructions are available [here](/installing-pixie/install-guides/minikube-setup).
+
+### Deploy a demo-app
+
+Deploy a simple demo app to monitor:
+
+```bash
+px demo deploy px-sock-shop
+```
+
+This demo application takes several minutes to stabilize after deployment. To check the status of the application's pods, run:
+
+```bash
+kubectl get pods -n px-sock-shop
+```
+
+## Self-managed Pixie Cloud (optional)
+
+**Note:** Pixie also offers a [free account with Pixie Cloud](https://docs.pixielabs.ai/installing-pixie/quick-start/) to make getting started even easier and faster. Pixie Cloud users do not need to (1) deploy Pixie Cloud, (2) configure DNS, (3) or set up authentication.
+
+### Deploy Pixie Cloud
+
+1. Clone the [Pixie repo](https://www.notion.so/pixielabs/New-OS-Pixie-Quick-Start-1a829bdd186f49b78630dd5e5a43349b#00eb63438a844a9e822d2832d37bf82c).
+
+```bash
+git clone https://github.com/pixie-labs/pixie.git
+```
+
+### Set up DNS
+
+1. Setup your DNS. This produces a `dev_dns_updater` binary in the top level directory.
+
+```bash
+go build src/utils/dev_dns_updater/dev_dns_updater.go
+```
+
+2. You'll need to hardcode in your kube config
+
+```bash
+./dev_dns_updater --domain-name="dev.withpixie.dev"  --kubeconfig=/<kubeconfig path>/.kube/config --n=plc
+```
+
+3. Navigate to `dev.withpixie.dev` in your browser. Make sure that the network you are on can access your cluster.
+
+### Authentication using Kratos / Hydra
+
+Self-managed Pixie Cloud only supports one organization.
+
+1. To setup the default admin account, find the URL in the logs for the `create-admin-job` pod by running:
+
+```bash
+kubectl log create-admin-job-<pod_string> -n plc
+```
+
+2. Open the URL from the logs and login using `admin@default.com` for the `identifier`.
+
+### Invite others to your organization
+
+## Install the Pixie CLI
 
 You can install Pixie's CLI tool in one of 4 ways:
 
@@ -65,42 +137,6 @@ dpkg -i pixie-px.x86_64.deb
 # Install Pixie .rpm package.
 rpm -i pixie-px.x86_64.rpm
 ```
-
-## 3. Setup a sandbox (optional)
-
-### Set-up a local K8s environment
-
-You can use Minikube to set-up a local K8s environment.
-
-On Linux, run:
-
-```bash
-minikube start --driver=kvm2 --cpus=4 --memory=6000 -p=<cluster-name>
-```
-
-The default `docker` driver is not currently supported, so using the `kvm2` driver is important.
-
-On Mac, run:
-
-```bash
-minikube start --driver=hyperkit --cpus=4 --memory=6000 -p=<cluster-name>
-```
-
-More detailed instructions are available [here](/installing-pixie/install-guides/minikube-setup).
-
-### Start a demo-app
-
-Deploy a simple demo app to monitor:
-
-```bash
-# View available demo apps:
-px demo list
-
-# Example: deploy Weaveworks' "sock-shop":
-px demo deploy px-sock-shop
-```
-
-Note that it will take several minutes for the application to stabilize after deployment. You can use `kubectl get pods -n px-sock-shop` to check the status of the application's pods.
 
 ## 4. Deploy Pixie 🚀
 
