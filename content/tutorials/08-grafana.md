@@ -15,7 +15,7 @@ This tutorial will demonstrate how to use the Pixie datasource plugin to visuali
 
 - A Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using our [install guides](/installing-pixie/quick-start/).
 
-- A [Grafana server](https://grafana.com/get/) with the Pixie datasource plugin installed. For installation directions, see the [instructions](https://github.com/pixie-labs/grafana-plugin/#installing-the-plugin-on-an-existing-grafana-with-the-cli) on GitHub.
+- A [Grafana server](https://grafana.com/get/) with the Pixie datasource plugin installed. For installation directions, see the [instructions](https://github.com/pixie-labs/grafana-plugin/#installing-the-plugin) on GitHub.
 
 ## Add Pixie as a datasource
 
