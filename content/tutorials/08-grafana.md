@@ -7,9 +7,7 @@ order: 8
 
 This tutorial will demonstrate how to use the Pixie datasource plugin to visualize data from Pixie in Grafana.
 
-::: div image-xl
-<svg title='' src='grafana/grafana.png'/>
-:::
+<YouTube youTubeId="wAiVzwPx1iM"/>
 
 ## Prerequisites
 
