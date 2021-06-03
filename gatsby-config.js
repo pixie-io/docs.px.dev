@@ -16,10 +16,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-require('dotenv')
-  .config();
+const dotenv = require('dotenv');
 const containers = require('remark-containers');
 const config = require('./config');
+
+if (!process.env.NETLIFY) {
+  dotenv.config();
+}
 
 let algoliaApiKey = process.env.ALGOLIA_DEV_API_KEY;
 let algoliaIndex = process.env.GATSBY_ALGOLIA_DEV_INDEX_NAME;
