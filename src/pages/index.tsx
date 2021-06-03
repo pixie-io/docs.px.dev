@@ -541,7 +541,7 @@ const IndexPage = withStyles((theme: Theme) => ({
         </section>
         <div className={classes.copyright}>
           <FooterLinks />
-          Copyright © 2018- The Pixie Authors. All Rights Reserved.
+          Copyright © 2020 Pixie Labs
         </div>
         <Hidden mdDown implementation='css'>
           <img className={classes.ornament_page_bottom_right} src={opbrImg} />
