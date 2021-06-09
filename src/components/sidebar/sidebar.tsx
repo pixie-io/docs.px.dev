@@ -85,19 +85,7 @@ const Sidebar = withStyles((theme: Theme) => ({
     lineHeight: '15px',
     cursor: 'pointer',
   },
-  externalLink: {
-    color: theme.palette.type === 'light' ? '#000000' : '#ffffff',
-    textDecoration: 'none',
-    fontSize: '14px',
-    fontWeight: 'bold',
-    paddingLeft: '28px',
-    lineHeight: '28px',
-    '&::after': {
-      content: 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==)',
-      margin: '0 3px 0 5px',
-      filter: theme.palette.type === 'light' ? 'invert(0)' : 'invert(1)',
-    },
-  },
+
   footer: {
     boxSizing: 'border-box',
     paddingBottom: '16px',
@@ -261,6 +249,7 @@ const Sidebar = withStyles((theme: Theme) => ({
                   setFirstRun={setFirstRun}
                 />
                 <div className={classes.toc}>
+
                   {expanded.length
                     ? (
                       <div
@@ -308,7 +297,6 @@ const Sidebar = withStyles((theme: Theme) => ({
                         />
                       ))}
                   </TreeView>
-                  <a href='https://docs.px.dev' target='_blank' rel='noreferrer' className={classes.externalLink}>Open Source Docs </a>
                 </div>
                 <div className={classes.footer}>
                   <a
