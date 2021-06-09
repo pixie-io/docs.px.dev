@@ -27,6 +27,13 @@ yarn install
 yarn build
 ```
 
+### Adding New Language Translations
+
+1. Create a new empty folder in the `content` folder. Name the folder with the new language's [2-letter code](https://quicksilvertranslate.com/712/iso6392-letterlanguagecodes/).
+2. Add a new item for the new language to the `languages` list in the `available-languages.js` file.
+3. Copy the file you want to translate from the `en` folder into the new folder. Make sure to maintain the same folder structure, folder names, and file name as the `en` directory. 
+4. Translate the file and create a PR. 
+
 ### Updating Automated Content
 To pull the latest reference docs, run:
 ```shell

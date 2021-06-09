@@ -300,7 +300,7 @@ const Sidebar = withStyles((theme: Theme) => ({
                 </div>
                 <div className={classes.footer}>
                   <a
-                    href='https://pixielabs.ai/'
+                    href='https://px.dev/'
                     target='_blank'
                     rel='noopener noreferrer'
                     className={classes.link}
