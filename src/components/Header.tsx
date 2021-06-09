@@ -34,6 +34,7 @@ import logoImg from '../images/pixie-logo-header.svg';
 import slackIcon from './images/slack-icon.svg';
 import mailIcon from './images/mail-icon.svg';
 import SearchResultsDropdown from './search-results-dropdown';
+import languages from '../../available-languages';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -63,6 +64,15 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     position: 'relative',
   },
+  dropIcon: {
+    '&:after': {
+      content: '"▼"',
+      display: 'inline-block',
+      fontSize: '7px',
+      paddingLeft: '8px',
+      verticalAlign: 'middle',
+    },
+  },
   dropMenuRef: {
     position: 'relative',
     display: 'inline-block',
@@ -76,6 +86,32 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.type === 'light' ? '#212324' : '#212324',
     width: '189px',
     borderRadius: '7px',
+  },
+  langMenu: {
+    position: 'absolute',
+    top: `calc(${theme.overrides.MuiToolbar.root.minHeight} / 2 - 4px)`,
+    boxShadow: theme.palette.type === 'light' ? '0px 15px 130px 0px rgba(0,0,0,0.10)' : '0px 15px 130px 0px rgba(0,0,0,0.45)',
+    right: 0,
+    zIndex: 1,
+    backgroundColor: theme.palette.type === 'light' ? '#212324' : '#212324',
+    borderRadius: '7px',
+
+  },
+  langMenuItem: {
+    color: theme.palette.type === 'light' ? '#B2B5BB' : '#B2B5BB',
+    fontSize: '14px',
+    lineHeight: '24px',
+    padding: '14px',
+    textAlign: 'center',
+    width: '52px',
+    '& a': {
+      textDecoration: 'none',
+      display: 'block',
+      margin: '-14px',
+      padding: '14px',
+      fontStyle: 'inherit',
+      color: 'inherit',
+    },
   },
   dropMenuItem: {
     color: theme.palette.type === 'light' ? '#B2B5BB' : '#B2B5BB',
@@ -92,6 +128,9 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: 'none',
       fontStyle: 'inherit',
       color: 'inherit',
+      padding: '14px',
+      margin: '-14px',
+      display: 'block',
     },
   },
   menuItem: {
@@ -102,6 +141,8 @@ const useStyles = makeStyles((theme) => ({
 
 interface Props {
   location: string,
+  availableLanguages: { lang: string, slug: string }[],
+  lang: string,
   theme: string,
   onThemeTypeSwitch: any
   setDrawerOpen: any,
@@ -119,7 +160,10 @@ interface RenderProps {
 }
 
 const Header = ({
-  drawerOpen, setDrawerOpen,
+  drawerOpen,
+  setDrawerOpen,
+  availableLanguages,
+  lang = 'en',
   setSidebarOpen,
   sidebarOpen,
   onThemeTypeSwitch,
@@ -131,9 +175,10 @@ const Header = ({
   };
 
   const [openSupportMenu, setOpenSupportMenu] = React.useState(false);
+  const [openLanguageMenu, setOpenLanguageMenu] = React.useState(false);
 
   const classes = useStyles();
-
+  const getLanguageLabel = (languageId) => (languageId === 'en' ? 'English' : languages.find((l) => l.id === languageId).label);
   const getReferrer = () => {
     if (typeof window === 'undefined') return 'https://pixielabs.ai';
     const ref = sessionStorage.getItem('referrer');
@@ -176,7 +221,17 @@ const Header = ({
                 </IconButton>
                 <Hidden smDown implementation='css'>
                   <ClickAwayListener onClickAway={() => setOpenSupportMenu(false)}>
-                    <Button className={classes.menuItem} color='default' size='inherit' aria-controls='support-menu' aria-haspopup='true' onClick={() => setOpenSupportMenu((prev) => !prev)}>Support</Button>
+                    <Button
+                      className={classes.menuItem}
+                      color='default'
+                      size='inherit'
+                      aria-controls='support-menu'
+                      aria-haspopup='true'
+                      onClick={() => setOpenSupportMenu((prev) => !prev)}
+                    >
+                      Support
+                      <span className={classes.dropIcon} />
+                    </Button>
                   </ClickAwayListener>
                   <div className={classes.dropMenuRef}>
                     {openSupportMenu ? (
@@ -219,9 +274,53 @@ const Header = ({
                     ) : null}
                   </div>
                 </Hidden>
+                {availableLanguages
+                && (
+                  <Hidden smDown implementation='css'>
+                    <ClickAwayListener onClickAway={() => setOpenLanguageMenu(false)}>
+                      <Button
+                        className={classes.menuItem}
+                        color='default'
+                        size='inherit'
+                        aria-controls='support-menu'
+                        aria-haspopup='true'
+                        onClick={() => setOpenLanguageMenu((prev) => !prev)}
+                      >
+                        {getLanguageLabel(lang)}
+                        <span className={classes.dropIcon} />
+                      </Button>
+                    </ClickAwayListener>
+                    <div className={classes.dropMenuRef}>
+                      {openLanguageMenu ? (
+                        <div className={classes.langMenu}>
+                          {(availableLanguages || []).map((l) => (
+                            <div
+                              key={l.lang}
+                              className={classes.langMenuItem}
+                              onClick={() => setOpenSupportMenu(false)}
+                            >
+                              <Link
+                                to={l.slug}
+                                target='_blank'
+                                rel='noopener noreferrer'
+                              >
+                                {getLanguageLabel(l.lang)}
+                              </Link>
+                            </div>
+                          ))}
+
+                        </div>
+                      ) : null}
+                    </div>
+                  </Hidden>
+                )}
                 <SearchResultsDropdown />
                 <Hidden mdDown implementation='css'>
-                  <Button href={getReferrer()} size='small' color='secondary' variant='contained'>Back to Pixie</Button>
+                  <Button href={getReferrer()} size='small' color='secondary' variant='contained'>
+                    Back
+                    to
+                    Pixie
+                  </Button>
                 </Hidden>
               </div>
             </Toolbar>

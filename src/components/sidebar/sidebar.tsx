@@ -43,7 +43,10 @@ export const GET_ARTIFACTS = gql`
 
 const ExpandFirstLevelOnce = (props) => {
   const {
-    firstRun, setFirstRun, setExpanded, edges,
+    firstRun,
+    setFirstRun,
+    setExpanded,
+    edges,
   } = props;
   useEffect(
     () => {
@@ -105,7 +108,12 @@ const Sidebar = withStyles((theme: Theme) => ({
     fontSize: '14px',
     lineHeight: '18px',
   },
-}))(({ location, classes, artifactName }: any) => {
+}))(({
+  location,
+  classes,
+  artifactName,
+  lang,
+}: any) => {
   const { data } = useQuery(GET_ARTIFACTS, {
     variables: { artifactName },
   });
@@ -117,17 +125,22 @@ const Sidebar = withStyles((theme: Theme) => ({
   const getAllIds = (edges) => {
     const allIds = [];
     const fields1 = edges.filter((e) => e.node.fields.title)
-      .map((e) => e.node.fields).filter((e) => e.level === 1);
+      .map((e) => e.node.fields)
+      .filter((e) => e.level === 1);
     fields1.forEach((e) => allIds.push(e.id));
     return allIds;
   };
 
   const processCategories = (edges) => {
     const newedges = edges.filter((e) => e.node.fields.title);
-    const fields1 = newedges.map((e) => e.node.fields).filter((e) => e.level === 1);
-    const fields2 = newedges.map((e) => e.node.fields).filter((e) => e.level === 2);
-    const fields3 = newedges.map((e) => e.node.fields).filter((e) => e.level === 3);
-    const fields4 = newedges.map((e) => e.node.fields).filter((e) => e.level === 4);
+    const fields1 = newedges.map((e) => e.node.fields)
+      .filter((e) => e.level === 1);
+    const fields2 = newedges.map((e) => e.node.fields)
+      .filter((e) => e.level === 2);
+    const fields3 = newedges.map((e) => e.node.fields)
+      .filter((e) => e.level === 3);
+    const fields4 = newedges.map((e) => e.node.fields)
+      .filter((e) => e.level === 4);
     return fields1
       .map((e) => ({
         title: e.title,
@@ -139,7 +152,15 @@ const Sidebar = withStyles((theme: Theme) => ({
           .map((subCat) => {
             const thirdLevelCategories = fields3
               .filter((item) => item.slug.split('/')[2] === subCat.slug.split('/')[2]);
-            return { ...subCat, ...{ subCategories: thirdLevelCategories.map((sc) => ({ ...sc, subCategories: fields4.filter((item) => item.slug.split('/')[3] === sc.slug.split('/')[3]) })) } };
+            return {
+              ...subCat,
+              ...{
+                subCategories: thirdLevelCategories.map((sc) => ({
+                  ...sc,
+                  subCategories: fields4.filter((item) => item.slug.split('/')[3] === sc.slug.split('/')[3]),
+                })),
+              },
+            };
           }),
       }));
   };
@@ -181,6 +202,7 @@ const Sidebar = withStyles((theme: Theme) => ({
                 slug
                 title
                 level
+                lang
                 id
                 directory
               }
@@ -189,17 +211,40 @@ const Sidebar = withStyles((theme: Theme) => ({
         }
       }
     `}
-      render={({ allMdx, pxl, apis }) => {
-        const allDocs = [...allMdx.edges, ...pxl.edges, ...apis.edges];
+      render={({
+        allMdx,
+        pxl,
+        apis,
+      }) => {
+        const filteredMdxEdges = allMdx.edges.filter((n) => {
+          if (lang !== 'en') {
+            if (n.node.fields.lang === lang
+              || !allMdx.edges.filter((nn) => nn.node.fields.lang === lang)
+                .find((e) => e.node.fields.slug.includes(n.node.fields.slug))) {
+              return true;
+            }
+            return false;
+          }
+          return n.node.fields.lang === lang;
+        });
+
+        const allDocsForExpand = [...allMdx.edges, ...pxl.edges, ...apis.edges];
+        const allDocs = [...filteredMdxEdges, ...pxl.edges, ...apis.edges];
+
         return (
           <SidebarContext.Consumer>
             {({
-              expanded, setExpanded, selected, setSelected, firstRun, setFirstRun,
+              expanded,
+              setExpanded,
+              selected,
+              setSelected,
+              firstRun,
+              setFirstRun,
             }) => (
               <div className={classes.main}>
                 <ExpandFirstLevelOnce
                   setExpanded={setExpanded}
-                  edges={allDocs}
+                  edges={allDocsForExpand}
                   firstRun={firstRun}
                   setFirstRun={setFirstRun}
                 />
@@ -234,19 +279,23 @@ const Sidebar = withStyles((theme: Theme) => ({
                       location={location}
                       expanded={expanded}
                       category={{
-                        title: 'Home', slug: '/', subCategories: [], level: 1,
+                        title: 'Home',
+                        slug: '/',
+                        subCategories: [],
+                        level: 1,
                       }}
                     />
-                    {processCategories(allDocs).map((category) => (
-                      <CategoryItem
-                        setExpanded={setExpanded}
-                        setSelected={setSelected}
-                        expanded={expanded}
-                        key={category.id}
-                        location={location}
-                        category={category}
-                      />
-                    ))}
+                    {processCategories(allDocs)
+                      .map((category) => (
+                        <CategoryItem
+                          setExpanded={setExpanded}
+                          setSelected={setSelected}
+                          expanded={expanded}
+                          key={category.id}
+                          location={location}
+                          category={category}
+                        />
+                      ))}
                   </TreeView>
                 </div>
                 <div className={classes.footer}>

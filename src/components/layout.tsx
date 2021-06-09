@@ -37,6 +37,9 @@ interface PageItemProps {
   children: ReactElement[],
   location: any,
   classes: any,
+  lang: string,
+  globalUrlTree: any[],
+  availableLanguages: any[],
 }
 
 const Layout = withStyles((theme: Theme) => ({
@@ -61,7 +64,12 @@ const Layout = withStyles((theme: Theme) => ({
     overflow: 'auto',
   },
 }))(({
-  children, location, classes,
+  children,
+  location,
+  classes,
+  lang,
+  globalUrlTree,
+  availableLanguages,
 }: PageItemProps) => {
   const { site } = useStaticQuery(
     graphql`
@@ -77,7 +85,9 @@ const Layout = withStyles((theme: Theme) => ({
   );
 
   const isFixedMenuPage = ['/'].includes(location.pathname);
-  const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
+  const isMobile = useMediaQuery(useTheme()
+    .breakpoints
+    .down('sm'));
   const [needsFloat, setNeedsFloat] = React.useState(isFixedMenuPage);
 
   useEffect(
@@ -127,9 +137,14 @@ const Layout = withStyles((theme: Theme) => ({
         ) : null}
       </Helmet>
       <ThemeModeContext.Consumer>
-        {({ toggleTheme, theme }) => (
+        {({
+          toggleTheme,
+          theme,
+        }) => (
           <div className={classes.pageLayout}>
             <Header
+              availableLanguages={availableLanguages}
+              lang={lang}
               location={location}
               drawerOpen={drawerOpen}
               setDrawerOpen={setDrawerOpen}
@@ -148,12 +163,19 @@ const Layout = withStyles((theme: Theme) => ({
                   paper: classes.drawerPaper,
                 }}
               >
-                <Sidebar location={location} artifactName='vizier' />
+                <Sidebar
+                  location={location}
+                  artifactName='vizier'
+                  lang={lang}
+                  globalUrlTree={globalUrlTree}
+                />
               </Drawer>
             )}
             {sidebarOpen && !needsFloat && (
               <Sidebar
                 location={location}
+                lang={lang}
+                globalUrlTree={globalUrlTree}
                 className={classes.drawer}
                 artifactName='vizier'
               />

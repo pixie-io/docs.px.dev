@@ -23,6 +23,18 @@ const startCase = require('lodash.startcase');
 const utils = require('./src/functionPageUrl.ts');
 const jsonDocumentation = require('./external/pxl_documentation.json');
 
+const globalUrlTree = [];
+const languages = require('./available-languages');
+
+const removeLanguageFromUrl = (url) => {
+  const slugTree = url.split('/')
+    .filter((n) => n);
+  if (languages.some((l) => l.id === slugTree[0])) {
+    slugTree.shift();
+  }
+  return slugTree.join('/');
+};
+
 exports.createPages = ({
   graphql,
   actions,
@@ -41,6 +53,7 @@ exports.createPages = ({
                 node {
                   fields {
                     id
+                    lang
                   }
                   tableOfContents
                   fields {
@@ -59,13 +72,38 @@ exports.createPages = ({
           }
           // Create blog posts pages.
           result.data.allMdx.edges.forEach(({ node }) => {
+            const { lang } = node.fields;
+            const baseUrlWithoutLanguage = removeLanguageFromUrl(node.fields.slug);
+
+            const langPrefix = lang === 'en' ? '' : `/${lang}`;
+
+            const templatePath = node.fields.slug
+              ? `${result.data.site.pathPrefix}${langPrefix}/${baseUrlWithoutLanguage}`
+              : result.data.site.pathPrefix;
+            const availableLanguages = [];
+
+            languages
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              .forEach((_) => {
+                globalUrlTree.forEach((t) => {
+                  if (removeLanguageFromUrl(t.slug) === baseUrlWithoutLanguage) {
+                    availableLanguages.push({
+                      slug: t.slug,
+                      lang: t.lang,
+                    });
+                  }
+                });
+              });
+
             createPage({
-              path: node.fields.slug
-                ? result.data.site.pathPrefix + node.fields.slug
-                : result.data.site.pathPrefix,
+              path: templatePath,
               component: path.resolve('./src/templates/docs.tsx'),
               context: {
                 id: node.fields.id,
+                lang,
+                languages,
+                globalUrlTree,
+                availableLanguages,
               },
             });
           });
@@ -106,30 +144,41 @@ exports.createPages = ({
             jsonDocumentation.tracepointDecoratorDocs,
             'tracepoint-decorator',
             'Tracepoint Decorators',
-            `The Decorator functions to wrap around a tracepoint function. 
-           When defining the body of the tracepoint, see Tracepoint Fields.`,
+            `The Decorator functions to wrap around a tracepoint function.
+            When defining the body of the tracepoint, see Tracepoint Fields.`
+
+            ,
           );
           pxlObjectDocsPages(
             jsonDocumentation.tracepointFieldDocs,
             'tracepoint-field',
             'Tracepoint Fields',
-            `Field accessors to use while writing a tracepoint. Must be written 
-           in a function wrapped by a Tracepoint Decorator.`,
+
+            `Field accessors to use while writing a tracepoint. Must be written
+            in a function wrapped by a Tracepoint Decorator.`
+
+            ,
           );
           pxlObjectDocsPages(
             jsonDocumentation.compileFnDocs,
             'compiler-fns',
             'Compile Time Functions',
+
             `Functions that are evaluated and usable at run time. Unlike [Execution Time Functions](/reference/pxl/udf), these are usable at compile-time
-           meaning you can pass them as parameters to [Operators](/reference/pxl/operators) as well as [ExecTime functions](/reference/pxl/udf).`,
+            meaning you can pass them as parameters to [Operators](/reference/pxl/operators) as well as [ExecTime functions](/reference/pxl/udf).`
+
+            ,
           );
           pxlObjectDocsPages(
             jsonDocumentation.dataframeOpDocs,
             'operators',
             'Operators',
+
             `The underlying DataFrame methods that correspond to Operators.
-           meaning you can pass them as parameters to [Operators](/reference/pxl/operators) as well as [ExecTime functions](/reference/pxl/udf).
-          `,
+            meaning you can pass them as parameters to [Operators](/reference/pxl/operators) as well as [ExecTime functions](/reference/pxl/udf).
+            `
+
+            ,
           );
 
           // create udfDocs index Pages
@@ -153,7 +202,11 @@ exports.createPages = ({
                 context: {
                   data: JSON.stringify(functions),
                   // TODO(philkuz/zasgar)  figure out better solution than just prepending here.
-                  title: `px.${functions[0].name}`,
+                  title:
+
+                    `px.${functions[0].name}`
+
+                  ,
                 },
               });
             });
@@ -171,7 +224,6 @@ exports.createPages = ({
     );
   });
 };
-
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
@@ -201,7 +253,15 @@ exports.onCreateNode = ({
     const parent = getNode(node.parent);
     const treePath = parent.relativePath.replace(parent.ext, '')
       .split('/');
-    const level = treePath.filter((l) => l !== 'index').length;
+
+    const lang = treePath[0].toLowerCase();
+
+    if (lang === 'en') {
+      treePath.shift();
+    }
+
+    const level = treePath.filter((l) => l !== 'index' && !languages.some((ll) => ll.id === l)).length;
+
     const title = node.frontmatter.title || startCase(parent.name);
     const slug = treePath
       .filter((l) => l !== 'index')
@@ -214,6 +274,11 @@ exports.onCreateNode = ({
       .map((s) => (s === 'index' ? '00-index' : s))
       .join('/');
 
+    globalUrlTree.push({
+      lang,
+      slug: `/${slug}`,
+    });
+
     createNodeField({
       name: 'slug',
       node,
@@ -224,6 +289,11 @@ exports.onCreateNode = ({
       name: 'id',
       node,
       value: node.id,
+    });
+    createNodeField({
+      name: 'lang',
+      node,
+      value: lang,
     });
 
     createNodeField({
@@ -302,13 +372,13 @@ exports.onCreateNode = ({
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   const typeDefs = `
-    type Mdx implements Node {
-      frontmatter: MdxFrontmatter
-    }
-    type MdxFrontmatter @infer {
-    
-      hidden: Boolean
-    }
-  `;
+            type Mdx implements Node {
+            frontmatter: MdxFrontmatter
+            }
+            type MdxFrontmatter @infer {
+
+            hidden: Boolean
+            }
+            `;
   createTypes(typeDefs);
 };
