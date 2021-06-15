@@ -179,11 +179,6 @@ const Header = ({
 
   const classes = useStyles();
   const getLanguageLabel = (languageId) => (languageId === 'en' ? 'English' : languages.find((l) => l.id === languageId).label);
-  const getReferrer = () => {
-    if (typeof window === 'undefined') return 'https://pixielabs.ai';
-    const ref = sessionStorage.getItem('referrer');
-    return ref && ref.includes('work.withpixie.ai') ? ref : 'https://pixielabs.ai';
-  };
   return (
     <StaticQuery
       query={graphql`
@@ -316,7 +311,7 @@ const Header = ({
                 )}
                 <SearchResultsDropdown />
                 <Hidden mdDown implementation='css'>
-                  <Button href={getReferrer()} size='small' color='secondary' variant='contained'>
+                  <Button href='https://px.dev' size='small' color='secondary' variant='contained'>
                     Back
                     to
                     Pixie
