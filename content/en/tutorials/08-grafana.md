@@ -228,4 +228,4 @@ You should see data plotted over time, but the exact numbers will vary depending
 
 - Check out the Pixie Grafana datasource plugin [reference docs](/reference/grafana).
 - Inspect the source code, report issues, and contribute fixes in the [GitHub repo](https://github.com/pixie-labs/grafana-plugin).
-- Ask questions in the **#grafana-plugin** channel on Pixie's [Community Slack](http://slackin.withpixie.ai).
+- Ask questions in the **#grafana-plugin** channel on Pixie's [Community Slack](http://slackin.px.dev).

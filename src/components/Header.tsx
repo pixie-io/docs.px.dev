@@ -241,7 +241,7 @@ const Header = ({
                           onClick={() => setOpenSupportMenu(false)}
                         >
                           <a
-                            href='https://slackin.withpixie.ai/'
+                            href='https://slackin.px.dev/'
                             target='_blank'
                             rel='noopener noreferrer'
                           >

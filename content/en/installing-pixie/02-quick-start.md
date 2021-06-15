@@ -208,4 +208,4 @@ For more information, check out our [Live UI guide](/using-pixie/using-live-ui/)
 
 ## Get Help
 
-Please reach out on our [Community Slack](https://slackin.withpixie.ai/) or file an issue on [GitHub](https://github.com/pixie-labs/pixie/issues).
+Please reach out on our [Community Slack](https://slackin.px.dev/) or file an issue on [GitHub](https://github.com/pixie-labs/pixie/issues).
