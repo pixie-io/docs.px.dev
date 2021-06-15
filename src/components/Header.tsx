@@ -32,7 +32,7 @@ import Brightness4Icon from '@material-ui/icons/Brightness4';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import logoImg from '../images/pixie-logo-header.svg';
 import slackIcon from './images/slack-icon.svg';
-import mailIcon from './images/mail-icon.svg';
+import githubIcon from './images/github-icon.svg';
 import SearchResultsDropdown from './search-results-dropdown';
 import languages from '../../available-languages';
 
@@ -253,16 +253,16 @@ const Header = ({
                           onClick={() => setOpenSupportMenu(false)}
                         >
                           <a
-                            href='mailto:cs@pixielabs.ai'
+                            href='https://github.com/pixie-labs/pixie'
                             target='_blank'
                             rel='noopener noreferrer'
                           >
                             <img
                               className={classes.menuButton}
-                              src={mailIcon}
+                              src={githubIcon}
                               alt='logo'
                             />
-                            Email Us
+                            GitHub
                           </a>
                         </div>
                       </div>
