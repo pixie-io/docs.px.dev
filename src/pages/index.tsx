@@ -446,7 +446,7 @@ const IndexPage = withStyles((theme: Theme) => ({
                       ).
                       Full Quick Start guide&nbsp;
                       <AnchorTag
-                        href='https://work.withpixie.ai/docs/installing-pixie/quick-start/'
+                        href='https://docs.px.dev/installing-pixie/quick-start/'
                       >
                         here
                       </AnchorTag>

@@ -5,11 +5,11 @@ metaDescription: "Configure Pixie's data transfer mode."
 order: 5
 ---
 
-Pixie supports two methods for accessing your cluster's data from the [Live UI](https://work.withpixie.ai/). More information on these two modes can be found [here](/about-pixie/how-pixie-works/#data-transfer-modes). 
+Pixie supports two methods for accessing your cluster's data from the [Live UI](https://work.withpixie.ai/). More information on these two modes can be found [here](/about-pixie/how-pixie-works/#data-transfer-modes).
 
 ## Data Passthrough Mode (Default)
 
-In data passthrough mode, your cluster's data flows through Pixie's control cloud via a reverse proxy as encrypted traffic without any persistence. This allows users to access data without being in the same VPC/network and is the default mode for Pixie. The [admin page](https://work.withpixie.ai/admin) of Pixie's Live UI, will show your cluster's mode as "Passthrough". 
+In data passthrough mode, your cluster's data flows through Pixie's control cloud via a reverse proxy as encrypted traffic without any persistence. This allows users to access data without being in the same VPC/network and is the default mode for Pixie. The [admin page](https://work.withpixie.ai/admin) of Pixie's Live UI, will show your cluster's mode as "Passthrough".
 
 ::: div image-xl
 <svg title='Admin page showing Passthrough mode.'  src='data-mode/passthrough.png' />
@@ -37,9 +37,8 @@ px get viziers
 px config update -c <YOUR_CLUSTER_ID> --passthrough=false
 ```
 
-The [admin page](https://work.withpixie.ai/admin) of Pixie's Live UI, now shows the cluster's mode as "Direct". 
+The [admin page](https://work.withpixie.ai/admin) of Pixie's Live UI, now shows the cluster's mode as "Direct".
 
 ::: div image-xl
 <svg title='Admin page showing Data Isolation (Direct) mode.'  src='data-mode/direct.png' />
 :::
-
