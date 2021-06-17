@@ -95,7 +95,7 @@ per_ns_df.request_throughput = per_ns_df.request_throughput * 1e9
 px.display(per_ns_df['time_', 'request_throughput'])
 ```
 
-This plugin uses the Pixie Language ([PxL](https://docs.pixielabs.ai/using-pixie/pxl-overview/)) to query telemetry data collected by the Pixie platform.
+This plugin uses the Pixie Language ([PxL](https://docs.px.dev/using-pixie/pxl-overview/)) to query telemetry data collected by the Pixie platform.
 
 The above PxL query outputs a table of timeseries data showing overall HTTP request throughput. Request throughput is calculated by counting the number HTTP requests that Pixie automatically traces in your cluster.
 
@@ -228,4 +228,4 @@ You should see data plotted over time, but the exact numbers will vary depending
 
 - Check out the Pixie Grafana datasource plugin [reference docs](/reference/grafana).
 - Inspect the source code, report issues, and contribute fixes in the [GitHub repo](https://github.com/pixie-labs/grafana-plugin).
-- Ask questions in the **#grafana-plugin** channel on Pixie's [Community Slack](http://slackin.withpixie.ai).
+- Ask questions in the **#grafana-plugin** channel on Pixie's [Community Slack](http://slackin.px.dev).

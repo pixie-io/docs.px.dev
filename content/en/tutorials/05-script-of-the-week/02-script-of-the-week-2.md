@@ -45,10 +45,10 @@ There are two options to prevent this:
 
 2. Customize the `ndots` value in the [dnsConfig](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config) pod property.
 
-If you have any questions about how to run this script, we’d be happy to help out over on our community [slack](https://slackin.withpixie.ai/).
+If you have any questions about how to run this script, we’d be happy to help out over on our community [slack](https://slackin.px.dev/).
 
 ## References
 
- - An [explanation](https://github.com/kubernetes/kubernetes/issues/33554#issuecomment-266251056) for the default `ndots:5` setting.
+- An [explanation](https://github.com/kubernetes/kubernetes/issues/33554#issuecomment-266251056) for the default `ndots:5` setting.
 
- - A [demo](https://youtu.be/zbig8uH9eqQ) of Pixie's complete DNS tracing capabilities.
+- A [demo](https://youtu.be/zbig8uH9eqQ) of Pixie's complete DNS tracing capabilities.

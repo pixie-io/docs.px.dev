@@ -68,4 +68,4 @@ The plugin source code can be found on [GitHub](https://github.com/pixie-labs/gr
 ## Get Help
 
 - Report issues on [GitHub](https://github.com/pixie-labs/grafana-plugin/issues).
-- Ask questions in the **#grafana-plugin** channel on Pixie's [Community Slack](http://slackin.withpixie.ai/).
+- Ask questions in the **#grafana-plugin** channel on Pixie's [Community Slack](http://slackin.px.dev/).

@@ -32,7 +32,7 @@ import Brightness4Icon from '@material-ui/icons/Brightness4';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import logoImg from '../images/pixie-logo-header.svg';
 import slackIcon from './images/slack-icon.svg';
-import mailIcon from './images/mail-icon.svg';
+import githubIcon from './images/github-icon.svg';
 import SearchResultsDropdown from './search-results-dropdown';
 import languages from '../../available-languages';
 
@@ -179,11 +179,6 @@ const Header = ({
 
   const classes = useStyles();
   const getLanguageLabel = (languageId) => (languageId === 'en' ? 'English' : languages.find((l) => l.id === languageId).label);
-  const getReferrer = () => {
-    if (typeof window === 'undefined') return 'https://pixielabs.ai';
-    const ref = sessionStorage.getItem('referrer');
-    return ref && ref.includes('work.withpixie.ai') ? ref : 'https://pixielabs.ai';
-  };
   return (
     <StaticQuery
       query={graphql`
@@ -241,7 +236,7 @@ const Header = ({
                           onClick={() => setOpenSupportMenu(false)}
                         >
                           <a
-                            href='https://slackin.withpixie.ai/'
+                            href='https://slackin.px.dev/'
                             target='_blank'
                             rel='noopener noreferrer'
                           >
@@ -258,16 +253,16 @@ const Header = ({
                           onClick={() => setOpenSupportMenu(false)}
                         >
                           <a
-                            href='mailto:cs@pixielabs.ai'
+                            href='https://github.com/pixie-labs/pixie'
                             target='_blank'
                             rel='noopener noreferrer'
                           >
                             <img
                               className={classes.menuButton}
-                              src={mailIcon}
+                              src={githubIcon}
                               alt='logo'
                             />
-                            Email Us
+                            GitHub
                           </a>
                         </div>
                       </div>
@@ -316,7 +311,7 @@ const Header = ({
                 )}
                 <SearchResultsDropdown />
                 <Hidden mdDown implementation='css'>
-                  <Button href={getReferrer()} size='small' color='secondary' variant='contained'>
+                  <Button href='https://px.dev' size='small' color='secondary' variant='contained'>
                     Back
                     to
                     Pixie

@@ -62,20 +62,10 @@ const FooterLinks = () => {
   return (
     <ul className={classes.linksRow}>
       <li>
-        <a
-          href='https://work.withpixie.ai/login'
-        >
-          SIGN IN
-        </a>
-      </li>
-      <li>
         <a href='//pixielabs.ai/terms'>TERMS & PRIVACY</a>
       </li>
       <li>
         <a href='https://px.dev/community'>COMMUNITY</a>
-      </li>
-      <li>
-        <a href='//pixielabs.ai/careers'>CAREERS</a>
       </li>
       <li>
         <a href='https://blog.pixielabs.ai/' target='_blank' rel='noreferrer'>
@@ -83,7 +73,7 @@ const FooterLinks = () => {
         </a>
       </li>
       <li>
-        <a href='//pixielabs.ai/contact'>CONTACT</a>
+        <a href='https://slackin.px.dev/'>SLACK</a>
       </li>
     </ul>
   );

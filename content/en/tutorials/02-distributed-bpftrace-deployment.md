@@ -195,4 +195,4 @@ Based on a quick visual inspection of the code, the following programs should th
 - `oomkill.bt`
 - `writeback.bt`
 
-If you have any questions about this feature or how to incorporate your own bpftrace code, we'd be happy to help out over on our [Slack](https://slackin.withpixie.ai/).
+If you have any questions about this feature or how to incorporate your own bpftrace code, we'd be happy to help out over on our [Slack](https://slackin.px.dev/).

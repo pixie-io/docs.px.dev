@@ -39,5 +39,3 @@ As shown in the illustration below, this magical developer experience is powered
 ::: div image-xl
 <svg title='Pixie Platform' src='pixie-overview.png' />
 :::
-
-_If you want to learn more about us check out our [website](https://pixielabs.ai/) or our [overview deck](https://docsend.com/view/kj38d76)_

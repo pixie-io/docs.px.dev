@@ -308,7 +308,7 @@ const Sidebar = withStyles((theme: Theme) => ({
                     Website
                   </a>
                   <a
-                    href='https://slackin.withpixie.ai'
+                    href='https://slackin.px.dev'
                     target='_blank'
                     rel='noopener noreferrer'
                     className={classes.link}
