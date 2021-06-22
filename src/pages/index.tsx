@@ -28,7 +28,6 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import { darken, lighten } from '@material-ui/core/styles';
 
-import CodeRenderer from 'components/mdxComponents/codeRenderer';
 import SEO from 'components/seo';
 import { urlFromSlug } from 'components/utils';
 import { Layout } from 'components';
@@ -38,10 +37,7 @@ import opbrImg from '../images/page-ornaments/ornament-page-bottom-right.svg';
 import nextBtn from '../images/btn-next-icon.svg';
 import ornamentLeft from '../images/ornament-left.svg';
 import ornamentRight from '../images/ornament-right.svg';
-import AnchorTag from '../components/mdxComponents/anchor';
 import FooterLinks from '../components/footer-links';
-
-const bashCode = 'bash -c "$(curl -fsSL https://withpixie.ai/install.sh)"';
 
 const MainButton = withStyles((theme: Theme) => ({
   root: {
