@@ -378,83 +378,54 @@ const IndexPage = withStyles((theme: Theme) => ({
               direction='row'
               justify='center'
               alignItems='stretch'
+              align='center'
             >
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={8}>
                 <Typography variant='h1' className={classes.mainHeading}>
                   Instant open-source debugging for your applications on Kubernetes
                 </Typography>
                 <Typography variant='body1'>
                   Learn how to install Pixie, run scripts and write your own playbooks.
                 </Typography>
-                <Hidden mdUp implementation='css'>
-                  <div className={classes.codeRenderer_mobile}>
-                    <CodeRenderer code={bashCode} language='bash' />
-                  </div>
+              </Grid>
+              <ButtonsBar justify='center' className={classes.buttonsBar}>
+                <Hidden smDown implementation='css'>
+                  <MainButton
+                    color='secondary'
+                    variant='contained'
+                    size='large'
+                    onClick={handleOpenVideo}
+                  >
+                    <PlayArrowIcon />
+                    Pixie in 60 seconds
+                  </MainButton>
                 </Hidden>
-                <ButtonsBar className={classes.buttonsBar}>
-                  <Hidden smDown implementation='css'>
+                <Hidden mdUp implementation='css'>
+                  <a
+                    style={{ textDecoration: 'none' }}
+                    href='https://www.youtube.com/watch?v=5oY_ova5GrA&'
+                    rel='noopener noreferrer'
+                    target='_blank'
+                  >
                     <MainButton
                       color='secondary'
                       variant='contained'
                       size='large'
-                      onClick={handleOpenVideo}
                     >
                       <PlayArrowIcon />
-                      Pixie in 60 seconds
+                      Pixie in 45 seconds
                     </MainButton>
-                  </Hidden>
-                  <Hidden mdUp implementation='css'>
-                    <a
-                      style={{ textDecoration: 'none' }}
-                      href='https://www.youtube.com/watch?v=5oY_ova5GrA&'
-                      rel='noopener noreferrer'
-                      target='_blank'
-                    >
-                      <MainButton
-                        color='secondary'
-                        variant='contained'
-                        size='large'
-                      >
-                        <PlayArrowIcon />
-                        Pixie in 45 seconds
-                      </MainButton>
-                    </a>
-                  </Hidden>
-                  <MainButton
-                    variant='outlined'
-                    color='secondary'
-                    size='large'
-                    onClick={scrollToScripts}
-                  >
-                    Learn More
-                  </MainButton>
-                </ButtonsBar>
-              </Grid>
-              <Grid item xs={12} md={1} />
-              <Grid item xs={12} md={5}>
-                <Hidden smDown implementation='css'>
-                  <div className={classes.codeRenderer}>
-                    <CodeRenderer code={bashCode} language='bash' />
-                    <Typography variant='body2' className={classes.smallText}>
-                      Run this to download the PX CLI and install the hosted version of Pixie.
-                      No code changes needed. (Self-hosted install script&nbsp;
-                      <AnchorTag
-                        href='https://github.com/pixie-labs/pixie/issues/238'
-                      >
-                        coming soon
-                      </AnchorTag>
-                      ).
-                      Full Quick Start guide&nbsp;
-                      <AnchorTag
-                        href='https://docs.px.dev/installing-pixie/quick-start/'
-                      >
-                        here
-                      </AnchorTag>
-                      .
-                    </Typography>
-                  </div>
+                  </a>
                 </Hidden>
-              </Grid>
+                <MainButton
+                  variant='outlined'
+                  color='secondary'
+                  size='large'
+                  onClick={scrollToScripts}
+                >
+                  Learn More
+                </MainButton>
+              </ButtonsBar>
             </Grid>
           </Container>
 
