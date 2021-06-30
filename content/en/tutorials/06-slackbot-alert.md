@@ -57,7 +57,6 @@ The Pixie Alerts App will simply write to a channel, but if you wanted to add su
 
 7. Copy the `Bot User OAuth Access Token`.
 
-
 ::: div image-m
 <svg title='Save Bot OAuth Access Token after installation.' src='slackbot/bot-token.png'/>
 :::
@@ -80,9 +79,9 @@ The Pixie Alerts App will simply write to a channel, but if you wanted to add su
 px demo deploy px-sock-shop
 ```
 
-2. Find your Pixie Cluster ID following the directions [here](/using-pixie/api-quick-start/#get-a-cluster-id). Save this string, we'll use it in Part 3.
+2. Find your cluster's ID following the directions [here](/reference/admin/cluster-id/#find-the-cluster-id). Save this string, we'll use it in Part 3.
 
-3. Create a Pixie API Key following the directions [here](/using-pixie/api-quick-start/#get-an-api-token). Save this string, we'll use it in Part 3.
+3. Create an API Key following the directions [here](/reference/admin/api-keys/#create-an-api-key). Save this string, we'll use it in Part 3.
 
 ## Run the Slackbot app
 
@@ -99,7 +98,6 @@ cd slack-alert-app/<language>
 ```
 
 2. (Python only) Install the dependencies.
-
 
 ```python
 # Requires Python 3.8.7+
@@ -124,6 +122,7 @@ export PIXIE_API_KEY="your_api_key"
 ```python
 python slackbot.py
 ```
+
 ```go
 go run slackbot.go
 ```

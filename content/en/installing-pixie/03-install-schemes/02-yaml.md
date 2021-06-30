@@ -13,16 +13,11 @@ Check if your K8s cluster meets Pixie's [requirements](/installing-pixie/require
 px deploy --check_only
 ```
 
-If your cluster fails any checks, you may still proceed with installation, but it is unlikely that Pixie will work on your cluster. 
+If your cluster fails any checks, you may still proceed with installation, but it is unlikely that Pixie will work on your cluster.
 
 ## 2. Create deployment key
-Create a deployment key from the [admin page](https://work.withpixie.ai/admin) or by running:
 
-``` bash
-# Create deployment key
-px deploy-key create
-```
-**Note:** The deploy key can be used to install on any number of clusters. If you are installing in a cluster previously seen by Pixie, then the install merges the history with the previous version in Pixie.
+Create a deployment key following the directions [here](/reference/admin/deploy-keys/#create-a-deploy-key).
 
 ## 3. Extract manifests
 

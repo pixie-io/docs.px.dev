@@ -14,65 +14,9 @@ Check out the following video for a live coding demo using the Go API:
 
 ## Setup
 
-### Install Pixie on your cluster
-
-If Pixie is not already installed on your Kubernetes cluster, please consult our [install guides](/installing-pixie/quick-start/).
-
-### Get an API token
-
-You can create an API Token using Pixie's Live UI or CLI.
-
-#### Using the CLI
-
-In the terminal, run:
-
-```bash
-# Create Pixie api-key.
-px api-key create
-```
-
-Save the output value labeled `Key`, we'll use it shortly.
-
-::: div image-l
-<svg title='CLI output for `px api-key create` command.' src='api/cli-create-key.png'/>
-:::
-
-#### Using the Live UI
-
-1. Login to Pixie's [admin page](http://work.withpixie.ai/admin).
-
-2. Navigate to the `API Keys` tab along the top of the page.
-
-3. Select the `+ New Key` button in the top-right corner. This will create a new key at the top of the API Keys table.
-
-4. In the `Actions` column, select the 3-dot menu, then the `Copy value` menu item.
-
-<svg title='API Key interface in the Live UI Admin page.' src='api/live-ui-create-key.png'/>
-
-### Get a cluster ID
-
-You can find your cluster's ID using Pixie's Live UI or CLI tool.
-
-#### Using the CLI
-
-In the terminal, run:
-
-```bash
-# display cluster IDs for all clusters with Pixie installed
-px get viziers
-```
-
-Select the cluster you want to query using the API, and save its `ID`. We'll use this value shortly.
-
-<svg title='CLI output for `px get viziers` command.' src='api/cli-cluster-id.png'/>
-
-#### Using the Live UI
-
-1. Log in to Pixie's [admin page](http://work.withpixie.ai/admin).
-
-2. On the Clusters tab, hover over the `ID` column value next to your cluster's name to display the full 36-character string.
-
-<svg title='Cluster table in the Live UI Admin page.' src='api/live-ui-cluster-id.png'/>
+1. Install Pixie on your cluster using the [install guides](/installing-pixie/quick-start/).
+2. Find your cluster's ID following the directions [here](/reference/admin/cluster-id/#find-the-cluster-id).
+3. Create an API key following the directions [here](/reference/admin/api-keys/#create-an-api-key). An API Key is required when using the client API for running queries.
 
 ## Install the client library
 
