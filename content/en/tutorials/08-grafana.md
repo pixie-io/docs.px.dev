@@ -35,7 +35,7 @@ Before you can create a dashboard, you will need to add Pixie as a datasource:
 <svg title='' src='grafana/plugin.png'/>
 :::
 
-5. The Pixie Plugin requires a Pixie API key and cluster ID to execute queries. To create an API Key, follow the directions [here](/using-pixie/api-quick-start/#get-an-api-token). To find your cluster's ID, follow the directions [here](/using-pixie/api-quick-start/#get-a-cluster-id).
+5. The Pixie Plugin requires a Pixie API key and cluster ID to execute queries. To create an API Key, follow the directions [here](/reference/admin/api-keys/#create-an-api-key). To find your cluster's ID, follow the directions [here](/reference/admin/cluster-id/#find-the-cluster-id).
 
 ::: div image-l
 <svg title='' src='grafana/configure-plugin.png'/>
