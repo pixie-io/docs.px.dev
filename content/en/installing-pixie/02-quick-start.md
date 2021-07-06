@@ -9,7 +9,9 @@ Get Pixie fully-managed with [Pixie Community Cloud](https://docs.pixielabs.ai/i
 
 ## Prerequisites
 
-Pixie can be installed in many different Kubernetes environments. Please refer to Pixie's [requirements](/installing-pixie/requirements) to make sure that your Kubernetes cluster is supported.
+1. Pixie can be installed in many different Kubernetes environments. Please refer to Pixie's [requirements](/installing-pixie/requirements) to make sure that your Kubernetes cluster is supported.
+
+2. Your cluster will need to support Pixie creating and using [PersistentVolumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/). 
 
 ## 1. Deploy Pixie Cloud
 
