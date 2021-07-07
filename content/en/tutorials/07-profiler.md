@@ -7,6 +7,8 @@ order: 7
 
 This tutorial will demonstrate how to use Pixie's Always-On Profiling feature to investigate a spike in CPU utilization, using a flamegraph to identify a performance issue within the application code.
 
+Pixie's profiling feature currently supports Go, C++, and Rust. Other language support coming soon. 
+
 <YouTube youTubeId="Zr-s3EvAey8"/>
 
 ## Prerequisites
