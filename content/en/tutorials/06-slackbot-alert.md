@@ -104,7 +104,7 @@ cd slack-alert-app/<language>
 pip install -r requirements.txt
 ```
 
-3. Create the environment variables required by slackbot code:
+3. Create the environment variables required by the slackbot code:
 
 ```bash
 # Slackbot token from Part 1.
