@@ -63,7 +63,7 @@ The Pixie Alerts App will simply write to a channel, but if you wanted to add su
 
 ### Create an alerts channel
 
-1. Create a new channel called `#pixie-alerts` for the Pixie Alerts App to post in. If you use a different channel name, you'll need to update the `CHANNEL` variable in `slackbot.py`.
+1. Create a new channel called `#pixie-alerts` for the Pixie Alerts App to post in. If you use a different channel name, you'll need to update the `CHANNEL` variable in the slackbot code.
 
 2. Invite the Pixie Alerts App to the channel, using `/invite @Pixie Alerts`.
 
@@ -104,7 +104,7 @@ cd slack-alert-app/<language>
 pip install -r requirements.txt
 ```
 
-3. Create the environment variables required by `slackbot.py`:
+3. Create the environment variables required by the slackbot code:
 
 ```bash
 # Slackbot token from Part 1.
