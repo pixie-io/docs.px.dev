@@ -9,7 +9,7 @@ featuredInstall: true
 - SWE's and SRE's can easily monitor health of DB queries from the perspective of services talking to the database
 - SWEs can drill down to sepecific queries to optimize performance
 
-View list of supported databases [here](/about-pixie/observability).
+View list of supported databases [here](/about-pixie/data-sources#supported-protocols).
 
 **Example Questions:** 
 - _"Are we making redundant queries?"_

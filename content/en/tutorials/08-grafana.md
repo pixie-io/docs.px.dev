@@ -121,7 +121,7 @@ If you don't see any data in your graph, try:
 
 - Switching to the **Table** visualization to make sure that the query is returning some sort of data in table form.
 
-- Making sure that your cluster has HTTP traffic that Pixie can automatically trace. Instructions for installing a demo application with HTTP traffic can be found [here](https://docs.px.dev/installing-pixie/quick-start/#start-a-demo-app). If you're using your own application, double check that [Pixie supports the protocols](https://docs.px.dev/about-pixie/observability/) for the traffic in your cluster.
+- Making sure that your cluster has HTTP traffic that Pixie can automatically trace. Instructions for installing a demo application with HTTP traffic can be found [here](https://docs.px.dev/installing-pixie/quick-start/#start-a-demo-app). If you're using your own application, double check that [Pixie supports the protocols](/about-pixie/data-sources) for the traffic in your cluster.
 
 ### Time series graph of HTTP throughput per service
 
