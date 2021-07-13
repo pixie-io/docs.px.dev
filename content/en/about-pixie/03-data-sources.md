@@ -38,6 +38,7 @@ The following is a list of protocols automatically traced by Pixie.
 | PostgreSQL    | Supported           |                                |
 | Cassandra     | Supported           |                                |
 | Redis         | Supported           |                                |
+| Kafka         | Coming Soon         |                                |
 
 Additional protocols are under development.
 
