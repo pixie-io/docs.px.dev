@@ -15,6 +15,5 @@ In this section we'll cover steps to install Pixie in specific K8s environments:
     - [Managed - GKE](/installing-pixie/install-guides/gke-setup)
     - [Managed - AKS](/installing-pixie/install-guides/aks-setup/)
     - [Self-Managed K8s](/installing-pixie/install-guides/self-managed-k8s-setup)
-- [Configure Data Transfer Mode](/installing-pixie/data-transfer-mode)
 - [Updating Pixie](/installing-pixie/updating-pixie)
 - [Uninstalling Pixie](/installing-pixie/uninstall)

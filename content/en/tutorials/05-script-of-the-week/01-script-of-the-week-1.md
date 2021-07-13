@@ -11,14 +11,14 @@ The [Network Flow Graph](https://github.com/pixie-labs/pixie/tree/main/src/pxl_s
 
 ## When would I use this script?
 
-Pixie's auto-instrumentation platform can get fairly detailed information about HTTP, gRPC and other [supported](/about-pixie/observability/) protocols.  But there’s also a lot of traffic that we don’t yet support at a protocol capture level. This script provides basic network visbility for unsupported protocols, like CouchDB.
+Pixie's auto-instrumentation platform can get fairly detailed information about HTTP, gRPC and other [supported](/about-pixie/data-sources/) protocols.  But there’s also a lot of traffic that we don’t yet support at a protocol capture level. This script provides basic network visbility for unsupported protocols, like CouchDB.
 
  If your protocol is supported by Pixie, then it is better to use one of the protocol-aware Pixie scripts, as those scripts are able to track QPS, latency, and error rate for specific protools. Without protocol awareness, Pixie onlys track throughput and number of connections.
 
 Here are a few use-cases for this protocol-blind script:
 
 - For a very high-level overview of which services communicate with each other
-- Determining which services talk to an [unsupported](/about-pixie/observability/) database (e.g. MongoDB, Redis, Kafka)
+- Determining which services talk to an [unsupported](/about-pixie/data-sources/) database (e.g. MongoDB, Redis, Kafka)
 - Determining which services talk to a third-party API endpoint (e.g. Stripe)
 
 ## How do I run this script?
@@ -109,7 +109,7 @@ def net_flow_graph(start: str, ips: list, grouping_entity: str):
 
 To build the Network Flow Graph PxL script:
 
-- The `conn_stats` (or connection stats) table contains all of the data that the [Pixie Platform](/about-pixie/how-pixie-works/) has gathered about network transactions sent and received from pods within your cluster. The full set of data that is available within the `conn_stats` table can be seen by running the `px/schemas` script.
+- The `conn_stats` (or connection stats) table contains all of the data that Pixie has gathered about network transactions sent and received from pods within your cluster. The full set of data that is available within the `conn_stats` table can be seen by running the `px/schemas` script.
 
 - On line `5`, we create a 2D `DataFrame` data structure populated with data from the `conn_stats` table that was collected after the `start_time` script input variable.
 

@@ -9,7 +9,7 @@ featuredInstall: true
 - SWEs and SREs can view raw transactions between services to analyze performance
 - Infra/Platform engineers can analyze traffic behavior to optimize system cost and performance.
 
-View list of supported network protocols [here](/about-pixie/observability).
+View list of supported network protocols [here](/about-pixie/data-sources#supported-protocols).
 
 **Example Questions:** 
 - _"Are requests from a specific AZ slow?"_

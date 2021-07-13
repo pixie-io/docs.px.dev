@@ -3,39 +3,43 @@ title: "Pixie Overview"
 metaTitle: "About Pixie | Pixie Overview"
 metaDescription: "Motivation, goals and use-cases"
 order: 1
+redirect_from:
+    - /about-pixie/how-pixie-works
 ---
 
-## Why build Pixie now?
+Pixie is an open source observability tool for Kubernetes applications. Pixie uses eBPF to automatically capture its telemetry data without the need for manual instrumentation. 
 
-We now build applications as decoupled software systems for velocity, agility and scale. However, we continue to waste hours wrangling the data we need to explore, debug and manage them.
+Using Pixie, developers can view the high-level state of their cluster (service maps, cluster resources, application traffic) and also drill-down into more detailed views (pod state, flame graphs, individual application requests).
 
-Couldn't we build data systems which do the grunt work for us and free us up to focus on shipping amazing customer experiences instead?
+Pixie was contributed by New Relic to the CNCF as a sandbox project in June 2021.
 
-## How could we avoid grunt work?
+## Features
 
-We need to take three technological leaps to improve developer efficiency and joy:
+* **Auto-telemetry**: Using [eBPF](http://www.brendangregg.com/ebpf.html), Pixie automatically collects telemetry data such as full-body requests, resource metrics, and network statistics.
 
-- **Auto-collect baseline data:** Months are lost today in adding language specific instrumentation across our codebases to get visibility. We can avoid this by collecting baseline metrics, traces, logs and events without code changes while exposing tooling to ingest custom last-mile telemetry as needed.
+* **In-cluster edge compute**: Pixie runs directly on the Kubernetes cluster and stores all telemetry data locally. Pixie uses less than 5% of cluster CPU, and in most cases less than 2%.
 
-- **Programmatic data access:** Exploration, debugging, and analysis workflows typically require manual configuration and navigation through siloed GUIs. Pixie exposes a unified data layer, and analysis signals via an expressive API which enables efficient developer workflows and frees up data to build powerful integrations.
+* **Scriptability**: [PxL](/reference/pxl/), Pixie’s flexible, Pythonic query language, can be used across Pixie’s UI, CLI, and client APIs.
 
-- **Store useful data only:** We waste far too much time and money building centralized data systems to truck around telemetry which is mostly useless. Moving data closer to the source and storing only useful live data with summarized historicals would allow us to enable edge-ML on unsampled data, scale faster and fundamentally change the unit-economics of telemetry systems.
+## Data Sources
 
-## How does Pixie save time?
+When Pixie is deployed on a Kubernetes cluster, it uses eBPF to automatically collect a rich set of data sources. These include full-body requests traces, resource and network metrics, and application profiles.
 
-Pixie gives instant, programmatic and unified access to application performance data and signals without needing to change code, configure manual GUIs or move data off-cluster.
+A full list of Pixie's supported datasources can be found [here](/about-pixie/data-sources).
 
-Application-developers, Platform/Infra engineers and DevOps/SREs use Pixie to efficiently run a wide range of [analyses](/using-pixie/). Some of the most popular ones are:
-
-- Log Go/C++/Rust applications without stopping production code.
-- Access standardized performance metrics for all services and K8s entities.
-- Trace and cluster full-body network requests.
-- View and analyze raw database queries.
-- Profile performance of builds in CI.
-- Track utilization of K8s infrastructure primitives
-
-As shown in the illustration below, this magical developer experience is powered by Pixie's distributed edge intelligence platform which we'll describe in detail in the [next section](/about-pixie/how-pixie-works/).
+## System Architecture
 
 ::: div image-xl
-<svg title='Pixie Platform' src='pixie-overview.png' />
+<svg title='Platform Architecture' src='product-arch.svg' />
 :::
+
+* **Pixie Edge Module (PEM)**: Pixie's agent, installed per node. PEMs use eBPF to collect data, which is stored locally on the node.
+
+* **Vizier**: Pixie’s collector, installed per cluster. Responsible for query execution and managing PEMs.
+
+* **Pixie Cloud**:  Used for user management, authentication, and proxying “passthrough” mode. Can be hosted or self-hosted.
+
+* **Pixie CLI**: Used to deploy Pixie. Can also be used to run queries and manage resources like API keys.
+
+* **Pixie Client API**: Used for programmatic access to Pixie (e.g. integrations, Slackbots, and custom user logic requiring Pixie data as an input)
+

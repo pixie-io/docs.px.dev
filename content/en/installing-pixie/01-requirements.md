@@ -80,4 +80,4 @@ Pixie may also work on other distributions.
 
 Pixie's Vizier Module sends outgoing HTTPS/2 requests to `withpixie.ai:443`.
 
-For an explanation of what data is sent over this connection, see Pixie's [Architecture](/about-pixie/how-pixie-works/#data-transfer-modes) section.
+For an explanation of what data is sent over this connection, see Pixie's [Data Transfer Modes](/reference/admin/data-transfer-mode) section.
