@@ -40,6 +40,5 @@ PoiTooltip.propTypes = {
 };
 
 PoiTooltip.defaultProps = {
-  pulse: false,
 };
 export default PoiTooltip;
