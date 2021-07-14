@@ -154,7 +154,7 @@ For comprehensive alerting, we recommend integrating with third-party observabil
 
 #### How do I delete a cluster?
 
-The UI does not currently support deleting clusters. If you’d like to rename your cluster, you can redeploy Pixie with the cluster name flag. SEe the [install guides](/installing-pixie/install-schemes/) for specific instructions.
+The UI does not currently support deleting clusters. If you’d like to rename your cluster, you can redeploy Pixie with the cluster name flag. See the [install guides](/installing-pixie/install-schemes/) for specific instructions.
 
 ## Troubleshooting
 
