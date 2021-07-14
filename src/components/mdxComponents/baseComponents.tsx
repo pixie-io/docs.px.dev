@@ -32,6 +32,7 @@ import AnchorTag from './anchor';
 import CodeRenderer from './codeRenderer';
 import ListItem from './listItem';
 import HLink from './h-link';
+import PoiTooltip from '../poi-tooltip/poi-tooltip';
 
 const getChildren = (props) => props.children;
 const getLanguage = (props) => (props.className ? props.className.replace('language-', '') : 'bash');
@@ -88,5 +89,5 @@ export default {
   img: (props: any) => <img {...props} className='doc-image' />,
   note: (props: any) => <Note {...props} />,
   Alert,
-
+  PoiTooltip,
 };
