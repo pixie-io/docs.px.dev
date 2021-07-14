@@ -51,7 +51,7 @@ for network transmission stats. Thicker lines indicate more traffic.
 <PoiTooltip top={60} left={87}>
 <strong>Enable Hierarchy View</strong>
 {' '}
-for a different view of the graph.
+for a different visualization of the graph.
 </PoiTooltip>
 
 <svg title='' src='use-case-tutorials/net_flow_graph.png'/>
