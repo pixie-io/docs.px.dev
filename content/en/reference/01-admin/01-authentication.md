@@ -1,7 +1,8 @@
 ---
 title: "Authentication"
-metaTitle: "Administration | Authentication"
+metaTitle: "Reference | Admin | Authentication"
 metaDescription: "Ways to authenticate end-user accounts."
+order: 1
 redirect_from:
     - /admin/authentication/
 ---

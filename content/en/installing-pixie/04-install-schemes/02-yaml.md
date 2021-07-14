@@ -1,6 +1,6 @@
 ---
 title: "YAML"
-metaTitle: "Install | Install Schemes | YAML"
+metaTitle: "Install | Install Schemes (optional) | YAML"
 metaDescription: "How to install Pixie via YAML"
 order: 2
 ---

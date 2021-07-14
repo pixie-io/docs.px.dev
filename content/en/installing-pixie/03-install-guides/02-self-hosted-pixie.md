@@ -1,11 +1,11 @@
 ---
-title: "Quick Start"
-metaTitle: "Install | Quick Start"
-metaDescription: "Getting started guide to setup Pixie"
+title: "Self-Hosted Pixie"
+metaTitle: "Install | Install Guides | Self-Hosted Pixie"
+metaDescription: "Getting started guide to setup 100% self-hosted Pixie"
 order: 2
 ---
 
-Get Pixie fully-managed with [Pixie Community Cloud](https://docs.pixielabs.ai/installing-pixie/quick-start/) (free forever) or run on your own infrastructure with the following self-managed option.
+Get Pixie fully-managed with [Pixie Community Cloud](https://docs.pixielabs.ai/installing-pixie/install-guides/community-cloud-for-pixie) (free forever) or run on your own infrastructure with the following self-managed option.
 
 ## Prerequisites
 
@@ -16,7 +16,7 @@ Get Pixie fully-managed with [Pixie Community Cloud](https://docs.pixielabs.ai/i
 ## 1. Deploy Pixie Cloud
 
 <Alert variant="outlined" severity="info">
-  Pixie also offers a free account with Pixie Community Cloud to make getting started even easier and faster. To get Pixie Cloud, check out the community cloud <a href="https://docs.pixielabs.ai/installing-pixie/quick-start/">quick start guide</a>.
+  Pixie also offers a free account with Pixie Community Cloud to make getting started even easier and faster. To get Pixie Cloud, check out the community cloud <a href="https://docs.pixielabs.ai/installing-pixie/install-guides/community-cloud-for-pixie">quick start guide</a>.
 </Alert>
 
 <Alert variant="outlined" severity="info">

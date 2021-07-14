@@ -1,6 +1,6 @@
 ---
 title: "Helm"
-metaTitle: "Install | Install Schemes | Helm"
+metaTitle: "Install | Install Schemes (optional) | Helm"
 metaDescription: "How to install Pixie via Helm"
 order: 3
 ---
