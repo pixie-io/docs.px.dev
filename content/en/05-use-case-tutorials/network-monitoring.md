@@ -1,6 +1,6 @@
 ---
-title: "Network Monitoring Tutorial"
-metaTitle: "Using Pixie | Use Cases | Network Monitoring Tutorial"
+title: "Network Monitoring"
+metaTitle: "Using Pixie | Use Cases | Network Monitoring"
 metaDescription: "Network monitoring using Pixie."
 order: 1
 ---
@@ -126,6 +126,8 @@ Let's use the `px/tcp_drops`script to see a global view of TCP drops across the 
 2. Press the `RUN` button in the top right and the script will first deploy a tracepoint (the new data source) and then query the new data source.
 
 <svg title='' src='use-case-tutorials/tcp_drops.png'/>
+
+> Hover over an edge to see the number of drops between pod pairs. The color and thickness of the edges indicate an increase in the number of TCP drops.
 
 3. After a few seconds have passed, press the `RUN` button once again. Since more time has elapsed since the tracepoint was deployed, you should see more data in the graph.
 
