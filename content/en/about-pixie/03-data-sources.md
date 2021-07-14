@@ -34,6 +34,7 @@ The following is a list of protocols automatically traced by Pixie.
 | HTTP          | Supported           |                                |
 | HTTP2/gRPC    | Partially Supported | Currently only for Golang apps |
 | DNS           | Supported           |                                |
+| NATS          | Supported           |                                |
 | MySQL         | Supported           |                                |
 | PostgreSQL    | Supported           |                                |
 | Cassandra     | Supported           |                                |
