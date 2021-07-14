@@ -50,6 +50,7 @@ px scripts list
 # Run a script
 px run px/demo_script
 ```
+
 For more information, checkout our [CLI guide](/using-pixie/using-cli/).
 
 ## 6. Explore the web app
