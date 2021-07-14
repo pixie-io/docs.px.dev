@@ -25,7 +25,7 @@ A global view of the network traffic flowing within a cluster can be used to:
 
 Let’s use the `px/net_flow_graph` script to see a graph of all of the network traffic passing through the cluster:
 
-1. Open the [Live UI](work.withpixie.ai) and select `px/net_flow_graph` from the `script` drop-down menu at the top.
+1. Open the [Live UI](http://work.withpixie.ai/) and select `px/net_flow_graph` from the `script` drop-down menu at the top.
 
 > When the script opens, you’ll get an error indicating a value is missing for the `namespace` required argument. The UI denotes required script arguments with an asterisk after the argument name.
 
@@ -127,7 +127,7 @@ Let's use the `px/tcp_drops`script to see a global view of TCP drops across the 
 
 <svg title='' src='use-case-tutorials/tcp_drops.png'/>
 
-> Hover over an edge to see the number of drops between pod pairs. The color and thickness of the edges indicate an increase in the number of TCP drops.
+2. Hover over an edge to see the number of drops between pod pairs. The color and thickness of the edges indicate an increase in the number of TCP drops.
 
 3. After a few seconds have passed, press the `RUN` button once again. Since more time has elapsed since the tracepoint was deployed, you should see more data in the graph.
 
