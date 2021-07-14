@@ -417,9 +417,9 @@ const IndexPage = withStyles((theme: Theme) => ({
                   variant='outlined'
                   color='secondary'
                   size='large'
-                  onClick={scrollToScripts}
+                  href='/installing-pixie'
                 >
-                  Learn More
+                  Install Guide
                 </MainButton>
               </ButtonsBar>
             </Grid>
