@@ -48,6 +48,11 @@
     top: 62px;
     padding: 12px 14px 12px 14px;
     color: #FFFFFF;
+
+    strong {
+      color: #12d6d6;
+    }
+
     &:after {
       bottom: 100%;
       left: 50%;
