@@ -67,3 +67,7 @@ a.toc-anchor::before {
     font-size: inherit;
     line-height: 24px;
 }
+
+.relative {
+    position: relative;
+}

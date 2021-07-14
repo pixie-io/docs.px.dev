@@ -139,6 +139,12 @@ const plugins = [
     },
   },
   {
+    resolve: 'gatsby-plugin-sass',
+    options: {
+      includePaths: ['node_modules', './src/scss'],
+    },
+  },
+  {
     resolve: 'gatsby-plugin-google-fonts',
     options: {
       fonts: [
