@@ -50,7 +50,7 @@ order: 5
 
 #### What is Pixie?
 
-Pixie is an open source observability tool for Kubernetes applications. See the [overview](/about-pixie/what-is-pixie/).
+Pixie is an open source observability tool for Kubernetes applications. See the [Overview](/about-pixie/what-is-pixie/).
 
 #### Who created Pixie?
 
@@ -66,7 +66,7 @@ Pixie has been tested to work with a variety of Kubernetes environments listed i
 
 #### Can I completely self host Pixie?
 
-Yes. See the [quick start](/installing-pixie/quick-start/) to get started.
+Yes. See the [Quick Start](/installing-pixie/quick-start/) to get started.
 
 #### Does Pixie offer a hosted cloud offering?
 
@@ -120,7 +120,7 @@ Typical performance overhead for node CPU usage is between 2-5%, depending on th
 
 #### Which languages are supported for continuous profiling?
 
-Go, C++ and Rust are currently supported. The [roadmap](/about-pixie/roadmap/#roadmap) contains plans to expand support to other languages.
+Go, C++ and Rust are currently supported. The [Roadmap](/about-pixie/roadmap/#roadmap) contains plans to expand support to other languages.
 
 ## How do I...?
 
@@ -130,7 +130,7 @@ Pixie offers two [client libraries](/reference/api/overview/) (Go, Python) to al
 
 Pixie does not currently offer data ingestion.
 
-The [roadmap](/about-pixie/roadmap/#roadmap) contains plans to support exporting or ingesting data in a variety of additional formats.
+The [Roadmap](/about-pixie/roadmap/#roadmap) contains plans to support exporting or ingesting data in a variety of additional formats.
 
 #### How do I share a Pixie dashboard with others?
 
@@ -138,7 +138,7 @@ The [roadmap](/about-pixie/roadmap/#roadmap) contains plans to support exporting
 
 To share data from the same cluster, [send an invitation through the Admin UI](/installing-pixie/quick-start/#invite-others-to-your-organization-(optional)).
 
-*Community Cloud*
+*Community Cloud for Pixie*
 
 To share data from the same cluster, both parties will need to register for Pixie accounts using emails from the same gsuite email domain. For example, if both parties sign up using a @mycompany.com email address, then both parties will automatically be grouped into the same mycompany org and see the same results.
 
@@ -148,13 +148,13 @@ Pixie does not yet offer full RBAC support. However, you can enable “Approvals
 
 #### How do I send alerts?
 
-Pixie does not offer alerting. However, alerts can be set up using Pixie’s API. For example, see the [slackbot alert tutorial](/tutorials/slackbot-alert/).
+Pixie does not offer alerting. However, alerts can be set up using Pixie’s API. For example, see the [Slackbot Alert Tutorial](/tutorials/slackbot-alert/).
 
 For comprehensive alerting, we recommend integrating with third-party observability tools (such as New Relic’s integration).
 
 #### How do I delete a cluster?
 
-The UI does not currently support deleting clusters. If you’d like to rename your cluster, you can redeploy Pixie with the `--cluster_name` deploy flag.
+The UI does not currently support deleting clusters. If you’d like to rename your cluster, you can redeploy Pixie with the cluster name flag. SEe the [install guides](/installing-pixie/install-schemes/) for specific instructions.
 
 ## Troubleshooting
 
@@ -208,7 +208,7 @@ In [Data Isolation Mode](/reference/admin/data-transfer-mode/) Pixie doesn’t u
 
 #### Why can’t I see application profiles / flamegraphs for my pod / node?
 
-Continuous profiling currently only supports Go/C++/Rust. The [roadmap](/about-pixie/roadmap/#roadmap) contains plans to expand this support to Java, Ruby, Python, etc.
+Continuous profiling currently only supports Go/C++/Rust. The [Roadmap](/about-pixie/roadmap/#roadmap) contains plans to expand this support to Java, Ruby, Python, etc.
 
 #### Why is the pem pod’s memory increasing?
 
