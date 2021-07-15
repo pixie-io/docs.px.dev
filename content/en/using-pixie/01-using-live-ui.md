@@ -69,10 +69,10 @@ These community scripts enable the developer community with a broad repository o
 
 ## Write Your Own PxL Scripts
 
-To learn how to write PxL scripts, check out this [tutorial](/tutorials/pxl-scripts/).
+To learn how to write PxL scripts, check out this [tutorial](/tutorials/pxl-scripts/write-pxl-scripts).
 
 For writing quick, one-off scripts, use the `Scratch Pad`. The `Scratch Pad` is the first item in the drop-down `script` menu. Open the script editor to add code to the empty PxL Script.
 
 <svg title='Use the Scratch Pad script .' src='live-ui/live-ui-7.png'/>
 
-The `Scratch Pad` does not yet support persistence, so if you are extensively developing a script, we recommend using the [script developer environment](/tutorials/script-dev-environment).
+The `Scratch Pad` does not yet support persistence, so if you are extensively developing a script, we recommend using the [script developer environment](/tutorials/pxl-scripts/script-dev-environment).

@@ -153,7 +153,7 @@ func (s *tableMux) AcceptTable(ctx context.Context, metadata types.TableMetadata
 }
 ```
 
-This PxL query returns two columns from the first 10 rows of the `http_events` table of data. For more information on how this PxL script was written, check out the [PxL script tutorial](/tutorials/pxl-scripts/pxl-scripts-1/).
+This PxL query returns two columns from the first 10 rows of the `http_events` table of data. For more information on how this PxL script was written, check out the [PxL script tutorial](/tutorials/pxl-scripts/write-pxl-scripts/custom-pxl-scripts-1).
 
 Note that the API does not currently support running our open source `px/` scripts by name. If you would like to run one of the `px/` scripts that we include in the CLI or Live UI, you will need to copy the PxL script and pass it in as a string. Only PxL scripts with an empty Vis Spec will return results from the API.
 

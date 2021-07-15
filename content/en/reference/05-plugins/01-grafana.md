@@ -13,7 +13,7 @@ Instructions for installing the plugin can be found [here](https://github.com/pi
 
 ## Usage
 
-To get started using the plugin, check out the [tutorial](/tutorials/grafana).
+To get started using the plugin, check out the [tutorial](/tutorials/integrations/grafana).
 
 ### Configuration
 
@@ -27,7 +27,7 @@ The plugin requires a Pixie API key and cluster ID to execute queries. Grafana e
 The plugin uses the Pixie Language (PxL) to query telemetry data collected by the Pixie platform.
 
 - Learn more about the PxL language [here](/reference/pxl/).
-- Learn how to write a PxL script [here](/tutorials/pxl-scripts).
+- Learn how to write a PxL script [here](/tutorials/pxl-scripts/write-pxl-scripts).
 
 <Alert variant="outlined" severity="warning">
   Note that the plugin does not support Vis Spec input. PxL queries must return a table using the `px.display()` call.

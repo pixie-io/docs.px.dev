@@ -66,11 +66,11 @@ Pixie has been tested to work with a variety of Kubernetes environments listed i
 
 #### Can I completely self host Pixie?
 
-Yes. See the self-hosted [Install Guide](/installing-pixie/install-guides/self-hosted-pixie) to get started. 
+Yes. See the self-hosted [Install Guide](/installing-pixie/install-guides/self-hosted-pixie) to get started.
 
 #### Does Pixie offer a hosted cloud offering?
 
-Yes. Pixie Community Cloud is a hosted version of Pixie. Pixie stores its data on the cluster, resulting in a very small cloud footprint which allows Pixie to offer the Community Cloud offering 100% free for all Pixie users. See the Community Cloud [Install Guide](/installing-pixie/install-guides/community-cloud-for-pixie) to get started. 
+Yes. Pixie Community Cloud is a hosted version of Pixie. Pixie stores its data on the cluster, resulting in a very small cloud footprint which allows Pixie to offer the Community Cloud offering 100% free for all Pixie users. See the Community Cloud [Install Guide](/installing-pixie/install-guides/community-cloud-for-pixie) to get started.
 
 ## Data Collection
 
@@ -148,7 +148,7 @@ Pixie does not yet offer full RBAC support. However, you can enable “Approvals
 
 #### How do I send alerts?
 
-Pixie does not offer alerting. However, alerts can be set up using Pixie’s API. For example, see the [Slackbot Alert Tutorial](/tutorials/slackbot-alert/).
+Pixie does not offer alerting. However, alerts can be set up using Pixie’s API. For example, see the [Slackbot Alert Tutorial](/tutorials/integrations/slackbot-alert/).
 
 For comprehensive alerting, we recommend integrating with third-party observability tools (such as New Relic’s integration).
 

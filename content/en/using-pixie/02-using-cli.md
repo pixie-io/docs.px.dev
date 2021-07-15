@@ -122,7 +122,7 @@ And at the top of the Live CLI output.
 
 ## Running a Custom PxL Script
 
-To learn how to write custom PxL scripts, check out this [tutorial](/tutorials/pxl-scripts/).
+To learn how to write custom PxL scripts, check out this [tutorial](/tutorials/pxl-scripts/write-pxl-scripts).
 
 To run your own PxL script using the CLI, use the `-f` flag to provide the script's filename.
 

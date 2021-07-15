@@ -21,13 +21,13 @@ Pixie automatically collects the following data:
 
 * **JVM metrics**: JVM memory management metrics for Java applications.
 
-* **Application profiles**: Sampled stack traces from your application. Pixie’s [continuous profiler](/tutorials/profiler/) is always running to help identify application performance bottlenecks when you need it. Currently works for compiled languages (Go, Rust, C/C++).
+* **Application profiles**: Sampled stack traces from your application. Pixie’s [continuous profiler](/tutorials/pixie-101/profiler/) is always running to help identify application performance bottlenecks when you need it. Currently works for compiled languages (Go, Rust, C/C++).
 
-Pixie can also be configured by the user to collect [dynamic logs](/tutorials/simple-go-tracing/) from your Go code and to run [custom BPFTrace scripts](/tutorials/distributed-bpftrace-deployment/).
+Pixie can also be configured by the user to collect [dynamic logs](/tutorials/custom-data/dynamic-go-logging/) from your Go code and to run [custom BPFTrace scripts](/tutorials/custom-data/distributed-bpftrace-deployment).
 
 ## Supported Protocols
 
-The following is a list of protocols automatically traced by Pixie. 
+The following is a list of protocols automatically traced by Pixie.
 
 | Protocol      | Support             | Notes                          |
 | :------------ | :------------------ | :----------------------------- |
@@ -46,5 +46,6 @@ Additional protocols are under development.
 ## Encryption Libraries
 
 Pixie supports tracing of traffic encrypted with the following libraries:
-- [OpenSSL](https://www.openssl.org/) (versions 1.1.0, 1.1.1)
-- [Go TLS](https://golang.org/pkg/crypto/tls/)
+
+* [OpenSSL](https://www.openssl.org/) (versions 1.1.0, 1.1.1)
+* [Go TLS](https://golang.org/pkg/crypto/tls/)

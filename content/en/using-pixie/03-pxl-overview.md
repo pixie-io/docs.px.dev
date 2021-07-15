@@ -37,7 +37,7 @@ Pixie's scripts are written using the Pixie Language (PxL), a DSL that follows t
 
 ### Write your own PxL Script
 
-Check out our [tutorials](/tutorials/pxl-scripts) to learn how to write your own PxL scripts.
+Check out our [tutorials](/tutorials/pxl-scripts/write-pxl-scripts) to learn how to write your own PxL scripts.
 
 ## Contributing Scripts
 
@@ -53,7 +53,7 @@ Filing an [issue](https://github.com/pixie-labs/pixie/issues/new/choose) with an
 
 #### Step 2: Prepare your script
 
-Develop and test your script with the CLI or using the Live UI's [script dev environment](/tutorials/script-dev-environment).
+Develop and test your script with the CLI or using the Live UI's [script dev environment](/tutorials/pxl-scripts/script-dev-environment).
 
 #### Step 3: Create a pull-request
 
