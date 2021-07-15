@@ -66,11 +66,11 @@ Pixie has been tested to work with a variety of Kubernetes environments listed i
 
 #### Can I completely self host Pixie?
 
-Yes. See the [Quick Start](/installing-pixie/quick-start/) to get started.
+Yes. See the self-hosted [Install Guide](/installing-pixie/install-guides/self-hosted-pixie) to get started. 
 
 #### Does Pixie offer a hosted cloud offering?
 
-Pixie Community Cloud is a [hosted version](https://docs.pixielabs.ai/installing-pixie/quick-start/) of Pixie. Pixie stores its data on the cluster, resulting in a very small cloud footprint which allows Pixie to offer the Community Cloud offering 100% free for all Pixie users.
+Yes. Pixie Community Cloud is a hosted version of Pixie. Pixie stores its data on the cluster, resulting in a very small cloud footprint which allows Pixie to offer the Community Cloud offering 100% free for all Pixie users. See the Community Cloud [Install Guide](/installing-pixie/install-guides/community-cloud-for-pixie) to get started. 
 
 ## Data Collection
 
@@ -136,7 +136,7 @@ The [Roadmap](/about-pixie/roadmap) contains plans to support exporting or inges
 
 *Self-hosted Pixie*
 
-To share data from the same cluster, [send an invitation through the Admin UI](/installing-pixie/quick-start/#invite-others-to-your-organization-(optional)).
+To share data from the same cluster, [send an invitation through the Admin UI](/installing-pixie/install-guides/self-hosted-pixie#invite-others-to-your-organization-(optional)).
 
 *Community Cloud for Pixie*
 
@@ -160,7 +160,7 @@ The UI does not currently support deleting clusters. If you’d like to rename y
 
 #### How do I get the Pixie debug logs?
 
-Install Pixie’s [CLI tool](/installing-pixie/quick-start/#2.-install-the-pixie-cli) and run `px collect-logs.` This command will output a zipped file named `pixie_logs_<datestamp>.zip` in the working directory. The selected kube-context determines the Kubernetes cluster that outputs the logs, so make sure that you are pointing to the correct cluster.
+Install Pixie’s [CLI tool](/installing-pixie/install-schemes/cli) and run `px collect-logs.` This command will output a zipped file named `pixie_logs_<datestamp>.zip` in the working directory. The selected kube-context determines the Kubernetes cluster that outputs the logs, so make sure that you are pointing to the correct cluster.
 
 #### My deployment is stuck / fails
 
