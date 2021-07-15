@@ -11,8 +11,8 @@ order: 5
 - [Who created Pixie?](#who-created-pixie)
 - [What license is Pixie released under?](#what-license-is-pixie-released-under)
 - [Which K8s environments are supported?](#which-k8s-environments-are-supported)
-- [Can I completely self-host Pixie?](#can-i-completely-self-host-pixie)
-- [Is there a hosted cloud offering?](#does-pixie-offer-a-hosted-cloud-offering)
+- [Can I completely self-host Pixie?](/#can-i-completely-self-host-pixie)
+- [Is there a hosted cloud offering?](/about-pixie#does-pixie-offer-a-hosted-cloud-offering)
 
 **Data Collection**
 
