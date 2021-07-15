@@ -1,9 +1,10 @@
 ---
 title: "PxL Scripts"
-metaTitle: "Using Pixie | PxL Scripts"
+metaTitle: "Reference | PxL Scripts"
 metaDescription: "Overview of why Pixie uses PxL Scripts"
-order: 3
+order: 6
 redirect_from:
+    - /using-pixie/pxl-overview/
     - /using-pixie/scripts/pxl-scripts/
     - /using-pixie/scripts/contributing-pxl-scripts/
     - /using-pixie/scripts/script-catalog/

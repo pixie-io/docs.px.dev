@@ -97,7 +97,7 @@ per_ns_df.request_throughput = per_ns_df.request_throughput * 1e9
 px.display(per_ns_df['time_', 'request_throughput'])
 ```
 
-This plugin uses the Pixie Language ([PxL](https://docs.px.dev/using-pixie/pxl-overview/)) to query telemetry data collected by the Pixie platform.
+This plugin uses the Pixie Language ([PxL](/reference/pxl-overview/)) to query telemetry data collected by the Pixie platform.
 
 The above PxL query outputs a table of timeseries data showing overall HTTP request throughput. Request throughput is calculated by counting the number HTTP requests that Pixie automatically traces in your cluster.
 
