@@ -5,11 +5,9 @@ metaDescription: "How to install Pixie via CLI"
 order: 1
 ---
 
-## Install the Pixie CLI
+## 1. Install the Pixie CLI
 
-Pixie's CLI is the fastest and easiest way to install and manage your Pixie installation.
-
-Install Pixie's CLI tool in one of four ways:
+Pixie's CLI is the fastest and easiest way to install and manage your Pixie installation. You can install the CLI in one of four ways:
 
 ### Using the install script (easiest)
 
@@ -60,14 +58,25 @@ dpkg -i pixie-px.x86_64.deb
 rpm -i pixie-px.x86_64.rpm
 ```
 
-## Deploy Pixie
+## 2. Check Requirements
+Check if your K8s cluster meets Pixie's [requirements](/installing-pixie/requirements) by running:
+```bash
+px deploy --check_only
+```
+If your cluster fails any checks, you may still proceed with installation, but it is unlikely that Pixie will work on your cluster.
+
+
+## 3. Deploy Pixie
 
 ``` bash
-# Deploy the Pixie Platform in your K8s cluster
+# List the deploy options.
+px deploy --help
+
+# Deploy the Pixie Platform in your K8s cluster.
 px deploy
 ```
 
-## (Optional) Labeling Pixie's Resources
+### (Optional) Labeling Pixie's Resources
 
 When deploying Pixie using the CLI, you have the option of adding one or more custom [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) to the K8s objects deployed by Pixie.
 
