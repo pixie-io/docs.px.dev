@@ -5,13 +5,13 @@ metaDescription: "Network monitoring using Pixie."
 order: 1
 ---
 
-Application health and network performance are inextricably linked. With Pixie, you can easily monitor your network alongside your applications and infrastructure.
+Network performance can have a big impact on the health of your services. However, problems in network performance can often be hard to detect when debugging. With Pixie, you can easily monitor your network alongside your applications and infrastructure.
 
 This tutorial will demonstrate how to use Pixie to:
 
 - Graph the flow of network traffic within your cluster.
 - Graph the flow of DNS requests within your cluster.
-- Grpah TCP drops and TCP retransmits across your cluster.
+- Graph TCP drops and TCP retransmits across your cluster.
 
 **Prerequisites**
 

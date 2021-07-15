@@ -5,10 +5,12 @@ metaDescription: "Network monitoring using Pixie."
 order: 2
 ---
 
+Resource contention can impact the health of your services. With Pixie, you can easily monitor your infrastructure alongside your network and applications.
+
 This tutorial will demonstrate how to use Pixie to:
 
-- Monitor resource usage by [Namespace](#resource-usage-by-namespace), [Node](#resource-usage-by-node), and [Pod](#resource-usage-by-pod).
-- Use deep links to navigate between the scripts, making it
+- Monitor resource usage by Namespace, Node, and Pod.
+- Easily navigate between Kubernetes resources within the UI.
 
 **Prerequisites**
 
@@ -16,20 +18,26 @@ This tutorial will demonstrate how to use Pixie to:
 
 ## Resource Usage by Node
 
-Let’s use the `px/nodes` script to list all of the nodes in our cluster along with high-level resource useage:
+Let’s use the `px/nodes` script to get high-level resource usage information for all of the nodes in our cluster:
 
 1. Open the [Live UI](http://work.withpixie.ai/) and select `px/nodes` from the `script` drop-down menu at the top.
 
 > This script lists all of the nodes in the cluster along with their CPU usage, memory consumption, and network traffic stats. It also displays a list of pods that were on each node during the time window.
 
 ::: div image-xl relative
+<PoiTooltip top={21} left={20}>
+<strong>Click on K8s entities</strong>
+{' '}
+to be taken to an overview of that resource.
+</PoiTooltip>
+
 <PoiTooltip top={44} left={35}>
 <strong>Click a legend item</strong>
 {' '}
 to highlight those specific results. Click the item a second time to show all results.
 </PoiTooltip>
 
-<PoiTooltip top={27} left={50}>
+<PoiTooltip top={27} left={58}>
 <strong>Drag your mouse across the graph</strong>
 {' '}
 to see the values at particular timestamps.
@@ -44,7 +52,9 @@ to see the values at particular timestamps.
 
 > Clicking on any Kubernetes resource name in Pixie’s UI will open a script showing a high-level overview for that entity.
 
-2. Click on one of the node names in the top left “Nodes” table to follow the deep link to the `px/node` script for that node. The script may take a few seconds to execute.
+2. Click on the name of a node in the top left “Nodes” table to follow the deep link to the `px/node` script for that node.
+
+> This script may take a few seconds to execute.
 
 > The `px/node` script shows a similar set of information - CPU usage, memory usage, and network traffic - but just for the selected node.
 
@@ -52,15 +62,23 @@ to see the values at particular timestamps.
 
 ## Resource Usage by Pod
 
+Let’s use the `px/pod` script to get resource usage information for a specific node in the cluster:
+
 The `px/node` script contains a list of the pods on the node.
 
-4. Click on one of the pod names in top left "Pods" table. This takes us to the `px/pod` script. The script may take a few seconds to execute.
+4. Click on the name of a pod in top left "Pods" table. This takes us to the `px/pod` script.
 
-> This script shows an overview of the specified pod, including high-level HTTP application metrics, and resource usage. It also lists containers on the pod and all live processes.
+> This script may take a few seconds to execute.
+
+> The `px/pod` shows an overview of the specified pod, including high-level HTTP application metrics, and resource usage. It also lists containers on the pod and all live processes.
 
 <svg title='' src='use-case-tutorials/pod.png'/>
 
-5. Scroll down to the bottom to see a CPU flamegraph for the pod. To learn more about how use Pixie for application profiling, check out [Profiling with Flamegraphs](/tutorials/profiler/) tutorial.
+5. Scroll down to the bottom to see a CPU flamegraph for the pod.
+
+<Alert variant="outlined" severity="info">
+  To learn more about how use Pixie for application profiling, check out the <a href="https://docs.px.dev/tutorials/profiler/">Profiling with Flamegraphs</a> tutorial.
+</Alert>
 
 ## Resource Usage by Namespace
 
