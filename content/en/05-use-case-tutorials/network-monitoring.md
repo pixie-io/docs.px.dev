@@ -123,6 +123,10 @@ to sort the column data.
 
 2. Click on the `LATENCY_AVG` column title to sort the table data by average latency.
 
+<Alert variant="outlined" severity="info">
+  To see all of the raw full-body DNS requests in your cluster, check out the px/dns_data script.
+</Alert>
+
 ## Graph TCP drops, TCP retransmits
 
 TCP drops and retransmits can indicate network connectivity issues that may affect application performance.
