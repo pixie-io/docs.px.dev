@@ -5,7 +5,11 @@ metaDescription: "How to install Pixie via YAML"
 order: 2
 ---
 
-## 1. Check requirements
+## 1. Install the Pixie CLI
+
+The CLI is used to get Pixie's YAML files. You can install the Pixie CLI following the directions [here](/installing-pixie/install-schemes/cli/).
+
+## 2. Use the CLI to Check Pixie's Requirements
 
 Check if your K8s cluster meets Pixie's [requirements](/installing-pixie/requirements) by running:
 
@@ -15,11 +19,11 @@ px deploy --check_only
 
 If your cluster fails any checks, you may still proceed with installation, but it is unlikely that Pixie will work on your cluster.
 
-## 2. Create deployment key
+## 3. Create a Deployment Key
 
 Create a deployment key following the directions [here](/reference/admin/deploy-keys/#create-a-deploy-key).
 
-## 3. Extract manifests
+## 4. Extract Manifests
 
 Create a directory to save Pixie's manifest files and run the following CLI commands to extract them:
 
@@ -32,7 +36,7 @@ px deploy \
 
 **Note:** The extracted YAMls does not include manifests for each sub-component of Pixie. It includes manifests for etcd, NATS and the cloud-connector service which downloads the manifests for the necessary services and daemonsets.
 
-## 4. Deploy
+## 5. Deploy
 
 Deploy Pixie in your target cluster by running:
 
@@ -41,7 +45,7 @@ Deploy Pixie in your target cluster by running:
 kubectl apply --recursive -f <NAME_OF_PIXIE_YAMLS_FOLDER>
 ```
 
-## 5. Verify
+## 6. Verify
 
 To verify that Pixie is running in your environment you can check the [admin page](https://work.withpixie.ai/admin) or run:
 
