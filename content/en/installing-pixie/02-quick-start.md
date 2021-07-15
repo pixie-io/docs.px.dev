@@ -21,6 +21,10 @@ Pixie can be installed in many different Kubernetes environments. Please refer t
   Self-managed Pixie Cloud has been tested on GKE only.
 </Alert>
 
+<Alert variant="outlined" severity="warning">
+  There is a known issue with login on self-managed Pixie Cloud on Safari and Firefox. For now, use Chrome.
+</Alert>
+
 1. Clone the [Pixie repo](https://www.notion.so/pixielabs/New-OS-Pixie-Quick-Start-1a829bdd186f49b78630dd5e5a43349b#00eb63438a844a9e822d2832d37bf82c).
 
 ```bash
@@ -97,6 +101,10 @@ kubectl log create-admin-job-<pod_string> -n plc
 2. Open the URL from the pod's logs to set the password for the `admin@default.com` user.
 
 3. Once the password has been set, login using `admin@default.com` for the `identifier` and your new password.
+
+<Alert variant="outlined" severity="warning">
+  There is a known issue with login on self-managed Pixie Cloud on Safari and Firefox. For now, use Chrome.
+</Alert>
 
 ### Invite others to your organization (optional)
 
