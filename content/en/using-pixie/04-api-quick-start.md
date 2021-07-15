@@ -1,6 +1,6 @@
 ---
-title: "API Quick Start"
-metaTitle: "Using Pixie | API Quick Start"
+title: "Using the API"
+metaTitle: "Using Pixie | Using the API"
 metaDescription:  "Use the API to run PxL scripts"
 order: 4
 redirect_from:
