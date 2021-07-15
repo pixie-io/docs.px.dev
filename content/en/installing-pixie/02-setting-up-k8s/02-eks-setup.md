@@ -4,6 +4,8 @@ metaTitle: "Install | Install Guides | EKS"
 metaDescription: "How to install Pixie in EKS"
 featuredGuide: true
 icon: amazon-eks-logo.svg
+redirect_from:
+    - /installing-pixie/install-guides/eks-setup/
 ---
 
 ## Set up your EKS Cluster
@@ -45,4 +47,4 @@ You can deploy clusters with alternate configurations or by using the AWS consol
 
 ## Deploy Pixie
 
-Once connected, follow the [quick-start guide](/installing-pixie/quick-start) to deploy Pixie.
+Once connected, follow the [install steps](/installing-pixie/install-guides) to deploy Pixie.

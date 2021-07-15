@@ -7,7 +7,7 @@ order: 1
 
 Below are the requirements for deploying Pixie to your Kubernetes (K8s) cluster.
 
-Please refer to the [install guides](/installing-pixie/quick-start/) for information on how to install Pixie to your K8s cluster.
+Please refer to the [install guides](/installing-pixie/install-guides/) for information on how to install Pixie to your K8s cluster.
 
 ## Kubernetes
 

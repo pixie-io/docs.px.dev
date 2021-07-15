@@ -1,11 +1,13 @@
 ---
 title: "Helm"
-metaTitle: "Install | Install Schemes | Helm"
+metaTitle: "Install | Install Schemes (optional) | Helm"
 metaDescription: "How to install Pixie via Helm"
 order: 3
 ---
 
-## 1. Check requirements
+## 1. (Optional) Use the Pixie CLI to Check the Requirements
+
+Install the Pixie CLI following the directions [here](/installing-pixie/install-schemes/cli/).
 
 Check if your K8s cluster meets Pixie's [requirements](/installing-pixie/requirements) by running:
 

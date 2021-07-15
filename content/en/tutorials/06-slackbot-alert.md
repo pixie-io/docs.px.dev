@@ -17,7 +17,7 @@ This tutorial assumes:
 
 1. You have a Slack workspace to install your Slack App to. If not, please [create a workspace](https://slack.com/help/articles/206845317-Create-a-Slack-workspace).
 
-2. You have a Kubernetes cluster with Pixie installed. If you don't have a cluster, you can create a minikube test cluster and install Pixie, using our [install guide](/installing-pixie/quick-start).
+2. You have a Kubernetes cluster with Pixie installed. If you don't have a cluster, you can create a minikube test cluster and install Pixie, using our [install guides](/installing-pixie/install-guides).
 
 ## Setup Slack
 

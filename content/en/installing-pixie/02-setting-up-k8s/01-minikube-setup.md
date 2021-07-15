@@ -4,6 +4,8 @@ metaTitle: "Install | Install Guides | Minikube"
 metaDescription: "How to install Pixie in Minikube"
 featuredGuide: true
 icon: kubernetes-logo.svg
+redirect_from:
+    - /installing-pixie/install-guides/minikube-setup/
 ---
 
 Here are the steps to set-up Pixie in a local K8s environment using [minikube](https://kubernetes.io/docs/getting-started-guides/minikube/).
@@ -37,4 +39,4 @@ Run `minikube dashboard` or `kubectl get nodes` to verify your cluster is up and
 
 ## Deploy Pixie
 
-Once your cluster is up, follow the [quick-start guide](/installing-pixie/quick-start) to deploy Pixie.
+Once your cluster is up, follow the [install steps](/installing-pixie/install-guides) to deploy Pixie.

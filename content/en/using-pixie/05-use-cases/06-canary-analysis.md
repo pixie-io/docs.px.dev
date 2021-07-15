@@ -17,7 +17,7 @@ featuredInstall: true
 
 You can use Pixie in your CD system by following these steps:
 
-- If you have Spinnaker or equivalent CD system deploy Pixie in the same cluster by following the [quick-start install steps](/installing-pixie/quick-start).
+- If you have Spinnaker or equivalent CD system deploy Pixie in the same cluster by following the [install steps](/installing-pixie/install-guides).
 - If you don't you can install Spinnaker by following this [guide](https://cloud.google.com/solutions/automated-canary-analysis-kubernetes-engine-spinnaker) and install Pixie.
 - Once installed your setup will look like the system diagram shown below.
 - With Pixie installed you can monitor the canary build's [service health](/using-pixie/use-cases/service-health) and [pod health](/using-pixie/use-cases/infra-health) by using community scripts.

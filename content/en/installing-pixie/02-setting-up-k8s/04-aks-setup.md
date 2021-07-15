@@ -4,6 +4,8 @@ metaTitle: "Install | Install Guides | AKS"
 metaDescription: "How to install Pixie in AKS"
 featuredGuide: true
 icon: microsoft-aks-logo.svg
+redirect_from:
+    - /installing-pixie/install-guides/aks-setup/
 ---
 
 ## Set up your AKS Cluster
@@ -44,4 +46,4 @@ kubectl get nodes
 
 ## Deploy Pixie
 
-Once connected, follow the [quick-start guide](/installing-pixie/quick-start) to deploy Pixie.
+Once connected, follow the [install steps](/installing-pixie/install-guides) to deploy Pixie.
