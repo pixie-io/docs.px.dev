@@ -9,7 +9,7 @@ order: 2
 
 The CLI is used to get Pixie's YAML files. You can install the Pixie CLI following the directions [here](/installing-pixie/install-schemes/cli/).
 
-## 2. Use the CLI to Check Pixie's Requirements
+## 2. (Optional) Use the CLI to Check Pixie's Requirements
 
 Check if your K8s cluster meets Pixie's [requirements](/installing-pixie/requirements) by running:
 
