@@ -1,50 +1,50 @@
 ---
-title: "FAQs"
-metaTitle: "About Pixie | FAQs"
+title: "FAQ"
+metaTitle: "About Pixie | FAQ"
 metaDescription: "Commonly asked questions about Pixie."
 order: 5
 ---
 
 **General**
 
-- [What is Pixie?](#what-is-pixie)
-- [Who created Pixie?](#who-created-pixie)
-- [What license is Pixie released under?](#what-license-is-pixie-released-under)
-- [Which K8s environments are supported?](#which-k8s-environments-are-supported)
-- [Can I completely self-host Pixie?](/#can-i-completely-self-host-pixie)
-- [Is there a hosted cloud offering?](/about-pixie#does-pixie-offer-a-hosted-cloud-offering)
+- [What is Pixie?](/about-pixie/faq#what-is-pixie)
+- [Who created Pixie?](/about-pixie/faq#who-created-pixie)
+- [What license is Pixie released under?](/about-pixie/faq#what-license-is-pixie-released-under)
+- [Which K8s environments are supported?](/about-pixie/faq#which-k8s-environments-are-supported)
+- [Can I completely self-host Pixie?](/about-pixie/faq#can-i-completely-self-host-pixie)
+- [Is there a hosted cloud offering?](/about-pixie/faq#does-pixie-offer-a-hosted-cloud-offering)
 
 **Data Collection**
 
-- [Where does Pixie store its data? How much data is stored?](#where-does-pixie-store-its-data-how-much-data-is-stored)
-- [What data does Pixie collect?](#what-data-does-pixie-collect)
-- [Which protocols are automatically traced?](#which-protocols-are-automatically-traced)
-- [Which types of K8s resources, metadata are supported?](#which-types-of-k8s-resources-metadata-are-supported)
-- [Can I capture full distributed traces (a single request across multiple services)?](#can-i-capture-requests-if-one-of-the-endpoints-is-outside-the-cluster)
-- [Can I capture requests if one of the endpoints is outside the cluster?](#can-i-capture-requests-if-one-of-the-endpoints-is-outside-the-cluster)
-- [Can I capture system metrics like CPU?](#can-i-capture-system-metrics-like-cpu)
-- [What is the performance impact?](#what-is-the-performance-impact)
-- [Which languages are supported for continuous profiling?](#which-languages-are-supported-for-continuous-profiling)
+- [Where does Pixie store its data? How much data is stored?](/about-pixie/faq#where-does-pixie-store-its-data-how-much-data-is-stored)
+- [What data does Pixie collect?](/about-pixie/faq#what-data-does-pixie-collect)
+- [Which protocols are automatically traced?](/about-pixie/faq#which-protocols-are-automatically-traced)
+- [Which types of K8s resources, metadata are supported?](/about-pixie/faq#which-types-of-k8s-resources-metadata-are-supported)
+- [Can I capture full distributed traces (a single request across multiple services)?](/about-pixie/faq#can-i-capture-requests-if-one-of-the-endpoints-is-outside-the-cluster)
+- [Can I capture requests if one of the endpoints is outside the cluster?](/about-pixie/faq#can-i-capture-requests-if-one-of-the-endpoints-is-outside-the-cluster)
+- [Can I capture system metrics like CPU?](/about-pixie/faq#can-i-capture-system-metrics-like-cpu)
+- [What is the performance impact?](/about-pixie/faq#what-is-the-performance-impact)
+- [Which languages are supported for continuous profiling?](/about-pixie/faq#which-languages-are-supported-for-continuous-profiling)
 
 **How do I…**
 
-- [How do I export data from the Pixie platform? Import data?](#how-do-i-export-data-from-the-pixie-platform-import-data)
-- [How do I share a Pixie dashboard with others?](#how-do-i-share-a-pixie-dashboard-with-others)
-- [How do I set up RBAC?](#how-do-i-set-up-rbac)
-- [How do I send alerts?](#how-do-i-send-alerts)
-- [How do I delete a cluster?](#how-do-i-delete-a-cluster)
+- [How do I export data from the Pixie platform? Import data?](/about-pixie/faq#how-do-i-export-data-from-the-pixie-platform-import-data)
+- [How do I share a Pixie dashboard with others?](/about-pixie/faq#how-do-i-share-a-pixie-dashboard-with-others)
+- [How do I set up RBAC?](/about-pixie/faq#how-do-i-set-up-rbac)
+- [How do I send alerts?](/about-pixie/faq#how-do-i-send-alerts)
+- [How do I delete a cluster?](/about-pixie/faq#how-do-i-delete-a-cluster)
 
 **Troubleshooting**
 
-- [How do I get the Pixie debug logs?](#how-do-i-get-the-pixie-debug-logs)
-- [My deployment is stuck / fails.](#my-deployment-is-stuck-fails)
-- [Why does my cluster show as unavailable / unhealthy in the Live UI?](#why-does-my-cluster-show-as-unavailable-unhealthy-in-the-live-ui)
-- [Why can’t I see data?](#why-can't-i-see-data)
-- [Why can’t I see data after enabling Data Isolation Mode?](#why-can't-i-see-data-after-enabling-data-isolation-mode)
-- [Why can’t I see application profiles / flamegraphs for my pod / node?](#why-can't-i-see-application-profiles-flamegraphs-for-my-pod-node)
-- [Why is the pem pod’s memory increasing?](#why-is-the-pem-pod's-memory-increasing)
-- [Troubleshooting tracepoint scripts.](#troubleshooting-pixie-tracepoint-scripts)
-- [How do I get help?](#how-do-i-get-help)
+- [How do I get the Pixie debug logs?](/about-pixie/faq#how-do-i-get-the-pixie-debug-logs)
+- [My deployment is stuck / fails.](/about-pixie/faq#my-deployment-is-stuck-fails)
+- [Why does my cluster show as unavailable / unhealthy in the Live UI?](/about-pixie/faq#why-does-my-cluster-show-as-unavailable-unhealthy-in-the-live-ui)
+- [Why can’t I see data?](/about-pixie/faq#why-can't-i-see-data)
+- [Why can’t I see data after enabling Data Isolation Mode?](/about-pixie/faq#why-can't-i-see-data-after-enabling-data-isolation-mode)
+- [Why can’t I see application profiles / flamegraphs for my pod / node?](/about-pixie/faq#why-can't-i-see-application-profiles-flamegraphs-for-my-pod-node)
+- [Why is the pem pod’s memory increasing?](/about-pixie/faq#why-is-the-pem-pod's-memory-increasing)
+- [Troubleshooting tracepoint scripts.](/about-pixie/faq#troubleshooting-pixie-tracepoint-scripts)
+- [How do I get help?](/about-pixie/faq#how-do-i-get-help)
 
 ## General
 
@@ -104,7 +104,7 @@ Pixie captures cluster, namespace, node, pod, service, and container metadata. P
 
 #### Can I capture full distributed traces (a single request across multiple services)?
 
-Pixie captures spans, but not full traces. To construct a full trace a request would need to be tagged with a traceID and Pixie does not modify requests. The [roadmap](/about-pixie/roadmap/#roadmap) contains plans to support constructing full traces if a request is already tagged with a traceID.
+Pixie captures spans, but not full traces. To construct a full trace a request would need to be tagged with a traceID and Pixie does not modify requests. The [roadmap](/about-pixie/roadmap) contains plans to support constructing full traces if a request is already tagged with a traceID.
 
 #### Can I capture requests if one of the endpoints is outside the cluster?
 
@@ -120,7 +120,7 @@ Typical performance overhead for node CPU usage is between 2-5%, depending on th
 
 #### Which languages are supported for continuous profiling?
 
-Go, C++ and Rust are currently supported. The [Roadmap](/about-pixie/roadmap/#roadmap) contains plans to expand support to other languages.
+Go, C++ and Rust are currently supported. The [Roadmap](/about-pixie/roadmap) contains plans to expand support to other languages.
 
 ## How do I...?
 
@@ -130,7 +130,7 @@ Pixie offers two [client libraries](/reference/api/overview/) (Go, Python) to al
 
 Pixie does not currently offer data ingestion.
 
-The [Roadmap](/about-pixie/roadmap/#roadmap) contains plans to support exporting or ingesting data in a variety of additional formats.
+The [Roadmap](/about-pixie/roadmap) contains plans to support exporting or ingesting data in a variety of additional formats.
 
 #### How do I share a Pixie dashboard with others?
 
@@ -208,7 +208,7 @@ In [Data Isolation Mode](/reference/admin/data-transfer-mode/) Pixie doesn’t u
 
 #### Why can’t I see application profiles / flamegraphs for my pod / node?
 
-Continuous profiling currently only supports Go/C++/Rust. The [Roadmap](/about-pixie/roadmap/#roadmap) contains plans to expand this support to Java, Ruby, Python, etc.
+Continuous profiling currently only supports Go/C++/Rust. The [Roadmap](/about-pixie/roadmap) contains plans to expand this support to Java, Ruby, Python, etc.
 
 #### Why is the pem pod’s memory increasing?
 
