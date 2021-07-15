@@ -7,7 +7,7 @@ order: 3
 
 There are multiple hosting options for Pixie.
 
-- [Community Cloud for Pixie Guide (easiest)]((/installing-pixie/install-guides/community-cloud-for-pixie))
+- [Community Cloud for Pixie Guide (easiest)](/installing-pixie/install-guides/community-cloud-for-pixie)
 - [Self-Hosted Pixie](/installing-pixie/install-guides/self-hosted-pixie)
 
 Pixie is a hybrid system, with a cloud component (Pixie Cloud) and a in-cluster component for data persistence and storage (Vizier). See [System Architecture](/about-pixie/what-is-pixie#system-architecture) for more details.
