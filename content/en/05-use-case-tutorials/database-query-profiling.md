@@ -11,11 +11,11 @@ This tutorial will demonstrate how to use Pixie to monitor database queries:
 - [See request health stats per pod.](#get-request-health-stats-per-pod)
 - [Inspect full request / response headers and message bodies.](#inspect-full-request-response-bodies)
 
-This tutorial features MySQL requests, but Pixie supports a number of different database protocols. See the [Protocols](https://docs.px.dev/about-pixie/observability/) page for the full list.
+This tutorial features MySQL requests, but Pixie can trace a number of different database protocols including Cassandra, PostgreSQL, and Redis. See the [Protocols](https://docs.px.dev/about-pixie/observability/) page for the full list.
 
 **Prerequisites**
 
-1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using our [install guides](/installing-pixie/quick-start/).
+1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using our [installation steps](/installing-pixie/).
 
 2. You will need an application that uses MySQL. To install a demo app that uses MySQL:
 
@@ -37,7 +37,7 @@ Let’s use the `px/mysql_flow_graph` script to see a map of all of the MySQL re
 
 > When the script opens, you’ll get an error indicating a value is missing for the `namespace` required argument. The UI denotes required script arguments with an asterisk after the argument name.
 
-2. Enter `px-sock-shop` for the required `namespace` argument: select the drop down arrow next to the `namespace` argument, type `px-sock-shop`, and hit enter.
+2. Enter `px-sock-shop` for the required `namespace` argument: select the drop down arrow next to the `namespace` argument, type `px-sock-shop`, and hit Enter.
 
 > This script shows a graph of all MySQL requests that pass through your cluster, with latency and throughput stats. Pixie captures all requests in which at least one endpoint is within the cluster.
 
@@ -63,13 +63,17 @@ for a different visualization of the graph.
 <svg title='' src='use-case-tutorials/mysql_flow_graph.png'/>
 :::
 
+<Alert variant="outlined" severity="info">
+  Hover over the pulsing blue circles on the image above to see tips about this graph.
+</Alert>
+
 > If a request’s remote endpoint is within the cluster, then the IP address is resolved to a pod/service name. This demo app makes requests to a MySQL database outside of the cluster. Let's filter the requests to only show communication to the external MySQL database.
 
-3. Select drop down arrow next to the `destination_filter` argument, type in the IP address, and press enter to re-run the script.
+3. Select drop down arrow next to the `destination_filter` argument, type in the IP address, and press Enter to re-run the script.
 
 > The graph should update to only show requests sent to the external database at that IP address.
 
-4. Clear the `destination_filter` value by selecting the drop-down arrow and pressing enter.
+4. Clear the `destination_filter` value by selecting the drop-down arrow and pressing Enter.
 
 ## Get Request Health Stats per Pod
 
@@ -101,7 +105,7 @@ to see the values at particular timestamps.
 
 If we had seen MySQL errors, one of the first things we'd want to do is inspect the contents of the queries with errors.
 
-To see the raw MySQL requests, including full header and bodies, we'll use `px/mysql_data`:
+To see raw MySQL requests, including full header and bodies, we'll use `px/mysql_data`:
 
 1. Select `px/mysql_data` from the `script` drop-down menu at the top of the page.
 
@@ -129,9 +133,9 @@ to expand and see the row data in json form.
 
 2. Click on a table row to see the row data in json format. Scroll down to the `resp_body` json key to see the full SQL message.
 
-3. Click the `source_filter` argument’s drop down arrow. Type `catalogue` and press enter. This filters the MySQL requests to show only the requests from the catalogue pod.
+3. Click the `source_filter` argument’s drop down arrow. Type `catalogue` and press Enter. This filters the MySQL requests to show only the requests from the catalogue pod.
 
-4. Clear the `source_filter` value by clicking on the argument’s drop down arrow and pressing enter.
+4. Clear the `source_filter` value by clicking on the argument’s drop down arrow and pressing Enter.
 
 <Alert variant="outlined" severity="info">
   If you'd like to learn how to modify this script to show only MySQL requests with errors, check out the directions in the tutorial <a href="https://www.eksworkshop.com/intermediate/241_pixie/using_pixie/mysql_data/">here</a>.

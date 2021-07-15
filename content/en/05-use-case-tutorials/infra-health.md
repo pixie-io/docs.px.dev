@@ -12,7 +12,7 @@ This tutorial will demonstrate how to use Pixie to:
 
 **Prerequisites**
 
-1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using our [install guides](/installing-pixie/quick-start/).
+1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using our [installation steps](/installing-pixie/).
 
 ## Resource Usage by Node
 
@@ -37,6 +37,10 @@ to see the values at particular timestamps.
 
 <svg title='' src='use-case-tutorials/nodes.png'/>
 :::
+
+<Alert variant="outlined" severity="info">
+  Hover over the pulsing blue circles on the image above to see tips about this graph.
+</Alert>
 
 > Clicking on any Kubernetes resource name in Pixie’s UI will open a script showing a high-level overview for that entity.
 
