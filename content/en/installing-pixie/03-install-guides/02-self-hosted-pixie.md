@@ -120,56 +120,16 @@ kubectl log create-admin-job-<pod_string> -n plc
 export PL_CLOUD_ADDR=dev.withpixie.dev
 ```
 
-2. Install Pixie's CLI tool in one of four ways:
+2. Install Pixie's CLI 
 
-### Using the install script (easiest)
+The easiest way to install Pixie's CLI is using the install script:
 
 ``` bash
 # Copy and run command to install the Pixie CLI.
 bash -c "$(curl -fsSL https://withpixie.ai/install.sh)"
 ```
 
-### Directly downloading the binary
-
-``` bash
-# Download the latest Pixie binary.
-curl -o px https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_darwin_amd64
-
-# Check the signature matches.
-sha256sum px
-
-# Make it executable.
-chmod +x px
-
-# (Optional) Move it to another location that has executables.
-mv px /usr/local/bin
-```
-
-### Using Docker
-
-``` bash
-alias px="docker run -i --rm -v ${HOME}/.pixie:/root/.pixie pixielabs/px"
-```
-
-### Using Debian package
-
-- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.deb](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.deb)
-- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.deb.sha256](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.deb.sha256)
-
-``` bash
-# Install Pixie .deb package.
-dpkg -i pixie-px.x86_64.deb
-```
-
-### Using RPM
-
-- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.rpm](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.rpm)
-- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.rpm.sha256](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.rpm.sha256)
-
-``` bash
-# Install Pixie .rpm package.
-rpm -i pixie-px.x86_64.rpm
-```
+The CLI can also be installed by directly downloading the binary, using Docker or using the Debian package. For directions, see the [CLI install docs](/installing-pixie/install-schemes/cli/).
 
 ## 3. Deploy Pixie 🚀
 
