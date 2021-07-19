@@ -6,7 +6,7 @@ order: 3
 ---
 
 <Alert variant="outlined" severity="warning">
-  Pixie's charts require the use of Helm version 3. Helm version 2 is not currently supported. 
+  Pixie's charts require the use of Helm 3. Helm 2 is not currently supported. 
 </Alert>
 
 ## 1. (Optional) Use the Pixie CLI to Check the Requirements
