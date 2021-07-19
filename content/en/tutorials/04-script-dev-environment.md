@@ -9,6 +9,10 @@ Pixie's Script Dev Environment allows you to develop PxL scripts in your favorit
 
 Pixie's Live UI will soon support script persistence, but at the moment, any scripts modified in the Live UI will be lost if you refresh or switch to a different script.
 
+## Prerequisites
+
+You will need Bazel installed. You can find the install directions [here](https://docs.bazel.build/versions/main/install.html). 
+
 ## Setup the Script Dev Environment
 
 1. Make sure you aren't running anything on `port 8000`. To check if the port is already in use, use the following command. If no results are returned, then `port 8000` is free.
