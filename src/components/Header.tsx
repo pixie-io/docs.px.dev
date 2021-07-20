@@ -36,6 +36,10 @@ import githubIcon from './images/github-icon.svg';
 import SearchResultsDropdown from './search-results-dropdown';
 import languages from '../../available-languages';
 
+import github from '../images/footer/github-icon.svg';
+import slack from '../images/footer/slack-icon.svg';
+import twitter from '../images/footer/twitter-icon.svg';
+
 const useStyles = makeStyles((theme) => ({
   appBar: {
     zIndex: theme.zIndex.modal + 1,
@@ -76,6 +80,22 @@ const useStyles = makeStyles((theme) => ({
   dropMenuRef: {
     position: 'relative',
     display: 'inline-block',
+  },
+  socialIcons: {
+    [theme.breakpoints.down('md')]: {
+      display: 'none',
+    },
+    '& a': {
+      display: 'inline-block',
+      padding: '5px 0 0',
+      margin: '0 0 0 33px',
+    },
+    '& img': {
+      width: '20px',
+      [theme.breakpoints.up('md')]: {
+        width: '16px',
+      },
+    },
   },
   dropMenu: {
     position: 'absolute',
@@ -202,6 +222,17 @@ const Header = ({
               <Link to='/'>
                 <img className={classes.menuButton} src={logoImg} alt='logo' />
               </Link>
+              <div className={classes.socialIcons}>
+                <a href='https://slackin.withpixie.ai'>
+                  <img src={slack} alt='slack' />
+                </a>
+                <a href='https://github.com/pixie-labs/pixie'>
+                  <img src={github} alt='github' />
+                </a>
+                <a href='https://twitter.com/pixie_run'>
+                  <img src={twitter} alt='twitter' />
+                </a>
+              </div>
               <div className={classes.middle} />
               <div className={classes.buttons}>
                 <IconButton
