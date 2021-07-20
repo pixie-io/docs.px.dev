@@ -355,11 +355,6 @@ const IndexPage = withStyles((theme: Theme) => ({
     setOpenVideo(false);
   };
 
-  const scrollToScripts = () => {
-    document.getElementById('scripts-section')
-      .scrollIntoView({ block: 'start', behavior: 'smooth' });
-  };
-
   return (
     <Layout location={location}>
       <SEO
@@ -448,7 +443,15 @@ const IndexPage = withStyles((theme: Theme) => ({
                     </Typography>
                   </div>
                 </Hidden>
-              </Grid>
+                <MainButton
+                  variant='outlined'
+                  color='secondary'
+                  size='large'
+                  href='/installing-pixie'
+                >
+                  Install Guide
+                </MainButton>
+              </ButtonsBar>
             </Grid>
           </Container>
 

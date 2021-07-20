@@ -14,7 +14,7 @@ Check out the following video for a live coding demo using the Go API:
 
 ## Setup
 
-1. Install Pixie on your cluster using the [install guides](/installing-pixie/quick-start/).
+1. Install Pixie on your cluster using the [install guides](/installing-pixie/install-guides/).
 2. Find your cluster's ID following the directions [here](/reference/admin/cluster-id/#find-the-cluster-id).
 3. Create an API key following the directions [here](/reference/admin/api-keys/#create-an-api-key). An API Key is required when using the client API for running queries.
 

@@ -1,8 +1,11 @@
 ---
 title: "Configure Data Transfer Mode"
-metaTitle: "Admin | Configure Data Transfer Mode"
+metaTitle: "Reference | Admin | Configure Data Transfer Mode"
 metaDescription: "Configure Pixie's data transfer mode."
+order: 2
 redirect_from:
+    - /admin/configuration/
+    - /reference/admin/configuration/
     - /installing-pixie/data-transfer-mode
 ---
 

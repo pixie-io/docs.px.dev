@@ -4,6 +4,8 @@ metaTitle: "Install | Install Guides | GKE"
 metaDescription: "How to install Pixie in GKE"
 featuredGuide: true
 icon: google-gke-logo.svg
+redirect_from:
+    - /installing-pixie/install-guides/gke-setup/
 ---
 
 ## Set up your GKE Cluster
@@ -60,4 +62,4 @@ kubectl get nodes
 
 ## Deploy Pixie
 
-Once connected, follow the [quick-start guide](/installing-pixie/quick-start) to deploy Pixie.
+Once connected, follow the [install steps](/installing-pixie/install-guides) to deploy Pixie.
