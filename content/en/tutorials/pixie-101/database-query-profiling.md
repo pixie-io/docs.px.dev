@@ -67,13 +67,29 @@ To see the health of a pod's MySQL requests clustered by query type, we’ll use
 
 1. Select `px/sql_queries` from the `script` drop-down menu.
 
-> This live view calculates the latency, error rate, and throughput over time for each distinct normalized SQL Query. Pixie use ML to cluster query params.
+> This live view calculates the latency, error, and throughput over time for each distinct normalized SQL query.
+
+> A normalized query means that redundant data (such as various product IDs) has been eliminated from the query.
+
+> In this script, Pixie parses the SQL requests and displays the query constants with a `?`.
 
 ::: div image-xl relative
-<PoiTooltip top={80} left={65}>
-<strong>Click a table column title</strong>
+<PoiTooltip top={71} left={25}>
+<strong>Drag the 3-dot divider</strong>
 {' '}
-to sort the table data by that column.
+to expand the column.
+</PoiTooltip>
+
+<PoiTooltip top={78} left={2}>
+<strong>Click the `>`</strong>
+{' '}
+to see the row data in JSON form.
+</PoiTooltip>
+
+<PoiTooltip top={85} left={81}>
+<strong>Query param values</strong>
+{' '}
+are identified and replaced with `?`.
 </PoiTooltip>
 
 <svg title='' src='use-case-tutorials/sql_queries.png'/>
@@ -81,13 +97,39 @@ to sort the table data by that column.
 
 2. Scroll down to the "Summary" table.
 
-3. Click on a query in the `NORMED_QUERY` column to view statistics only for that particular query type.
+> For requests with longer message bodies, it's often easier to view the data in JSON form.
+
+3. Hover over the third row. Click the `>` character that appears to expand the row and see the row data in json form.
+
+> Here, you can see that the `sock_id` values have been replaced by a `?` in the query.
+
+4. Click the `>` to close the row.
+
+> Let's view health stats only for this particular query type.
+
+5. Instead of clicking the row's `>` icon, click the actual query text (`SELECT sock.sock_id AS...`) for the third row.
+
+> This script shows the same request health stats over time for each individual parameter for the given normalized SQL query.
+
+> The "Summary" table shoes the individual values passed to the `sock_id` parameter for this particular query.
+
+::: div image-xl relative
+<PoiTooltip top={75} left={2}>
+<strong>Show / hide table columns</strong>
+{' '}
+with the table column menu.
+</PoiTooltip>
+
+<PoiTooltip top={80} left={25}>
+<strong>Individual param values</strong>
+{' '}
+passed to the `sock_id` SQL parameter.
+</PoiTooltip>
 
 <svg title='' src='use-case-tutorials/sql_query.png'/>
+:::
 
-> This script shows the same request health stats over time for each distinct parameter set for a given normalized SQL query.
-
-> If the normalized query you picked doesn't have any parameters, click your browser's Back button and try a different query from the Summary table.
+6. Hover over the "Summary" table and scroll to the right to see latency stats per `sock_id` parameter.
 
 ## Individual Full Body Requests
 
@@ -109,9 +151,9 @@ with the table column menu.
 </PoiTooltip>
 
 <PoiTooltip top={24} left={33}>
-<strong>Sort the data</strong>
+<strong>Click a column title</strong>
 {' '}
-by clicking on a table column title.
+to sort the data.
 </PoiTooltip>
 
 <PoiTooltip top={56} left={55}>
