@@ -137,10 +137,11 @@ to expand and see the row data in JSON form.
 
 This tutorial demonstrated a few of Pixie's [community scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts). For more insight into your database queries, check out the following scripts:
 
-- [`pxbeta/service_endpoints`](http://work.withpixie.ai/script=pxbeta/service_endpoints) shows an overview of the endpoints for a service, summarizing their request statistics. Click on any endpoint in the top left "Endpoints" table to see statistics only for that particular endpoint.
-
-- [`px/services`](http://work.withpixie.ai/script/services) shows an overview of the services in a namespace, summarizing their request statistics.
-
-- [`px/service_stats`](http://work.withpixie.ai/script/service_stats) shows service latency, error rate and throughput along with a service map and list of incoming and outgoing network traffic.
-
-- [`px/service_edge_stats`](http://work.withpixie.ai/script/service_edge_stats) shows service latency, error rate and throughput according to another service.
+- [`px/cql_data`](http://work.withpixie.ai/script/cql_data) shows the most recent Cassandra requests in the cluster.
+- [`px/cql_stats`](http://work.withpixie.ai/script/cql_stats) shows the latency, error rate, and throughput of a pod's Cassandra requests.
+- [`px/pgsql_data`](http://work.withpixie.ai/script/pgsql_data) shows the most recent Postgres requests in the cluster.
+- [`px/pgsql_stats`](http://work.withpixie.ai/script/pgsql_stats) shows the latency, error rate, and throughput of a pod's PostgreSQL requests.
+- [`px/pgsql_flow_graph`](http://work.withpixie.ai/script/pgsql_flow_graph) shows a graph of the PostgreSQL messages in the cluster, with latency stats.
+- [`px/redis_data`](http://work.withpixie.ai/script/redis_data) shows the most recent Redis requests in the cluster.
+- [`px/redis_stats`](http://work.withpixie.ai/script/redis_stats) shows the latency, error rate, and throughput of a pod's Redis requests.
+- [`px/redis_flow_graph`](http://work.withpixie.ai/script/redis_flow_graph) shows a graph of the Redis messages in the cluster, with latency stats.
