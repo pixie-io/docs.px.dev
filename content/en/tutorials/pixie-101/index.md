@@ -7,6 +7,6 @@ order: 1
 
 Learn how to use Pixie for:
 
-- [Database Query Profiling](/tutorials/pixie-101/database-query-profiling)
-- [Infrastructure Health Monitoring](/tutorials/pixie-101/infra-health)
 - [Network Monitoring](/tutorials/pixie-101/network-monitoring)
+- [Infrastructure Health](/tutorials/pixie-101/infra-health)
+- [Database Query Profiling](/tutorials/pixie-101/database-query-profiling)

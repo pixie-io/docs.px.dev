@@ -2,7 +2,7 @@
 title: "Network Monitoring"
 metaTitle: Tutorials | Pixie 101 | Network Monitoring"
 metaDescription: "Learn how to use Pixie to monitor network health."
-order: 5
+order: 1
 ---
 
 Network performance can have a big impact on the health of your services. With Pixie, you can easily monitor your network alongside your application and infrastructure layers.
@@ -95,6 +95,14 @@ Let’s use the px/dns_flow_graph script to see a graph of DNS requests in the c
 
 1. Select `px/dns_flow_graph` from the `script` drop-down menu.
 
+<Alert variant="outlined" severity="warning">
+  Don't forget to clear the `to_entity_filter` argument value if you didn't do so in the last section.
+</Alert>
+
+> This script shows all of the DNS requests made in the cluster, with latency and throughput stats.
+
+> This cluster doesn't have anything deployed except Pixie, so all we see are the kube-dns pods communicating with the metadata server.
+
 ::: div image-xl relative
 <PoiTooltip top={14} left={28}>
 <strong>Enter a string</strong>
@@ -117,10 +125,6 @@ to sort the column data.
 <svg title='' src='use-case-tutorials/dns_flow_graph.png'/>
 :::
 
-> This script shows all of the DNS requests made in the cluster, with latency and throughput stats.
-
-> This cluster doesn't have anything deployed except Pixie, so all we see are the kube-dns pods communicating with the metadata server.
-
 2. Click on the `LATENCY_AVG` column title to sort the table data by average latency.
 
 ## TCP Drops
@@ -138,7 +142,7 @@ Let's use the `px/tcp_drops`script to see a global view of TCP drops across the 
 2. Press the "RUN" button in the top right and the script will first deploy a tracepoint (the new data source) and then query the new data source.
 
 ::: div image-xl relative
-<PoiTooltip top={80} left={87}>
+<PoiTooltip top={72} left={87}>
 <strong>Enable Hierarchy View</strong>
 {' '}
 for a different view of the graph.
@@ -147,14 +151,13 @@ for a different view of the graph.
 <svg title='' src='use-case-tutorials/tcp_drops.png'/>
 :::
 
-2. Hover over an edge to see the number of drops between pod pairs. The color and thickness of the edges indicate an increase in the number of TCP drops.
+3. Hover over an edge to see the number of drops between pod pairs. The color and thickness of the edges indicate an increase in the number of TCP drops.
 
-3. After a few seconds have passed, press the "RUN" button once again. Since more time has elapsed since the tracepoint was deployed, you should see more data in the graph.
+4. After a few seconds have passed, press the "RUN" button once again. Since more time has elapsed since the tracepoint was deployed, you should see more data in the graph.
 
 ## Related Scripts
 
 This tutorial demonstrated three of Pixie's [community scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts). For more insight into your network, check out the following scripts:
 
-- [`px/dns_data`](http://work.withpixie.ai/script/dns_data) shows the most recent DNS requests in your cluster, including the full request and response header / body.
-
-- [`px/tcp_retransmissions`](http://work.withpixie.ai/script/tcp_retransmissions) graphs the TCP retransmission counts across your cluster.
+- [`px/dns_data`](https://work.withpixie.ai/script/dns_data) shows the most recent DNS requests in your cluster, including the full request and response bodies.
+- [`px/tcp_retransmits`](https://work.withpixie.ai/script/tcp_retransmits) graphs the TCP retransmission counts across your cluster. Don't forget to click the RUN button.

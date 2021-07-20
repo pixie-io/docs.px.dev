@@ -2,18 +2,18 @@
 title: "Database Query Profiling"
 metaTitle: "Tutorials | Pixie 101 | Database Query Profiling"
 metaDescription: "Learn how to use Pixie to do database query profiling."
-order: 2
+order: 3
 ---
 
-Service performance issues often turn out to be the result of slow database queries. With Pixie, you can easily monitor the performance of your database requests to ensure they do not impact service latency.
+Service performance issues often turn out to be the result of slow database queries. With Pixie, you can easily monitor the performance of your database requests to ensure they do not impact service health.
 
-This tutorial features MySQL requests, but Pixie can trace a number of different database protocols including Cassandra, PostgreSQL, and Redis. See the full list of supported protocols [here](/about-pixie/data-sources/#supported-protocols).
+This tutorial features MySQL requests, but Pixie can trace a number of different database protocols including Cassandra, PostgreSQL, and Redis. See the full list [here](/about-pixie/data-sources/#supported-protocols).
 
-This tutorial will demonstrate how to use Pixie to:
+This tutorial will demonstrate how to use Pixie to monitor MySQL:
 
-- Monitor the health (latency, error and throughput) of a pod's MySQL requests.
-- Monitor the health of a pod's MySQL requests by query type and parameter.
-- Inspect the latency of individual full body MySQL requests.
+- Latency, error and throughput (LET) rate for all pods.
+- LET rate per normalized query.
+- Latency per individual full body query.
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ This tutorial will demonstrate how to use Pixie to:
 
 ## Request Health by Pod
 
-To see the health of a pod's MySQL requests, we’ll use the `px/mysql_stats` script:
+To see MySQL latency, error, and throughput rate for all pods in your cluster, we’ll use the `px/mysql_stats` script:
 
 1. Open the [Live UI](http://work.withpixie.ai/) and select `px/mysql_stats` from the `script` drop-down menu.
 
@@ -55,23 +55,33 @@ to see the values at particular timestamps.
 
 > Let’s use the optional `pod` script input argument to filter to a particular pod.
 
-2. Select the drop-down arrow next to the `pod` argument, type `catalogue`, and press Enter to re-run the script.
+2. Select the drop-down arrow next to the `pod` argument, type `px-sock-shop/catalogue`, and press Enter to re-run the script.
 
 > The graph should update to show stats just for the requests made to/from the `catalogue` pod.
 
 3. Clear the `pod` value by selecting the drop-down arrow and pressing Enter.
 
-## Request Health by Query Type, Parameter
+## Request Health by Normalized Query
 
-To see the health of a pod's MySQL requests clustered by query type, we’ll use the `px/sql_queries` script:
+Pixie can automatically cluster your SQL queries so that you can analyze similar queries as a single group.
+
+For example, the following two queries:
+
+> `SELECT * FROM Socks WHERE Socks.Color ='Green'`
+
+> `SELECT * FROM Socks WHERE Socks.Color ='Blue'`
+
+would be clustered together into the normalized query:
+
+> `SELECT * FROM Socks WHERE Socks.Color =?`
+
+A normalized query means that constants, such as a sock color, have been replaced with placeholders.
+
+Let's see this feature in action for our demo application:
 
 1. Select `px/sql_queries` from the `script` drop-down menu.
 
-> This live view calculates the latency, error, and throughput over time for each distinct normalized SQL query.
-
-> A normalized query means that redundant data (such as various product IDs) has been eliminated from the query.
-
-> In this script, Pixie parses the SQL requests and displays the query constants with a `?`.
+> This live view calculates the latency, error, and throughput over time for each normalized SQL query.
 
 ::: div image-xl relative
 <PoiTooltip top={71} left={25}>
@@ -87,31 +97,33 @@ to see the row data in JSON form.
 </PoiTooltip>
 
 <PoiTooltip top={85} left={81}>
-<strong>Query param values</strong>
+<strong>Query constants</strong>
 {' '}
-are identified and replaced with `?`.
+are identified and replaced with a `?`.
 </PoiTooltip>
 
 <svg title='' src='use-case-tutorials/sql_queries.png'/>
 :::
 
+> Let's examine one of the normalized SQL queries.
+
 2. Scroll down to the "Summary" table.
 
-> For requests with longer message bodies, it's often easier to view the data in JSON form.
+> For longer queries, it's often easier to view the data in JSON form.
 
-3. Hover over the third row. Click the `>` character that appears to expand the row and see the row data in json form.
+3. Hover over the third row. Click the `>` that appears to expand the row.
 
-> Here, you can see that the `sock_id` values have been replaced by a `?` in the query.
+> Inspect the query and you'll see that the `sock_id` values have been replaced with the `?` placeholder.
 
 4. Click the `>` to close the row.
 
-> Let's view health stats only for this particular query type.
+> Next, let's view latency, error and throughput for the constants passed to this normalized query.
 
-5. Instead of clicking the row's `>` icon, click the actual query text (`SELECT sock.sock_id AS...`) for the third row.
+5. Instead of clicking the `>`, click the actual query text (`SELECT sock.sock_id AS...`) for the same row.
 
-> This script shows the same request health stats over time for each individual parameter for the given normalized SQL query.
+> This script shows latency, error, and throughput for each individual parameter for the given normalized SQL query.
 
-> The "Summary" table shoes the individual values passed to the `sock_id` parameter for this particular query.
+> The "Summary" table shows the individual parameters passed to `sock_id` in the normalized query.
 
 ::: div image-xl relative
 <PoiTooltip top={75} left={2}>
@@ -121,21 +133,21 @@ with the table column menu.
 </PoiTooltip>
 
 <PoiTooltip top={80} left={25}>
-<strong>Individual param values</strong>
+<strong>Individual params</strong>
 {' '}
-passed to the `sock_id` SQL parameter.
+passed to `sock_id` in the normalized query.
 </PoiTooltip>
 
 <svg title='' src='use-case-tutorials/sql_query.png'/>
 :::
 
-6. Hover over the "Summary" table and scroll to the right to see latency stats per `sock_id` parameter.
+6. Hover over the "Summary" table and scroll to the right to see latency stats per parameter.
 
 ## Individual Full Body Requests
 
-Next, let's inspect the most recent MySQL requests flowing through your cluster, including the full request and response bodies.
+Let's inspect the most recent MySQL requests flowing through your cluster, including the full request and response bodies.
 
-Pixie can capture requests with only one endpoint within your cluster. For example, if a service makes a call to an external mySQL database which is not monitored by Pixie, Pixie will still be able to capture the SQL calls.
+Pixie can capture any traffic that passes through your cluster (it supports both server and client-side tracing).
 
 1. Select `px/mysql_data` from the `script` drop-down menu at the top of the page.
 
@@ -159,7 +171,7 @@ to sort the data.
 <PoiTooltip top={56} left={55}>
 <strong>Click a row</strong>
 {' '}
-to expand and see the row data in JSON form.
+to see the data in JSON form.
 </PoiTooltip>
 
 <svg title='' src='use-case-tutorials/mysql_data.png'/>
@@ -177,13 +189,21 @@ to expand and see the row data in JSON form.
 
 ## Related Scripts
 
-This tutorial demonstrated a few of Pixie's [community scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts). For more insight into your database queries, check out the following scripts:
+This tutorial demonstrated a few of Pixie's [community scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts). For more insight into your database queries, check out the following scripts.
 
-- [`px/cql_data`](http://work.withpixie.ai/script/cql_data) shows the most recent Cassandra requests in the cluster.
-- [`px/cql_stats`](http://work.withpixie.ai/script/cql_stats) shows the latency, error rate, and throughput of a pod's Cassandra requests.
-- [`px/pgsql_data`](http://work.withpixie.ai/script/pgsql_data) shows the most recent Postgres requests in the cluster.
-- [`px/pgsql_stats`](http://work.withpixie.ai/script/pgsql_stats) shows the latency, error rate, and throughput of a pod's PostgreSQL requests.
-- [`px/pgsql_flow_graph`](http://work.withpixie.ai/script/pgsql_flow_graph) shows a graph of the PostgreSQL messages in the cluster, with latency stats.
-- [`px/redis_data`](http://work.withpixie.ai/script/redis_data) shows the most recent Redis requests in the cluster.
-- [`px/redis_stats`](http://work.withpixie.ai/script/redis_stats) shows the latency, error rate, and throughput of a pod's Redis requests.
-- [`px/redis_flow_graph`](http://work.withpixie.ai/script/redis_flow_graph) shows a graph of the Redis messages in the cluster, with latency stats.
+#### PostgreSQL
+
+- [`px/pgsql_data`](https://work.withpixie.ai/script/pgsql_data) shows the most recent Postgres requests in the cluster.
+- [`px/pgsql_stats`](https://work.withpixie.ai/script/pgsql_stats) shows latency, error, and throughput rate for a pod's PostgreSQL requests.
+- [`px/pgsql_flow_graph`](https://work.withpixie.ai/script/pgsql_flow_graph) shows a graph of the PostgreSQL messages in the cluster with latency stats.
+
+#### Redis
+
+- [`px/redis_data`](https://work.withpixie.ai/script/redis_data) shows the most recent Redis requests in the cluster.
+- [`px/redis_stats`](https://work.withpixie.ai/script/redis_stats) shows latency, error, and throughput rate for a pod's Redis requests.
+- [`px/redis_flow_graph`](https://work.withpixie.ai/script/redis_flow_graph) shows a graph of the Redis messages in the cluster with latency stats.
+
+#### Cassandra
+
+- [`px/cql_data`](https://work.withpixie.ai/script/cql_data) shows the most recent Cassandra requests in the cluster.
+- [`px/cql_stats`](https://work.withpixie.ai/script/cql_stats) shows latency, error, and throughput rate for a pod's Cassandra requests.

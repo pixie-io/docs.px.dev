@@ -2,14 +2,14 @@
 title: "Infra Health"
 metaTitle: "Tutorials | Pixie 101 | Infra Health"
 metaDescription: "Learn how to use Pixie to monitor infrastructure health."
-order: 3
+order: 2
 ---
 
 Resource pressure can impact the health of your services, but it can be hard to correlate with application performance. With Pixie, you can easily monitor your infrastructure alongside your network and application layers.
 
 This tutorial will demonstrate how to use Pixie to:
 
-- Monitor resource usage by Namespace, Node, and Pod.
+- Monitor resource usage by Node and Pod.
 - Easily navigate between Kubernetes resources within the Pixie UI.
 
 **Prerequisites**
@@ -102,41 +102,24 @@ by clicking the bottom box.
   To learn more about how use Pixie for application profiling, check out the <a href="https://docs.px.dev/tutorials/profiler/">Profiling with Flamegraphs</a> tutorial.
 </Alert>
 
-## Resource Usage by Namespace
-
-For a very high-level overview of the cluster, let's use the `px/namespaces` script to:
-
-- List the namespace on the cluster and their pods and service counts.
-- List the high-level resource usage per namespace.
-
-1. Select `px/namespaces` from the script drop-down menu.
-
-::: div image-xl relative
-<PoiTooltip top={17} left={2}>
-<strong>Script shortcuts icons</strong>
-{' '}
-are available for the heavily used px/cluster and px/namespace scripts.
-</PoiTooltip>
-
-<svg title='' src='use-case-tutorials/namespaces.png'/>
-:::
-
-2. Select any namespace name in the `NAMESPACES` table column. This will open the `px/namespace` script for the selected namespace, with the required `namespace` argument pre-filled.
-
 ## Related Scripts
 
 This tutorial demonstrated a few of Pixie's [community scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts). For more insight into your infrastructure, check out the following scripts:
 
-- [`px/perf_flamegraph`](http://work.withpixie.ai/script/perf_flamegraph) shows stack trace samples that indicate where your applications are spending their time. Optional filters refine the results to a particular namespace, node, or pod.
+#### Resource usage by Kubernetes object
 
-- [`px/pods`](http://work.withpixie.ai/script/pods) shows a list of the pods in the specified namespace along with their high level application metrics (latency, error rate, throughput) and resource usage (cpu, writes, reads). Don't forget to provide the required namespace argument.
+- [`px/namespaces`](https://work.withpixie.ai/script/namespaces) lists the namespaces on the cluster with their pod and service counts. It also lists the high-level resource consumption by namespace.
+- [`px/namespace`](https://work.withpixie.ai/script/namespace) lists the pods and services in a given namespace, as well as a service map.
+- [`px/pods`](https://work.withpixie.ai/script/pods) shows an overview of the pods in the specified namespace along with their high-level application metrics (latency, error, throughput) and resource usage (cpu, writes, reads).
 
-- [`px/upids`](http://work.withpixie.ai/script/upids) shows a list of UPIDs running in the specified namespace.
+#### Memory usage
 
-- [`px/pid_memory_usage`](http://work.withpixie.ai/script/pid_memory_usage) shows the virtual memory usage and average memory for all processes in the cluster.
+- [`px/pid_memory_usage`](https://work.withpixie.ai/script/pid_memory_usage) shows the virtual and average memory useage for all processes in the cluster.
+- [`px/service_memory_usage`](https://work.withpixie.ai/script/service_memory_usage) shows the virtual and average memory useage for all services in the cluster.
+- [`px/pod_lifetime_resource`](https://work.withpixie.ai/script/pod_lifetime_resource) shows the total resource usage of a pod over its lifetime.
 
-- [`px/service_memory_usage`](http://work.withpixie.ai/script/service_memory_usage) shows the virtual memory usage and average memory for all services in the cluster.
+#### Miscellaneous / other
 
-- [`px/pod_lifetime_resource`](http://work.withpixie.ai/script/pod_lifetime_resource) shows the total resource usage of a pod over it's lifetime.
-
-- [`px/jvm_stats`](http://work.withpixie.ai/script/jvm_stats) shows JVM stats for Java processes running on the cluster, with options to filter by node and pod.
+- [`px/perf_flamegraph`](https://work.withpixie.ai/script/perf_flamegraph) shows stack trace samples that indicate where your applications are spending their time. Optional filters refine the results by namespace, node or pod.
+- [`px/upids`](https://work.withpixie.ai/script/upids) shows a list of UPIDs running in the specified namespace.
+- [`px/jvm_stats`](https://work.withpixie.ai/script/jvm_stats) shows JVM stats for Java processes running on the cluster.
