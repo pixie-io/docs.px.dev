@@ -1,24 +1,30 @@
 ---
-title: "Quick Start"
-metaTitle: "Install | Quick Start"
-metaDescription: "Getting started guide to setup Pixie"
+title: "Self-Hosted Pixie"
+metaTitle: "Install | Install Guides | Self-Hosted Pixie"
+metaDescription: "Getting started guide to setup 100% self-hosted Pixie"
 order: 2
 ---
 
-Get Pixie fully-managed with [Pixie Community Cloud](https://docs.pixielabs.ai/installing-pixie/quick-start/) (free forever) or run on your own infrastructure with the following self-managed option.
+Get Pixie fully-managed with [Pixie Community Cloud](https://docs.pixielabs.ai/installing-pixie/install-guides/community-cloud-for-pixie) (free forever) or run on your own infrastructure with the following self-managed option.
 
 ## Prerequisites
 
-Pixie can be installed in many different Kubernetes environments. Please refer to Pixie's [requirements](/installing-pixie/requirements) to make sure that your Kubernetes cluster is supported.
+1. Pixie can be installed in many different Kubernetes environments. Please refer to Pixie's [requirements](/installing-pixie/requirements) to make sure that your Kubernetes cluster is supported.
+
+2. Your cluster will need to support Pixie creating and using [PersistentVolumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/). 
 
 ## 1. Deploy Pixie Cloud
 
 <Alert variant="outlined" severity="info">
-  Pixie also offers a free account with Pixie Community Cloud to make getting started even easier and faster. To get Pixie Cloud, check out the community cloud <a href="https://docs.pixielabs.ai/installing-pixie/quick-start/">quick start guide</a>.
+  Pixie also offers a free account with Pixie Community Cloud to make getting started even easier and faster. To get Pixie Cloud, check out the community cloud <a href="https://docs.pixielabs.ai/installing-pixie/install-guides/community-cloud-for-pixie">quick start guide</a>.
 </Alert>
 
 <Alert variant="outlined" severity="info">
   Self-managed Pixie Cloud has been tested on GKE only.
+</Alert>
+
+<Alert variant="outlined" severity="warning">
+  There is a known issue with login on self-managed Pixie Cloud on Safari and Firefox. For now, use Chrome.
 </Alert>
 
 1. Clone the [Pixie repo](https://www.notion.so/pixielabs/New-OS-Pixie-Quick-Start-1a829bdd186f49b78630dd5e5a43349b#00eb63438a844a9e822d2832d37bf82c).
@@ -98,6 +104,10 @@ kubectl log create-admin-job-<pod_string> -n plc
 
 3. Once the password has been set, login using `admin@default.com` for the `identifier` and your new password.
 
+<Alert variant="outlined" severity="warning">
+  There is a known issue with login on self-managed Pixie Cloud on Safari and Firefox. For now, use Chrome.
+</Alert>
+
 ### Invite others to your organization (optional)
 
 1. Navigate to `dev.withpixie.dev/admin/invite` in your browser. Fill out the neccessary information to send invite links to anyone who you'd like to share access with. Note that this link expires after a certain amount of time and cannot be recreated for the expired email address.
@@ -110,56 +120,16 @@ kubectl log create-admin-job-<pod_string> -n plc
 export PL_CLOUD_ADDR=dev.withpixie.dev
 ```
 
-2. Install Pixie's CLI tool in one of four ways:
+2. Install Pixie's CLI 
 
-### Using the install script (easiest)
+The easiest way to install Pixie's CLI is using the install script:
 
 ``` bash
 # Copy and run command to install the Pixie CLI.
 bash -c "$(curl -fsSL https://withpixie.ai/install.sh)"
 ```
 
-### Directly downloading the binary
-
-``` bash
-# Download the latest Pixie binary.
-curl -o px https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_darwin_amd64
-
-# Check the signature matches.
-sha256sum px
-
-# Make it executable.
-chmod +x px
-
-# (Optional) Move it to another location that has executables.
-mv px /usr/local/bin
-```
-
-### Using Docker
-
-``` bash
-alias px="docker run -i --rm -v ${HOME}/.pixie:/root/.pixie pixielabs/px"
-```
-
-### Using Debian package
-
-- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.deb](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.deb)
-- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.deb.sha256](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.deb.sha256)
-
-``` bash
-# Install Pixie .deb package.
-dpkg -i pixie-px.x86_64.deb
-```
-
-### Using RPM
-
-- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.rpm](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.rpm)
-- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.rpm.sha256](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.rpm.sha256)
-
-``` bash
-# Install Pixie .rpm package.
-rpm -i pixie-px.x86_64.rpm
-```
+The CLI can also be installed by directly downloading the binary, using Docker or using the Debian package. For directions, see the [CLI install docs](/installing-pixie/install-schemes/cli/).
 
 ## 3. Deploy Pixie 🚀
 

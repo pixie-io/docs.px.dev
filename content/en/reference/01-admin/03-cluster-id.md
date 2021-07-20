@@ -2,7 +2,7 @@
 title: "Find a Cluster ID"
 metaTitle: "Reference | Admin | Find a Cluster ID"
 metaDescription: "How to find a Cluster's ID."
-order: 8
+order: 3
 ---
 
 Cluster IDs allow unique identification of clusters with Pixie installed.

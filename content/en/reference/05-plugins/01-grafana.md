@@ -19,8 +19,8 @@ To get started using the plugin, check out the [tutorial](/tutorials/grafana).
 
 The plugin requires a Pixie API key and cluster ID to execute queries. Grafana encrypts these values.
 
-- To create an API key, follow the directions [here](/using-pixie/api-quick-start/#get-an-api-token).
-- To find your cluster's ID, follow the directions [here](/using-pixie/api-quick-start/#get-a-cluster-id).
+- To create an API key, follow the directions [here](/reference/admin/api-keys/#create-an-api-key).
+- To find your cluster's ID, follow the directions [here](/reference/admin/cluster-id/#find-the-cluster-id).
 
 ### Queries
 

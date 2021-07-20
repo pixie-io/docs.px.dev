@@ -1,11 +1,17 @@
 ---
 title: "Helm"
-metaTitle: "Install | Install Schemes | Helm"
-metaDescription: "How to install Pixie via Helm"
+metaTitle: "Install | Install Schemes (optional) | Helm"
+metaDescription: "How to install Pixie via Helm."
 order: 3
 ---
 
-## 1. Check requirements
+<Alert variant="outlined" severity="warning">
+  Pixie's charts require the use of Helm 3. Helm 2 is not currently supported. 
+</Alert>
+
+## 1. (Optional) Use the Pixie CLI to Check the Requirements
+
+Install the Pixie CLI following the directions [here](/installing-pixie/install-schemes/cli/).
 
 Check if your K8s cluster meets Pixie's [requirements](/installing-pixie/requirements) by running:
 

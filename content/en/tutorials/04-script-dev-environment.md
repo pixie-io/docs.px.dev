@@ -18,7 +18,7 @@ lsof -i :8000 		# check if anything is running on port 8000
 
 ```
 
-2. In the terminal, clone Pixie's github repo.
+2. In the terminal, clone Pixie's GitHub repo.
 
 ```bash
 git clone https://github.com/pixie-labs/pixie.git

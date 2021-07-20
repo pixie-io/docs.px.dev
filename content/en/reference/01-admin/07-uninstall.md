@@ -1,10 +1,11 @@
 ---
 title: "Uninstalling Pixie"
-metaTitle: "Install | Uninstalling Pixie"
+metaTitle: "Reference | Admin | Uninstalling Pixie"
 metaDescription: "Steps to uninstall and remove your Pixie installation."
 order: 7
 redirect_from:
     - /admin/uninstall/ 
+    - /installing-pixie/uninstall/
 ---
 
 ``` bash

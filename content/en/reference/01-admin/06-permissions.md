@@ -1,7 +1,8 @@
 ---
 title: "Permissions"
-metaTitle: "Administration | Permissions"
+metaTitle: "Reference | Admin | Permissions"
 metaDescription: "How to manage and enforce access control."
+order: 6
 redirect_from:
     - /admin/permissions/
 ---
