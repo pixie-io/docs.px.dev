@@ -451,10 +451,9 @@ const IndexPage = withStyles((theme: Theme) => ({
                 >
                   Install Guide
                 </MainButton>
-              </ButtonsBar>
+              </Grid>
             </Grid>
           </Container>
-
         </section>
         <section>
           <Container id='scripts-section'>

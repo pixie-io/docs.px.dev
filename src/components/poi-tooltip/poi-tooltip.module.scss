@@ -40,7 +40,7 @@
     opacity: 0;
     transition: opacity 300ms linear;
     width: 256px;
-    transform: translateX(-50%);
+    transform: translateX(-10%);
     background: #353535;
     box-shadow: 0 4px 162px rgba(0, 0, 0, 0.3);
     border-radius: 4px;
@@ -55,7 +55,7 @@
 
     &:after {
       bottom: 100%;
-      left: 50%;
+      left: 10%;
       content: " ";
       height: 0;
       width: 0;
