@@ -1,11 +1,13 @@
 ---
 title: "Database Query Profiling"
-metaTitle: "Using Pixie | Use Cases | Database Query Profiling"
-metaDescription: "Database Query Profiling."
+metaTitle: "Tutorials | Pixie 101 | Database Query Profiling"
+metaDescription: "Learn how to use Pixie to do database query profiling."
 order: 3
 ---
 
-Your database could be a bottleneck for your distributed application. With Pixie, you can investigate the performance of your requests to make sure database latency is not significantly impacting service latency.
+Service performance issues often turn out to be the result of slow database queries. With Pixie, you can easily monitor the performance of your database requests to ensure they do not impact service latency.
+
+This tutorial features MySQL requests, but Pixie can trace a number of different database protocols including Cassandra, PostgreSQL, and Redis. See the full list of supported protocols [here](/about-pixie/data-sources/#supported-protocols).
 
 This tutorial will demonstrate how to use Pixie to:
 
@@ -13,19 +15,17 @@ This tutorial will demonstrate how to use Pixie to:
 - Monitor the health of a pod's MySQL requests by query type and parameter.
 - Inspect the latency of individual full body MySQL requests.
 
-This tutorial features MySQL requests, but Pixie can trace a number of different database protocols including Cassandra, PostgreSQL, and Redis. See the full list of supported protocols [here](/about-pixie/data-sources/).
-
 ## Prerequisites
 
 1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using our [installation steps](/installing-pixie/).
 
 2. You will need an application that makes MySQL requests. To install a demo app that uses MySQL:
 
-> - [Install the Pixie CLI](/installing-pixie/quick-start/#using-the-install-script-(easiest))
+> - [Install the Pixie CLI](/installing-pixie/install-schemes/cli/#1.-install-the-pixie-cli)
 > - Run `px demo deploy px-sock-shop` to install Weavework's [Sock Shop](https://microservices-demo.github.io/) demo app.
 > - Run `kubectl get pods -n px-sock-shop` to make sure all pods are ready before proceeding. The demo app can take up to 5 minutes to deploy.
 
-## Monitor Request Health by Pod
+## Request Health by Pod
 
 To see the health of a pod's MySQL requests, we’ll use the `px/mysql_stats` script:
 
@@ -50,28 +50,24 @@ to see the values at particular timestamps.
 :::
 
 <Alert variant="outlined" severity="info">
-  Hover over the pulsing blue circles on the image above to see tips about this graph.
+  Hover over the flashing blue circles on the image above to see tips about this graph.
 </Alert>
 
-> To show only the MySQL requests to/from a specific pod, use the optional `pod` script argument.
+> Let’s use the optional `pod` script input argument to filter to a particular pod.
 
-2. Select the drop down arrow next to the `pod` argument, type `catalogue`, and press Enter to re-run the script.
+2. Select the drop-down arrow next to the `pod` argument, type `catalogue`, and press Enter to re-run the script.
 
 > The graph should update to show stats just for the requests made to/from the `catalogue` pod.
 
 3. Clear the `pod` value by selecting the drop-down arrow and pressing Enter.
 
-<Alert variant="outlined" severity="info">
-  By using an IP address for the `pod` argument, you can see the health of all of the requests to an off-cluster database.
-</Alert>
-
-## Monitor Request Health by Query Type, Parameter
+## Request Health by Query Type, Parameter
 
 To see the health of a pod's MySQL requests clustered by query type, we’ll use the `px/sql_queries` script:
 
 1. Select `px/sql_queries` from the `script` drop-down menu.
 
-> This live view calculates the latency, error rate, and throughput over time for each distinct normalized SQL Query.
+> This live view calculates the latency, error rate, and throughput over time for each distinct normalized SQL Query. Pixie use ML to cluster query params.
 
 ::: div image-xl relative
 <PoiTooltip top={80} left={65}>
@@ -85,15 +81,19 @@ to sort the table data by that column.
 
 2. Scroll down to the "Summary" table.
 
-3. Click on a query in the `NORMED_QUERY` column to be taken to the `px/sql_queries` script.
+3. Click on a query in the `NORMED_QUERY` column to view statistics only for that particular query type.
+
+<svg title='' src='use-case-tutorials/sql_query.png'/>
 
 > This script shows the same request health stats over time for each distinct parameter set for a given normalized SQL query.
 
 > If the normalized query you picked doesn't have any parameters, click your browser's Back button and try a different query from the Summary table.
 
-## Inspect Individual Requests
+## Individual Full Body Requests
 
-To see the latency of individual MySQL request, we'll use the `px/mysql_data` script:
+Next, let's inspect the most recent MySQL requests flowing through your cluster, including the full request and response bodies.
+
+Pixie can capture requests with only one endpoint within your cluster. For example, if a service makes a call to an external mySQL database which is not monitored by Pixie, Pixie will still be able to capture the SQL calls.
 
 1. Select `px/mysql_data` from the `script` drop-down menu at the top of the page.
 
@@ -132,3 +132,15 @@ to expand and see the row data in JSON form.
 4. Scroll to the last column of the table to see latency data for the individual requests.
 
 5. Click on the `LATENCY` column title to sort the table by descending latency.
+
+## Related Scripts
+
+This tutorial demonstrated a few of Pixie's [community scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts). For more insight into your database queries, check out the following scripts:
+
+- [`pxbeta/service_endpoints`](http://work.withpixie.ai/script=pxbeta/service_endpoints) shows an overview of the endpoints for a service, summarizing their request statistics. Click on any endpoint in the top left "Endpoints" table to see statistics only for that particular endpoint.
+
+- [`px/services`](http://work.withpixie.ai/script/services) shows an overview of the services in a namespace, summarizing their request statistics.
+
+- [`px/service_stats`](http://work.withpixie.ai/script/service_stats) shows service latency, error rate and throughput along with a service map and list of incoming and outgoing network traffic.
+
+- [`px/service_edge_stats`](http://work.withpixie.ai/script/service_edge_stats) shows service latency, error rate and throughput according to another service.

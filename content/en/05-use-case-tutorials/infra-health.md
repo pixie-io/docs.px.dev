@@ -10,7 +10,7 @@ Resource pressure can impact the health of your services, but it can be hard to 
 This tutorial will demonstrate how to use Pixie to:
 
 - Monitor resource usage by Namespace, Node, and Pod.
-- Easily navigate between Kubernetes resources within the UI.
+- Easily navigate between Kubernetes resources within the Pixie UI.
 
 **Prerequisites**
 
