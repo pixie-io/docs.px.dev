@@ -1,23 +1,23 @@
 ---
 title: "Network Monitoring"
-metaTitle: "Using Pixie | Use Cases | Network Monitoring"
+metaTitle: Tutorials | Pixie 101 | Network Monitoring"
 metaDescription: "Network monitoring using Pixie."
 order: 1
 ---
 
-Network performance can have a big impact on the health of your services. However, problems in network performance can often be hard to detect when debugging. With Pixie, you can easily monitor your network alongside your applications and infrastructure.
+Network performance can have a big impact on the health of your services. With Pixie, you can easily monitor your network alongside your application and infrastructure layers.
 
-This tutorial will demonstrate how to use Pixie to:
+This tutorial will demonstrate how to use Pixie to see:
 
-- Graph the flow of network traffic within your cluster.
-- Graph the flow of DNS requests within your cluster.
-- Graph TCP drops and TCP retransmits across your cluster.
+- The flow of network traffic within your cluster.
+- The flow of DNS requests within your cluster.
+- TCP drops and TCP retransmits across your cluster.
 
 **Prerequisites**
 
 1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using our [installation steps](/installing-pixie/).
 
-## Graph Network Traffic
+## Network Traffic Across Pods
 
 A global view of the network traffic flowing within a cluster can be used to:
 
@@ -70,7 +70,7 @@ If a request’s remote endpoint is within the cluster, then the IP address is r
 :::
 
 <Alert variant="outlined" severity="info">
-  Hover over the pulsing blue circles on the image above to see tips about this graph.
+  Hover over the flashing blue circles on the image above to see tips about this graph.
 </Alert>
 
 > Let's filter the graph to only show communication to the `pl-nats` pod.
@@ -83,12 +83,12 @@ If a request’s remote endpoint is within the cluster, then the IP address is r
 
 5. Scroll down to the table below the graph. This table contains the same data that is used to construct the graph above.
 
-## Graph DNS Requests
+## DNS Requests Across Pods
 
 Another capability Pixie provides is the ability to inspect and analyze DNS traffic. This information can be used to:
 
 - Quickly determine which services are making DNS requests.
-- Get high-level latency and throughput information.
+- Get high-level DNS latency and throughput information.
 - Observe imbalances of throughput between DNS servers.
 
 Let’s use the px/dns_flow_graph script to see a graph of DNS requests in the cluster:
@@ -123,11 +123,7 @@ to sort the column data.
 
 2. Click on the `LATENCY_AVG` column title to sort the table data by average latency.
 
-<Alert variant="outlined" severity="info">
-  To see all of the raw full-body DNS requests in your cluster, check out the px/dns_data script.
-</Alert>
-
-## Graph TCP drops, TCP retransmits
+## TCP Drops
 
 TCP drops and retransmits can indicate network connectivity issues that may affect application performance.
 
@@ -139,12 +135,26 @@ Let's use the `px/tcp_drops`script to see a global view of TCP drops across the 
   This script is a PxL mutation script. While the previous scripts query the Pixie platform for data, this script extends Pixie to collect new data. Mutation scripts must be run manually; they do not automatically run when they are first opened.
 </Alert>
 
-2. Press the `RUN` button in the top right and the script will first deploy a tracepoint (the new data source) and then query the new data source.
+2. Press the "RUN" button in the top right and the script will first deploy a tracepoint (the new data source) and then query the new data source.
+
+::: div image-xl relative
+<PoiTooltip top={80} left={87}>
+<strong>Enable Hierarchy View</strong>
+{' '}
+for a different view of the graph.
+</PoiTooltip>
 
 <svg title='' src='use-case-tutorials/tcp_drops.png'/>
+:::
 
 2. Hover over an edge to see the number of drops between pod pairs. The color and thickness of the edges indicate an increase in the number of TCP drops.
 
-3. After a few seconds have passed, press the `RUN` button once again. Since more time has elapsed since the tracepoint was deployed, you should see more data in the graph.
+3. After a few seconds have passed, press the "RUN" button once again. Since more time has elapsed since the tracepoint was deployed, you should see more data in the graph.
 
-To see TCP retransmission counts across the cluster, check out the [`px/tcp_retransmissions`](http://work.withpixie.ai/script/tcp_retransmissions) script.
+## Related Scripts
+
+This tutorial demonstrated three of Pixie's [community scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts). For more insight into your network, check out the following scripts:
+
+- [`px/dns_data`](http://work.withpixie.ai/script/dns_data) shows the most recent DNS requests in your cluster, including the full request and response header / body.
+
+- [`px/tcp_retransmissions`](http://work.withpixie.ai/script/tcp_retransmissions) graphs the TCP retransmission counts across your cluster.

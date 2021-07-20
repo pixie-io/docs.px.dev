@@ -1,11 +1,11 @@
 ---
 title: "Infra Health"
-metaTitle: "Using Pixie | Use Cases | Infra Health"
-metaDescription: "Network monitoring using Pixie."
+metaTitle: "Tutorials | Pixie 101 | Use Cases | Infra Health"
+metaDescription: "Infrastructure health using Pixie."
 order: 2
 ---
 
-Resource contention can impact the health of your services. With Pixie, you can easily monitor your infrastructure alongside your network and applications.
+Resource pressure can impact the health of your services, but it can be hard to correlate with application performance. With Pixie, you can easily monitor your infrastructure alongside your network and application layers.
 
 This tutorial will demonstrate how to use Pixie to:
 
@@ -47,34 +47,56 @@ to see the values at particular timestamps.
 :::
 
 <Alert variant="outlined" severity="info">
-  Hover over the pulsing blue circles on the image above to see tips about this graph.
+  Hover over the flashing blue circles on the image above to see tips about this graph.
 </Alert>
 
 > Clicking on any Kubernetes resource name in Pixie’s UI will open a script showing a high-level overview for that entity.
 
-2. Click on the name of a node in the top left “Nodes” table to follow the deep link to the `px/node` script for that node.
-
-> This script may take a few seconds to execute.
+2. Click on the name of a node in the top left “Nodes” table to follow the deep link to the `px/node` script for that node. This script may take a few seconds to execute.
 
 > The `px/node` script shows a similar set of information - CPU usage, memory usage, and network traffic - but just for the selected node.
 
-3. Click on the drop down arrow by the `groupby` argument at the top and select "pod". The graph will switch to display the information grouped by pod instead of node.
+<svg title='' src='use-case-tutorials/node.png'/>
+
+> Notice that the script's required `node` argument has been filed out for you. If you had navigated to this script directly, using the `script` drop-down menu, you would have needed to provide a node name before seeing results.
+
+3. Click on the drop down arrow by the `groupby` argument at the top and select "pod". The graphs will update to display the information grouped by pod instead of node.
+
+> The `px/node` script contains a list of the pods on the node in the top left "Pods" table.
 
 ## Resource Usage by Pod
 
-Let’s use the `px/pod` script to get resource usage information for a specific node in the cluster:
+4. Click on the name of a pod in top left "Pods" table. This takes you to the `px/pod` script. This script may take a few seconds to execute.
 
-The `px/node` script contains a list of the pods on the node.
-
-4. Click on the name of a pod in top left "Pods" table. This takes us to the `px/pod` script.
-
-> This script may take a few seconds to execute.
-
-> The `px/pod` shows an overview of the specified pod, including high-level HTTP application metrics, and resource usage. It also lists containers on the pod and all live processes.
+> The `px/pod` shows an overview of the specified pod, including high-level HTTP application metrics, and resource usage. It also lists containers on the pod, all live processes, inbound HTTP traffic, and more.
 
 <svg title='' src='use-case-tutorials/pod.png'/>
 
 5. Scroll down to the bottom to see a CPU flamegraph for the pod.
+
+> This flamegraph can be used to identify performance issues in application code written in one of the supported languages (Go, C++, Rust). The wider the bar, the more time spent in the function.
+
+::: div image-xl relative
+<PoiTooltip top={30} left={18}>
+<strong>Colors</strong>
+{' '}
+differentiate between K8s metadata (dark blue), user space app code (light blue), and kernel code (light green).
+</PoiTooltip>
+
+<PoiTooltip top={44} left={50}>
+<strong>Scroll to zoom.</strong>
+{' '}
+Click + drag to pan the view. ctrl (Linux, Windows) / cmd (Mac) + click to center the view on the selected box.
+</PoiTooltip>
+
+<PoiTooltip top={83} left={58}>
+<strong>Reset the zoom</strong>
+{' '}
+by clicking the bottom box.
+</PoiTooltip>
+
+<svg title='' src='use-case-tutorials/pod_flamegraph.png'/>
+:::
 
 <Alert variant="outlined" severity="info">
   To learn more about how use Pixie for application profiling, check out the <a href="https://docs.px.dev/tutorials/profiler/">Profiling with Flamegraphs</a> tutorial.
@@ -99,4 +121,22 @@ are available for the heavily used px/cluster and px/namespace scripts.
 <svg title='' src='use-case-tutorials/namespaces.png'/>
 :::
 
-2. Select any namespace name in the `NAMESPACES` table column. This will open the `px/namespace` script for the selected namespace.
+2. Select any namespace name in the `NAMESPACES` table column. This will open the `px/namespace` script for the selected namespace, with the required `namespace` argument pre-filled.
+
+## Related Scripts
+
+This tutorial demonstrated a few of Pixie's [community scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts). For more insight into your infrastructure, check out the following scripts:
+
+- [`px/perf_flamegraph`](http://work.withpixie.ai/script/perf_flamegraph) shows stack trace samples that indicate where your applications are spending their time. Optional filters refine the results to a particular namespace, node, or pod.
+
+- [`px/pods`](http://work.withpixie.ai/script/pods) shows a list of the pods in the specified namespace along with their high level application metrics (latency, error rate, throughput) and resource usage (cpu, writes, reads). Don't forget to provide the required namespace argument.
+
+- [`px/upids`](http://work.withpixie.ai/script/upids) shows a list of UPIDs running in the specified namespace.
+
+- [`px/pid_memory_usage`](http://work.withpixie.ai/script/pid_memory_usage) shows the virtual memory usage and average memory for all processes in the cluster.
+
+- [`px/service_memory_usage`](http://work.withpixie.ai/script/service_memory_usage) shows the virtual memory usage and average memory for all services in the cluster.
+
+- [`px/pod_lifetime_resource`](http://work.withpixie.ai/script/pod_lifetime_resource) shows the total resource usage of a pod over it's lifetime.
+
+- [`px/jvm_stats`](http://work.withpixie.ai/script/jvm_stats) shows JVM stats for Java processes running on the cluster, with options to filter by node and pod.
