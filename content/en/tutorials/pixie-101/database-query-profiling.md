@@ -2,7 +2,7 @@
 title: "Database Query Profiling"
 metaTitle: "Tutorials | Pixie 101 | Database Query Profiling"
 metaDescription: "Learn how to use Pixie to do database query profiling."
-order: 3
+order: 2
 ---
 
 Service performance issues often turn out to be the result of slow database queries. With Pixie, you can easily monitor the performance of your database requests to ensure they do not impact service latency.

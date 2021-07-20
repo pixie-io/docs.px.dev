@@ -1,8 +1,8 @@
 ---
 title: "Network Monitoring"
 metaTitle: Tutorials | Pixie 101 | Network Monitoring"
-metaDescription: "Network monitoring using Pixie."
-order: 1
+metaDescription: "Learn how to use Pixie to monitor network health."
+order: 5
 ---
 
 Network performance can have a big impact on the health of your services. With Pixie, you can easily monitor your network alongside your application and infrastructure layers.
