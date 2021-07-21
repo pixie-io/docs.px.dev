@@ -53,7 +53,7 @@ export const processClientEntry = () => {
     }
     .modal-content img {
       max-width: 100%;
-    
+    z-index:-1;
       position: relative !important;
       object-fit: contain !important;
        margin: 0 auto;

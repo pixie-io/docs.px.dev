@@ -39,6 +39,7 @@ import languages from '../../available-languages';
 import github from '../images/footer/github-icon.svg';
 import slack from '../images/footer/slack-icon.svg';
 import twitter from '../images/footer/twitter-icon.svg';
+import youtube from '../images/footer/youtube-icon.svg';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -294,6 +295,23 @@ const Header = ({
                               alt='logo'
                             />
                             GitHub
+                          </a>
+                        </div>
+                        <div
+                          className={classes.dropMenuItem}
+                          onClick={() => setOpenSupportMenu(false)}
+                        >
+                          <a
+                            href='https://www.youtube.com/channel/UCOMCDRvBVNIS0lCyOmst7eg/featured'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                          >
+                            <img
+                              className={classes.menuButton}
+                              src={youtube}
+                              alt='logo'
+                            />
+                            Youtube
                           </a>
                         </div>
                       </div>
