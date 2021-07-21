@@ -53,7 +53,7 @@ export const processClientEntry = () => {
     }
     .modal-content img {
       max-width: 100%;
-      height:100%;
+    
       position: relative !important;
       object-fit: contain !important;
        margin: 0 auto;
@@ -61,11 +61,18 @@ export const processClientEntry = () => {
 
     }
     .modal-content {
-
+position:relative;
       width: 100%;
       height: calc(100% - 160px);
 
     }
+    .modal-content .tooltip-container{
+    width: 100vh;
+    position: relative;
+    display:table;
+    margin: 0 auto;
+    max-width: 100%;
+}
 
       /* 100% Image Width on Smaller Screens */
       @media only screen and (max-width: 700px){
@@ -97,7 +104,16 @@ export function runZoom() {
     (e) => {
       e.onclick = (event) => {
         const picture = e.getElementsByClassName('doc-image')[0];
-        modalImg.innerHTML = picture.outerHTML;
+        const tooltips: HTMLElement[] = Array.from(picture.parentElement.parentElement.querySelectorAll('[data-tooltip]'));
+        if (tooltips) {
+          const tooltipContainer = document.createElement('div');
+          tooltipContainer.classList.add('tooltip-container');
+          tooltipContainer.append(...tooltips.map((t) => t.cloneNode(true)));
+          tooltipContainer.append(picture.cloneNode(true));
+          modalImg.append(tooltipContainer);
+        } else {
+          modalImg.innerHTML = picture.outerHTML;
+        }
         isModalVisible = true;
         modal.classList.add('show');
         event.stopPropagation();
@@ -107,6 +123,7 @@ export function runZoom() {
 
   function hideModal() {
     modal.classList.remove('show');
+    modalImg.innerHTML = '';
     isModalVisible = false;
   }
 

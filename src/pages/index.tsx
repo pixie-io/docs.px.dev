@@ -354,7 +354,10 @@ const IndexPage = withStyles((theme: Theme) => ({
   const handleCloseVideo = () => {
     setOpenVideo(false);
   };
-
+  const scrollToScripts = () => {
+    document.getElementById('scripts-section')
+      .scrollIntoView({ block: 'start', behavior: 'smooth' });
+  };
   return (
     <Layout location={location}>
       <SEO

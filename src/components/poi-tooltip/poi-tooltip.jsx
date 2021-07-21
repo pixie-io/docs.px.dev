@@ -21,10 +21,10 @@ import PropTypes from 'prop-types';
 import styles from './poi-tooltip.module.scss';
 
 const PoiTooltip = ({ children, top, left }) => (
-  <div className={styles.main} style={{ top: `${top}%`, left: `${left}%` }}>
+  <div className={styles.main} style={{ top: `${top}%`, left: `${left}%` }} data-tooltip>
     <div className={styles.circle} />
     <div
-      className={`${styles.tooltip} ${left < 20 ? styles.leftSide : ''} ${
+      className={`${styles.tooltip} ${
         left > 60 ? styles.rightSide : ''
       }`}
     >
