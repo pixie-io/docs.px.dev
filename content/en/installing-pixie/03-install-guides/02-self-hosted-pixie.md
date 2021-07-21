@@ -9,9 +9,11 @@ Get Pixie fully-managed with [Pixie Community Cloud](https://docs.pixielabs.ai/i
 
 ## Prerequisites
 
-1. Pixie can be installed in many different Kubernetes environments. Please refer to Pixie's [requirements](/installing-pixie/requirements) to make sure that your Kubernetes cluster is supported.
+- Review Pixie's [requirements](/installing-pixie/requirements) to make sure that your Kubernetes cluster is supported.
 
-2. Your cluster will need to support Pixie creating and using [PersistentVolumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/). 
+- Determine if you already have an [operator lifecycle manager](https://docs.openshift.com/container-platform/4.5/operators/understanding/olm/olm-understanding-olm.html) (OLM) deployed to your cluster, possibly to the default `olm` namespace. Pixie uses the Kubernetes [Operator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) to manage its Vizier, which handles data collection and query execution (see the [Architecture](/about-pixie/what-is-pixie/#system-architecture) diagram). The OLM is used to install, update and manage the Vizier Operator.
+
+- Ensure that your cluster supports Pixie creating and using [PersistentVolumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
 
 ## 1. Deploy Pixie Cloud
 
@@ -56,7 +58,7 @@ kubectl create namespace plc
 
 6. Install `kustomize` following the directions [here](https://kubectl.docs.kubernetes.io/installation/kustomize/).
 
-7. Deploy Pixie Cloud dependencies and wait for all pods within the `plc` namespace to become ready and available before proceeding to the next step. 
+7. Deploy Pixie Cloud dependencies and wait for all pods within the `plc` namespace to become ready and available before proceeding to the next step.
 
 ```bash
 kustomize build k8s/cloud_deps/public/ | kubectl apply -f - --namespace=plc
@@ -120,7 +122,7 @@ kubectl log create-admin-job-<pod_string> -n plc
 export PL_CLOUD_ADDR=dev.withpixie.dev
 ```
 
-2. Install Pixie's CLI 
+2. Install Pixie's CLI
 
 The easiest way to install Pixie's CLI is using the install script:
 
@@ -129,36 +131,54 @@ The easiest way to install Pixie's CLI is using the install script:
 bash -c "$(curl -fsSL https://withpixie.ai/install.sh)"
 ```
 
-The CLI can also be installed by directly downloading the binary, using Docker or using the Debian package. For directions, see the [CLI install docs](/installing-pixie/install-schemes/cli/).
+For alternate install options (Docker, Debian package, RPM, direct download of the binary) see the [CLI Install](/installing-pixie/install-schemes/cli/) page.
 
 ## 3. Deploy Pixie 🚀
 
-You can deploy Pixie to your Kubernetes cluster with the Pixie CLI, [YAML](/installing-pixie/install-schemes/yaml), or [Helm](/installing-pixie/install-schemes/helm).
+Pixie's CLI is the fastest and easiest way to deploy Pixie. You can also deploy Pixie using [YAML](/installing-pixie/install-schemes/yaml) or [Helm](/installing-pixie/install-schemes/helm).
 
-Pixie's CLI is the fastest and easiest way to deploy Pixie:
+To deploy Pixie using the CLI:
+
+<Alert variant="outlined" severity="info">
+  If your cluster already has an operator lifecycle manager (OLM) deployed, deploy Pixie using the `--deploy_olm=false` flag.
+</Alert>
 
 ``` bash
-# Deploy the Pixie Platform in your K8s cluster by running:
+# List Pixie deployment options.
+px deploy --help
+
+# Deploy the Pixie Platform in your K8s cluster (No OLM present on cluster).
 px deploy --dev_cloud_namespace plc
+
+# Deploy the Pixie Platform in your K8s cluster (OLM already exists on cluster).
+px deploy  --dev_cloud_namespace plc --deploy_olm=false
 ```
 
-For more CLI deployment configuration options, see [here](/installing-pixie/install-schemes/cli).
+Pixie will deploy pods to the `pl`, `plc`, `px-operator`, and `olm`(if deploying the OLM) namespaces.
 
-### Deploy a demo microservices application (optional)
+## 4. Use Pixie
 
-Deploy a simple demo app to monitor:
+### Deploy a demo microservices app (optional)
+
+Deploy a simple demo app to monitor using Pixie:
 
 ```bash
+# List available demo apps.
+px demo list
+
+# Example: deploy Weaveworks' "sock-shop".
 px demo deploy px-sock-shop
 ```
 
-This demo application takes several minutes to stabilize after deployment. To check the status of the application's pods, run:
+This demo application takes several minutes to stabilize after deployment.
+
+To check the status of the application's pods, run:
 
 ```bash
 kubectl get pods -n px-sock-shop
 ```
 
-### Run a script using the CLI
+### Test out the CLI
 
 Use `px run` to run a script to demonstrate observability. The `demo_script` script shows the latency and request path of http traffic hitting your cluster.
 
@@ -170,7 +190,7 @@ px scripts list
 px run px/demo_script
 ```
 
-For more information, checkout our [CLI guide](/using-pixie/using-cli/) or see our [PxL script documentation](/reference/pxl/), but first, go on to the next step and explore our web app.
+For more information, checkout our [CLI guide](/using-pixie/using-cli/).
 
 ### Explore the web app
 
@@ -180,6 +200,10 @@ Open [Pixie's live UI](https://work.dev.withpixie.dev:443) in a new tab.
 3. Now, select a script (e.g. `px/cluster` or `px/http_data`).
 
 For more information, check out our [Live UI guide](/using-pixie/using-live-ui/).
+
+### Check out the tutorials
+
+Learn how to use Pixie for [Network Monitoring](/tutorials/pixie-101/network-monitoring/), [Infra Health](/tutorials/pixie-101/infra-health/), [Database Query Profiling](/tutorials/pixie-101/database-query-profiling/), and more.
 
 ## Get Help
 
