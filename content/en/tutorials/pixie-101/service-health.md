@@ -9,10 +9,10 @@ Unreliable or slow services can lead to a poor user experience for your customer
 
 This tutorial will demonstrate how to use Pixie to see:
 
-- The flow of traffic between the services in your cluster.
-- Latency, error and throughput rate for all services.
-- Latency, error, throughput per endpoint.
+- The flow of HTTP traffic between the services in your cluster.
+- HTTP latency, error, and throughput rate for all services.
 - A sample of the slowest requests for a individual service.
+- HTTP latency, error, and throughput per service endpoint.
 
 ## Prerequisites
 
@@ -24,13 +24,13 @@ This tutorial will demonstrate how to use Pixie to see:
 > - Run `px demo deploy px-sock-shop` to install Weavework's [Sock Shop](https://microservices-demo.github.io/) demo app.
 > - Run `kubectl get pods -n px-sock-shop` to make sure all pods are ready before proceeding. The demo app can take up to 5 minutes to deploy.
 
-## Service Traffic Flow
+## Service Graph
 
 To get a high-level overview of the services in your cluster, we'll start with the `px/cluster` script.
 
 1. Open the [Live UI](http://work.withpixie.ai/) and select `px/cluster` from the `script` drop-down menu at the top.
 
-> This script shows a graph of the HTTP traffic between the services in your cluster, along with latency, error and throughput rate per service.
+> This script shows a graph of the HTTP traffic between the services in your cluster, along with latency, error, and throughput rate per service.
 
 ::: div image-xl relative
 <PoiTooltip top={9} left={2}>
@@ -46,13 +46,7 @@ for latency, error and throughput. Thicker lines indicate more traffic.
 </PoiTooltip>
 
 <PoiTooltip top={60} left={47}>
-<strong>Drag the 3-dot divider</strong>
-{' '}
-to expand the column.
-</PoiTooltip>
-
-<PoiTooltip top={50} left={47}>
-<strong>Click  the 3-dot divider</strong>
+<strong>Drag the 3-dot column divider</strong>
 {' '}
 to expand the column.
 </PoiTooltip>
@@ -66,11 +60,11 @@ to expand the column.
 
 2. Scroll down to the **Services** table.
 
-> This table contains latency, error and throughput rate for all HTTP traffic. It also contains `INBOUND_THROUGHPUT` and `OUTBOUND_THROUGHPUT` columns to reflect all network (not just HTTP).
+> This table contains latency, error and throughput rate for all HTTP traffic. It also contains `INBOUND_THROUGHPUT` and `OUTBOUND_THROUGHPUT` columns to reflect all network traffic (not just HTTP).
 
 > Let's figure out which service is the slowest.
 
-3. Expand the **LATENCY** column by dragging the 3-dot column divider.
+3. Expand the **LATENCY** column by dragging the 3-dot column header divider.
 
 > This script represents service latency with a [box & whisker plot](https://datavizcatalogue.com/methods/box_plot.html).
 
@@ -120,13 +114,13 @@ to see the values at particular timestamps.
 
 ## Service Endpoint Health
 
-It can be useful to see service health stats broken down by endpoint for a service.
+When troubleshooting service health, it can be useful to see stats broken down by service endpoint.
 
-1. Select `pxbeta/service_endpoints` from the script drop-down menu. Note that this is a beta script.
+1. Select `pxbeta/service_endpoints` from the script drop-down menu (note: this is a Beta script).
 
 2. Select the drop down arrow next to the `service` argument, type `px-sock-shop/catalogue`, and press Enter to re-run the script.
 
-> The graphs should update to only show the endpoints for the `catalogue` pod.
+> This script shows latency, error and throughput per endpoint for the given service.
 
 3. Clear the `service` value by selecting the drop-down arrow and pressing Enter.
 
@@ -136,9 +130,9 @@ It can be useful to see service health stats broken down by endpoint for a servi
 
 ## Related Scripts
 
-This tutorial demonstrated a few of Pixie's [community scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts). For more insight into your database queries, check out the following scripts:
+This tutorial demonstrated a few of Pixie's [community scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts). For more insight into the health of your services, check out the following scripts:
 
 - [`px/services`](http://work.withpixie.ai/script/services) shows LET over time for all services in the given namespace, along with a  service graph.
 - [`px/service_stats`](http://work.withpixie.ai/script/service_stats) shows LET over time for the given service, along with a service graph and summary of incoming and outgoing traffic.
-- [`px/service_edge_stats`](http://work.withpixie.ai/script/service_edge_stats) shows LET according to another service.
-- [px/pod](http://work.withpixie.ai/script/pod) shows a CPU flamegraph to see how your Go/C++/Rust applications are spending their time. To learn more about how use Pixie for application profiling, check out the [Profiling with Flamegraphs](/tutorials/profiler) tutorial.
+- [`px/service_edge_stats`](http://work.withpixie.ai/script/service_edge_stats) shows LET over time according to another service.
+- [`px/pod`](http://work.withpixie.ai/script/pod) shows a CPU flamegraph for the pod to see how your Go/C++/Rust applications are spending their time. To learn more about how use Pixie for application profiling, check out the [Profiling with Flamegraphs](/tutorials/profiler) tutorial.
