@@ -10,9 +10,9 @@ Unreliable or slow services can lead to a poor user experience for your customer
 This tutorial will demonstrate how to use Pixie to see:
 
 - The flow of HTTP traffic between the services in your cluster.
-- HTTP latency, error, and throughput rate for all services.
+- HTTP latency, error, and throughput (LET) rate over time per service.
+- HTTP LET rate per service endpoint.
 - A sample of the slowest requests for an individual service.
-- HTTP latency, error, and throughput per service endpoint.
 
 ## Prerequisites
 
