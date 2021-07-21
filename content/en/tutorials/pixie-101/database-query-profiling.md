@@ -2,7 +2,7 @@
 title: "Database Query Profiling"
 metaTitle: "Tutorials | Pixie 101 | Database Query Profiling"
 metaDescription: "Learn how to use Pixie to do database query profiling."
-order: 3
+order: 4
 ---
 
 Service performance issues often turn out to be the result of slow database queries. With Pixie, you can easily monitor the performance of your database requests to ensure they do not impact service health.
@@ -107,7 +107,7 @@ are identified and replaced with a `?`.
 
 > Let's examine one of the normalized SQL queries.
 
-2. Scroll down to the "Summary" table.
+2. Scroll down to the **Summary** table.
 
 > For longer queries, it's often easier to view the data in JSON form.
 
@@ -123,7 +123,7 @@ are identified and replaced with a `?`.
 
 > This script shows latency, error, and throughput for each individual parameter for the given normalized SQL query.
 
-> The "Summary" table shows the individual parameters passed to `sock_id` in the normalized query.
+> The **Summary** table shows the individual parameters passed to `sock_id` in the normalized query.
 
 ::: div image-xl relative
 <PoiTooltip top={75} left={2}>

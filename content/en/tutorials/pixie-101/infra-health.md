@@ -52,7 +52,7 @@ to see the values at particular timestamps.
 
 > Clicking on any Kubernetes resource name in Pixie’s UI will open a script showing a high-level overview for that entity.
 
-2. Click on the name of a node in the top left “Nodes” table to follow the deep link to the `px/node` script for that node. This script may take a few seconds to execute.
+2. Click on the name of a node in the top left **Nodes** table to follow the deep link to the `px/node` script for that node. This script may take a few seconds to execute.
 
 > The `px/node` script shows a similar set of information - CPU usage, memory usage, and network traffic - but just for the selected node.
 
@@ -62,11 +62,11 @@ to see the values at particular timestamps.
 
 3. Click on the drop down arrow by the `groupby` argument at the top and select "pod". The graphs will update to display the information grouped by pod instead of node.
 
-> The `px/node` script contains a list of the pods on the node in the top left "Pods" table.
+> The `px/node` script contains a list of the pods on the node in the top left **Pods** table.
 
 ## Resource Usage by Pod
 
-4. Click on the name of a pod in top left "Pods" table. This takes you to the `px/pod` script. This script may take a few seconds to execute.
+4. Click on the name of a pod in top left **Pods** table. This takes you to the `px/pod` script. This script may take a few seconds to execute.
 
 > The `px/pod` shows an overview of the specified pod, including high-level HTTP application metrics, and resource usage. It also lists containers on the pod, all live processes, inbound HTTP traffic, and more.
 

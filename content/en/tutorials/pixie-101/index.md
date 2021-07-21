@@ -9,4 +9,5 @@ Learn how to use Pixie for:
 
 - [Network Monitoring](/tutorials/pixie-101/network-monitoring)
 - [Infrastructure Health](/tutorials/pixie-101/infra-health)
+- [Service Health](/tutorials/pixie-101/service-health)
 - [Database Query Profiling](/tutorials/pixie-101/database-query-profiling)
