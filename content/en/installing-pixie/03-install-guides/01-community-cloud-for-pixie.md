@@ -9,7 +9,7 @@ order: 1
 
 - Review Pixie's [requirements](/installing-pixie/requirements) to make sure that your Kubernetes cluster is supported.
 
-- Determine if you already have an [operator lifecycle manager](https://docs.openshift.com/container-platform/4.5/operators/understanding/olm/olm-understanding-olm.html) (OLM) deployed to your cluster, possibly to the default `olm` namespace. Pixie uses the Kubernetes [Operator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) to manage its Vizier, which handles data collection and query execution (see the [Architecture](/about-pixie/what-is-pixie/#system-architecture) diagram). The OLM is used to install, update and manage the Vizier Operator.
+- Determine if you already have [Operator Lifecycle Manager](https://docs.openshift.com/container-platform/4.5/operators/understanding/olm/olm-understanding-olm.html) (OLM) deployed to your cluster, possibly to the default `olm` namespace. Pixie uses the Kubernetes [Operator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) to manage its Vizier, which handles data collection and query execution (see the [Architecture](/about-pixie/what-is-pixie/#system-architecture) diagram). The OLM is used to install, update and manage the Vizier Operator.
 
 ## 1. Sign up
 
@@ -37,7 +37,7 @@ Pixie's CLI is the fastest and easiest way to deploy Pixie. You can also deploy 
 To deploy Pixie using the CLI:
 
 <Alert variant="outlined" severity="info">
-  If your cluster already has an operator lifecycle manager (OLM) deployed, deploy Pixie using the `--deploy_olm=false` flag.
+  If your cluster already has Operator Lifecycle Manager (OLM) deployed, deploy Pixie using the `--deploy_olm=false` flag.
 </Alert>
 
 ``` bash
