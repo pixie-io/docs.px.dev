@@ -2,7 +2,7 @@
 title: "How to Write a PxL Script"
 metaTitle: "Tutorials | How to Write a PxL Script"
 metaDescription: "Write Custom PxL Scripts"
-order: 1
+order: 2
 ---
 
 ## Overview
