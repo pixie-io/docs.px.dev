@@ -224,7 +224,7 @@ const Header = ({
                 <img className={classes.menuButton} src={logoImg} alt='logo' />
               </Link>
               <div className={classes.socialIcons}>
-                <a href='https://slackin.withpixie.ai'>
+                <a href='https://slackin.px.dev'>
                   <img src={slack} alt='slack' />
                 </a>
                 <a href='https://github.com/pixie-labs/pixie'>
@@ -233,6 +233,18 @@ const Header = ({
                 <a href='https://twitter.com/pixie_run'>
                   <img src={twitter} alt='twitter' />
                 </a>
+
+                <a
+                  href='https://www.youtube.com/channel/UCOMCDRvBVNIS0lCyOmst7eg/featured'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <img
+                    src={youtube}
+                    alt='logo'
+                  />
+                </a>
+
               </div>
               <div className={classes.middle} />
               <div className={classes.buttons}>
@@ -297,23 +309,7 @@ const Header = ({
                             GitHub
                           </a>
                         </div>
-                        <div
-                          className={classes.dropMenuItem}
-                          onClick={() => setOpenSupportMenu(false)}
-                        >
-                          <a
-                            href='https://www.youtube.com/channel/UCOMCDRvBVNIS0lCyOmst7eg/featured'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                          >
-                            <img
-                              className={classes.menuButton}
-                              src={youtube}
-                              alt='logo'
-                            />
-                            Youtube
-                          </a>
-                        </div>
+
                       </div>
                     ) : null}
                   </div>
