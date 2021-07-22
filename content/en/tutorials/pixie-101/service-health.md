@@ -5,13 +5,15 @@ metaDescription: "Learn how to use Pixie to monitor service health."
 order: 3
 ---
 
-Unreliable or slow services can lead to a poor user experience for your customers. With Pixie, you can easily monitor the performance and reliability of your services alongside your network and infrastructure layers.
+Unreliable or slow services can lead to a poor user experience for your customers. With Pixie, you can get immediate visibility into the health of your services, without the need for manual instrumentation.
+
+Pixie automatically captures all network traffic in your cluster using [eBPF](https://www.brendangregg.com/ebpf.html), a low-level Linux tracing technology. Messages of a [supported protocol](http://localhost:8000/about-pixie/data-sources/#supported-protocols) type, such as HTTP2/gRPC, are parsed and paired with their responses, making latency, error, and throughput information immediately available after installing Pixie.
 
 This tutorial will demonstrate how to use Pixie to see:
 
 - The flow of HTTP traffic between the services in your cluster.
-- HTTP latency, error, and throughput (LET) rate over time per service.
-- HTTP LET rate per service endpoint.
+- HTTP latency, error, and throughput rate over time per service.
+- HTTP latency, error, and throughput rate per service endpoint.
 - A sample of the slowest requests for an individual service.
 
 ## Prerequisites
@@ -26,7 +28,14 @@ This tutorial will demonstrate how to use Pixie to see:
 
 ## Service Graph
 
-To get a high-level overview of the services in your cluster, we'll start with the `px/cluster` script.
+When debugging issues with microservices, it helps to start at a high-level and then drill down.
+
+A global view of the services in your cluster can help:
+
+- Visualize complex dependencies.
+- Identify bottlenecks and load balancing issues.
+
+Let's start with the `px/cluster` script.
 
 1. Open the [Live UI](http://work.withpixie.ai/) and select `px/cluster` from the `script` drop-down menu at the top.
 
@@ -60,31 +69,35 @@ to expand the column.
 
 2. Scroll down to the **Services** table.
 
-> This table contains latency, error and throughput rate for all HTTP traffic. It also contains `INBOUND_THROUGHPUT` and `OUTBOUND_THROUGHPUT` columns to reflect all network traffic (not just HTTP).
+> This table contains latency, error and throughput rate for all HTTP traffic. It also contains `INBOUND_THROUGHPUT` and `OUTBOUND_THROUGHPUT` columns that reflect all traced network traffic.
 
-> Let's figure out which service is the slowest.
+Let's figure out which service is the slowest.
 
-3. Expand the **LATENCY** column by dragging the 3-dot column header divider.
+The average latency can be misleading. Instead, it is best to look at the latency at different percentiles to get a more complete picture of what the real latency perception is.
+
+3. Click the `LATENCY` column title to sort the services by latency.
+
+4. Expand the `LATENCY` column by dragging the 3-dot column header divider.
 
 > This script represents service latency with a [box & whisker plot](https://datavizcatalogue.com/methods/box_plot.html).
 
-4. Click one of the vertical quantile lines on the box plot to switch the latency display between the P50, P90 and P99 quantile values.
+5. Click the vertical quantile lines on the box plot to switch the latency display between the P50, P90 and P99 quantile values.
 
 > The table column title will update to reflect the selected quantile.
 
-5. Click the `LATENCY` column title to sort the services by latency.
+> A high P50 latency value for the `front-end` service indicates that this is general performance degradation, rather than an issue with a specific request.
 
 ## Individual Service Health
 
-Let's take a closer look at the health of a particular service.
+Once the service graph has identified a performance issue with an individual service in your cluster, you'll want to drill down into the stats for that particular service.
 
-Clicking on any pod, node, service, or namespace name in Pixie’s UI will open a script showing a high-level overview for that entity.
+Pixie's UI makes it easy to quickly navigate between Kubernetes resources. Clicking on any pod, node, service, or namespace name in the UI will open a script showing a high-level overview for that entity.
+
+6. From the `SERVICE` column in the **Services** table, click on the `px-sock-shop/front-end` service.
 
 <Alert variant="outlined" severity="info">
   Pixie displays pod and service names in the UI in the `&lt;namespace&gt;&#47;&lt;pod&gt;` and `&lt;namespace&gt;&#47;&lt;service&gt;` format.
 </Alert>
-
-6. From the `SERVICE` column in the **Services** table, click on the `px-sock-shop/front-end` service.
 
 > This will open the `px/service` script with the `service` argument pre-filled with the name of the service you selected.
 
@@ -106,33 +119,49 @@ to see the values at particular timestamps.
 <svg title='' src='use-case-tutorials/service.png'/>
 :::
 
-7. Scroll down to the **Sample of Slow Requests** table.
+> This view shows us that the service's latency values have been consistent over the time window.
 
-8. Hover over the column titles to find the `RESP_STATUS` column.
+7. Scroll down to the **Sample of Slow Requests** table and expand the `REQ_PATH` column.
 
-9. Click the column title to sort by HTTP response status code.
+> If this service handles multiple kinds of requests, this table can help identify if there is a particular request type that is much slower.
 
 ## Service Endpoint Health
 
-When troubleshooting service health, it can be useful to see stats broken down by service endpoint.
+Request latency can vary greatly by endpoint, especially if one of the requests is more database intensive. However, when there are wildcards (url parameters) in your request paths, it can be difficult to drill down into a particular endpoint.
+
+Pixie can cluster HTTP requests by logical endpoint, substituting a `*` for the parameters in your requests. For example, the following two requests:
+
+> `/restaurants/0123550/reviews/239487345/author`
+
+> `/restaurants/3485799/reviews/394853457/author`
+
+would be clustered together into the logical endpoint:
+
+> `/restaurants/*/reviews/*/author`
+
+Let's look at latency by logical service endpoint:
 
 1. Select `pxbeta/service_endpoints` from the script drop-down menu (note: this is a Beta script).
 
 2. Select the drop down arrow next to the `service` argument, type `px-sock-shop/catalogue`, and press Enter to re-run the script.
 
-> This script shows latency, error and throughput per endpoint for the given service.
-
-3. Clear the `service` value by selecting the drop-down arrow and pressing Enter.
+> This script shows latency, error and throughput per logical endpoint for the given service.
 
 ::: div image-xl
 <svg title='' src='use-case-tutorials/service_endpoints.png'/>
+:::
+
+3. Click on `catalog/*` in the **Endpoints** table to see an overview of that individual endpoint with a sample of slow requests.
+
+::: div image-xl
+<svg title='' src='use-case-tutorials/service_endpoint.png'/>
 :::
 
 ## Related Scripts
 
 This tutorial demonstrated a few of Pixie's [community scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts). For more insight into the health of your services, check out the following scripts:
 
+- [`px/pod`](http://work.withpixie.ai/script/pod) shows a CPU flamegraph for the pod to see how your Go/C++/Rust applications are spending their time. To learn more about how use Pixie for application profiling, check out the [Profiling with Flamegraphs](/tutorials/profiler) tutorial.
 - [`px/services`](http://work.withpixie.ai/script/services) shows LET over time for all services in the given namespace, along with a  service graph.
 - [`px/service_stats`](http://work.withpixie.ai/script/service_stats) shows LET over time for the given service, along with a service graph and summary of incoming and outgoing traffic.
 - [`px/service_edge_stats`](http://work.withpixie.ai/script/service_edge_stats) shows LET over time according to another service.
-- [`px/pod`](http://work.withpixie.ai/script/pod) shows a CPU flamegraph for the pod to see how your Go/C++/Rust applications are spending their time. To learn more about how use Pixie for application profiling, check out the [Profiling with Flamegraphs](/tutorials/profiler) tutorial.

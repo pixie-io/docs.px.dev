@@ -11,3 +11,4 @@ Learn how to use Pixie for:
 - [Infrastructure Health](/tutorials/pixie-101/infra-health)
 - [Service Health](/tutorials/pixie-101/service-health)
 - [Database Query Profiling](/tutorials/pixie-101/database-query-profiling)
+- [Request Tracing](/tutorials/pixie-101/request-tracing)
