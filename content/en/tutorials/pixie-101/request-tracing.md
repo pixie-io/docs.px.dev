@@ -7,29 +7,29 @@ order: 5
 
 The move from monolith to microservice architecture has increased overall application complexity and the need to closely monitor communication between services.
 
-With Pixie, you can get immediate visibility into requests between services (for [supported protocols](http://localhost:8000/about-pixie/data-sources/#supported-protocols)), without the need for manual instrumentation, making it easy for you to quickly debug your distributed applications.
+Pixie provides immediate visibility into requests between services (for [supported protocols](http://localhost:8000/about-pixie/data-sources/#supported-protocols)), without the need for manual instrumentation, making it easy for you to quickly debug your distributed applications.
 
-This tutorial will demonstrate how to use Pixie to see:
+This tutorial will demonstrate how to use Pixie to:
 
 - See a high-level overview of HTTP errors for the services in your cluster.
-- Drill down into HTTP errors per service and per pod.
+- Drill down into HTTP errors per service and pod.
 - Inspect full body HTTP requests.
 
 ## Prerequisites
 
 1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using our [installation steps](/installing-pixie/).
 
-2. You will need an application that makes MySQL requests. To install a demo app that uses MySQL:
+2. You will need an application that makes HTTP requests. To install a demo app that uses HTTP:
 
 > - [Install the Pixie CLI](/installing-pixie/install-schemes/cli/#1.-install-the-pixie-cli)
 > - Run `px demo deploy px-sock-shop` to install Weavework's [Sock Shop](https://microservices-demo.github.io/) demo app.
 > - Run `kubectl get pods -n px-sock-shop` to make sure all pods are ready before proceeding. The demo app can take up to 5 minutes to deploy.
 
-## HTTP Errors in the Cluster
+## Service Graph
 
-When debugging issues with microservices, it helps to start at a high-level and then drill down.
+When debugging issues with microservices, it helps to start at a high-level view, like a service map, and then drill down into the problem service(s).
 
-To get a global view of the services in your cluster, we'll use the `px/cluster` script:
+For a global view of the services in your cluster, we'll use the px/cluster script:
 
 1. Open the [Live UI](http://work.withpixie.ai/) and select `px/cluster` from the `script` drop-down menu at the top.
 
@@ -63,9 +63,9 @@ with the table column menu.
 
 > The `carts` service has errors, so let's take a closer look at that service.
 
-## HTTP Errors per Service
+## Individual Service Health
 
-Once the service graph has identified HTTP errors for an individual service in your cluster, you'll want to drill down into the stats for that particular service.
+Once we have identified a service we are interested in investigating further, we will want to drill down into its detailed performance information.
 
 Pixie's UI makes it easy to quickly navigate between Kubernetes resources. Clicking on any pod, node, service, or namespace name in the UI will open a script showing a high-level overview for that entity.
 
@@ -80,26 +80,32 @@ Pixie's UI makes it easy to quickly navigate between Kubernetes resources. Click
 > The `px/service` script shows the latency, error, and throughput over time for all HTTP requests for the service.
 
 ::: div image-xl relative
+<PoiTooltip top={11} left={79}>
+<strong>Modify the start_time</strong>
+{' '}
+to change the time window for the results (e.g `-30m`, `-1h`).
+</PoiTooltip>
+
 <svg title='' src='use-case-tutorials/service_errors.png'/>
 :::
 
-> We can see that the `carts` service has a consistent, low level of HTTP errors over the last 5 min.
+> We can see that the `carts` service has had a low error rate over the last 5 min.
 
 5. Scroll down to the **Inbound Traffic by Requesting Service** table.
 
-> Here, we can see that the errors are coming from the HTTP requests from the `front-end` service.
+> We can see that the HTTP requests with errors are coming from the `front-end` service. None of the requests from the `orders` service have errors.
 
 ## HTTP Errors per Pod
 
-Sometime a single pod can be the source for all of the erroring HTTP requests.
+Sometimes a single pod can be the source of all errors.
 
-Let's drill down into the pod view:
+Let's drill down into the pod view to check HTTP errors alongside pod resource metrics.
 
 6. Click on the pod name in the **Pod List** table.
 
 > This will open the `px/pod` script with the `pod` argument pre-filled with the name of the pod you selected.
 
-> The `px/pod` script shows the latency, error, and throughput over time for all HTTP requests for the pod.
+> The `px/pod` script shows the latency, error, and throughput over time for all HTTP requests for the pod alongside high-level resource metrics.
 
 ::: div image-xl relative
 <svg title='' src='use-case-tutorials/pod_errors.png'/>
@@ -107,7 +113,7 @@ Let's drill down into the pod view:
 
 ## Individual Full Body HTTP Requests
 
-Pixie capture all network traffic that passes through your cluster (it supports both server and client-side tracing). For the [supported protocols](http://localhost:8000/about-pixie/data-sources/#supported-protocols), this visibility extends into the full HTTP request and response body.
+Pixie captures all network traffic that passes through your cluster (it supports both server and client-side tracing). For the [supported protocols](http://localhost:8000/about-pixie/data-sources/#supported-protocols), this visibility extends into the full HTTP request and response body.
 
 Let's inspect the contents of the erroring HTTP requests:
 

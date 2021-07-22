@@ -20,7 +20,7 @@ This tutorial will demonstrate how to use Pixie to see:
 
 1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using our [installation steps](/installing-pixie/).
 
-2. You will need an application that makes HTTP requests. To install a demo app that uses MySQL:
+2. You will need an application that makes HTTP requests. To install a demo app that uses HTTP:
 
 > - [Install the Pixie CLI](/installing-pixie/install-schemes/cli/#1.-install-the-pixie-cli)
 > - Run `px demo deploy px-sock-shop` to install Weavework's [Sock Shop](https://microservices-demo.github.io/) demo app.
@@ -78,7 +78,7 @@ It’s good to check multiple percentiles for latency, not just the average, in 
 
 5. Click the vertical quantile lines on the box plot to switch the latency display between the P50, P90 and P99 quantile values.
 
-> The table column title will update to reflect the selected quantile and the `LATENCY` column will resort itself.
+> The `LATENCY` column will resort itself and the column title will update to reflect the selected quantile.
 
 > A high P50 latency value for the `front-end` service indicates that this is general performance degradation, rather than an issue with a specific request.
 
@@ -120,7 +120,7 @@ to see the values at particular timestamps.
 
 > If this service handles multiple kinds of requests, this table can help identify if there is a particular request type that is much slower.
 
-> These are individual requests, so we will see the full path with URL parameters filled in (for example, `/restaurants/123`).  However, Pixie makes it possible to drill down into individual logcial endpoints (for example, `/restaurants/*`).
+> This table shows individual requests, so we will see the full path with URL parameters filled in (for example, `/restaurants/123`).  However, Pixie makes it possible to drill down into individual logcial endpoints (for example, `/restaurants/*`).
 
 ## Service Endpoint Health
 
