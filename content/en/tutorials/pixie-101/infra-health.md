@@ -50,7 +50,7 @@ to see the values at particular timestamps.
   Hover over the flashing blue circles on the image above to see tips about this graph.
 </Alert>
 
-> Clicking on any Kubernetes resource name in Pixie’s UI will open a script showing a high-level overview for that entity.
+> Pixie's UI makes it easy to quickly navigate between Kubernetes resources. Clicking on any pod, node, service, or namespace name in the UI will open a script showing a high-level overview for that entity.
 
 2. Click on the name of a node in the top left **Nodes** table to follow the deep link to the `px/node` script for that node. This script may take a few seconds to execute.
 

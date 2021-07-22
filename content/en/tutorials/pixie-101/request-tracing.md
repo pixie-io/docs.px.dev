@@ -5,15 +5,15 @@ metaDescription: "Learn how to use Pixie to trace requests in your cluster."
 order: 5
 ---
 
-Pixie uses a low-level Linux tracing technology called [eBPF](https://www.brendangregg.com/ebpf.html) to automatically capture telemetry data without the need for manual instrumentation. One type of telemetry data Pixie collects is network traffic, including certain encrypted traffic. If the traffic is of a [supported protocol](http://localhost:8000/about-pixie/data-sources/#supported-protocols), such as HTTP2/gRPC and DNS, this traffic is classified and parsed, making it easy for you to quickly inspect debug issues with your distributed applications.
+The move from monolith to microservice architecture has increased overall application complexity and the need to closely monitor communication between services.
 
-This tutorial will demonstrate how to use Pixie to:
+With Pixie, you can get immediate visibility into requests between services (for [supported protocols](http://localhost:8000/about-pixie/data-sources/#supported-protocols)), without the need for manual instrumentation, making it easy for you to quickly debug your distributed applications.
+
+This tutorial will demonstrate how to use Pixie to see:
 
 - See a high-level overview of HTTP errors for the services in your cluster.
 - Drill down into HTTP errors per service and per pod.
 - Inspect full body HTTP requests.
-
-Cluster > Service > Pod > see errors > switch to http_data_filtered > hide columns
 
 ## Prerequisites
 
@@ -27,7 +27,9 @@ Cluster > Service > Pod > see errors > switch to http_data_filtered > hide colum
 
 ## HTTP Errors in the Cluster
 
-To get a high-level overview of the services in your cluster, we'll start with the `px/cluster` script.
+When debugging issues with microservices, it helps to start at a high-level and then drill down.
+
+To get a global view of the services in your cluster, we'll use the `px/cluster` script:
 
 1. Open the [Live UI](http://work.withpixie.ai/) and select `px/cluster` from the `script` drop-down menu at the top.
 
@@ -63,7 +65,9 @@ with the table column menu.
 
 ## HTTP Errors per Service
 
-> Clicking on any pod, node, service, or namespace name in Pixie’s UI will open a script showing a high-level overview for that entity.
+Once the service graph has identified HTTP errors for an individual service in your cluster, you'll want to drill down into the stats for that particular service.
+
+Pixie's UI makes it easy to quickly navigate between Kubernetes resources. Clicking on any pod, node, service, or namespace name in the UI will open a script showing a high-level overview for that entity.
 
 4. From the `SERVICE` column in the **Services** table, click on the `px-sock-shop/carts` service.
 
@@ -75,19 +79,21 @@ with the table column menu.
 
 > The `px/service` script shows the latency, error, and throughput over time for all HTTP requests for the service.
 
-> We can see that the `carts` service has a consistent, low level of HTTP errors over the last 5 min.
-
 ::: div image-xl relative
 <svg title='' src='use-case-tutorials/service_errors.png'/>
 :::
 
+> We can see that the `carts` service has a consistent, low level of HTTP errors over the last 5 min.
+
 5. Scroll down to the **Inbound Traffic by Requesting Service** table.
 
-> Here, we can see that the errors are from the HTTP requests from the `front-end` service.
+> Here, we can see that the errors are coming from the HTTP requests from the `front-end` service.
 
 ## HTTP Errors per Pod
 
-Let's drill down into the pod view.
+Sometime a single pod can be the source for all of the erroring HTTP requests.
+
+Let's drill down into the pod view:
 
 6. Click on the pod name in the **Pod List** table.
 
@@ -101,13 +107,17 @@ Let's drill down into the pod view.
 
 ## Individual Full Body HTTP Requests
 
+Pixie capture all network traffic that passes through your cluster (it supports both server and client-side tracing). For the [supported protocols](http://localhost:8000/about-pixie/data-sources/#supported-protocols), this visibility extends into the full HTTP request and response body.
+
+Let's inspect the contents of the erroring HTTP requests:
+
 1. Select `px/http_data_filtered` from the script drop-down menu.
 
 > Note how the `pod` argument preserves the same value that was selected in the `px/pod` script.
 
 > The `px/http_data_filtered` script shows a sample of HTTP requests in the cluster filtered by service, pod, request path & response status code.
 
-2. Select the drop down arrow next to the `status_code` argument, type `500`, and press Enter to re-run the script.
+2. Select the drop-down arrow next to the `status_code` argument, type `500`, and press Enter to re-run the script.
 
 > The graph should update to only show HTTP requests with a response status code of `500`.
 
@@ -127,4 +137,4 @@ to see the data in JSON form.
 
 4. Scroll through the JSON data to find the `resp_body` key.
 
-> We can see that the `front-end` has tried to
+> We can see that the `front-end` service is issuing requests for an item that doesn't exist.

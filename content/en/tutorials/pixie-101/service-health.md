@@ -20,7 +20,7 @@ This tutorial will demonstrate how to use Pixie to see:
 
 1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using our [installation steps](/installing-pixie/).
 
-2. You will need an application that makes MySQL requests. To install a demo app that uses MySQL:
+2. You will need an application that makes HTTP requests. To install a demo app that uses MySQL:
 
 > - [Install the Pixie CLI](/installing-pixie/install-schemes/cli/#1.-install-the-pixie-cli)
 > - Run `px demo deploy px-sock-shop` to install Weavework's [Sock Shop](https://microservices-demo.github.io/) demo app.
@@ -28,14 +28,9 @@ This tutorial will demonstrate how to use Pixie to see:
 
 ## Service Graph
 
-When debugging issues with microservices, it helps to start at a high-level and then drill down.
+When debugging issues with microservices, it helps to start at a high-level view, like a service map, and then drill down into the problem service(s).
 
-A global view of the services in your cluster can help:
-
-- Visualize complex dependencies.
-- Identify bottlenecks and load balancing issues.
-
-Let's start with the `px/cluster` script.
+For a global view of the services in your cluster, we'll use the `px/cluster` script:
 
 1. Open the [Live UI](http://work.withpixie.ai/) and select `px/cluster` from the `script` drop-down menu at the top.
 
@@ -73,9 +68,9 @@ to expand the column.
 
 Let's figure out which service is the slowest.
 
-The average latency can be misleading. Instead, it is best to look at the latency at different percentiles to get a more complete picture of what the real latency perception is.
-
 3. Click the `LATENCY` column title to sort the services by latency.
+
+It’s good to check multiple percentiles for latency, not just the average, in order to get a better picture of the overall distribution.
 
 4. Expand the `LATENCY` column by dragging the 3-dot column header divider.
 
@@ -83,13 +78,13 @@ The average latency can be misleading. Instead, it is best to look at the latenc
 
 5. Click the vertical quantile lines on the box plot to switch the latency display between the P50, P90 and P99 quantile values.
 
-> The table column title will update to reflect the selected quantile.
+> The table column title will update to reflect the selected quantile and the `LATENCY` column will resort itself.
 
 > A high P50 latency value for the `front-end` service indicates that this is general performance degradation, rather than an issue with a specific request.
 
 ## Individual Service Health
 
-Once the service graph has identified a performance issue with an individual service in your cluster, you'll want to drill down into the stats for that particular service.
+Once we have identified a service we are interested in investigating further, we will want to drill down into its detailed performance information.
 
 Pixie's UI makes it easy to quickly navigate between Kubernetes resources. Clicking on any pod, node, service, or namespace name in the UI will open a script showing a high-level overview for that entity.
 
@@ -125,6 +120,8 @@ to see the values at particular timestamps.
 
 > If this service handles multiple kinds of requests, this table can help identify if there is a particular request type that is much slower.
 
+> These are individual requests, so we will see the full path with URL parameters filled in (for example, `/restaurants/123`).  However, Pixie makes it possible to drill down into individual logcial endpoints (for example, `/restaurants/*`).
+
 ## Service Endpoint Health
 
 Request latency can vary greatly by endpoint, especially if one of the requests is more database intensive. However, when there are wildcards (url parameters) in your request paths, it can be difficult to drill down into a particular endpoint.
@@ -143,7 +140,7 @@ Let's look at latency by logical service endpoint:
 
 1. Select `pxbeta/service_endpoints` from the script drop-down menu (note: this is a Beta script).
 
-2. Select the drop down arrow next to the `service` argument, type `px-sock-shop/catalogue`, and press Enter to re-run the script.
+2. Select the drop-down arrow next to the `service` argument, type `px-sock-shop/catalogue`, and press Enter to re-run the script.
 
 > This script shows latency, error and throughput per logical endpoint for the given service.
 

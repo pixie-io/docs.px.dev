@@ -145,9 +145,9 @@ passed to `sock_id` in the normalized query.
 
 ## Individual Full Body Requests
 
-Let's inspect the most recent MySQL requests flowing through your cluster, including the full request and response bodies.
+Pixie captures all network traffic that passes through your cluster (it supports both server and client-side tracing). For [supported protocols](http://localhost:8000/about-pixie/data-sources/#supported-protocols), this traffic is parsed into messages that are paired with their responses.
 
-Pixie can capture any traffic that passes through your cluster (it supports both server and client-side tracing).
+Let's inspect the most recent MySQL requests flowing through your cluster, including the full request and response bodies.
 
 1. Select `px/mysql_data` from the `script` drop-down menu at the top of the page.
 
