@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'inline-block',
   },
   socialIcons: {
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       display: 'none',
     },
     '& a': {
