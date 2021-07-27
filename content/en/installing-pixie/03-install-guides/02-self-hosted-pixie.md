@@ -5,7 +5,7 @@ metaDescription: "Getting started guide to setup 100% self-hosted Pixie"
 order: 2
 ---
 
-Get Pixie fully-managed with [Pixie Community Cloud](/installing-pixie/install-guides/community-cloud-for-pixie) (free forever) or run on your own infrastructure with the following self-managed option.
+Get Pixie fully managed with [Pixie Community Cloud](/installing-pixie/install-guides/community-cloud-for-pixie) (free forever) or run on your own infrastructure with the following self-managed option.
 
 ## Prerequisites
 
