@@ -6,8 +6,14 @@ order: 3
 ---
 
 <Alert variant="outlined" severity="warning">
-  Pixie's charts require the use of Helm 3. Helm 2 is not currently supported. 
+  Pixie's charts require the use of Helm 3. Helm 2 is not currently supported.
 </Alert>
+
+## Prerequisites
+
+- Review Pixie's [requirements](/installing-pixie/requirements) to make sure that your Kubernetes cluster is supported.
+
+- Determine if you already have [Operator Lifecycle Manager](https://docs.openshift.com/container-platform/4.5/operators/understanding/olm/olm-understanding-olm.html) (OLM) deployed to your cluster, possibly to the default `olm` namespace. Pixie uses the Kubernetes [Operator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) to manage its Vizier, which handles data collection and query execution (see the [Architecture](/about-pixie/what-is-pixie/#system-architecture) diagram). The OLM is used to install, update and manage the Vizier Operator.
 
 ## 1. (Optional) Use the Pixie CLI to Check the Requirements
 
@@ -24,20 +30,31 @@ If your cluster fails any checks, you may still proceed with installation, but i
 ## 2. Create deployment key
 
 Create a deployment key following the directions [here](/reference/admin/deploy-keys/#create-a-deploy-key).
-## 3. Deploy
+
+## 3. Deploy Pixie
 
 Deploy Pixie in your target cluster by running:
 
-``` bash
-# add the Pixie chart
-helm repo add pixie https://pixie-helm-charts.storage.googleapis.com
+<Alert variant="outlined" severity="info">
+  If your cluster already has Operator Lifecycle Manager (OLM) deployed, install Pixie using the `deployOLM=false` flag.
+</Alert>
 
-# get latest information about Pixie chart
+``` bash
+# Add the Pixie operator chart.
+helm repo add pixie-operator https://pixie-operator-charts.storage.googleapis.com
+
+# Get latest information about Pixie chart.
 helm repo update
 
-# install the Pixie chart
-helm install pixie pixie/pixie-chart --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace <desired-namespace> --create-namespace
+# Install the Pixie chart (No OLM present on cluster).
+helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace
+
+# Install the Pixie chart (OLM already exists on cluster).
+helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace
+--deployOLM=false
 ```
+
+Pixie will deploy pods to the `pl`, `px-operator`, and `olm`(if deploying the OLM) namespaces.
 
 ## 4. Verify
 
