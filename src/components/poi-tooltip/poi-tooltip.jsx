@@ -31,9 +31,9 @@ const PoiTooltip = ({ children, top, left }) => (
     <div className={styles.circle} />
     <div
       className={`${styles.tooltip} ${
-        left > 60 ? styles.rightSide : ''
+        left > 50 ? styles.rightSide : ''
       }`}
-      style={{ maxWidth: `${left > 60 ? 100 - left : left + 30}vw` }}
+      style={{ maxWidth: `${left > 50 ? `${100 - left}vw` : 'calc(50vw - 32px)'}` }}
     >
       {children}
     </div>
@@ -46,6 +46,5 @@ PoiTooltip.propTypes = {
   left: PropTypes.number.isRequired,
 };
 
-PoiTooltip.defaultProps = {
-};
+PoiTooltip.defaultProps = {};
 export default PoiTooltip;
