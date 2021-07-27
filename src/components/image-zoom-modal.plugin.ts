@@ -69,7 +69,6 @@ position:relative;
     .modal-content .tooltip-container{
     width: 100vh;
     position: relative;
-    display:table;
     margin: 0 auto;
     max-width: 100%;
 }
@@ -77,8 +76,9 @@ position:relative;
       /* 100% Image Width on Smaller Screens */
       @media only screen and (max-width: 700px){
         .modal-content {
-          width: 100%;
+          width: 100wv;          
         }
+
       }
   `;
 
