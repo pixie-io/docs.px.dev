@@ -5,7 +5,7 @@ metaDescription: "Getting started guide to setup 100% self-hosted Pixie"
 order: 2
 ---
 
-Get Pixie fully-managed with [Pixie Community Cloud](https://docs.pixielabs.ai/installing-pixie/install-guides/community-cloud-for-pixie) (free forever) or run on your own infrastructure with the following self-managed option.
+Get Pixie fully managed with [Pixie Community Cloud](/installing-pixie/install-guides/community-cloud-for-pixie) (free forever) or run on your own infrastructure with the following self-managed option.
 
 ## Prerequisites
 
@@ -29,7 +29,7 @@ Get Pixie fully-managed with [Pixie Community Cloud](https://docs.pixielabs.ai/i
   There is a known issue with login on self-managed Pixie Cloud on Safari and Firefox. For now, use Chrome.
 </Alert>
 
-1. Clone the [Pixie repo](https://www.notion.so/pixielabs/New-OS-Pixie-Quick-Start-1a829bdd186f49b78630dd5e5a43349b#00eb63438a844a9e822d2832d37bf82c).
+1. Clone the [Pixie repo](https://github.com/pixie-labs/pixie).
 
 ```bash
 git clone https://github.com/pixie-labs/pixie.git
@@ -112,7 +112,7 @@ kubectl log create-admin-job-<pod_string> -n plc
 
 ### Invite others to your organization (optional)
 
-1. Navigate to `dev.withpixie.dev/admin/invite` in your browser. Fill out the neccessary information to send invite links to anyone who you'd like to share access with. Note that this link expires after a certain amount of time and cannot be recreated for the expired email address.
+1. Navigate to `dev.withpixie.dev/admin/invite` in your browser. Fill out the necessary information to send invite links to anyone who you'd like to share access with. Note that this link expires after a certain amount of time and cannot be recreated for the expired email address.
 
 ## 2. Install the Pixie CLI
 
@@ -194,7 +194,7 @@ For more information, checkout our [CLI guide](/using-pixie/using-cli/).
 
 ### Explore the web app
 
-Open [Pixie's live UI](https://work.dev.withpixie.dev:443) in a new tab.
+Open [Pixie's Live UI](https://work.dev.withpixie.dev:443) in a new tab.
 
 1. Select your cluster.
 3. Now, select a script (e.g. `px/cluster` or `px/http_data`).

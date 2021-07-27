@@ -68,7 +68,7 @@ const FooterLinks = () => {
         <a href='https://px.dev/community'>COMMUNITY</a>
       </li>
       <li>
-        <a href='https://blog.pixielabs.ai/' target='_blank' rel='noreferrer'>
+        <a href='https://blog.px.dev/' target='_blank' rel='noreferrer'>
           BLOG
         </a>
       </li>

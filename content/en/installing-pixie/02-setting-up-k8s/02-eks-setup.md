@@ -12,8 +12,7 @@ redirect_from:
 
 Note: Skip this section if you already you have a target cluster set up.
 
-If you don't have a cluster ready you can set one up based on the [Getting Started with Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html) guide. An easier approach we recommend is to set it up with [eksctl](https://github.com/weaveworks/eksct) by following these steps:
-
+If you don't have a cluster ready you can set one up based on the [Getting Started with Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html) guide.
 
 ### Prerequisites
 
@@ -24,11 +23,10 @@ If you don't have a cluster ready you can set one up based on the [Getting Start
 
 ### Create the cluster
 
-
-Create a cluster with managed node-pools using [eksctl](https://eksctl.io/usage/eks-managed-nodegroups/):
+Create a cluster with managed node-pools using [eksctl](https://eksctl.io/usage/creating-and-managing-clusters/):
 
 ```
-eksctl create cluster --managed
+eksctl create cluster
 ```
 
 Update kubeconfig to point to the right cluster:
