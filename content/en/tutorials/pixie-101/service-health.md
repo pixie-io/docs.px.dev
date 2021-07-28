@@ -12,9 +12,11 @@ Pixie automatically captures all network traffic in your cluster using [eBPF](ht
 This tutorial will demonstrate how to use Pixie to see:
 
 - The flow of HTTP traffic between the services in your cluster.
-- HTTP latency, error, and throughput rate over time per service.
-- HTTP latency, error, and throughput rate per service endpoint.
+- Latency per service.
+- Latency per service endpoint.
 - A sample of the slowest requests for an individual service.
+
+If you're interested in troubleshooting HTTP errors, check out the [Request Tracing](/tutorials/pixie-101/request-tracing) tutorial.
 
 ## Prerequisites
 
@@ -64,7 +66,7 @@ to expand the column.
 
 2. Scroll down to the **Services** table.
 
-> This table contains latency, error and throughput rate for all HTTP traffic. It also contains `INBOUND_THROUGHPUT` and `OUTBOUND_THROUGHPUT` columns that reflect all traced network traffic.
+> This table contains latency, error and throughput rate for all HTTP traffic. The `INBOUND_THROUGHPUT` and `OUTBOUND_THROUGHPUT` columns  reflect all traced network traffic (not just HTTP) for the service.
 
 Let's figure out which service is the slowest.
 
@@ -82,9 +84,9 @@ It’s good to check multiple percentiles for latency, not just the average, in 
 
 > A high P50 latency value for the `front-end` service indicates that this is general performance degradation, rather than an issue with a specific request.
 
-## Individual Service Health
+## Service Performance
 
-Once we have identified a service we are interested in investigating further, we will want to drill down into its detailed performance information.
+Once we have identified a service we are interested in investigating further, we will want to drill down into its detailed latency information.
 
 Pixie's UI makes it easy to quickly navigate between Kubernetes resources. Clicking on any pod, node, service, or namespace name in the UI will open a script showing a high-level overview for that entity.
 
@@ -114,15 +116,15 @@ to see the values at particular timestamps.
 <svg title='' src='use-case-tutorials/service.png'/>
 :::
 
-> This view shows us that the service's latency values have been consistent over the time window.
+> This view shows us that the service's latency values have been consistent over the selected time window.
 
 7. Scroll down to the **Sample of Slow Requests** table and expand the `REQ_PATH` column.
 
 > If this service handles multiple kinds of requests, this table can help identify if there is a particular request type that is much slower.
 
-> This table shows individual requests, so we will see the full path with URL parameters filled in (for example, `/restaurants/123`).  However, Pixie makes it possible to drill down into individual logcial endpoints (for example, `/restaurants/*`).
+> This table shows individual requests, so we will see the full path with URL parameters filled in (for example, `/restaurants/123`).  However, Pixie makes it possible to drill down into individual logical endpoints (for example, `/restaurants/*`).
 
-## Service Endpoint Health
+## Endpoint Performance
 
 Request latency can vary greatly by endpoint, especially if one of the requests is more database intensive. However, when there are wildcards (url parameters) in your request paths, it can be difficult to drill down into a particular endpoint.
 

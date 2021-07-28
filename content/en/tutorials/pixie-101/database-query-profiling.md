@@ -7,7 +7,7 @@ order: 4
 
 Service performance issues often turn out to be the result of slow database queries. With Pixie, you can easily monitor the performance of your database requests to ensure they do not impact service health.
 
-This tutorial features MySQL requests, but Pixie can trace a number of different database protocols including Cassandra, PostgreSQL, and Redis. See the full list [here](/about-pixie/data-sources/#supported-protocols).
+MySQL requests are featured in this tutorial, but Pixie can trace a number of different database protocols including Cassandra, PostgreSQL, and Redis. See the full list [here](/about-pixie/data-sources/#supported-protocols).
 
 This tutorial will demonstrate how to use Pixie to monitor MySQL:
 

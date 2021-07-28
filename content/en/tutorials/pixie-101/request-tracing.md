@@ -5,15 +5,17 @@ metaDescription: "Learn how to use Pixie to trace requests in your cluster."
 order: 5
 ---
 
-The move from monolith to microservice architecture has increased overall application complexity and the need to closely monitor communication between services.
+The move from monolith to microservice architecture has increased the volume of inter-service traffic. Pixie makes debugging errors between services easy by providing immediate and deep (full-body) visibility into requests, all without the need for manual instrumentation.
 
-Pixie provides immediate visibility into requests between services (for [supported protocols](http://localhost:8000/about-pixie/data-sources/#supported-protocols)), without the need for manual instrumentation, making it easy for you to quickly debug your distributed applications.
+HTTP requests are featured in this tutorial, but Pixie can trace a number of different protocols including DNS, PostgreSQL, and MySQL. See the full list [here](/about-pixie/data-sources/#supported-protocols).
 
 This tutorial will demonstrate how to use Pixie to:
 
-- See a high-level overview of HTTP errors for the services in your cluster.
-- Drill down into HTTP errors per service and pod.
 - Inspect full body HTTP requests.
+- See HTTP error rate per pod.
+- See HTTP error rate per service.
+
+Check out the [Service Health](/tutorials/pixie-101/service-health) tutorial if you're interested in troubleshooting request latency.
 
 ## Prerequisites
 
@@ -24,6 +26,40 @@ This tutorial will demonstrate how to use Pixie to:
 > - [Install the Pixie CLI](/installing-pixie/install-schemes/cli/#1.-install-the-pixie-cli)
 > - Run `px demo deploy px-sock-shop` to install Weavework's [Sock Shop](https://microservices-demo.github.io/) demo app.
 > - Run `kubectl get pods -n px-sock-shop` to make sure all pods are ready before proceeding. The demo app can take up to 5 minutes to deploy.
+
+## Individual Full Body HTTP Requests
+
+Pixie captures all network traffic that passes through your cluster (it supports both server and client-side tracing). For the [supported protocols](http://localhost:8000/about-pixie/data-sources/#supported-protocols), this traffic is parsed and the full request and response bodies are made available.
+
+Let's inspect the contents of the erroring HTTP requests:
+
+1. Select `px/http_data_filtered` from the script drop-down menu.
+
+> Note how the `pod` argument preserves the same value that was selected in the `px/pod` script.
+
+> The `px/http_data_filtered` script shows a sample of HTTP requests in the cluster filtered by service, pod, request path & response status code.
+
+2. Select the drop-down arrow next to the `status_code` argument, type `500`, and press Enter to re-run the script.
+
+> The graph should update to only show HTTP requests with a response status code of `500`.
+
+::: div image-xl relative
+<PoiTooltip top={56} left={55}>
+<strong>Click a row</strong>
+{' '}
+to see the data in JSON form.
+</PoiTooltip>
+
+<svg title='' src='use-case-tutorials/http_data_filtered.png'/>
+:::
+
+> For requests with longer message bodies, it's often easier to view the data in JSON form.
+
+3. Click on a table row to see the row data in JSON format.
+
+4. Scroll through the JSON data to find the `resp_body` key.
+
+> We can see that the `front-end` service is issuing requests for an item that doesn't exist.
 
 ## Service Graph
 
@@ -65,7 +101,7 @@ with the table column menu.
 
 ## Individual Service Health
 
-Once we have identified a service we are interested in investigating further, we will want to drill down into its detailed performance information.
+Now that we have identified a service that we are interested in investigating, we will want to drill down into its detailed performance information.
 
 Pixie's UI makes it easy to quickly navigate between Kubernetes resources. Clicking on any pod, node, service, or namespace name in the UI will open a script showing a high-level overview for that entity.
 
@@ -111,36 +147,18 @@ Let's drill down into the pod view to check HTTP errors alongside pod resource m
 <svg title='' src='use-case-tutorials/pod_errors.png'/>
 :::
 
-## Individual Full Body HTTP Requests
+## Related Scripts
 
-Pixie captures all network traffic that passes through your cluster (it supports both server and client-side tracing). For the [supported protocols](http://localhost:8000/about-pixie/data-sources/#supported-protocols), this visibility extends into the full HTTP request and response body.
+This tutorial demonstrated a few of Pixie's [community scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts). To see full body requests for a specific protocol, check out the following scripts:
 
-Let's inspect the contents of the erroring HTTP requests:
+#### General protocols
 
-1. Select `px/http_data_filtered` from the script drop-down menu.
+- [`px/http_data`](https://work.withpixie.ai/script/http_data) shows the most recent HTTP/2 requests in the cluster.
+- [`px/dns_data`](https://work.withpixie.ai/script/dns_data) shows the most recent DNS requests in the cluster.
 
-> Note how the `pod` argument preserves the same value that was selected in the `px/pod` script.
+#### Database protocols
 
-> The `px/http_data_filtered` script shows a sample of HTTP requests in the cluster filtered by service, pod, request path & response status code.
-
-2. Select the drop-down arrow next to the `status_code` argument, type `500`, and press Enter to re-run the script.
-
-> The graph should update to only show HTTP requests with a response status code of `500`.
-
-::: div image-xl relative
-<PoiTooltip top={56} left={55}>
-<strong>Click a row</strong>
-{' '}
-to see the data in JSON form.
-</PoiTooltip>
-
-<svg title='' src='use-case-tutorials/http_data_filtered.png'/>
-:::
-
-> For requests with longer message bodies, it's often easier to view the data in JSON form.
-
-3. Click on a table row to see the row data in JSON format.
-
-4. Scroll through the JSON data to find the `resp_body` key.
-
-> We can see that the `front-end` service is issuing requests for an item that doesn't exist.
+- [`px/mysql_data`](https://work.withpixie.ai/script/mysql_data) shows the most recent MySQL requests in the cluster.
+- [`px/pgsql_data`](https://work.withpixie.ai/script/pgsql_data) shows the most recent Postgres requests in the cluster.
+- [`px/redis_data`](https://work.withpixie.ai/script/redis_data) shows the most recent Redis requests in the cluster.
+- [`px/cql_data`](https://work.withpixie.ai/script/cql_data) shows the most recent Cassandra requests in the cluster.
