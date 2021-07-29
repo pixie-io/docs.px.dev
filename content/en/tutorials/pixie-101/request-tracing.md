@@ -5,17 +5,17 @@ metaDescription: "Learn how to use Pixie to trace requests in your cluster."
 order: 5
 ---
 
-The move from monolith to microservice architecture has increased the volume of inter-service traffic. Pixie makes debugging errors between services easy by providing immediate and deep (full-body) visibility into requests, all without the need for manual instrumentation.
+The move from monolith to microservice architecture has greatly increased the volume of inter-service traffic. Pixie makes debugging  this communication between services easy by providing immediate and deep (full-body) visibility into requests flowing through your cluster.
 
 HTTP requests are featured in this tutorial, but Pixie can trace a number of different protocols including DNS, PostgreSQL, and MySQL. See the full list [here](/about-pixie/data-sources/#supported-protocols).
 
 This tutorial will demonstrate how to use Pixie to:
 
-- Inspect full body HTTP requests.
-- See HTTP error rate per pod.
+- Inspect full-body HTTP requests.
 - See HTTP error rate per service.
+- See HTTP error rate per pod.
 
-Check out the [Service Health](/tutorials/pixie-101/service-health) tutorial if you're interested in troubleshooting request latency.
+If you're interested in troubleshooting HTTP latency, check out the [Service Health](/tutorials/pixie-101/service-health) tutorial.
 
 ## Prerequisites
 
@@ -27,27 +27,37 @@ Check out the [Service Health](/tutorials/pixie-101/service-health) tutorial if 
 > - Run `px demo deploy px-sock-shop` to install Weavework's [Sock Shop](https://microservices-demo.github.io/) demo app.
 > - Run `kubectl get pods -n px-sock-shop` to make sure all pods are ready before proceeding. The demo app can take up to 5 minutes to deploy.
 
-## Individual Full Body HTTP Requests
+## Full-Body HTTP Request
 
-Pixie captures all network traffic that passes through your cluster (it supports both server and client-side tracing). For the [supported protocols](http://localhost:8000/about-pixie/data-sources/#supported-protocols), this traffic is parsed and the full request and response bodies are made available.
+A developer has noticed that the demo application's `cart` service is reporting errors.
 
-Let's inspect the contents of the erroring HTTP requests:
+<Alert variant="outlined" severity="info">
+  To see high-level error rates for all of the services in your cluster, check out the <a href="https://docs.px.dev/tutorials/pixie-101/service-health/#service-graph">Service Graph</a> section of the Service Health tutorial.
+</Alert>
+
+Let's use Pixie to find specific HTTP errors:
 
 1. Select `px/http_data_filtered` from the script drop-down menu.
 
-> Note how the `pod` argument preserves the same value that was selected in the `px/pod` script.
-
-> The `px/http_data_filtered` script shows a sample of HTTP requests in the cluster filtered by service, pod, request path & response status code.
+> This script shows the most recent HTTP requests in your cluster filtered by service, pod, request path, and response status code.
 
 2. Select the drop-down arrow next to the `status_code` argument, type `500`, and press Enter to re-run the script.
 
-> The graph should update to only show HTTP requests with a response status code of `500`.
+3. Select the drop-down arrow next to the `svc` argument, type `px-sock-shop/carts`, and press Enter to re-run the script.
+
+> The table will update to only show HTTP requests made to the `carts` service with a response status code of `500`.
 
 ::: div image-xl relative
-<PoiTooltip top={56} left={55}>
+<PoiTooltip top={41} left={55}>
 <strong>Click a row</strong>
 {' '}
 to see the data in JSON form.
+</PoiTooltip>
+
+<PoiTooltip top={24} left={3}>
+<strong>Show / hide table columns</strong>
+{' '}
+with the table column menu.
 </PoiTooltip>
 
 <svg title='' src='use-case-tutorials/http_data_filtered.png'/>
@@ -55,97 +65,67 @@ to see the data in JSON form.
 
 > For requests with longer message bodies, it's often easier to view the data in JSON form.
 
-3. Click on a table row to see the row data in JSON format.
+4. Click on a table row to see the row data in JSON format.
 
-4. Scroll through the JSON data to find the `resp_body` key.
+5. Scroll through the JSON data to find the `resp_body` key.
 
-> We can see that the `front-end` service is issuing requests for an item that doesn't exist.
+> We can see that a HTTP POST request to the `carts` service has returned an error, with the message: `Cannot find item in cart`.
 
-## Service Graph
+## Service Errors
 
-When debugging issues with microservices, it helps to start at a high-level view, like a service map, and then drill down into the problem service(s).
+Once we have identified a specific error coming from the `carts` service, we will want to go up a level to see how often these errors occur at the service level.
 
-For a global view of the services in your cluster, we'll use the px/cluster script:
+6. Hover over the **HTTP Data** table and scroll all the way to the right side.
 
-1. Open the [Live UI](http://work.withpixie.ai/) and select `px/cluster` from the `script` drop-down menu at the top.
+> Pixie's UI makes it easy to quickly navigate between Kubernetes resources. Clicking on any pod, node, service, or namespace name in the UI will open a script showing a high-level overview for that entity.
 
-> This script shows a graph of the HTTP traffic between the services in your cluster, along with latency, error, and throughput rate per service.
-
-::: div image-xl relative
-<PoiTooltip top={10} left={1}>
-<strong>Click the Kubernetes icon</strong>
-{' '}
-for a shortcut to the `px/cluster` script.
-</PoiTooltip>
-
-<PoiTooltip top={71} left={61}>
-<strong>Click table column titles</strong>
-{' '}
-to sort the column data.
-</PoiTooltip>
-
-<PoiTooltip top={72} left={3}>
-<strong>Show / hide table columns</strong>
-{' '}
-with the table column menu.
-</PoiTooltip>
-
-<svg title='' src='use-case-tutorials/cluster_errors.png'/>
-:::
-
-2. Scroll down to the **Services** table.
-
-3. Click on the `ERROR_RATE` column title to sort the services by error rate.
-
-> The `carts` service has errors, so let's take a closer look at that service.
-
-## Individual Service Health
-
-Now that we have identified a service that we are interested in investigating, we will want to drill down into its detailed performance information.
-
-Pixie's UI makes it easy to quickly navigate between Kubernetes resources. Clicking on any pod, node, service, or namespace name in the UI will open a script showing a high-level overview for that entity.
-
-4. From the `SERVICE` column in the **Services** table, click on the `px-sock-shop/carts` service.
+7. From the `SVC` column, click on the `px-sock-shop/carts` service name.
 
 <Alert variant="outlined" severity="info">
-  Pixie displays service names in the UI in the `&lt;namespace&gt;&#47;&lt;service&gt;` format.
+  Pixie displays service names in the UI in the &lt;namespace&gt;&#47;&lt;service&gt; format.
 </Alert>
 
 > This will open the `px/service` script with the `service` argument pre-filled with the name of the service you selected.
 
-> The `px/service` script shows the latency, error, and throughput over time for all HTTP requests for the service.
+> The `px/service` script shows error rate over time for all inbound HTTP requests.
 
 ::: div image-xl relative
 <PoiTooltip top={11} left={79}>
 <strong>Modify the start_time</strong>
 {' '}
-to change the time window for the results (e.g `-30m`, `-1h`).
+to change the time window for the results (e.g -30m, -1h).
 </PoiTooltip>
 
 <svg title='' src='use-case-tutorials/service_errors.png'/>
 :::
 
-> We can see that the `carts` service has had a low error rate over the last 5 min.
+> We can see that the `carts` service has had a low but consistent error rate over the selected time window.
 
-5. Scroll down to the **Inbound Traffic by Requesting Service** table.
+8. Scroll down to the **Inbound Traffic by Requesting Service** table.
 
-> We can see that the HTTP requests with errors are coming from the `front-end` service. None of the requests from the `orders` service have errors.
+> This table shows the services making requests to the `carts` service.
 
-## HTTP Errors per Pod
+> We can see that the requests with errors are only coming from the `front-end` service.
 
-Sometimes a single pod can be the source of all errors.
+## Pod Errors
 
-Let's drill down into the pod view to check HTTP errors alongside pod resource metrics.
+If services are backed by multiple pods, it is worth inspecting the individual pods to see if a single pod is the source of the service's errors.
+
+9. Scroll up to the **Pod List** table.
+
+> The `carts` service is backed by a single pod.
 
 6. Click on the pod name in the **Pod List** table.
 
 > This will open the `px/pod` script with the `pod` argument pre-filled with the name of the pod you selected.
 
-> The `px/pod` script shows the latency, error, and throughput over time for all HTTP requests for the pod alongside high-level resource metrics.
+> The `px/pod` script shows HTTP error rate alongside high-level resource metrics.
 
 ::: div image-xl relative
 <svg title='' src='use-case-tutorials/pod_errors.png'/>
 :::
+
+> We can see that there is no resource pressure on this pod and that the HTTP request throughput has been constant over the selected time window.
 
 ## Related Scripts
 

@@ -93,12 +93,12 @@ Pixie's UI makes it easy to quickly navigate between Kubernetes resources. Click
 6. From the `SERVICE` column in the **Services** table, click on the `px-sock-shop/front-end` service.
 
 <Alert variant="outlined" severity="info">
-  Pixie displays pod and service names in the UI in the `&lt;namespace&gt;&#47;&lt;pod&gt;` and `&lt;namespace&gt;&#47;&lt;service&gt;` format.
+  Pixie displays pod and service names in the UI in the &lt;namespace&gt;&#47;&lt;pod&gt; and &lt;namespace&gt;&#47;&lt;service&gt; format.
 </Alert>
 
 > This will open the `px/service` script with the `service` argument pre-filled with the name of the service you selected.
 
-> The `px/service` script shows the latency, error, and throughput over time for all HTTP requests for the service. It lists the incoming traffic by requesting service, as well as a sample of the slowest requests for the selected service.
+> The `px/service` script shows the latency, error, and throughput over time for all HTTP requests for the service.
 
 ::: div image-xl relative
 <PoiTooltip top={35} left={68}>
@@ -111,6 +111,12 @@ to highlight those specific results. Click the item a second time to show all re
 <strong>Drag your mouse across the graph</strong>
 {' '}
 to see the values at particular timestamps.
+</PoiTooltip>
+
+<PoiTooltip top={10} left={82}>
+<strong>Modify the start_time</strong>
+{' '}
+to change the time window for the results (e.g -30m, -1h).
 </PoiTooltip>
 
 <svg title='' src='use-case-tutorials/service.png'/>
@@ -131,7 +137,6 @@ Request latency can vary greatly by endpoint, especially if one of the requests 
 Pixie can cluster HTTP requests by logical endpoint, substituting a `*` for the parameters in your requests. For example, the following two requests:
 
 > `/restaurants/0123550/reviews/239487345/author`
-
 > `/restaurants/3485799/reviews/394853457/author`
 
 would be clustered together into the logical endpoint:
