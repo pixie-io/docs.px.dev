@@ -10,8 +10,9 @@ order: 40
 - [Network Monitoring](/tutorials/pixie-101/network-monitoring)
 - [Infrastructure Health](/tutorials/pixie-101/infra-health)
 - [Service Performance](/tutorials/pixie-101/service-performance)
-- [Database Query Profiling](/tutorials/pixie-101/db-query-profiling)
+- [Database Query Profiling](/tutorials/pixie-101/database-query-profiling)
 - [Request Tracing](/tutorials/pixie-101/request-tracing)
+- [Continuous Application Profiling](/tutorials/pixie-101/profiler)
 
 #### PxL Scripts
 

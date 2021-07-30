@@ -16,4 +16,4 @@ These are written for someone unfamiliar with Pixie and should take less than 5 
 - [Service Performance](/tutorials/pixie-101/service-performance)
 - [Database Query Profiling](/tutorials/pixie-101/database-query-profiling)
 - [Request Tracing](/tutorials/pixie-101/request-tracing)
-- [Application Profiling with Flamegraphs](/tutorials/pixie-101/profiler)
+- [Continuous Application Profiling](/tutorials/pixie-101/profiler)

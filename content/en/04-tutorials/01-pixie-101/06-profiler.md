@@ -1,6 +1,6 @@
 ---
-title: "Profiling with Flamegraphs"
-metaTitle: "Tutorials | Pixie 101 | Profiling with Flamegraphs"
+title: "Continuous Application Profiling"
+metaTitle: "Tutorials | Pixie 101 | Continuous Application Profiling"
 metaDescription: "Learn how to use Pixie's continuous profiler."
 order: 6
 ---
