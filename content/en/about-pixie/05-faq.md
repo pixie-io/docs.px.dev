@@ -39,6 +39,7 @@ order: 5
 - [How do I get the Pixie debug logs?](/about-pixie/faq#how-do-i-get-the-pixie-debug-logs)
 - [My deployment is stuck / fails.](/about-pixie/faq#my-deployment-is-stuck-fails)
 - [Why does my cluster show as unavailable / unhealthy in the Live UI?](/about-pixie/faq#why-does-my-cluster-show-as-unavailable-unhealthy-in-the-live-ui)
+- [Why does my cluster show as disconnected in the Live UI?](/about-pixie/faq#why-does-my-cluster-show-as-disconnected-in-the-live-ui)
 - [Why can’t I see data?](/about-pixie/faq#why-can't-i-see-data)
 - [Why can’t I see data after enabling Data Isolation Mode?](/about-pixie/faq#why-can't-i-see-data-after-enabling-data-isolation-mode)
 - [Why can’t I see application profiles / flamegraphs for my pod / node?](/about-pixie/faq#why-can't-i-see-application-profiles-flamegraphs-for-my-pod-node)
@@ -185,6 +186,12 @@ This step of the deployment checks that the Cloud Connector can successfully com
 Confirm that all of the `pl` namespace pods are ready and available using `kubectl get pods -n pl`. Deploying Pixie usually takes anywhere between 5-7 minutes. Once Pixie is deployed, it can take a few minutes for the UI to show that the cluster is healthy.
 
 To debug, follow the steps in the “Deploy with CLI fails to pass health checks” section in the above question. As long as the Kelvin pod, plus at least one PEM pod is up and running, then your cluster should not show as unavailable.
+
+#### Why does my cluster show as disconnected in the Live UI?
+
+`Cluster '<CLUSTER_NAME>' is disconnected. Pixie instrumentation on 'CLUSTER_NAME' is disconnected. Please redeploy Pixie to the cluster or choose another cluster.`
+
+This error indicates that the `vizier-cloud-connector` pod is not able to connect to the cloud properly. To debug, check the events / logs for the `vizier-cloud-connector` pod. Note that after deploying Pixie, it can take a few minutes for the UI to show the cluster as available. 
 
 #### Why can’t I see data?
 

@@ -5,7 +5,6 @@ metaDescription: "Write Custom PxL Scripts"
 order: 10
 redirect_from:
     - /tutorials/pxl-scripts
----
 
 ## Overview
 
