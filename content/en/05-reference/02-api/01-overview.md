@@ -35,7 +35,7 @@ Pixie uses a gRPC API to communicate between its backend platform and its [Live 
 
 ### gRPC Streaming Details
 
-Data from Pixie's observability platform is queried using [PxL scripts](/reference/pxl-overview). A PxL script can output multiple data tables.
+Data from Pixie's observability platform is queried using [PxL scripts](/using-pixie/#pxl-scripts). A PxL script can output multiple data tables.
 
 The gRPC API's main endpoint, `ExecuteScript`, returns data on a stream. A PxL script with two tables, would produce a stream like the following:
 
