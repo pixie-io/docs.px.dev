@@ -15,7 +15,7 @@ Pixie needs to be installed on your Kubernetes cluster. If it is not already ins
 
 ## Pixie's Open Source Scripts
 
-Run the following command to list all of Pixie's open source [scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts).
+Run the following command to list all of Pixie's [open source scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts).
 
 ```bash
 px run -l		# list pre-built scripts
@@ -119,6 +119,16 @@ The Live UI link appears at the bottom of the output of any `px run <script_name
 And at the top of the Live CLI output.
 
 <svg title='Linking to the Live UI view of a script from the Live CLI.'  src='cli/cli-5.png'/>
+
+## Use Case Tutorials
+
+To learn how to use Pixie for a specific use case, check out one of the following tutorials:
+
+- [Network Monitoring](/tutorials/pixie-101/network-monitoring/)
+- [Infra Health](/tutorials/pixie-101/infra-health/)
+- [Service Performance](/tutorials/pixie-101/service-performance/)
+- [Database Query Profiling](/tutorials/pixie-101/database-query-profiling/)
+- [Request Tracing](/tutorials/pixie-101/request-tracing/)
 
 ## Running a Custom PxL Script
 

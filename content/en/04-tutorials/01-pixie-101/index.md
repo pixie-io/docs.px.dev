@@ -3,6 +3,8 @@ title: "Pixie 101"
 metaTitle: "Tutorials | Pixie 101"
 metaDescription: "Learn how to use Pixie."
 order: 10
+redirect_from:
+    - /using-pixie/use-cases/canary-analysis/
 ---
 
 Learn how to use Pixie for:

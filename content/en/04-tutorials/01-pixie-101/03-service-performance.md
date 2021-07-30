@@ -3,6 +3,8 @@ title: "Service Performance"
 metaTitle: "Tutorials | Pixie 101 | Service Performance"
 metaDescription: "Learn how to use Pixie to monitor service performance."
 order: 3
+redirect_from:
+    - /using-pixie/use-cases/service-health/
 ---
 
 Unreliable or slow services can lead to a poor user experience for your customers. With Pixie, you can get immediate visibility into the health of your services, without the need for manual instrumentation.

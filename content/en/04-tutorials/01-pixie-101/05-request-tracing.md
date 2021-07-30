@@ -3,6 +3,8 @@ title: "Request Tracing"
 metaTitle: "Tutorials | Pixie 101 | Request Tracing"
 metaDescription: "Learn how to use Pixie to trace requests in your cluster."
 order: 5
+redirect_from:
+    - /using-pixie/use-cases/request-tracing/
 ---
 
 The move from monolith to microservice architecture has greatly increased the volume of inter-service traffic. Pixie makes debugging  this communication between services easy by providing immediate and deep (full-body) visibility into requests flowing through your cluster.

@@ -5,6 +5,7 @@ metaDescription: "Simple tutorial to show how dynamic structured logging works i
 order: 2
 redirect_from:
     - /tutorials/simple-go-tracing/
+    - /using-pixie/use-cases/code-tracing/
 ---
 This is a simple demo showing the ability of Pixie to add dynamic structured logs into
 Go binaries deployed in production environments. This capability allows debugging Go binaries in production without the need

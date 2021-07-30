@@ -65,7 +65,13 @@ Try out the following 2 shortcuts, we'll use them often.
 
 The Live UI's `script` drop-down menu lists all of Pixie's [open source scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts).
 
-These community scripts enable the developer community with a broad repository of use-case specific scripts out of the box. Over time, we hope this grows into a community driven knowledge base of data-driven tools to observe, debug, secure and manage applications.
+To learn how to use Pixie for a specific use case, check out one of the following tutorials:
+
+- [Network Monitoring](/tutorials/pixie-101/network-monitoring/)
+- [Infra Health](/tutorials/pixie-101/infra-health/)
+- [Service Performance](/tutorials/pixie-101/service-performance/)
+- [Database Query Profiling](/tutorials/pixie-101/database-query-profiling/)
+- [Request Tracing](/tutorials/pixie-101/request-tracing/)
 
 ## Write Your Own PxL Scripts
 

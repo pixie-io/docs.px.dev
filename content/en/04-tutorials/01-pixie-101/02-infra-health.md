@@ -3,6 +3,8 @@ title: "Infra Health"
 metaTitle: "Tutorials | Pixie 101 | Infra Health"
 metaDescription: "Learn how to use Pixie to monitor infrastructure health."
 order: 2
+redirect_from:
+    - /using-pixie/use-cases/infra-health/
 ---
 
 Resource pressure can impact the health of your services, but it can be hard to correlate with application performance. With Pixie, you can easily monitor your infrastructure alongside your network and application layers.
