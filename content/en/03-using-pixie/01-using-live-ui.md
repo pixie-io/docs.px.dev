@@ -65,7 +65,7 @@ Try out the following 2 shortcuts, we'll use them often.
 
 The Live UI's `script` drop-down menu lists all of Pixie's [open source scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts).
 
-To learn how to use Pixie for a specific use case, check out one of the following tutorials:
+To learn how to use Pixie scripts for a specific use case, check out one of the following tutorials:
 
 - [Network Monitoring](/tutorials/pixie-101/network-monitoring/)
 - [Infra Health](/tutorials/pixie-101/infra-health/)
