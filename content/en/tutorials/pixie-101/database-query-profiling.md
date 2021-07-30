@@ -2,12 +2,12 @@
 title: "Database Query Profiling"
 metaTitle: "Tutorials | Pixie 101 | Database Query Profiling"
 metaDescription: "Learn how to use Pixie to do database query profiling."
-order: 3
+order: 4
 ---
 
 Service performance issues often turn out to be the result of slow database queries. With Pixie, you can easily monitor the performance of your database requests to ensure they do not impact service health.
 
-This tutorial features MySQL requests, but Pixie can trace a number of different database protocols including Cassandra, PostgreSQL, and Redis. See the full list [here](/about-pixie/data-sources/#supported-protocols).
+MySQL requests are featured in this tutorial, but Pixie can trace a number of different database protocols including Cassandra, PostgreSQL, and Redis. See the full list [here](/about-pixie/data-sources/#supported-protocols).
 
 This tutorial will demonstrate how to use Pixie to monitor MySQL:
 
@@ -19,7 +19,7 @@ This tutorial will demonstrate how to use Pixie to monitor MySQL:
 
 1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using our [installation steps](/installing-pixie/).
 
-2. You will need an application that makes MySQL requests. To install a demo app that uses MySQL:
+2. You will need install the demo microservices application, using Pixie's CLI:
 
 > - [Install the Pixie CLI](/installing-pixie/install-schemes/cli/#1.-install-the-pixie-cli)
 > - Run `px demo deploy px-sock-shop` to install Weavework's [Sock Shop](https://microservices-demo.github.io/) demo app.
@@ -107,7 +107,7 @@ are identified and replaced with a `?`.
 
 > Let's examine one of the normalized SQL queries.
 
-2. Scroll down to the "Summary" table.
+2. Scroll down to the **Summary** table.
 
 > For longer queries, it's often easier to view the data in JSON form.
 
@@ -123,7 +123,7 @@ are identified and replaced with a `?`.
 
 > This script shows latency, error, and throughput for each individual parameter for the given normalized SQL query.
 
-> The "Summary" table shows the individual parameters passed to `sock_id` in the normalized query.
+> The **Summary** table shows the individual parameters passed to `sock_id` in the normalized query.
 
 ::: div image-xl relative
 <PoiTooltip top={75} left={2}>
@@ -145,9 +145,9 @@ passed to `sock_id` in the normalized query.
 
 ## Individual Full Body Requests
 
-Let's inspect the most recent MySQL requests flowing through your cluster, including the full request and response bodies.
+Pixie captures all network traffic that passes through your cluster (it supports both server and client-side tracing). For [supported protocols](http://localhost:8000/about-pixie/data-sources/#supported-protocols), this traffic is parsed into messages that are paired with their responses.
 
-Pixie can capture any traffic that passes through your cluster (it supports both server and client-side tracing).
+Let's inspect the most recent MySQL requests flowing through your cluster, including the full request and response bodies.
 
 1. Select `px/mysql_data` from the `script` drop-down menu at the top of the page.
 
