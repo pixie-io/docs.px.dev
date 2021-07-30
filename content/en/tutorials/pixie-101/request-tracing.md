@@ -15,7 +15,7 @@ This tutorial will demonstrate how to use Pixie to:
 - See HTTP error rate per service.
 - See HTTP error rate per pod.
 
-If you're interested in troubleshooting HTTP latency, check out the [Service Health](/tutorials/pixie-101/service-health) tutorial.
+If you're interested in troubleshooting HTTP latency, check out the [Service Performance](/tutorials/pixie-101/service-performance) tutorial.
 
 ## Prerequisites
 
@@ -32,10 +32,10 @@ If you're interested in troubleshooting HTTP latency, check out the [Service Hea
 A developer has noticed that the demo application's `cart` service is reporting errors.
 
 <Alert variant="outlined" severity="info">
-  To see high-level error rates for all of the services in your cluster, check out the <a href="https://docs.px.dev/tutorials/pixie-101/service-health/#service-graph">Service Graph</a> section of the Service Health tutorial.
+  To see high-level error rates for all of the services in your cluster, check out the <a href="https://docs.px.dev/tutorials/pixie-101/service-performance/#service-graph">Service Graph</a> section of the Service Performance tutorial.
 </Alert>
 
-Let's use Pixie to find specific HTTP errors:
+Let's use Pixie to look at HTTP requests with specific types of errors:
 
 1. Select `px/http_data_filtered` from the script drop-down menu.
 
@@ -44,6 +44,10 @@ Let's use Pixie to find specific HTTP errors:
 2. Select the drop-down arrow next to the `status_code` argument, type `500`, and press Enter to re-run the script.
 
 3. Select the drop-down arrow next to the `svc` argument, type `px-sock-shop/carts`, and press Enter to re-run the script.
+
+<Alert variant="outlined" severity="info">
+  Pixie displays service names in the UI in the &lt;namespace&gt;&#47;&lt;service&gt; format.
+</Alert>
 
 > The table will update to only show HTTP requests made to the `carts` service with a response status code of `500`.
 
@@ -81,10 +85,6 @@ Once we have identified a specific error coming from the `carts` service, we wil
 
 7. From the `SVC` column, click on the `px-sock-shop/carts` service name.
 
-<Alert variant="outlined" severity="info">
-  Pixie displays service names in the UI in the &lt;namespace&gt;&#47;&lt;service&gt; format.
-</Alert>
-
 > This will open the `px/service` script with the `service` argument pre-filled with the name of the service you selected.
 
 > The `px/service` script shows error rate over time for all inbound HTTP requests.
@@ -105,7 +105,7 @@ to change the time window for the results (e.g -30m, -1h).
 
 > This table shows the services making requests to the `carts` service.
 
-> We can see that the requests with errors are only coming from the `front-end` service.
+> We can see from the `ERROR_RATE` column that the requests with errors are only coming from the `front-end` service.
 
 ## Pod Errors
 
@@ -113,7 +113,7 @@ If services are backed by multiple pods, it is worth inspecting the individual p
 
 9. Scroll up to the **Pod List** table.
 
-> The `carts` service is backed by a single pod.
+> In this case, the carts service is backed by a single pod. If the service had multiple pods, they would be listed here.
 
 6. Click on the pod name in the **Pod List** table.
 
@@ -126,6 +126,8 @@ If services are backed by multiple pods, it is worth inspecting the individual p
 :::
 
 > We can see that there is no resource pressure on this pod and that the HTTP request throughput has been constant over the selected time window.
+
+> Resolving this bug requires further insight into the application logic. For Go/C/C++ applications, you might want to try Pixie's [continuous profiling](/tutorials/profiler/) feature. Pixie also offers [dynamic logging](/tutorials/simple-go-tracing/) for Go applications.
 
 ## Related Scripts
 

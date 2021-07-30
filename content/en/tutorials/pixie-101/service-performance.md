@@ -1,7 +1,7 @@
 ---
-title: "Service Health"
-metaTitle: "Tutorials | Pixie 101 | Service Health"
-metaDescription: "Learn how to use Pixie to monitor service health."
+title: "Service Performance"
+metaTitle: "Tutorials | Pixie 101 | Service Performance"
+metaDescription: "Learn how to use Pixie to monitor service performance."
 order: 3
 ---
 
@@ -92,10 +92,6 @@ Pixie's UI makes it easy to quickly navigate between Kubernetes resources. Click
 
 6. From the `SERVICE` column in the **Services** table, click on the `px-sock-shop/front-end` service.
 
-<Alert variant="outlined" severity="info">
-  Pixie displays pod and service names in the UI in the &lt;namespace&gt;&#47;&lt;pod&gt; and &lt;namespace&gt;&#47;&lt;service&gt; format.
-</Alert>
-
 > This will open the `px/service` script with the `service` argument pre-filled with the name of the service you selected.
 
 > The `px/service` script shows the latency, error, and throughput over time for all HTTP requests for the service.
@@ -132,7 +128,7 @@ to change the time window for the results (e.g -30m, -1h).
 
 ## Endpoint Performance
 
-Request latency can vary greatly by endpoint, especially if one of the requests is more database intensive. However, when there are wildcards (url parameters) in your request paths, it can be difficult to drill down into a particular endpoint.
+Request latency can vary greatly by endpoint, especially if one of the requests is more database intensive. However, when there are wildcards (URL parameters) in your request paths, it can be difficult to drill down into a particular endpoint.
 
 Pixie can cluster HTTP requests by logical endpoint, substituting a `*` for the parameters in your requests. For example, the following two requests:
 
@@ -148,6 +144,10 @@ Let's look at latency by logical service endpoint:
 1. Select `pxbeta/service_endpoints` from the script drop-down menu (note: this is a Beta script).
 
 2. Select the drop-down arrow next to the `service` argument, type `px-sock-shop/catalogue`, and press Enter to re-run the script.
+
+<Alert variant="outlined" severity="info">
+  Pixie displays service names in the UI in the &lt;namespace&gt;&#47;&lt;service&gt; format.
+</Alert>
 
 > This script shows latency, error and throughput per logical endpoint for the given service.
 
@@ -168,4 +168,4 @@ This tutorial demonstrated a few of Pixie's [community scripts](https://github.c
 - [`px/pod`](http://work.withpixie.ai/script/pod) shows a CPU flamegraph for the pod to see how your Go/C++/Rust applications are spending their time. To learn more about how use Pixie for application profiling, check out the [Profiling with Flamegraphs](/tutorials/profiler) tutorial.
 - [`px/services`](http://work.withpixie.ai/script/services) shows LET over time for all services in the given namespace, along with a  service graph.
 - [`px/service_stats`](http://work.withpixie.ai/script/service_stats) shows LET over time for the given service, along with a service graph and summary of incoming and outgoing traffic.
-- [`px/service_edge_stats`](http://work.withpixie.ai/script/service_edge_stats) shows LET over time according to another service.
+- [`px/service_edge_stats`](http://work.withpixie.ai/script/service_edge_stats) shows statistics about the traffic between two services.
