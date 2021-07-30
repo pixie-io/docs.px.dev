@@ -133,13 +133,8 @@ If services are backed by multiple pods, it is worth inspecting the individual p
 
 This tutorial demonstrated a few of Pixie's [community scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts). To see full body requests for a specific protocol, check out the following scripts:
 
-#### General protocols
-
 - [`px/http_data`](https://work.withpixie.ai/script/http_data) shows the most recent HTTP/2 requests in the cluster.
 - [`px/dns_data`](https://work.withpixie.ai/script/dns_data) shows the most recent DNS requests in the cluster.
-
-#### Database protocols
-
 - [`px/mysql_data`](https://work.withpixie.ai/script/mysql_data) shows the most recent MySQL requests in the cluster.
 - [`px/pgsql_data`](https://work.withpixie.ai/script/pgsql_data) shows the most recent Postgres requests in the cluster.
 - [`px/redis_data`](https://work.withpixie.ai/script/redis_data) shows the most recent Redis requests in the cluster.
