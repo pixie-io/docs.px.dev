@@ -21,7 +21,7 @@ If you're interested in troubleshooting HTTP latency, check out the [Service Per
 
 1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using our [installation steps](/installing-pixie/).
 
-2. You will need an application that makes HTTP requests. To install a demo app that uses HTTP:
+2. You will need install the demo microservices application, using Pixie's CLI:
 
 > - [Install the Pixie CLI](/installing-pixie/install-schemes/cli/#1.-install-the-pixie-cli)
 > - Run `px demo deploy px-sock-shop` to install Weavework's [Sock Shop](https://microservices-demo.github.io/) demo app.
@@ -43,13 +43,15 @@ Let's use Pixie to look at HTTP requests with specific types of errors:
 
 2. Select the drop-down arrow next to the `status_code` argument, type `500`, and press Enter to re-run the script.
 
+> This filters the HTTP requests to just those with the `500` status code.
+
 3. Select the drop-down arrow next to the `svc` argument, type `px-sock-shop/carts`, and press Enter to re-run the script.
 
 <Alert variant="outlined" severity="info">
   Pixie displays service names in the UI in the &lt;namespace&gt;&#47;&lt;service&gt; format.
 </Alert>
 
-> The table will update to only show HTTP requests made to the `carts` service with a response status code of `500`.
+> This filters the HTTP requests to just those made to the `carts` service.
 
 ::: div image-xl relative
 <PoiTooltip top={41} left={55}>

@@ -19,7 +19,7 @@ This tutorial will demonstrate how to use Pixie to monitor MySQL:
 
 1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using our [installation steps](/installing-pixie/).
 
-2. You will need an application that makes MySQL requests. To install a demo app that uses MySQL:
+2. You will need install the demo microservices application, using Pixie's CLI:
 
 > - [Install the Pixie CLI](/installing-pixie/install-schemes/cli/#1.-install-the-pixie-cli)
 > - Run `px demo deploy px-sock-shop` to install Weavework's [Sock Shop](https://microservices-demo.github.io/) demo app.
