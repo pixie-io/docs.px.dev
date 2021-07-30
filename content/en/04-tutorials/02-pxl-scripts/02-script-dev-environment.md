@@ -90,7 +90,7 @@ Over time, we hope that our [script repository](https://github.com/pixie-labs/pi
 
 #### Step 1: File an issue
 
-File an [issue](https://github.com/pixie-labs/pixie/issues/new/choose) with an explanation of what use-case you are looking to address help us make sure these community scripts are broadly applicable and useful.
+File an [issue](https://github.com/pixie-labs/pixie/issues/new/choose) with an explanation of what use case you are looking to address. This will help us make sure these community scripts are broadly applicable and useful.
 
 #### Step 2: Prepare your script
 
