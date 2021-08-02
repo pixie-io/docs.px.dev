@@ -67,10 +67,10 @@ position:relative;
 
     }
     .modal-content .tooltip-container{
-    width: 100vh;
+     
     position: relative;
     margin: 0 auto;
-    max-width: 100%;
+    max-width: 1000px;
 }
 
       /* 100% Image Width on Smaller Screens */
@@ -100,6 +100,19 @@ export function runZoom() {
   let isModalVisible = false;
   const children = [...document.querySelectorAll('.gatsby-resp-image-figure'), ...document.querySelectorAll('.blog-image-wrapper')];
 
+  function hideModal() {
+    modal.classList.remove('show');
+    modalImg.innerHTML = '';
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    modal.removeEventListener('click', hideModalListener);
+    isModalVisible = false;
+  }
+
+  const hideModalListener = (e) => {
+    if (e.target.classList.contains('tooltip-container') || e.target.classList.contains('modal-content')) {
+      hideModal();
+    }
+  };
   children.forEach(
     (e) => {
       e.onclick = (event) => {
@@ -116,22 +129,12 @@ export function runZoom() {
         }
         isModalVisible = true;
         modal.classList.add('show');
+        modal.addEventListener('click', hideModalListener);
         event.stopPropagation();
       };
     },
   );
 
-  function hideModal() {
-    modal.classList.remove('show');
-    modalImg.innerHTML = '';
-    isModalVisible = false;
-  }
-
-  window.onclick = () => {
-    if (isModalVisible) {
-      hideModal();
-    }
-  };
   window.onscroll = () => {
     if (isModalVisible) {
       hideModal();
