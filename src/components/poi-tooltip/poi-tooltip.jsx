@@ -24,7 +24,7 @@ const PoiTooltip = ({ children, top, left }) => (
   <div
     className={styles.main}
     style={{
-      top: `${top}%`, left: `${left}%`,
+      top: `calc(${top}% - 30px)`, left: `calc(${left}% - 30px)`,
     }}
     data-tooltip
   >
