@@ -76,7 +76,7 @@ kustomize build k8s/cloud/public/ | kubectl apply -f - --namespace=plc
 kubectl get pods --all-namespaces -o wide
 ```
 
-### Set up DNS
+### Set up DNS for this cluster
 
 1. Setup your DNS. This produces a `dev_dns_updater` binary in the top level `pixie` directory.
 
@@ -158,50 +158,7 @@ Pixie will deploy pods to the `pl`, `plc`, `px-operator`, and `olm`(if deploying
 
 ## 4. Use Pixie
 
-### Deploy a demo microservices app (optional)
-
-Deploy a simple demo app to monitor using Pixie:
-
-```bash
-# List available demo apps.
-px demo list
-
-# Example: deploy Weaveworks' "sock-shop".
-px demo deploy px-sock-shop
-```
-
-This demo application takes several minutes to stabilize after deployment.
-
-To check the status of the application's pods, run:
-
-```bash
-kubectl get pods -n px-sock-shop
-```
-
-### Test out the CLI
-
-Use `px run` to run a script to demonstrate observability. The `demo_script` script shows the latency and request path of http traffic hitting your cluster.
-
-``` bash
-# List built-in scripts
-px scripts list
-
-# Run a script
-px run px/demo_script
-```
-
-For more information, checkout our [CLI guide](/using-pixie/using-cli/).
-
-### Explore the web app
-
-Open [Pixie's Live UI](https://work.dev.withpixie.dev:443) in a new tab.
-
-1. Select your cluster.
-3. Now, select a script (e.g. `px/cluster` or `px/http_data`).
-
-For more information, check out our [Live UI guide](/using-pixie/using-live-ui/).
-
-### Check out the tutorials
+Check out the next section of our docs for [Using Pixie](/using-pixie). You can also check out our [Tutorials](/tutorials) section.
 
 Learn how to use Pixie for
 
@@ -210,6 +167,25 @@ Learn how to use Pixie for
 - [Service Performance](/tutorials/pixie-101/service-performance/)
 - [Database Query Profiling](/tutorials/pixie-101/database-query-profiling/)
 - [Request Tracing](/tutorials/pixie-101/request-tracing/)
+
+## 5. Production Readiness (advanced)
+
+### Deploying Pixie to another Kubernetes cluster
+
+There are two options for deploying Pixie to another Kubernetes cluster.
+
+#### Repeat these instructions for the new cluster.
+
+This will spin up a separate instance of Pixie Cloud for each Pixie deployment that you have.
+
+#### Share a single Pixie Cloud instance across your Pixie deployments.
+
+If you select this option, each of your Pixie deployments will point to the same instance of Pixie Cloud. In order to ensure that all of your clusters can access Pixie Cloud, you will need to do the following:
+
+- Rename your Pixie Cloud address from dev.withpixie.dev to something specific to your environment.
+- Set up DNS rules for your new Pixie Cloud address. The specifics of this will depend on your environment.
+- Ensure your cloud TLS certificates are for your new Pixie Cloud domain.
+- Ping the new Pixie Cloud address from the new cluster before deploying Pixie to make sure traffic is successfully reaching Pixie Cloud.
 
 ## Get Help
 
