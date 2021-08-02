@@ -76,7 +76,7 @@ kustomize build k8s/cloud/public/ | kubectl apply -f - --namespace=plc
 kubectl get pods --all-namespaces -o wide
 ```
 
-### Set up DNS for this cluster
+### Set up DNS
 
 1. Setup your DNS. This produces a `dev_dns_updater` binary in the top level `pixie` directory.
 
