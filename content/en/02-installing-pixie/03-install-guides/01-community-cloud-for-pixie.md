@@ -32,7 +32,7 @@ For alternate install options (Docker, Debian package, RPM, direct download of t
 
 ## 4. Deploy Pixie 🚀
 
-Pixie's CLI is the fastest and easiest way to deploy Pixie. You can also deploy Pixie using [YAML](/installing-pixie/install-schemes/yaml) or [Helm](/installing-pixie/install-schemes/helm).
+Pixie's CLI is the fastest and easiest way to deploy Pixie. You can also deploy Pixie using [YAML](/installing-pixie/install-schemes/yaml) or [Helm](/installing-pixie/install-schemes/helm). You can use these steps to install Pixie to one or more clusters.
 
 To deploy Pixie using the CLI:
 
@@ -71,6 +71,8 @@ px-operator         77003c9dbf251055f0bb3e36308fe05d818164208a466a15d27acfddeejt
 px-operator         pixie-operator-index
 px-operator         vizier-operator
 ```
+
+To deploy Pixie to another cluster, change your `kubectl config current-context` to point to that cluster. Then repeat the same deploy commands shown in this step.
 
 ## 5. Use Pixie
 
