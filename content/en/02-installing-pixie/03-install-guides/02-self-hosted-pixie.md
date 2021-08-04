@@ -73,7 +73,7 @@ kustomize build k8s/cloud/public/ | kubectl apply -f - --namespace=plc
 9. Wait for all pods within the `plc` namespace to become ready and available. Note that you may have one or more create-hydra-client-job pod errors, but as long as long as another instance of that pod successfully completes, that is ok.
 
 ```bash
-kubectl get pods --all-namespaces -o wide
+kubectl get pods -n plc
 ```
 
 ### Set up DNS
@@ -103,6 +103,10 @@ kubectl log create-admin-job-<pod_string> -n plc
 ```
 
 2. Open the URL from the pod's logs to set the password for the `admin@default.com` user.
+
+<Alert variant="outlined" severity="warning">
+  If you've visited dev.withpixie.dev before, make sure to clear the cookies for this site or you'll get a login error. 
+</Alert>
 
 3. Once the password has been set, login using `admin@default.com` for the `identifier` and your new password.
 
