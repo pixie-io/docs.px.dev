@@ -26,7 +26,7 @@ px deploy-key create
 Copy the output value labeled `Key`:
 
 ::: div image-l
-<svg title='CLI output for `px api-key create` command.' src='admin/cli-create-deploy-key.png'/>
+<svg title='CLI output for `px deploy-key create` command.' src='admin/cli-create-deploy-key.png'/>
 :::
 
 ### Using the Live UI

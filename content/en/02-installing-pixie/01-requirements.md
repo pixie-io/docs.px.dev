@@ -74,7 +74,7 @@ The following is a list of Linux distributions that have been tested.
 
 Pixie may also work on other distributions.
 
-<Alert severity="info">We recommended that Linux headers be installed on a cluster's nodes.</Alert>
+<Alert variant="outlined" severity="info">We recommended that Linux headers be installed on a cluster's nodes.</Alert>
 
 ## Network Traffic
 

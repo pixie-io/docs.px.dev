@@ -5,7 +5,9 @@ metaDescription: "Why and when to use API keys."
 order: 4
 ---
 
-API keys are used to authenticate custom applications that use the [Pixie API](/reference/api/overview) to query data from the Pixie Platform. An API key can be used by multiple applications.
+API keys are used to authenticate custom applications that use the [Pixie API](/reference/api/overview) to query data from the Pixie Platform.
+
+Pixie API keys are opaque and start with the `px-api-` prefix. A single API key can be used by multiple applications.
 
 ## Create an API Key
 
