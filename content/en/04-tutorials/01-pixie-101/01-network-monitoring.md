@@ -13,9 +13,9 @@ This tutorial will demonstrate how to use Pixie to see:
 - The flow of DNS requests within your cluster.
 - TCP drops and TCP retransmits across your cluster.
 
-**Prerequisites**
+## Prerequisites
 
-1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using our [installation steps](/installing-pixie/).
+1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using one of our [install guides](https://docs.px.dev/installing-pixie/install-guides/).
 
 ## Network Traffic Across Pods
 

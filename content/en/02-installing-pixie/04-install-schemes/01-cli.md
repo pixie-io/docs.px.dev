@@ -5,6 +5,8 @@ metaDescription: "How to install Pixie via CLI"
 order: 1
 ---
 
+Pixie's CLI is the fastest and easiest way to install and manage your Pixie installation.
+
 ## Prerequisites
 
 - Review Pixie's [requirements](/installing-pixie/requirements) to make sure that your Kubernetes cluster is supported.
@@ -12,8 +14,6 @@ order: 1
 - Determine if you already have [Operator Lifecycle Manager](https://docs.openshift.com/container-platform/4.5/operators/understanding/olm/olm-understanding-olm.html) (OLM) deployed to your cluster, possibly to the default `olm` namespace. Pixie uses the Kubernetes [Operator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) to manage its Vizier, which handles data collection and query execution (see the [Architecture](/about-pixie/what-is-pixie/#system-architecture) diagram). The OLM is used to install, update and manage the Vizier Operator.
 
 ## 1. Install the Pixie CLI
-
-Pixie's CLI is the fastest and easiest way to install and manage your Pixie installation.
 
 You can install the CLI in one of four ways:
 

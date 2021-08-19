@@ -13,7 +13,7 @@ Pixie's profiling feature currently supports Go, C++, and Rust. Other language s
 
 ## Prerequisites
 
-You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using our [install guides](/installing-pixie/install-guides/).
+You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using one of our [install guides](https://docs.px.dev/installing-pixie/install-guides/).
 
 ## Setup
 
