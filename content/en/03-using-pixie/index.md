@@ -10,9 +10,9 @@ redirect_from:
     - /using-pixie/scripts/script-catalog/
 ---
 
-The following tutorials demonstrate the different ways you can interact with Pixie's observability platform:
+The following tutorials demonstrate the different ways you can interact with Pixie's observability platform.
 
-- [Using the web-based Live UI](/using-pixie/using-live-ui) (recommended)
+- [Using the web-based Live UI](/using-pixie/using-live-ui) (recommended for new users)
 - [Using the CLI](/using-pixie/using-cli)
 - [Using the API](/using-pixie/api-quick-start)
 
@@ -42,3 +42,4 @@ To use Pixie for a specific use case, check one of the following tutorials:
 - [Service Performance](/tutorials/pixie-101/service-performance)
 - [Database Query Profiling](/tutorials/pixie-101/database-query-profiling)
 - [Request Tracing](/tutorials/pixie-101/request-tracing)
+- [Continuous Application Profiling](/tutorials/pixie-101/profiler)

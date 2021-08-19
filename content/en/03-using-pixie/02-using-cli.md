@@ -7,7 +7,9 @@ redirect_from:
     - /using-pixie/interfaces/using-cli/
 ---
 
-PxL scripts can be run in Pixie's web based Live UI or CLI tool. To learn about the Live UI, check out this [tutorial](/using-pixie/using-live-ui/).
+You can interact with the Pixie platform using the CLI, web-based [Live UI](/using-pixie/using-live-ui) or [API](/using-pixie/api-quick-start).
+
+Scripts run in the CLI omit certain visualizations seen in the Live UI. For this reason, we recommend that developers who are new to Pixie begin by using the [Live UI](/using-pixie/using-live-ui).
 
 ## Setup
 
@@ -142,7 +144,23 @@ px run -f <script.pxl>		# Use Pixie's CLI to run the pxl script with the provide
 px live -f <script.pxl>		# Use Pixie's Live CLI to run the pxl script with the provided filename
 ```
 
-## Debugging Pixie using the CLI
+## Advanced
+
+### Disabling Encryption
+
+By default, Pixie implements end-to-end encryption for telemetry data requested by the CLI. For more information, see the [FAQ](/about-pixie/faq#how-does-pixie-secure-its-data).
+
+For faster script execution, opt out of E2E encryption for a specific query using the `--disable_e2e_encryption` flag:
+
+```bash
+# Disable encryption when running a script with the CLI.
+px run <script_name> --disable_e2e_encryption
+
+# Disable encryption when running a script with the Live CLI.
+px live <script_name> --disable_e2e_encryption
+```
+
+### Debugging Pixie using the CLI
 
 Use the following commands to show the status of Pixie on your cluster:
 
@@ -152,10 +170,4 @@ px get viziers		# shows the registered K8s clusters that are running Pixie and t
 px get pems			# shows the current status of the Pixie Edge Modules. Also, usable as `px run px/agent_status`
 
 px collect-logs		# collect Pixie logs on the cluster
-```
-
-To view all available Pixie CLI commands:
-
-```bash
-px --help
 ```

@@ -7,31 +7,33 @@ redirect_from:
     - /about-pixie/how-pixie-works
 ---
 
-Pixie is an open source observability tool for Kubernetes applications. Pixie uses eBPF to automatically capture its telemetry data without the need for manual instrumentation.
+Pixie is an open source observability tool for Kubernetes applications.
 
-Using Pixie, developers can view the high-level state of their cluster (service maps, cluster resources, application traffic) and also drill-down into more detailed views (pod state, flame graphs, individual application requests).
+Pixie uses eBPF to automatically capture telemetry data without the need for manual instrumentation. Developers can use Pixie to view the high-level state of their cluster (service maps, cluster resources, application traffic) and also drill-down into more detailed views (pod state, flame graphs, individual full body application requests).
 
-Pixie was contributed by New Relic to the CNCF as a sandbox project in June 2021.
+Pixie was contributed by [New Relic, Inc.](https://newrelic.com/) to the [Cloud Native Computing Foundation](https://www.cncf.io/) as a sandbox project in June 2021.
 
 ## Features
 
-* **Auto-telemetry**: Using [eBPF](http://www.brendangregg.com/ebpf.html), Pixie automatically collects telemetry data such as full-body requests, resource metrics, and network statistics.
+Pixie's main features are:
 
-* **In-cluster edge compute**: Pixie runs directly on the Kubernetes cluster and stores all telemetry data locally. Pixie uses less than 5% of cluster CPU, and in most cases less than 2%.
+* **Auto-telemetry**: Using [eBPF](http://www.brendangregg.com/ebpf.html), Pixie automatically collects telemetry data such as full-body requests, resource and network metrics, and application profiles. The full list of supported datasources can be found [here](/about-pixie/data-sources).
 
-* **Scriptability**: [PxL](/reference/pxl/), Pixie’s flexible, Pythonic query language, can be used across Pixie’s UI, CLI, and client APIs.
+* **In-cluster edge compute**: Pixie stores the data it collects in-memory on the nodes in your cluster; no data is sent to a centralized backend cloud provider outside of the cluster. Pixie uses less than 5% of cluster CPU, and in most cases less than 2%. Additional information can be found in the [FAQ](/about-pixie/faq#where-does-pixie-store-its-data).
 
-## Data Sources
+collects in-memory on the nodes in your cluster
 
-When Pixie is deployed on a Kubernetes cluster, it uses eBPF to automatically collect a rich set of data sources. These include full-body requests traces, resource and network metrics, and application profiles.
+* **Scriptability**: [PxL](/reference/pxl/), Pixie’s flexible Pythonic query language, can be used across Pixie’s UI, CLI, and client APIs. Pixie provides many [community scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts) that enable developers  to use Pixie for a broad set of use cases out of the box. Check out the [tutorials](/tutorials/pixie-101) to see how to use Pixie for network monitoring, infrastructure health, service performance, database query profiling, request tracing and continuous application profiling.
 
-A full list of Pixie's supported datasources can be found [here](/about-pixie/data-sources).
+## Architecture
 
-## System Architecture
+This diagram illustrates the architecture of Pixie and its ecosystem:
 
 ::: div image-xl
 <svg title='Platform Architecture' src='product-arch.svg' />
 :::
+
+The Pixie platform consists of multiple components:
 
 * **Pixie Edge Module (PEM)**: Pixie's agent, installed per node. PEMs use eBPF to collect data, which is stored locally on the node.
 
