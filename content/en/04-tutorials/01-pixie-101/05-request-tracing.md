@@ -21,7 +21,7 @@ If you're interested in troubleshooting HTTP latency, check out the [Service Per
 
 ## Prerequisites
 
-1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using one of our [install guides](https://docs.px.dev/installing-pixie/install-guides/).
+1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using one of our [install guides](/installing-pixie/install-guides/).
 
 2. You will need to install the demo microservices application, using Pixie's CLI:
 
