@@ -7,7 +7,7 @@ redirect_from:
     - /about-pixie/how-pixie-works
 ---
 
-Pixie is an open source observability tool for Kubernetes applications. Linux [eBPF](http://www.brendangregg.com/ebpf.html) is used to automatically capture telemetry data without the need for manual instrumentation.
+Pixie is an open source observability tool for Kubernetes applications. Pixie uses [eBPF](http://www.brendangregg.com/ebpf.html to automatically capture telemetry data without the need for manual instrumentation.
 
 Developers can use Pixie to view the high-level state of their cluster (service maps, cluster resources, application traffic) and also drill-down into more detailed views (pod state, flame graphs, individual full body application requests).
 
