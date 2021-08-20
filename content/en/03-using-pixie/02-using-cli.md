@@ -146,18 +146,20 @@ px live -f <script.pxl>		# Use Pixie's Live CLI to run the pxl script with the p
 
 ## Advanced
 
-### Disabling Encryption
+### End-to-End Encryption
 
-By default, Pixie implements end-to-end encryption for telemetry data requested by the CLI. For more information, see the [FAQ](/about-pixie/faq#how-does-pixie-secure-its-data).
+Pixie offers end-to-end encryption for telemetry data requested by the CLI. For more information, see the [FAQ](/about-pixie/faq#how-does-pixie-secure-its-data).
 
-For faster script execution, opt out of E2E encryption for a specific query using the `--disable_e2e_encryption` flag:
+Encryption is controlled by the `--e2e_encryption` flag during script execution. Enabling E2E encryption adds some overhead to encrypt the results on the Vizier side and decrypt it on the CLI side.
+
+To opt out of E2E encryption for a specific query:
 
 ```bash
 # Disable encryption when running a script with the CLI.
-px run <script_name> --disable_e2e_encryption
+px run <script_name> --e2e_encryption=false
 
 # Disable encryption when running a script with the Live CLI.
-px live <script_name> --disable_e2e_encryption
+px live <script_name> --e2e_encryption=false
 ```
 
 ### Debugging Pixie using the CLI
