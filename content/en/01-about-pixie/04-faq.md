@@ -93,11 +93,7 @@ We recommend integrating with third-party observability tools (such as [New Reli
 
 Pixie stores the telemetry data it collects in-memory on the nodes in your cluster. Data processing and script execution are also performed in the cluster. This is true for both self-hosted Pixie and [Pixie Community Cloud](/about-pixie/faq#does-pixie-offer-a-hosted-cloud-offering).
 
-End-to-end encryption is offered for data in flight between in-cluster storage and presentation in the UI / CLI / API:
-
-- **Live UI** (enabled by default)
-- **CLI** (enabled by default, [option to disable](/using-pixie/using-cli/#disabling-encryption) for faster script execution)
-- **API** (disabled by default, [enable during client creation](/using-pixie/api-quick-start/#encryption))
+End-to-end encryption is offered for data in flight between in-cluster storage and presentation in the UI, CLI, and API.
 
 Pixie Cloud (self-hosted or Pixie Community Cloud) hosts the UI and stores limited metadata related to account (user, organization) and Kubernetes control data (cluster name, number of nodes, etc). All communication with Pixie Cloud is TLS encrypted.
 

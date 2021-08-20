@@ -152,14 +152,12 @@ Pixie offers end-to-end encryption for telemetry data requested by the CLI. For 
 
 Encryption is controlled by the `--e2e_encryption` flag during script execution. Enabling E2E encryption adds some overhead to encrypt the results on the Vizier side and decrypt it on the CLI side.
 
-To opt out of E2E encryption for a specific query:
-
 ```bash
+# Enable encryption when running a script with the CLI.
+px run <script_name> --e2e_encryption
+
 # Disable encryption when running a script with the CLI.
 px run <script_name> --e2e_encryption=false
-
-# Disable encryption when running a script with the Live CLI.
-px live <script_name> --e2e_encryption=false
 ```
 
 ### Debugging Pixie using the CLI
