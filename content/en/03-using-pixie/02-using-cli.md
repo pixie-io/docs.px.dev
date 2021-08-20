@@ -7,9 +7,7 @@ redirect_from:
     - /using-pixie/interfaces/using-cli/
 ---
 
-You can interact with the Pixie platform using the CLI, web-based [Live UI](/using-pixie/using-live-ui) or [API](/using-pixie/api-quick-start).
-
-Scripts run in the CLI omit certain visualizations seen in the Live UI. For this reason, we recommend that developers who are new to Pixie begin by using the [Live UI](/using-pixie/using-live-ui).
+PxL scripts can be run in Pixie's web based Live UI or CLI tool. To learn about the Live UI, check out this [tutorial](/using-pixie/using-live-ui/).
 
 ## Setup
 
@@ -170,4 +168,10 @@ px get viziers		# shows the registered K8s clusters that are running Pixie and t
 px get pems			# shows the current status of the Pixie Edge Modules. Also, usable as `px run px/agent_status`
 
 px collect-logs		# collect Pixie logs on the cluster
+```
+
+To view all available Pixie CLI commands:
+
+```bash
+px --help
 ```

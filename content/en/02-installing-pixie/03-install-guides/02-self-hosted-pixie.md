@@ -70,7 +70,7 @@ kustomize build k8s/cloud_deps/public/ | kubectl apply -f - --namespace=plc
 kustomize build k8s/cloud/public/ | kubectl apply -f - --namespace=plc
 ```
 
-9. Wait for all pods within the `plc` namespace to become ready and available. Note that you may have one or more `create-hydra-client-job` pod errors, but as long as long as another instance of that pod successfully completes, that is ok.
+9. Wait for all pods within the `plc` namespace to become ready and available. Note that you may have one or more create-hydra-client-job pod errors, but as long as long as another instance of that pod successfully completes, that is ok.
 
 ```bash
 kubectl get pods -n plc
@@ -105,7 +105,7 @@ kubectl log create-admin-job-<pod_string> -n plc
 2. Open the URL from the pod's logs to set the password for the `admin@default.com` user.
 
 <Alert variant="outlined" severity="warning">
-  If you've visited dev.withpixie.dev before, make sure to clear the cookies for this site or you'll get a login error.
+  If you've visited dev.withpixie.dev before, make sure to clear the cookies for this site or you'll get a login error. 
 </Alert>
 
 3. Once the password has been set, login using `admin@default.com` for the `identifier` and your new password.
@@ -178,11 +178,11 @@ Learn how to use Pixie for
 
 There are two options for deploying Pixie to another Kubernetes cluster.
 
-#### Repeat these instructions for the new cluster
+#### Repeat these instructions for the new cluster.
 
 This will spin up a separate instance of Pixie Cloud for each Pixie deployment that you have.
 
-#### Share a single Pixie Cloud instance across your Pixie deployments
+#### Share a single Pixie Cloud instance across your Pixie deployments.
 
 If you select this option, each of your Pixie deployments will point to the same instance of Pixie Cloud. In order to ensure that all of your clusters can access Pixie Cloud, you will need to do the following:
 

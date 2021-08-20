@@ -5,7 +5,7 @@ metaDescription: "Commonly asked questions about Pixie."
 order: 4
 ---
 
-### General
+**General**
 
 - [What is Pixie?](/about-pixie/faq#what-is-pixie)
 - [Who created Pixie?](/about-pixie/faq#who-created-pixie)
@@ -14,10 +14,9 @@ order: 4
 - [Can I completely self-host Pixie?](/about-pixie/faq#can-i-completely-self-host-pixie)
 - [Is there a hosted cloud offering?](/about-pixie/faq#does-pixie-offer-a-hosted-cloud-offering)
 
-### Data Collection
+**Data Collection**
 
-- [Where does Pixie store its data?](/about-pixie/faq#where-does-pixie-store-its-data)
-- [How much data does Pixie store?](/about-pixie/faq#how-much-data-does-pixie-store)
+- [Where does Pixie store its data? How much data is stored?](/about-pixie/faq#where-does-pixie-store-its-data-how-much-data-is-stored)
 - [How does Pixie secure its data?](/about-pixie/faq#how-does-pixie-secure-its-data)
 - [What data does Pixie collect?](/about-pixie/faq#what-data-does-pixie-collect)
 - [Which protocols are automatically traced?](/about-pixie/faq#which-protocols-are-automatically-traced)
@@ -28,7 +27,7 @@ order: 4
 - [What is the performance impact?](/about-pixie/faq#what-is-the-performance-impact)
 - [Which languages are supported for continuous profiling?](/about-pixie/faq#which-languages-are-supported-for-continuous-profiling)
 
-### How do I…
+**How do I…**
 
 - [How do I export data from the Pixie platform? Import data?](/about-pixie/faq#how-do-i-export-data-from-the-pixie-platform-import-data)
 - [How do I share a Pixie dashboard with others?](/about-pixie/faq#how-do-i-share-a-pixie-dashboard-with-others)
@@ -36,7 +35,7 @@ order: 4
 - [How do I send alerts?](/about-pixie/faq#how-do-i-send-alerts)
 - [How do I delete a cluster?](/about-pixie/faq#how-do-i-delete-a-cluster)
 
-### Troubleshooting
+**Troubleshooting**
 
 - [How do I get the Pixie debug logs?](/about-pixie/faq#how-do-i-get-the-pixie-debug-logs)
 - [My deployment is stuck / fails.](/about-pixie/faq#my-deployment-is-stuck-fails)
@@ -45,49 +44,45 @@ order: 4
 - [Why can’t I see data?](/about-pixie/faq#why-can't-i-see-data)
 - [Why can’t I see data after enabling Data Isolation Mode?](/about-pixie/faq#why-can't-i-see-data-after-enabling-data-isolation-mode)
 - [Why can’t I see application profiles / flamegraphs for my pod / node?](/about-pixie/faq#why-can't-i-see-application-profiles-flamegraphs-for-my-pod-node)
-- [Why is the vizier-pem pod’s memory increasing?](/about-pixie/faq#why-is-the-vizier-pem-pod's-memory-increasing)
+- [Why is the pem pod’s memory increasing?](/about-pixie/faq#why-is-the-pem-pod's-memory-increasing)
 - [Troubleshooting tracepoint scripts.](/about-pixie/faq#troubleshooting-pixie-tracepoint-scripts)
 - [How do I get help?](/about-pixie/faq#how-do-i-get-help)
 
 ## General
 
-### What is Pixie?
+#### What is Pixie?
 
 Pixie is an open source observability tool for Kubernetes applications. See the [Overview](/about-pixie/what-is-pixie/).
 
-### Who created Pixie?
+#### Who created Pixie?
 
-Pixie was originally built by Pixie Labs. [New Relic, Inc.](https://newrelic.com/) acquired [Pixie Labs](https://pixielabs.ai/) in December 2020 and contributed Pixie to the [Cloud Native Computing Foundation](https://www.cncf.io/) as a sandbox project in June 2021.
+Pixie was originally built by [Pixie Labs](https://pixielabs.ai/). New Relic, Inc. acquired Pixie Labs in December 2020 and contributed Pixie to the [CNCF](https://www.cncf.io/) as a sandbox project in June 2021.
 
-### What license is Pixie released under?
+#### What license is Pixie released under?
 
 Pixie is released under the [Apache 2.0](https://github.com/pixie-labs/pixie/blob/main/LICENSE) license.
 
-### Which K8s environments are supported?
+#### Which K8s environments are supported?
 
-Pixie has been tested to work with a variety of Kubernetes environments listed in the [requirements](/installing-pixie/requirements/) page. Just because Pixie hasn’t been tested on a specific environment, does not mean that Pixie won't work. If you’ve successfully deployed Pixie to an environment not currently listed, please [submit a PR](https://github.com/pixie-labs/pixie-docs/blob/main/content/en/02-installing-pixie/01-requirements.md) to update the page.
+Pixie has been tested to work with a variety of Kubernetes environments listed in the [requirements](/installing-pixie/requirements/) page. Just because Pixie hasn’t been tested on a specific environment, does not mean that Pixie won't work. If you’ve successfully deployed Pixie to an environment not currently listed, please [submit a PR](https://github.com/pixie-labs/pixie-docs/blob/main/content/en/installing-pixie/01-requirements.md) to update the page.
 
-### Can I completely self host Pixie?
+#### Can I completely self host Pixie?
 
 Yes. See the self-hosted [Install Guide](/installing-pixie/install-guides/self-hosted-pixie) to get started.
 
-### Does Pixie offer a hosted cloud offering?
+#### Does Pixie offer a hosted cloud offering?
 
-Yes. Pixie Community Cloud is a hosted version of Pixie. Pixie stores all data on the customer's cluster, resulting in a very small cloud footprint which allows Pixie to offer the Community Cloud offering 100% free for all Pixie users. See the Community Cloud [Install Guide](/installing-pixie/install-guides/community-cloud-for-pixie) to get started.
+Yes. Pixie Community Cloud is a hosted version of Pixie. Pixie stores its data on the cluster, resulting in a very small cloud footprint which allows Pixie to offer the Community Cloud offering 100% free for all Pixie users. See the Community Cloud [Install Guide](/installing-pixie/install-guides/community-cloud-for-pixie) to get started.
 
 ## Data Collection
 
-### Where does Pixie store its data?
+#### Where does Pixie store its data? How much data is stored?
 
-Pixie stores the data it collects in-memory on the nodes in your cluster; no data is sent to a centralized backend outside of the cluster. This is true for both self-hosted Pixie and [Pixie Community Cloud](/about-pixie/faq#does-pixie-offer-a-hosted-cloud-offering).
-
-Pixie has a [2GiB memory requirement](/installing-pixie/requirements/#memory) per node. After installing Pixie, it is normal to see a temporary increase in memory usage of the `vizier-pem` pods as they begin to fill their data tables.
-
-### How much data does Pixie store?
+Pixie stores the data it collects on the cluster in-memory; data is not sent to any centralized backend outside of the cluster.
 
 Retention time depends on the level of traffic in your cluster, but will generally be on the order of hours. Each data table in Pixie (e.g. `http_events`) has its own maximum size. These tables collect data until the maximum size is reached, and then begin dropping the oldest data.
 
-We recommend integrating with third-party observability tools (such as [New Relic’s integration](https://newrelic.com/platform/kubernetes-pixie)) to provide long-term retention.
+We recommend integrating with third-party observability tools (such as New Relic’s integration) to provide long-term retention.
 
 ### How does Pixie secure its data?
 
@@ -107,7 +102,7 @@ Production infrastructure is hosted in a Cloud Service Provider (CSP) with physi
 
 Pixie is SOC2 compliant.
 
-### What data does Pixie collect?
+#### What data does Pixie collect?
 
 Pixie automatically collects a variety of information from your cluster using eBPF and from Linux directly. The collected data includes:
 
@@ -117,39 +112,39 @@ Pixie automatically collects a variety of information from your cluster using eB
 - **JVM metrics**: JVM memory management metrics for Java applications.
 - **Application performance profiles**: Sampled stack traces from your applications to help identify application performance bottlenecks.
 
-All this data is collected without requiring any manual application instrumentation. See the [Data Sources](/about-pixie/data-sources) page for additional information.
+All this data is collected without requiring any manual application instrumentation.
 
-### Which protocols are automatically traced?
+#### Which protocols are automatically traced?
 
 Pixie uses eBPF to automatically collect telemetry data for a [variety of protocols](/about-pixie/data-sources/).
 
-### Which types of K8s resources, metadata are supported?
+#### Which types of K8s resources, metadata are supported?
 
 Pixie captures cluster, namespace, node, pod, service, and container metadata. Pixie does not yet capture logs or events.
 
-### Can I capture full distributed traces (a single request across multiple services)?
+#### Can I capture full distributed traces (a single request across multiple services)?
 
 Pixie captures spans, but not full traces. To construct a full trace a request would need to be tagged with a traceID and Pixie does not modify requests. The [roadmap](/about-pixie/roadmap) contains plans to support constructing full traces if a request is already tagged with a traceID.
 
-### Can I capture requests if one of the endpoints is outside the cluster?
+#### Can I capture requests if one of the endpoints is outside the cluster?
 
 Yes, Pixie can capture requests with only one endpoint within the cluster. For example, if a service makes a call to an external mySQL database which is not monitored by Pixie, Pixie will still be able to capture the SQL calls. However, for endpoints outside of the cluster, Pixie won’t be able to resolve the remote address to a pod/service name, so you’ll need to know the endpoint’s IP address.
 
-### Can I capture system metrics like CPU?
+#### Can I capture system metrics like CPU?
 
 Yes, Pixie captures machine-level resource metrics on Linux and other Unix systems such as CPU usage, memory, disk utilization and network bandwidth.
 
-### What is the performance impact?
+#### What is the performance impact?
 
 Typical performance overhead for node CPU usage is between 2-5%, depending on the amount and type of traffic. We are in the process of optimizing this, however, so watch for that to go down even further.
 
-### Which languages are supported for continuous profiling?
+#### Which languages are supported for continuous profiling?
 
 Go, C++ and Rust are currently supported. The [Roadmap](/about-pixie/roadmap) contains plans to expand support to other languages.
 
 ## How do I...?
 
-### How do I export data from the Pixie platform? Import data?
+#### How do I export data from the Pixie platform? Import data?
 
 Pixie offers two [client libraries](/reference/api/overview/) (Go, Python) to allow developers to easily integrate Pixie observability data into their existing stack.
 
@@ -157,7 +152,7 @@ Pixie does not currently offer data ingestion.
 
 The [Roadmap](/about-pixie/roadmap) contains plans to support exporting or ingesting data in a variety of additional formats.
 
-### How do I share a Pixie dashboard with others?
+#### How do I share a Pixie dashboard with others?
 
 *Self-hosted Pixie*
 
@@ -167,27 +162,27 @@ To share data from the same cluster, [send an invitation through the Admin UI](/
 
 To share data from the same cluster, both parties will need to register for Pixie accounts using emails from the same gsuite email domain. For example, if both parties sign up using a @mycompany.com email address, then both parties will automatically be grouped into the same mycompany org and see the same results.
 
-### How do I set up RBAC?
+#### How do I set up RBAC?
 
 Pixie does not yet offer full RBAC support. However, you can enable “Approvals” under the [Org Settings](https://work.withpixie.ai/admin/org) tab on the admin page. This requires each user who registers in the org to be manually approved on the [Users](https://work.withpixie.ai/admin/users) tab before they can log in.
 
-### How do I send alerts?
+#### How do I send alerts?
 
 Pixie does not offer alerting. However, alerts can be set up using Pixie’s API. For example, see the [Slackbot Alert Tutorial](/tutorials/integrations/slackbot-alert/).
 
 For comprehensive alerting, we recommend integrating with third-party observability tools (such as New Relic’s integration).
 
-### How do I delete a cluster?
+#### How do I delete a cluster?
 
 The UI does not currently support deleting clusters. If you’d like to rename your cluster, you can redeploy Pixie with the cluster name flag. See the [install guides](/installing-pixie/install-schemes/) for specific instructions.
 
 ## Troubleshooting
 
-### How do I get the Pixie debug logs?
+#### How do I get the Pixie debug logs?
 
 Install Pixie’s [CLI tool](/installing-pixie/install-schemes/cli) and run `px collect-logs.` This command will output a zipped file named `pixie_logs_<datestamp>.zip` in the working directory. The selected kube-context determines the Kubernetes cluster that outputs the logs, so make sure that you are pointing to the correct cluster.
 
-### My deployment is stuck / fails
+#### My deployment is stuck / fails
 
 *Deploy with CLI gets stuck at “Wait for PEMs/Kelvin”*
 
@@ -205,19 +200,19 @@ This step of the deployment checks that the `vizier-cloud-connector` pod can suc
 
 This step of the deployment checks that the Cloud Connector can successfully communicate with Pixie Cloud. To debug this step, check the Pixie debug logs for the vizier-cloud-connector` pod, check the firewall, etc.
 
-### Why does my cluster show as unavailable / unhealthy in the Live UI?
+#### Why does my cluster show as unavailable / unhealthy in the Live UI?
 
 Confirm that all of the `pl` namespace pods are ready and available using `kubectl get pods -n pl`. Deploying Pixie usually takes anywhere between 5-7 minutes. Once Pixie is deployed, it can take a few minutes for the UI to show that the cluster is healthy.
 
 To debug, follow the steps in the “Deploy with CLI fails to pass health checks” section in the above question. As long as the Kelvin pod, plus at least one PEM pod is up and running, then your cluster should not show as unavailable.
 
-### Why does my cluster show as disconnected in the Live UI?
+#### Why does my cluster show as disconnected in the Live UI?
 
 `Cluster '<CLUSTER_NAME>' is disconnected. Pixie instrumentation on 'CLUSTER_NAME' is disconnected. Please redeploy Pixie to the cluster or choose another cluster.`
 
 This error indicates that the `vizier-cloud-connector` pod is not able to connect to the cloud properly. To debug, check the events / logs for the `vizier-cloud-connector` pod. Note that after deploying Pixie, it can take a few minutes for the UI to show the cluster as available.
 
-### Why can’t I see data?
+#### Why can’t I see data?
 
 *Live UI shows an error.*
 
@@ -233,21 +228,21 @@ It is possible that you need to adjust the `start_time` window. The `start_time`
 
 If specific services / requests are missing, it is possible that Pixie doesn't support the encryption library used by that service. You can see the list of encryption libraries supported by Pixie [here](/about-pixie/data-sources/).
 
-### Why can’t I see data after enabling Data Isolation Mode?
+#### Why can’t I see data after enabling Data Isolation Mode?
 
 In [Data Isolation Mode](/reference/admin/data-transfer-mode/) Pixie doesn’t use a reverse proxy. Instead, the UI directly connects to the cluster using HTTP/2. Make sure that you have the correct firewall rules to allow this. The Cloud Connector will need to talk to Pixie cloud, but others can be blocked.
 
-### Why can’t I see application profiles / flamegraphs for my pod / node?
+#### Why can’t I see application profiles / flamegraphs for my pod / node?
 
 Continuous profiling currently only supports Go/C++/Rust. The [Roadmap](/about-pixie/roadmap) contains plans to expand this support to Java, Ruby, Python, etc.
 
-### Why is the vizier-pem pod’s memory increasing?
+#### Why is the pem pod’s memory increasing?
 
-This is expected behavior. Pixie stores the data it collects in-memory on the nodes in your cluster; data is not sent to any centralized backend cloud outside of the cluster. So what you are observing is simply the data that it is collecting.
+This is expected behavior. Pixie stores the data it collects in-memory on the nodes in the cluster; data is not sent to any centralized backend outside of the cluster. So what you are observing is simply the data that it is collecting.
 
-Pixie has a 2GiB memory requirement per node. This limit can be configured with the `--pemMemoryLimit` flag when deploying Pixie with the CLI/Helm. We do not recommend using a value less than 2GiB.
+By default, the PEM has a 2GiB memory usage limit. This limit can be configured with the `--pemMemoryLimit` flag when deploying with the CLI/Helm (we do not recommend using a value less than 2Gi).
 
-### Troubleshooting Pixie tracepoint scripts
+#### Troubleshooting Pixie tracepoint scripts
 
 *I’m not seeing any data for my distributed bpftrace script.*
 
@@ -261,6 +256,6 @@ Run the `px/tracepoint_status` script. It should show a longer error message in 
 
 It is not currently possible to remove a table. Instead, we recommend renaming the table name (e.g. table_name_0) while debugging the script.
 
-### How do I get help?
+#### How do I get help?
 
 Ask a question on our [Community Slack](https://slackin.px.dev/) or file an issue on [GitHub](https://github.com/pixie-labs/pixie/issues).

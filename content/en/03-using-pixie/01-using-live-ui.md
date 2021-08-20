@@ -7,9 +7,7 @@ redirect_from:
     - /using-pixie/interfaces/using-live-ui/
 ---
 
-You can interact with the Pixie platform using the web-based Live UI, [CLI](/using-pixie/using-cli) or [API](/using-pixie/api-quick-start).
-
-Scripts run in the Live UI offers rich visualizations that are not available with the CLI or API. For this reason, we recommend that developers who are new to Pixie begin by using the Live UI.
+PxL scripts can be run in Pixie's web based Live UI or CLI tool. To learn about the CLI, check out this [tutorial](/using-pixie/using-cli/).
 
 ## Setup
 
@@ -77,10 +75,10 @@ To learn how to use Pixie scripts for a specific use case, check out one of the 
 
 ## Write Your Own PxL Scripts
 
-To learn how to write your own PxL script, check out the [tutorial](/tutorials/pxl-scripts/write-pxl-scripts).
+To learn how to write PxL scripts, check out this [tutorial](/tutorials/pxl-scripts/write-pxl-scripts).
 
 For writing quick, one-off scripts, use the `Scratch Pad`. The `Scratch Pad` is the first item in the drop-down `script` menu. Open the script editor to add code to the empty PxL Script.
 
 <svg title='Use the Scratch Pad script .' src='live-ui/live-ui-7.png'/>
 
-The `Scratch Pad` does not yet support persistence, so if you are extensively developing a script, we recommend using the [Script Developer Environment](/tutorials/pxl-scripts/script-dev-environment).
+The `Scratch Pad` does not yet support persistence, so if you are extensively developing a script, we recommend using the [script developer environment](/tutorials/pxl-scripts/script-dev-environment).
