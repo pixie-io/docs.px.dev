@@ -17,8 +17,6 @@ Pixie was contributed by [New Relic, Inc.](https://newrelic.com/) to the [Cloud 
 
 ## Features
 
-Pixie's main features are:
-
 * **Auto-telemetry**: Pixie uses eBPF to automatically collect telemetry data such as full-body requests, resource and network metrics, application profiles, and [more](/about-pixie/data-sources).
 
 * **In-cluster edge compute**: Pixie collects, stores and queries all telemetry data [locally in the cluster](/about-pixie/faq#where-does-pixie-store-its-data). Pixie uses less than 5% of cluster CPU, and in most cases less than 2%.
@@ -26,8 +24,6 @@ Pixie's main features are:
 * **Scriptability**: [PxL](/reference/pxl/), Pixie’s flexible Pythonic query language, can be used across Pixie’s UI, CLI, and client APIs. Pixie provides a set of [community scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts) for common [use cases](/tutorials/pixie-101).
 
 ## Architecture
-
-This diagram illustrates the architecture of Pixie and its ecosystem:
 
 ::: div image-xl
 <svg title='Platform Architecture' src='product-arch.svg' />
