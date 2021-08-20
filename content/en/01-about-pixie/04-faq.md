@@ -17,7 +17,6 @@ order: 4
 **Data Collection**
 
 - [Where does Pixie store its data? How much data is stored?](/about-pixie/faq#where-does-pixie-store-its-data-how-much-data-is-stored)
-- [How does Pixie secure its data?](/about-pixie/faq#how-does-pixie-secure-its-data)
 - [What data does Pixie collect?](/about-pixie/faq#what-data-does-pixie-collect)
 - [Which protocols are automatically traced?](/about-pixie/faq#which-protocols-are-automatically-traced)
 - [Which types of K8s resources, metadata are supported?](/about-pixie/faq#which-types-of-k8s-resources-metadata-are-supported)
@@ -83,24 +82,6 @@ Pixie stores the data it collects on the cluster in-memory; data is not sent to 
 Retention time depends on the level of traffic in your cluster, but will generally be on the order of hours. Each data table in Pixie (e.g. `http_events`) has its own maximum size. These tables collect data until the maximum size is reached, and then begin dropping the oldest data.
 
 We recommend integrating with third-party observability tools (such as New Relic’s integration) to provide long-term retention.
-
-### How does Pixie secure its data?
-
-Pixie stores the telemetry data it collects in-memory on the nodes in your cluster. Data processing and script execution are also performed in the cluster. This is true for both self-hosted Pixie and [Pixie Community Cloud](/about-pixie/faq#does-pixie-offer-a-hosted-cloud-offering).
-
-End-to-end encryption is offered for data in flight between in-cluster storage and presentation in the UI, CLI, and API.
-
-Pixie Cloud (self-hosted or Pixie Community Cloud) hosts the UI and stores limited metadata related to account (user, organization) and Kubernetes control data (cluster name, number of nodes, etc). All communication with Pixie Cloud is TLS encrypted.
-
-Pixie supports two modes for accessing data by the UI. In Passthrough Mode, data flows through Pixie's Cloud via a reverse proxy as encrypted traffic without any persistence. This convenience mode allows developers to access data without being in the same network as the cluster. In Data Isolation Mode, no data flows through Pixie Cloud, instead the browser directly proxies into Pixie's Vizier Module. For more info, see [Configuring Data Transfer Modes](/reference/admin/data-transfer-mode/).
-
-_Community Cloud for Pixie Security_
-
-Pixie Community Cloud is a hosted version of Pixie Cloud. Customer metadata will only be accessed by a limited production team for support purposes. All access is logged in an internal tool.
-
-Production infrastructure is hosted in a Cloud Service Provider (CSP) with physical and environmental controls in place. Access to production infrastructure is limited to a production team following the principle of least privilege.
-
-Pixie is SOC2 compliant.
 
 #### What data does Pixie collect?
 
