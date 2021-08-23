@@ -7,7 +7,9 @@ redirect_from:
     - /using-pixie/interfaces/using-cli/
 ---
 
-PxL scripts can be run in Pixie's web based Live UI or CLI tool. To learn about the Live UI, check out this [tutorial](/using-pixie/using-live-ui/).
+You can interact with the Pixie platform using the CLI, web-based [Live UI](/using-pixie/using-live-ui) or [API](/using-pixie/api-quick-start).
+
+Scripts run in the CLI omit certain visualizations seen in the Live UI. For this reason, we recommend that developers who are new to Pixie begin by using the [Live UI](/using-pixie/using-live-ui).
 
 ## Setup
 
