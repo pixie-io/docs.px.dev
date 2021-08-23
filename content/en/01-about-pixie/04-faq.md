@@ -94,7 +94,7 @@ Pixie Cloud (self-hosted or Pixie Community Cloud) hosts the UI and stores limit
 
 Pixie supports two modes for accessing data by the UI. In Passthrough Mode, data flows through Pixie's Cloud via a reverse proxy as encrypted traffic without any persistence. This convenience mode allows developers to access data without being in the same network as the cluster. In Data Isolation Mode, no data flows through Pixie Cloud, instead the browser directly proxies into Pixie's Vizier Module. For more info, see [Configuring Data Transfer Modes](/reference/admin/data-transfer-mode/).
 
-_Community Cloud for Pixie_
+_Community Cloud for Pixie Security_
 
 Pixie Community Cloud is a hosted version of Pixie Cloud. Pixie Cloud does not store any customer telemetry data, only account metadata. Customer account metadata will only be accessed by a limited production team for support purposes, upon written request by a customer. All access is logged in an internal tool.
 
