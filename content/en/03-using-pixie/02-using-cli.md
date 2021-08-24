@@ -144,7 +144,23 @@ px run -f <script.pxl>		# Use Pixie's CLI to run the pxl script with the provide
 px live -f <script.pxl>		# Use Pixie's Live CLI to run the pxl script with the provided filename
 ```
 
-## Debugging Pixie using the CLI
+## Advanced
+
+### End-to-End Encryption
+
+Pixie offers end-to-end encryption for telemetry data requested by the CLI. For more information, see the [FAQ](/about-pixie/faq#how-does-pixie-secure-its-data).
+
+Encryption is controlled by the `--e2e_encryption` flag during script execution. Enabling E2E encryption adds some overhead to encrypt the results on the Vizier side and decrypt it on the CLI side.
+
+```bash
+# Enable encryption when running a script with the CLI.
+px run <script_name> --e2e_encryption
+
+# Disable encryption when running a script with the CLI.
+px run <script_name> --e2e_encryption=false
+```
+
+### Debugging Pixie using the CLI
 
 Use the following commands to show the status of Pixie on your cluster:
 
