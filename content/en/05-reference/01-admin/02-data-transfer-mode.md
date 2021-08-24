@@ -27,7 +27,7 @@ When enabled, the Live UI [Admin Page](https://work.withpixie.ai/admin) will sho
 
 ## Data Isolation (Direct) Mode
 
-In Data Isolation Mode, the browser directly proxies into Pixie's Vizier Module and no customer data is transferred to Pixie's Control Cloud. Communication to Pixie's Control Cloud is limited to account and Kubernetes control data. See the [FAQ](/about-pixie/faq#how-does-pixie-secure-its-data) and [Architecture Diagram](/about-pixie/what-is-pixie#system-architecture) for more details.
+In Data Isolation Mode, the browser directly proxies into Pixie's Vizier Module and no customer data is transferred to Pixie's Control Cloud. Communication to Pixie's Control Cloud is limited to account and Kubernetes control data. See the [FAQ](/about-pixie/faq#how-does-pixie-secure-its-data) and [Architecture Diagram](/about-pixie/what-is-pixie#architecture) for more details.
 
 <Alert variant="outlined" severity="warning">
   Note that you must be behind your cluster's firewall to see data in the Live UI when Data Isolation Mode is enabled.
