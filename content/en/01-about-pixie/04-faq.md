@@ -91,21 +91,11 @@ We recommend integrating with third-party observability tools (such as [New Reli
 
 ### How does Pixie secure its data?
 
-Pixie stores the telemetry data it collects in-memory on the nodes in your cluster. Data processing and script execution are also performed in the cluster. This is true for both self-hosted Pixie and [Pixie Community Cloud](/about-pixie/faq#does-pixie-offer-a-hosted-cloud-offering).
-
-End-to-end encryption is offered for data in flight between in-cluster storage and presentation in the UI, CLI, and API.
+Pixie stores the telemetry data it collects in-memory on the nodes in your cluster. Data processing and script execution are also performed in the cluster. End-to-end encryption is offered for data in flight between in-cluster storage and presentation in the UI, CLI, and API.
 
 Pixie Cloud (self-hosted or Pixie Community Cloud) hosts the UI and stores limited metadata related to account (user, organization) and Kubernetes control data (cluster name, number of nodes, etc). All communication with Pixie Cloud is TLS encrypted.
 
 Pixie supports two modes for accessing data by the UI. In Passthrough Mode, data flows through Pixie's Cloud via a reverse proxy as encrypted traffic without any persistence. This convenience mode allows developers to access data without being in the same network as the cluster. In Data Isolation Mode, no data flows through Pixie Cloud, instead the browser directly proxies into Pixie's Vizier Module. For more info, see [Configuring Data Transfer Modes](/reference/admin/data-transfer-mode/).
-
-_Community Cloud for Pixie Security_
-
-Pixie Community Cloud is a hosted version of Pixie Cloud. Pixie Cloud does not store any customer telemetry data, only account metadata. Customer account metadata will only be accessed by a limited production team for support purposes, upon written request by a customer. All access is logged in an internal tool.
-
-Production infrastructure is hosted in a Cloud Service Provider (CSP) with physical and environmental controls in place. Access to production infrastructure is limited to a production team following the principle of least privilege.
-
-Pixie is SOC2 compliant.
 
 ### What data does Pixie collect?
 
