@@ -36,12 +36,12 @@ Pixie automatically traces the following protocols:
 | HTTP          | Supported           |                                |
 | HTTP2/gRPC    | Partially Supported | Currently only for Golang apps |
 | DNS           | Supported           |                                |
-| NATS          | Coming Soon         |                                |
+| NATS          | Supported           | Requires a NATS build with debug symbols (default in nats-server v2.3.4+). |
 | MySQL         | Supported           |                                |
 | PostgreSQL    | Supported           |                                |
 | Cassandra     | Supported           |                                |
 | Redis         | Supported           |                                |
-| Kafka         | Coming Soon         |                                |
+| Kafka         | Supported           |                                |
 
 Additional protocols are under development.
 
