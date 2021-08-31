@@ -119,7 +119,7 @@ const MDXDocsRender = ((props: any) => {
             <div>
               <FooterLinks />
               <div className={classes.copyright}>
-                Copyright © 2020 Pixie Labs
+                Copyright © 2018- The Pixie Authors. All Rights Reserved.
               </div>
             </div>
           </div>
