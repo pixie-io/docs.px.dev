@@ -119,7 +119,7 @@ Pixie captures cluster, namespace, node, pod, service, and container metadata. P
 
 ### Can I capture full distributed traces (a single request across multiple services)?
 
-Pixie captures spans, but not full traces. To construct a full trace a request would need to be tagged with a traceID and Pixie does not modify requests. The [roadmap](/about-pixie/roadmap) contains plans to support constructing full traces if a request is already tagged with a traceID.
+Pixie captures spans, but not full traces. To construct a full trace a request would need to be tagged with a traceID and Pixie does not modify requests. The [Roadmap](/about-pixie/roadmap) contains plans to support constructing full traces if a request is already tagged with a traceID.
 
 ### Can I capture requests if one of the endpoints is outside the cluster?
 
@@ -221,7 +221,7 @@ Error `Unexpected error rpc error: code = Unknown desc = rpc error: code = Cance
 
 It is possible that you need to adjust the `start_time` window. The `start_time` window expects a negative relative time (e.g. `-5m`) or an absolute time in the format `2020-07-13 18:02:5.00 +0000`.
 
-If specific services / requests are missing, it is possible that Pixie doesn't support the encryption library used by that service. You can see the list of encryption libraries supported by Pixie [here](/about-pixie/data-sources/).
+If specific services / requests are missing, it is possible that Pixie doesn't support the encryption library used by that service. You can see the list of encryption libraries supported by Pixie [here](/about-pixie/data-sources/#encryption-libraries).
 
 ### Why can’t I see data after enabling Data Isolation Mode?
 

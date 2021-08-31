@@ -131,7 +131,7 @@ If services are backed by multiple pods, it is worth inspecting the individual p
 
 > We can see that there is no resource pressure on this pod and that the HTTP request throughput has been constant over the selected time window.
 
-> Resolving this bug requires further insight into the application logic. For Go/C/C++ applications, you might want to try Pixie's [continuous profiling](/tutorials/profiler/) feature. Pixie also offers [dynamic logging](/tutorials/simple-go-tracing/) for Go applications.
+> Resolving this bug requires further insight into the application logic. For Go/C/C++ applications, you might want to try Pixie's [continuous profiling](/tutorials/pixie-101/profiler/) feature. Pixie also offers [dynamic logging](/tutorials/simple-go-tracing/) for Go applications.
 
 ## Related Scripts
 

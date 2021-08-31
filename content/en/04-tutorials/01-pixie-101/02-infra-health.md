@@ -101,7 +101,7 @@ by clicking the bottom box.
 :::
 
 <Alert variant="outlined" severity="info">
-  To learn more about how use Pixie for application profiling, check out the <a href="https://docs.px.dev/tutorials/profiler/">Profiling with Flamegraphs</a> tutorial.
+  To learn more about how use Pixie for application profiling, check out the <a href="https://docs.px.dev/tutorials/pixie-101/profiler/">Profiling with Flamegraphs</a> tutorial.
 </Alert>
 
 ## Related Scripts
