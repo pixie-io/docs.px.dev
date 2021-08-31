@@ -4,7 +4,7 @@ metaTitle: "Tutorials | Pixie 101 | Continuous Application Profiling"
 metaDescription: "Learn how to use Pixie's continuous profiler."
 order: 6
 redirect_from:
-    - /tutorials/profiling/
+    - /tutorials/profiler/
 ---
 
 This tutorial will demonstrate how to use Pixie's Always-On Profiling feature to investigate a spike in CPU utilization, using a flamegraph to identify a performance issue within the application code.
