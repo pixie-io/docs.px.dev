@@ -2,7 +2,7 @@
 title: "Roadmap"
 metaTitle: "About Pixie | Roadmap"
 metaDescription: "Pixie's roadmap for the near future."
-order: 3
+order: 4
 ---
 
 Pixie’s long-term vision is to be the data plane for Kubernetes clusters. Pixie should make machine data such as application traffic and cluster performance, accessible and useful to anyone using Kubernetes. As a result, we want to build up the following high-level capabilities:

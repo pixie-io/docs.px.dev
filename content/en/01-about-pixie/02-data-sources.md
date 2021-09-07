@@ -7,7 +7,7 @@ redirect_from:
     - /about-pixie/observability
 ---
 
-Pixie uses [eBPF](https://www.brendangregg.com/ebpf.html) to automatically instrument Kubernetes applications.
+Pixie uses [eBPF](/about-pixie/pixie-ebpf) to automatically instrument Kubernetes applications.
 
 Pixie ships with a set of default data sources, which can also be extended by the user.
 
@@ -23,7 +23,7 @@ Pixie automatically collects the following data:
 
 * **JVM metrics**: JVM memory management metrics for Java applications.
 
-* **Application profiles**: Sampled stack traces from your application. Pixie’s continuous profiler is always running to help identify application performance bottlenecks when you need it. Currently supports compiled languages (Go, Rust, C/C++). For more information, see the [Continuous Application Profiling](/tutorials/pixie-101/profiler/) tutorial.
+* **Application CPU profiles**: Sampled stack traces from your application. Pixie’s continuous profiler is always running to help identify application performance bottlenecks when you need it. Currently supports compiled languages (Go, Rust, C/C++). For more information, see the [Continuous Application Profiling](/tutorials/pixie-101/profiler/) tutorial.
 
 Pixie can also be configured by the user to collect [dynamic logs](/tutorials/custom-data/dynamic-go-logging/) from Go application code and to run [custom BPFTrace scripts](/tutorials/custom-data/distributed-bpftrace-deployment).
 
