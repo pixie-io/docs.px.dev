@@ -193,13 +193,13 @@ This step of the deployment checks that the `vizier-cloud-connector` pod can suc
 
 *Deploy with CLI fails waiting for the Cloud Connector to come online.*
 
-This step of the deployment checks that the Cloud Connector can successfully communicate with Pixie Cloud. To debug this step, check the Pixie debug logs for the vizier-cloud-connector` pod, check the firewall, etc.
+This step of the deployment checks that the Cloud Connector can successfully communicate with Pixie Cloud. To debug this step, check the Pixie debug logs for the `vizier-cloud-connector` pod, check the firewall, etc.
 
 ### Why does my cluster show as unavailable / unhealthy in the Live UI?
 
-Confirm that all of the `pl` namespace pods are ready and available using `kubectl get pods -n pl`. Deploying Pixie usually takes anywhere between 5-7 minutes. Once Pixie is deployed, it can take a few minutes for the UI to show that the cluster is healthy.
+Confirm that all of the `pl` and `px-operator` namespace pods are ready and available using `px debug pods`. Deploying Pixie usually takes anywhere between 5-7 minutes. Once Pixie is deployed, it can take a few minutes for the UI to show that the cluster is healthy.
 
-To debug, follow the steps in the “Deploy with CLI fails to pass health checks” section in the above question. As long as the Kelvin pod, plus at least one PEM pod is up and running, then your cluster should not show as unavailable.
+To debug, follow the steps in the “Deploy with CLI fails to pass health checks” section in the [above question](/about-pixie/faq/#my-deployment-is-stuck-fails). As long as the Kelvin pod, plus at least one PEM pod is up and running, then your cluster should not show as unavailable.
 
 ### Why does my cluster show as disconnected in the Live UI?
 
