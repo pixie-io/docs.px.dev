@@ -159,7 +159,7 @@ for a different view of the graph.
 
 ## Related Scripts
 
-This tutorial demonstrated three of Pixie's [community scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts). For more insight into your network, check out the following scripts:
+This tutorial demonstrated three of Pixie's [community scripts](https://github.com/pixie-io/pixie/tree/main/src/pxl_scripts). For more insight into your network, check out the following scripts:
 
 - [`px/dns_data`](https://work.withpixie.ai/script/dns_data) shows the most recent DNS requests in your cluster, including the full request and response bodies.
 - [`px/tcp_retransmits`](https://work.withpixie.ai/script/tcp_retransmits) graphs the TCP retransmission counts across your cluster. Don't forget to click the RUN button.

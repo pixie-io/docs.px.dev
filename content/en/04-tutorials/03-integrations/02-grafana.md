@@ -15,7 +15,7 @@ This tutorial will demonstrate how to use the Pixie datasource plugin to visuali
 
 - A Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using our [install guides](/installing-pixie/install-guides/).
 
-- A [Grafana server](https://grafana.com/get/) with the Pixie datasource plugin installed. For installation directions, see the [instructions](https://github.com/pixie-labs/grafana-plugin/#installing-the-plugin) on GitHub.
+- A [Grafana server](https://grafana.com/get/) with the Pixie datasource plugin installed. For installation directions, see the [instructions](https://github.com/pixie-io/grafana-plugin/#installing-the-plugin) on GitHub.
 
 ## Add Pixie as a datasource
 
@@ -229,5 +229,5 @@ You should see data plotted over time, but the exact numbers will vary depending
 ## Get Help
 
 - Check out the Pixie Grafana datasource plugin [reference docs](/reference/plugins/grafana).
-- Inspect the source code, report issues, and contribute fixes in the [GitHub repo](https://github.com/pixie-labs/grafana-plugin).
+- Inspect the source code, report issues, and contribute fixes in the [GitHub repo](https://github.com/pixie-io/grafana-plugin).
 - Ask questions in the **#grafana-plugin** channel on Pixie's [Community Slack](http://slackin.px.dev).

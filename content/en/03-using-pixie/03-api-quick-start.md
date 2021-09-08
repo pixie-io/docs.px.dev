@@ -163,7 +163,7 @@ If your PxL query has any compile errors, you will get a `pixie.errors.PxLError`
 
 Below is the complete source code for the example above.
 
-This basic example along with more advanced API examples can be found in the [API folder](https://github.com/pixie-labs/pixie/tree/main/src/api) in Pixie's GitHub repo.
+This basic example along with more advanced API examples can be found in the [API folder](https://github.com/pixie-io/pixie/tree/main/src/api) in Pixie's GitHub repo.
 
 ```python
 # Import Pixie's python API.
@@ -288,4 +288,4 @@ func (s *tableMux) AcceptTable(ctx context.Context, metadata types.TableMetadata
 
 Pixie offers end-to-end encryption for telemetry data requested by the API. For more information, see the [FAQ](/about-pixie/faq#how-does-pixie-secure-its-data).
 
-Encryption is controlled by a flag during client creation. For additional info, see the [Go](https://github.com/pixie-labs/pixie/blob/main/src/api/go/pxapi/examples/encryption_example/example.go#L77) or [Python](https://github.com/pixie-labs/pixie/blob/main/src/api/python/examples/script_with_single_table.py#L35) encryption examples.
+Encryption is controlled by a flag during client creation. For additional info, see the [Go](https://github.com/pixie-io/pixie/blob/main/src/api/go/pxapi/examples/encryption_example/example.go#L77) or [Python](https://github.com/pixie-io/pixie/blob/main/src/api/python/examples/script_with_single_table.py#L35) encryption examples.

@@ -108,7 +108,7 @@ by clicking the bottom box.
 
 ## Related Scripts
 
-This tutorial demonstrated a few of Pixie's [community scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts). For more insight into your infrastructure, check out the following scripts:
+This tutorial demonstrated a few of Pixie's [community scripts](https://github.com/pixie-io/pixie/tree/main/src/pxl_scripts). For more insight into your infrastructure, check out the following scripts:
 
 #### Resource usage by Kubernetes object
 

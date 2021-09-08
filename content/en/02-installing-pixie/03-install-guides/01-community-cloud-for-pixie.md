@@ -132,4 +132,4 @@ Learn how to use Pixie for
 
 ## Get Help
 
-Please reach out on our [Community Slack](https://slackin.px.dev/) or file an issue on [GitHub](https://github.com/pixie-labs/pixie/issues).
+Please reach out on our [Community Slack](https://slackin.px.dev/) or file an issue on [GitHub](https://github.com/pixie-io/pixie/issues).

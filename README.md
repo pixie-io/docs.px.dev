@@ -4,24 +4,27 @@ This repo contains the source code and content for the [Pixie Docs](http://docs.
 
 ## Reporting Issues
 
-Submit any issues or enhancement requests by [filing an issue](https://github.com/pixie-labs/pixie-docs/issues/new). Please search for and review the existing open issues before submitting a new issue.
+Submit any issues or enhancement requests by [filing an issue](https://github.com/pixie-io/pixie-docs/issues/new). Please search for and review the existing open issues before submitting a new issue.
 
 ## Contributing
 
 We're excited to have you contribute to Pixie's documentation!
 
-Pixie has adopted the [Contributor Covenant](https://github.com/pixie-labs/pixie-docs/blob/main/CODE_OF_CONDUCT.md) as its code of conduct, and we expect all participants to adhere to it. Please report any violations to <community@pixielabs.ai>. All code contributions require the [Contributor License Agreement](https://github.com/pixie-labs/pixie-docs/blob/main/CLA.md). The CLA can be signed when creating your first PR.
+Pixie has adopted the [Contributor Covenant](https://github.com/pixie-io/pixie-docs/blob/main/CODE_OF_CONDUCT.md) as its code of conduct, and we expect all participants to adhere to it. Please report any violations to <community@pixielabs.ai>. All code contributions require the [Contributor License Agreement](https://github.com/pixie-io/pixie-docs/blob/main/CLA.md). The CLA can be signed when creating your first PR.
 
 ### Dev Setup
 
 To run in development mode, run the following commands:
+
 ```shell
 yarn install
 yarn start
 ```
+
 Then visit `http://localhost:8000/` to view the app.
 
 To generate a production build, run:
+
 ```shell
 yarn install
 yarn build
@@ -31,14 +34,17 @@ yarn build
 
 1. Create a new empty folder in the `content` folder. Name the folder with the new language's [2-letter code](https://quicksilvertranslate.com/712/iso6392-letterlanguagecodes/).
 2. Add a new item for the new language to the `languages` list in the `available-languages.js` file.
-3. Copy the file you want to translate from the `en` folder into the new folder. Make sure to maintain the same folder structure, folder names, and file name as the `en` directory. 
-4. Translate the file and create a PR. 
+3. Copy the file you want to translate from the `en` folder into the new folder. Make sure to maintain the same folder structure, folder names, and file name as the `en` directory.
+4. Translate the file and create a PR.
 
 ### Updating Automated Content
+
 To pull the latest reference docs, run:
+
 ```shell
 ./update_docs.sh
 ```
+
 This will overwrite `external/pxl_documentation.json`.
 Add the changed file to the repo and submit a pull request.
 

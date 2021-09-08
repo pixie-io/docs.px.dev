@@ -17,7 +17,7 @@ Pixie needs to be installed on your Kubernetes cluster. If it is not already ins
 
 ## Pixie's Open Source Scripts
 
-Run the following command to list all of Pixie's [open source scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts).
+Run the following command to list all of Pixie's [open source scripts](https://github.com/pixie-io/pixie/tree/main/src/pxl_scripts).
 
 ```bash
 px run -l		# list pre-built scripts

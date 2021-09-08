@@ -61,11 +61,11 @@ Pixie was originally built by Pixie Labs. [New Relic, Inc.](https://newrelic.com
 
 ### What license is Pixie released under?
 
-Pixie is released under the [Apache 2.0](https://github.com/pixie-labs/pixie/blob/main/LICENSE) license.
+Pixie is released under the [Apache 2.0](https://github.com/pixie-io/pixie/blob/main/LICENSE) license.
 
 ### Which K8s environments are supported?
 
-Pixie has been tested to work with a variety of Kubernetes environments listed in the [requirements](/installing-pixie/requirements/) page. Just because Pixie hasn’t been tested on a specific environment, does not mean that Pixie won't work. If you’ve successfully deployed Pixie to an environment not currently listed, please [submit a PR](https://github.com/pixie-labs/pixie-docs/blob/main/content/en/02-installing-pixie/01-requirements.md) to update the page.
+Pixie has been tested to work with a variety of Kubernetes environments listed in the [requirements](/installing-pixie/requirements/) page. Just because Pixie hasn’t been tested on a specific environment, does not mean that Pixie won't work. If you’ve successfully deployed Pixie to an environment not currently listed, please [submit a PR](https://github.com/pixie-io/pixie-docs/blob/main/content/en/02-installing-pixie/01-requirements.md) to update the page.
 
 ### Can I completely self host Pixie?
 
@@ -253,4 +253,4 @@ It is not currently possible to remove a table. Instead, we recommend renaming t
 
 ### How do I get help?
 
-Ask a question on our [Community Slack](https://slackin.px.dev/) or file an issue on [GitHub](https://github.com/pixie-labs/pixie/issues).
+Ask a question on our [Community Slack](https://slackin.px.dev/) or file an issue on [GitHub](https://github.com/pixie-io/pixie/issues).

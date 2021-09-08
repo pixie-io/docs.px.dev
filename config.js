@@ -26,7 +26,7 @@ const config = {
     title: 'Pixie Labs Customer Docs',
     description: 'Customer docs for the Pixie platform ',
     ogImage: null,
-    docsLocation: 'https://github.com/pixie-labs/pixielabs/docs/customer',
+    docsLocation: 'https://github.com/pixie-io/pixie/docs/customer',
     favicon: 'src/components/images/favicon.svg',
   },
 };

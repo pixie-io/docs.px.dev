@@ -7,7 +7,7 @@ redirect_from:
     - /tutorials/script-of-the-week/script-of-the-week-1
 ---
 
-The [Network Flow Graph](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts/px/net_flow_graph) script displays a graph of the pods, services or namespaces that talk to the specified IP address(es).
+The [Network Flow Graph](https://github.com/pixie-io/pixie/tree/main/src/pxl_scripts/px/net_flow_graph) script displays a graph of the pods, services or namespaces that talk to the specified IP address(es).
 
 <svg title='' src='sotw-1/sotw.gif'/>
 

@@ -253,7 +253,7 @@ const Header = ({
                           onClick={() => setOpenSupportMenu(false)}
                         >
                           <a
-                            href='https://github.com/pixie-labs/pixie'
+                            href='https://github.com/pixie-io/pixie'
                             target='_blank'
                             rel='noopener noreferrer'
                           >
