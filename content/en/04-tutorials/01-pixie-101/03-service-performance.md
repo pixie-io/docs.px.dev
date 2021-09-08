@@ -20,6 +20,8 @@ This tutorial will demonstrate how to use Pixie to see:
 
 If you're interested in troubleshooting HTTP errors, check out the [Request Tracing](/tutorials/pixie-101/request-tracing) tutorial.
 
+<YouTube youTubeId="Rex0yz_5vwc"/>
+
 ## Prerequisites
 
 1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using one of our [install guides](/installing-pixie/install-guides/).

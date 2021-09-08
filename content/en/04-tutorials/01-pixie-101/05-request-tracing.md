@@ -19,6 +19,8 @@ This tutorial will demonstrate how to use Pixie to:
 
 If you're interested in troubleshooting HTTP latency, check out the [Service Performance](/tutorials/pixie-101/service-performance) tutorial.
 
+<YouTube youTubeId="Gl0so4rbwno"/>
+
 ## Prerequisites
 
 1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using one of our [install guides](/installing-pixie/install-guides/).
