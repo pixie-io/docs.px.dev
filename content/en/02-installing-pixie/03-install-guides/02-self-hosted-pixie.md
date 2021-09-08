@@ -15,8 +15,6 @@ Get Pixie fully managed with [Pixie Community Cloud](/installing-pixie/install-g
 
 - Ensure that your cluster supports Pixie creating and using [PersistentVolumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
 
-- Ensure that you have `cluster-admin` privileges.
-
 ## 1. Deploy Pixie Cloud
 
 <Alert variant="outlined" severity="info">
