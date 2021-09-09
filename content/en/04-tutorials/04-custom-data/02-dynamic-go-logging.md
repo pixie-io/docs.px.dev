@@ -246,6 +246,7 @@ Dynamic Logging can currently be used to trace only certain types of arguments a
 | Strings                                   | Yes. Truncated after 23 characters |
 | Arrays                                    | No.                                |
 | Structs                                   | Partial. Struct members that are other primitive types or other structs are traced. Pointers to other types are not followed. Strings inside structs are not supported. |
+| Interfaces                                | Partial. Struct data is printed out. If more than 128 types implement the same interface, then the interface is not traced. |
 
 If your build is optimized with inlining (-gcflags '-l'), certain functions won't be traceable.
 For more info see the [golang documentation](https://golang.org/doc/gdb#Introduction).
