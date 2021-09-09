@@ -23,7 +23,7 @@ lsof -i :8000 		# check if anything is running on port 8000
 2. In the terminal, clone Pixie's GitHub repo.
 
 ```bash
-git clone https://github.com/pixie-labs/pixie.git
+git clone https://github.com/pixie-io/pixie.git
 ```
 
 3. Run `make dev` in the `src/pxl_scripts` directory to start a local dev server. Leave this terminal tab running.
@@ -84,13 +84,13 @@ localStorage.clear('px-custom-bundle-path')
 
 ## Contribute Your Script (Optional)
 
-Over time, we hope that our [script repository](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts) grows into a community driven knowledge base of tools to observe, debug, secure and manage applications.
+Over time, we hope that our [script repository](https://github.com/pixie-io/pixie/tree/main/src/pxl_scripts) grows into a community driven knowledge base of tools to observe, debug, secure and manage applications.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/So4ep2mMcSI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 #### Step 1: File an issue
 
-File an [issue](https://github.com/pixie-labs/pixie/issues/new/choose) with an explanation of what use case you are looking to address. This will help us make sure these community scripts are broadly applicable and useful.
+File an [issue](https://github.com/pixie-io/pixie/issues/new/choose) with an explanation of what use case you are looking to address. This will help us make sure these community scripts are broadly applicable and useful.
 
 #### Step 2: Prepare your script
 

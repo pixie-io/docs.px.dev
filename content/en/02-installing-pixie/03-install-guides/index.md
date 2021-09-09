@@ -28,4 +28,4 @@ Pixie also supports for self-hosting of the entire platform, including Pixie Clo
 
 ## Add Your Own
 
-Does your organization offer Pixie? [Open a PR](https://github.com/pixie-labs/pixie-docs) to list it here.
+Does your organization offer Pixie? [Open a PR](https://github.com/pixie-io/pixie-docs) to list it here.

@@ -29,7 +29,7 @@ PxL scripts can both:
 
 ## Script Catalog
 
-Pixie provides many [open source scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts), which appear under the `px/` namespace in Pixie's Live UI and CLI.
+Pixie provides many [open source scripts](https://github.com/pixie-io/pixie/tree/main/src/pxl_scripts), which appear under the `px/` namespace in Pixie's Live UI and CLI.
 
 These community scripts enable the developer community with a broad repository of use-case specific scripts out of the box. Over time, we hope this grows into a community driven knowledge base of tools to observe, debug, secure and manage applications.
 

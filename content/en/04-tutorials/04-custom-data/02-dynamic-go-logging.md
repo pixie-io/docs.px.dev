@@ -34,7 +34,7 @@ execution of you program with minimal overhead.
 2. Clone the `pixie` repo to get the relevant files.
 
 ```bash
-git clone https://github.com/pixie-labs/pixie-demos.git
+git clone https://github.com/pixie-io/pixie-demos.git
 cd pixie-demos/simple-gotracing
 ```
 
@@ -89,7 +89,7 @@ func computeE(iterations int64) float64 {
 ```
 
 The function computeE is called by an HTTP handler. Let's say we want to quickly access the arguments to the `computeE`
-function, and it's latency. We can use the provided [capture_args.pxl](https://github.com/pixie-labs/pixie-demos/blob/main/simple-gotracing/capture_args.pxl)
+function, and it's latency. We can use the provided [capture_args.pxl](https://github.com/pixie-io/pixie-demos/blob/main/simple-gotracing/capture_args.pxl)
 script. The complete script has code to programmatically insert the log
 and capture data for a time period. However, the actual function that captures this data is straightforward:
 

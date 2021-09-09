@@ -137,7 +137,7 @@ If services are backed by multiple pods, it is worth inspecting the individual p
 
 ## Related Scripts
 
-This tutorial demonstrated a few of Pixie's [community scripts](https://github.com/pixie-labs/pixie/tree/main/src/pxl_scripts). To see full body requests for a specific protocol, check out the following scripts:
+This tutorial demonstrated a few of Pixie's [community scripts](https://github.com/pixie-io/pixie/tree/main/src/pxl_scripts). To see full body requests for a specific protocol, check out the following scripts:
 
 - [`px/http_data`](https://work.withpixie.ai/script/http_data) shows the most recent HTTP/2 requests in the cluster.
 - [`px/dns_data`](https://work.withpixie.ai/script/dns_data) shows the most recent DNS requests in the cluster.

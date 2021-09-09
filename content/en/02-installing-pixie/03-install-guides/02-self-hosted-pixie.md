@@ -29,10 +29,10 @@ Get Pixie fully managed with [Pixie Community Cloud](/installing-pixie/install-g
   There is a known issue with login on self-managed Pixie Cloud on Safari and Firefox. For now, use Chrome.
 </Alert>
 
-1. Clone the [Pixie repo](https://github.com/pixie-labs/pixie).
+1. Clone the [Pixie repo](https://github.com/pixie-io/pixie).
 
 ```bash
-git clone https://github.com/pixie-labs/pixie.git
+git clone https://github.com/pixie-io/pixie.git
 cd pixie
 ```
 
@@ -193,4 +193,4 @@ If you select this option, each of your Pixie deployments will point to the same
 
 ## Get Help
 
-Please reach out on our [Community Slack](https://slackin.px.dev/) or file an issue on [GitHub](https://github.com/pixie-labs/pixie/issues).
+Please reach out on our [Community Slack](https://slackin.px.dev/) or file an issue on [GitHub](https://github.com/pixie-io/pixie/issues).

@@ -26,7 +26,7 @@ To run minikube, your mac will need a way to run a Linux VM. We recommend hyperk
 ## Create Cluster
 
 <Alert variant="outlined" severity="warning">
-  For minikube versions 1.16+, the flannel CNI (`--cni=flannel`) is required. See the <a href="https://github.com/pixie-labs/pixie/issues/298">GitHub issue</a> for updates.
+  For minikube versions 1.16+, the flannel CNI (`--cni=flannel`) is required. See the <a href="https://github.com/pixie-io/pixie/issues/298">GitHub issue</a> for updates.
 </Alert>
 
 Run `minikube start --driver=<kvm2|hyperkit> --cni=flannel --cpus=4 --memory=8000 -p=<cluster-name>`.

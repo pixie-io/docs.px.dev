@@ -9,7 +9,7 @@ The Pixie Datasource plugin allows you to visualize data from the Pixie observab
 
 ## Installation
 
-Instructions for installing the plugin can be found [here](https://github.com/pixie-labs/grafana-plugin/blob/main/README.md).
+Instructions for installing the plugin can be found [here](https://github.com/pixie-io/grafana-plugin/blob/main/README.md).
 
 ## Usage
 
@@ -63,9 +63,9 @@ df.timestamp = px.bin(df.time_, __interval)
 
 ## Develop
 
-The plugin source code can be found on [GitHub](https://github.com/pixie-labs/grafana-plugin/). To contribute to the Grafana Pixie Datasource plugin, please check out our [Contribution Guidelines](https://github.com/pixie-labs/grafana-plugin/blob/main/CONTRIBUTING.md).
+The plugin source code can be found on [GitHub](https://github.com/pixie-io/grafana-plugin/). To contribute to the Grafana Pixie Datasource plugin, please check out our [Contribution Guidelines](https://github.com/pixie-io/grafana-plugin/blob/main/CONTRIBUTING.md).
 
 ## Get Help
 
-- Report issues on [GitHub](https://github.com/pixie-labs/grafana-plugin/issues).
+- Report issues on [GitHub](https://github.com/pixie-io/grafana-plugin/issues).
 - Ask questions in the **#grafana-plugin** channel on Pixie's [Community Slack](http://slackin.px.dev/).

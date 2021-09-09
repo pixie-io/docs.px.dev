@@ -7,7 +7,7 @@ redirect_from:
     - /tutorials/slackbot-alert/
 ---
 
-This tutorial will show you how to create a Slackbot to monitor your Kubernetes cluster using data from Pixie's observability platform. This Slackbot reports the number of HTTP errors per service in your cluster. However, the [example code](https://github.com/pixie-labs/pixie-demos/tree/main/slack-alert-app) can be modified to alert based on any data available from Pixie.
+This tutorial will show you how to create a Slackbot to monitor your Kubernetes cluster using data from Pixie's observability platform. This Slackbot reports the number of HTTP errors per service in your cluster. However, the [example code](https://github.com/pixie-io/pixie-demos/tree/main/slack-alert-app) can be modified to alert based on any data available from Pixie.
 
 ::: div image-l
 <svg title='Slackbot alerting for per service HTTP errors.' src='slackbot/slack-alert.png'/>
@@ -93,7 +93,7 @@ This tutorial uses example code from Pixie's GitHub repository.
 
 ```bash
 # Clone the Pixie repository.
-git clone https://github.com/pixie-labs/pixie-demos.git
+git clone https://github.com/pixie-io/pixie-demos.git
 
 # Change to the app directory.
 cd slack-alert-app/<language>

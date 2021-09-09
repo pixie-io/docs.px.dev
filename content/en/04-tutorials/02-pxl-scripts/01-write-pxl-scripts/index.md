@@ -43,4 +43,4 @@ This tutorial series will demonstrate how to write a PxL script to extend the Pi
 
 ## Getting Help
 
-If you have questions about these tutorials, we’d be happy to help out on our [GitHub](https://github.com/pixie-labs/pixie/issues) or community [Slack](https://slackin.px.dev/).
+If you have questions about these tutorials, we’d be happy to help out on our [GitHub](https://github.com/pixie-io/pixie/issues) or community [Slack](https://slackin.px.dev/).

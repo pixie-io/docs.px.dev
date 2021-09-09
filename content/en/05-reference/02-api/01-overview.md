@@ -30,8 +30,8 @@ To get started using one of client libraries, check out our [Quick Start](/refer
 
 Pixie uses a gRPC API to communicate between its backend platform and its [Live UI](/using-pixie/using-live-ui), [CLI](/using-pixie/using-cli), and API clients.
 
-- Pixie Cloud [schema definition](https://github.com/pixie-labs/pixie/blob/main/src/api/proto/cloudpb/cloudapi.proto): get available clusters, connect to a cluster.
-- Pixie Vizier [schema definition](https://github.com/pixie-labs/pixie/blob/main/src/api/proto/vizierpb/vizierapi.proto): execute a PxL script.
+- Pixie Cloud [schema definition](https://github.com/pixie-io/pixie/blob/main/src/api/proto/cloudpb/cloudapi.proto): get available clusters, connect to a cluster.
+- Pixie Vizier [schema definition](https://github.com/pixie-io/pixie/blob/main/src/api/proto/vizierpb/vizierapi.proto): execute a PxL script.
 
 ### gRPC Streaming Details
 
