@@ -148,9 +148,6 @@ To deploy Pixie using the CLI:
 </Alert>
 
 ``` bash
-# List Pixie deployment options.
-px deploy --help
-
 # Deploy the Pixie Platform in your K8s cluster (No OLM present on cluster).
 px deploy --dev_cloud_namespace plc
 
