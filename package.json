@@ -70,7 +70,7 @@
     "lodash.flatten": "^4.4.0",
     "lodash.groupby": "^4.6.0",
     "lodash.startcase": "^4.4.0",
-    "netlify-cli": "^2.43.0",
+    "netlify-cli": "^3.29.3",
     "prism-react-renderer": "^1.0.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -91,7 +91,8 @@
     "system-components": "^3.0.3",
     "tsc": "^1.20150623.0",
     "typescript": "^3.9.5",
-    "js-cookie": "^2.2.1"
+    "js-cookie": "^2.2.1",
+    "@snyk/protect": "latest"
   },
   "license": "Proprietary",
   "main": "n/a",
@@ -100,7 +101,9 @@
     "start": "gatsby develop",
     "develop": "gatsby develop",
     "dev": "gatsby develop",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx -c .eslintrc.json src *.js && git ls-files '**/*.tsx' '**/*.ts' '**/*.js' '**/*.jsx' '**/*.scss' '**/*.py' | xargs -n1 tools/licenses/checker.py -f"
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx -c .eslintrc.json src *.js && git ls-files '**/*.tsx' '**/*.ts' '**/*.js' '**/*.jsx' '**/*.scss' '**/*.py' | xargs -n1 tools/licenses/checker.py -f",
+    "prepare": "yarn run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "devDependencies": {
     "@types/node": "^12.12.31",
@@ -108,7 +111,7 @@
     "@types/react-dom": "^16.9.5",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.19.0",
-    "eslint": "^6.8.0",
+    "eslint": "^7.16.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-typescript": "^7.2.1",
     "eslint-config-standard": "^14.1.0",
@@ -119,5 +122,6 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
     "prettier": "^1.17.1"
-  }
+  },
+  "snyk": true
 }
