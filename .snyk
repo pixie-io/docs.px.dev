@@ -14,3 +14,15 @@ patch:
         patched: '2021-09-19T20:18:04.814Z'
     - eslint-config-airbnb-typescript > @typescript-eslint/parser > @typescript-eslint/experimental-utils > @typescript-eslint/typescript-estree > lodash:
         patched: '2021-09-19T20:18:04.814Z'
+    - netlify-cli > concordance > lodash:
+        patched: '2021-09-21T04:01:02.290Z'
+    - netlify-cli > @netlify/plugin-edge-handlers > @babel/preset-env > @babel/preset-modules > @babel/types > lodash:
+        patched: '2021-09-21T04:01:02.290Z'
+    - netlify-cli > @netlify/build > @netlify/plugin-edge-handlers > @babel/preset-env > @babel/preset-modules > @babel/types > lodash:
+        patched: '2021-09-21T04:01:02.290Z'
+    - netlify-cli > @netlify/plugin-edge-handlers > @babel/preset-env > @babel/preset-modules > @babel/plugin-transform-dotall-regex > @babel/helper-create-regexp-features-plugin > @babel/helper-regex > lodash:
+        patched: '2021-09-21T04:01:02.290Z'
+    - netlify-cli > @netlify/build > @netlify/plugin-edge-handlers > @babel/preset-env > @babel/preset-modules > @babel/plugin-transform-dotall-regex > @babel/helper-create-regexp-features-plugin > @babel/helper-regex > lodash:
+        patched: '2021-09-21T04:01:02.290Z'
+    - netlify-cli > @netlify/build > @netlify/plugin-edge-handlers > @babel/preset-env > @babel/preset-modules > @babel/plugin-transform-dotall-regex > @babel/helper-create-regexp-features-plugin > @babel/helper-annotate-as-pure > @babel/types > lodash:
+        patched: '2021-09-21T04:01:02.290Z'
