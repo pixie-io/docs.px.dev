@@ -92,7 +92,7 @@
     "tsc": "^1.20150623.0",
     "typescript": "^3.9.5",
     "js-cookie": "^2.2.1",
-    "@snyk/protect": "latest"
+    "@snyk/protect": "^1.717.0"
   },
   "license": "Proprietary",
   "main": "n/a",
