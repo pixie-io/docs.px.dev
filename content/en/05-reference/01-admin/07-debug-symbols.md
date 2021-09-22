@@ -5,7 +5,7 @@ metaDescription: "Check for debug symbols."
 order: 7
 ---
 
-Pixie automatically traces requests of a variety of protocol types. However, certain protocols and encryption libraries require debug and/or dwarf symbols to work with Pixie.
+Pixie automatically traces requests of a variety of protocol types. A subset of the supported protocols and encryption libraries require debug and/or dwarf symbols to work with Pixie.
 
 ## Checking for debug symbols
 
@@ -15,7 +15,7 @@ You can verify that an executable has debug symbols using `nm`:
 nm <executable>
 ```
 
-An output of `no symbols` means the application has no symbols and won't be traced.
+An output of `no symbols` means the application has no debug symbols and won't be traced.
 
 ## Checking for dwarf symbols
 
