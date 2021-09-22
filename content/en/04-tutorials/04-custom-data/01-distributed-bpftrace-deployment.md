@@ -172,35 +172,21 @@ df = df[px.contains(df['dst'], 'sock-shop')]
 
 ### Tracepoint status
 
-Run `px/tracepoint_status` to see the information about all of the tracepoints running on your cluster. The `STATUS` column can be used to debug why a tracepoint fails to deploy. 
+Run `px/tracepoint_status` to see the information about all of the tracepoints running on your cluster. The `STATUS` column can be used to debug why a tracepoint fails to deploy.
 
 ### Running other bpftrace programs
 
 The following [bpftrace](https://github.com/iovisor/bpftrace) programs are available today for use in Pixie:
 
 - `capable.bt`: use the `pxbeta/capable` script
-- `dcsnoop.bt`: use the `pxbeta/dc_snoop` script. 
-- `mdflush.bt`: use the `pxbeta/md_flush` script. 
-- `naptime.bt`: use the `pxbeta/nap_time` script. 
-- `oomkill.bt`: use the `pxbeta/oom_kill` script. 
-- `syncsnoop.bt`: use the `pxbeta/sync_snoop` script. 
-- `tcpdrop.bt`: use the `px/tcp_drops` script. 
-- `tcpretrans.bt`: use the `px/tcp_retransmits` script. 
+- `dcsnoop.bt`: use the `pxbeta/dc_snoop` script.
+- `mdflush.bt`: use the `pxbeta/md_flush` script.
+- `naptime.bt`: use the `pxbeta/nap_time` script.
+- `oomkill.bt`: use the `pxbeta/oom_kill` script.
+- `syncsnoop.bt`: use the `pxbeta/sync_snoop` script.
+- `tcpdrop.bt`: use the `px/tcp_drops` script.
+- `tcpretrans.bt`: use the `px/tcp_retransmits` script.
 
-With a few modifications to obey the Rules listed above, all of the TCP bpftrace programs are known to work with Pixie:
-
-- `tcpaccept.bt`
-- `tcpconnect.bt`
-- `tcplife.bt`
-- `tcpsynbl.bt`
-
-Based on a quick visual inspection of the code, the following programs should theoretically work with modifications, but have not yet been tested:
-
-- `biosnoop.bt`
-- `execsnoop.bt`
-- `opensnoop.bt`
-- `statsnoop.bt`
-- `loads.bt`
-- `writeback.bt`
+Many other bpftrace programs can work with Pixie. Some may require a few modifications to obey the rules listed above.
 
 If you have any questions about this feature or how to incorporate your own bpftrace code, we'd be happy to help out over on our [Slack](https://slackin.px.dev/).
