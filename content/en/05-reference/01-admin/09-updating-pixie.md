@@ -4,7 +4,7 @@ metaTitle: "Reference | Admin | Updating Pixie"
 metaDescription: "Steps to update Pixie."
 order: 9
 redirect_from:
-	- /installing-pixie/updating-pixie
+    - /installing-pixie/updating-pixie
 ---
 
 Pixie support auto-upgrades for both the CLI and Pixie Platform.
