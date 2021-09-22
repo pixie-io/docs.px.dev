@@ -34,9 +34,9 @@ Pixie automatically traces the following protocols:
 | Protocol      | Support             | Notes                          |
 | :------------ | :------------------ | :----------------------------- |
 | HTTP          | Supported           |                                |
-| HTTP2/gRPC    | Partially Supported | Currently only for Golang apps |
+| HTTP2/gRPC    | Partially Supported | Currently only for Golang apps with [debug symbols](/reference/admin/debug-symbols). |
 | DNS           | Supported           |                                |
-| NATS          | Supported           | Requires a NATS build with debug symbols (default in nats-server v2.3.4+). |
+| NATS          | Supported           | Requires a NATS build with [debug symbols](/reference/admin/debug-symbols) (default in nats-server v2.3.4+). |
 | MySQL         | Supported           |                                |
 | PostgreSQL    | Supported           |                                |
 | Cassandra     | Supported           |                                |
@@ -49,5 +49,7 @@ Additional protocols are under development.
 
 Pixie supports tracing of traffic encrypted with the following libraries:
 
-* [OpenSSL](https://www.openssl.org/) (versions 1.1.0, 1.1.1)
-* [Go TLS](https://golang.org/pkg/crypto/tls/)
+| Library                                      | Notes                                       |
+| :------------------------------------------- | :------------------------------------------ |
+| [OpenSSL](https://www.openssl.org/)          | Version 1.1.0 or 1.1.1, dynamically linked. |
+| [Go TLS](https://golang.org/pkg/crypto/tls/) | Requires a build with [debug symbols](/reference/admin/debug-symbols).                |
