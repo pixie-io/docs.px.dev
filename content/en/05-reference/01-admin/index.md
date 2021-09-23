@@ -15,6 +15,7 @@ Documentation on how to configure and manage Pixie:
 - [Managing API Keys](/reference/admin/api-keys)
 - [Managing Deploy Keys](/reference/admin/deploy-keys)
 - [Permissions](/reference/admin/permissions/)
+- [Debug Information](/reference/admin/debug-info)
 - [Uninstalling Pixie](/reference/admin/uninstall)
 - [Updating Pixie](/reference/admin/updating-pixie/)
 - [Version History](/reference/admin/product-updates)
