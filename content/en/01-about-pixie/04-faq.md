@@ -223,7 +223,7 @@ It is possible that you need to adjust the `start_time` window. The `start_time`
 
 If specific services / requests are missing, it is possible that Pixie doesn't support the encryption library used by that service. You can see the list of encryption libraries supported by Pixie [here](/about-pixie/data-sources/#encryption-libraries).
 
-If specific services / requests are missing, it is possible that your application was not built with [debug symbols](/reference/admin/debug-symbols). See the [Data Sources](/about-pixie/data-sources) page to see which protocols and/or encryption libraries require a build with debug symbols.
+If specific services / requests are missing, it is possible that your application was not built with [debug information](/reference/admin/debug-info). See the [Data Sources](/about-pixie/data-sources) page to see which protocols and/or encryption libraries require a build with debug information.
 
 ### Why can’t I see data after enabling Data Isolation Mode?
 
