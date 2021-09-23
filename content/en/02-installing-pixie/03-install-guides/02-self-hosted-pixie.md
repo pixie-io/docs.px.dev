@@ -21,10 +21,6 @@ Get Pixie fully managed with [Pixie Community Cloud](/installing-pixie/install-g
   Pixie also offers a free account with Pixie Community Cloud to make getting started even easier and faster. To get Pixie Cloud, check out the community cloud <a href="https://docs.px.dev/installing-pixie/install-guides/community-cloud-for-pixie">Install Guide</a>.
 </Alert>
 
-<Alert variant="outlined" severity="info">
-  Self-managed Pixie Cloud has been tested on GKE only.
-</Alert>
-
 <Alert variant="outlined" severity="warning">
   There is a known issue with login on self-managed Pixie Cloud on Safari and Firefox. For now, use Chrome.
 </Alert>
