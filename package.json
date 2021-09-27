@@ -46,7 +46,7 @@
     "emotion-theming": "^10.0.10",
     "gatsby": "2.23.3",
     "gatsby-link": "^2.4.6",
-    "gatsby-plugin-algolia": "^0.11.2",
+    "gatsby-plugin-algolia": "^0.16.4",
     "gatsby-plugin-emotion": "4.3.4",
     "gatsby-plugin-force-trailing-slashes": "1.0.4",
     "gatsby-plugin-google-fonts": "^1.0.1",
