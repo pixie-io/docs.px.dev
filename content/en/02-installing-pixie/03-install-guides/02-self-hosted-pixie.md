@@ -15,7 +15,7 @@ Get Pixie fully managed with [Pixie Community Cloud](/installing-pixie/install-g
 
 - Ensure that your cluster supports Pixie creating and using [PersistentVolumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
 
-- Pixie interacts with the Linux kernel to install BPF programs to collect telemetry data. In order to install BPF programs, Pixie [`vizier-pem-*`](/about-pixie/what-is-pixie/#architecture) pods require [privileged access](https://github.com/pixie-labs/pixielabs/blob/main/k8s/vizier/bootstrap/pod_security_policy.yaml).
+- Pixie interacts with the Linux kernel to install BPF programs to collect telemetry data. In order to install BPF programs, Pixie [`vizier-pem-*`](/about-pixie/what-is-pixie/#architecture) pods require [privileged access](https://github.com/pixie-io/pixie/blob/main/k8s/vizier/bootstrap/pod_security_policy.yaml).
 
 ## 1. Deploy Pixie Cloud
 
