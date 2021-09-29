@@ -11,7 +11,7 @@ Please refer to the [install guides](/installing-pixie/install-guides/) for info
 
 ## Kubernetes
 
-Kubernetes `v1.12+` is required.
+Kubernetes `v1.16+` is required.
 
 ### Production Environments
 
