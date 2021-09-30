@@ -1,18 +1,9 @@
 [build]
   publish ="public/"
-  command = "sed -i s/HEADER_PLACEHOLDER/pixie:${BASIC_AUTH}/g netlify.toml && yarn install && yarn lint && gatsby build"
+  command = "yarn install && yarn lint && gatsby build"
 
 [context.branch-deploy.environment]
   GATSBY_DEPLOY_ENV = "main"
 
-[context.production]
-  # No password on prod.
-  command = "sed -i 's|HEADER_PLACEHOLDER||g' netlify.toml && yarn install && yarn lint && gatsby build"
-
 [context.production.environment]
   GATSBY_DEPLOY_ENV = "prod"
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Basic-Auth = "HEADER_PLACEHOLDER"
