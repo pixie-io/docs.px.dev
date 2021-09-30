@@ -10,7 +10,7 @@ Submit any issues or enhancement requests by [filing an issue](https://github.co
 
 We're excited to have you contribute to Pixie's documentation!
 
-Pixie has adopted the [Contributor Covenant](https://github.com/pixie-io/pixie-docs/blob/main/CODE_OF_CONDUCT.md) as its code of conduct, and we expect all participants to adhere to it. Please report any violations to <community@pixielabs.ai>. All code contributions require the [Contributor License Agreement](https://github.com/pixie-io/pixie-docs/blob/main/CLA.md). The CLA can be signed when creating your first PR.
+Pixie has adopted the [Contributor Covenant](https://github.com/pixie-io/pixie-docs/blob/main/CODE_OF_CONDUCT.md) as its code of conduct, and we expect all participants to adhere to it. Please report any violations to <community@pixielabs.ai>. All code contributions require signing, please refer to the [Contribution Guide](https://github.com/pixie-io/pixie-docs/blob/main/CONTRIBUTING.md).
 
 ### Dev Setup
 
