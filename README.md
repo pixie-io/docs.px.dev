@@ -1,4 +1,4 @@
-# [docs.px.dev](http://docs.px.dev/) &middot; [![Netlify Status](https://api.netlify.com/api/v1/badges/0218074c-9309-47d8-ae9a-ad266aa2abd8/deploy-status)](https://app.netlify.com/sites/pixie-docs/deploys) <a href="https://twitter.com/intent/follow?screen_name=pixie_run"><img src="https://img.shields.io/twitter/follow/pixie_run.svg?label=Follow%20@pixie_run" alt="Follow @pixie_run" /></a>
+# [docs.px.dev](http://docs.px.dev/) &middot; [![Netlify Status](https://api.netlify.com/api/v1/badges/0e00be9c-373b-43b5-9b31-f4ce40b9fea9/deploy-status)](https://app.netlify.com/sites/blog-px-dev/deploys) <a href="https://twitter.com/intent/follow?screen_name=pixie_run"><img src="https://img.shields.io/twitter/follow/pixie_run.svg?label=Follow%20@pixie_run" alt="Follow @pixie_run" /></a> [![Snyk](https://img.shields.io/badge/snyk-report-green)](https://snyk.io/test/github/pixie-io/docs.px.dev)
 
 This repo contains the source code and content for the [Pixie Docs](http://docs.px.dev/) website.
 
