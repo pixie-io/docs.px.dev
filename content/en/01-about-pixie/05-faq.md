@@ -2,7 +2,7 @@
 title: "FAQ"
 metaTitle: "About Pixie | FAQ"
 metaDescription: "Commonly asked questions about Pixie."
-order: 4
+order: 5
 ---
 
 ### General
@@ -111,7 +111,7 @@ All this data is collected without requiring any manual application instrumentat
 
 ### Which protocols are automatically traced?
 
-Pixie uses eBPF to automatically collect telemetry data for a [variety of protocols](/about-pixie/data-sources/).
+Pixie uses [eBPF](/about-pixie/pixie-ebpf) to automatically collect telemetry data for a [variety of protocols](/about-pixie/data-sources/).
 
 ### Which types of K8s resources, metadata are supported?
 
