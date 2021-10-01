@@ -4,13 +4,13 @@ This repo contains the source code and content for the [Pixie Docs](http://docs.
 
 ## Reporting Issues
 
-Submit any issues or enhancement requests by [filing an issue](https://github.com/pixie-io/pixie-docs/issues/new). Please search for and review the existing open issues before submitting a new issue.
+Submit any issues or enhancement requests by [filing an issue](https://github.com/pixie-io/docs.px.dev/issues/new). Please search for and review the existing open issues before submitting a new issue.
 
 ## Contributing
 
 We're excited to have you contribute to Pixie's documentation!
 
-Pixie has adopted the [Contributor Covenant](https://github.com/pixie-io/pixie-docs/blob/main/CODE_OF_CONDUCT.md) as its code of conduct, and we expect all participants to adhere to it. Please report any violations to <community@pixielabs.ai>. All code contributions require signing, please refer to the [Contribution Guide](https://github.com/pixie-io/pixie-docs/blob/main/CONTRIBUTING.md).
+Pixie has adopted the [Contributor Covenant](https://github.com/pixie-io/docs.px.dev/blob/main/CODE_OF_CONDUCT.md) as its code of conduct, and we expect all participants to adhere to it. Please report any violations to <community@pixielabs.ai>. All code contributions require signing, please refer to the [Contribution Guide](https://github.com/pixie-io/docs.px.dev/blob/main/CONTRIBUTING.md).
 
 ### Dev Setup
 
