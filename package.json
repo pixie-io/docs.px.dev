@@ -85,7 +85,7 @@
     "lodash.groupby": "^4.6.0",
     "lodash.startcase": "^4.4.0",
     "netlify-cli": "^3.29.3",
-    "node-sass": "^4.13.1",
+    "sass": "^1.42.1",
     "prism-react-renderer": "^1.0.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
