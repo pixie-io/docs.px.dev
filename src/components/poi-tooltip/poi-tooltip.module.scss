@@ -19,7 +19,6 @@
 .main {
 
   position: absolute;
-  z-index: 1;
   overflow: hidden;
 
   .circle {
@@ -28,10 +27,25 @@
     width: 12px;
     border-radius: 50%;
     background: rgba(90, 255, 253, 1);
-    box-shadow: 0 0 0 7px rgba(90, 255, 253, 0.2);
-    transform: scale(1);
-    cursor: pointer;
+    position: relative;
     animation: pulse 2s infinite;
+    animation-delay: .2s;
+    cursor: pointer;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: -6px;
+      height: 0px;
+      width: 0px;
+      border-radius: 50%;
+      border: 12px solid rgba(90, 255, 253, 0.2);
+      transform: scale(1);
+      animation: pulse-glow 2s ease-out infinite;
+
+    }
+
 
   }
 
@@ -40,7 +54,7 @@
     opacity: 0;
     transition: opacity 300ms linear;
     width: 256px;
-    transform: translateX(-50%);
+    transform: translateX(-10%);
     background: #353535;
     box-shadow: 0 4px 162px rgba(0, 0, 0, 0.3);
     border-radius: 4px;
@@ -48,6 +62,8 @@
     top: 62px;
     padding: 12px 14px 12px 14px;
     color: #FFFFFF;
+    z-index: 1;
+
 
     strong {
       color: #12d6d6;
@@ -55,7 +71,7 @@
 
     &:after {
       bottom: 100%;
-      left: 50%;
+      left: 10%;
       content: " ";
       height: 0;
       width: 0;
@@ -65,27 +81,16 @@
       margin-left: -12px;
     }
 
-    &.left-side {
-      @media (max-width: 1000px) {
-        transform: translateX(-10%);
-      }
-
-      &:after {
-        @media (max-width: 1000px) {
-          left: 10%;
-        }
-      }
-    }
 
     &.right-side {
-      @media (max-width: 1000px) {
-        transform: translateX(-80%);
-      }
+
+      transform: translateX(-80%) !important;
+
 
       &:after {
-        @media (max-width: 1000px) {
-          left: 80%;
-        }
+
+        left: 80% !important;
+
       }
     }
   }
@@ -94,7 +99,7 @@
     overflow: visible;
 
     .circle {
-      animation: pulse 2s infinite;
+      //   animation: pulse 2s infinite;
     }
 
     .tooltip {
@@ -107,16 +112,33 @@
 @keyframes pulse {
   0% {
     transform: scale(0.7);
-    box-shadow: 0 0 0 0 rgba(90, 255, 253, 0.7);
+    //  box-shadow: 0 0 0 0 rgba(90, 255, 253, 0.7);
   }
 
   70% {
     transform: scale(1);
-    box-shadow: 0 0 0 20px rgba(90, 255, 253, 0);
+    //  box-shadow: 0 0 0 20px rgba(90, 255, 253, 0);
   }
 
   100% {
     transform: scale(0.7);
-    box-shadow: 0 0 0 0 rgba(90, 255, 253, 0);
+    //   box-shadow: 0 0 0 0 rgba(90, 255, 253, 0);
+  }
+}
+
+@keyframes pulse-glow {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(2);
+    opacity: 0;
   }
 }

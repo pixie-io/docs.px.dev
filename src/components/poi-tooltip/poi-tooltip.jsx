@@ -21,12 +21,19 @@ import PropTypes from 'prop-types';
 import styles from './poi-tooltip.module.scss';
 
 const PoiTooltip = ({ children, top, left }) => (
-  <div className={styles.main} style={{ top: `${top}%`, left: `${left}%` }}>
+  <div
+    className={styles.main}
+    style={{
+      top: `calc(${top}% - 30px)`, left: `calc(${left}% - 30px)`,
+    }}
+    data-tooltip
+  >
     <div className={styles.circle} />
     <div
-      className={`${styles.tooltip} ${left < 20 ? styles.leftSide : ''} ${
-        left > 60 ? styles.rightSide : ''
+      className={`${styles.tooltip} ${
+        left > 50 ? styles.rightSide : ''
       }`}
+      style={{ maxWidth: `${left > 50 ? `${100 - left}vw` : 'calc(50vw - 32px)'}` }}
     >
       {children}
     </div>
@@ -39,6 +46,5 @@ PoiTooltip.propTypes = {
   left: PropTypes.number.isRequired,
 };
 
-PoiTooltip.defaultProps = {
-};
+PoiTooltip.defaultProps = {};
 export default PoiTooltip;

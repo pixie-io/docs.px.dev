@@ -53,7 +53,7 @@ export const processClientEntry = () => {
     }
     .modal-content img {
       max-width: 100%;
-      height:100%;
+    z-index:-1;
       position: relative !important;
       object-fit: contain !important;
        margin: 0 auto;
@@ -61,17 +61,24 @@ export const processClientEntry = () => {
 
     }
     .modal-content {
-
+position:relative;
       width: 100%;
       height: calc(100% - 160px);
 
     }
+    .modal-content .tooltip-container{
+     
+    position: relative;
+    margin: 0 auto;
+    max-width: 1000px;
+}
 
       /* 100% Image Width on Smaller Screens */
       @media only screen and (max-width: 700px){
         .modal-content {
-          width: 100%;
+          width: 100%;          
         }
+
       }
   `;
 
@@ -93,28 +100,41 @@ export function runZoom() {
   let isModalVisible = false;
   const children = [...document.querySelectorAll('.gatsby-resp-image-figure'), ...document.querySelectorAll('.blog-image-wrapper')];
 
+  function hideModal() {
+    modal.classList.remove('show');
+    modalImg.innerHTML = '';
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    modal.removeEventListener('click', hideModalListener);
+    isModalVisible = false;
+  }
+
+  const hideModalListener = (e) => {
+    if (e.target.classList.contains('tooltip-container') || e.target.classList.contains('modal-content')) {
+      hideModal();
+    }
+  };
   children.forEach(
     (e) => {
       e.onclick = (event) => {
         const picture = e.getElementsByClassName('doc-image')[0];
-        modalImg.innerHTML = picture.outerHTML;
+        const tooltips: HTMLElement[] = Array.from(picture.parentElement.parentElement.querySelectorAll('[data-tooltip]'));
+        if (tooltips) {
+          const tooltipContainer = document.createElement('div');
+          tooltipContainer.classList.add('tooltip-container');
+          tooltipContainer.append(...tooltips.map((t) => t.cloneNode(true)));
+          tooltipContainer.append(picture.cloneNode(true));
+          modalImg.append(tooltipContainer);
+        } else {
+          modalImg.innerHTML = picture.outerHTML;
+        }
         isModalVisible = true;
         modal.classList.add('show');
+        modal.addEventListener('click', hideModalListener);
         event.stopPropagation();
       };
     },
   );
 
-  function hideModal() {
-    modal.classList.remove('show');
-    isModalVisible = false;
-  }
-
-  window.onclick = () => {
-    if (isModalVisible) {
-      hideModal();
-    }
-  };
   window.onscroll = () => {
     if (isModalVisible) {
       hideModal();

@@ -48,8 +48,8 @@ a.toc-anchor::before {
 }
 
 .doc-image {
-    padding-top: 24px;
-    padding-bottom: 24px;
+    margin-top: 24px;
+    margin-bottom: 24px;
     max-width: 100%;
 }
 
