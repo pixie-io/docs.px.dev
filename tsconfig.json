@@ -26,8 +26,7 @@
     "./src/**/*",
     "__mocks__/**/*",
     "*.js",
-    "./stories/**/*",
-    "./.storybook/**/*",
+    "tools/no-potrace/*",
     "./src/webpack-loaders.d.ts"
   ]
 }

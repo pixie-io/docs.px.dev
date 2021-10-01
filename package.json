@@ -10,7 +10,8 @@
     "start": "gatsby develop",
     "develop": "gatsby develop",
     "dev": "gatsby develop",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx -c .eslintrc.json src *.js && git ls-files '**/*.tsx' '**/*.ts' '**/*.js' '**/*.jsx' '**/*.scss' '**/*.py' | xargs -n1 tools/licenses/checker.py -f",
+    "lint": "eslint '**/*.{js,jsx,ts,tsx}' && git ls-files '**/*.tsx' '**/*.ts' '**/*.js' '**/*.jsx' '**/*.scss' '**/*.py' | xargs -n1 tools/licenses/checker.py -f",
+    "lint-fix": "eslint '**/*.{js,jsx,ts,tsx}' --fix",
     "prepare": "yarn run snyk-protect",
     "snyk-protect": "snyk-protect"
   },
@@ -103,7 +104,6 @@
     "slugify": "^1.3.6",
     "styled-components": "^4.4.1",
     "system-components": "^3.0.3",
-    "tsc": "^1.20150623.0",
     "typescript": "^3.9.5",
     "unist-util-visit": "^2.0.3"
   },
