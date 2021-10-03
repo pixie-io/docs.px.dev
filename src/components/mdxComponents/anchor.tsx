@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import Typography from '@material-ui/core/Typography';
+import { Link } from 'gatsby';
 import { makeStyles } from '@material-ui/core/styles';
 import { Theme } from '@material-ui/core';
 
@@ -34,24 +34,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
 }));
-const AnchorTag = ({ children: link, ...props }) => {
+const AnchorTag = ({ href: to, ...props }) => {
   const classes = useStyles();
-  // This assumes that any internal link (intended for Gatsby)
-  // will start with exactly one slash, and that anything else is external.
-  const { href } = props;
-  const internal = /^\/(?!\/)/.test(href);
-  let target = '_self';
-  if (!internal) {
-    target = '_blank';
-  }
-  if (link) {
-    return (
-      <Typography {...props} target={target} component='a' rel='noopener noreferrer' className={classes.link}>
-        {link}
-      </Typography>
-    );
-  }
-  return null;
+  return <Link to={to} className={classes.link} {...props} />;
 };
 
 export default AnchorTag;
