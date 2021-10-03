@@ -26,7 +26,6 @@ import Hidden from '@material-ui/core/Hidden';
 import Button from '@material-ui/core/Button';
 import withStyles from '@material-ui/core/styles/withStyles';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import { darken, lighten } from '@material-ui/core/styles';
 
 import SEO from 'components/seo';
 import { urlFromSlug } from 'components/utils';
@@ -37,7 +36,9 @@ import opbrImg from '../images/page-ornaments/ornament-page-bottom-right.svg';
 import nextBtn from '../images/btn-next-icon.svg';
 import ornamentLeft from '../images/ornament-left.svg';
 import ornamentRight from '../images/ornament-right.svg';
-import FooterLinks from '../components/footer-links';
+import cncfLogoWhite from '../images/cncf-white.svg';
+import cncfLogoColor from '../images/cncf-color.svg';
+import Footer from '../components/footer';
 
 const MainButton = withStyles((theme: Theme) => ({
   root: {
@@ -314,11 +315,6 @@ const IndexPage = withStyles((theme: Theme) => ({
       },
     },
   },
-  copyright: {
-    textAlign: 'center',
-    paddingBottom: '16px',
-    color: theme.palette.type === 'light' ? lighten(theme.overrides.MuiTypography.body2.color, 0.4) : darken(theme.overrides.MuiTypography.body2.color, 0.4),
-  },
   image_title: {
     fontSize: '28px',
     lineHeight: '35px',
@@ -326,6 +322,32 @@ const IndexPage = withStyles((theme: Theme) => ({
     [theme.breakpoints.down('sm')]: {
       paddingTop: 0,
     },
+  },
+  cncfFooter: {
+    paddingTop: '128px',
+    position: 'relative',
+    '& a': {
+      color: '#12D6D6',
+      textDecoration: 'none',
+    },
+    '& p': {
+      fontSize: '18px',
+      lineHeight: '24px',
+      color: theme.overrides.MuiTypography.body1.color,
+      paddingBottom: '36px',
+    },
+  },
+  logoWhite: {
+    display: theme.palette.type === 'light' ? 'none' : 'block',
+    width: '80%',
+    maxWidth: '300px',
+    margin: '0 auto 40px',
+  },
+  logoColor: {
+    display: theme.palette.type === 'light' ? 'block' : 'none',
+    width: '80%',
+    maxWidth: '300px',
+    margin: '0 auto 40px',
   },
 }))(({ location, classes, data }: any) => {
   const sections = data.featuredInstalls.edges.map((e) => ({
@@ -501,10 +523,18 @@ const IndexPage = withStyles((theme: Theme) => ({
             </Box>
           </Container>
         </section>
-        <div className={classes.copyright}>
-          <FooterLinks />
-          Copyright © 2018- The Pixie Authors. All Rights Reserved.
+        <div className={classes.cncfFooter}>
+          <p align='center'>
+            We are a
+            {' '}
+            <a href='https://cncf.io/' target='_blank' rel='noreferrer'>Cloud Native Computing Foundation</a>
+            {' '}
+            sandbox project.
+          </p>
+          <img src={cncfLogoWhite} alt='CNCF logo' className={classes.logoWhite} />
+          <img src={cncfLogoColor} alt='CNCF logo' className={classes.logoColor} />
         </div>
+        <Footer />
         <Hidden mdDown implementation='css'>
           <img className={classes.ornament_page_bottom_right} src={opbrImg} />
         </Hidden>

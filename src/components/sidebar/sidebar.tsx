@@ -66,7 +66,7 @@ const Sidebar = withStyles((theme: Theme) => ({
     borderRight: theme.palette.type === 'light' ? '1px solid #DBDDE0' : '1px solid #353738',
     minWidth: '260px',
     boxSizing: 'border-box',
-    maxHeight: 'calc(100vh - 54px)',
+    height: 'calc(100vh - 54px)',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',

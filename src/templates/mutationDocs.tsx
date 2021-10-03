@@ -24,7 +24,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import SEO from 'components/seo';
 import { Layout } from 'components';
 import parseMd from '../components/parseMd';
-import FooterLinks from '../components/footer-links';
 import HLink from '../components/mdxComponents/h-link';
 
 const useStyles = makeStyles(() => ({
@@ -110,7 +109,6 @@ const DocsTemplate = ((props: any) => {
             </Typography>
           </div>
         ) : (<div />)}
-        <FooterLinks />
       </div>
     </Layout>
   );
