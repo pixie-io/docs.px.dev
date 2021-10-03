@@ -25,7 +25,6 @@ import SEO from 'components/seo';
 import { Layout } from 'components';
 import parseUdf from 'utils/parseUdf';
 import parseMd from '../components/parseMd';
-import FooterLinks from '../components/footer-links';
 import HLink from '../components/mdxComponents/h-link';
 
 const useStyles = makeStyles(() => ({
@@ -107,7 +106,6 @@ const UdfDocsTemplate = ((props: any) => {
           Examples:
         </HLink>
         {examples.map((ex) => parseMd(ex.value))}
-        <FooterLinks />
       </div>
     </Layout>
   );

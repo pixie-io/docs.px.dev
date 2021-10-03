@@ -29,7 +29,6 @@ import { groupBy } from 'lodash';
 
 import { Layout } from 'components';
 import parseUDF from 'utils/parseUdf';
-import FooterLinks from '../components/footer-links';
 import HLink from '../components/mdxComponents/h-link';
 
 const useStyles = makeStyles(() => ({
@@ -128,7 +127,6 @@ const UdfFunctionsTemplate = ((props: any) => {
             </TableBody>
           </Table>
         </TableContainer>
-        <FooterLinks />
       </div>
     </Layout>
   );

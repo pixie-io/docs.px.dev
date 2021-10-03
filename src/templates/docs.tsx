@@ -21,14 +21,14 @@ import { graphql } from 'gatsby';
 // eslint-disable-next-line
 import { Theme } from '@material-ui/core';
 import { MDXProvider } from '@mdx-js/react';
-import { darken, lighten, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import SEO from 'components/seo';
 import { Layout } from 'components';
 import RightSidebar from '../components/rightSidebar';
 import NextPrevious from '../components/NextPrevious';
 import mdxComponents from '../components/mdxComponents';
-import FooterLinks from '../components/footer-links';
+import Footer from '../components/footer';
 import HLink from '../components/mdxComponents/h-link';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -39,7 +39,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     maxWidth: '1280px',
   },
   mainRenderer: {
-    float: 'left',
     display: 'flex',
     flexDirection: 'column',
     minHeight: 'calc(100vh - 70px)',
@@ -64,12 +63,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       display: 'none',
     },
   },
-  copyright: {
-    textAlign: 'center',
-    paddingBottom: '16px',
-    color: theme.palette.type === 'light' ? lighten(theme.overrides.MuiTypography.body2.color, 0.4) : darken(theme.overrides.MuiTypography.body2.color, 0.4),
-  },
-
 }));
 
 const MDXDocsRender = ((props: any) => {
@@ -116,12 +109,6 @@ const MDXDocsRender = ((props: any) => {
               <MDXRenderer>{mdx.body}</MDXRenderer>
               <NextPrevious mdx={mdx} nav={nav} />
             </div>
-            <div>
-              <FooterLinks />
-              <div className={classes.copyright}>
-                Copyright © 2018- The Pixie Authors. All Rights Reserved.
-              </div>
-            </div>
           </div>
           {needToc && (
             <div className={classes.rightAside}>
@@ -129,6 +116,7 @@ const MDXDocsRender = ((props: any) => {
             </div>
           )}
         </div>
+        <Footer />
       </MDXProvider>
     </Layout>
   );

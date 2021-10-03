@@ -24,7 +24,6 @@ import SEO from 'components/seo';
 import { Layout } from 'components';
 import { Typography } from '@material-ui/core';
 import { graphql } from 'gatsby';
-import FooterLinks from '../components/footer-links';
 import HLink from '../components/mdxComponents/h-link';
 import parseMd from '../components/parseMd';
 import CodeRenderer from '../components/mdxComponents/codeRenderer';
@@ -126,7 +125,6 @@ const PyDocsIndex = ((props: any) => {
             </li>
           ))}
         </ul>
-        <FooterLinks />
       </div>
     </Layout>
   );

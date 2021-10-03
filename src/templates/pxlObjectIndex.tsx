@@ -28,7 +28,6 @@ import slugify from 'slugify';
 import { Layout } from 'components';
 import parseMd from '../components/parseMd';
 
-import FooterLinks from '../components/footer-links';
 import HLink from '../components/mdxComponents/h-link';
 
 const useStyles = makeStyles(() => ({
@@ -95,7 +94,6 @@ const MutationsTemplate = ((props: any) => {
             </TableBody>
           </Table>
         </TableContainer>
-        <FooterLinks />
       </div>
     </Layout>
   );
