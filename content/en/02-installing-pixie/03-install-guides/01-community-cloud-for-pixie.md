@@ -76,13 +76,6 @@ px-operator         vizier-operator
 
 To deploy Pixie to another cluster, change your `kubectl config current-context` to point to that cluster. Then repeat the same deploy commands shown in this step.
 
-If the `px deploy` does not successfully complete you might retry it after deleting all the nodes and the namespace as sometimes the deploy nodes can get into a bad state:
-
-```bash
-px delete
-kubectl delete namespace px-operator
-```
-
 ## 5. Use Pixie
 
 ### Deploy a demo microservices app (optional)
