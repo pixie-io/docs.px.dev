@@ -43,7 +43,7 @@ Pixie also supports using [Auth0](https://auth0.com/docs) for authentication. To
 <svg title='' src='authentication/enable_credentials.png'/>
 :::
 
-5. Enable the Autho0 Management API, filter for user permissions and enable all. Make sure to hit Update.
+5. Enable the Autho0 Management API, filter for user permissions and enable all. Make sure you have `read:user_idp_tokens` [for identity provider access](https://auth0.com/docs/connections/calling-an-external-idp-api). Make sure to hit Update.
 
 ::: div image-l
 <svg title='' src='authentication/mgmt_api.png'/>
