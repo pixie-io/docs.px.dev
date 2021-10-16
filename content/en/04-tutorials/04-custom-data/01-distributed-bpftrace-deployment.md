@@ -178,14 +178,14 @@ Run `px/tracepoint_status` to see the information about all of the tracepoints r
 
 The following [bpftrace](https://github.com/iovisor/bpftrace) programs are available today for use in Pixie:
 
-- `capable.bt`: use the `pxbeta/capable` script
-- `dcsnoop.bt`: use the `pxbeta/dc_snoop` script.
-- `mdflush.bt`: use the `pxbeta/md_flush` script.
-- `naptime.bt`: use the `pxbeta/nap_time` script.
-- `oomkill.bt`: use the `pxbeta/oom_kill` script.
-- `syncsnoop.bt`: use the `pxbeta/sync_snoop` script.
-- `tcpdrop.bt`: use the `px/tcp_drops` script.
-- `tcpretrans.bt`: use the `px/tcp_retransmits` script.
+- `capable.bt`: use the `bpftrace/capable` script
+- `dcsnoop.bt`: use the `bpftrace/dc_snoop` script.
+- `mdflush.bt`: use the `bpftrace/md_flush` script.
+- `naptime.bt`: use the `bpftrace/nap_time` script.
+- `oomkill.bt`: use the `bpftrace/oom_kill` script.
+- `syncsnoop.bt`: use the `bpftrace/sync_snoop` script.
+- `tcpdrop.bt`: use the `bpftrace/tcp_drops` script.
+- `tcpretrans.bt`: use the `bpftrace/tcp_retransmits` script.
 
 Many other bpftrace programs can work with Pixie. Some may require a few modifications to obey the rules listed above.
 
