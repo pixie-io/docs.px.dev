@@ -32,13 +32,13 @@ import { SidebarContext } from './sidebarProvider';
 import CategoryItem from './categoryItem';
 
 export const GET_ARTIFACTS = gql`
-    query artifacts($artifactName: String!) {
-        artifacts(artifactName: $artifactName) {
-            items {
-                version
-            }
-        }
+  query artifacts($artifactName: String!) {
+    artifacts(artifactName: $artifactName) {
+      items {
+        version
+      }
     }
+  }
 `;
 
 const ExpandFirstLevelOnce = (props) => {
