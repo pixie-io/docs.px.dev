@@ -39,10 +39,10 @@ gcloud config set compute/zone compute-zone
 
 ### Create the cluster
 
-Run the following command to create a 2 node cluster (each node with 2 vCPUs and 12GB of RAM):
+Run the following command to create a 2 node cluster:
 
 ```
-gcloud container clusters create cluster-name --num-nodes=2 --machine-type=custom-2-12288
+gcloud container clusters create cluster-name --num-nodes=2 --machine-type=e2-standard-2
 ```
 
 Please review, GCP's [docs](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture) for more deployment details and insructions.
