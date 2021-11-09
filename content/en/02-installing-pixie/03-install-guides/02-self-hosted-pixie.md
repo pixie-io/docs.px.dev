@@ -56,7 +56,7 @@ kubectl create namespace plc
 
 6. Install `kustomize` following the directions [here](https://kubectl.docs.kubernetes.io/installation/kustomize/).
 
-7. Deploy Pixie Cloud dependencies and wait for all pods within the `plc` namespace to become ready and available before proceeding to the next step.
+7. Deploy Pixie Cloud dependencies and wait for all pods within the `plc` namespace to become ready and available before proceeding to the next step. If there is an error, you may need to retry this step.
 
 ```bash
 kustomize build k8s/cloud_deps/public/ | kubectl apply -f - --namespace=plc
