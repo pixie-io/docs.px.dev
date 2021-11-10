@@ -102,4 +102,8 @@ Certain labels are reserved for internal use by Pixie. The following are reserve
 - `"vizier-bootstrap"`
 - `“component"`
 - `“vizier-updater-dep"`
-- `“app"`
+- `“app"
+
+### More Deploy Options
+
+For more deploy options that you can specify to configure Pixie, refer to our [deploy options](/reference/admin/deploy-options).

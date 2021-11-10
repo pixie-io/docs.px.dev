@@ -73,3 +73,7 @@ px get viziers
 # Check PEM stats
 px get pems
 ```
+
+### More Deploy Options
+
+For more deploy options that you can specify to configure Pixie, refer to our [deploy options](/reference/admin/deploy-options).
