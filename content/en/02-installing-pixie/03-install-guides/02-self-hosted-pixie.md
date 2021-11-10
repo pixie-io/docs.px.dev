@@ -97,7 +97,7 @@ Self-managed Pixie Cloud only supports one organization.
 1. To setup the default admin account, check the logs for the `create-admin-job` pod by running:
 
 ```bash
-kubectl log create-admin-job-<pod_string> -n plc
+kubectl logs create-admin-job-<pod_string> -n plc
 ```
 
 2. Open the URL from the pod's logs to set the password for the `admin@default.com` user.
