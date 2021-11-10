@@ -102,7 +102,7 @@ Certain labels are reserved for internal use by Pixie. The following are reserve
 - `"vizier-bootstrap"`
 - `“component"`
 - `“vizier-updater-dep"`
-- `“app"
+- `“app"`
 
 ### More Deploy Options
 
