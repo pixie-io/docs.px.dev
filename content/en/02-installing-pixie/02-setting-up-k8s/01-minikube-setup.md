@@ -38,7 +38,7 @@ To deploy a specific K8s version [supported by Pixie](/installing-pixie/requirem
 
 ## Verify
 
-Run `kubectl get nodes` to verify your cluster is up and running. Run `kubectl config current-context` to verify that `kubectl` is pointing to your cluster. 
+Run `kubectl get nodes` to verify your cluster is up and running. Run `kubectl config current-context` to verify that `kubectl` is pointing to your cluster.
 
 ## Deploy Pixie
 

@@ -76,19 +76,27 @@ kubectl get pods -n plc
 
 ### Set up DNS
 
-1. Setup your DNS. This produces a `dev_dns_updater` binary in the top level `pixie` directory.
+1. Ensure that the `cloud-proxy-service` and `vzconn-service` LoadBalancer services have External IPs assigned. If you are running Pixie Cloud on `minikube`, you likely need to run `minikube tunnel` before continuing with this setup.
+
+```bash
+minikube tunnel # if running on minikube
+kubectl get service cloud-proxy-service -n plc
+kubectl get service vzconn-service -n plc
+```
+
+2. Setup your DNS. This produces a `dev_dns_updater` binary in the top level `pixie` directory.
 
 ```bash
 go build src/utils/dev_dns_updater/dev_dns_updater.go
 ```
 
-2. You'll need to hardcode in your kube config. Leave this tab open.
+3. You'll need to hardcode in your kube config. Leave this tab open.
 
 ```bash
 ./dev_dns_updater --domain-name="dev.withpixie.dev"  --kubeconfig=$HOME/.kube/config --n=plc
 ```
 
-3. Navigate to `dev.withpixie.dev` in your browser. Make sure that the network you are on can access your cluster.
+4. Navigate to `dev.withpixie.dev` in your browser. Make sure that the network you are on can access your cluster.
 
 ### Authentication using Kratos / Hydra
 
@@ -97,7 +105,7 @@ Self-managed Pixie Cloud only supports one organization.
 1. To setup the default admin account, check the logs for the `create-admin-job` pod by running:
 
 ```bash
-kubectl log create-admin-job-<pod_string> -n plc
+kubectl logs create-admin-job-<pod_string> -n plc
 ```
 
 2. Open the URL from the pod's logs to set the password for the `admin@default.com` user.
