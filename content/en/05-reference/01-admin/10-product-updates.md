@@ -7,10 +7,14 @@ redirect_from:
     - /admin/product-updates/
 ---
 
-#### Pixie Platform "Vizier"
+### Pixie Operator
+
+<releases artifactName="operator"></releases>
+
+### Pixie Platform
 
 <releases artifactName="vizier"></releases>
 
-#### Pixie CLI "PX"
+### Pixie CLI
 
 <releases artifactName="cli"></releases>

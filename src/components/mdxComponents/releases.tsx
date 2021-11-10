@@ -31,15 +31,15 @@ const dateOptions = {
 };
 
 export const GET_ARTIFACTS = gql`
-    query artifacts($artifactName: String!) {
-        artifacts(artifactName: $artifactName) {
-            items {
-                version
-                changelog
-                timestampMs
-            }
-        }
+  query artifacts($artifactName: String!) {
+    artifacts(artifactName: $artifactName) {
+      items {
+        version
+        changelog
+        timestampMs
+      }
     }
+  }
 `;
 
 const renderers = {
@@ -65,9 +65,9 @@ const Releases = (props) => {
   }
 
   let markdown = '';
-  data.artifacts.items.forEach((item) => {
+  data.artifacts.items.slice(0, 10).forEach((item) => {
     const d = new Date(parseInt(item.timestampMs, 10));
-    const ds = d.toLocaleDateString('en-US', dateOptions);
+    const ds = d.toLocaleDateString('en-US', dateOptions as Intl.DateTimeFormatOptions);
 
     markdown += `##### v${item.version} (${ds})\n ${item.changelog}\n`;
   });
