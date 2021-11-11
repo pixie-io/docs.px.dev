@@ -163,6 +163,10 @@ px deploy  --dev_cloud_namespace plc --deploy_olm=false
 
 Pixie will deploy pods to the `pl`, `plc`, `px-operator`, and `olm`(if deploying the OLM) namespaces.
 
+### More Deploy Options
+
+For more deploy options that you can specify to configure Pixie, refer to our [deploy options](/reference/admin/deploy-options).
+
 ## 4. Use Pixie
 
 Check out the next section of our docs for [Using Pixie](/using-pixie). You can also check out our [Tutorials](/tutorials) section.
