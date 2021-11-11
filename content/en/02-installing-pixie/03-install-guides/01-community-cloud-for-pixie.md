@@ -76,6 +76,10 @@ px-operator         vizier-operator
 
 To deploy Pixie to another cluster, change your `kubectl config current-context` to point to that cluster. Then repeat the same deploy commands shown in this step.
 
+### More Deploy Options
+
+For more deploy options that you can specify to configure Pixie, refer to our [deploy options](/reference/admin/deploy-options).
+
 ## 5. Use Pixie
 
 ### Deploy a demo microservices app (optional)

@@ -8,6 +8,25 @@ redirect_from:
     - /reference/admin/deploy-options/
 ---
 
+## Labeling Pixie's Resources
+
+When deploying Pixie using the CLI, you have the option of adding one or more custom [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) to the K8s objects deployed by Pixie.
+
+``` bash
+# Deploy the Pixie Platform in your K8s cluster and give the deployed objects label(s)
+px deploy --labels=key1=value1,key2=value2
+
+# Example deployment with labeling:
+px deploy --labels=application=pixie
+```
+
+Certain labels are reserved for internal use by Pixie. The following are reserved label strings that may _**not be**_ used:
+
+- `"vizier-bootstrap"`
+- `“component"`
+- `“vizier-updater-dep"`
+- `“app"`
+
 ## Data Access
 You can configure Pixie's data access mode in order to control what data can be displayed when executing a script. 
 Pixie offers two modes:
