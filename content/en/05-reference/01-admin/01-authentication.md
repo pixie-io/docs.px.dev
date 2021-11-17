@@ -84,3 +84,38 @@ kubectl apply -f auth0_config.yaml -f oauth_config.yaml
 ```
 
 9. Restart the following pods: `auth`, `profile`, `cloud-proxy` in the cloud deployment.
+
+### Enable Email/Password Login for Auth0
+
+1. In Authentication > Database, create a database connection in Auth0. This is where your email/password users will be stored. The default settings should suffice.
+
+2. Make sure your connection is enabled for your Auth0 application. This can be enabled in the "Applications" tab for your connection.
+
+3. Create an Auth0 rule which requires users to verify their email. This will prevent users from using others' emails to create an account. Auth Pipeline > Rules, and click create.
+
+4. Create a rule called "Force email verification" with the following contents:
+
+    ```
+    function emailVerified(user, context, callback) {
+      console.log(context);
+      if (!user.email_verified) {
+        return callback(
+          new UnauthorizedError('Please verify your email before logging in.')
+        );
+      } else {
+        return callback(null, user, context);
+      }
+    }
+    ```
+
+5. Update `pl-oauth-config` (`oauth_config.yaml`) to include `PL_AUTH_EMAIL_PASSWORD_CONN: <your auth0 connection name here>`. Redeploy the config and cloud services, if already running.
+
+#### Customize Branding (Optional)
+
+ The following contains basic instructions for customizing email/password flows in Auth0, using Auth0's functionality for sending out verification/password reset emails and showing the username/password login screen. By default, Auth0 will provide their own default templates.
+
+1. Update the email provider: To have Auth0 send out the email using your domain, configure your mail provider in Branding > Email Provider.
+
+2. Update the email templates: Customize emails templates at Branding > Email Templates. 
+
+3. Update the login/signup pages: Pixie's UI is compatible with both Auth0's new and legacy universal login pages. Both pages are highly customizable. This can be done in  Branding > Universal Login.
