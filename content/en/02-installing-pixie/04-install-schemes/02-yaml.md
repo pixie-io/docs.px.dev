@@ -34,7 +34,7 @@ Create a deployment key following the directions [here](/reference/admin/deploy-
 Create a directory to save Pixie's manifest files and run the following CLI commands to extract them:
 
 <Alert variant="outlined" severity="info">
-  If your cluster already has Operator Lifecycle Manager (OLM) deployed, install Pixie using the `deployOLM=false` flag.
+  If your cluster already has Operator Lifecycle Manager (OLM) deployed, install Pixie using the `deploy_olm=false` flag.
 </Alert>
 
 ``` bash
