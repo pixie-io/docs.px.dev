@@ -39,6 +39,10 @@ Deploy Pixie in your target cluster by running:
   If your cluster already has Operator Lifecycle Manager (OLM) deployed, install Pixie using the `deployOLM=false` flag.
 </Alert>
 
+<Alert variant="outlined" severity="info">
+  Please refer to <a href="/reference/admin/environment-configs">Environment-Specific Configurations</a> for other configurations that should be set for your specific Kubernetes environment.
+</Alert>
+
 ``` bash
 # Add the Pixie operator chart.
 helm repo add pixie-operator https://pixie-operator-charts.storage.googleapis.com

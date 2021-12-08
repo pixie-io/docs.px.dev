@@ -72,6 +72,10 @@ rpm -i pixie-px.x86_64.rpm
   If your cluster already has Operator Lifecycle Manager (OLM) deployed, deploy Pixie using the `--deploy_olm=false` flag.
 </Alert>
 
+<Alert variant="outlined" severity="info">
+  Please refer to <a href="/reference/admin/environment-configs">Environment-Specific Configurations</a> for other configurations that should be set for your specific Kubernetes environment.
+</Alert>
+
 ``` bash
 # List Pixie deployment options.
 px deploy --help
