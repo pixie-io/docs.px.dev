@@ -9,7 +9,7 @@ redirect_from:
 
 Unreliable or slow services can lead to a poor user experience for your customers. With Pixie, you can get immediate visibility into the health of your services, without the need for manual instrumentation.
 
-Pixie automatically captures all network traffic in your cluster using [eBPF](https://www.brendangregg.com/ebpf.html), a low-level Linux tracing technology. Messages of a [supported protocol](http://localhost:8000/about-pixie/data-sources/#supported-protocols) type, such as HTTP2/gRPC, are parsed and paired with their responses, making latency, error, and throughput information immediately available after installing Pixie.
+Pixie automatically captures all network traffic in your cluster using [eBPF](https://www.brendangregg.com/ebpf.html), a low-level Linux tracing technology. Messages of a [supported protocol](/about-pixie/data-sources/#supported-protocols) type, such as HTTP2/gRPC, are parsed and paired with their responses, making latency, error, and throughput information immediately available after installing Pixie.
 
 This tutorial will demonstrate how to use Pixie to see:
 

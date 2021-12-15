@@ -102,10 +102,14 @@ const UdfDocsTemplate = ((props: any) => {
             </TableBody>
           </Table>
         </TableContainer>
-        <HLink id='examples' variant='h2'>
-          Examples:
-        </HLink>
-        {examples.map((ex) => parseMd(ex.value))}
+        {examples && examples.length && (
+          <>
+            <HLink id='examples' variant='h2'>
+              Examples:
+            </HLink>
+            {examples.map((ex) => parseMd(ex.value))}
+          </>
+        )}
       </div>
     </Layout>
   );
