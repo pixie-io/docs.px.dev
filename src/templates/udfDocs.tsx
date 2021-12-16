@@ -103,12 +103,14 @@ const UdfDocsTemplate = ((props: any) => {
           </Table>
         </TableContainer>
         {examples && examples.length && (
-          <>
+          // Using the shorthand <></> syntax here does not work, "React is not defined".
+          // eslint-disable-next-line react/jsx-fragments
+          <React.Fragment>
             <HLink id='examples' variant='h2'>
               Examples:
             </HLink>
             {examples.map((ex) => parseMd(ex.value))}
-          </>
+          </React.Fragment>
         )}
       </div>
     </Layout>
