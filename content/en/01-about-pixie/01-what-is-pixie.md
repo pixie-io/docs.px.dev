@@ -31,7 +31,7 @@ The Pixie platform consists of multiple components:
 
 * **Pixie Edge Module (PEM)**: Pixie's agent, installed per node. PEMs use eBPF to collect data, which is stored locally on the node.
 
-* **Vizier**: Pixie’s collector, installed per cluster. Responsible for query execution and managing PEMs.
+* **Vizier**: Pixie’s collector, installed per cluster. Responsible for query execution and managing PEMs. See [Architecture](/about-pixie/architecture) for a more in-depth view of the components in Vizier.
 
 * **Pixie Cloud**:  Used for user management, authentication, and proxying “passthrough” mode. Can be hosted or self-hosted.
 

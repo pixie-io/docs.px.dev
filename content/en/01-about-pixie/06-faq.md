@@ -2,7 +2,7 @@
 title: "FAQ"
 metaTitle: "About Pixie | FAQ"
 metaDescription: "Commonly asked questions about Pixie."
-order: 5
+order: 6 
 ---
 
 ### General
@@ -178,6 +178,12 @@ The UI does not currently support deleting clusters. If you’d like to rename y
 Install Pixie’s [CLI tool](/installing-pixie/install-schemes/cli) and run `px collect-logs.` This command will output a zipped file named `pixie_logs_<datestamp>.zip` in the working directory. The selected kube-context determines the Kubernetes cluster that outputs the logs, so make sure that you are pointing to the correct cluster.
 
 ### My deployment is stuck / fails
+
+We recommend running through the following troubleshooting flow to determine where the deployment has failed.
+
+::: div image-xl
+<svg title='Troubleshooting Flow' src='troubleshoot-flow.svg' />
+:::
 
 *Deploy with CLI gets stuck at “Wait for PEMs/Kelvin”*
 
