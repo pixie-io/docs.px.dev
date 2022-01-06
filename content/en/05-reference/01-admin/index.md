@@ -10,6 +10,7 @@ redirect_from:
 Documentation on how to configure and manage Pixie:
 
 - [Authentication](/reference/admin/authentication)
+- [Configure Data Transfer Mode](/reference/admin/data-transfer-mode)
 - [Deploy Options](/reference/admin/deploy-options)
 - [Environment Instructions](/reference/admin/environment-instructions)
 - [Find a Cluster ID](/reference/admin/cluster-id)
