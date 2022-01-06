@@ -91,24 +91,7 @@ kubectl apply -f auth0_config.yaml -f oauth_config.yaml
 
 2. Make sure your connection is enabled for your Auth0 application. This can be enabled in the "Applications" tab for your connection.
 
-3. Create an Auth0 rule which requires users to verify their email. This will prevent users from using others' emails to create an account. Auth Pipeline > Rules, and click create.
-
-4. Create a rule called "Force email verification" with the following contents:
-
-    ```
-    function emailVerified(user, context, callback) {
-      console.log(context);
-      if (!user.email_verified) {
-        return callback(
-          new UnauthorizedError('Please verify your email before logging in.')
-        );
-      } else {
-        return callback(null, user, context);
-      }
-    }
-    ```
-
-5. Update `pl-oauth-config` (`oauth_config.yaml`) to include `PL_AUTH_EMAIL_PASSWORD_CONN: <your auth0 connection name here>`. Redeploy the config and cloud services, if already running.
+3. Update `pl-oauth-config` (`oauth_config.yaml`) to include `PL_AUTH_EMAIL_PASSWORD_CONN: <your auth0 connection name here>`. Redeploy the config and cloud services, if already running.
 
 #### Customize Branding (Optional)
 
