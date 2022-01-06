@@ -95,7 +95,7 @@ Pixie stores the telemetry data it collects in-memory on the nodes in your clust
 
 Pixie Cloud (self-hosted or Pixie Community Cloud) hosts the UI and stores limited metadata related to account (user, organization) and Kubernetes control data (cluster name, number of nodes, etc). All communication with Pixie Cloud is TLS encrypted.
 
-Pixie supports two modes for accessing data by the UI. In Passthrough Mode, data flows through Pixie's Cloud via a reverse proxy as encrypted traffic without any persistence. This convenience mode allows developers to access data without being in the same network as the cluster. In Data Isolation Mode, no data flows through Pixie Cloud, instead the browser directly proxies into Pixie's Vizier Module. For more info, see [Configuring Data Transfer Modes](/reference/admin/data-transfer-mode/).
+Data flows through Pixie's Cloud via a reverse proxy as encrypted traffic without any persistence. This allows developers to access data without being in the same network as the cluster.
 
 ### What data does Pixie collect?
 
@@ -224,10 +224,6 @@ It is possible that you need to adjust the `start_time` window. The `start_time`
 If specific services / requests are missing, it is possible that Pixie doesn't support the encryption library used by that service. You can see the list of encryption libraries supported by Pixie [here](/about-pixie/data-sources/#encryption-libraries).
 
 If specific services / requests are missing, it is possible that your application was not built with [debug information](/reference/admin/debug-info). See the [Data Sources](/about-pixie/data-sources) page to see which protocols and/or encryption libraries require a build with debug information.
-
-### Why can’t I see data after enabling Data Isolation Mode?
-
-In [Data Isolation Mode](/reference/admin/data-transfer-mode/) Pixie doesn’t use a reverse proxy. Instead, the UI directly connects to the cluster using HTTP/2. Make sure that you have the correct firewall rules to allow this. The Cloud Connector will need to talk to Pixie cloud, but others can be blocked.
 
 ### Why can’t I see application profiles / flamegraphs for my pod / node?
 

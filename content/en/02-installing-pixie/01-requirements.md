@@ -80,4 +80,4 @@ Pixie may also work on other distributions.
 
 Pixie's Vizier Module sends outgoing HTTPS/2 requests to `withpixie.ai:443`.
 
-For an explanation of what data is sent over this connection, see Pixie's [Data Transfer Modes](/reference/admin/data-transfer-mode) section.
+Your cluster's data flows through Pixie's control cloud via a reverse proxy as encrypted traffic without any persistence. This allows users to access data without being in the same VPC/network as the cluster. Pixie offers [end-to-end encryption](https://docs.px.dev/about-pixie/faq#how-does-pixie-secure-its-data) for telemetry data in flight.
