@@ -25,7 +25,11 @@ When enabled, the Live UI [Admin Page](https://work.withpixie.ai/admin) will sho
 <svg title='Admin page showing Passthrough mode.'  src='data-mode/passthrough.png' />
 :::
 
-## Data Isolation (Direct) Mode
+## Data Isolation (Direct) Mode - DEPRECATED
+
+<Alert variant="outlined" severity="warning">
+  We will be removing support for Direct Mode on March 31, 2022. Existing clusters with Direct Mode enabled may continue using Direct Mode until support is discontinued, at which time the cluster will automatically be switched to Passthrough Mode. To manually switch a cluster from Direct to Passthrough mode, see the "Steps to Disable" in the section below. New and existing clusters without Direct Mode enabled will be prevented from enabling Direct Mode moving forward.
+</Alert>
 
 In Data Isolation Mode, the browser directly proxies into Pixie's Vizier Module and no customer data is transferred to Pixie's Control Cloud. Communication to Pixie's Control Cloud is limited to account and Kubernetes control data. See the [FAQ](/about-pixie/faq#how-does-pixie-secure-its-data) and [Architecture Diagram](/about-pixie/what-is-pixie#architecture) for more details.
 
@@ -58,3 +62,13 @@ Once enabled, the Live UI [Admin Page](https://work.withpixie.ai/admin) will sho
 ::: div image-xl
 <svg title='Admin page showing Data Isolation (Direct) mode.'  src='data-mode/direct.png' />
 :::
+
+### Steps to Disable
+
+To switch from Data Isolation (Direct) Mode to Passthrough Mode, run:
+
+```
+px config update -c <YOUR_CLUSTER_ID> --passthrough=true
+```
+
+Once enabled, the Live UI [Admin Page](https://work.withpixie.ai/admin) will show your cluster's **Mode** as `Passthrough`.

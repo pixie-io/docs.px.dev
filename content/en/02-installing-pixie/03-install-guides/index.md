@@ -20,7 +20,7 @@ While Vizier will always be deployed directly onto your Kubernetes cluster, ther
 
 Follow the [Community Cloud for Pixie Guide](/installing-pixie/install-guides/community-cloud-for-pixie) if you want to deploy Pixie without needing to host your own version of Pixie Cloud. Community Cloud for Pixie provides community hosting of the cloud component to simplify your Pixie deployment.
 
-With Community Cloud for Pixie, telemetry data is exclusively stored on your Kubernetes cluster (not in Pixie Cloud). Check out our documentation on [Data Transfer Modes](/reference/admin/data-transfer-mode) for more information.
+With Community Cloud for Pixie, telemetry data is exclusively stored on your Kubernetes cluster (not in Pixie Cloud).
 
 ## Self-Hosted Pixie
 

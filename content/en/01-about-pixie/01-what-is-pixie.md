@@ -33,7 +33,7 @@ The Pixie platform consists of multiple components:
 
 * **Vizier**: Pixie’s collector, installed per cluster. Responsible for query execution and managing PEMs.
 
-* **Pixie Cloud**:  Used for user management, authentication, and proxying “passthrough” mode. Can be hosted or self-hosted.
+* **Pixie Cloud**:  Used for user management, authentication, and data proxying. Can be hosted or self-hosted.
 
 * **Pixie CLI**: Used to deploy Pixie. Can also be used to run queries and manage resources like API keys.
 
