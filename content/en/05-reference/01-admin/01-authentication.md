@@ -9,7 +9,7 @@ redirect_from:
 
 ## Open Source Auth
 
-[Self-Hosted Pixie](/installing-pixie/install-guides/self-hosted-pixie/) uses [Hydra](https://www.ory.sh/hydra/)/[Kratos](https://www.ory.sh/kratos/) to provide an open source authentication flow.
+Pixie uses [Hydra](https://www.ory.sh/hydra/)/[Kratos](https://www.ory.sh/kratos/) to provide an  open source authentication flow.
 
 To set up authentication and invite others to join your organization, check out the Quick Start [directions](/installing-pixie/install-guides/self-hosted-pixie/#authentication-using-kratos-hydra).
 

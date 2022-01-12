@@ -105,5 +105,3 @@ Invite links are valid for 7 days from the time of creation and will expire auto
 <svg title='' src='admin/user-mgmt/user-removal-prompt.png'/>
 
 Once a user is removed, they will be automatically logged out from any active UI sessions and will be unable to query Pixie resources.
-
-If you mistakenly remove a user and need to add the user back, you can create a new invite link and send it to the user. The user will be able to use their existing credentials to log in and join your org.
