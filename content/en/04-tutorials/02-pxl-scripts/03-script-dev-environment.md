@@ -2,7 +2,7 @@
 title: "Running the Script Dev Environment"
 metaTitle: "Tutorials | PxL Scripts | Running the Script Dev Environment"
 metaDescription: "Running the Script Dev Environment"
-order: 20
+order: 30
 redirect_from:
     - /tutorials/script-dev-environment
 ---

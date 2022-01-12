@@ -79,8 +79,6 @@ To learn how to use Pixie scripts for a specific use case, check out one of the 
 
 To learn how to write your own PxL script, check out the [tutorial](/tutorials/pxl-scripts/write-pxl-scripts).
 
-For writing quick, one-off scripts, use the `Scratch Pad`. The `Scratch Pad` is the first item in the drop-down `script` menu. Open the script editor to add code to the empty PxL Script.
+Use the [Scratch Pad](/tutorials/pxl-scripts/scratch-pad) to develop quick, one-off scripts or to run example scripts included in the [`pixie-demos`](https://github.com/pixie-io/pixie-demos) repository.
 
-<svg title='Use the Scratch Pad script .' src='live-ui/live-ui-7.png'/>
-
-The `Scratch Pad` does not yet support persistence, so if you are extensively developing a script, we recommend using the [Script Developer Environment](/tutorials/pxl-scripts/script-dev-environment).
+For extensive script development, check out the [Script Developer Environment](/tutorials/pxl-scripts/script-dev-environment).
