@@ -75,7 +75,21 @@ To learn how to use Pixie scripts for a specific use case, check out one of the 
 - [Database Query Profiling](/tutorials/pixie-101/database-query-profiling/)
 - [Request Tracing](/tutorials/pixie-101/request-tracing/)
 
-## Using the Scratch Pad
+## Write Your Own PxL Scripts
+
+To learn how to write your own PxL script, check out the [tutorial](/tutorials/pxl-scripts/write-pxl-scripts).
+
+When writing custom scripts, we recommend starting from an existing script which does something similar to the result you are looking for.
+
+### Edit an Existing Script
+
+1. Select the script from the `script` drop-down menu in the top left.
+2. Open the script editor using the keyboard shortcut: `ctrl+e` (Windows, Linux) or `cmd+e` (Mac).
+3. Make edits to the script.
+4. Run the script using the `RUN` button in the top right or by using the keyboard shortcut: `ctrl+enter` (Windows, Linux) or `cmd+enter` (Mac).
+5. Hide the script editor using `ctrl+e` (Windows, Linux) or `cmd+e` (Mac).
+
+### Use the Scratch Pad
 
 Use the `Scratch Pad` to:
 
@@ -96,14 +110,8 @@ To run an example script from the `pixie-demos` repo (like [this one](https://gi
 1. Copy the `.pxl` file into the script editor's `PxL Script` tab.
 2. Copy the `vis.json` file into the script editor's `Vis Spec` tab.
 3. Run the script using the RUN button in the top right or using the keyboard shortcut: `ctrl+enter` (Windows, Linux) or `cmd+enter` (Mac).
-4. Hide / show the script editor using the `ctrl+e` (Windows, Linux) or `cmd+e` (Mac). Alternatively, use the `Open editor` button in the top right.
+4. Show / hide the script editor using the `ctrl+e` (Windows, Linux) or `cmd+e` (Mac). Alternatively, use the `Open editor` button in the top right.
 
 <Alert variant="outlined" severity="info">
   Pixie's Live UI will soon support script persistence, but at the moment, any scripts modified in the Live UI will be lost if you refresh or switch to a different script. For extensive script development, we recommend using the <a href="https://docs.px.dev/tutorials/pxl-scripts/script-dev-environment/">Script Developer Environment</a>
 </Alert>
-
-## Write Your Own PxL Scripts
-
-When writing your own PxL script, we recommend starting from an existing script which does something similar to the result you are looking for. Open the script editor to make edits to the existing script then press the RUN button to execute the modified script.
-
-To learn how to write your own PxL script, check out the [tutorial](/tutorials/pxl-scripts/write-pxl-scripts).
