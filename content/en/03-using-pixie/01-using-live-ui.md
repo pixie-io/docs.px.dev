@@ -75,10 +75,35 @@ To learn how to use Pixie scripts for a specific use case, check out one of the 
 - [Database Query Profiling](/tutorials/pixie-101/database-query-profiling/)
 - [Request Tracing](/tutorials/pixie-101/request-tracing/)
 
+## Using the Scratch Pad
+
+Use the `Scratch Pad` to:
+
+- Develop quick, one-off scripts.
+- Run example scripts from the [`pixie-demos`](https://github.com/pixie-io/pixie-demos) repository.
+
+The `Scratch Pad` is the first item in the `script` drop-down menu:
+
+<svg title='The Scratch Pad is the first item in the script menu.' src='live-ui/scratch-pad.png'/>
+
+When you select the `Scratch Pad`, the script editor will open. The script editor contains two tabs:
+
+- The `PxL Script` queries the Pixie platform for telemetry data.
+- The `Vis Spec` describes how to visualize the query output.
+
+To run an example script from the `pixie-demos` repo (like [this one](https://github.com/pixie-io/pixie-demos/tree/main/endpoint-deprecation/service_endpoints_summary)):
+
+1. Copy the `.pxl` file into the script editor's `PxL Script` tab.
+2. Copy the `vis.json` file into the script editor's `Vis Spec` tab.
+3. Run the script using the RUN button in the top right or using the keyboard shortcut: `ctrl+enter` (Windows, Linux) or `cmd+enter` (Mac).
+4. Hide / show the script editor using the `ctrl+e` (Windows, Linux) or `cmd+e` (Mac). Alternatively, use the `Open editor` button in the top right.
+
+<Alert variant="outlined" severity="info">
+  Pixie's Live UI will soon support script persistence, but at the moment, any scripts modified in the Live UI will be lost if you refresh or switch to a different script. For extensive script development, we recommend using the <a href="https://docs.px.dev/tutorials/pxl-scripts/script-dev-environment/">Script Developer Environment</a>
+</Alert>
+
 ## Write Your Own PxL Scripts
 
+When writing your own PxL script, we recommend starting from an existing script which does something similar to the result you are looking for. Open the script editor to make edits to the existing script then press the RUN button to execute the modified script.
+
 To learn how to write your own PxL script, check out the [tutorial](/tutorials/pxl-scripts/write-pxl-scripts).
-
-Use the [Scratch Pad](/tutorials/pxl-scripts/scratch-pad) to develop quick, one-off scripts or to run example scripts included in the [`pixie-demos`](https://github.com/pixie-io/pixie-demos) repository.
-
-For extensive script development, check out the [Script Developer Environment](/tutorials/pxl-scripts/script-dev-environment).
