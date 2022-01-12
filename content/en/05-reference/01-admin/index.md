@@ -16,7 +16,7 @@ Documentation on how to configure and manage Pixie:
 - [Find a Cluster ID](/reference/admin/cluster-id)
 - [Managing API Keys](/reference/admin/api-keys)
 - [Managing Deploy Keys](/reference/admin/deploy-keys)
-- [Permissions](/reference/admin/permissions/)
+- [User Management & Sharing](/reference/admin/user-mgmt/)
 - [Debug Information](/reference/admin/debug-info)
 - [Uninstalling Pixie](/reference/admin/uninstall)
 - [Updating Pixie](/reference/admin/updating-pixie/)

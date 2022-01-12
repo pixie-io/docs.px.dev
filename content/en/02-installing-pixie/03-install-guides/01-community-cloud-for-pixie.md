@@ -15,7 +15,7 @@ order: 1
 
 ## 1. Sign up
 
-Visit our [product page](https://work.withpixie.ai/) and sign up with your google or gsuite account.
+Visit our [product page](https://work.withpixie.ai/) and sign up.
 
 ## 2. Set up a Kubernetes cluster (optional)
 
@@ -139,6 +139,10 @@ Learn how to use Pixie for
 - [Service Performance](/tutorials/pixie-101/service-performance/)
 - [Database Query Profiling](/tutorials/pixie-101/database-query-profiling/)
 - [Request Tracing](/tutorials/pixie-101/request-tracing/)
+
+### Invite users to your org
+
+Add users to your organization to share access to Pixie live views, query running clusters, and deploy new Pixie clusters. For instructions, see the [User Management & Sharing](/reference/admin/user-mgmt) reference docs.
 
 ## Get Help
 
