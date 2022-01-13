@@ -27,12 +27,12 @@ Pixie handles GSuite orgs differently than other orgs.
 
 You are part of a Pixie GSuite org if:
 
-1. The original creator of the org signs into Pixie using the "Sign in with Google" button AND
-2. The email the admin uses to sign in is part of a GSuite account.
+1. The original creator of the org signs into Pixie using the `"Login with Google"` button AND
+2. The email the admin uses to login is part of a GSuite account.
 
 GSuite orgs can invite two types of users:
 
-- **Teammates with GSuite emails**: should use the "Sign-Up with Google" button on the [Sign up](https://work.withpixie.ai/auth/signup) page. GSuite emails will automatically join the Pixie org corresponding to their GSuite domain. _DO NOT use Invite Links to invite teammates with GSuite emails._ For greater control, enable [User Approvals](/reference/admin/user-mgmt#enable-approvals-for-new-users).
+- **Teammates with GSuite emails**: should use the `"Sign-Up with Google"` button on the [Sign up](https://work.withpixie.ai/auth/signup) page. GSuite emails will automatically join the Pixie org corresponding to their GSuite domain. _DO NOT use Invite Links to invite teammates with GSuite emails._ For greater control, enable [User Approvals](/reference/admin/user-mgmt#enable-approvals-for-new-users).
 
 - **Teammates using Gmail or creating custom email/password Pixie accounts**: should be sent [Invite Links](/reference/admin/user-mgmt#invite-links).
 
@@ -49,7 +49,7 @@ If your organization is not a [GSuite organization](/reference/admin/user-mgmt#g
 
 <svg title='' src='admin/user-mgmt/users-tab-invite-button.png'/>
 
-3. Click the “+ Invite Users” button in the top right corner. This will pop open a modal with a generated invite link for your organization.
+3. Click the `“+ Invite Users”` button in the top right corner. This will pop open a modal with a generated invite link for your organization.
 
 <svg title='' src='admin/user-mgmt/invite-link.png'/>
 
@@ -61,7 +61,7 @@ Combine Invite Links with User Approvals for greater control over who joins your
 
 1. Open the [Live UI](/using-pixie/using-live-ui) Admin page (`/admin`).
 2. Select the Org Settings tab (`/admin/org`).
-3. Click “Enable” on the approval setting to enable Approvals. Note that if the button says “Disable”, this means User Approvals has already been enabled for your organization.
+3. Click `“Enable”` on the approval setting to enable Approvals. Note that if the button says `“Disable”`, this means User Approvals has already been enabled for your organization.
 
 <svg title='' src='admin/user-mgmt/enable-approvals.png'/>
 
@@ -71,7 +71,7 @@ Combine Invite Links with User Approvals for greater control over who joins your
 
 <svg title='' src='admin/user-mgmt/user-unapproved.png'/>
 
->> Click “Approve” on the appropriate user to allow that user complete access to your organization within Pixie.
+>> Click `“Approve”` on the appropriate user to allow that user complete access to your organization within Pixie.
 
 <svg title='' src='admin/user-mgmt/user-approved.png'/>
 
@@ -86,17 +86,17 @@ Invite links are valid for 7 days from the time of creation and will expire auto
 
 <svg title='' src='admin/user-mgmt/reset-invite-links.png'/>
 
-3. Click the red "Reset Invite Links” button. This will pop open a modal to confirm that you would like to reset all existing invite links for your org.
+3. Click the red `"Reset Invite Links"` button. This will pop open a modal to confirm that you would like to reset all existing invite links for your org.
 
 <svg title='' src='admin/user-mgmt/reset-invite-links-confirmation.png'/>
 
-4. Click “Reset Invite Links” in the modal to confirm and invalidate all existing invite links.
+4. Click `“Reset Invite Links”` in the modal to confirm and invalidate all existing invite links.
 
 ## Remove Users
 
 1. Open the [Live UI](/using-pixie/using-live-ui) Admin page (`/admin`).
 2. Select the Users tab (`/admin/org`).
-3. Click the "Remove" button next to the desired user.
+3. Click the `"Remove"` button next to the desired user.
 
 <svg title='' src='admin/user-mgmt/users-tab.png'/>
 
