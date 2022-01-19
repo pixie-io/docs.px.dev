@@ -9,15 +9,13 @@ redirect_from:
 
 Pixie has features to share and manage access to your Pixie organization.
 
-Instructions are based on your identity provider:
+Instructions are based on identity provider. To determine your identity provider, open the Live UI sign in page (`/auth/login`). If you see the option to `"Login With Pixie"`, you are using `Auth0`:
 
-- [**Hydra / Kratos Instructions**](/reference/admin/user-mgmt#hydra-kratos): apply to any Self-Hosted Pixie instances using the default authentication.
-- [**Auth0 Instructions**](/reference/admin/user-mgmt#auth0): apply to all Community Cloud for Pixie instances and any Self-Hosted Pixie instances that have been [manually configured](/reference/admin/authentication/#enabling-auth0) to use Auth0.
+<svg title='Your Pixie uses Auth0 if you see the option to "Login with Google".' src='admin/user-mgmt/determine-auth.png'/>
+
+If you don’t see the option to `“Login With Google”`, you are using `Hydra` / `Kratos`
 
 ## Hydra / Kratos
-
-<Alert variant="outlined" severity="info">This information applies to <a href="https://docs.px.dev/installing-pixie/install-guides/self-hosted-pixie/">Self-Hosted Pixie</a> instances that use the default <a href="https://docs.px.dev/reference/admin/authentication/#open-source-auth">open source authentication</a>.
-</Alert>
 
 Pixie instances using Hydra / Kratos as an identity provider can:
 
@@ -65,15 +63,12 @@ Once a user is removed, they will be automatically logged out from any active UI
 
 ## Auth0
 
-<Alert variant="outlined" severity="info">This information applies to all <a href="https://docs.px.dev/installing-pixie/install-guides/community-cloud-for-pixie/">Community Cloud for Pixie</a> instances and any <a href="https://docs.px.dev/installing-pixie/install-guides/self-hosted-pixie/">Self-Hosted Pixie</a> instances that have been <a href="https://docs.px.dev/reference/admin/authentication/#enabling-auth0">manually configured</a> to use Auth0.
-</Alert>
-
 Pixie instances using Auth0 as an identity provider can:
 
 - [Invite users](/reference/admin/user-mgmt#invite-users-1)
 - [Enable approvals for new users](/reference/admin/user-mgmt#enable-approvals-for-new-users-1)
-- [Disable Invite Links](/reference/admin/user-mgmt#invite-users-1)
-- [Remove users](/reference/admin/user-mgmt#enable-approvals-for-new-users-1)
+- [Invalidate Invite Links](/reference/admin/user-mgmt#invalidate-invite-links)
+- [Remove users](/reference/admin/user-mgmt#remove-users)
 
 ### Invite Users
 
@@ -107,7 +102,7 @@ For an additional layer of control over who joins your organization, enable User
 
 <svg title='' src='admin/user-mgmt/user-unapproved.png'/>
 
-### Disable Invite Links
+### Invalidate Invite Links
 
 Invite links are valid for 7 days from the time of creation and will expire automatically at the end of the 7 day period. If you would like to invalidate invite links before the 7 day period is over, you can do so on the Orgs page.
 
