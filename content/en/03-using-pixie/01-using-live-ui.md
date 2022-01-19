@@ -77,10 +77,41 @@ To learn how to use Pixie scripts for a specific use case, check out one of the 
 
 ## Write Your Own PxL Scripts
 
-To learn how to write your own PxL script, check out the [tutorial](/tutorials/pxl-scripts/write-pxl-scripts).
+Live views in the Live UI are constructed from two files:
 
-For writing quick, one-off scripts, use the `Scratch Pad`. The `Scratch Pad` is the first item in the drop-down `script` menu. Open the script editor to add code to the empty PxL Script.
+- The `PxL Script` queries the Pixie platform for telemetry data.
+- The `Vis Spec` describes how to visualize the query output.
 
-<svg title='Use the Scratch Pad script .' src='live-ui/live-ui-7.png'/>
+To learn how to write your own PxL script, check out the [tutorial](/tutorials/pxl-scripts/write-pxl-scripts). When writing custom scripts, we recommend starting from an existing script which does something similar to the result you are looking for.
 
-The `Scratch Pad` does not yet support persistence, so if you are extensively developing a script, we recommend using the [Script Developer Environment](/tutorials/pxl-scripts/script-dev-environment).
+### Edit an Existing Script
+
+To edit an existing PxL script in the Live UI:
+
+1. Select the script you want to edit from the `script` drop-down menu in the top left.
+2. Open the script editor using the keyboard shortcut: `ctrl+e` (Windows, Linux) or `cmd+e` (Mac).
+3. Make edits in the `PxL script` and/or the `Vis Spec` tabs.
+4. Run the script using the `RUN` button in the top right or by using the keyboard shortcut: `ctrl+enter` (Windows, Linux) or `cmd+enter` (Mac).
+5. Hide the script editor using `ctrl+e` (Windows, Linux) or `cmd+e` (Mac).
+
+### Use the Scratch Pad
+
+Use the `Scratch Pad` to:
+
+- Develop quick, one-off scripts.
+- Run example scripts from the [`pixie-demos`](https://github.com/pixie-io/pixie-demos) repository.
+
+To run an [example script](https://github.com/pixie-io/pixie-demos/tree/main/endpoint-deprecation/service_endpoints_summary) from the `pixie-demos` repo:
+
+1. Select the `Scratch Pad` (first item) from the `script` drop-down menu. The script editor should automatically open.
+
+<svg title='' src='live-ui/scratch-pad.png'/>
+
+2. Copy the `.pxl` file into the script editor's `PxL Script` tab.
+3. Copy the `vis.json` file into the script editor's `Vis Spec` tab.
+4. Run the script using the RUN button in the top right or using the keyboard shortcut: `ctrl+enter` (Windows, Linux) or `cmd+enter` (Mac).
+5. Show / hide the script editor using the `ctrl+e` (Windows, Linux) or `cmd+e` (Mac). Alternatively, use the `Open editor` button in the top right.
+
+<Alert variant="outlined" severity="info">
+  Pixie's Live UI will soon support script persistence, but at the moment, any scripts modified in the Live UI will be lost if you refresh or switch to a different script. For extensive script development, we recommend using the <a href="https://docs.px.dev/tutorials/pxl-scripts/script-dev-environment/">Script Developer Environment</a>
+</Alert>
