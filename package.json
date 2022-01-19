@@ -88,7 +88,7 @@
     "react-dom": "^16.8.6",
     "react-emotion": "9.2.12",
     "react-helmet": "^5.2.0",
-    "react-live": "^2.0.1",
+    "react-live": "^2.2.3",
     "react-markdown": "^4.2.2",
     "react-scrollspy": "^3.4.3",
     "react": "^16.13.1",
