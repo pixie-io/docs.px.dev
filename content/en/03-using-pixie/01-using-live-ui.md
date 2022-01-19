@@ -77,15 +77,20 @@ To learn how to use Pixie scripts for a specific use case, check out one of the 
 
 ## Write Your Own PxL Scripts
 
-To learn how to write your own PxL script, check out the [tutorial](/tutorials/pxl-scripts/write-pxl-scripts).
+Live views in the Live UI are constructed from two files:
 
-When writing custom scripts, we recommend starting from an existing script which does something similar to the result you are looking for.
+- The `PxL Script` queries the Pixie platform for telemetry data.
+- The `Vis Spec` describes how to visualize the query output.
+
+To learn how to write your own PxL script, check out the [tutorial](/tutorials/pxl-scripts/write-pxl-scripts). When writing custom scripts, we recommend starting from an existing script which does something similar to the result you are looking for.
 
 ### Edit an Existing Script
 
+To edit an existing PxL script in the Live UI:
+
 1. Select the script you want to edit from the `script` drop-down menu in the top left.
 2. Open the script editor using the keyboard shortcut: `ctrl+e` (Windows, Linux) or `cmd+e` (Mac).
-3. Make edits in the `PxL script` (query) and/or the `Vis Spec` (query visualization) tabs.
+3. Make edits in the `PxL script` and/or the `Vis Spec` tabs.
 4. Run the script using the `RUN` button in the top right or by using the keyboard shortcut: `ctrl+enter` (Windows, Linux) or `cmd+enter` (Mac).
 5. Hide the script editor using `ctrl+e` (Windows, Linux) or `cmd+e` (Mac).
 
@@ -96,7 +101,7 @@ Use the `Scratch Pad` to:
 - Develop quick, one-off scripts.
 - Run example scripts from the [`pixie-demos`](https://github.com/pixie-io/pixie-demos) repository.
 
-To run an example script from the `pixie-demos` repo (like [this one](https://github.com/pixie-io/pixie-demos/tree/main/endpoint-deprecation/service_endpoints_summary)):
+To run an [example script](https://github.com/pixie-io/pixie-demos/tree/main/endpoint-deprecation/service_endpoints_summary) from the `pixie-demos` repo:
 
 1. Select the `Scratch Pad` (first item) from the `script` drop-down menu. The script editor should automatically open.
 
