@@ -149,12 +149,6 @@ The [Roadmap](/about-pixie/roadmap) contains plans to support exporting or inges
 
 ### How do I share a Pixie dashboard with others?
 
-*Self-hosted Pixie*
-
-To share data from the same cluster, [send an invitation through the Admin UI](/installing-pixie/install-guides/self-hosted-pixie#invite-others-to-your-organization-(optional)).
-
-*Community Cloud for Pixie & Self-hosted Pixie with Auth0 enabled*
-
 See the [User Management & Sharing](/reference/admin/user-mgmt) reference docs.
 
 ### How do I set up RBAC?
