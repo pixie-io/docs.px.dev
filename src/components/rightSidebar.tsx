@@ -74,11 +74,13 @@ const RightSidebar = ({ tableOfContents }) => {
   const highLight = (id) => {
     setActiveId(id);
   };
+
+  const toc = tableOfContents.map((item) => ({ ...item, ref: idFromSlug(item.value, item.depth) }));
   return (
     <div className={classes.main}>
-      <Scrollspy items={tableOfContents.map((item) => idFromSlug(item.value))} currentClassName='is-current-' componentTag='div' onUpdate={(e) => onScrollUpdate(e)}>
-        {tableOfContents.map((item) => (
-          <a key={item.value} href={`#${idFromSlug(item.value)}`} className={`${classes.link} ${item.depth === 3 ? classes.indent : ''}  ${activeId === idFromSlug(item.value) ? 'is-current' : ''}`} onClick={() => highLight(idFromSlug(item.value))}>
+      <Scrollspy items={toc.map((item) => item.ref)} currentClassName='is-current-' componentTag='div' onUpdate={(e) => onScrollUpdate(e)}>
+        {toc.map((item) => (
+          <a key={item.value} href={`#${item.ref}`} className={`${classes.link} ${item.depth === 3 ? classes.indent : ''}  ${activeId === item.ref ? 'is-current' : ''}`} onClick={() => highLight(item.ref)}>
             {item.value}
           </a>
         ))}
