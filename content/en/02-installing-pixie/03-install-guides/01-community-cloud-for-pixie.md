@@ -80,13 +80,13 @@ px-operator         vizier-operator
 
 To deploy Pixie to another cluster, change your `kubectl config current-context` to point to that cluster. Then repeat the same deploy commands shown in this step.
 
-## 5. Invite others to your organization (optional)
-
-To invite teammates to join your Pixie organization, see the [User Management & Sharing](/reference/admin/user-mgmt) reference docs.
-
 ### More Deploy Options
 
 For more deploy options that you can specify to configure Pixie, refer to our [deploy options](/reference/admin/deploy-options).
+
+## 5. Invite others to your organization (optional)
+
+Add users to your organization to share access to Pixie Live Views, query running clusters, and deploy new Pixie clusters. For instructions, see the [User Management & Sharing](/reference/admin/user-mgmt) reference docs.
 
 ## 6. Use Pixie
 
@@ -143,10 +143,6 @@ Learn how to use Pixie for
 - [Service Performance](/tutorials/pixie-101/service-performance/)
 - [Database Query Profiling](/tutorials/pixie-101/database-query-profiling/)
 - [Request Tracing](/tutorials/pixie-101/request-tracing/)
-
-### Invite users to your org
-
-Add users to your organization to share access to Pixie live views, query running clusters, and deploy new Pixie clusters. For instructions, see the [User Management & Sharing](/reference/admin/user-mgmt) reference docs.
 
 ## Get Help
 

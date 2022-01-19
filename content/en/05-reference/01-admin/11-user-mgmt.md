@@ -70,10 +70,10 @@ Once a user is removed, they will be automatically logged out from any active UI
 
 Pixie instances using Auth0 as an identity provider can:
 
-- [Invite users](/reference/admin/user-mgmt#invite-users)
-- [Enable approvals for new users](/reference/admin/user-mgmt#enable-approvals-for-new-users)
-- [Disable Invite Links](/reference/admin/user-mgmt#invite-users)
-- [Remove users](/reference/admin/user-mgmt#enable-approvals-for-new-users)
+- [Invite users](/reference/admin/user-mgmt#invite-users-1)
+- [Enable approvals for new users](/reference/admin/user-mgmt#enable-approvals-for-new-users-1)
+- [Disable Invite Links](/reference/admin/user-mgmt#invite-users-1)
+- [Remove users](/reference/admin/user-mgmt#enable-approvals-for-new-users-1)
 
 ### Invite Users
 
