@@ -52,20 +52,6 @@ Once enabled, every user who joins your org via an Invite Link must be manually 
 
 3. Manually approve new users under the Users tab ([`dev.withpixie.dev/admin/users`](https://dev.withpixie.dev/admin/users)). Once User Approvals is enabled, any new users that join your org will join in a disabled state. Click `“Approve”` on the appropriate user to allow that user complete access to your organization within Pixie.
 
-### Remove Users
-
-1. Navigate to [`dev.withpixie.dev/admin/users`](https://dev.withpixie.dev/admin/users) in your browser.
-
-2. Click the `"Remove"` button next to the desired user.
-
-<svg title='' src='admin/user-mgmt/users-tab.png'/>
-
-3. Accept the prompt confirming the removal.
-
-<svg title='' src='admin/user-mgmt/user-removal-prompt.png'/>
-
-Once a user is removed, they will be automatically logged out from any active UI sessions and will be unable to query Pixie resources.
-
 ## Auth0
 
 Pixie instances using Auth0 as an identity provider can:
