@@ -7,6 +7,10 @@ redirect_from:
     - /about-pixie/how-pixie-works
 ---
 
+[Link to features header #1](about-pixie/what-is-pixie#features)
+
+[Link to features header #2](about-pixie/what-is-pixie#features-1)
+
 Pixie is an open source observability tool for Kubernetes applications. Pixie uses [eBPF](/about-pixie/pixie-ebpf) to automatically capture telemetry data without the need for manual instrumentation.
 
 Developers can use Pixie to view the high-level state of their cluster (service maps, cluster resources, application traffic) and also drill-down into more detailed views (pod state, flame graphs, individual full body application requests).
@@ -22,6 +26,10 @@ Pixie was contributed by [New Relic, Inc.](https://newrelic.com/) to the [Cloud 
 * **Scriptability**: [PxL](/reference/pxl/), Pixie’s flexible Pythonic query language, can be used across Pixie’s UI, CLI, and client APIs. Pixie provides a set of [community scripts](https://github.com/pixie-io/pixie/tree/main/src/pxl_scripts) for common [use cases](/tutorials/pixie-101).
 
 ## Architecture
+
+## Features
+
+## Features
 
 ::: div image-xl
 <svg title='Platform Architecture' src='product-arch.svg' />
