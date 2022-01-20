@@ -9,11 +9,16 @@ redirect_from:
 
 Pixie has features to share and manage access to your Pixie organization.
 
-Instructions are based on identity provider. To determine your identity provider, open the Live UI sign in page (`/auth/login`). If you see the option to `"Login With Pixie"`, you are using `Auth0`:
+Instructions are based on identity provider. To determine your identity provider, open the Live UI sign in page (`/auth/login`):
 
+::: div image-m
 <svg title='Your Pixie uses Auth0 if you see the option to "Login with Google".' src='admin/user-mgmt/determine-auth.png'/>
+:::
 
-If you don’t see the option to `“Login With Google”`, you are using `Hydra` / `Kratos`
+Follow the
+
+- [Auth0 Instructions](/reference/admin/user-mgmt/#auth0): if you have the option to `"Login With Google"
+- [Hydra / Kratos Instructions](/reference/admin/user-mgmt/#hydra-kratos): if you _do not_ have the option to `"Login With Google"
 
 ## Hydra / Kratos
 
