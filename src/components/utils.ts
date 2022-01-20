@@ -21,5 +21,19 @@ import slugify from 'slugify';
 // Adds the prefix if needed eg: /docs/about-pixie/how-pixie-works/
 export const normalizePath = (path) => path.replace(/\/?$/, '/');
 export const urlFromSlug = (slug) => (slug === '/' ? slug : normalizePath(slug));
-export const idFromSlug = (slug) => slugify((slug || '').toString())
-  .toLowerCase();
+
+const parentSlug = {
+  level: 100,
+  slug: '',
+};
+
+export const idFromSlug = (slug, level = 0) => {
+  let s = slug;
+  if (level <= parentSlug.level) {
+    parentSlug.level = level;
+    parentSlug.slug = slug;
+  } else {
+    s = `${parentSlug.slug} - ${slug}`;
+  }
+  return slugify((s || '').toString()).toLowerCase();
+};

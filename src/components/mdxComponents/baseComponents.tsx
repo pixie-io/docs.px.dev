@@ -43,27 +43,27 @@ export default {
   // the design and overwritten on homepage (only 1 implementation).
   // The problem seems to occur only on the H1 (to be investigated).
   h1: (props: any) => (
-    <HLink id={idFromSlug(getChildren(props))} variant='h1' />
+    <HLink id={idFromSlug(getChildren(props), 1)} variant='h1' />
   ),
   h2: (props: any) => {
     const { children } = props;
-    return <HLink id={idFromSlug(getChildren(props))} variant='h2'>{children}</HLink>;
+    return <HLink id={idFromSlug(getChildren(props), 2)} variant='h2'>{children}</HLink>;
   },
   h3: (props: any) => {
     const { children } = props;
-    return <HLink id={idFromSlug(getChildren(props))} variant='h3'>{children}</HLink>;
+    return <HLink id={idFromSlug(getChildren(props), 3)} variant='h3'>{children}</HLink>;
   },
   h4: (props: any) => {
     const { children } = props;
-    return <HLink id={idFromSlug(getChildren(props))} variant='h4'>{children}</HLink>;
+    return <HLink id={idFromSlug(getChildren(props), 4)} variant='h4'>{children}</HLink>;
   },
   h5: (props: any) => {
     const { children } = props;
-    return <HLink id={idFromSlug(getChildren(props))} variant='h5'>{children}</HLink>;
+    return <HLink id={idFromSlug(getChildren(props), 5)} variant='h5'>{children}</HLink>;
   },
   h6: (props: any) => {
     const { children } = props;
-    return <HLink id={idFromSlug(getChildren(props))} variant='h6'>{children}</HLink>;
+    return <HLink id={idFromSlug(getChildren(props), 6)} variant='h6'>{children}</HLink>;
   },
   p: (props: any) => <Typography {...props} variant='body1' />,
   pre: Pre,
