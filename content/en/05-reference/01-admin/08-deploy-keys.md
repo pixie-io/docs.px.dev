@@ -2,7 +2,7 @@
 title: "Managing Deploy Keys"
 metaTitle: "Reference | Admin | Deploy Keys"
 metaDescription: "Why and when to use deploy keys."
-order: 5
+order: 8
 ---
 
 Deploy keys allow Pixie's Cloud to associate a cluster with an organization.

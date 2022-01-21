@@ -9,7 +9,7 @@ redirect_from:
 
 ## Open Source Auth
 
-Pixie uses [Hydra](https://www.ory.sh/hydra/)/[Kratos](https://www.ory.sh/kratos/) to provide an  open source authentication flow.
+Pixie uses [Hydra](https://www.ory.sh/hydra/)/[Kratos](https://www.ory.sh/kratos/) to provide an open source authentication flow.
 
 To set up authentication and invite others to join your organization, check out the Quick Start [directions](/installing-pixie/install-guides/self-hosted-pixie/#authentication-using-kratos-hydra).
 
@@ -99,6 +99,6 @@ kubectl apply -f auth0_config.yaml -f oauth_config.yaml
 
 1. Update the email provider: To have Auth0 send out the email using your domain, configure your mail provider in Branding > Email Provider.
 
-2. Update the email templates: Customize emails templates at Branding > Email Templates. 
+2. Update the email templates: Customize emails templates at Branding > Email Templates.
 
 3. Update the login/signup pages: Pixie's UI is compatible with both Auth0's new and legacy universal login pages. Both pages are highly customizable. This can be done in  Branding > Universal Login.
