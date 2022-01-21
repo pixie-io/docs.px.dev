@@ -15,7 +15,7 @@ order: 1
 
 ## 1. Sign up
 
-Visit our [product page](https://work.withpixie.ai/) and sign up with your google or gsuite account.
+Visit our [product page](https://work.withpixie.ai/) and sign up.
 
 ## 2. Set up a Kubernetes cluster (optional)
 
@@ -84,7 +84,11 @@ To deploy Pixie to another cluster, change your `kubectl config current-context`
 
 For more deploy options that you can specify to configure Pixie, refer to our [deploy options](/reference/admin/deploy-options).
 
-## 5. Use Pixie
+## 5. Invite others to your organization (optional)
+
+Add users to your organization to share access to Pixie Live Views, query running clusters, and deploy new Pixie clusters. For instructions, see the [User Management & Sharing](/reference/admin/user-mgmt) reference docs.
+
+## 6. Use Pixie
 
 ### Deploy a demo microservices app (optional)
 

@@ -2,7 +2,7 @@
 title: "Debug Info"
 metaTitle: "Reference | Admin | Debug Info"
 metaDescription: "Check for debug info."
-order: 7
+order: 3
 ---
 
 Pixie automatically traces requests of a variety of protocol types. A subset of the supported protocols and encryption libraries require debug information to work with Pixie.

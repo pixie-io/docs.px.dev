@@ -122,7 +122,7 @@ kubectl logs create-admin-job-<pod_string> -n plc
 
 ### Invite others to your organization (optional)
 
-1. Navigate to `dev.withpixie.dev/admin/invite` in your browser. Fill out the necessary information to send invite links to anyone who you'd like to share access with. Note that this link expires after a certain amount of time and cannot be recreated for the expired email address.
+Add users to your organization to share access to Pixie Live Views, query running clusters, and deploy new Pixie clusters. For instructions, see the [User Management & Sharing](/reference/admin/user-mgmt) reference docs.
 
 ## 2. Install the Pixie CLI
 

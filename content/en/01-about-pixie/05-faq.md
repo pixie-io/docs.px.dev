@@ -149,13 +149,7 @@ The [Roadmap](/about-pixie/roadmap) contains plans to support exporting or inges
 
 ### How do I share a Pixie dashboard with others?
 
-*Self-hosted Pixie*
-
-To share data from the same cluster, [send an invitation through the Admin UI](/installing-pixie/install-guides/self-hosted-pixie#invite-others-to-your-organization-(optional)).
-
-*Community Cloud for Pixie*
-
-To share data from the same cluster, both parties will need to register for Pixie accounts using emails from the same gsuite email domain. For example, if both parties sign up using a @mycompany.com email address, then both parties will automatically be grouped into the same mycompany org and see the same results.
+See the [User Management & Sharing](/reference/admin/user-mgmt) reference docs.
 
 ### How do I set up RBAC?
 

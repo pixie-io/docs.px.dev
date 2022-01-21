@@ -2,7 +2,7 @@
 title: "Version History"
 metaTitle: "Reference | Admin | Version History"
 metaDescription: "Release notes"
-order: 10
+order: 12
 redirect_from:
     - /admin/product-updates/
 ---
