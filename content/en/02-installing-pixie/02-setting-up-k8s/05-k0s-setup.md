@@ -4,7 +4,7 @@ metaTitle: "Install | Install Guides | k0s"
 metaDescription: "How to install Pixie in k0s"
 order: 5
 featuredGuide: true
-icon: k0s-logo.svg
+icon: kubernetes-logo.svg
 ---
 
 To set up Pixie on [k0s](https://kubernetes.io/docs/getting-started-guides/minikube/), you'll need to:
