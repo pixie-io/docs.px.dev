@@ -42,10 +42,9 @@ kubectl apply -f https://openebs.github.io/charts/openebs-operator-lite.yaml
 kubectl apply -f https://openebs.github.io/charts/openebs-lite-sc.yaml
 ```
 
-2. Created the storage class and apply it:
+2. create your own StorageClass with custom BasePath, save the following StorageClass definition as sc.yaml
 
 ```bash
-cat sc.yaml
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
@@ -60,7 +59,11 @@ metadata:
 provisioner: openebs.io/local
 reclaimPolicy: Delete
 volumeBindingMode: WaitForFirstConsumer
+```
 
+3. Apply the yaml:
+
+```bash
 kubectl apply -f sc.yaml
 ```
 
