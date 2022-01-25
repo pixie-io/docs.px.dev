@@ -32,6 +32,7 @@ For local development, we recommend using Minikube with a VM driver (`kvm2` on L
 | Minikube with `driver=hyperkit` | Supported     |
 | Minikube with `driver=docker`   | Not Supported |
 | Minikube with `driver=none`     | Not Supported |
+| k0s                             | [Supported](/installing-pixie/setting-up-k8s/k0s-setup)     |
 | Kind                            | Not Supported |
 | Docker Desktop                  | Not supported |
 
