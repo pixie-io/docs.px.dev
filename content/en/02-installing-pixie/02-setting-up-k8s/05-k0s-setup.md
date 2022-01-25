@@ -33,7 +33,7 @@ sudo k0s status
 
 ## (Optional) Install a Volumne Provisioner
 
-[Self-Hosted Pixie](/installing-pixie/install-guides/self-hosted-pixie) users will need a PersistentVolume. F
+[Self-Hosted Pixie](/installing-pixie/install-guides/self-hosted-pixie) users will need a PersistentVolume.
 
 1. Follow the [OpenEBS Guide](https://docs.openebs.io/docs/next/uglocalpv-hostpath.html) to set up a local PV.
 
