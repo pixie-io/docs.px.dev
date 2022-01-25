@@ -30,7 +30,9 @@ px update cli
 
 ## Updating Pixie Cloud & Vizier
 
-1. You can check your Vizier version with the CLI or by looking at the Live UI Admin page (`/admin/clusters`). To check the `Vizier Version` using the CLI, run:
+Pixie's [CLI tool](/installing-pixie/install-schemes/cli) is required to update Pixie Vizier. To update Pixie Cloud and Vizier:
+
+1. Check your Vizier version with the CLI or by looking at the Live UI Admin page (`/admin/clusters`). To check the `Vizier Version` using the CLI, run:
 
 ```bash
 # Check Pixie Vizier Version
