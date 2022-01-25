@@ -24,10 +24,10 @@ Follow the
 
 Pixie instances using Auth0 as an identity provider can:
 
-- [Invite users](/reference/admin/user-mgmt#invite-users-1)
-- [Enable approvals for new users](/reference/admin/user-mgmt#enable-approvals-for-new-users-1)
-- [Invalidate Invite Links](/reference/admin/user-mgmt#invalidate-invite-links)
-- [Remove users](/reference/admin/user-mgmt#remove-users)
+- [Invite users](/reference/admin/user-mgmt#auth0-invite-users)
+- [Enable approvals for new users](/reference/admin/user-mgmt#auth0-enable-approvals-for-new-users)
+- [Invalidate Invite Links](/reference/admin/user-mgmt#auth0-invalidate-invite-links)
+- [Remove users](/reference/admin/user-mgmt#auth0-remove-users)
 
 ### Invite Users
 
@@ -91,9 +91,8 @@ Once a user is removed, they will be automatically logged out from any active UI
 
 Pixie instances using Hydra / Kratos as an identity provider can:
 
-- [Invite users](/reference/admin/user-mgmt#invite-users)
-- [Enable approvals for new users](/reference/admin/user-mgmt#enable-approvals-for-new-users)
-- [Remove users](/reference/admin/user-mgmt#enable-approvals-for-new-users)
+- [Invite users](/reference/admin/user-mgmt#hydra-kratos-invite-users)
+- [Enable approvals for new users](/reference/admin/user-mgmt#hydra-kratos-enable-approvals-for-new-users)
 
 ### Invite Users
 
