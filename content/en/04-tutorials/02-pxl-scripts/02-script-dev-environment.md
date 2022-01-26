@@ -51,7 +51,7 @@ make dev
 
 ```bash
 cd pixie/src/pxl_scripts
-cp -r px/demo_script px/my_pxl_script
+cp -r px/http_data_filtered px/my_pxl_script
 ```
 
 2. Modify the files in the script folder. Each script folder will have 2 or 3 files:
