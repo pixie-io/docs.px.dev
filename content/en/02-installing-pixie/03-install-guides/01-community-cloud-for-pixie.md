@@ -112,7 +112,7 @@ kubectl get pods -n px-sock-shop
 
 ### Test out the CLI
 
-Use `px run` to run a script to demonstrate observability. The `http_data` script shows a sample of the http traffic flowing through your cluster.
+Use `px live` to run a script to demonstrate observability. The `http_data` script shows a sample of the HTTP/2 traffic flowing through your cluster.
 
 ``` bash
 # List built-in scripts
