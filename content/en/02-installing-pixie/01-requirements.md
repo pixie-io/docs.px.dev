@@ -17,9 +17,10 @@ Kubernetes `v1.16+` is required.
 
 | K8s Environment  | Support                                                         |
 | :--------------- | :-------------------------------------------------------------- |
-| GKE              | Supported                                                       |
-| EKS              | Supported (includes support on Bottlerocket AMIs)               |
 | AKS              | Supported                                                       |
+| EKS              | Supported (includes support on Bottlerocket AMIs)               |
+| EKS Fargate      | Not Supported                                                   |
+| GKE              | Supported                                                       |
 | Self-hosted      | Generally supported, see requirements below including Linux kernel version. |
 
 ### Local Development Environments
