@@ -19,7 +19,7 @@ Kubernetes `v1.16+` is required.
 | :--------------- | :-------------------------------------------------------------- |
 | AKS              | Supported                                                       |
 | EKS              | Supported (includes support on Bottlerocket AMIs)               |
-| EKS Fargate      | Not Supported                                                   |
+| EKS Fargate      | Not Supported (Fargate [does not support ebpf](https://github.com/aws/containers-roadmap/issues/1027)) |
 | GKE              | Supported                                                       |
 | OpenShift        | Supported                                                       |
 | Self-hosted      | Generally supported, see requirements below including Linux kernel version. |
