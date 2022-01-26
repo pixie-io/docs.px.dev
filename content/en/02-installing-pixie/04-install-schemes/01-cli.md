@@ -26,11 +26,18 @@ bash -c "$(curl -fsSL https://withpixie.ai/install.sh)"
 
 ### Directly downloading the binary
 
-``` bash
-# Download the latest Pixie binary.
-curl -o px https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_darwin_amd64
+- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_darwin_amd64](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_darwin_amd64)
+- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_darwin_amd64.sha256](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_darwin_amd64.sha256)
+- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_linux_amd64](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_linux_amd64)
+- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_linux_amd64.sha256](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_linux_amd64.sha256)
 
-# Check the signature matches.
+``` bash
+# Download the latest Pixie linux binary.
+curl -o px https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_linux_amd64
+
+# (Optional) Check the signature matches.
+curl -o px_checksum https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_linux_amd64.sha256
+cat px_checksum
 sha256sum px
 
 # Make it executable.
