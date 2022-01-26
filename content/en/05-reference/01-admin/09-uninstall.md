@@ -33,7 +33,7 @@ kubectl delete namespace px-operator
 # Delete Pixie vizier.
 kubectl delete namespace pl
 
-# Delete Pixie cloud.
+# (Optional) Delete Pixie cloud.
 kubectl delete namespace plc
 
 # Delete Pixie ClusterRole, ClusterRoleBinding objects.
