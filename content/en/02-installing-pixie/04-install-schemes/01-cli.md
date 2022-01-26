@@ -26,17 +26,17 @@ bash -c "$(curl -fsSL https://withpixie.ai/install.sh)"
 
 ### Directly downloading the binary
 
-- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_darwin_amd64](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_darwin_amd64)
-- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_darwin_amd64.sha256](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_darwin_amd64.sha256)
-- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_linux_amd64](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_linux_amd64)
-- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_linux_amd64.sha256](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_linux_amd64.sha256)
+- [https://storage.googleapis.com/pixie-dev-public/cli/latest/cli_darwin_universal](https://storage.googleapis.com/pixie-dev-public/cli/latest/cli_darwin_universal)
+- [https://storage.googleapis.com/pixie-dev-public/cli/latest/cli_darwin_universal.sha256](https://storage.googleapis.com/pixie-dev-public/cli/latest/cli_darwin_universal.sha256)
+- [https://storage.googleapis.com/pixie-dev-public/cli/latest/cli_linux_amd64](https://storage.googleapis.com/pixie-dev-public/cli/latest/cli_linux_amd64)
+- [https://storage.googleapis.com/pixie-dev-public/cli/latest/cli_linux_amd64.sha256](https://storage.googleapis.com/pixie-dev-public/cli/latest/cli_linux_amd64.sha256)
 
 ``` bash
 # Download the latest Pixie linux binary.
-curl -o px https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_linux_amd64
+curl -o px https://storage.googleapis.com/pixie-dev-public/cli/latest/cli_linux_amd64
 
 # (Optional) Check the signature matches.
-curl -o px_checksum https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/cli_linux_amd64.sha256
+curl -o px_checksum https://storage.googleapis.com/pixie-dev-public/cli/latest/cli_linux_amd64.sha256
 cat px_checksum
 sha256sum px
 
@@ -55,8 +55,8 @@ alias px="docker run -i --rm -v ${HOME}/.pixie:/root/.pixie pixielabs/px"
 
 ### Using Debian package
 
-- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.deb](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.deb)
-- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.deb.sha256](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.deb.sha256)
+- [https://storage.googleapis.com/pixie-dev-public/cli/latest/pixie-px.x86_64.deb](https://storage.googleapis.com/pixie-dev-public/cli/latest/pixie-px.x86_64.deb)
+- [https://storage.googleapis.com/pixie-dev-public/cli/latest/pixie-px.x86_64.deb.sha256](https://storage.googleapis.com/pixie-dev-public/cli/latest/pixie-px.x86_64.deb.sha256)
 
 ``` bash
 # Install Pixie .deb package.
@@ -65,8 +65,8 @@ dpkg -i pixie-px.x86_64.deb
 
 ### Using RPM
 
-- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.rpm](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.rpm)
-- [https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.rpm.sha256](https://storage.googleapis.com/pixie-prod-artifacts/cli/latest/pixie-px.x86_64.rpm.sha256)
+- [https://storage.googleapis.com/pixie-dev-public/cli/latest/pixie-px.x86_64.rpm](https://storage.googleapis.com/pixie-dev-public/cli/latest/pixie-px.x86_64.rpm)
+- [https://storage.googleapis.com/pixie-dev-public/cli/latest/pixie-px.x86_64.rpm.sha256](https://storage.googleapis.com/pixie-dev-public/cli/latest/pixie-px.x86_64.rpm.sha256)
 
 ``` bash
 # Install Pixie .rpm package.
