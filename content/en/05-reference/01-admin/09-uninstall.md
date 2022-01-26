@@ -22,9 +22,9 @@ Note that `px delete` will not delete the `olm` namespace. During installation, 
 
 ## Uninstall using `kubectl`
 
-To delete Pixie using `kubectl`, run the following commands.
+To delete Pixie using `kubectl`, run the following commands. These commands assume that Pixie's components were deployed to their default namespaces.
 
-These commands assume that Pixie's components were deployed to their default namespaces.
+Note that it is not necessary to delete Pixie Cloud (namespace=`plc`) in order to redeploy Pixie Vizier.
 
 ```bash
 # Delete Pixie operator.
