@@ -4,7 +4,7 @@ metaTitle: "Install | Install Guides | k0s"
 metaDescription: "How to install Pixie in k0s"
 order: 5
 featuredGuide: true
-icon: kubernetes-logo.svg
+icon: k0s-logo.svg
 ---
 
 To set up Pixie on [k0s](https://kubernetes.io/docs/getting-started-guides/minikube/), you'll need to:
@@ -15,7 +15,7 @@ To set up Pixie on [k0s](https://kubernetes.io/docs/getting-started-guides/minik
 
 ## Create a k0s Cluster
 
-Follow the k0s [Quick Start Guide](https://docs.k0sproject.io/latest/install/) to set up a K8s cluster with a single node that includes both the controller and the worker.
+Follow the k0s [Quick Start Guide](https://docs.k0sproject.io/latest/install/) to set up a K8s cluster with a single node that includes both the controller and the worker:
 
 ```bash
 # Download k0s
@@ -33,7 +33,7 @@ sudo k0s status
 
 ## (Optional) Install a Volumne Provisioner
 
-[Self-Hosted Pixie](/installing-pixie/install-guides/self-hosted-pixie) users will need a PersistentVolume.
+[Self-Hosted Pixie](/installing-pixie/install-guides/self-hosted-pixie) needs a PersistentVolume.
 
 1. Follow the [OpenEBS Guide](https://docs.openebs.io/docs/next/uglocalpv-hostpath.html) to set up a local PV.
 
@@ -43,7 +43,7 @@ kubectl apply -f https://openebs.github.io/charts/openebs-operator-lite.yaml
 kubectl apply -f https://openebs.github.io/charts/openebs-lite-sc.yaml
 ```
 
-2. create your own StorageClass with custom BasePath, save the following StorageClass definition as sc.yaml
+2. Save the following StorageClass definition as sc.yaml
 
 ```bash
 apiVersion: storage.k8s.io/v1
