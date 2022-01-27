@@ -112,14 +112,14 @@ kubectl get pods -n px-sock-shop
 
 ### Test out the CLI
 
-Use `px run` to run a script to demonstrate observability. The `demo_script` script shows the latency and request path of http traffic hitting your cluster.
+Use `px live` to run a script to demonstrate observability. The `http_data` script shows a sample of the HTTP/2 traffic flowing through your cluster.
 
 ``` bash
 # List built-in scripts
 px scripts list
 
 # Run a script
-px run px/demo_script
+px live px/http_data
 ```
 
 For more information, checkout our [CLI guide](/using-pixie/using-cli/).
@@ -130,7 +130,7 @@ Open [Pixie's Live UI](https://work.withpixie.ai) in a new tab.
 
 1. After reviewing the hints, click the X in the upper left hand corner of the screen.
 2. Select your cluster (you may see other clusters from members of your organization).
-3. Now, select a script, e.g. `px/demo_script` or `px/http_data`.
+3. Now, select a script, e.g. `px/cluster` or `px/http_data`.
 
 For more information, check out our [Live UI guide](/using-pixie/using-live-ui/).
 
