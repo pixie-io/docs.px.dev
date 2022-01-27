@@ -17,9 +17,11 @@ Kubernetes `v1.16+` is required.
 
 | K8s Environment  | Support                                                         |
 | :--------------- | :-------------------------------------------------------------- |
-| GKE              | Supported                                                       |
-| EKS              | Supported (includes support on Bottlerocket AMIs)               |
 | AKS              | Supported                                                       |
+| EKS              | Supported (includes support on Bottlerocket AMIs)               |
+| EKS Fargate      | Not Supported ([Fargate does not support eBPF](https://github.com/aws/containers-roadmap/issues/1027)) |
+| GKE              | Supported                                                       |
+| OpenShift        | Supported                                                       |
 | Self-hosted      | Generally supported, see requirements below including Linux kernel version. |
 
 ### Local Development Environments
@@ -28,12 +30,14 @@ For local development, we recommend using Minikube with a VM driver (`kvm2` on L
 
 | K8s Environment                 | Support       |
 | :------------------------------ | :------------ |
-| Minikube with `driver=kvm2`     | Supported     |
-| Minikube with `driver=hyperkit` | Supported     |
-| Minikube with `driver=docker`   | Not Supported |
-| Minikube with `driver=none`     | Not Supported |
-| Kind                            | Not Supported |
 | Docker Desktop                  | Not supported |
+| k0s                             | Supported     |
+| k3s                             | Supported     |
+| kind                            | Not Supported |
+| minikube with `driver=kvm2`     | Supported     |
+| minikube with `driver=hyperkit` | Supported     |
+| minikube with `driver=docker`   | Not Supported |
+| minikube with `driver=none`     | Not Supported |
 
 ## Memory
 
