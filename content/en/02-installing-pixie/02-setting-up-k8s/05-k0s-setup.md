@@ -31,14 +31,14 @@ sudo k0s start
 sudo k0s status
 ```
 
-## (Optional) Install a Volumne Provisioner
+## (Optional) Install a Volume Provisioner
 
 [Self-Hosted Pixie](/installing-pixie/install-guides/self-hosted-pixie) needs a PersistentVolume.
 
 1. Follow the [OpenEBS Guide](https://docs.openebs.io/docs/next/uglocalpv-hostpath.html) to set up a local PV.
 
 ```bash
-export KUBECONFIG=path-to-kubeconfig-from-previous-step
+export KUBECONFIG=<PATH_TO_KUBECONFIG_FROM_PREVIOUS_STEP>
 kubectl apply -f https://openebs.github.io/charts/openebs-operator-lite.yaml
 kubectl apply -f https://openebs.github.io/charts/openebs-lite-sc.yaml
 ```
