@@ -74,6 +74,7 @@ To learn how to use Pixie scripts for a specific use case, check out one of the 
 - [Service Performance](/tutorials/pixie-101/service-performance/)
 - [Database Query Profiling](/tutorials/pixie-101/database-query-profiling/)
 - [Request Tracing](/tutorials/pixie-101/request-tracing/)
+- [Kafka Monitoring](/tutorials/pixie-101/kafka-monitoring/)
 
 ## Write Your Own PxL Scripts
 

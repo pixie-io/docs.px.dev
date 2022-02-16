@@ -43,3 +43,4 @@ To use Pixie for a specific use case, check one of the following tutorials:
 - [Database Query Profiling](/tutorials/pixie-101/database-query-profiling)
 - [Request Tracing](/tutorials/pixie-101/request-tracing)
 - [Continuous Application Profiling](/tutorials/pixie-101/profiler)
+- [Kafka Monitoring](/tutorials/pixie-101/kafka-monitoring/)

@@ -17,3 +17,4 @@ These are written for someone unfamiliar with Pixie and should take less than 5 
 - [Database Query Profiling](/tutorials/pixie-101/database-query-profiling)
 - [Request Tracing](/tutorials/pixie-101/request-tracing)
 - [Continuous Application Profiling](/tutorials/pixie-101/profiler)
+- [Kafka Monitoring](/tutorials/pixie-101/kafka-monitoring)

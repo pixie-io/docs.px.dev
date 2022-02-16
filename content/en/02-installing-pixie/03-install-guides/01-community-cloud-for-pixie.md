@@ -143,6 +143,7 @@ Learn how to use Pixie for
 - [Service Performance](/tutorials/pixie-101/service-performance/)
 - [Database Query Profiling](/tutorials/pixie-101/database-query-profiling/)
 - [Request Tracing](/tutorials/pixie-101/request-tracing/)
+- [Kafka Monitoring](/tutorials/pixie-101/kafka-monitoring/)
 
 ## Get Help
 
