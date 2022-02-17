@@ -9,10 +9,10 @@ Debugging distributed messaging systems can be challenging. Pixie makes analyzin
 
 This tutorial will demonstrate how to use Pixie to see:
 
-- [Flow graph of topic producers and consumers](#topic-flow-graph)
+- [Topic-centric flow graph & topic summaries](#topic-centric-flow-graph)
 - [Latency and throughput per pod](#latency-and-throughput-per-pod)
-- [Full-body Kafka requests](#full-body-kafka-requests)
-- [Producer-consumer latency per topic](#producer-consumer-latency)
+- [Kafka event with metadata](#kafka-events-with-metadata)
+- [Producer-consumer latency per topic and partition](#producer-consumer-latency)
 - [Consumer rebalancing delay](#consumer-rebalancing-delay)
 
 <YouTube youTubeId="42o5fURGXqI?t=1332"/>
@@ -39,7 +39,7 @@ The demo application you deployed in the [Prerequisites](#prerequisites) steps h
 
 - A single `order` topic.
 - One producer: the `order` service publishes messages to the `order` topic.
-- Two consumers: the `shipping` and `invoicing` services consume messages from the `order` topic. The `shipping` service is able consume the order messages at the rate they are produced. The `invoicing` service is slower and unable to consume the order messages at the rate they are produced.
+- Two consumers: the `shipping` and `invoicing` services consume messages from the `order` topic. The `shipping` service is able to consume the order messages at the rate they are produced. The `invoicing` service is slower and unable to consume the order messages at the rate they are produced.
 
 ::: div image-xl relative
 <svg title='' src='use-case-tutorials/kafka/kafka-microservice-app.png'/>
@@ -53,7 +53,7 @@ kubectl -n px-kafka get svc apache
 
 To use the application, click on the Order page and scroll to the bottom of the page to select the `"Add Order"` button. Any orders added by the order service should soon show up on both the Shipping and Invoicing pages.
 
-## Topic Flow Graph
+## Topic-centric Flow Graph
 
 Let's use Pixie to see a graph of producers and consumers for each Kafka topic.
 
@@ -69,7 +69,7 @@ Let's use Pixie to see a graph of producers and consumers for each Kafka topic.
 
 2. Hover over an edge on the graph to see throughput and total record Bytes for a producer or consumer. The thickness of the edge indicates an increase in throughput.
 
-> By examining the edges of the graph, we can see that the producer is producing to the order topic at about 450 B/s. The `shipping` consumer is consuming at the same rate of 450 B/s. The `invoicing` consumer is only consuming at 86 B/s and is falling behind.
+> By examining the edges of the graph, we can see that the producer is producing to the order topic at about 450 B/s. The `shipping` consumer is consuming at the same rate of 450 B/s. The `invoicing` consumer is only consuming at 86 B/s and is falling behind. Since this is a demo application, the traffic throughput is lower than what you'd typically see in a production application.
 
 > The table at the bottom summarizes the same topic information, but also includes the number of topic partitions.
 
@@ -93,7 +93,7 @@ The previous script alerted us to the fact that the `invoicing` pod is consuming
 
 > In this case, CPU utilization is low, which means resource starvation is not causing the `invoicing` pod to consume messages at a slower rate.
 
-## Full-body Kafka Requests
+## Kafka Events with Metadata
 
 Let's inspect the raw Kafka requests flowing through the cluster.
 
@@ -101,7 +101,7 @@ Let's inspect the raw Kafka requests flowing through the cluster.
 
 > This script shows a sample of the most recent Kafka messages in your cluster.
 
-> For each record you can see the source, destination, request command, full-body request and response, and the latency.
+> For each record you can see the source, destination, request command, full-body request and response, and the latency. Pixie only shows the size of the payload, not the content, because it's usually too large.
 
 ::: div image-xl relative
 <svg title='' src='use-case-tutorials/kafka/kafka-data.png'/>
@@ -161,7 +161,7 @@ It's important to monitor this latency because many incidents begin with produce
 
 Consumer rebalancing (shuffling the consumers among partitions) happens whenever a new consumer comes online or an existing consumer goes offline.
 
-It's important to monitor these events because either some or all of the consumers are stopped from consuming messages when the rebalancing is in progress. If consumer rebalancing events happen too often, this can cause consumers to lag in their consumption of topics.
+It's important to monitor these events because either some or all of the consumers are stopped from consuming messages when the rebalancing is in progress. If consumer rebalancing events happen too often, this can cause consumers to lag in their consumption of messages.
 
 1. To trigger a rebalancing, we'll need to scale our deployments. Run:
 
@@ -179,6 +179,8 @@ kubectl scale --replicas=3 deployment shipping -n px-kafka
 
 > The **Consumer Groups** table shows us that we now have 3 members in the `shipping` consumer group.
 
-> Each consumer rebalancing event consists of 1 `JoinGroup` and 1 `SyncGroup` request per consumer. The **Consumer Rebalancing Events** table shows the traced `JoinGroup` and `SyncGroup` requests.
+> Each consumer rebalancing event consists of 1 `JoinGroup` and 1 `SyncGroup` request per consumer. In the default rebalance protocol, there's a stop-the-world effect on the whole consumer group when a rebalancing event happens.
 
-> The **Consumer Rebalancing Delay** table at the top calculates the delay between when the `JoinGroup` request was sent and when the `SyncGroup` request was received.
+> The **Consumer Rebalancing Events** table shows the traced `JoinGroup` and `SyncGroup` requests.
+
+> The **Consumer Rebalancing Delay** table at the top calculates the delay between when the `JoinGroup` request was sent and when the `SyncGroup` request was received. This measures the stop-the-world delay mentioned above.
