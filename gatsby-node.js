@@ -172,13 +172,9 @@ exports.createPages = ({
           pxlObjectDocsPages(
             jsonDocumentation.dataframeOpDocs,
             'operators',
-            'Operators',
+            'DataFrame',
 
-            `The underlying DataFrame methods that correspond to Operators.
-            meaning you can pass them as parameters to [Operators](/reference/pxl/operators) as well as [ExecTime functions](/reference/pxl/udf).
-            `
-
-            ,
+            `The methods you can apply to DataFrames`,
           );
 
           // create udfDocs index Pages
