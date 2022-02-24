@@ -173,8 +173,7 @@ exports.createPages = ({
             jsonDocumentation.dataframeOpDocs,
             'operators',
             'DataFrame',
-
-            `The methods you can apply to DataFrames`,
+            'The methods you can apply to DataFrames',
           );
 
           // create udfDocs index Pages
