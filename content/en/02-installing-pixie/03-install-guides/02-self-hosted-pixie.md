@@ -59,13 +59,14 @@ kubectl create namespace plc
 7. Deploy Pixie Cloud dependencies and wait for all pods within the `plc` namespace to become ready and available before proceeding to the next step. If there is an error, you may need to retry this step.
 
 ```bash
-kustomize build k8s/cloud_deps/public/ | kubectl apply -f - --namespace=plc
+kustomize build k8s/cloud_deps/base/elastic/operator | kubectl apply -f -
+kustomize build k8s/cloud_deps/public | kubectl apply -f -
 ```
 
 8. Deploy Pixie Cloud.
 
 ```bash
-kustomize build k8s/cloud/public/ | kubectl apply -f - --namespace=plc
+kustomize build k8s/cloud/public/ | kubectl apply -f -
 ```
 
 9. Wait for all pods within the `plc` namespace to become ready and available. Note that you may have one or more `create-hydra-client-job` pod errors, but as long as long as another instance of that pod successfully completes, that is ok.
