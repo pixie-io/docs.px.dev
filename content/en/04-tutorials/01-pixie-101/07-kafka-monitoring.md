@@ -24,14 +24,9 @@ This tutorial will demonstrate how to use Pixie to see:
 2. You will need to install the Kafka microservices demo application:
 
 > - Install the [Pixie CLI](/installing-pixie/install-schemes/cli/#1.-install-the-pixie-cli).
-> - Run `px demo deploy px-kafka` to install the Kafka demo app.
-> - Run `kubectl get pods -n px-kafka` to make sure all pods are ready _before proceeding_.
-
-3. You will need to manually start the demo app's load generator:
-
-> - Run `kubectl -n px-kafka get svc load-test` to get the `load-test` external IP (and port).
-> - Navigate to the external IP (with port) in your browser.
-> - Press the `"Start swarming"` button.
+> - Run `px demo deploy px-kafka` to install the demo app.
+> - Run `kubectl get pods -n px-kafka` to make sure all pods are ready before proceeding.
+> - Run `px demo interact px-kafka` and follow the directions to turn on the invoicing service delay.
 
 ## Kafka Microservice Demo App
 
