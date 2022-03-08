@@ -10,8 +10,7 @@ Debugging distributed messaging systems can be challenging. Pixie makes analyzin
 This tutorial will demonstrate how to use Pixie to see:
 
 - [Topic-centric flow graph & topic summaries](#topic-centric-flow-graph)
-- [Latency and throughput per pod](#latency-and-throughput-per-pod)
-- [Kafka event with metadata](#kafka-events-with-metadata)
+- [Kafka events with metadata](#kafka-events-with-metadata)
 - [Producer-consumer latency per topic and partition](#producer-consumer-latency)
 - [Consumer rebalancing delay](#consumer-rebalancing-delay)
 
@@ -30,7 +29,7 @@ This tutorial will demonstrate how to use Pixie to see:
 
 ## Kafka Microservice Demo App
 
-The demo application you deployed in the [Prerequisites](#prerequisites) steps has:
+The demo application you deployed in the [Prerequisites](#prerequisites) section has:
 
 - A single `order` topic.
 - One producer: the `order` service publishes messages to the `order` topic.
@@ -46,7 +45,7 @@ To see the application's simple front end, navigate to the external IP (and port
 kubectl -n px-kafka get svc apache
 ```
 
-To use the application, click on the Order page and scroll to the bottom of the page to select the `"Add Order"` button. Any orders added by the order service should soon show up on both the Shipping and Invoicing pages.
+To use the application, click on the Order page and scroll to the bottom of the page to select the `"Add Order"` button. Any orders added on the Order page should soon show up on both the Shipping and Invoicing pages.
 
 ## Topic-centric Flow Graph
 
@@ -54,37 +53,33 @@ Let's use Pixie to see a graph of producers and consumers for each Kafka topic.
 
 1. Select `px/kafka_overview` from the script drop-down menu.
 
+2. Select the drop-down arrow next to the `namespace` argument, type `px-kafka`, and press `Enter` to re-run the script.
+
 ::: div image-xl relative
 <svg title='' src='use-case-tutorials/kafka/kafka-overview.png'/>
 :::
 
 > This graph shows us that we have 1 topic, named `order`, with 1 producer and 2 consumers.
 
-<Alert variant="outlined" severity="info">If this script doesn't show any output, make sure that you started the load generator in Prerequisites Step #3.</Alert>
+3. Hover over an edge on the graph to see throughput and total record Bytes for a producer or consumer. The thickness of the edge indicates an increase in throughput.
 
-2. Hover over an edge on the graph to see throughput and total record Bytes for a producer or consumer. The thickness of the edge indicates an increase in throughput.
+> By examining the edges of the graph, we can see that the producer is producing to the order topic at about `450 B/s`. The `shipping` consumer is consuming at the same rate of `450 B/s`. The `invoicing` consumer is only consuming at `200 B/s` and is falling behind. Since this is a demo application, the traffic throughput is lower than what you'd typically see in a production application.
 
-> By examining the edges of the graph, we can see that the producer is producing to the order topic at about 450 B/s. The `shipping` consumer is consuming at the same rate of 450 B/s. The `invoicing` consumer is only consuming at 86 B/s and is falling behind. Since this is a demo application, the traffic throughput is lower than what you'd typically see in a production application.
+> The **Kafka Topics** table below the graph summarizes the same high-level topic information, and also includes the number of topic partitions.
 
-> The table at the bottom summarizes the same topic information, but also includes the number of topic partitions.
-
-## Latency and Throughput per Pod
-
-The previous script alerted us to the fact that the `invoicing` pod is consuming messages at a slower speed than they are being produced. Let's investigate this more.
-
-1. Select `px/kafka_stats` from the script drop-down menu.
-
-> This script calculates the latency and throughput of a pod's Kafka requests.
+4. Scroll down the page to see tables listing the broker, producer and consumer pods.
 
 ::: div image-xl relative
-<svg title='' src='use-case-tutorials/kafka/kafka-stats.png'/>
+<svg title='' src='use-case-tutorials/kafka/kafka-overview-2.png'/>
 :::
 
-> The **Summary** table at the bottom of the page shows us the request throughput, latency, and total number of Kafka requests per pod. The `shipping` pod has sent around 7,600 `Fetch` requests while the `invoicing` pod has sent much fewer (only 1700 `Fetch` requests). We can also see that the This again indicates that something is wrong.
+> The **Kafka Producer Pods** and **Kafka Consumer Pods** tables confirm that the `invoicing` pod is consuming messages at a slower speed than they are being produced.
 
-2. To check the pod's resources, click on the `px-kafka/invoicing-*` pod name in the **SOURCE** column of the **Summary** table to follow the deep link to the `px/pod` script.
+> The `shipping` pod has sent 292 `Fetch` requests while the `invoicing` pod has sent much fewer (only 192 `Fetch` requests). This again indicates that something is wrong.
 
-> This script shows an overview of the pod's CPU usage, network traffic and throughput, disk and memory usage.
+5. To check the pod's resources, click on the `px-kafka/invoicing-*` pod name in the **POD** column of the **Kafka Consumer Pods** table.
+
+> Clicking on any pod name will take you to the `px/pod` script for that pod. This script shows an overview of the pod's CPU usage, network traffic and throughput, disk, and memory usage.
 
 > In this case, CPU utilization is low, which means resource starvation is not causing the `invoicing` pod to consume messages at a slower rate.
 
