@@ -21,7 +21,7 @@ Kubernetes `v1.16+` is required.
 | EKS              | Supported (includes support on Bottlerocket AMIs)               |
 | EKS Fargate      | Not Supported ([Fargate does not support eBPF](https://github.com/aws/containers-roadmap/issues/1027)) |
 | GKE              | Supported                                                       |
-| GKE Autopilot    | Not Supported ([Autopilot does not support eBPF](https://github.com/pixie-io/pixie/issues/278#issuecomment-853269290))
+| GKE Autopilot    | Not Supported ([Autopilot does not support eBPF](https://github.com/pixie-io/pixie/issues/278#issuecomment-853269290)) |
 | OpenShift        | Supported                                                       |
 | Self-hosted      | Generally supported, see requirements below including Linux kernel version. |
 
@@ -34,7 +34,8 @@ For local development, we recommend using Minikube with a VM driver (`kvm2` on L
 | Docker Desktop                  | Not supported |
 | k0s                             | Supported     |
 | k3s                             | Supported     |
-| kind                            | Not Supported |
+| k3d                             | Not Supported ([k3d runs k3s clusters inside Docker container "nodes"](https://github.com/pixie-io/pixie/issues/337#issuecomment-949012061)) |
+| kind                            | Not Supported ([kind runs K8s clusters inside Docker container "nodes"](https://github.com/pixie-io/pixie/issues/337#issuecomment-949012061)) |
 | minikube with `driver=kvm2`     | Supported     |
 | minikube with `driver=hyperkit` | Supported     |
 | minikube with `driver=docker`   | Not Supported |
