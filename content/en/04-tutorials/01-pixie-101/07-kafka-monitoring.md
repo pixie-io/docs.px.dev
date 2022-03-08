@@ -7,12 +7,6 @@ order: 7
 
 Debugging distributed messaging systems can be challenging. Pixie makes analyzing Kafka easier by using eBPF to [automatically capture](https://docs.px.dev/about-pixie/pixie-ebpf/) full-body Kafka requests without the need for manual instrumentation.
 
-I would add here how Pixie is able to list all clients and topics in the clusters. This is something important for discovery and something hard to do without Pixie (edited)
-
-The interesting part here it’s the ability to jump into the specific details of a client from the Kafka dashboard. We know we have a problem at the Kafka level, but it’s linked to other metrics which help us to debug what’s happening
-
-I would add here some info about the messages and the Kafka protocol. This is something we can’t do with other solutions and it’s the most important part from the internals point of view: how Pixie is able to intercept and “understand” the Kafka protocol. @rcheng can provide more detail
-
 This tutorial will demonstrate how to use Pixie to see:
 
 - [Topic-centric flow graph & topic summaries](#topic-centric-flow-graph)
@@ -71,7 +65,7 @@ Let's use Pixie to see a graph of producers and consumers for each Kafka topic.
 
 3. Hover over an edge on the graph to see throughput and total record Bytes for a producer or consumer. The thickness of the edge indicates an increase in throughput.
 
-> By examining the edges of the graph, we can see that the producer is producing to the order topic at about `450 B/s`. The `shipping` consumer is consuming at the same rate of `450 B/s`. The `invoicing` consumer is only consuming at `200 B/s` and is falling behind. Since this is a demo application, the traffic throughput is lower than what you'd typically see in a production application.
+> By examining the edges of the graph, we can see that the producer is producing to the order topic at about `450 B/s`. The `shipping` client is consuming at the same rate of `450 B/s`. The `invoicing` client is only consuming at `200 B/s` and is falling behind. Since this is a demo application, the traffic throughput is lower than what you'd typically see in a production application.
 
 > The **Kafka Topics** table below the graph summarizes the same high-level topic information, and also includes the number of topic partitions.
 
@@ -81,13 +75,13 @@ Let's use Pixie to see a graph of producers and consumers for each Kafka topic.
 <svg title='' src='use-case-tutorials/kafka/kafka-overview-2.png'/>
 :::
 
-> The **Kafka Producer Pods** and **Kafka Consumer Pods** tables confirm that the `invoicing` pod is consuming messages at a slower speed than they are being produced.
+> The **Kafka Producer Pods** and **Kafka Consumer Pods** tables confirm that the `invoicing` client is consuming messages at a slower speed than they are being produced.
 
-> The `shipping` pod has sent 292 `Fetch` requests while the `invoicing` pod has sent much fewer (only 192 `Fetch` requests). This again indicates that something is wrong.
+> The `shipping` client has sent 292 `Fetch` requests while the `invoicing` client has sent much fewer (only 192 `Fetch` requests). This again indicates that something is wrong.
 
 > When debugging Kafka problems, you may want to check the health of the clients involved. Pixie makes it easy to switch between higher-level Kafka system metrics and the lower-level client infra metrics.
 
-5. To check the pod's resources, click on the `px-kafka/invoicing-*` pod name in the **POD** column of the **Kafka Consumer Pods** table.
+5. To check the health of the `invoicing` client, click on the `px-kafka/invoicing-*` pod name in the **POD** column of the **Kafka Consumer Pods** table.
 
 > Clicking on any pod name will take you to the `px/pod` script for that pod. This script shows an overview of the pod's CPU usage, network traffic and throughput, disk, and memory usage.
 
@@ -99,7 +93,7 @@ Let's inspect the raw Kafka requests flowing through the cluster.
 
 1. Select `px/kafka_data` from the script drop-down menu.
 
-> Pixie is able to automatically trace all messages flowing through your cluster, identify the ones using the Kafka protocol and parse the message metadata. This script shows a sample of the most recent Kafka events in the cluster.
+> Pixie is able to [automatically trace](https://docs.px.dev/about-pixie/pixie-ebpf/) all messages flowing through your cluster, identify the ones using the Kafka protocol and parse the message metadata. This script shows a sample of the most recent Kafka events in the cluster.
 
 > For each record you can see the source, destination, request command, request and response, and the latency. Note that Pixie only shows the size of the payload, not the content, because it's usually too large.
 
@@ -135,7 +129,7 @@ It's important to monitor this latency because many incidents begin with consume
 <svg title='' src='use-case-tutorials/kafka/kafka-producer-consumer-latency.png'/>
 :::
 
-<Alert variant="outlined" severity="info">If you don't see the sawtooth waveform seen here, make sure you turned on the `invoicing` pod delay in the last step of the Prerequisites section.</Alert>
+<Alert variant="outlined" severity="info">If you don't see the sawtooth waveform seen here, make sure you turned on the `invoicing` service delay in the last step of the Prerequisites section.</Alert>
 
 > The **Kafka Producers** and **Kafka Consumers** tables show us that we have 1 producer and 2 consumers for this topic.
 
@@ -149,7 +143,7 @@ It's important to monitor this latency because many incidents begin with consume
 
 > The graph updates to show a flat line. This tells us that there is near zero latency between when the `order` topic messages are being produced and when all 5 `shipping` partitions are consuming the messages.
 
-4. Let's examine the `invoicing` consumers. Select the drop-down arrow next to the `consumer` argument, type `invoicing`, and press `Enter` to re-run the script.
+5. Let's examine the `invoicing` consumers. Select the drop-down arrow next to the `consumer` argument, type `invoicing`, and press `Enter` to re-run the script.
 
 ::: div image-xl relative
 <svg title='' src='use-case-tutorials/kafka/kafka-producer-consumer-latency-invoicing.png'/>
