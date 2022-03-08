@@ -7,12 +7,18 @@ order: 7
 
 Debugging distributed messaging systems can be challenging. Pixie makes analyzing Kafka easier by using eBPF to [automatically capture](https://docs.px.dev/about-pixie/pixie-ebpf/) full-body Kafka requests without the need for manual instrumentation.
 
+I would add here how Pixie is able to list all clients and topics in the clusters. This is something important for discovery and something hard to do without Pixie (edited)
+
+The interesting part here it’s the ability to jump into the specific details of a client from the Kafka dashboard. We know we have a problem at the Kafka level, but it’s linked to other metrics which help us to debug what’s happening
+
+I would add here some info about the messages and the Kafka protocol. This is something we can’t do with other solutions and it’s the most important part from the internals point of view: how Pixie is able to intercept and “understand” the Kafka protocol. @rcheng can provide more detail
+
 This tutorial will demonstrate how to use Pixie to see:
 
 - [Topic-centric flow graph & topic summaries](#topic-centric-flow-graph)
 - [Kafka events with metadata](#kafka-events-with-metadata)
 - [Producer-consumer latency per topic and partition](#producer-consumer-latency)
-- [Consumer rebalancing delay](#consumer-rebalancing-delay)
+- [Consumer rebalancing duration](#consumer-rebalancing-duration)
 
 <YouTube youTubeId="42o5fURGXqI?t=1332"/>
 
@@ -59,7 +65,9 @@ Let's use Pixie to see a graph of producers and consumers for each Kafka topic.
 <svg title='' src='use-case-tutorials/kafka/kafka-overview.png'/>
 :::
 
-> This graph shows us that we have 1 topic, named `order`, with 1 producer and 2 consumers.
+> Pixie is able to automatically discover and list all clients and topics in the cluster.
+
+> This graph shows us that our microservice app has 1 topic, named `order`, with 1 producer and 2 consumers.
 
 3. Hover over an edge on the graph to see throughput and total record Bytes for a producer or consumer. The thickness of the edge indicates an increase in throughput.
 
@@ -67,7 +75,7 @@ Let's use Pixie to see a graph of producers and consumers for each Kafka topic.
 
 > The **Kafka Topics** table below the graph summarizes the same high-level topic information, and also includes the number of topic partitions.
 
-4. Scroll down the page to see tables listing the broker, producer and consumer pods.
+4. Scroll down the page to see tables listing the brokers, producer and consumer pods.
 
 ::: div image-xl relative
 <svg title='' src='use-case-tutorials/kafka/kafka-overview-2.png'/>
@@ -77,11 +85,13 @@ Let's use Pixie to see a graph of producers and consumers for each Kafka topic.
 
 > The `shipping` pod has sent 292 `Fetch` requests while the `invoicing` pod has sent much fewer (only 192 `Fetch` requests). This again indicates that something is wrong.
 
+> When debugging Kafka problems, you may want to check the health of the clients involved. Pixie makes it easy to switch between higher-level Kafka system metrics and the lower-level client infra metrics.
+
 5. To check the pod's resources, click on the `px-kafka/invoicing-*` pod name in the **POD** column of the **Kafka Consumer Pods** table.
 
 > Clicking on any pod name will take you to the `px/pod` script for that pod. This script shows an overview of the pod's CPU usage, network traffic and throughput, disk, and memory usage.
 
-> In this case, CPU utilization is low, which means resource starvation is not causing the `invoicing` pod to consume messages at a slower rate.
+> In this case, CPU utilization is low, which means resource starvation is not causing the `invoicing` client to consume messages at a slower rate.
 
 ## Kafka Events with Metadata
 
@@ -89,9 +99,9 @@ Let's inspect the raw Kafka requests flowing through the cluster.
 
 1. Select `px/kafka_data` from the script drop-down menu.
 
-> This script shows a sample of the most recent Kafka messages in your cluster.
+> Pixie is able to automatically trace all messages flowing through your cluster, identify the ones using the Kafka protocol and parse the message metadata. This script shows a sample of the most recent Kafka events in the cluster.
 
-> For each record you can see the source, destination, request command, full-body request and response, and the latency. Pixie only shows the size of the payload, not the content, because it's usually too large.
+> For each record you can see the source, destination, request command, request and response, and the latency. Note that Pixie only shows the size of the payload, not the content, because it's usually too large.
 
 ::: div image-xl relative
 <svg title='' src='use-case-tutorials/kafka/kafka-data.png'/>
@@ -99,9 +109,9 @@ Let's inspect the raw Kafka requests flowing through the cluster.
 
 2. Click the `TIME_` column title to sort by time.
 
-> We can see that there are a bunch of different Kafka request commands being traced by Pixie, such as `Produce`, `Fetch`, `OffsetCommit`, `Heartbeat`, etc. Pixie supports full body tracing of these op codes.
+> We can see that there are multiple Kafka request commands being traced by Pixie, such as `Produce`, `Fetch`, `OffsetCommit`, and `Heartbeat`.
 
-3. Click on a table row with the `Produce` `REQ_CMD` to inspect the full request and response body in JSON format.
+3. Click on a table row with the `Produce` `REQ_CMD` to inspect the parsed request and response body in JSON format.
 
 > Pixie parses the request body and gives us information on the name of the topic, what partition it is producing to and the total size of the message set. Inspecting the response shows us if there's any error code coming back from the Kafka broker, base offset, log append time, etc.
 
@@ -111,19 +121,21 @@ This script is useful for inspecting a specific request or filtering all request
 
 Producer consumer latency is the time between when a producer pushes a message to a topic to when it is fetched by a consumer.
 
-It's important to monitor this latency because many incidents begin with producer consumer lag.
+It's important to monitor this latency because many incidents begin with consumer lag.
 
 1. Select `px/kafka_producer_consumer_latency` from the script drop-down menu.
 
 2. Select the drop-down arrow next to the `namespace` argument, type `px-kafka`, and press `Enter` to re-run the script.
 
-> The **Kafka Topics** table will update to show the topics being written and read to by pods in this namespace. The table lists our single `order` topic.
+> The **Kafka Topics** table will update to show the topics being written and read to by clients in this namespace. The table lists our single `order` topic.
 
 3. Select the drop-down arrow next to the `topic` argument, type `order`, and press `Enter` to re-run the script.
 
 ::: div image-xl relative
 <svg title='' src='use-case-tutorials/kafka/kafka-producer-consumer-latency.png'/>
 :::
+
+<Alert variant="outlined" severity="info">If you don't see the sawtooth waveform seen here, make sure you turned on the `invoicing` pod delay in the last step of the Prerequisites section.</Alert>
 
 > The **Kafka Producers** and **Kafka Consumers** tables show us that we have 1 producer and 2 consumers for this topic.
 
@@ -145,11 +157,11 @@ It's important to monitor this latency because many incidents begin with produce
 
 > The graph updates to show non-zero latency for all 5 `invoicing` partitions. All 5 partitions are consuming `order` topic messages around 40-55 seconds after they are being produced.
 
-> The zig zag line shape is due to the `invoicing` consumer fetching a batch of messages from the topic, processing these messages slowly, then fetching another group of messages and being even more behind. The overall trend is upward; there is increasing producer-consumer lag for the `invoicing` consumer. This is a bad sign.
+> The zig zag line shape is due to the `invoicing` consumer fetching a batch of messages from the topic, processing these messages slowly, then fetching another group of messages and being even more behind. The overall trend is upward; there is increasing producer-consumer lag for the `invoicing` consumer. This is a bad sign and it could end in data loss or affect the whole cluster if it isn’t addressed.
 
-## Consumer Rebalancing Delay
+## Consumer Rebalancing Duration
 
-Consumer rebalancing (shuffling the consumers among partitions) happens whenever a new consumer comes online or an existing consumer goes offline.
+Consumer rebalancing (shuffling the consumers among partitions) can happen for a variety of reasons, including when a new consumer comes online, an existing consumer goes offline or a broker reboots.
 
 It's important to monitor these events because either some or all of the consumers are stopped from consuming messages when the rebalancing is in progress. If consumer rebalancing events happen too often, this can cause consumers to lag in their consumption of messages.
 
