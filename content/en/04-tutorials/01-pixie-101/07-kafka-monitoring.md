@@ -93,7 +93,7 @@ Let's inspect the raw Kafka requests flowing through the cluster.
 
 1. Select `px/kafka_data` from the script drop-down menu.
 
-> Pixie [automatically traces](https://docs.px.dev/about-pixie/pixie-ebpf/) all messages flowing through your cluster, identify the ones using the Kafka protocol, and parses the message metadata. This script shows a sample of the most recent Kafka events in the cluster.
+> Pixie [automatically traces](https://docs.px.dev/about-pixie/pixie-ebpf/) all messages flowing through your cluster, identifies the ones using the Kafka protocol, and parses the message metadata. This script shows a sample of the most recent Kafka events in the cluster.
 
 > For each record you can see the source, destination, request command, request and response, and the latency. Note that Pixie only shows the size of the payload, not the content, because it's usually too large.
 
@@ -115,7 +115,7 @@ This script is useful for inspecting a specific request or filtering all request
 
 Producer consumer latency is the time between when a producer pushes a message to a topic to when it is fetched by a consumer. This latency is important to monitor because many incidents begin with consumer lag.
 
-A large consumer lag in one component can mean that it is out of sync with other components. In our demo application, the `invoicing` service is not consuming messages from the `order` topic as quickly as the `shipment` service is. If you check the application front-end, you will see orders on the Shipment page that are not present on the Invoicing page. If not addressed, this application may fail to create invoices for all of the orders it receives and lose out on money owed for the orders that  successfully shipped.
+A large consumer lag in one component can mean that it is out of sync with other components. In our demo application, the `invoicing` service is not consuming messages from the `order` topic as quickly as the `shipping` service is. If you check the application front-end, you will see orders on the Shipping page that are not present on the Invoicing page. If not addressed, this application may fail to create invoices for all of the orders it receives and lose out on money owed for the orders that successfully shipped.
 
 1. Select `px/kafka_producer_consumer_latency` from the script drop-down menu.
 
