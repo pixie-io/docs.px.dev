@@ -29,11 +29,11 @@ This tutorial will demonstrate how to use Pixie to see:
 
 ## Kafka Microservice Demo App
 
-The demo application you deployed in the [Prerequisites](#prerequisites) section has:
+The demo application deployed in the [Prerequisites](#prerequisites) section has three microservices that use Kafka to communicate:
 
-- A single `order` topic.
-- One producer: the `order` service publishes messages to the `order` topic.
-- Two consumers: the `shipping` and `invoicing` services consume messages from the `order` topic. The `shipping` service is able to consume the order messages at the rate they are produced. The `invoicing` service is slower and unable to consume the order messages at the rate they are produced.
+- The `order` service creates orders. This service publishes messages to the `order` topic.
+- The `shipping` service consumes the `order` topic messages and extracts the information needed to ship the items. This service is able to consume the `order` topic messages at the rate they are produced.
+- The `invoicing` service consumes the `order` topic messages and extracts the information needed to send out an invoice. This service, when configured with the delay in the Prereqs step, is slower and unable to consume the `order` topic messages at the rate they are produced.
 
 ::: div image-xl relative
 <svg title='' src='use-case-tutorials/kafka/kafka-microservice-app.png'/>
@@ -45,7 +45,7 @@ To see the application's simple front end, navigate to the external IP (and port
 kubectl -n px-kafka get svc apache
 ```
 
-To use the application, click on the Order page and scroll to the bottom of the page to select the `"Add Order"` button. Any orders added on the Order page should soon show up on both the Shipping and Invoicing pages.
+The application has 3 pages: one each for the `order`, `shipping` and `invoicing` services. A load generator simulates a user adding orders to the Order page. Orders can also be manually entered by scrolling to the bottom of the Order page and selecting the `"Add Order"` button. Any orders added on the Order page should soon show up on both the Shipping and Invoicing pages.
 
 ## Topic-centric Flow Graph
 
@@ -61,7 +61,7 @@ Let's use Pixie to see a graph of producers and consumers for each Kafka topic.
 
 > Pixie is able to automatically discover and list all clients and topics in the cluster.
 
-> This graph shows us that our microservice app has 1 topic, named `order`, with 1 producer and 2 consumers.
+> This graph shows us that our microservice app has 1 active topic, named `order`, with 1 producer and 2 consumers.
 
 3. Hover over an edge on the graph to see throughput and total record Bytes for a producer or consumer. The thickness of the edge indicates an increase in throughput.
 
@@ -77,7 +77,7 @@ Let's use Pixie to see a graph of producers and consumers for each Kafka topic.
 
 > The **Kafka Producer Pods** and **Kafka Consumer Pods** tables confirm that the `invoicing` client is consuming messages at a slower speed than they are being produced.
 
-> The `shipping` client has sent 292 `Fetch` requests while the `invoicing` client has sent much fewer (only 192 `Fetch` requests). This again indicates that something is wrong.
+> In our case, the `shipping` client has sent 292 `Fetch` requests while the `invoicing` client has sent much fewer (only 192 `Fetch` requests). This again indicates that something is wrong.
 
 > When debugging Kafka problems, you may want to check the health of the clients involved. Pixie makes it easy to switch between higher-level Kafka system metrics and the lower-level client infra metrics.
 
@@ -93,7 +93,7 @@ Let's inspect the raw Kafka requests flowing through the cluster.
 
 1. Select `px/kafka_data` from the script drop-down menu.
 
-> Pixie is able to [automatically trace](https://docs.px.dev/about-pixie/pixie-ebpf/) all messages flowing through your cluster, identify the ones using the Kafka protocol and parse the message metadata. This script shows a sample of the most recent Kafka events in the cluster.
+> Pixie [automatically traces](https://docs.px.dev/about-pixie/pixie-ebpf/) all messages flowing through your cluster, identify the ones using the Kafka protocol, and parses the message metadata. This script shows a sample of the most recent Kafka events in the cluster.
 
 > For each record you can see the source, destination, request command, request and response, and the latency. Note that Pixie only shows the size of the payload, not the content, because it's usually too large.
 
@@ -113,9 +113,9 @@ This script is useful for inspecting a specific request or filtering all request
 
 ## Producer Consumer Latency
 
-Producer consumer latency is the time between when a producer pushes a message to a topic to when it is fetched by a consumer.
+Producer consumer latency is the time between when a producer pushes a message to a topic to when it is fetched by a consumer. This latency is important to monitor because many incidents begin with consumer lag.
 
-It's important to monitor this latency because many incidents begin with consumer lag.
+A large consumer lag in one component can mean that it is out of sync with other components. In our demo application, the `invoicing` service is not consuming messages from the `order` topic as quickly as the `shipment` service is. If you check the application front-end, you will see orders on the Shipment page that are not present on the Invoicing page. If not addressed, this application may fail to create invoices for all of the orders it receives and lose out on money owed for the orders that  successfully shipped.
 
 1. Select `px/kafka_producer_consumer_latency` from the script drop-down menu.
 
@@ -180,3 +180,7 @@ kubectl scale --replicas=3 deployment shipping -n px-kafka
 > The **Consumer Rebalancing Events** table shows the traced `JoinGroup` and `SyncGroup` requests.
 
 > The **Consumer Rebalancing Delay** table at the top calculates the delay between when the `JoinGroup` request was sent and when the `SyncGroup` request was received. This measures the stop-the-world delay mentioned above.
+
+## Related Scripts
+
+This tutorial demonstrated a few of Pixie's [community scripts](https://github.com/pixie-io/pixie/tree/main/src/pxl_scripts). To learn how to write your own PxL script, check out the [tutorial](/tutorials/pxl-scripts/write-pxl-scripts).
