@@ -5,7 +5,7 @@ metaDescription: "Learn how to monitor Kafka using Pixie."
 order: 7
 ---
 
-Debugging distributed messaging systems can be challenging. Pixie makes analyzing Kafka easier by using eBPF to [automatically capture](https://docs.px.dev/about-pixie/pixie-ebpf/) full-body Kafka requests without the need for manual instrumentation.
+Debugging distributed messaging systems can be challenging. Pixie makes analyzing Kafka easier by using eBPF to [automatically capture](/about-pixie/pixie-ebpf/) full-body Kafka requests without the need for manual instrumentation.
 
 This tutorial will demonstrate how to use Pixie to see:
 
@@ -18,7 +18,7 @@ This tutorial will demonstrate how to use Pixie to see:
 
 ## Prerequisites
 
-1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using one of our [install guides](https://docs.px.dev/installing-pixie/install-guides/).
+1. You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using one of our [install guides](/installing-pixie/install-guides/).
 
 2. You will need to install the Kafka microservices demo application:
 
@@ -93,7 +93,7 @@ Let's inspect the raw Kafka requests flowing through the cluster.
 
 1. Select `px/kafka_data` from the script drop-down menu.
 
-> Pixie [automatically traces](https://docs.px.dev/about-pixie/pixie-ebpf/) all messages flowing through your cluster, identifies the ones using the Kafka protocol, and parses the message metadata. This script shows a sample of the most recent Kafka events in the cluster.
+> Pixie [automatically traces](/about-pixie/pixie-ebpf/) all messages flowing through your cluster, identifies the ones using the Kafka protocol, and parses the message metadata. This script shows a sample of the most recent Kafka events in the cluster.
 
 > For each record you can see the source, destination, request command, request and response, and the latency. Note that Pixie only shows the size of the payload, not the content, because it's usually too large.
 
@@ -109,7 +109,7 @@ Let's inspect the raw Kafka requests flowing through the cluster.
 
 > Pixie parses the request body and gives us information on the name of the topic, what partition it is producing to and the total size of the message set. Inspecting the response shows us if there's any error code coming back from the Kafka broker, base offset, log append time, etc.
 
-This script is useful for inspecting a specific request or filtering all requests by a certain command (you'll need to [edit the PxL script](https://docs.px.dev/using-pixie/using-live-ui/#write-your-own-pxl-scripts-edit-an-existing-script) to do that).
+This script is useful for inspecting a specific request or filtering all requests by a certain command (you'll need to [edit the PxL script](/using-pixie/using-live-ui/#write-your-own-pxl-scripts-edit-an-existing-script) to do that).
 
 ## Producer Consumer Latency
 
