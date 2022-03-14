@@ -7,47 +7,47 @@ order: 5
 
 ### General
 
-- [What is Pixie?](/about-pixie/faq#what-is-pixie)
-- [Who created Pixie?](/about-pixie/faq#who-created-pixie)
-- [What license is Pixie released under?](/about-pixie/faq#what-license-is-pixie-released-under)
-- [Which K8s environments are supported?](/about-pixie/faq#which-k8s-environments-are-supported)
-- [Can I completely self-host Pixie?](/about-pixie/faq#can-i-completely-self-host-pixie)
-- [Is there a hosted cloud offering?](/about-pixie/faq#does-pixie-offer-a-hosted-cloud-offering)
+- [What is Pixie?](#general-what-is-pixie)
+- [Who created Pixie?](#general-who-created-pixie)
+- [What license is Pixie released under?](#general-what-license-is-pixie-released-under)
+- [Which K8s environments are supported?](#general-which-k8s-environments-are-supported)
+- [Can I completely self-host Pixie?](#general-can-i-completely-self-host-pixie)
+- [Is there a hosted cloud offering?](#general-does-pixie-offer-a-hosted-cloud-offering)
 
 ### Data Collection
 
-- [Where does Pixie store its data?](/about-pixie/faq#where-does-pixie-store-its-data)
-- [How much data does Pixie store?](/about-pixie/faq#how-much-data-does-pixie-store)
-- [How does Pixie secure its data?](/about-pixie/faq#how-does-pixie-secure-its-data)
-- [What data does Pixie collect?](/about-pixie/faq#what-data-does-pixie-collect)
-- [Which protocols are automatically traced?](/about-pixie/faq#which-protocols-are-automatically-traced)
-- [Which types of K8s resources, metadata are supported?](/about-pixie/faq#which-types-of-k8s-resources-metadata-are-supported)
-- [Can I capture full distributed traces (a single request across multiple services)?](/about-pixie/faq#can-i-capture-requests-if-one-of-the-endpoints-is-outside-the-cluster)
-- [Can I capture requests if one of the endpoints is outside the cluster?](/about-pixie/faq#can-i-capture-requests-if-one-of-the-endpoints-is-outside-the-cluster)
-- [Can I capture system metrics like CPU?](/about-pixie/faq#can-i-capture-system-metrics-like-cpu)
-- [What is the performance impact?](/about-pixie/faq#what-is-the-performance-impact)
-- [Which languages are supported for continuous profiling?](/about-pixie/faq#which-languages-are-supported-for-continuous-profiling)
+- [Where does Pixie store its data?](#data-collection-where-does-pixie-store-its-data)
+- [How much data does Pixie store?](#data-collection-how-much-data-does-pixie-store)
+- [How does Pixie secure its data?](#data-collection-how-does-pixie-secure-its-data)
+- [What data does Pixie collect?](#data-collection-what-data-does-pixie-collect)
+- [Which protocols are automatically traced?](#data-collection-which-protocols-are-automatically-traced)
+- [Which types of K8s resources, metadata are supported?](#data-collection-which-types-of-k8s-resources-metadata-are-supported)
+- [Can I capture full distributed traces (a single request across multiple services)?](#data-collection-can-i-capture-requests-if-one-of-the-endpoints-is-outside-the-cluster)
+- [Can I capture requests if one of the endpoints is outside the cluster?](#data-collection-can-i-capture-requests-if-one-of-the-endpoints-is-outside-the-cluster)
+- [Can I capture system metrics like CPU?](#data-collection-can-i-capture-system-metrics-like-cpu)
+- [What is the performance impact?](#data-collection-what-is-the-performance-impact)
+- [Which languages are supported for continuous profiling?](#data-collection-which-languages-are-supported-for-continuous-profiling)
 
 ### How do I…
 
-- [How do I export data from the Pixie platform? Import data?](/about-pixie/faq#how-do-i-export-data-from-the-pixie-platform-import-data)
-- [How do I share a Pixie dashboard with others?](/about-pixie/faq#how-do-i-share-a-pixie-dashboard-with-others)
-- [How do I set up RBAC?](/about-pixie/faq#how-do-i-set-up-rbac)
-- [How do I send alerts?](/about-pixie/faq#how-do-i-send-alerts)
-- [How do I delete a cluster?](/about-pixie/faq#how-do-i-delete-a-cluster)
+- [How do I export data from the Pixie platform? Import data?](#how-do-i...-how-do-i-export-data-from-the-pixie-platform-import-data)
+- [How do I share a Pixie dashboard with others?](#how-do-i...-how-do-i-share-a-pixie-dashboard-with-others)
+- [How do I set up RBAC?](#how-do-i...-how-do-i-set-up-rbac)
+- [How do I send alerts?](#how-do-i...-how-do-i-send-alerts)
+- [How do I delete a cluster?](#how-do-i...-how-do-i-delete-a-cluster)
 
 ### Troubleshooting
 
-- [How do I get the Pixie debug logs?](/about-pixie/faq#how-do-i-get-the-pixie-debug-logs)
-- [My deployment is stuck / fails.](/about-pixie/faq#my-deployment-is-stuck-fails)
-- [Why does my cluster show as unavailable / unhealthy in the Live UI?](/about-pixie/faq#why-does-my-cluster-show-as-unavailable-unhealthy-in-the-live-ui)
-- [Why does my cluster show as disconnected in the Live UI?](/about-pixie/faq#why-does-my-cluster-show-as-disconnected-in-the-live-ui)
-- [Why can’t I see data?](/about-pixie/faq#why-can't-i-see-data)
-- [Why can’t I see data after enabling Data Isolation Mode?](/about-pixie/faq#why-can't-i-see-data-after-enabling-data-isolation-mode)
-- [Why can’t I see application profiles / flamegraphs for my pod / node?](/about-pixie/faq#why-can't-i-see-application-profiles-flamegraphs-for-my-pod-node)
-- [Why is the vizier-pem pod’s memory increasing?](/about-pixie/faq#why-is-the-vizier-pem-pod's-memory-increasing)
-- [Troubleshooting tracepoint scripts.](/about-pixie/faq#troubleshooting-pixie-tracepoint-scripts)
-- [How do I get help?](/about-pixie/faq#how-do-i-get-help)
+- [How do I get the Pixie debug logs?](#troubleshooting-how-do-i-get-the-pixie-debug-logs)
+- [My deployment is stuck / fails.](#troubleshooting-my-deployment-is-stuck-fails)
+- [Why does my cluster show as unavailable / unhealthy in the Live UI?](#troubleshooting-why-does-my-cluster-show-as-unavailable-unhealthy-in-the-live-ui)
+- [Why does my cluster show as disconnected in the Live UI?](#troubleshooting-why-does-my-cluster-show-as-disconnected-in-the-live-ui)
+- [Why can’t I see data?](#troubleshooting-why-can't-i-see-data)
+- [Why can’t I see data after enabling Data Isolation Mode?](#troubleshooting-why-can't-i-see-data-after-enabling-data-isolation-mode)
+- [Why can’t I see application profiles / flamegraphs for my pod / node?](#troubleshooting-why-can't-i-see-application-profiles-flamegraphs-for-my-pod-node)
+- [Why is the vizier-pem pod’s memory increasing?](#troubleshooting-why-is-the-vizier-pem-pod's-memory-increasing)
+- [Troubleshooting tracepoint scripts.](#troubleshooting-troubleshooting-pixie-tracepoint-scripts)
+- [How do I get help?](#troubleshooting-how-do-i-get-help)
 
 ## General
 
@@ -79,7 +79,7 @@ Yes. Pixie Community Cloud is a hosted version of Pixie. Pixie stores all data o
 
 ### Where does Pixie store its data?
 
-Pixie stores the data it collects in-memory on the nodes in your cluster; no data is sent to a centralized backend outside of the cluster. This is true for both self-hosted Pixie and [Pixie Community Cloud](/about-pixie/faq#does-pixie-offer-a-hosted-cloud-offering).
+Pixie stores the data it collects in-memory on the nodes in your cluster; no data is sent to a centralized backend outside of the cluster. This is true for both self-hosted Pixie and [Pixie Community Cloud](#general-does-pixie-offer-a-hosted-cloud-offering).
 
 Pixie has a [2GiB memory requirement](/installing-pixie/requirements/#memory) per node. After installing Pixie, it is normal to see a temporary increase in memory usage of the `vizier-pem` pods as they begin to fill their data tables.
 
