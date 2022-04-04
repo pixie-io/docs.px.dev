@@ -1,0 +1,51 @@
+---
+title: "Pixie Plugin System"
+metaTitle: "Reference | Plugins | Pixie Plugin System "
+metaDescription: "Pixie's Plugin System"
+order: 1 
+---
+
+Pixie's core functionality focuses on providing a real-time debugging platform. Integrate with other tools using the Pixie Plugin system to enable capabilities like longterm data retention or alerting.
+
+- *Longterm Data Retention*: Pixie does not guarantee data storage for over 24 hours. Leverage an external datastore for longterm data retention by sending Pixie data in the [OpenTelemetry](https://opentelemetry.io/) format. Future support will be added for querying longterm data from within the Pixie UI, allowing you to use PxL and Pixie's versatile live views.
+- *Alerts* (Coming Soon!): Power alerts using Pixie's rich dataset, all configurable from within Pixie's UI.
+
+## Enabling a Plugin
+
+Plugins can be configured from within the Admin UI. 
+
+1. Open the Live UI and navigate to the Plugins tab on the Admin page (`/admin/plugins`).
+2. Find the plugin you wish to enable and click the toggle to enable/disable the plugin.
+3. Expand the plugin row to specify the necessary configuration values. The required set of fields differs per plugin provider, and usually contains information such as API keys which are used for authentication.
+
+## Longterm Data Retention
+
+Enable a plugin which offers longterm data retention capabilities to send Pixie data to an external datastore. This plugin allows you to configure PxL scripts to export data at regularly scheduled intervals. This only currently supports exporting data through the [OpenTelemetry](https://opentelemetry.io/) format. 
+
+By default, the plugin provider has configured a set of preset scripts. These will automatically start running and exporting data from all clusters in the org as soon as the plugin is enabled. Users can also choose to export custom data by creating a custom export script.
+
+### Configuring Preset Export Scripts
+
+1. [Enable a plugin provider](#enable-a-plugin) which supports longterm data retention. 
+2. Open the Live UI and navigate to the Data Export page in the sidebar (`/configure-data-export`).
+3. All preset scripts are listed under `<Plugin Provider> Scripts`.
+4. Click the toggle to enable/disable the export from the preset script.
+5. Click the gear icon to configure the preset script. Name, description, and PxL is uneditable. However, users may choose which clusters to export from and how frequently the script is run.
+6. Click "Save" to update the script with your changes.
+
+### Creating Custom Export Scripts
+
+1. [Enable a plugin provider](#enable-a-plugin) which supports longterm data retention. 
+2. Open the Live UI and navigate to the Data Export page in the sidebar (`/configure-data-export`).
+3. Under `Custom Scripts`, click the `Create Scripts` button on the right-hand side.
+4. Enter a script name and description.
+5. Select which clusters to export from. If none is specified, data will be exported from all clusters in the org.
+6. Enter the PxL script. This script should contain a `px.export` call for exporting data to the OpenTelemetry format. See [OpenTelemetry export]() for more information. No `endpoint` needs to be specified to the `px.otel.Data` object, as this will be filled in automatically based on the selected plugin provider.
+7. Select how often this script should run.
+8. Select the plugin provider to export this data to.
+9. Click "Create" to save your settings. Data export should start immediately.
+
+## Contributing a Plugin
+
+Interested in contributing a plugin to our Plugin system? Check out our [Pixie Plugin Repository](https://github.com/pixie-io/pixie-plugin) and follow the provided instructions.
+
