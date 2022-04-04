@@ -22,19 +22,28 @@ PxL has a rich type system consisting of both concrete and semantic types. Data 
 
 ### Concrete Types
 
-The Pixie execution engine supports most concrete data types, including boolean, int64, uint128, float64, string, etc.
+The Pixie execution engine supports many concrete data types:
 
-For more info, see the complete [list of concrete data types](https://github.com/pixie-io/pixie/blob/c08aaa2c53ce95ee40817acae3f662a95994f6fb/src/api/proto/vizierpb/vizierapi.proto#L29).
+| Type     | Description                                                        |
+| -------- | ------------------------------------------------------------------ |
+| INT64    | 64-bit integer                                                     |
+| UINT128  | Unsigned 128-bit integer                                           |
+| FLOAT64  | Double precision floating point                                    |
+| TIME64NS | Time represented as 64-bit integer in nanoseconds since UNIX epoch |
+| STRING   | UTF-8 encoded string value                                       |
+| BOOLEAN  | Bool                                                               |
+
+See the complete [list of concrete data types](https://github.com/pixie-io/pixie/blob/c08aaa2c53ce95ee40817acae3f662a95994f6fb/src/api/proto/vizierpb/vizierapi.proto#L29).
 
 ### Semantic Types
 
 The Pixie execution engine supports many semantic data types, including those related to the following:
 
-- Kubernetes (e.g. pod name, node name, namespace name, pod status, )
+- Kubernetes (e.g. pod name, node name, namespace name, pod status)
 - Infrastructure (e.g. IP address, port name, upid)
 - Metrics (e.g. bytes, duration in nanoseconds, throughput per nanosecond)
 
-For more info, see the complete [list of semantic data types](https://github.com/pixie-io/pixie/blob/c08aaa2c53ce95ee40817acae3f662a95994f6fb/src/api/proto/vizierpb/vizierapi.proto#L51).
+See the complete [list of semantic data types](https://github.com/pixie-io/pixie/blob/c08aaa2c53ce95ee40817acae3f662a95994f6fb/src/api/proto/vizierpb/vizierapi.proto#L51).
 
 ## Value concepts
 
