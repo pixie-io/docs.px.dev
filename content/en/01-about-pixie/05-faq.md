@@ -81,7 +81,7 @@ Yes. Pixie Community Cloud is a hosted version of Pixie. Pixie stores all data o
 
 Pixie stores the data it collects in-memory on the nodes in your cluster; no data is sent to a centralized backend outside of the cluster. This is true for both self-hosted Pixie and [Pixie Community Cloud](#general-does-pixie-offer-a-hosted-cloud-offering).
 
-Pixie has a [2GiB memory requirement](/installing-pixie/requirements/#memory) per node. After installing Pixie, it is normal to see a temporary increase in memory usage of the `vizier-pem` pods as they begin to fill their data tables.
+Pixie has a [1GiB memory requirement](/installing-pixie/requirements/#memory) per node. After installing Pixie, it is normal to see a temporary increase in memory usage of the `vizier-pem` pods as they begin to fill their data tables.
 
 ### How much data does Pixie store?
 
@@ -227,7 +227,7 @@ Continuous profiling currently only supports Go/C++/Rust. The [Roadmap](/about-p
 
 This is expected behavior. Pixie stores the data it collects in-memory on the nodes in your cluster; data is not sent to any centralized backend cloud outside of the cluster. So what you are observing is simply the data that it is collecting.
 
-Pixie has a 2GiB memory requirement per node. This limit can be configured with the `--pemMemoryLimit` flag when deploying Pixie with the CLI/Helm. We do not recommend using a value less than 2GiB.
+Pixie has a minimum 1GiB memory requirement per node. The default deployment is 2GiB of memory. This limit can be configured with the `--pem_memory_limit` flag when deploying Pixie. Using a value less than 1GiB is not currently recommended.
 
 ### Troubleshooting Pixie tracepoint scripts
 

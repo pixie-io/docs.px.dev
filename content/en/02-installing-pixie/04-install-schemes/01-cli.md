@@ -104,6 +104,9 @@ px deploy
 
 # Deploy the Pixie Platform in your K8s cluster (OLM already exists on cluster).
 px deploy --deploy_olm=false
+
+# Deploy Pixie with a specific memory limit (2Gi is the default, 1Gi is the minimum recommended)
+px deploy --pem_memory_limit=1Gi
 ```
 
 Pixie will deploy pods to the `pl`, `px-operator`, and `olm`(if deploying the OLM) namespaces.

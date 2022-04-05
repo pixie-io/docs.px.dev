@@ -45,9 +45,9 @@ For local development, we recommend using Minikube with a VM driver (`kvm2` on L
 
 Memory requirements for your cluster nodes are as follows:
 
-|                       | Minimum   | Notes                                                   |
-| :-------------------  | :-------- | :------------------------------------------------------ |
-| Memory                | 2GiB      | To accommodate application pods, 8GiB+ is recommended.  |
+| Minimum   | Notes                                                                  |
+| :-------- | :--------------------------------------------------------------------- |
+| 1GiB      | To accommodate application pods, 4GiB+ total per node is recommended.  |
 
 ## CPU
 

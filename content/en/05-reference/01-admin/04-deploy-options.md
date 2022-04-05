@@ -27,6 +27,10 @@ Certain labels are reserved for internal use by Pixie. The following are reserve
 - `“vizier-updater-dep"`
 - `“app"`
 
+## PEM Memory Usage
+
+Pixie deploys its PEMs as a DaemonSet on your cluster in order to collect and store telemetry data. The default memory limit is 2Gi per PEM. The lowest recommended value is [1Gi](/installing-pixie/requirements/#memory) per PEM. You have the option to configure this value via the `--pem_memory_limit` flag in the CLI/YAML (`--set pemMemoryLimit=<limit>` in Helm).
+
 ## Data Access
 
 You can configure Pixie's data access mode in order to control what data can be displayed when executing a script.

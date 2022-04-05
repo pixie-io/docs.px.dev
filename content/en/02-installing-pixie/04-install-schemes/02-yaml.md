@@ -48,6 +48,9 @@ px deploy --extract_yaml <NAME_OF_PIXIE_YAMLS_FOLDER> --deploy_key <PIXIE_DEPLOY
 # Extract YAML (OLM already exists on cluster).
 px deploy --extract_yaml <NAME_OF_PIXIE_YAMLS_FOLDER> --deploy_key <PIXIE_DEPLOYMENT_KEY> --deploy_olm=false
 
+# Deploy Pixie with a specific memory limit (2Gi is the default, 1Gi is the minimum recommended)
+px deploy --extract_yaml <NAME_OF_PIXIE_YAMLS_FOLDER> --deploy_key <PIXIE_DEPLOYMENT_KEY> --pem_memory_limit=1Gi
+
 ```
 
 **Note:** The extracted YAMls does not include manifests for each sub-component of Pixie. It includes manifests for etcd, NATS and the cloud-connector service which downloads the manifests for the necessary services and daemonsets.
