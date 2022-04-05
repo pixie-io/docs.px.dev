@@ -13,7 +13,7 @@ Documentation on how to configure and manage Pixie:
 - [Configure Data Transfer Mode](/reference/admin/data-transfer-mode)
 - [Debug Information](/reference/admin/debug-info)
 - [Deploy Options](/reference/admin/deploy-options)
-- [Environment Instructions](/reference/admin/environment-instructions)
+- [Environment-Specific Configurations](/reference/admin/environment-configs)
 - [Find a Cluster ID](/reference/admin/cluster-id)
 - [Managing API Keys](/reference/admin/api-keys)
 - [Managing Deploy Keys](/reference/admin/deploy-keys)
