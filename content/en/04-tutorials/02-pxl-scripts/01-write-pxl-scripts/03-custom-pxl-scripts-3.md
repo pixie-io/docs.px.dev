@@ -13,7 +13,7 @@ In [Tutorial #1](/tutorials/pxl-scripts/write-pxl-scripts/custom-pxl-scripts-1) 
 
 In this tutorial series, we will look at other ways to visualize this data, including a timeseries chart and graph. We will use the Live UI to execute the script since it offers rich visualizations that are not available with the CLI or API:
 
-<svg title='Live UI output after this tutorial.' src='pxl-scripts/first-vis-spec-1.png'/>
+<svg title='Live UI output after this Vis Spec tutorial series.' src='pxl-scripts/first-vis-spec-1.png'/>
 
 ## Using the Scratch Pad
 
@@ -55,9 +55,9 @@ df = df[df.service != '']
 px.display(df)
 ```
 
-4. Run the script using the `RUN` button in the top right or by using the keyboard shortcut: `ctrl+enter` (Windows, Linux) or `cmd+enter` (Mac).
+5. Run the script using the `RUN` button in the top right or by using the keyboard shortcut: `ctrl+enter` (Windows, Linux) or `cmd+enter` (Mac).
 
-5. Hide the script editor using `ctrl+e` (Windows, Linux) or `cmd+e` (Mac).
+6. Hide the script editor using `ctrl+e` (Windows, Linux) or `cmd+e` (Mac).
 
 > Your Live UI should output something similar to the following:
 
@@ -310,6 +310,6 @@ def network_traffic_per_pod(start_time: str, ns: px.Namespace):
 
 ## Conclusion
 
-Congratulations, you wrote your first `Vis Spec` to accompany your `PxL Script`! Tables aren't all that exciting, but now that you can write a `Vis Spec`, we can learn how to visualize our data in more interesting ways.
+Congrats, you just wrote your first `Vis Spec` to accompany your `PxL Script`! Tables aren't all that exciting, but now that you know how a `Vis Spec` works, you can learn how to visualize your data in more interesting ways.
 
 In [Tutorial #4](/tutorials/pxl-scripts/write-pxl-scripts/custom-pxl-scripts-4) we will add a Timeseries chart to our Live View.
