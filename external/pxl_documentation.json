@@ -2,6 +2,70 @@
   "compileFnDocs": [
     {
       "body": {
+        "name": "px.equals_any",
+        "brief": "Returns true if the value is in the list.",
+        "desc": "Check equality of the input value with every element of a list.   ",
+        "examples": [
+          {
+            "value": "```\ndf.val = px.equals_any(df.remote_addr, ['10.0.0.1', '10.0.0.2'])\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "value",
+            "desc": "The value to compare.",
+            "types": [
+              "px.Expr"
+            ]
+          },
+          {
+            "ident": "comparisons",
+            "desc": "The list of values to check equality to the value.",
+            "types": [
+              "List[px.Expr]"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "An expression that evaluates to true if the value is found in the list.",
+          "types": [
+            "px.Expr"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.hours",
+        "brief": "Gets the specified number of hours.",
+        "examples": [
+          {
+            "value": "```\n# Returns 2 hours.\ntime = px.hours(2)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "unit",
+            "desc": "The number of hours to render.",
+            "types": [
+              "int"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "Duration representing `unit` hours.",
+          "types": [
+            "px.Duration"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
         "name": "px.script_reference",
         "brief": "Create a reference to a PxL script.",
         "desc": "Create a reference to a PxL script with specified script arguments. These values are displayed in the UI as a clickable link to execute that PxL script.   ",
@@ -39,6 +103,51 @@
           "desc": "A stringified JSON representing the script, shown in the UI as a link.",
           "types": [
             "string"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.now",
+        "brief": "Get the current time.",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [],
+        "returnType": {
+          "desc": "The current time as defined at the start of compilation.",
+          "types": [
+            "px.Time"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.parse_duration",
+        "brief": "Parse a duration string to a duration in nanoseconds.",
+        "desc": "Parse a duration string (\"-5m\") to integer nanoseconds (-3,000,000,000) while preserving the sign from the string.   ",
+        "examples": [
+          {
+            "value": "```\n# duration = -300000000000\nduration = px.parse_duration(\"-5m\")\n# duration = 300000000000\nduration = px.parse_duration(\"5m\")\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "duration",
+            "desc": "The duration in string form.",
+            "types": [
+              "string"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "The duration in nanoseconds.",
+          "types": [
+            "px.Duration"
           ]
         }
       }
@@ -101,71 +210,6 @@
     },
     {
       "body": {
-        "name": "px.equals_any",
-        "brief": "Returns true if the value is in the list.",
-        "desc": "Check equality of the input value with every element of a list.   ",
-        "examples": [
-          {
-            "value": "```\ndf.val = px.equals_any(df.remote_addr, ['10.0.0.1', '10.0.0.2'])\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "value",
-            "desc": "The value to compare.",
-            "types": [
-              "px.Expr"
-            ]
-          },
-          {
-            "ident": "comparisons",
-            "desc": "The list of values to check equality to the value.",
-            "types": [
-              "List[px.Expr]"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "An expression that evaluates to true if the value is found in the list.",
-          "types": [
-            "px.Expr"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "px.parse_duration",
-        "brief": "Parse a duration string to a duration in nanoseconds.",
-        "desc": "Parse a duration string (\"-5m\") to integer nanoseconds (-3,000,000,000) while preserving the sign from the string.   ",
-        "examples": [
-          {
-            "value": "```\n# duration = -300000000000\nduration = px.parse_duration(\"-5m\")\n# duration = 300000000000\nduration = px.parse_duration(\"5m\")\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "duration",
-            "desc": "The duration in string form.",
-            "types": [
-              "string"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "The duration in nanoseconds.",
-          "types": [
-            "px.Duration"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
         "name": "px.seconds",
         "brief": "Gets the specified number of seconds.",
         "examples": [
@@ -186,50 +230,6 @@
         ],
         "returnType": {
           "desc": "Duration representing `unit` seconds.",
-          "types": [
-            "px.Duration"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "px.now",
-        "brief": "Get the current time.",
-        "examples": []
-      },
-      "funcDoc": {
-        "args": [],
-        "returnType": {
-          "desc": "The current time as defined at the start of compilation.",
-          "types": [
-            "px.Time"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "px.microseconds",
-        "brief": "Gets the specified number of microseconds.",
-        "examples": [
-          {
-            "value": "```\n# Returns 2 microseconds.\ntime = px.microseconds(2)\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "unit",
-            "desc": "The number of microseconds to render.",
-            "types": [
-              "int"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "Duration representing `unit` microseconds.",
           "types": [
             "px.Duration"
           ]
@@ -338,11 +338,11 @@
     },
     {
       "body": {
-        "name": "px.hours",
-        "brief": "Gets the specified number of hours.",
+        "name": "px.microseconds",
+        "brief": "Gets the specified number of microseconds.",
         "examples": [
           {
-            "value": "```\n# Returns 2 hours.\ntime = px.hours(2)\n```"
+            "value": "```\n# Returns 2 microseconds.\ntime = px.microseconds(2)\n```"
           }
         ]
       },
@@ -350,14 +350,14 @@
         "args": [
           {
             "ident": "unit",
-            "desc": "The number of hours to render.",
+            "desc": "The number of microseconds to render.",
             "types": [
               "int"
             ]
           }
         ],
         "returnType": {
-          "desc": "Duration representing `unit` hours.",
+          "desc": "Duration representing `unit` microseconds.",
           "types": [
             "px.Duration"
           ]
@@ -464,40 +464,19 @@
     },
     {
       "body": {
-        "name": "DataFrame.map",
-        "brief": "Sets up the runtime expression and assigns the result to the specified column.",
-        "desc": "Adds a column with the specified name and the expression that evaluates to the column value. The evaluation of this expression happens inside of the Pixie engine (Carnot) thus cannot be directly accessed during compilation.  The expression can be a scalar value, a column from the same dataframe, or a [UDF](/reference/pxl/udf) function call. The syntax can be either `df['colname'] = expr` or `df.colname = expr`, the second option is simply syntactic sugar. The first form is slightly more expressive as you can set column names with spaces.       ",
+        "name": "DataFrame.stream",
+        "brief": "Execute this DataFrame in streaming mode.",
+        "desc": "Returns the input DataFrame, but set to streaming mode. Streaming queries execute indefinitely, as opposed to batch queries which return a finite result.     ",
         "examples": [
           {
-            "value": "```\ndf = px.DataFrame('process_stats')\n# Map scalar value to a column.\ndf['number'] = 12\n```"
-          },
-          {
-            "value": "```\ndf = px.DataFrame('http_events')\ndf.svc = df.ctx['svc']\n# Map column to another column name.\ndf.resp_body = df.resp_body\n```"
-          },
-          {
-            "value": "```\ndf = px.DataFrame('http_events')\n# Map expression to the column.\ndf['latency_ms'] = df['resp_latency_ns'] / 1.0e9\n```"
+            "value": "```\ndf = px.DataFrame('http_events').stream()\n```"
           }
         ]
       },
       "funcDoc": {
-        "args": [
-          {
-            "ident": "column_name",
-            "desc": "The name of the column to assign this value.",
-            "types": [
-              "str"
-            ]
-          },
-          {
-            "ident": "expr",
-            "desc": "The expression to evaluate in Carnot.",
-            "types": [
-              "ScalarExpression"
-            ]
-          }
-        ],
+        "args": [],
         "returnType": {
-          "desc": "DataFrame with the new column added.",
+          "desc": "the parent DataFrame in streaming mode.",
           "types": [
             "px.DataFrame"
           ]
@@ -563,27 +542,159 @@
     },
     {
       "body": {
-        "name": "DataFrame.rolling",
-        "brief": "Groups the data by rolling windows.",
-        "desc": "Rolls up data into groups based on the rolling window that it belongs to. Used to define window aggregates, the streaming analog of batch aggregates.      ",
+        "name": "DataFrame.agg",
+        "brief": "Aggregates the data based on the expressions.",
+        "desc": "Computes the aggregate expressions on the data. If the preceding operator is a groupby, then we evaluate the aggregate expression in each group. If not, we calculate the aggregate expression using all of the preceding data. If no arguments specified and the call follows a grouped DataFrame, then agg() returns the unique groups. If following a non-grouped DataFrame agg() with no args will yield a compilation error.  Each aggregate expression is simply the aggregate function applied to a column, formatted as `\u003cout_col_name\u003e=(\"\u003ccolumn_name\u003e\", \u003cfunction\u003e)`. A list of functions are available in the [UDA docs](/reference/pxl/udf)     ",
         "examples": [
           {
-            "value": "```\ndf = px.DataFrame('process_stats')\ndf = df.rolling('2s').agg(...)\n```"
+            "value": "```\n# Group by UPID and calculate maximum user time for the each\n# UPID group.\ndf = px.DataFrame('process_stats')\ndf = df.groupby('upid').agg(cpu_utime=('cpu_utime_ns', px.max))\n```"
           }
         ]
       },
       "funcDoc": {
         "args": [
           {
-            "ident": "window",
-            "desc": "the size of the rolling window.",
+            "ident": "**kwargs",
+            "desc": "The column, aggregate function pair that make up the expression to apply, assigned to the output column name. `\u003cout_col_name\u003e=(\"\u003ccolumn_name\u003e\", \u003cfunction\u003e)`. If this value is empty, it will return the unique groups in the previous DataFrame.",
             "types": [
-              "px.Duration"
+              "Tuple[string, AggFn]"
             ]
           }
         ],
         "returnType": {
-          "desc": "DataFrame grouped into rolling windows. Must apply either a groupby or an aggregate on the returned DataFrame.",
+          "desc": "DataFrame with aggregated expressions evaluated containing the groups (if any) followed by the output column aggregate expression names.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "DataFrame.drop",
+        "brief": "Drops the specified columns from the DataFrame.",
+        "desc": "Returns a DataFrame with the specified columns dropped. Useful for removing columns you don't want to see in the final table result.  See `keep()` on how to specify which columns to keep.     ",
+        "examples": [
+          {
+            "value": "```\ndf = px.DataFrame('process_stats', select=['upid', 'cpu_ktime_ns', 'cpu_utime_ns'])\n# Drop upid from df.\ndf = df.drop('upid')\n```"
+          },
+          {
+            "value": "```\ndf = px.DataFrame('process_stats', select=['upid', 'cpu_ktime_ns', 'cpu_utime_ns'])\n# Drop upid an cpu_ktime_ns from df.\ndf = df.drop(['upid', 'cpu_ktime_ns'])\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "columns",
+            "desc": "DataFrame columns to drop, either as a string or a list.",
+            "types": [
+              "Union[str,List[str]]"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "DataFrame with the specified columns removed.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "DataFrame.__getitem__",
+        "brief": "Keeps only the specified columns.",
+        "desc": "Returns a DataFrame with only the specified columns. Useful for pruning columns to a small set before data is displayed. See `drop()` on how to drop specific columns instead.     ",
+        "examples": [
+          {
+            "value": "```\ndf = px.DataFrame('process_stats', select=['upid', 'cpu_ktime_ns', 'rss_bytes'])\n# Keep only the upid and rss_bytes columns\ndf = df[['upid', 'rss_bytes']]\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "columns",
+            "desc": "DataFrame columns to keep.",
+            "types": [
+              "List[str]"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "DataFrame with the specified columns removed.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "DataFrame.head",
+        "brief": "Return the first n rows.",
+        "desc": "Returns a DataFrame with the first n rows of data.     ",
+        "examples": [
+          {
+            "value": "```\ndf = px.DataFrame('http_events')\n# Keep only the first 100 http requests.\ndf = df.head(100)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "n",
+            "desc": "The number of rows to return. If not set, default is 5.",
+            "types": [
+              "int"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "DataFrame with the first n rows.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "DataFrame.map",
+        "brief": "Sets up the runtime expression and assigns the result to the specified column.",
+        "desc": "Adds a column with the specified name and the expression that evaluates to the column value. The evaluation of this expression happens inside of the Pixie engine (Carnot) thus cannot be directly accessed during compilation.  The expression can be a scalar value, a column from the same dataframe, or a [UDF](/reference/pxl/udf) function call. The syntax can be either `df['colname'] = expr` or `df.colname = expr`, the second option is simply syntactic sugar. The first form is slightly more expressive as you can set column names with spaces.       ",
+        "examples": [
+          {
+            "value": "```\ndf = px.DataFrame('process_stats')\n# Map scalar value to a column.\ndf['number'] = 12\n```"
+          },
+          {
+            "value": "```\ndf = px.DataFrame('http_events')\ndf.svc = df.ctx['svc']\n# Map column to another column name.\ndf.resp_body = df.resp_body\n```"
+          },
+          {
+            "value": "```\ndf = px.DataFrame('http_events')\n# Map expression to the column.\ndf['latency_ms'] = df['resp_latency_ns'] / 1.0e9\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "column_name",
+            "desc": "The name of the column to assign this value.",
+            "types": [
+              "str"
+            ]
+          },
+          {
+            "ident": "expr",
+            "desc": "The expression to evaluate in Carnot.",
+            "types": [
+              "ScalarExpression"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "DataFrame with the new column added.",
           "types": [
             "px.DataFrame"
           ]
@@ -627,12 +738,70 @@
     },
     {
       "body": {
-        "name": "DataFrame.__getitem__",
-        "brief": "Keeps only the specified columns.",
-        "desc": "Returns a DataFrame with only the specified columns. Useful for pruning columns to a small set before data is displayed. See `drop()` on how to drop specific columns instead.     ",
+        "name": "DataFrame.filter",
+        "brief": "Returns a DataFrame with only those rows that match the condition.",
+        "desc": "Filters for the rows in the DataFrame that match the boolean condition. Will error out if you don't pass in a boolean expression. The functions available are defined in [UDFs](/reference/pxl/udf).     ",
         "examples": [
           {
-            "value": "```\ndf = px.DataFrame('process_stats', select=['upid', 'cpu_ktime_ns', 'rss_bytes'])\n# Keep only the upid and rss_bytes columns\ndf = df[['upid', 'rss_bytes']]\n```"
+            "value": "```\ndf = px.DataFrame('http_events')\n# Filter for only http requests that are greater than 100 milliseconds\ndf = df[df['resp_latency_ns'] \u003e 100 * 1000 * 1000]\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "key",
+            "desc": "DataFrame expression that evaluates to a bool. Filter keeps any row that causes the expression to evaluate to True.",
+            "types": [
+              "ScalarExpression"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "DataFrame with only those rows that return True for the expression.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "DataFrame.rolling",
+        "brief": "Groups the data by rolling windows.",
+        "desc": "Rolls up data into groups based on the rolling window that it belongs to. Used to define window aggregates, the streaming analog of batch aggregates.      ",
+        "examples": [
+          {
+            "value": "```\ndf = px.DataFrame('process_stats')\ndf = df.rolling('2s').agg(...)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "window",
+            "desc": "the size of the rolling window.",
+            "types": [
+              "px.Duration"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "DataFrame grouped into rolling windows. Must apply either a groupby or an aggregate on the returned DataFrame.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "DataFrame.groupby",
+        "brief": "Groups the data in preparation for an aggregate.",
+        "desc": "Groups the data by the unique values in the passed in columns. At the current time we do not support standalone groupings, you must always follow the groupby() call with a call to `agg()`.     ",
+        "examples": [
+          {
+            "value": "```\n# Group by UPID and calculate maximum user time for the each\n# UPID group.\ndf = px.DataFrame('process_stats')\ndf = df.groupby('upid').agg(cpu_utime=('cpu_utime_ns', px.max))\n```"
           }
         ]
       },
@@ -640,14 +809,43 @@
         "args": [
           {
             "ident": "columns",
-            "desc": "DataFrame columns to keep.",
+            "desc": "DataFrame columns to group by, either as a string or a list.",
             "types": [
-              "List[str]"
+              "Union[str,List[str]]"
             ]
           }
         ],
         "returnType": {
-          "desc": "DataFrame with the specified columns removed.",
+          "desc": "Grouped DataFrame. Must be followed by a call to `agg()`.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "DataFrame.append",
+        "brief": "Unions the passed in dataframes with this DataFrame.",
+        "desc": "Unions the rows of the passed in DataFrames with this DataFrame. The passed in DataFrames. must have the same relation or `append` will throw a compilation error. Use `merge` to combine DataFrames with different relations.  If there is a time column in the relation, `append` sorts the Unioned data by time. If there is no time column, then append will simply return a DataFrame with each DataFrame stacked on the other.     ",
+        "examples": [
+          {
+            "value": "```\ndf1 = px.DataFrame('process_stats', start_time='-10m', end_time='-9m')\ndf2 = px.DataFrame('process_stats', start_time='-1m')\ndf = df1.append(df2)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "other",
+            "desc": "The DataFrame to union with this one, relation must be the same.",
+            "types": [
+              "px.DataFrame"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "This DataFrame unioned with the passed in argument.",
           "types": [
             "px.DataFrame"
           ]
@@ -712,226 +910,9 @@
           ]
         }
       }
-    },
-    {
-      "body": {
-        "name": "DataFrame.stream",
-        "brief": "Execute this DataFrame in streaming mode.",
-        "desc": "Returns the input DataFrame, but set to streaming mode. Streaming queries execute indefinitely, as opposed to batch queries which return a finite result.     ",
-        "examples": [
-          {
-            "value": "```\ndf = px.DataFrame('http_events').stream()\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [],
-        "returnType": {
-          "desc": "the parent DataFrame in streaming mode.",
-          "types": [
-            "px.DataFrame"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "DataFrame.head",
-        "brief": "Return the first n rows.",
-        "desc": "Returns a DataFrame with the first n rows of data.     ",
-        "examples": [
-          {
-            "value": "```\ndf = px.DataFrame('http_events')\n# Keep only the first 100 http requests.\ndf = df.head(100)\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "n",
-            "desc": "The number of rows to return. If not set, default is 5.",
-            "types": [
-              "int"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "DataFrame with the first n rows.",
-          "types": [
-            "px.DataFrame"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "DataFrame.append",
-        "brief": "Unions the passed in dataframes with this DataFrame.",
-        "desc": "Unions the rows of the passed in DataFrames with this DataFrame. The passed in DataFrames. must have the same relation or `append` will throw a compilation error. Use `merge` to combine DataFrames with different relations.  If there is a time column in the relation, `append` sorts the Unioned data by time. If there is no time column, then append will simply return a DataFrame with each DataFrame stacked on the other.     ",
-        "examples": [
-          {
-            "value": "```\ndf1 = px.DataFrame('process_stats', start_time='-10m', end_time='-9m')\ndf2 = px.DataFrame('process_stats', start_time='-1m')\ndf = df1.append(df2)\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "other",
-            "desc": "The DataFrame to union with this one, relation must be the same.",
-            "types": [
-              "px.DataFrame"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "This DataFrame unioned with the passed in argument.",
-          "types": [
-            "px.DataFrame"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "DataFrame.drop",
-        "brief": "Drops the specified columns from the DataFrame.",
-        "desc": "Returns a DataFrame with the specified columns dropped. Useful for removing columns you don't want to see in the final table result.  See `keep()` on how to specify which columns to keep.     ",
-        "examples": [
-          {
-            "value": "```\ndf = px.DataFrame('process_stats', select=['upid', 'cpu_ktime_ns', 'cpu_utime_ns'])\n# Drop upid from df.\ndf = df.drop('upid')\n```"
-          },
-          {
-            "value": "```\ndf = px.DataFrame('process_stats', select=['upid', 'cpu_ktime_ns', 'cpu_utime_ns'])\n# Drop upid an cpu_ktime_ns from df.\ndf = df.drop(['upid', 'cpu_ktime_ns'])\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "columns",
-            "desc": "DataFrame columns to drop, either as a string or a list.",
-            "types": [
-              "Union[str,List[str]]"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "DataFrame with the specified columns removed.",
-          "types": [
-            "px.DataFrame"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "DataFrame.agg",
-        "brief": "Aggregates the data based on the expressions.",
-        "desc": "Computes the aggregate expressions on the data. If the preceding operator is a groupby, then we evaluate the aggregate expression in each group. If not, we calculate the aggregate expression using all of the preceding data. If no arguments specified and the call follows a grouped DataFrame, then agg() returns the unique groups. If following a non-grouped DataFrame agg() with no args will yield a compilation error.  Each aggregate expression is simply the aggregate function applied to a column, formatted as `\u003cout_col_name\u003e=(\"\u003ccolumn_name\u003e\", \u003cfunction\u003e)`. A list of functions are available in the [UDA docs](/reference/pxl/udf)     ",
-        "examples": [
-          {
-            "value": "```\n# Group by UPID and calculate maximum user time for the each\n# UPID group.\ndf = px.DataFrame('process_stats')\ndf = df.groupby('upid').agg(cpu_utime=('cpu_utime_ns', px.max))\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "**kwargs",
-            "desc": "The column, aggregate function pair that make up the expression to apply, assigned to the output column name. `\u003cout_col_name\u003e=(\"\u003ccolumn_name\u003e\", \u003cfunction\u003e)`. If this value is empty, it will return the unique groups in the previous DataFrame.",
-            "types": [
-              "Tuple[string, AggFn]"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "DataFrame with aggregated expressions evaluated containing the groups (if any) followed by the output column aggregate expression names.",
-          "types": [
-            "px.DataFrame"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "DataFrame.groupby",
-        "brief": "Groups the data in preparation for an aggregate.",
-        "desc": "Groups the data by the unique values in the passed in columns. At the current time we do not support standalone groupings, you must always follow the groupby() call with a call to `agg()`.     ",
-        "examples": [
-          {
-            "value": "```\n# Group by UPID and calculate maximum user time for the each\n# UPID group.\ndf = px.DataFrame('process_stats')\ndf = df.groupby('upid').agg(cpu_utime=('cpu_utime_ns', px.max))\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "columns",
-            "desc": "DataFrame columns to group by, either as a string or a list.",
-            "types": [
-              "Union[str,List[str]]"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "Grouped DataFrame. Must be followed by a call to `agg()`.",
-          "types": [
-            "px.DataFrame"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "DataFrame.filter",
-        "brief": "Returns a DataFrame with only those rows that match the condition.",
-        "desc": "Filters for the rows in the DataFrame that match the boolean condition. Will error out if you don't pass in a boolean expression. The functions available are defined in [UDFs](/reference/pxl/udf).     ",
-        "examples": [
-          {
-            "value": "```\ndf = px.DataFrame('http_events')\n# Filter for only http requests that are greater than 100 milliseconds\ndf = df[df['resp_latency_ns'] \u003e 100 * 1000 * 1000]\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "key",
-            "desc": "DataFrame expression that evaluates to a bool. Filter keeps any row that causes the expression to evaluate to True.",
-            "types": [
-              "ScalarExpression"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "DataFrame with only those rows that return True for the expression.",
-          "types": [
-            "px.DataFrame"
-          ]
-        }
-      }
     }
   ],
   "mutationDocs": [
-    {
-      "body": {
-        "name": "pxtrace.DeleteTracepoint",
-        "brief": "Deletes a tracepoint.",
-        "desc": "Deletes the tracepoint with the provided name, should it exist.  ",
-        "examples": []
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "name",
-            "desc": "The name of the tracepoint.",
-            "types": [
-              "str"
-            ]
-          }
-        ]
-      }
-    },
     {
       "body": {
         "name": "pxtrace.UpsertTracepoint",
@@ -974,6 +955,265 @@
             "desc": "The length of time that a tracepoint will stay alive, after which it will be removed.",
             "types": [
               "px.Duration"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "body": {
+        "name": "pxtrace.DeleteTracepoint",
+        "brief": "Deletes a tracepoint.",
+        "desc": "Deletes the tracepoint with the provided name, should it exist.  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "name",
+            "desc": "The name of the tracepoint.",
+            "types": [
+              "str"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "otelDocs": [
+    {
+      "body": {
+        "name": "px.otel.metric.Gauge",
+        "brief": "Defines the OpenTelemetry Metric Gauge type.",
+        "desc": "Gauge describes how to transform a pixie DataFrame into the OpenTelemetry Metric Gauge type.  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "name",
+            "desc": "The name of the metric.",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "ident": "value",
+            "desc": "The column that contains the data. Must be either an INT64 or a FLOAT64.",
+            "types": [
+              "Column"
+            ]
+          },
+          {
+            "ident": "description",
+            "desc": "A description of what the metric tracks.",
+            "types": [
+              "string, optional"
+            ]
+          },
+          {
+            "ident": "attributes",
+            "desc": "A mapping of attribute name to the column name that stores data about the attribute.",
+            "types": [
+              "Dict[string, string], optional"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "the description of how to map a DataFrame to OpenTelemetry Data. Can be passed into into px.otel.Data() as data.",
+          "types": [
+            "OTelDataContainer"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.otel.metric.Summary",
+        "brief": "Defines the OpenTelemetry Metric Summary type.",
+        "desc": "Summary describes how to transform a pixie DataFrame into the OpenTelemetry Metric Summary type.  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "name",
+            "desc": "The name of the metric.",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "ident": "count",
+            "desc": "The column of the count of elements to use for the Summary.",
+            "types": [
+              "Column"
+            ]
+          },
+          {
+            "ident": "sum",
+            "desc": "The column of the sum of elements in the particular distribution to use for the Summary.",
+            "types": [
+              "Column"
+            ]
+          },
+          {
+            "ident": "quantile_values",
+            "desc": "The mapping of the quantile value to the DataFrame column containing the quantile value information.",
+            "types": [
+              "Dict[float, Column]"
+            ]
+          },
+          {
+            "ident": "description",
+            "desc": "A description of what the metric tracks.",
+            "types": [
+              "string, optional"
+            ]
+          },
+          {
+            "ident": "attributes",
+            "desc": "A mapping of attribute name to the column name that stores data about the attribute.",
+            "types": [
+              "Dict[double, Column], optional"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "the description of how to map a DataFrame to OpenTelemetry Data. Can be passed into into px.otel.Data() as data.",
+          "types": [
+            "OTelDataContainer"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.otel.trace.Span",
+        "brief": "Defines the OpenTelemetry Trace Span type.",
+        "desc": "Span describes how to transform a pixie DataFrame into the OpenTelemetry Span type.  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "name",
+            "desc": "The name of the span. Can be a stirng or a STRING column.",
+            "types": [
+              "string,Column"
+            ]
+          },
+          {
+            "ident": "start_time",
+            "desc": "The column that marks the beginning of the span, must be TIME64NS.",
+            "types": [
+              "Column"
+            ]
+          },
+          {
+            "ident": "end_time",
+            "desc": "The column that marks the end of the span, must be TIME64NS.",
+            "types": [
+              "Column"
+            ]
+          },
+          {
+            "ident": "trace_id",
+            "desc": "The column containing trace_ids, must be formatted as a lower-case hex with 32 hex characters (aka 16 bytes), or the engine will auto-generate a new ID. If not specified, the OpenTelemetry exporter will auto-generate a valid ID.",
+            "types": [
+              "Column, optional"
+            ]
+          },
+          {
+            "ident": "span_id",
+            "desc": "The column containing trace_ids, must be formatted as a lower-case hex with 16 hex characters (aka 8 bytes), or the engine will auto-generate a new ID. If not specified, the OpenTelemetry exporter will auto-generate a valid ID.",
+            "types": [
+              "Column, optional"
+            ]
+          },
+          {
+            "ident": "parent_span_id",
+            "desc": "The column containing parent_span_ids, must be formatted as a lower-case hex with 16 hex characters (aka 8 bytes), or the engine will write the data as empty. If not specified, will leave the parent_span_id field empty.",
+            "types": [
+              "Column, optional"
+            ]
+          },
+          {
+            "ident": "attributes",
+            "desc": "A mapping of attribute name to the column name that stores data about the attribute.",
+            "types": [
+              "Dict[string, string], optional"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "the description of how to map a DataFrame to OpenTelemetry Data. Can be passed into into px.otel.Data() as data.",
+          "types": [
+            "OTelDataContainer"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.otel.Data",
+        "brief": "Defines the transformation and destination of a DataFrame into OpenTelemetry data.",
+        "desc": "Use this function to define which columns in a DataFrame should be tracked as OpenTelemetry data and which ones define the resources, attributes, metrics, et.c  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "data",
+            "desc": "The configuration for the data, describing how the data is created in the DataFrame and what kind of metric to populate in OTel.",
+            "types": [
+              "px.otel.Data"
+            ]
+          },
+          {
+            "ident": "resource",
+            "desc": "A description of the resource that creates this data. Must include 'service.name' but can also include other data as well.",
+            "types": [
+              "Dict[string, Column]"
+            ]
+          },
+          {
+            "ident": "endpoint",
+            "desc": "The endpoint configuration value. If left out, must be set in the OTel plugin settings.",
+            "types": [
+              "px.otel.Endpoint, optional"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "the description of how to map a DataFrame to OpenTelemetry Data. Can be passed into `px.export`.",
+          "types": [
+            "Exporter"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.otel.Endpoint",
+        "brief": "The Collector destination for exported OpenTelemetry data.",
+        "desc": "Describes the endpoint and any connection arguments necessary to talk to an OpenTelemetry collector. Passed as an argument to the different OTel data type configurations in PxL.  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "url",
+            "desc": "The URL of the OTel collector.",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "ident": "headers",
+            "desc": "The connection metadata to add to the header of the request.",
+            "types": [
+              "Dict[string,string], optional"
             ]
           }
         ]
@@ -1024,7 +1264,7 @@
       {
         "def": {
           "name": "class Conn",
-          "declaration": "Conn(self, token: str, pixie_url: str, cluster_id: str, use_encryption: bool = True, cluster_info: src.api.proto.cloudpb.cloudapi_pb2.ClusterInfo = None, channel_fn: Callable[[str], grpc.aio._base_channel.Channel] = None, direct: bool = False )",
+          "declaration": "Conn(self, token: str, pixie_url: str, cluster_id: str, use_encryption: bool = True, cluster_info: src.api.proto.cloudpb.cloudapi_pb2.ClusterInfo = None, channel_fn: Callable[[str], grpc.aio._base_channel.Channel] = None )",
           "docstring": "The logical representation of a connection.\n\nHolds the authorization information and handles the creation\nof an authorized gRPC channel."
         },
         "methods": [
@@ -1141,89 +1381,9 @@
   "tracepointFieldDocs": [
     {
       "body": {
-        "name": "pxtrace.kprobe",
-        "brief": "Defines a kprobe target for an UpsertTracepoint.",
-        "examples": []
-      },
-      "funcDoc": {
-        "args": [],
-        "returnType": {
-          "desc": "KProbe target that can be passed into UpsertTracepoint.",
-          "types": [
-            "KProbeTarget"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "pxtrace.PodProcess",
-        "brief": "Creates a Tracepoint target for a process.",
-        "desc": "Defines a tracepoint target for a process based on the pod and if that's not specific enough a container and process path.  ",
-        "examples": []
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "pod_name",
-            "desc": "The name of the pod running the target process. Must be of the format \u003cnamespace\u003e/\u003cpod\u003e. You may also use the prefix of the pod name to avoid writing the kubernetes generated check-sum.",
-            "types": [
-              "str"
-            ]
-          },
-          {
-            "ident": "container_name",
-            "desc": "The name of the container that's running the process. Specify this argument if a pod has more than one containers. The compiler will error out if a pod has multiple containers and this is not specified.",
-            "types": [
-              "str, optional"
-            ]
-          },
-          {
-            "ident": "process_name",
-            "desc": "A regexp that matches any substrings of the command line of the target process. Specify this if a container has more than one process. The compiler will error out if a container has multiple processes and this is not specified.",
-            "types": [
-              "str, optional"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "A pointer to that Process that can be passed as a target to UpsertTracepoint.",
-          "types": [
-            "ProcessTarget"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
         "name": "pxtrace.RetExpr",
         "brief": "Specifies a function return value to trace.",
         "desc": "Extracts data from the function return value, as specified by the provided expression. Traceable types are the same as in `ArgExpr`. Return values are accessed by index (`$0` for the first return value, `$1` for the second return value, etc.). In Golang, the first index value is the number of arguments, excluding the receiver. For example, the return value for `fun Sum(a int, b int) int` is `$2`. Return values that are structs may be accessed using dotted notation, similar to `ArgExpr`, (e.g. `$0.foo`).  ",
-        "examples": []
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "expr",
-            "desc": "The expression to evaluate.",
-            "types": [
-              "str"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "A materialized column pointer to use in output table definitions.",
-          "types": [
-            "px.TracingField"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "pxtrace.ArgExpr",
-        "brief": "Specifies a function argument to trace.",
-        "desc": "Extracts the function argument, as specified by the provided expression. Traceable types are base types (`int`, `float`, etc.), strings and byte arrays. Base-type arguments are specified directly (`arg1`), while struct members are accessed using dotted notation (`arg1.foo`). The dot operator works on both pointer and non-pointer types.  ",
         "examples": []
       },
       "funcDoc": {
@@ -1277,6 +1437,70 @@
     },
     {
       "body": {
+        "name": "pxtrace.ArgExpr",
+        "brief": "Specifies a function argument to trace.",
+        "desc": "Extracts the function argument, as specified by the provided expression. Traceable types are base types (`int`, `float`, etc.), strings and byte arrays. Base-type arguments are specified directly (`arg1`), while struct members are accessed using dotted notation (`arg1.foo`). The dot operator works on both pointer and non-pointer types.  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "expr",
+            "desc": "The expression to evaluate.",
+            "types": [
+              "str"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "A materialized column pointer to use in output table definitions.",
+          "types": [
+            "px.TracingField"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "pxtrace.PodProcess",
+        "brief": "Creates a Tracepoint target for a process.",
+        "desc": "Defines a tracepoint target for a process based on the pod and if that's not specific enough a container and process path.  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "pod_name",
+            "desc": "The name of the pod running the target process. Must be of the format \u003cnamespace\u003e/\u003cpod\u003e. You may also use the prefix of the pod name to avoid writing the kubernetes generated check-sum.",
+            "types": [
+              "str"
+            ]
+          },
+          {
+            "ident": "container_name",
+            "desc": "The name of the container that's running the process. Specify this argument if a pod has more than one containers. The compiler will error out if a pod has multiple containers and this is not specified.",
+            "types": [
+              "str, optional"
+            ]
+          },
+          {
+            "ident": "process_name",
+            "desc": "A regexp that matches any substrings of the command line of the target process. Specify this if a container has more than one process. The compiler will error out if a container has multiple processes and this is not specified.",
+            "types": [
+              "str, optional"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "A pointer to that Process that can be passed as a target to UpsertTracepoint.",
+          "types": [
+            "ProcessTarget"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
         "name": "pxtrace.FunctionLatency",
         "brief": "Specifies a function latency to trace.",
         "desc": "Computes the function latency, from entry to return. The measured latency includes includes time spent in sub-calls.  ",
@@ -1288,6 +1512,22 @@
           "desc": "A materialized column pointer to use in output table definitions.",
           "types": [
             "px.TracingField"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "pxtrace.kprobe",
+        "brief": "Defines a kprobe target for an UpsertTracepoint.",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [],
+        "returnType": {
+          "desc": "KProbe target that can be passed into UpsertTracepoint.",
+          "types": [
+            "KProbeTarget"
           ]
         }
       }
@@ -1897,7 +2137,7 @@
           ],
           "retval": {
             "desc": "`a` with `b` subtracted from it.",
-            "type": "INT64"
+            "type": "TIME64NS"
           }
         }
       },
@@ -5045,6 +5285,80 @@
         }
       },
       {
+        "name": "uri_parse",
+        "brief": "Parses the URI into it's component parts and returns the parts as a JSON string.",
+        "examples": [
+          {
+            "value": "```\ndf.uri = 'https://px.dev/community/?param1=val1'\ndf.parsed = px.uri_parse(df.uri)\ndf.path = px.pluck(df.parsed, 'path') # /community/\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "uri",
+              "desc": "The uri to parse.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "A JSON string representation with the URI parts.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "uri_recompose",
+        "brief": "Recomposes the URI parts int a URI.",
+        "examples": [
+          {
+            "value": "```\ndf.uri = px.uri_recompose('https', '', 'px.dev', 0, '/community/', 'param1=val1', '') # https://px.dev/community/?param1=val1\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "scheme",
+              "desc": "The scheme for the URI.",
+              "type": "STRING"
+            },
+            {
+              "ident": "userInfo",
+              "desc": "The userInfo for the URI.",
+              "type": "STRING"
+            },
+            {
+              "ident": "host",
+              "desc": "The host for the URI.",
+              "type": "STRING"
+            },
+            {
+              "ident": "port",
+              "desc": "The port for the URI.",
+              "type": "INT64"
+            },
+            {
+              "ident": "path",
+              "desc": "The path for the URI.",
+              "type": "STRING"
+            },
+            {
+              "ident": "query",
+              "desc": "The query for the URI.",
+              "type": "STRING"
+            },
+            {
+              "ident": "fragment",
+              "desc": "The fragment for the URI.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "A fully composed URI.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
         "name": "asid",
         "brief": "Get the agent ID.",
         "desc": "Get the agent ID of the node that the data originated from.",
@@ -6134,6 +6448,38 @@
           "retval": {
             "desc": "The number of CPUs of the host machine.",
             "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "vizier_id",
+        "brief": "Get the ID of the cluster.",
+        "desc": "Get the ID of the Vizier.",
+        "examples": [
+          {
+            "value": "```\ndf.vizier_id = px.vizier_id()\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "retval": {
+            "desc": "The vizier ID of the cluster.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "vizier_name",
+        "brief": "Get the name of the cluster.",
+        "desc": "Get the name of the Vizier.",
+        "examples": [
+          {
+            "value": "```\ndf.vizier_name = px.vizier_name()\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "retval": {
+            "desc": "The name of the cluster according to vizier.",
+            "type": "STRING"
           }
         }
       },

@@ -175,6 +175,12 @@ exports.createPages = ({
             'DataFrame',
             'The methods you can apply to DataFrames',
           );
+          pxlObjectDocsPages(
+            jsonDocumentation.otelDocs,
+            'otel-export',
+            'OpenTelemetry Export',
+            'The methods to interact with Pixie\'s OpenTelemetry exporter',
+          );
 
           // create udfDocs index Pages
           createPage({
