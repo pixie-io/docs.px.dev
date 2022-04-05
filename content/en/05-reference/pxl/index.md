@@ -15,7 +15,7 @@ PxL can be executed by the Pixie platform by using either the web based UI, API 
 
 ## Data Types
 
-PxL has a rich type system consisting of both concrete and semantic types. Semantics types are used for the following purposes:
+PxL has a rich type system consisting of both concrete and semantic types. Semantic types are used for the following purposes:
 
 - The query planner uses types to determine which PEM agents to pull data from.
 - The UI uses types to determine how to visualize the data. For example, data of the `ST_BYTES` semantic type will be displayed with the appropriate label (`KB`, `MB`, etc).
