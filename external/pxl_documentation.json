@@ -2,36 +2,293 @@
   "compileFnDocs": [
     {
       "body": {
-        "name": "px.equals_any",
-        "brief": "Returns true if the value is in the list.",
-        "desc": "Check equality of the input value with every element of a list.   ",
+        "name": "px.strptime",
+        "brief": "Parse a datestring into a px.Time.",
+        "desc": "Parse a datestring using a standard time format template into an internal time representation. The format must follow the C strptime format, outlined in this document: https://pubs.opengroup.org/onlinepubs/009695399/functions/strptime.html   ",
         "examples": [
           {
-            "value": "```\ndf.val = px.equals_any(df.remote_addr, ['10.0.0.1', '10.0.0.2'])\n```"
+            "value": "```\ntime = px.strptime(\"2020-03-12 19:39:59 -0200\", \"%Y-%m-%d %H:%M:%S %z\")\n```"
           }
         ]
       },
       "funcDoc": {
         "args": [
           {
-            "ident": "value",
-            "desc": "The value to compare.",
+            "ident": "date_string",
+            "desc": "The time as a string, should match the format object.",
             "types": [
-              "px.Expr"
+              "string"
             ]
           },
           {
-            "ident": "comparisons",
-            "desc": "The list of values to check equality to the value.",
+            "ident": "format",
+            "desc": "The string format according to the C strptime format https://pubs.opengroup.org/onlinepubs/009695399/functions/strptime.html",
             "types": [
-              "List[px.Expr]"
+              "string"
             ]
           }
         ],
         "returnType": {
-          "desc": "An expression that evaluates to true if the value is found in the list.",
+          "desc": "The time value represented in the data.",
           "types": [
-            "px.Expr"
+            "px.Time"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.microseconds",
+        "brief": "Gets the specified number of microseconds.",
+        "examples": [
+          {
+            "value": "```\n# Returns 2 microseconds.\ntime = px.microseconds(2)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "unit",
+            "desc": "The number of microseconds to render.",
+            "types": [
+              "int"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "Duration representing `unit` microseconds.",
+          "types": [
+            "px.Duration"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.make_upid",
+        "brief": "Create a UPID from its components to represent a process.",
+        "desc": "Creates a UPID object from asid, pid, and time started in nanoseconds. UPID stands for unique PID and is a Pixie concept to ensure tracked processes are unique in time and across nodes.  Note: Creating this value from scratch might be very difficult, especially given the nanosecond timestamp. It's probably only useful if you find the UPID printed out as it's constituent components.  In most situations, you might find that `px.uint128` is a better option as we often render UPID as uuid.   ",
+        "examples": [
+          {
+            "value": "```\nval = px.make_upid(123, 456, 1598419816000000)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "asid",
+            "desc": "The ID of the node, according to the Pixie metadata service. Stands for Agent short ID.",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "ident": "pid",
+            "desc": "The PID of the process on the node.",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "ident": "ts_ns",
+            "desc": "The start time of the process in unix time.",
+            "types": [
+              "int"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "The represented UPID.",
+          "types": [
+            "px.UPID"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.uint128",
+        "brief": "Parse the UUID string into a UInt128.",
+        "desc": "Parse the UUID string of canonical textual representation into a 128bit integer (ie \"123e4567-e89b-12d3-a456-426614174000\"). Errors out if the string is not the correct format.   ",
+        "examples": [
+          {
+            "value": "```\nval = px.uint128(\"123e4567-e89b-12d3-a456-426614174000\")\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "uuid",
+            "desc": "the uuid in canoncial uuid4 format (\"123e4567-e89b-12d3-a456-426614174000\")",
+            "types": [
+              "string"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "The uuid as a uint128.",
+          "types": [
+            "uint128"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.minutes",
+        "brief": "Gets the specified number of minutes.",
+        "examples": [
+          {
+            "value": "```\n# Returns 2 minutes.\ntime = px.minutes(2)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "unit",
+            "desc": "The number of minutes to render.",
+            "types": [
+              "int"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "Duration representing `unit` minutes.",
+          "types": [
+            "px.Duration"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.seconds",
+        "brief": "Gets the specified number of seconds.",
+        "examples": [
+          {
+            "value": "```\n# Returns 2 seconds.\ntime = px.seconds(2)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "unit",
+            "desc": "The number of seconds to render.",
+            "types": [
+              "int"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "Duration representing `unit` seconds.",
+          "types": [
+            "px.Duration"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.now",
+        "brief": "Get the current time.",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [],
+        "returnType": {
+          "desc": "The current time as defined at the start of compilation.",
+          "types": [
+            "px.Time"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.parse_duration",
+        "brief": "Parse a duration string to a duration in nanoseconds.",
+        "desc": "Parse a duration string (\"-5m\") to integer nanoseconds (-3,000,000,000) while preserving the sign from the string.   ",
+        "examples": [
+          {
+            "value": "```\n# duration = -300000000000\nduration = px.parse_duration(\"-5m\")\n# duration = 300000000000\nduration = px.parse_duration(\"5m\")\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "duration",
+            "desc": "The duration in string form.",
+            "types": [
+              "string"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "The duration in nanoseconds.",
+          "types": [
+            "px.Duration"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.milliseconds",
+        "brief": "Gets the specified number of milliseconds.",
+        "examples": [
+          {
+            "value": "```\n# Returns 2 milliseconds.\ntime = px.milliseconds(2)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "unit",
+            "desc": "The number of milliseconds to render.",
+            "types": [
+              "int"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "Duration representing `unit` milliseconds.",
+          "types": [
+            "px.Duration"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.days",
+        "brief": "Gets the specified number of days.",
+        "examples": [
+          {
+            "value": "```\n# Returns 2 days.\ntime = px.days(2)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "unit",
+            "desc": "The number of days to render.",
+            "types": [
+              "int"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "Duration representing `unit` days.",
+          "types": [
+            "px.Duration"
           ]
         }
       }
@@ -109,293 +366,36 @@
     },
     {
       "body": {
-        "name": "px.now",
-        "brief": "Get the current time.",
-        "examples": []
-      },
-      "funcDoc": {
-        "args": [],
-        "returnType": {
-          "desc": "The current time as defined at the start of compilation.",
-          "types": [
-            "px.Time"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "px.parse_duration",
-        "brief": "Parse a duration string to a duration in nanoseconds.",
-        "desc": "Parse a duration string (\"-5m\") to integer nanoseconds (-3,000,000,000) while preserving the sign from the string.   ",
+        "name": "px.equals_any",
+        "brief": "Returns true if the value is in the list.",
+        "desc": "Check equality of the input value with every element of a list.   ",
         "examples": [
           {
-            "value": "```\n# duration = -300000000000\nduration = px.parse_duration(\"-5m\")\n# duration = 300000000000\nduration = px.parse_duration(\"5m\")\n```"
+            "value": "```\ndf.val = px.equals_any(df.remote_addr, ['10.0.0.1', '10.0.0.2'])\n```"
           }
         ]
       },
       "funcDoc": {
         "args": [
           {
-            "ident": "duration",
-            "desc": "The duration in string form.",
+            "ident": "value",
+            "desc": "The value to compare.",
             "types": [
-              "string"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "The duration in nanoseconds.",
-          "types": [
-            "px.Duration"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "px.days",
-        "brief": "Gets the specified number of days.",
-        "examples": [
-          {
-            "value": "```\n# Returns 2 days.\ntime = px.days(2)\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "unit",
-            "desc": "The number of days to render.",
-            "types": [
-              "int"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "Duration representing `unit` days.",
-          "types": [
-            "px.Duration"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "px.milliseconds",
-        "brief": "Gets the specified number of milliseconds.",
-        "examples": [
-          {
-            "value": "```\n# Returns 2 milliseconds.\ntime = px.milliseconds(2)\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "unit",
-            "desc": "The number of milliseconds to render.",
-            "types": [
-              "int"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "Duration representing `unit` milliseconds.",
-          "types": [
-            "px.Duration"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "px.seconds",
-        "brief": "Gets the specified number of seconds.",
-        "examples": [
-          {
-            "value": "```\n# Returns 2 seconds.\ntime = px.seconds(2)\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "unit",
-            "desc": "The number of seconds to render.",
-            "types": [
-              "int"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "Duration representing `unit` seconds.",
-          "types": [
-            "px.Duration"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "px.minutes",
-        "brief": "Gets the specified number of minutes.",
-        "examples": [
-          {
-            "value": "```\n# Returns 2 minutes.\ntime = px.minutes(2)\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "unit",
-            "desc": "The number of minutes to render.",
-            "types": [
-              "int"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "Duration representing `unit` minutes.",
-          "types": [
-            "px.Duration"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "px.uint128",
-        "brief": "Parse the UUID string into a UInt128.",
-        "desc": "Parse the UUID string of canonical textual representation into a 128bit integer (ie \"123e4567-e89b-12d3-a456-426614174000\"). Errors out if the string is not the correct format.   ",
-        "examples": [
-          {
-            "value": "```\nval = px.uint128(\"123e4567-e89b-12d3-a456-426614174000\")\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "uuid",
-            "desc": "the uuid in canoncial uuid4 format (\"123e4567-e89b-12d3-a456-426614174000\")",
-            "types": [
-              "string"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "The uuid as a uint128.",
-          "types": [
-            "uint128"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "px.make_upid",
-        "brief": "Create a UPID from its components to represent a process.",
-        "desc": "Creates a UPID object from asid, pid, and time started in nanoseconds. UPID stands for unique PID and is a Pixie concept to ensure tracked processes are unique in time and across nodes.  Note: Creating this value from scratch might be very difficult, especially given the nanosecond timestamp. It's probably only useful if you find the UPID printed out as it's constituent components.  In most situations, you might find that `px.uint128` is a better option as we often render UPID as uuid.   ",
-        "examples": [
-          {
-            "value": "```\nval = px.make_upid(123, 456, 1598419816000000)\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "asid",
-            "desc": "The ID of the node, according to the Pixie metadata service. Stands for Agent short ID.",
-            "types": [
-              "int"
+              "px.Expr"
             ]
           },
           {
-            "ident": "pid",
-            "desc": "The PID of the process on the node.",
+            "ident": "comparisons",
+            "desc": "The list of values to check equality to the value.",
             "types": [
-              "int"
-            ]
-          },
-          {
-            "ident": "ts_ns",
-            "desc": "The start time of the process in unix time.",
-            "types": [
-              "int"
+              "List[px.Expr]"
             ]
           }
         ],
         "returnType": {
-          "desc": "The represented UPID.",
+          "desc": "An expression that evaluates to true if the value is found in the list.",
           "types": [
-            "px.UPID"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "px.microseconds",
-        "brief": "Gets the specified number of microseconds.",
-        "examples": [
-          {
-            "value": "```\n# Returns 2 microseconds.\ntime = px.microseconds(2)\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "unit",
-            "desc": "The number of microseconds to render.",
-            "types": [
-              "int"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "Duration representing `unit` microseconds.",
-          "types": [
-            "px.Duration"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "px.strptime",
-        "brief": "Parse a datestring into a px.Time.",
-        "desc": "Parse a datestring using a standard time format template into an internal time representation. The format must follow the C strptime format, outlined in this document: https://pubs.opengroup.org/onlinepubs/009695399/functions/strptime.html   ",
-        "examples": [
-          {
-            "value": "```\ntime = px.strptime(\"2020-03-12 19:39:59 -0200\", \"%Y-%m-%d %H:%M:%S %z\")\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "date_string",
-            "desc": "The time as a string, should match the format object.",
-            "types": [
-              "string"
-            ]
-          },
-          {
-            "ident": "format",
-            "desc": "The string format according to the C strptime format https://pubs.opengroup.org/onlinepubs/009695399/functions/strptime.html",
-            "types": [
-              "string"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "The time value represented in the data.",
-          "types": [
-            "px.Time"
+            "px.Expr"
           ]
         }
       }
@@ -464,27 +464,6 @@
     },
     {
       "body": {
-        "name": "DataFrame.stream",
-        "brief": "Execute this DataFrame in streaming mode.",
-        "desc": "Returns the input DataFrame, but set to streaming mode. Streaming queries execute indefinitely, as opposed to batch queries which return a finite result.     ",
-        "examples": [
-          {
-            "value": "```\ndf = px.DataFrame('http_events').stream()\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [],
-        "returnType": {
-          "desc": "the parent DataFrame in streaming mode.",
-          "types": [
-            "px.DataFrame"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
         "name": "DataFrame.merge",
         "brief": "Merges the input DataFrame with this one using a database-style join.",
         "desc": "Joins this DataFrame with the passed in right DataFrame according to the specified Join type. The DataFrame that we apply this on is the left DataFrame. The one passed in as an argument is the right DataFrame. If the join keys do not have the same type, this will error out.     ",
@@ -542,67 +521,6 @@
     },
     {
       "body": {
-        "name": "DataFrame.agg",
-        "brief": "Aggregates the data based on the expressions.",
-        "desc": "Computes the aggregate expressions on the data. If the preceding operator is a groupby, then we evaluate the aggregate expression in each group. If not, we calculate the aggregate expression using all of the preceding data. If no arguments specified and the call follows a grouped DataFrame, then agg() returns the unique groups. If following a non-grouped DataFrame agg() with no args will yield a compilation error.  Each aggregate expression is simply the aggregate function applied to a column, formatted as `\u003cout_col_name\u003e=(\"\u003ccolumn_name\u003e\", \u003cfunction\u003e)`. A list of functions are available in the [UDA docs](/reference/pxl/udf)     ",
-        "examples": [
-          {
-            "value": "```\n# Group by UPID and calculate maximum user time for the each\n# UPID group.\ndf = px.DataFrame('process_stats')\ndf = df.groupby('upid').agg(cpu_utime=('cpu_utime_ns', px.max))\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "**kwargs",
-            "desc": "The column, aggregate function pair that make up the expression to apply, assigned to the output column name. `\u003cout_col_name\u003e=(\"\u003ccolumn_name\u003e\", \u003cfunction\u003e)`. If this value is empty, it will return the unique groups in the previous DataFrame.",
-            "types": [
-              "Tuple[string, AggFn]"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "DataFrame with aggregated expressions evaluated containing the groups (if any) followed by the output column aggregate expression names.",
-          "types": [
-            "px.DataFrame"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "DataFrame.drop",
-        "brief": "Drops the specified columns from the DataFrame.",
-        "desc": "Returns a DataFrame with the specified columns dropped. Useful for removing columns you don't want to see in the final table result.  See `keep()` on how to specify which columns to keep.     ",
-        "examples": [
-          {
-            "value": "```\ndf = px.DataFrame('process_stats', select=['upid', 'cpu_ktime_ns', 'cpu_utime_ns'])\n# Drop upid from df.\ndf = df.drop('upid')\n```"
-          },
-          {
-            "value": "```\ndf = px.DataFrame('process_stats', select=['upid', 'cpu_ktime_ns', 'cpu_utime_ns'])\n# Drop upid an cpu_ktime_ns from df.\ndf = df.drop(['upid', 'cpu_ktime_ns'])\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "columns",
-            "desc": "DataFrame columns to drop, either as a string or a list.",
-            "types": [
-              "Union[str,List[str]]"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "DataFrame with the specified columns removed.",
-          "types": [
-            "px.DataFrame"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
         "name": "DataFrame.__getitem__",
         "brief": "Keeps only the specified columns.",
         "desc": "Returns a DataFrame with only the specified columns. Useful for pruning columns to a small set before data is displayed. See `drop()` on how to drop specific columns instead.     ",
@@ -632,27 +550,107 @@
     },
     {
       "body": {
-        "name": "DataFrame.head",
-        "brief": "Return the first n rows.",
-        "desc": "Returns a DataFrame with the first n rows of data.     ",
+        "name": "DataFrame.stream",
+        "brief": "Execute this DataFrame in streaming mode.",
+        "desc": "Returns the input DataFrame, but set to streaming mode. Streaming queries execute indefinitely, as opposed to batch queries which return a finite result.     ",
         "examples": [
           {
-            "value": "```\ndf = px.DataFrame('http_events')\n# Keep only the first 100 http requests.\ndf = df.head(100)\n```"
+            "value": "```\ndf = px.DataFrame('http_events').stream()\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [],
+        "returnType": {
+          "desc": "the parent DataFrame in streaming mode.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "DataFrame.DataFrame",
+        "brief": "Sets up a DataFrame object from the specified table.",
+        "desc": "Sets up the loading procedure of the table into the rest of the execution engine. The returned value can be transformed, aggregated and filtered using the DataFrame methods.  Note that we are not actually loading data until the entire query is compiled, meaning that running this by itself won't do anything until a full pipeline is constructed.  DataFrame is able to load in any set of tables. See `px.GetSchemas()` for a list of tables and the columns that can be loaded.     ",
+        "examples": [
+          {
+            "value": "```\n# Select all columns\ndf = px.DataFrame('http_events', start_time='-5m')\n```"
+          },
+          {
+            "value": "```\n# Select subset of columns.\ndf = px.DataFrame('http_events', select=['upid', 'req_body'], start_time='-5m')\n```"
+          },
+          {
+            "value": "```\n# Absolute time specification.\ndf = px.DataFrame('http_events', start_time='2020-07-13 18:02:5.00 -0700')\n```"
+          },
+          {
+            "value": "```\n# Absolute time sepecification (nanoseconds). Note this format only works for PxL scripts;\n# The Live UI's `start_time` argument does not support this format.\ndf = px.DataFrame('http_events', start_time=1646157769000000000)\n```"
           }
         ]
       },
       "funcDoc": {
         "args": [
           {
-            "ident": "n",
-            "desc": "The number of rows to return. If not set, default is 5.",
+            "ident": "table",
+            "desc": "The table name to load.",
             "types": [
-              "int"
+              "string"
+            ]
+          },
+          {
+            "ident": "select",
+            "desc": "The columns of the table to load. Leave empty if you want to select all.",
+            "types": [
+              "List[str]]"
+            ]
+          },
+          {
+            "ident": "start_time",
+            "desc": "The earliest timestamp of data to load. The format can be one of the following: (1) relative time with format \"-5m\" or \"-3h\", (2) absolute time with format \"2020-07-13 18:02:5.00 +0000\", or (3) absolute time in nanoseconds.",
+            "types": [
+              "px.Time"
+            ]
+          },
+          {
+            "ident": "end_time",
+            "desc": "The last timestamp of data to load. The format can be one of the following: (1) relative time with format \"-5m\" or \"-3h\", (2) absolute time with format \"2020-07-13 18:02:5.00 +0000\", or (3) absolute time in nanoseconds.",
+            "types": [
+              "px.Time"
             ]
           }
         ],
         "returnType": {
-          "desc": "DataFrame with the first n rows.",
+          "desc": "DataFrame loaded from the table with the specified columns and time period.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "DataFrame.agg",
+        "brief": "Aggregates the data based on the expressions.",
+        "desc": "Computes the aggregate expressions on the data. If the preceding operator is a groupby, then we evaluate the aggregate expression in each group. If not, we calculate the aggregate expression using all of the preceding data. If no arguments specified and the call follows a grouped DataFrame, then agg() returns the unique groups. If following a non-grouped DataFrame agg() with no args will yield a compilation error.  Each aggregate expression is simply the aggregate function applied to a column, formatted as `\u003cout_col_name\u003e=(\"\u003ccolumn_name\u003e\", \u003cfunction\u003e)`. A list of functions are available in the [UDA docs](/reference/pxl/udf)     ",
+        "examples": [
+          {
+            "value": "```\n# Group by UPID and calculate maximum user time for the each\n# UPID group.\ndf = px.DataFrame('process_stats')\ndf = df.groupby('upid').agg(cpu_utime=('cpu_utime_ns', px.max))\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "**kwargs",
+            "desc": "The column, aggregate function pair that make up the expression to apply, assigned to the output column name. `\u003cout_col_name\u003e=(\"\u003ccolumn_name\u003e\", \u003cfunction\u003e)`. If this value is empty, it will return the unique groups in the previous DataFrame.",
+            "types": [
+              "Tuple[string, AggFn]"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "DataFrame with aggregated expressions evaluated containing the groups (if any) followed by the output column aggregate expression names.",
           "types": [
             "px.DataFrame"
           ]
@@ -703,35 +701,29 @@
     },
     {
       "body": {
-        "name": "DataFrame.ctx.__getitem__",
-        "brief": "Creates the specified metadata as a column.",
-        "desc": "Shorthand for exposing metadata columns in the DataFrame. Each metadata type can be converted from some sets of other metadata types that already exist in the DataFrame.  Attempting to convert to a metadata type that doesn't have the source column will raise a compiler error.  Available keys (and any aliases) as well as the source columns. \n* container_id (): Sources: \"upid\" \n* service_id: Sources: \"upid\",\"service_name\" \n* pod_id: Sources: \"upid\",\"pod_name\" \n* deployment_id: Sources: \"upid\",\"deployment_name\" \n* service_name (\"service\"): Sources: \"upid\",\"service_id\" \n* pod_name (\"pod\"): Sources: \"upid\",\"pod_id\" \n* deployment_name (\"deployment\"): Sources: \"upid\",\"deployment_id\" \n* namespace: Sources: \"upid\" \n* node_name (\"node\"): Sources: \"upid\" \n* hostname (\"host\"): Sources: \"upid\" \n* container_name (\"container\"): Sources: \"upid\" \n* cmdline (\"cmd\"): Sources: \"upid\" \n* asid: Sources: \"upid\" \n* pid: Sources: \"upid\"      ",
+        "name": "DataFrame.head",
+        "brief": "Return the first n rows.",
+        "desc": "Returns a DataFrame with the first n rows of data.     ",
         "examples": [
           {
-            "value": "```\ndf = px.DataFrame('http_events', start_time='-5m')\n# Filter only for data that matches the metadata service.\n# df.ctx['service'] pulls the service column into the DataFrame.\ndf = df[df.ctx['service'] == \"pl/vizier-metadata\"]\n```"
-          },
-          {
-            "value": "```\ndf = px.DataFrame('http_events', start_time='-5m')\n# Add the service column from the metadata object.\ndf.service = df.ctx['service']\n# Group by the service.\ndf = df.groupby('service').agg(req_count=('service', px.count))\n```"
-          },
-          {
-            "value": "```\n# Where metadata context can fail.\ndf = px.DataFrame('http_events', start_time='-5m')\n# Dropping upid so we remove the \"source\" column we could use\ndf = df.drop('upid')\n# FAILS: no source column available for the metadata conversion.\ndf.service = df.ctx['service']\n```"
+            "value": "```\ndf = px.DataFrame('http_events')\n# Keep only the first 100 http requests.\ndf = df.head(100)\n```"
           }
         ]
       },
       "funcDoc": {
         "args": [
           {
-            "ident": "metadata",
-            "desc": "The metadata property you wish to access. Function will throw an error if it doesn't exist.",
+            "ident": "n",
+            "desc": "The number of rows to return. If not set, default is 5.",
             "types": [
-              "string"
+              "int"
             ]
           }
         ],
         "returnType": {
-          "desc": "Column that represents the metadata in the DataFrame. Can be used in a DataFrame expression.",
+          "desc": "DataFrame with the first n rows.",
           "types": [
-            "px.Column"
+            "px.DataFrame"
           ]
         }
       }
@@ -796,35 +788,6 @@
     },
     {
       "body": {
-        "name": "DataFrame.groupby",
-        "brief": "Groups the data in preparation for an aggregate.",
-        "desc": "Groups the data by the unique values in the passed in columns. At the current time we do not support standalone groupings, you must always follow the groupby() call with a call to `agg()`.     ",
-        "examples": [
-          {
-            "value": "```\n# Group by UPID and calculate maximum user time for the each\n# UPID group.\ndf = px.DataFrame('process_stats')\ndf = df.groupby('upid').agg(cpu_utime=('cpu_utime_ns', px.max))\n```"
-          }
-        ]
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "columns",
-            "desc": "DataFrame columns to group by, either as a string or a list.",
-            "types": [
-              "Union[str,List[str]]"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "Grouped DataFrame. Must be followed by a call to `agg()`.",
-          "types": [
-            "px.DataFrame"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
         "name": "DataFrame.append",
         "brief": "Unions the passed in dataframes with this DataFrame.",
         "desc": "Unions the rows of the passed in DataFrames with this DataFrame. The passed in DataFrames. must have the same relation or `append` will throw a compilation error. Use `merge` to combine DataFrames with different relations.  If there is a time column in the relation, `append` sorts the Unioned data by time. If there is no time column, then append will simply return a DataFrame with each DataFrame stacked on the other.     ",
@@ -854,57 +817,94 @@
     },
     {
       "body": {
-        "name": "DataFrame.DataFrame",
-        "brief": "Sets up a DataFrame object from the specified table.",
-        "desc": "Sets up the loading procedure of the table into the rest of the execution engine. The returned value can be transformed, aggregated and filtered using the DataFrame methods.  Note that we are not actually loading data until the entire query is compiled, meaning that running this by itself won't do anything until a full pipeline is constructed.  DataFrame is able to load in any set of tables. See `px.GetSchemas()` for a list of tables and the columns that can be loaded.     ",
+        "name": "DataFrame.ctx.__getitem__",
+        "brief": "Creates the specified metadata as a column.",
+        "desc": "Shorthand for exposing metadata columns in the DataFrame. Each metadata type can be converted from some sets of other metadata types that already exist in the DataFrame.  Attempting to convert to a metadata type that doesn't have the source column will raise a compiler error.  Available keys (and any aliases) as well as the source columns. \n* container_id (): Sources: \"upid\" \n* service_id: Sources: \"upid\",\"service_name\" \n* pod_id: Sources: \"upid\",\"pod_name\" \n* deployment_id: Sources: \"upid\",\"deployment_name\" \n* service_name (\"service\"): Sources: \"upid\",\"service_id\" \n* pod_name (\"pod\"): Sources: \"upid\",\"pod_id\" \n* deployment_name (\"deployment\"): Sources: \"upid\",\"deployment_id\" \n* namespace: Sources: \"upid\" \n* node_name (\"node\"): Sources: \"upid\" \n* hostname (\"host\"): Sources: \"upid\" \n* container_name (\"container\"): Sources: \"upid\" \n* cmdline (\"cmd\"): Sources: \"upid\" \n* asid: Sources: \"upid\" \n* pid: Sources: \"upid\"      ",
         "examples": [
           {
-            "value": "```\n# Select all columns\ndf = px.DataFrame('http_events', start_time='-5m')\n```"
+            "value": "```\ndf = px.DataFrame('http_events', start_time='-5m')\n# Filter only for data that matches the metadata service.\n# df.ctx['service'] pulls the service column into the DataFrame.\ndf = df[df.ctx['service'] == \"pl/vizier-metadata\"]\n```"
           },
           {
-            "value": "```\n# Select subset of columns.\ndf = px.DataFrame('http_events', select=['upid', 'req_body'], start_time='-5m')\n```"
+            "value": "```\ndf = px.DataFrame('http_events', start_time='-5m')\n# Add the service column from the metadata object.\ndf.service = df.ctx['service']\n# Group by the service.\ndf = df.groupby('service').agg(req_count=('service', px.count))\n```"
           },
           {
-            "value": "```\n# Absolute time specification.\ndf = px.DataFrame('http_events', start_time='2020-07-13 18:02:5.00 -0700')\n```"
-          },
-          {
-            "value": "```\n# Absolute time sepecification (nanoseconds). Note this format only works for PxL scripts;\n# The Live UI's `start_time` argument does not support this format.\ndf = px.DataFrame('http_events', start_time=1646157769000000000)\n```"
+            "value": "```\n# Where metadata context can fail.\ndf = px.DataFrame('http_events', start_time='-5m')\n# Dropping upid so we remove the \"source\" column we could use\ndf = df.drop('upid')\n# FAILS: no source column available for the metadata conversion.\ndf.service = df.ctx['service']\n```"
           }
         ]
       },
       "funcDoc": {
         "args": [
           {
-            "ident": "table",
-            "desc": "The table name to load.",
+            "ident": "metadata",
+            "desc": "The metadata property you wish to access. Function will throw an error if it doesn't exist.",
             "types": [
               "string"
-            ]
-          },
-          {
-            "ident": "select",
-            "desc": "The columns of the table to load. Leave empty if you want to select all.",
-            "types": [
-              "List[str]]"
-            ]
-          },
-          {
-            "ident": "start_time",
-            "desc": "The earliest timestamp of data to load. The format can be one of the following: (1) relative time with format \"-5m\" or \"-3h\", (2) absolute time with format \"2020-07-13 18:02:5.00 +0000\", or (3) absolute time in nanoseconds.",
-            "types": [
-              "px.Time"
-            ]
-          },
-          {
-            "ident": "end_time",
-            "desc": "The last timestamp of data to load. The format can be one of the following: (1) relative time with format \"-5m\" or \"-3h\", (2) absolute time with format \"2020-07-13 18:02:5.00 +0000\", or (3) absolute time in nanoseconds.",
-            "types": [
-              "px.Time"
             ]
           }
         ],
         "returnType": {
-          "desc": "DataFrame loaded from the table with the specified columns and time period.",
+          "desc": "Column that represents the metadata in the DataFrame. Can be used in a DataFrame expression.",
+          "types": [
+            "px.Column"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "DataFrame.groupby",
+        "brief": "Groups the data in preparation for an aggregate.",
+        "desc": "Groups the data by the unique values in the passed in columns. At the current time we do not support standalone groupings, you must always follow the groupby() call with a call to `agg()`.     ",
+        "examples": [
+          {
+            "value": "```\n# Group by UPID and calculate maximum user time for the each\n# UPID group.\ndf = px.DataFrame('process_stats')\ndf = df.groupby('upid').agg(cpu_utime=('cpu_utime_ns', px.max))\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "columns",
+            "desc": "DataFrame columns to group by, either as a string or a list.",
+            "types": [
+              "Union[str,List[str]]"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "Grouped DataFrame. Must be followed by a call to `agg()`.",
+          "types": [
+            "px.DataFrame"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "DataFrame.drop",
+        "brief": "Drops the specified columns from the DataFrame.",
+        "desc": "Returns a DataFrame with the specified columns dropped. Useful for removing columns you don't want to see in the final table result.  See `keep()` on how to specify which columns to keep.     ",
+        "examples": [
+          {
+            "value": "```\ndf = px.DataFrame('process_stats', select=['upid', 'cpu_ktime_ns', 'cpu_utime_ns'])\n# Drop upid from df.\ndf = df.drop('upid')\n```"
+          },
+          {
+            "value": "```\ndf = px.DataFrame('process_stats', select=['upid', 'cpu_ktime_ns', 'cpu_utime_ns'])\n# Drop upid an cpu_ktime_ns from df.\ndf = df.drop(['upid', 'cpu_ktime_ns'])\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "columns",
+            "desc": "DataFrame columns to drop, either as a string or a list.",
+            "types": [
+              "Union[str,List[str]]"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "DataFrame with the specified columns removed.",
           "types": [
             "px.DataFrame"
           ]
@@ -983,112 +983,6 @@
   "otelDocs": [
     {
       "body": {
-        "name": "px.otel.metric.Gauge",
-        "brief": "Defines the OpenTelemetry Metric Gauge type.",
-        "desc": "Gauge describes how to transform a pixie DataFrame into the OpenTelemetry Metric Gauge type.  ",
-        "examples": []
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "name",
-            "desc": "The name of the metric.",
-            "types": [
-              "string"
-            ]
-          },
-          {
-            "ident": "value",
-            "desc": "The column that contains the data. Must be either an INT64 or a FLOAT64.",
-            "types": [
-              "Column"
-            ]
-          },
-          {
-            "ident": "description",
-            "desc": "A description of what the metric tracks.",
-            "types": [
-              "string, optional"
-            ]
-          },
-          {
-            "ident": "attributes",
-            "desc": "A mapping of attribute name to the column name that stores data about the attribute.",
-            "types": [
-              "Dict[string, string], optional"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "the description of how to map a DataFrame to OpenTelemetry Data. Can be passed into into px.otel.Data() as data.",
-          "types": [
-            "OTelDataContainer"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
-        "name": "px.otel.metric.Summary",
-        "brief": "Defines the OpenTelemetry Metric Summary type.",
-        "desc": "Summary describes how to transform a pixie DataFrame into the OpenTelemetry Metric Summary type.  ",
-        "examples": []
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "name",
-            "desc": "The name of the metric.",
-            "types": [
-              "string"
-            ]
-          },
-          {
-            "ident": "count",
-            "desc": "The column of the count of elements to use for the Summary.",
-            "types": [
-              "Column"
-            ]
-          },
-          {
-            "ident": "sum",
-            "desc": "The column of the sum of elements in the particular distribution to use for the Summary.",
-            "types": [
-              "Column"
-            ]
-          },
-          {
-            "ident": "quantile_values",
-            "desc": "The mapping of the quantile value to the DataFrame column containing the quantile value information.",
-            "types": [
-              "Dict[float, Column]"
-            ]
-          },
-          {
-            "ident": "description",
-            "desc": "A description of what the metric tracks.",
-            "types": [
-              "string, optional"
-            ]
-          },
-          {
-            "ident": "attributes",
-            "desc": "A mapping of attribute name to the column name that stores data about the attribute.",
-            "types": [
-              "Dict[double, Column], optional"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "the description of how to map a DataFrame to OpenTelemetry Data. Can be passed into into px.otel.Data() as data.",
-          "types": [
-            "OTelDataContainer"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
         "name": "px.otel.trace.Span",
         "brief": "Defines the OpenTelemetry Trace Span type.",
         "desc": "Span describes how to transform a pixie DataFrame into the OpenTelemetry Span type.  ",
@@ -1098,7 +992,7 @@
         "args": [
           {
             "ident": "name",
-            "desc": "The name of the span. Can be a stirng or a STRING column.",
+            "desc": "The name of the span. Can be a string or a STRING column.",
             "types": [
               "string,Column"
             ]
@@ -1147,7 +1041,113 @@
           }
         ],
         "returnType": {
-          "desc": "the description of how to map a DataFrame to OpenTelemetry Data. Can be passed into into px.otel.Data() as data.",
+          "desc": "the mapping of DataFrame columns to OpenTelemetry Span fields. Can be passed into `px.otel.Data()` as the data argument.",
+          "types": [
+            "OTelDataContainer"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.otel.metric.Gauge",
+        "brief": "Defines the DataFrame mapping to an OpenTelemetry Metric Gauge",
+        "desc": "[Gauges](https://opentelemetry.io/docs/reference/specification/metrics/datamodel/#gauge) specify the \"current value\" of a metric at a given time. PxL writers must specify the name foll Gauge describes how to transform a pixie DataFrame into the OpenTelemetry Metric Gauge type.  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "name",
+            "desc": "The name of the metric. Must adhere to [OpenTelemetry's naming conventions](https://opentelemetry.io/docs/reference/specification/metrics/api/#instrument)",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "ident": "value",
+            "desc": "The column that contains the data. Must be either an INT64 or a FLOAT64.",
+            "types": [
+              "Column"
+            ]
+          },
+          {
+            "ident": "description",
+            "desc": "A description of what the metric tracks.",
+            "types": [
+              "string, optional"
+            ]
+          },
+          {
+            "ident": "attributes",
+            "desc": "A mapping of attribute name to the column name that stores data about the attribute.",
+            "types": [
+              "Dict[string, string], optional"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "the mapping of DataFrame columns to OpenTelemetry Gauge fields. Can be passed into `px.otel.Data()` as the data argument.",
+          "types": [
+            "OTelDataContainer"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.otel.metric.Summary",
+        "brief": "Defines the DataFrame mapping to an OpenTelemetry Metric Summary",
+        "desc": "Summaries describe quantile summaries of distributions, such as p90 and p99. The unit of this metric will be inferred from the [SemanticType](https://github.com/pixie-io/pixie/blob/main/src/api/proto/vizierpb/vizierapi.proto#L51) of the column `value`.  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "name",
+            "desc": "The name of the metric.",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "ident": "count",
+            "desc": "The column of the count of elements inside each summary. Must be INT64",
+            "types": [
+              "Column"
+            ]
+          },
+          {
+            "ident": "sum",
+            "desc": "The column of the sum of elements in inside each summary to use for the Summary. Must be FLOAT64",
+            "types": [
+              "Column"
+            ]
+          },
+          {
+            "ident": "quantile_values",
+            "desc": "The mapping of the quantile value to the DataFrame column containing the quantile value information. Must be FLOAT64.",
+            "types": [
+              "Dict[float, Column]"
+            ]
+          },
+          {
+            "ident": "description",
+            "desc": "A description of what the metric tracks.",
+            "types": [
+              "string, optional"
+            ]
+          },
+          {
+            "ident": "attributes",
+            "desc": "A mapping of attribute name to the column name that stores data about the attribute.",
+            "types": [
+              "Dict[double, Column], optional"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "the mapping of DataFrame columns to OpenTelemetry Summary fields. Can be passed into `px.otel.Data()` as the data argument.",
           "types": [
             "OTelDataContainer"
           ]
@@ -1157,8 +1157,8 @@
     {
       "body": {
         "name": "px.otel.Data",
-        "brief": "Defines the transformation and destination of a DataFrame into OpenTelemetry data.",
-        "desc": "Use this function to define which columns in a DataFrame should be tracked as OpenTelemetry data and which ones define the resources, attributes, metrics, et.c  ",
+        "brief": "Specifies the transformation of a DataFrame into OpenTelemetry data.",
+        "desc": "This function makes it easy to transform columnar DataFrame data into single element OpenTelemetry data. User must pass in data configuration(s) (ie `px.otel.metric.Gauge`) and a resource config where `service.name` is one of the attributes.  Optionally, users can specify an endpoint using `px.otel.Endpoint`  ",
         "examples": []
       },
       "funcDoc": {
@@ -1381,31 +1381,6 @@
   "tracepointFieldDocs": [
     {
       "body": {
-        "name": "pxtrace.RetExpr",
-        "brief": "Specifies a function return value to trace.",
-        "desc": "Extracts data from the function return value, as specified by the provided expression. Traceable types are the same as in `ArgExpr`. Return values are accessed by index (`$0` for the first return value, `$1` for the second return value, etc.). In Golang, the first index value is the number of arguments, excluding the receiver. For example, the return value for `fun Sum(a int, b int) int` is `$2`. Return values that are structs may be accessed using dotted notation, similar to `ArgExpr`, (e.g. `$0.foo`).  ",
-        "examples": []
-      },
-      "funcDoc": {
-        "args": [
-          {
-            "ident": "expr",
-            "desc": "The expression to evaluate.",
-            "types": [
-              "str"
-            ]
-          }
-        ],
-        "returnType": {
-          "desc": "A materialized column pointer to use in output table definitions.",
-          "types": [
-            "px.TracingField"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
         "name": "pxtrace.SharedObject",
         "brief": "Defines a shared object target for Tracepoints.",
         "examples": []
@@ -1437,21 +1412,13 @@
     },
     {
       "body": {
-        "name": "pxtrace.ArgExpr",
-        "brief": "Specifies a function argument to trace.",
-        "desc": "Extracts the function argument, as specified by the provided expression. Traceable types are base types (`int`, `float`, etc.), strings and byte arrays. Base-type arguments are specified directly (`arg1`), while struct members are accessed using dotted notation (`arg1.foo`). The dot operator works on both pointer and non-pointer types.  ",
+        "name": "pxtrace.FunctionLatency",
+        "brief": "Specifies a function latency to trace.",
+        "desc": "Computes the function latency, from entry to return. The measured latency includes includes time spent in sub-calls.  ",
         "examples": []
       },
       "funcDoc": {
-        "args": [
-          {
-            "ident": "expr",
-            "desc": "The expression to evaluate.",
-            "types": [
-              "str"
-            ]
-          }
-        ],
+        "args": [],
         "returnType": {
           "desc": "A materialized column pointer to use in output table definitions.",
           "types": [
@@ -1501,23 +1468,6 @@
     },
     {
       "body": {
-        "name": "pxtrace.FunctionLatency",
-        "brief": "Specifies a function latency to trace.",
-        "desc": "Computes the function latency, from entry to return. The measured latency includes includes time spent in sub-calls.  ",
-        "examples": []
-      },
-      "funcDoc": {
-        "args": [],
-        "returnType": {
-          "desc": "A materialized column pointer to use in output table definitions.",
-          "types": [
-            "px.TracingField"
-          ]
-        }
-      }
-    },
-    {
-      "body": {
         "name": "pxtrace.kprobe",
         "brief": "Defines a kprobe target for an UpsertTracepoint.",
         "examples": []
@@ -1528,6 +1478,56 @@
           "desc": "KProbe target that can be passed into UpsertTracepoint.",
           "types": [
             "KProbeTarget"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "pxtrace.ArgExpr",
+        "brief": "Specifies a function argument to trace.",
+        "desc": "Extracts the function argument, as specified by the provided expression. Traceable types are base types (`int`, `float`, etc.), strings and byte arrays. Base-type arguments are specified directly (`arg1`), while struct members are accessed using dotted notation (`arg1.foo`). The dot operator works on both pointer and non-pointer types.  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "expr",
+            "desc": "The expression to evaluate.",
+            "types": [
+              "str"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "A materialized column pointer to use in output table definitions.",
+          "types": [
+            "px.TracingField"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "pxtrace.RetExpr",
+        "brief": "Specifies a function return value to trace.",
+        "desc": "Extracts data from the function return value, as specified by the provided expression. Traceable types are the same as in `ArgExpr`. Return values are accessed by index (`$0` for the first return value, `$1` for the second return value, etc.). In Golang, the first index value is the number of arguments, excluding the receiver. For example, the return value for `fun Sum(a int, b int) int` is `$2`. Return values that are structs may be accessed using dotted notation, similar to `ArgExpr`, (e.g. `$0.foo`).  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "expr",
+            "desc": "The expression to evaluate.",
+            "types": [
+              "str"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "A materialized column pointer to use in output table definitions.",
+          "types": [
+            "px.TracingField"
           ]
         }
       }
