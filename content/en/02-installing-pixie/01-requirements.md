@@ -22,6 +22,7 @@ Kubernetes `v1.16+` is required.
 | EKS Fargate      | Not Supported ([Fargate does not support eBPF](https://github.com/aws/containers-roadmap/issues/1027)) |
 | GKE              | Supported                                                       |
 | GKE Autopilot    | Not Supported ([Autopilot does not support eBPF](https://github.com/pixie-io/pixie/issues/278#issuecomment-853269290)) |
+| OKE              | Supported                                                       |
 | OpenShift        | Supported                                                       |
 | Self-hosted      | Generally supported, see requirements below including Linux kernel version. |
 
