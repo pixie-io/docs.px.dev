@@ -113,6 +113,15 @@ exports.createPages = ({
             title,
             description,
           ) => {
+            qlobjectDocs.sort((docA, docB) => {
+              if (docA.body.name < docB.body.name) {
+                return -1;
+              }
+              if (docA.body.name > docB.body.name) {
+                return 1;
+              }
+              return 0;
+            });
             // Create the individual pages.
             qlobjectDocs.forEach((doc) => createPage({
               path: utils.functionPageUrl(doc.body.name, catPath),
@@ -145,29 +154,21 @@ exports.createPages = ({
             'tracepoint-decorator',
             'Tracepoint Decorators',
             `The Decorator functions to wrap around a tracepoint function.
-            When defining the body of the tracepoint, see Tracepoint Fields.`
-
-            ,
+            When defining the body of the tracepoint, see Tracepoint Fields.`,
           );
           pxlObjectDocsPages(
             jsonDocumentation.tracepointFieldDocs,
             'tracepoint-field',
             'Tracepoint Fields',
-
             `Field accessors to use while writing a tracepoint. Must be written
-            in a function wrapped by a Tracepoint Decorator.`
-
-            ,
+            in a function wrapped by a Tracepoint Decorator.`,
           );
           pxlObjectDocsPages(
             jsonDocumentation.compileFnDocs,
             'compiler-fns',
             'Compile Time Functions',
-
             `Functions that are evaluated and usable at run time. Unlike [Execution Time Functions](/reference/pxl/udf), these are usable at compile-time
-            meaning you can pass them as parameters to [Operators](/reference/pxl/operators) as well as [ExecTime functions](/reference/pxl/udf).`
-
-            ,
+            meaning you can pass them as parameters to [Operators](/reference/pxl/operators) as well as [ExecTime functions](/reference/pxl/udf).`,
           );
           pxlObjectDocsPages(
             jsonDocumentation.dataframeOpDocs,
@@ -182,12 +183,23 @@ exports.createPages = ({
             'The methods to interact with Pixie\'s OpenTelemetry exporter',
           );
 
+          const { udfDocs } = jsonDocumentation;
+          udfDocs.udf.sort((docA, docB) => {
+            if (docA.name < docB.name) {
+              return -1;
+            }
+            if (docA.name > docB.name) {
+              return 1;
+            }
+            return 0;
+          });
+
           // create udfDocs index Pages
           createPage({
             path: utils.functionPageUrl('', 'udf'),
             component: path.resolve('./src/templates/udfDocsIndex.tsx'),
             context: {
-              data: JSON.stringify(jsonDocumentation.udfDocs),
+              data: JSON.stringify(udfDocs),
               title: 'Execution Time Functions',
               pagePath: utils.functionPageUrl('', 'tracepoint-field'),
             },
