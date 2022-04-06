@@ -24,6 +24,7 @@ Kubernetes `v1.16+` is required.
 | GKE Autopilot    | Not Supported ([Autopilot does not support eBPF](https://github.com/pixie-io/pixie/issues/278#issuecomment-853269290)) |
 | OKE              | Supported                                                       |
 | OpenShift        | Supported                                                       |
+| kOps             | Supported                                                       |
 | Self-hosted      | Generally supported, see requirements below including Linux kernel version. |
 
 ### Local Development Environments
