@@ -9,12 +9,15 @@ order: 50
 
 - [Authentication](/reference/admin/authentication)
 - [Configure Data Transfer Mode](/reference/admin/data-transfer-mode)
+- [Debug Information](/reference/admin/debug-info)
+- [Deploy Options](/reference/admin/deploy-options)
+- [Environment-Specific Configurations](/reference/admin/environment-configs)
 - [Find a Cluster ID](/reference/admin/cluster-id)
 - [Managing API Keys](/reference/admin/api-keys)
 - [Managing Deploy Keys](/reference/admin/deploy-keys)
-- [Permissions](/reference/admin/permissions/)
 - [Uninstalling Pixie](/reference/admin/uninstall)
 - [Updating Pixie](/reference/admin/updating-pixie/)
+- [User Management & Sharing](/reference/admin/user-mgmt/)
 - [Version History](/reference/admin/product-updates)
 
 #### API
