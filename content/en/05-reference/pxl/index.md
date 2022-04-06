@@ -55,9 +55,11 @@ The basic unit of operation for PxL is a Dataframe. A Dataframe is basically a t
 
 - DataFrame Docs
   - [Operator Overview](/reference/pxl/operators): The DataFrame methods that correspond to operators.
-  - [Engine Execution Functions](/reference/pxl/udf): Functions that are executed after execution, during compilation.
+  - [Engine Execution Functions](/reference/pxl/udf): Functions that are executed inside of the Pixie data engine.
   - [Compile Time Functions](/reference/pxl/compiler-fns): Helper functions that are evaluated and used at compile-time.
 - Tracepoint Docs
   - [Tracepoint Fields](/reference/pxl/tracepoint-field): The fields to use in the probe function
   - [Tracepoint Management](/reference/pxl/mutation): Decorators to write around the tracepoint functions.
   - [Tracepoint Decorators](/reference/pxl/tracepoint-decorator): The decorators used as part to wrap probe functions.
+- [OpenTelemetry Export Docs](/reference/pxl/otel-export)
+  
