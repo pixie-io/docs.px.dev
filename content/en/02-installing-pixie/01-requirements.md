@@ -35,7 +35,8 @@ For local development, we recommend using Minikube with a VM driver (`kvm2` on L
 | Docker Desktop                  | Not supported |
 | k0s                             | Supported     |
 | k3s                             | Supported     |
-| kind                            | Not Supported |
+| k3d                             | Not Supported ([k3d runs k3s clusters inside Docker container "nodes"](https://github.com/pixie-io/pixie/issues/337#issuecomment-949012061)) |
+| kind                            | Not Supported ([kind runs K8s clusters inside Docker container "nodes"](https://github.com/pixie-io/pixie/issues/337#issuecomment-949012061)) |
 | minikube with `driver=kvm2`     | Supported     |
 | minikube with `driver=hyperkit` | Supported     |
 | minikube with `driver=docker`   | Not Supported |
@@ -45,9 +46,9 @@ For local development, we recommend using Minikube with a VM driver (`kvm2` on L
 
 Memory requirements for your cluster nodes are as follows:
 
-|                       | Minimum   | Notes                                                   |
-| :-------------------  | :-------- | :------------------------------------------------------ |
-| Memory                | 2GiB      | To accommodate application pods, 8GiB+ is recommended.  |
+| Minimum   | Notes                                                                  |
+| :-------- | :--------------------------------------------------------------------- |
+| 1GiB      | To accommodate application pods, 4GiB+ total per node is recommended.  |
 
 ## CPU
 

@@ -13,6 +13,7 @@ order: 40
 - [Database Query Profiling](/tutorials/pixie-101/database-query-profiling)
 - [Request Tracing](/tutorials/pixie-101/request-tracing)
 - [Continuous Application Profiling](/tutorials/pixie-101/profiler)
+- [Kafka Monitoring](/tutorials/pixie-101/kafka-monitoring/)
 
 #### PxL Scripts
 

@@ -59,13 +59,14 @@ kubectl create namespace plc
 7. Deploy Pixie Cloud dependencies and wait for all pods within the `plc` namespace to become ready and available before proceeding to the next step. If there is an error, you may need to retry this step.
 
 ```bash
-kustomize build k8s/cloud_deps/public/ | kubectl apply -f - --namespace=plc
+kustomize build k8s/cloud_deps/base/elastic/operator | kubectl apply -f -
+kustomize build k8s/cloud_deps/public | kubectl apply -f -
 ```
 
 8. Deploy Pixie Cloud.
 
 ```bash
-kustomize build k8s/cloud/public/ | kubectl apply -f - --namespace=plc
+kustomize build k8s/cloud/public/ | kubectl apply -f -
 ```
 
 9. Wait for all pods within the `plc` namespace to become ready and available. Note that you may have one or more `create-hydra-client-job` pod errors, but as long as long as another instance of that pod successfully completes, that is ok.
@@ -163,6 +164,9 @@ px deploy --dev_cloud_namespace plc
 
 # Deploy the Pixie Platform in your K8s cluster (OLM already exists on cluster).
 px deploy  --dev_cloud_namespace plc --deploy_olm=false
+
+# Deploy Pixie with a specific memory limit (2Gi is the default, 1Gi is the minimum recommended)
+px deploy --dev_cloud_namespace plc --pem_memory_limit=1Gi
 ```
 
 Pixie will deploy pods to the `pl`, `plc`, `px-operator`, and `olm`(if deploying the OLM) namespaces.
@@ -182,6 +186,7 @@ Learn how to use Pixie for
 - [Service Performance](/tutorials/pixie-101/service-performance/)
 - [Database Query Profiling](/tutorials/pixie-101/database-query-profiling/)
 - [Request Tracing](/tutorials/pixie-101/request-tracing/)
+- [Kafka Monitoring](/tutorials/pixie-101/kafka-monitoring/)
 
 ## 5. Production Readiness (advanced)
 

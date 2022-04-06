@@ -23,8 +23,8 @@ const config = {
     gaTrackingId: null,
   },
   siteMetadata: {
-    title: 'Pixie Customer Docs',
-    description: 'Customer docs for the Pixie platform.',
+    title: 'Pixie Docs',
+    description: 'Reference documentation for the open-source Pixie project.',
     ogImage: null,
     docsLocation: 'https://github.com/pixie-io/pixie-docs',
     favicon: 'src/components/images/favicon.svg',
