@@ -44,7 +44,7 @@ const useStyles = makeStyles(() => ({
 const RenderFunctionRow = ({ docObj }) => (
   <TableRow key={docObj.name}>
     <TableCell component='th' scope='row'>{docObj.name}</TableCell>
-    <TableCell>{docObj.kind}</TableCell>
+    <TableCell>{docObj.type}</TableCell>
     <TableCell>{docObj.pattern}</TableCell>
     <TableCell>{docObj.desc}</TableCell>
   </TableRow>

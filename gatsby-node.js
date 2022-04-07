@@ -22,6 +22,7 @@ const groupBy = require('lodash.groupby');
 const startCase = require('lodash.startcase');
 const utils = require('./src/functionPageUrl.ts');
 const jsonDocumentation = require('./external/pxl_documentation.json');
+const tableDocumentation = require('./external/datatable_documentation.json');
 
 const globalUrlTree = [];
 const languages = require('./available-languages');
@@ -238,14 +239,14 @@ exports.createPages = ({
             path: '/reference/datatables',
             component: path.resolve('./src/templates/datatableDocsIndex.tsx'),
             context: {
-              data: JSON.stringify(jsonDocumentation.datatableDocs),
+              data: JSON.stringify(tableDocumentation.datatableDocs),
               title: 'Data Tables',
               pagePath: '/reference/datatables',
             },
           });
           // create datatableDocs Pages
           Object.values(
-            groupBy(jsonDocumentation.datatableDocs, (x) => x.name),
+            groupBy(tableDocumentation.datatableDocs, (x) => x.name),
           )
             .forEach((table) => {
               createPage({
