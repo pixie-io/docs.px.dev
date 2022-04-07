@@ -248,7 +248,6 @@ exports.createPages = ({
             groupBy(jsonDocumentation.datatableDocs, (x) => x.name),
           )
             .forEach((table) => {
-              console.log(utils.functionPageUrl(table[0].name, 'datatables', '/reference'))
               createPage({
                 path: utils.functionPageUrl(table[0].name, 'datatables', '/reference'),
                 component: path.resolve('./src/templates/datatableDocs.tsx'),
@@ -407,7 +406,6 @@ exports.onCreateNode = ({
     });
   }
   else if (node.internal.type === 'SitePage' && (node.path.match('/reference/datatables/.*'))) {
-    console.log('datatable', node);
     const treePath = node.path.split('/');
     const level = treePath.length - 3;
     createNodeField({

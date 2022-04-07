@@ -26,7 +26,6 @@ import {
 } from '@material-ui/core';
 import slugify from 'slugify';
 import { Layout } from 'components';
-import parseMd from '../components/parseMd';
 
 import HLink from '../components/mdxComponents/h-link';
 
@@ -62,7 +61,7 @@ const TableDocsIndexTemplate = ((props: any) => {
   const classes = useStyles();
   const {
     pageContext: {
-      data: context, title, description, pagePath,
+      data: context, title, pagePath,
     },
   } = props;
   const datatables = JSON.parse(context);
@@ -77,7 +76,7 @@ const TableDocsIndexTemplate = ((props: any) => {
         <HLink id='title' variant='h1'>
           {title}
         </HLink>
-        <Typography variant='body1'>{"List of data sources automatically collected by Pixie."}</Typography>
+        <Typography variant='body1'>'List of data sources automatically collected by Pixie.'</Typography>
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label='table'>
             <TableHead>

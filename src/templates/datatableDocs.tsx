@@ -24,9 +24,7 @@ import SEO from 'components/seo';
 import {
   Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography,
 } from '@material-ui/core';
-import slugify from 'slugify';
 import { Layout } from 'components';
-import parseMd from '../components/parseMd';
 
 import HLink from '../components/mdxComponents/h-link';
 
@@ -44,11 +42,11 @@ const useStyles = makeStyles(() => ({
   },
 }));
 const RenderFunctionRow = ({ docObj }) => (
-  <TableRow key={docObj.name}>
-    <TableCell component='th' scope='row'>{docObj.name}</TableCell>
-    <TableCell>{docObj.kind}</TableCell>
-    <TableCell>{docObj.pattern}</TableCell>
-    <TableCell>{docObj.desc}</TableCell>
+  <TableRow key={docObj.Name}>
+    <TableCell component='th' scope='row'>{docObj.Name}</TableCell>
+    <TableCell>{docObj.Type}</TableCell>
+    <TableCell>{docObj.Pattern}</TableCell>
+    <TableCell>{docObj.Desc}</TableCell>
   </TableRow>
 );
 
@@ -57,7 +55,7 @@ const TableDocsTemplate = ((props: any) => {
   const classes = useStyles();
   const {
     pageContext: {
-      data: context, title, description, pagePath,
+      data: context, title,
     },
   } = props;
   const datatables = JSON.parse(context);
@@ -72,7 +70,7 @@ const TableDocsTemplate = ((props: any) => {
         <HLink id='title' variant='h1'>
           {title}
         </HLink>
-        <Typography variant='body1'>{datatables[0].desc}</Typography>
+        <Typography variant='body1'>{mutations[0].Desc}</Typography>
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label='table'>
             <TableHead>
@@ -84,9 +82,9 @@ const TableDocsTemplate = ((props: any) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {datatables[0].cols
+              {datatables[0].Cols
                 .map((f) => (
-                    <RenderFunctionRow docObj={f} />
+                  <RenderFunctionRow docObj={f} />
                 ))}
             </TableBody>
           </Table>
