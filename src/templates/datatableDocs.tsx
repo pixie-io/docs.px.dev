@@ -84,7 +84,7 @@ const TableDocsTemplate = ((props: any) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {datatables[0].Cols
+              {datatables[0].cols
                 .map((f) => (
                     <RenderFunctionRow docObj={f} />
                 ))}

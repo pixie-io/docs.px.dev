@@ -233,21 +233,22 @@ exports.createPages = ({
               pagePath: '/reference/api/py',
             },
           });
-          // create datatablesDocs index Page
+          // create datatableDocs index Page
           createPage({
             path: '/reference/datatables',
             component: path.resolve('./src/templates/datatableDocsIndex.tsx'),
             context: {
-              data: JSON.stringify(jsonDocumentation.datatablesDocs),
+              data: JSON.stringify(jsonDocumentation.datatableDocs),
               title: 'Data Tables',
               pagePath: '/reference/datatables',
             },
           });
-          // create datatablesDocs Pages
+          // create datatableDocs Pages
           Object.values(
-            groupBy(jsonDocumentation.datatablesDocs, (x) => x.name),
+            groupBy(jsonDocumentation.datatableDocs, (x) => x.name),
           )
             .forEach((table) => {
+              console.log(utils.functionPageUrl(table[0].name, 'datatables', '/reference'))
               createPage({
                 path: utils.functionPageUrl(table[0].name, 'datatables', '/reference'),
                 component: path.resolve('./src/templates/datatableDocs.tsx'),
