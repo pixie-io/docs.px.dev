@@ -22,7 +22,6 @@ const groupBy = require('lodash.groupby');
 const startCase = require('lodash.startcase');
 const utils = require('./src/functionPageUrl.ts');
 const jsonDocumentation = require('./external/pxl_documentation.json');
-const tableDocumentation = require('./external/datatable_documentation.json');
 
 const globalUrlTree = [];
 const languages = require('./available-languages');
@@ -236,31 +235,25 @@ exports.createPages = ({
           });
           // create datatablesDocs index Page
           createPage({
-            path: '/reference/api/datatables',
+            path: '/reference/datatables',
             component: path.resolve('./src/templates/datatableDocsIndex.tsx'),
             context: {
-              data: JSON.stringify(tableDocumentation.datatablesDocs),
+              data: JSON.stringify(jsonDocumentation.datatablesDocs),
               title: 'Data Tables',
-              pagePath: '/reference/api/datatables',
+              pagePath: '/reference/datatables',
             },
           });
           // create datatablesDocs Pages
           Object.values(
-            groupBy(tableDocumentation.datatablesDocs, (x) => x.Name),
+            groupBy(jsonDocumentation.datatablesDocs, (x) => x.name),
           )
-            .forEach((functions) => {
-              //console.log(functions);
+            .forEach((table) => {
               createPage({
-                path: utils.functionPageUrl(functions[0].Name, 'datatables', '/reference/api'),
+                path: utils.functionPageUrl(table[0].name, 'datatables', '/reference'),
                 component: path.resolve('./src/templates/datatableDocs.tsx'),
                 context: {
-                  data: JSON.stringify(functions),
-                  // TODO(philkuz/zasgar)  figure out better solution than just prepending here.
-                  title:
-
-                    `${functions[0].Name}`
-
-                  ,
+                  data: JSON.stringify(table),
+                  title: table[0].name,
                 },
               });
             });
@@ -380,9 +373,42 @@ exports.onCreateNode = ({
       node,
       value: !!node.frontmatter.directory,
     });
-  } else if (node.internal.type === 'SitePage' && (node.path.match('/reference/pxl/.*') || node.path.match('/reference/api/.*'))) {
+  } else if (node.internal.type === 'SitePage' && (node.path.match('/reference/pxl/.*') || node.path.match('/reference/api/.*') || node.path.match('/reference/datatables') || node.path.match('/reference/datatables/.*'))) {
     const treePath = node.path.split('/');
     const level = treePath.length - 2;
+    createNodeField({
+      name: 'slug',
+      node,
+      value: node.path,
+    });
+
+    createNodeField({
+      name: 'id',
+      node,
+      value: node.id,
+    });
+
+    createNodeField({
+      name: 'title',
+      node,
+      value: node.context.title,
+    });
+    createNodeField({
+      name: 'level',
+      node,
+      value: level,
+    });
+    // Set to false always to match the above, not completely sure why we need this.
+    createNodeField({
+      name: 'directory',
+      node,
+      value: false,
+    });
+  }
+  else if (node.internal.type === 'SitePage' && (node.path.match('/reference/datatables/.*'))) {
+    console.log('datatable', node);
+    const treePath = node.path.split('/');
+    const level = treePath.length - 3;
     createNodeField({
       name: 'slug',
       node,

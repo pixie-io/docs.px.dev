@@ -44,11 +44,11 @@ const useStyles = makeStyles(() => ({
   },
 }));
 const RenderFunctionRow = ({ docObj }) => (
-  <TableRow key={docObj.Name}>
-    <TableCell component='th' scope='row'>{docObj.Name}</TableCell>
-    <TableCell>{docObj.Type}</TableCell>
-    <TableCell>{docObj.Pattern}</TableCell>
-    <TableCell>{docObj.Desc}</TableCell>
+  <TableRow key={docObj.name}>
+    <TableCell component='th' scope='row'>{docObj.name}</TableCell>
+    <TableCell>{docObj.kind}</TableCell>
+    <TableCell>{docObj.pattern}</TableCell>
+    <TableCell>{docObj.desc}</TableCell>
   </TableRow>
 );
 
@@ -72,7 +72,7 @@ const TableDocsTemplate = ((props: any) => {
         <HLink id='title' variant='h1'>
           {title}
         </HLink>
-        <Typography variant='body1'>{datatables[0].Desc}</Typography>
+        <Typography variant='body1'>{datatables[0].desc}</Typography>
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label='table'>
             <TableHead>

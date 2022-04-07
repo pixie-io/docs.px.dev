@@ -44,16 +44,16 @@ const useStyles = makeStyles(() => ({
   },
 }));
 const RenderFunctionRow = ({ docObj, classes, parentPath }) => (
-  <TableRow key={docObj.Name}>
+  <TableRow key={docObj.name}>
     <TableCell component='th' scope='row'>
       <Link
-        to={`${parentPath}/${slugify(docObj.Name.toLowerCase())}`}
+        to={`${parentPath}/${slugify(docObj.name.toLowerCase())}`}
         className={classes.link}
       >
-        {docObj.Name}
+        {docObj.name}
       </Link>
     </TableCell>
-    <TableCell>{docObj.Desc}</TableCell>
+    <TableCell>{docObj.desc}</TableCell>
   </TableRow>
 );
 

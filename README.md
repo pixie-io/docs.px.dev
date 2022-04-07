@@ -39,19 +39,14 @@ yarn build
 
 ### Updating Automated Content
 
-1. To pull the latest PxL reference docs, run the following command. This will overwrite `external/pxl_documentation.json`.
+To pull the latest reference docs, run:
 
 ```shell
-./scripts/update_pxl_docs.sh
+./update_docs.sh
 ```
 
-2. To pull the latest DataTable reference docs, run the following command. This will overwrite `external/datatable_documentation.json`.
-
-```shell
-./scripts/update_datatable_docs.sh
-```
-
-3. Add the changed files to the repo and submit a pull request.
+This will overwrite `external/pxl_documentation.json`.
+Add the changed file to the repo and submit a pull request.
 
 ### Deploy Previews
 
