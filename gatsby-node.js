@@ -404,8 +404,7 @@ exports.onCreateNode = ({
       node,
       value: false,
     });
-  }
-  else if (node.internal.type === 'SitePage' && (node.path.match('/reference/datatables/.*'))) {
+  } else if (node.internal.type === 'SitePage' && (node.path.match('/reference/datatables/.*'))) {
     const treePath = node.path.split('/');
     const level = treePath.length - 3;
     createNodeField({

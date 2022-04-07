@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 // eslint-disable-next-line
 import { makeStyles } from '@material-ui/core/styles';
 import SEO from 'components/seo';

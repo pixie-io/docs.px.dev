@@ -76,7 +76,7 @@ const TableDocsIndexTemplate = ((props: any) => {
         <HLink id='title' variant='h1'>
           {title}
         </HLink>
-        <Typography variant='body1'>'List of data sources automatically collected by Pixie.'</Typography>
+        <Typography variant='body1'>List of data sources automatically collected by Pixie.</Typography>
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label='table'>
             <TableHead>
