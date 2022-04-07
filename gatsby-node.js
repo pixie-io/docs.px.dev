@@ -22,6 +22,7 @@ const groupBy = require('lodash.groupby');
 const startCase = require('lodash.startcase');
 const utils = require('./src/functionPageUrl.ts');
 const jsonDocumentation = require('./external/pxl_documentation.json');
+const tableDocumentation = require('./external/datatable_documentation.json');
 
 const globalUrlTree = [];
 const languages = require('./available-languages');
@@ -124,7 +125,7 @@ exports.createPages = ({
             });
             // Create the individual pages.
             qlobjectDocs.forEach((doc) => createPage({
-              path: utils.functionPageUrl(doc.body.name, catPath),
+              path: utils.functionPageUrl(doc.body.name, catPath, '/reference/pxl'), // TODO: fix this
               component: path.resolve('./src/templates/mutationDocs.tsx'),
               context: {
                 data: JSON.stringify(doc),
@@ -133,11 +134,11 @@ exports.createPages = ({
             }));
             // Create index page.
             createPage({
-              path: utils.functionPageUrl('', catPath),
+              path: utils.functionPageUrl('', catPath, '/reference/pxl'),
               component: path.resolve('./src/templates/pxlObjectIndex.tsx'),
               context: {
                 data: JSON.stringify(qlobjectDocs),
-                pagePath: utils.functionPageUrl('', catPath),
+                pagePath: utils.functionPageUrl('', catPath, '/reference/pxl'),
                 title,
                 description,
               },
@@ -196,12 +197,12 @@ exports.createPages = ({
 
           // create udfDocs index Pages
           createPage({
-            path: utils.functionPageUrl('', 'udf'),
+            path: utils.functionPageUrl('', 'udf', '/reference/pxl'),
             component: path.resolve('./src/templates/udfDocsIndex.tsx'),
             context: {
               data: JSON.stringify(udfDocs),
               title: 'Execution Time Functions',
-              pagePath: utils.functionPageUrl('', 'tracepoint-field'),
+              pagePath: utils.functionPageUrl('', 'tracepoint-field', '/reference/pxl'),
             },
           });
           // create udfDocs Pages
@@ -210,7 +211,7 @@ exports.createPages = ({
           )
             .forEach((functions) => {
               createPage({
-                path: utils.functionPageUrl(functions[0].name, 'udf'),
+                path: utils.functionPageUrl(functions[0].name, 'udf', '/reference/pxl'),
                 component: path.resolve('./src/templates/udfDocs.tsx'),
                 context: {
                   data: JSON.stringify(functions),
@@ -233,6 +234,36 @@ exports.createPages = ({
               pagePath: '/reference/api/py',
             },
           });
+          // create datatablesDocs index Page
+          createPage({
+            path: '/reference/api/datatables',
+            component: path.resolve('./src/templates/datatableDocsIndex.tsx'),
+            context: {
+              data: JSON.stringify(tableDocumentation.datatablesDocs),
+              title: 'Data Tables',
+              pagePath: '/reference/api/datatables',
+            },
+          });
+          // create datatablesDocs Pages
+          Object.values(
+            groupBy(tableDocumentation.datatablesDocs, (x) => x.Name),
+          )
+            .forEach((functions) => {
+              //console.log(functions);
+              createPage({
+                path: utils.functionPageUrl(functions[0].Name, 'datatables', '/reference/api'),
+                component: path.resolve('./src/templates/datatableDocs.tsx'),
+                context: {
+                  data: JSON.stringify(functions),
+                  // TODO(philkuz/zasgar)  figure out better solution than just prepending here.
+                  title:
+
+                    `${functions[0].Name}`
+
+                  ,
+                },
+              });
+            });
         }),
     );
   });
