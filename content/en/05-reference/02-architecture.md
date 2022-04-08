@@ -1,8 +1,8 @@
 ---
-title: "Overview"
-metaTitle: "About Pixie | Architecture | Overview"
+title: "Architecture"
+metaTitle: "Reference | Architecture"
 metaDescription: "A detailed overview of Pixie's components"
-order: 1
+order: 2 
 ---
 
 ## Overview
