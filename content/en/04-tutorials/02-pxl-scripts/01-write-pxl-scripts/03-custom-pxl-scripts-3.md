@@ -55,9 +55,9 @@ df = df[df.service != '']
 px.display(df)
 ```
 
-5. Run the script using the `RUN` button in the top right or by using the keyboard shortcut: `ctrl+enter` (Windows, Linux) or `cmd+enter` (Mac).
+5. Run the script using the keyboard shortcut: `ctrl+enter` (Windows, Linux) or `cmd+enter` (Mac).
 
-6. Hide the script editor using `ctrl+e` (Windows, Linux) or `cmd+e` (Mac).
+6. Hide the script editor using the keyboard shortcut: `ctrl+e` (Windows, Linux) or `cmd+e` (Mac).
 
 > Your Live UI should output something similar to the following:
 
@@ -68,13 +68,15 @@ px.display(df)
 Pixie's Live UI constructs "Live View" dashboards using two files:
 
 - The `PxL Script` queries the Pixie platform for telemetry data.
-- The `Vis Spec` defines the functions to execute from the PxL script as well as the how to visualize the query output.
+- The `Vis Spec` defines the functions to execute from the `PxL script`, provides inputs to those functions, and defines how to visualize the output.
 
 You might wonder how our `PxL Script` (which does not yet have a `Vis Spec`) was able to be visualized in the Live UI. The Live UI allows you to omit the `Vis Spec` if you call [`px.display()`](/reference/pxl/operators/px.display/) in your `PxL Script`. This call tells the Live UI to format the query output into a table.
 
 ### Refactoring the PxL Script
 
 Note that on the last line of our `PxL script`, we call `px.display()`. Let's remove this function call and instead use a `Vis Spec` to do the same thing: format the query output into a table.
+
+Remember that the `Vis Spec` specifies which function(s) to execute from the `PxL script`. So we will need to refactor our `PxL script` to contain a function with our query.
 
 1. Open the script editor using the keyboard shortcut: `ctrl+e` (Windows, Linux) or `cmd+e` (Mac).
 
@@ -109,11 +111,11 @@ def network_traffic_per_pod(start_time: str):
     return df
 ```
 
-> This PxL script adds a `network_traffic_per_pod()` function to encapsulate the query logic from our previous script. The function takes a string input variable called `start_time`.
-
-> The `Vis Spec` will define which function(s) to call from our `PxL script` as well as which input variables to provide to the function(s).
+> Now our `PxL script` contains a `network_traffic_per_pod()` function. This function takes a string input variable called `start_time` and encapsulates the same query logic from our previous script.
 
 ### Writing your first Vis Spec
+
+Now, let's write the `Vis Spec`.
 
 1. Select the `Vis Spec` tab at the top of the script editor.
 
@@ -130,8 +132,8 @@ def network_traffic_per_pod(start_time: str):
 > A `Vis Spec` is a json file containing three lists:
 
 > - **widgets**: the visual elements to show in the Live View (e.g. chart, map, table)
-> - **globalFuncs**: the functions that output data to be displayed by the widgets
-> - **variables**: the input variables that can be provided to the functions
+> - **globalFuncs**: the `PxL Script` functions that output data to be displayed by the widgets
+> - **variables**: the input variables that can be provided to the `PxL Script` functions
 
 2. Replace the contents of the `Vis Spec` tab with the following:
 
@@ -143,7 +145,7 @@ def network_traffic_per_pod(start_time: str):
             "type": "PX_STRING",
             "description": "The relative start time of the window. Current time is assumed to be now",
             "defaultValue": "-5m"
-        },
+        }
     ],
     "widgets": [
         {
@@ -164,8 +166,7 @@ def network_traffic_per_pod(start_time: str):
                 ]
             },
             "displaySpec": {
-                "@type": "types.px.dev/px.vispb.Table",
-                "gutterColumn": "status"
+                "@type": "types.px.dev/px.vispb.Table"
             }
         }
     ],
@@ -173,16 +174,18 @@ def network_traffic_per_pod(start_time: str):
 }
 ```
 
-> Remember that the `Vis Spec` has two purposes. It defines the functions to execute from the PxL script and describes how to visualize the query output.
+> Remember that the `Vis Spec` has three purposes. It defines the functions to execute from the PxL script, provides inputs to those functions, and describes how to visualize the query output.
 
-> This `Vis Spec` configures a single input variable called `start_time`. This input variable is provided to the `network_traffic_per_pod()` function. The Live UI will display these configurable input variables at the top of the Live View.
+> This `Vis Spec` configures a single variable called `start_time`. This input variable will be provided to the `network_traffic_per_pod()` function. The Live UI will display this configurable input variable at the top of the Live View.
 
 > This `Vis Spec` defines a single Table widget:
 >
 > - The `name` field is an optional string that is displayed at the top of the widget in the Live View. A widget's `name` must be unique across all widgets in a given `Vis Spec`.
 > - The `position` field specifies the location and size of the widget within the Live View.
-> - The `func` field provides the name of the PxL function to invoke to provide the output to be displayed in the widget. This function takes the `start_time` variable as an input argument.
+> - The `func` field provides the name of the `PxL script` function to invoke to provide the output to be displayed in the widget. This function takes the previously defined `start_time` variable as an input argument.
 > - The `displaySpec` field specifies the widget type (Table, Bar Chart, Graph, etc)
+
+> This `Vis Spec` only contains a single function, so we define it inline within the widget. If multiple widgets used the same function, you would define it in the `"globalFuncs"` field. We'll do that in the next tutorial.
 
 <Alert variant="outlined" severity="info">
   For a detailed description of every Vis Spec field, please refer to the <a href="https://github.com/pixie-io/pixie/blob/bdae78cc266a078e73db2d9be205fc3ce5cc823b/src/api/proto/vispb/vis.proto">Vis Spec proto</a>.
@@ -190,19 +193,21 @@ def network_traffic_per_pod(start_time: str):
 
 3. Run the script using the keyboard shortcut: `ctrl+enter` (Windows, Linux) or `cmd+enter` (Mac).
 
-4. Hide the script editor using `ctrl+e` (Windows, Linux) or `cmd+e` (Mac).
+4. Hide the script editor using the keyboard shortcut: `ctrl+e` (Windows, Linux) or `cmd+e` (Mac).
 
 > Your Live UI should output something similar to the following:
 
 <svg title='Live View with Table widget.' src='pxl-scripts/first-vis-spec-4.png'/>
 
-5. Note the `start_time` variable in the top right. Select the drop-down arrow next to it, type `-30m` and press `Enter`. The Live UI should update with the appropriate results for that timewindow.
+5. Note the `start_time` variable in the top right. Select the drop-down arrow next to it, type `-1h` and press `Enter`. The Live UI should update the results to reflect the new time window.
 
 ### Adding a required script variable
 
+Let's add another variable, a required one, to the `Vis Spec`. A required variable must be input before the script can be run.
+
 1. Open the script editor using the keyboard shortcut: `ctrl+e` (Windows, Linux) or `cmd+e` (Mac).
 
-2. Select the `PxL Script` tab and replace the contents with the following:
+2. Modify the `PxL Script` tab and replace the contents with the following:
 
 ```python
 # Import Pixie's module for querying data
@@ -237,7 +242,7 @@ def network_traffic_per_pod(start_time: str, ns: px.Namespace):
     return df
 ```
 
-> This `PxL Script` updates the function to take a `ns` argument of type `px.Namespace`. This variable is used to filter the pod connections to only those involving pods in the specified namespace.
+> This `PxL Script` updates the function to take a `ns` argument of type `px.Namespace`. This variable is used on `line 15` to filter the pod connections to only those involving pods in the specified namespace.
 
 3. Switch to the `Vis Spec` tab and replace the contents with the following:
 
@@ -279,8 +284,7 @@ def network_traffic_per_pod(start_time: str, ns: px.Namespace):
                 ]
             },
             "displaySpec": {
-                "@type": "types.px.dev/px.vispb.Table",
-                "gutterColumn": "status"
+                "@type": "types.px.dev/px.vispb.Table"
             }
         }
     ],
@@ -288,11 +292,12 @@ def network_traffic_per_pod(start_time: str, ns: px.Namespace):
 }
 ```
 
-> Here we've added the `namespace` argument to the list of variables:
+> We've updated the `Vis Spec` in the following ways:
 
+> - We added the `namespace` argument to the list of `"variables"`.
 > - By omitting a `defaultValue`, the `namespace` variable is designated as required; This means that the script will error until you provide a value for the `namespace` variable.
 > - The `namespace` argument is of type `PX_NAMESPACE`. By using one of Pixie's [semantic types](/reference/pxl/#data-types-semantic-types), the Live UI will suggest the cluster's available namespaces when entering a value for the variable.
-> - The `network_traffic_per_pod()` function is updated to take the new variable as an argument.
+> - We updated the `network_traffic_per_pod()` function is updated to take the new variable as an argument.
 
 4. Run the script using the keyboard shortcut: `ctrl+enter` (Windows, Linux) or `cmd+enter` (Mac).
 
@@ -308,8 +313,10 @@ def network_traffic_per_pod(start_time: str, ns: px.Namespace):
 
 <svg title='Live View results filtered by the specified namespace.' src='pxl-scripts/first-vis-spec-6.png'/>
 
+> Note: The asterisk (`*`) next to the `namespace` variable denotes that it is a  _required_ variable..
+
 ## Conclusion
 
-Congrats, you just wrote your first `Vis Spec` to accompany your `PxL Script`! Tables aren't all that exciting, but now that you know how a `Vis Spec` works, you can learn how to visualize your data in more interesting ways.
+Congratulations, you wrote your first `Vis Spec` to accompany your `PxL Script`!
 
-In [Tutorial #4](/tutorials/pxl-scripts/write-pxl-scripts/custom-pxl-scripts-4) we will add a Timeseries chart to our Live View.
+Tables aren't all that exciting, but now that you know how a `Vis Spec` works you can learn how to visualize your data in more interesting ways. In [Tutorial #4](/tutorials/pxl-scripts/write-pxl-scripts/custom-pxl-scripts-4) we'll add a timeseries chart to our Live View.

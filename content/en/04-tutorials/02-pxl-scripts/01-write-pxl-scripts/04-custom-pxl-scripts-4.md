@@ -7,13 +7,13 @@ order: 4
 
 ## Overview
 
-In [Tutorial #3](/tutorials/pxl-scripts/write-pxl-scripts/custom-pxl-scripts-3) you learned how write a `Vis Spec` to create rich visualizations for your `PxL script` query. In this tutorial, we will add two timeseries charts to our Live View:
+In [Tutorial #3](/tutorials/pxl-scripts/write-pxl-scripts/custom-pxl-scripts-3) you learned how write a `Vis Spec` in order to create rich visualizations for your `PxL script` query in the Live UI. In this tutorial, we will add two timeseries charts to our Live View:
 
 <svg title='Live View with Table and Timeseries chart widgets.' src='pxl-scripts/first-vis-spec-7.png'/>
 
-## Set up the Scratch Pad
+## Setting up the Scratch Pad
 
-We will continue to use the Live UI's `Scratch Pad` to develop our scripts. Let's set up the Scratch Pad with the `PxL Script` and `Vis Spec` we wrote in [Tutorial #3](/tutorials/pxl-scripts/write-pxl-scripts/custom-pxl-scripts-3).
+We will continue to use the Live UI's `Scratch Pad` to develop our scripts. Let's set up the `Scratch Pad` with the final version of the `PxL Script` and `Vis Spec` we developed in [Tutorial #3](/tutorials/pxl-scripts/write-pxl-scripts/custom-pxl-scripts-3).
 
 1. Open Pixie's [Live UI](/using-pixie/using-live-ui/).
 
@@ -37,7 +37,7 @@ def network_traffic_per_pod(start_time: str, ns: px.Namespace):
     df.service = df.ctx['service']
     df.namespace = df.ctx['namespace']
 
-	# Filter connections to only those within the provided namespace.
+    # Filter connections to only those within the provided namespace.
     df = df[df.namespace == ns]
 
     # Group data by unique values in the 'pod' column and calculate the
@@ -96,8 +96,7 @@ def network_traffic_per_pod(start_time: str, ns: px.Namespace):
                 ]
             },
             "displaySpec": {
-                "@type": "types.px.dev/px.vispb.Table",
-                "gutterColumn": "status"
+                "@type": "types.px.dev/px.vispb.Table"
             }
         }
     ],
@@ -105,9 +104,9 @@ def network_traffic_per_pod(start_time: str, ns: px.Namespace):
 }
 ```
 
-6. Make sure the script runs using the `RUN` keyboard shortcut: `ctrl+enter` (Windows, Linux) or `cmd+enter` (Mac).
+6. Make sure the script runs by using the `RUN` button or keyboard shortcut: `ctrl+enter` (Windows, Linux) or `cmd+enter` (Mac).
 
-## Modifying the PxL Script
+## Adding a function to the PxL Script
 
 ```python
 # Import Pixie's module for querying data
@@ -163,7 +162,7 @@ def network_traffic_timeseries(start_time: str):
     return df
 ```
 
-## Modifying the Vis Spec
+## Adding to the Vis Spec
 
 ```json
 {
@@ -265,5 +264,15 @@ def network_traffic_timeseries(start_time: str):
     ]
 }
 ```
+
+## Interacting with the Timeseries Graph
+
+## Pro Tip
+
+Note about looking at other scripts for inspiration
+
+<Alert variant="outlined" severity="info">
+  For a detailed description of every Vis Spec field, please refer to the <a href="https://github.com/pixie-io/pixie/blob/bdae78cc266a078e73db2d9be205fc3ce5cc823b/src/api/proto/vispb/vis.proto">Vis Spec proto</a>.
+</Alert>
 
 ## Conclusion

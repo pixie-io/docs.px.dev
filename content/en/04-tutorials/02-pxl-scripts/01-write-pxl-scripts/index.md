@@ -20,16 +20,16 @@ PxL scripts can be executed by the Pixie platform by using the web based Live UI
 
 Pixie needs to be installed on your Kubernetes cluster. If it is not already installed, please consult our [install guides](/installing-pixie/).
 
-## Writing PxL Scripts
+## Writing a PxL Script
 
-This tutorial series demonstrates how to write a PxL script to query data automatically collected by Pixie's platform. Pixie's CLI will be used to execute the script.
+This tutorial series demonstrates how to write a basic PxL script to query data automatically collected by Pixie's platform. Pixie's CLI will be used to execute the script.
 
 - (Prerequisite) [Install Pixie's CLI tool](/installing-pixie/install-schemes/cli/#1.-install-the-pixie-cli)
 - (Optional Prerequisite) [Learn how to navigate the CLI](/using-pixie/using-cli)
 - [Tutorial #1: Write your first PxL script](/tutorials/pxl-scripts/write-pxl-scripts/custom-pxl-scripts-1)
 - [Tutorial #2: Finish your first PxL script](/tutorials/pxl-scripts/write-pxl-scripts/custom-pxl-scripts-2)
 
-## Writing PxL Scripts with Visualizations
+## Writing a Vis Spec
 
 This tutorial series adds visualizations to the PxL script developed in the above [Writing PxL Scripts](/tutorials/pxl-scripts/write-pxl-scripts/#writing-pxl-scripts) tutorial series. Pixie's Live UI will be used to execute the script.
 
@@ -42,12 +42,12 @@ This tutorial series adds visualizations to the PxL script developed in the abov
   Pixie's Live UI will soon support script persistence, but at the moment, any scripts modified in the Live UI will be lost if you refresh or switch to a different script. For extensive script development, we recommend using the <a href="/tutorials/pxl-scripts/script-dev-environment/">Script Developer Environment</a>
 </Alert>
 
-## Writing Advanced PxL Scripts
+## Writing PxL Scripts to Collect Custom Data
 
 These tutorials demonstrate how to write a PxL script that extends the Pixie platform to collect new data sources:
 
-- [Tutorial #5: Distributed bpftrace deployment](/tutorials/custom-data/distributed-bpftrace-deployment/)
-- [Tutorial #6: Dynamic Go logging](/tutorials/custom-data/dynamic-go-logging/)
+- [Tutorial: Distributed bpftrace deployment](/tutorials/custom-data/distributed-bpftrace-deployment/)
+- [Tutorial: Dynamic Go logging](/tutorials/custom-data/dynamic-go-logging/)
 
 To see these features in action, check out the following blog posts:
 
