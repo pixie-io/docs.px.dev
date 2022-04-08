@@ -1,8 +1,8 @@
 ---
 title: "How Pixie uses eBPF"
-metaTitle: "About Pixie | How Pixie uses eBPF"
+metaTitle: "About Pixie | Architecture | How Pixie uses eBPF"
 metaDescription: "How Pixie uses eBPF to automatically collect data"
-order: 3
+order: 2 
 ---
 
 Pixie uses [eBPF](https://www.brendangregg.com/ebpf.html) to drive much of its data collection.
