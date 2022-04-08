@@ -53,7 +53,7 @@ Install Pixie’s [CLI tool](/installing-pixie/install-schemes/cli) and run `px 
 
 We recommend running through the following troubleshooting flow to determine where the deployment has failed.
 
-<svg title='Troubleshooting the Deployment of Pixie' src='troubleshooting-deploy-flow.svg' />
+<svg title='Troubleshooting the Deployment of Pixie' src='troubleshoot-flow.svg' />
 
 *Deploy with CLI gets stuck at “Wait for PEMs/Kelvin”*
 
