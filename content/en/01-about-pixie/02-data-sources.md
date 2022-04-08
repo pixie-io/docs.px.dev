@@ -45,6 +45,10 @@ Pixie automatically traces the following protocols:
 
 Additional protocols are under development.
 
+<Alert variant="outlined" severity="info">
+  See the <a href="/reference/datatables">data table reference docs</a> for the specific fields provided for each supported protocol.
+</Alert>
+
 ## Encryption Libraries
 
 Pixie supports tracing of traffic encrypted with the following libraries:
