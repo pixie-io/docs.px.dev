@@ -40,7 +40,7 @@ By default, the plugin provider has configured a set of preset scripts. These wi
 3. Under `Custom Scripts`, click the `Create Scripts` button on the right-hand side.
 4. Enter a script name and description.
 5. Select which clusters to export from. If none is specified, data will be exported from all clusters in the org.
-6. Enter the PxL script. This script should contain a `px.export` call for exporting data to the OpenTelemetry format. See [OpenTelemetry export]() for more information. No `endpoint` needs to be specified to the `px.otel.Data` object, as this will be filled in automatically based on the selected plugin provider.
+6. Enter the PxL script. This script should contain a `px.export` call for exporting data to the OpenTelemetry format. See [OpenTelemetry export](/reference/pxl/otel-export/) for more information. No `endpoint` needs to be specified to the `px.otel.Data` object, as this will be filled in automatically based on the selected plugin provider.
 7. Select how often this script should run.
 8. Select the plugin provider to export this data to.
 9. Click "Create" to save your settings. Data export should start immediately.
