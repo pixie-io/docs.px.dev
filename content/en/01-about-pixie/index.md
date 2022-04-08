@@ -14,3 +14,4 @@ This section gives an overview of Pixie:
 - [Architecture](/about-pixie/architecture)
 - [Pixie's roadmap](/about-pixie/roadmap)
 - [FAQs](/about-pixie/faq)
+- [Troubleshooting](/about-pixie/troubleshooting)
