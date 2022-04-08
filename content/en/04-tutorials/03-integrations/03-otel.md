@@ -2,7 +2,7 @@
 title: "Exporting Pixie Data to OpenTelemetry"
 metaTitle: "Tutorials | Integrations and Alerts | Pixie <> OpenTelemetry"
 metaDescription: "Exporting Pixie Data to OpenTelemetry"
-order: 2
+order: 3
 redirect_from:
     - /tutorials/otel/
 ---
