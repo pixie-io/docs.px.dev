@@ -132,7 +132,7 @@ const Sidebar = withStyles((theme: Theme) => ({
   };
 
   const processCategories = (edges) => {
-    const newedges = edges.filter((e) => e.node.fields.title);
+    const newedges = edges.filter((e) => e.node.fields?.title);
     const fields1 = newedges.map((e) => e.node.fields)
       .filter((e) => e.level === 1);
     const fields2 = newedges.map((e) => e.node.fields)
@@ -169,20 +169,7 @@ const Sidebar = withStyles((theme: Theme) => ({
     <StaticQuery
       query={graphql`
       query {
-        pxl: allSitePage(filter: {path: {glob: "/reference/pxl/**"}}, sort: {fields: fields___slug}) {
-          edges {
-            node {
-              fields {
-                slug
-                title
-                level
-                id
-                directory
-              }
-            }
-          }
-        }
-        apis: allSitePage(filter: {path: {glob: "/reference/api/**"}}, sort: {fields: fields___slug}) {
+        allSitePage(sort: {fields: fields___slug}) {
           edges {
             node {
               fields {
@@ -213,8 +200,7 @@ const Sidebar = withStyles((theme: Theme) => ({
     `}
       render={({
         allMdx,
-        pxl,
-        apis,
+        allSitePage,
       }) => {
         const filteredMdxEdges = allMdx.edges.filter((n) => {
           if (lang !== 'en') {
@@ -228,8 +214,8 @@ const Sidebar = withStyles((theme: Theme) => ({
           return n.node.fields.lang === lang;
         });
 
-        const allDocsForExpand = [...allMdx.edges, ...pxl.edges, ...apis.edges];
-        const allDocs = [...filteredMdxEdges, ...pxl.edges, ...apis.edges];
+        const allDocsForExpand = [...allMdx.edges, ...allSitePage.edges];
+        const allDocs = [...filteredMdxEdges, ...allSitePage.edges];
 
         return (
           <SidebarContext.Consumer>
