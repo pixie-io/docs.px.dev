@@ -1,7 +1,7 @@
 ---
-title: "Exporting Pixie Data to OpenTelemetry"
+title: "Export Data to OpenTelemetry"
 metaTitle: "Tutorials | Integrations and Alerts | Pixie <> OpenTelemetry"
-metaDescription: "Exporting Pixie Data to OpenTelemetry"
+metaDescription: "Export Data to OpenTelemetry"
 order: 3
 redirect_from:
     - /tutorials/otel/
@@ -11,7 +11,7 @@ redirect_from:
 Pixie comes packaged with an OpenTelemetry exporter. You can write PxL scripts that define the transformation of Pixie DataFrames into OpenTelemetry data. This article walks through a script that exports HTTP data collected by Pixie into an OpenTelemetry endpoint. More detailed PxL documentation for the OpenTelemetry integration is available [here](/reference/pxl/otel-export). 
 
 
-## Example OTel export script
+## Example OpenTelemetry Export PxL Script
 
 The following [PxL script](/tutorials/pxl-scripts/write-pxl-scripts/#overview) calculates the rate of HTTP requests made to each pod in your cluster and exports that data as an OpenTelemetry Gauge metric.  
 
@@ -63,8 +63,7 @@ px.export(df, px.otel.Data(
 
 
 ## The Data
-
-The first part of this script (lines 1-19) read  in the `http_events` data and count the number of requests made to each pod. This yields a single data point per pod and per window. The expected use case of this 
+The first part of this script (lines 1-19) read  in the `http_events` data and count the number of requests made to each pod from the last 10s.
 
 
 ```python
@@ -102,7 +101,7 @@ px.export(df, px.otel.Data(...))
 The export target (`px.otel.Data`) describes which columns to use for the corresponding OpenTelemetry fields. You specify a column using the same syntax as in a regular query: `df.column_name` or `df[‘column_name’]`. The columns must reference a column available in the `df` argument or the PxL compiler will throw an error
 
 
-## Specifying a collector endpoint and Authentication
+## Specifying a Collector Endpoint and Authentication
 
 The PxL OpenTelemetry exporter needs to talk with a collector. You must specify this information via the `endpoint` parameter:
 
@@ -117,7 +116,7 @@ endpoint=px.otel.Endpoint(
 ```
 
 
-The endpoint url must be an OpenTelemetry grpc endpoint and must be secured with SSL. Don’t specify a protocol prefix. Optionally, you can also specify the headers passed to the endpoint. Some OTel collector providers look for authentication tokens or api keys in the connection context. The headers field is where you can add this information.
+The endpoint url must be an OpenTelemetry grpc endpoint and must be secured with SSL. Don’t specify a protocol prefix. Optionally, you can also specify the headers passed to the endpoint. Some OpenTelemetry collector providers look for authentication tokens or api keys in the connection context. The headers field is where you can add this information.
 
 Note that if you’re writing a [plugin script](/reference/plugins/plugin-system), this information should be passed in from the plugin context.
 
@@ -129,10 +128,9 @@ The core idea of the PxL OpenTelemetry export is that you’re converting column
 
 ## Specifying a Resource
 
-The `resource` parameter defines the entity producing the [telemetry data,](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/sdk.md) Users define the `resource` argument as a dictionary mapping attribute keys to the STRING columns that populate the attribute values. The PxL configuration expects `service.name` to be set, all other attributes are optional.
-
-When creating new attribute keys, keep in mind OTel has a [recommended pattern](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md#document-conventions) that you should follow to maintain broad compatibility with OTel collectors. 
-
+The `resource` parameter defines the entity producing the [telemetry data](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/sdk.md). Users define the `resource` argument as a dictionary mapping attribute keys to the STRING columns that populate the attribute values. The PxL configuration expects `service.name` to be set, all other attributes are optional.
+ 
+When creating new attribute keys, keep in mind OpenTelemetry has a [recommended pattern](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md#document-conventions) that you should follow to maintain broad compatibility with OpenTelemetry collectors.
 
 ```python
 resource={
@@ -164,5 +162,5 @@ data=[
 ```
 
 
-We currently support a limited set of OpenTelemetry signal types: metric.Gauge, metric.Summary and trace.Span. We also support a subset of the available fields for each instrument. You can see the full set of features [in our api documentation.](/reference/pxl/otel-export) If you want support for other fields, please [open an issue](https://github.com/pixie-io/pixie). 
+We currently support a limited set of OpenTelemetry signal types: `metric.Gauge`, `metric.Summary` and `trace.Span`. We also support a subset of the available fields for each instrument. You can see the full set of features [in our api documentation.](/reference/pxl/otel-export) If you want support for other fields, please [open an issue](https://github.com/pixie-io/pixie).
 
