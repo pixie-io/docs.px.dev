@@ -20,9 +20,9 @@ Vizier is Pixie's data plane. It is responsible for collecting and processing da
 ### Components
 
 1. **Pixie Edge Module (PEM)**: The data collectors, deployed to each node via a daemonset. PEMs serve as a short-term in-memory store (up to 24h) for all data collected in the cluster. The PEMs are also responsible for processing this data when they receive a script execution request. 
-2. **Collector (Kelvin)**: The Kelvin is the higher-level data collector, where PEMs send data to for further aggregation (e.g. joins, unions)  and processing. 
-3. **Cloud Connector**: The cloud connector communicates with Pixie Cloud and passes messages between the two systems. These messages range from  heartbeats, used to indicate the Vizier's overall status, and script execution requests and results.
-4. **Metadata**: The metadata service serves as the hub for all of Vizier's metadata. This includes K8s metadata, used to contextualize any collected data, and the status of each PEM running in the cluster.
+2. **Collector (Kelvin)**: Kelvin is the high-level data collector. During script execution, PEMs send partially processed data to Kelvins. Kelvins aggregate the node level view from each PEM into a cluster-level view and complete the script execution steps that requires all of the data, such as aggregates and joins.
+3. **Cloud Connector**: The cloud connector handles message passing between Vizier and Pixie Cloud. These messages range from  heartbeats, used to indicate the Vizier's overall status, and script execution requests and results.
+4. **Metadata**: The metadata service serves as the hub for all of Vizier's metadata. The metadata stored includes k8s objects (ie pods, services, namespaces) for adding context to execute scripts as well as metadata about the Vizier state (ie PEM status, [dynamic logs deployed](https://docs.px.dev/tutorials/custom-data/dynamic-go-logging/)) 
 5. **Query Broker**: The query broker handles all script execution. It compiles any scripts need to be executed, distributes those scripts to the relevant PEMs, and helps proxy those results back to the cloud.
 
 ### Dependencies
