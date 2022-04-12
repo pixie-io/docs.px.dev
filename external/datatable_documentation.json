@@ -1,0 +1,964 @@
+{
+ "datatableDocs": [
+  {
+   "name": "conn_stats",
+   "desc": "Connection-level stats. This table contains statistics on the communications made between client-server pairs. For network-level information such as RX/TX errors and drops, see the Network-Layer Stats (network_stats) table.",
+   "cols": [
+    {
+     "name": "time_",
+     "type": "TIME64NS",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Timestamp when the data record was collected."
+    },
+    {
+     "name": "upid",
+     "type": "UINT128",
+     "pattern": "GENERAL",
+     "desc": "An opaque numeric ID that globally identify a running process inside the cluster."
+    },
+    {
+     "name": "remote_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the remote endpoint."
+    },
+    {
+     "name": "remote_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the remote endpoint."
+    },
+    {
+     "name": "trace_role",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "addr_family",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "The socket address family of the connection."
+    },
+    {
+     "name": "protocol",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "The protocol of the traffic on the connections."
+    },
+    {
+     "name": "ssl",
+     "type": "BOOLEAN",
+     "pattern": "GENERAL_ENUM",
+     "desc": "Was SSL traffic detected on this connection."
+    },
+    {
+     "name": "conn_open",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "The number of connections opened since the beginning of tracing."
+    },
+    {
+     "name": "conn_close",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "The number of connections closed since the beginning of tracing."
+    },
+    {
+     "name": "conn_active",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "The number of active connections"
+    },
+    {
+     "name": "bytes_sent",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "The number of bytes sent to the remote endpoint(s)."
+    },
+    {
+     "name": "bytes_recv",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "The number of bytes received from the remote endpoint(s)."
+    }
+   ]
+  },
+  {
+   "name": "cql_events",
+   "desc": "Cassandra (CQL) request-response pair events",
+   "cols": [
+    {
+     "name": "time_",
+     "type": "TIME64NS",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Timestamp when the data record was collected."
+    },
+    {
+     "name": "upid",
+     "type": "UINT128",
+     "pattern": "GENERAL",
+     "desc": "An opaque numeric ID that globally identify a running process inside the cluster."
+    },
+    {
+     "name": "remote_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the remote endpoint."
+    },
+    {
+     "name": "remote_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the remote endpoint."
+    },
+    {
+     "name": "trace_role",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "req_op",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "Request opcode"
+    },
+    {
+     "name": "req_body",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "Request body"
+    },
+    {
+     "name": "resp_op",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "Response opcode"
+    },
+    {
+     "name": "resp_body",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "Request body"
+    },
+    {
+     "name": "latency",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "Request-response latency."
+    }
+   ]
+  },
+  {
+   "name": "dns_events",
+   "desc": "DNS request-response pair events",
+   "cols": [
+    {
+     "name": "time_",
+     "type": "TIME64NS",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Timestamp when the data record was collected."
+    },
+    {
+     "name": "upid",
+     "type": "UINT128",
+     "pattern": "GENERAL",
+     "desc": "An opaque numeric ID that globally identify a running process inside the cluster."
+    },
+    {
+     "name": "remote_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the remote endpoint."
+    },
+    {
+     "name": "remote_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the remote endpoint."
+    },
+    {
+     "name": "trace_role",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "req_header",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "Request header"
+    },
+    {
+     "name": "req_body",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "Request"
+    },
+    {
+     "name": "resp_header",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "Response header"
+    },
+    {
+     "name": "resp_body",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "Response"
+    },
+    {
+     "name": "latency",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "Request-response latency."
+    }
+   ]
+  },
+  {
+   "name": "http_events",
+   "desc": "HTTP request-response pair events",
+   "cols": [
+    {
+     "name": "time_",
+     "type": "TIME64NS",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Timestamp when the data record was collected."
+    },
+    {
+     "name": "upid",
+     "type": "UINT128",
+     "pattern": "GENERAL",
+     "desc": "An opaque numeric ID that globally identify a running process inside the cluster."
+    },
+    {
+     "name": "remote_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the remote endpoint."
+    },
+    {
+     "name": "remote_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the remote endpoint."
+    },
+    {
+     "name": "trace_role",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "major_version",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "HTTP major version, can be 1 or 2"
+    },
+    {
+     "name": "minor_version",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "HTTP minor version, HTTP1 uses 1, HTTP2 set this value to 0"
+    },
+    {
+     "name": "content_type",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "Type of the HTTP payload, can be JSON or protobuf"
+    },
+    {
+     "name": "req_headers",
+     "type": "STRING",
+     "pattern": "STRUCTURED",
+     "desc": "Request headers in JSON format"
+    },
+    {
+     "name": "req_method",
+     "type": "STRING",
+     "pattern": "GENERAL_ENUM",
+     "desc": "HTTP request method (e.g. GET, POST, ...)"
+    },
+    {
+     "name": "req_path",
+     "type": "STRING",
+     "pattern": "STRUCTURED",
+     "desc": "Request path"
+    },
+    {
+     "name": "req_body",
+     "type": "STRING",
+     "pattern": "STRUCTURED",
+     "desc": "Request body in JSON format"
+    },
+    {
+     "name": "req_body_size",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "Request body size (before any truncation)"
+    },
+    {
+     "name": "resp_headers",
+     "type": "STRING",
+     "pattern": "STRUCTURED",
+     "desc": "Response headers in JSON format"
+    },
+    {
+     "name": "resp_status",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "HTTP response status code"
+    },
+    {
+     "name": "resp_message",
+     "type": "STRING",
+     "pattern": "STRUCTURED",
+     "desc": "HTTP response status text (e.g. OK, Not Found, ...)"
+    },
+    {
+     "name": "resp_body",
+     "type": "STRING",
+     "pattern": "STRUCTURED",
+     "desc": "Response body in JSON format"
+    },
+    {
+     "name": "resp_body_size",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "Response body size (before any truncation)"
+    },
+    {
+     "name": "latency",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "Request-response latency."
+    }
+   ]
+  },
+  {
+   "name": "jvm_stats",
+   "desc": "Basic JVM memory management metrics for java processes. Includes information about memory use and garbage collection.",
+   "cols": [
+    {
+     "name": "time_",
+     "type": "TIME64NS",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Timestamp when the data record was collected."
+    },
+    {
+     "name": "upid",
+     "type": "UINT128",
+     "pattern": "GENERAL",
+     "desc": "An opaque numeric ID that globally identify a running process inside the cluster."
+    },
+    {
+     "name": "young_gc_time",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Young generation garbage collection time in nanoseconds."
+    },
+    {
+     "name": "full_gc_time",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Full garbage collection time in nanoseconds."
+    },
+    {
+     "name": "used_heap_size",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "Used heap size in bytes."
+    },
+    {
+     "name": "total_heap_size",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "Total heap size in bytes."
+    },
+    {
+     "name": "max_heap_size",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "Maximal heap capacity in bytes."
+    }
+   ]
+  },
+  {
+   "name": "kafka_events.beta",
+   "desc": "Kafka resquest-response pair events",
+   "cols": [
+    {
+     "name": "time_",
+     "type": "TIME64NS",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Timestamp when the data record was collected."
+    },
+    {
+     "name": "upid",
+     "type": "UINT128",
+     "pattern": "GENERAL",
+     "desc": "An opaque numeric ID that globally identify a running process inside the cluster."
+    },
+    {
+     "name": "remote_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the remote endpoint."
+    },
+    {
+     "name": "remote_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the remote endpoint."
+    },
+    {
+     "name": "trace_role",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "req_cmd",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "Kafka request command"
+    },
+    {
+     "name": "client_id",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "Kafka client ID"
+    },
+    {
+     "name": "req_body",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "Kafka request body"
+    },
+    {
+     "name": "resp",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "Kafka response"
+    },
+    {
+     "name": "latency",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "Request-response latency."
+    }
+   ]
+  },
+  {
+   "name": "mux_events",
+   "desc": "Mux request-response pair events",
+   "cols": [
+    {
+     "name": "time_",
+     "type": "TIME64NS",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Timestamp when the data record was collected."
+    },
+    {
+     "name": "upid",
+     "type": "UINT128",
+     "pattern": "GENERAL",
+     "desc": "An opaque numeric ID that globally identify a running process inside the cluster."
+    },
+    {
+     "name": "remote_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the remote endpoint."
+    },
+    {
+     "name": "remote_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the remote endpoint."
+    },
+    {
+     "name": "trace_role",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "req_type",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "Mux message request type"
+    },
+    {
+     "name": "latency",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "Request-response latency."
+    }
+   ]
+  },
+  {
+   "name": "mysql_events",
+   "desc": "MySQL resquest-response pair events",
+   "cols": [
+    {
+     "name": "time_",
+     "type": "TIME64NS",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Timestamp when the data record was collected."
+    },
+    {
+     "name": "upid",
+     "type": "UINT128",
+     "pattern": "GENERAL",
+     "desc": "An opaque numeric ID that globally identify a running process inside the cluster."
+    },
+    {
+     "name": "remote_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the remote endpoint."
+    },
+    {
+     "name": "remote_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the remote endpoint."
+    },
+    {
+     "name": "trace_role",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "req_cmd",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "MySQL request command"
+    },
+    {
+     "name": "req_body",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "MySQL request body"
+    },
+    {
+     "name": "resp_status",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "MySQL response status code"
+    },
+    {
+     "name": "resp_body",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "MySQL response body"
+    },
+    {
+     "name": "latency",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "Request-response latency."
+    }
+   ]
+  },
+  {
+   "name": "nats_events.beta",
+   "desc": "NATS messages.",
+   "cols": [
+    {
+     "name": "time_",
+     "type": "TIME64NS",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Timestamp when the data record was collected."
+    },
+    {
+     "name": "upid",
+     "type": "UINT128",
+     "pattern": "GENERAL",
+     "desc": "An opaque numeric ID that globally identify a running process inside the cluster."
+    },
+    {
+     "name": "remote_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the remote endpoint."
+    },
+    {
+     "name": "remote_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the remote endpoint."
+    },
+    {
+     "name": "trace_role",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "cmd",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "The name of the command."
+    },
+    {
+     "name": "body",
+     "type": "STRING",
+     "pattern": "STRUCTURED",
+     "desc": "Option name and value pairs, formatted as JSON."
+    },
+    {
+     "name": "resp",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "The response to the command. One of OK \u0026 ERR"
+    }
+   ]
+  },
+  {
+   "name": "network_stats",
+   "desc": "Network-layer RX/TX stats, grouped by pod. This table contains aggregate statistics measured at the network device interface. For connection-level information, including the remote endpoints with which a pod is communicating, see the Connection-Level Stats (conn_stats) table.",
+   "cols": [
+    {
+     "name": "time_",
+     "type": "TIME64NS",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Timestamp when the data record was collected."
+    },
+    {
+     "name": "pod_id",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "The ID of the pod"
+    },
+    {
+     "name": "rx_bytes",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Received network traffic in bytes of the pod"
+    },
+    {
+     "name": "rx_packets",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Number of received network packets of the pod"
+    },
+    {
+     "name": "rx_errors",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Number of network receive errors of the pod"
+    },
+    {
+     "name": "rx_drops",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Number of dropped network packets being received of the pod"
+    },
+    {
+     "name": "tx_bytes",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Transmitted network traffic of the pod"
+    },
+    {
+     "name": "tx_packets",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Number of transmitted network packets of the pod"
+    },
+    {
+     "name": "tx_errors",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Number of network transmit errors of the pod"
+    },
+    {
+     "name": "tx_drops",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Number of dropped network packets being transmitted of the pod"
+    }
+   ]
+  },
+  {
+   "name": "pgsql_events",
+   "desc": "Postgres (pgsql) request-response pair events",
+   "cols": [
+    {
+     "name": "time_",
+     "type": "TIME64NS",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Timestamp when the data record was collected."
+    },
+    {
+     "name": "upid",
+     "type": "UINT128",
+     "pattern": "GENERAL",
+     "desc": "An opaque numeric ID that globally identify a running process inside the cluster."
+    },
+    {
+     "name": "remote_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the remote endpoint."
+    },
+    {
+     "name": "remote_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the remote endpoint."
+    },
+    {
+     "name": "trace_role",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "req_cmd",
+     "type": "STRING",
+     "pattern": "GENERAL_ENUM",
+     "desc": "PostgreSQL request command code"
+    },
+    {
+     "name": "req",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "PostgreSQL request body"
+    },
+    {
+     "name": "resp",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "PostgreSQL response body"
+    },
+    {
+     "name": "latency",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "Request-response latency."
+    }
+   ]
+  },
+  {
+   "name": "proc_exit_events",
+   "desc": "Traces all abnormal process exits",
+   "cols": [
+    {
+     "name": "time_",
+     "type": "TIME64NS",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Timestamp when the data record was collected."
+    },
+    {
+     "name": "upid",
+     "type": "UINT128",
+     "pattern": "GENERAL",
+     "desc": "An opaque numeric ID that globally identify a running process inside the cluster."
+    },
+    {
+     "name": "exit_code",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "The exit code of this process."
+    },
+    {
+     "name": "signal",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "The signal received by this process."
+    },
+    {
+     "name": "comm",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "The name of this process."
+    }
+   ]
+  },
+  {
+   "name": "process_stats",
+   "desc": "CPU, memory and IO stats for all K8s processes in your cluster.",
+   "cols": [
+    {
+     "name": "time_",
+     "type": "TIME64NS",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Timestamp when the data record was collected."
+    },
+    {
+     "name": "upid",
+     "type": "UINT128",
+     "pattern": "GENERAL",
+     "desc": "An opaque numeric ID that globally identify a running process inside the cluster."
+    },
+    {
+     "name": "major_faults",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Number of major page faults"
+    },
+    {
+     "name": "minor_faults",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Number of minor page faults"
+    },
+    {
+     "name": "cpu_utime_ns",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Time spent on user space by the process"
+    },
+    {
+     "name": "cpu_ktime_ns",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Time spent on kernel by the process"
+    },
+    {
+     "name": "num_threads",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "Number of threads of the process"
+    },
+    {
+     "name": "vsize_bytes",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "Virtual memory size in bytes of the process"
+    },
+    {
+     "name": "rss_bytes",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "Resident memory size in bytes of the process"
+    },
+    {
+     "name": "rchar_bytes",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "IO reads in bytes of the process"
+    },
+    {
+     "name": "wchar_bytes",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "IO writes in bytes of the process"
+    },
+    {
+     "name": "read_bytes",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "IO reads actually go to storage layer in bytes of the process"
+    },
+    {
+     "name": "write_bytes",
+     "type": "INT64",
+     "pattern": "METRIC_COUNTER",
+     "desc": "IO writes actually go to storage layer in bytes of the process"
+    }
+   ]
+  },
+  {
+   "name": "redis_events",
+   "desc": "Redis request-response pair events",
+   "cols": [
+    {
+     "name": "time_",
+     "type": "TIME64NS",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Timestamp when the data record was collected."
+    },
+    {
+     "name": "upid",
+     "type": "UINT128",
+     "pattern": "GENERAL",
+     "desc": "An opaque numeric ID that globally identify a running process inside the cluster."
+    },
+    {
+     "name": "remote_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the remote endpoint."
+    },
+    {
+     "name": "remote_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the remote endpoint."
+    },
+    {
+     "name": "trace_role",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "req_cmd",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "Request command. See https://redis.io/commands."
+    },
+    {
+     "name": "req_args",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "Request command arguments."
+    },
+    {
+     "name": "resp",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "Response message."
+    },
+    {
+     "name": "latency",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "Request-response latency."
+    }
+   ]
+  },
+  {
+   "name": "stack_traces.beta",
+   "desc": "Sampled stack traces of applications that identify hot-spots in application code. Executable symbols are required for human-readable function names to be displayed.",
+   "cols": [
+    {
+     "name": "time_",
+     "type": "TIME64NS",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Timestamp when the data record was collected."
+    },
+    {
+     "name": "upid",
+     "type": "UINT128",
+     "pattern": "GENERAL",
+     "desc": "An opaque numeric ID that globally identify a running process inside the cluster."
+    },
+    {
+     "name": "stack_trace_id",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "A unique identifier of the stack trace, for script-writing convenience. String representation is in the `stack_trace` column."
+    },
+    {
+     "name": "stack_trace",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "A stack trace within the sampled process, in folded format. The call stack symbols are separated by semicolons. If symbols cannot be resolved, addresses are populated instead."
+    },
+    {
+     "name": "count",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "Number of times the stack trace has been sampled."
+    }
+   ]
+  }
+ ]
+}

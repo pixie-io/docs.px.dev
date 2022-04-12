@@ -26,6 +26,10 @@ order: 50
 - [Go Client Reference Docs](https://pkg.go.dev/px.dev/pxapi)
 - [Python Client Reference Docs](/reference/api/py)
 
+#### Data Tables
+
+- [Data Tables Overview](/reference/datatables)
+
 #### Plugins
 
 - [Grafana Datasource Plugin](/reference/plugins/grafana)

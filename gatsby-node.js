@@ -22,6 +22,7 @@ const groupBy = require('lodash.groupby');
 const startCase = require('lodash.startcase');
 const utils = require('./src/functionPageUrl.ts');
 const jsonDocumentation = require('./external/pxl_documentation.json');
+const tableDocumentation = require('./external/datatable_documentation.json');
 
 const globalUrlTree = [];
 const languages = require('./available-languages');
@@ -124,7 +125,7 @@ exports.createPages = ({
             });
             // Create the individual pages.
             qlobjectDocs.forEach((doc) => createPage({
-              path: utils.functionPageUrl(doc.body.name, catPath),
+              path: utils.functionPageUrl('/reference/pxl', catPath, doc.body.name),
               component: path.resolve('./src/templates/mutationDocs.tsx'),
               context: {
                 data: JSON.stringify(doc),
@@ -133,11 +134,11 @@ exports.createPages = ({
             }));
             // Create index page.
             createPage({
-              path: utils.functionPageUrl('', catPath),
+              path: utils.functionPageUrl('/reference/pxl', catPath, ''),
               component: path.resolve('./src/templates/pxlObjectIndex.tsx'),
               context: {
                 data: JSON.stringify(qlobjectDocs),
-                pagePath: utils.functionPageUrl('', catPath),
+                pagePath: utils.functionPageUrl('/reference/pxl', catPath, ''),
                 title,
                 description,
               },
@@ -196,12 +197,12 @@ exports.createPages = ({
 
           // create udfDocs index Pages
           createPage({
-            path: utils.functionPageUrl('', 'udf'),
+            path: utils.functionPageUrl('/reference/pxl', 'udf', ''),
             component: path.resolve('./src/templates/udfDocsIndex.tsx'),
             context: {
               data: JSON.stringify(udfDocs),
               title: 'Execution Time Functions',
-              pagePath: utils.functionPageUrl('', 'tracepoint-field'),
+              pagePath: utils.functionPageUrl('/reference/pxl', 'tracepoint-field', ''),
             },
           });
           // create udfDocs Pages
@@ -210,7 +211,7 @@ exports.createPages = ({
           )
             .forEach((functions) => {
               createPage({
-                path: utils.functionPageUrl(functions[0].name, 'udf'),
+                path: utils.functionPageUrl('/reference/pxl', 'udf', functions[0].name),
                 component: path.resolve('./src/templates/udfDocs.tsx'),
                 context: {
                   data: JSON.stringify(functions),
@@ -233,6 +234,30 @@ exports.createPages = ({
               pagePath: '/reference/api/py',
             },
           });
+          // create datatableDocs index Page
+          createPage({
+            path: '/reference/datatables',
+            component: path.resolve('./src/templates/datatableDocsIndex.tsx'),
+            context: {
+              data: JSON.stringify(tableDocumentation.datatableDocs),
+              title: 'Data Tables',
+              pagePath: '/reference/datatables',
+            },
+          });
+          // create datatableDocs Pages
+          Object.values(
+            groupBy(tableDocumentation.datatableDocs, (x) => x.name),
+          )
+            .forEach((table) => {
+              createPage({
+                path: utils.functionPageUrl('/reference', 'datatables', table[0].name),
+                component: path.resolve('./src/templates/datatableDocs.tsx'),
+                context: {
+                  data: JSON.stringify(table),
+                  title: table[0].name,
+                },
+              });
+            });
         }),
     );
   });
@@ -349,9 +374,40 @@ exports.onCreateNode = ({
       node,
       value: !!node.frontmatter.directory,
     });
-  } else if (node.internal.type === 'SitePage' && (node.path.match('/reference/pxl/.*') || node.path.match('/reference/api/.*'))) {
+  } else if (node.internal.type === 'SitePage' && (node.path.match('/reference/pxl/.*') || node.path.match('/reference/api/.*') || node.path.match('/reference/datatables') || node.path.match('/reference/datatables/.*'))) {
     const treePath = node.path.split('/');
     const level = treePath.length - 2;
+    createNodeField({
+      name: 'slug',
+      node,
+      value: node.path,
+    });
+
+    createNodeField({
+      name: 'id',
+      node,
+      value: node.id,
+    });
+
+    createNodeField({
+      name: 'title',
+      node,
+      value: node.context.title,
+    });
+    createNodeField({
+      name: 'level',
+      node,
+      value: level,
+    });
+    // Set to false always to match the above, not completely sure why we need this.
+    createNodeField({
+      name: 'directory',
+      node,
+      value: false,
+    });
+  } else if (node.internal.type === 'SitePage' && (node.path.match('/reference/datatables/.*'))) {
+    const treePath = node.path.split('/');
+    const level = treePath.length - 3;
     createNodeField({
       name: 'slug',
       node,
