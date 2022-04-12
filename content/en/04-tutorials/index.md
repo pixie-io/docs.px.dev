@@ -25,6 +25,7 @@ order: 40
 
 - [Slack Alerts using the Pixie API](/tutorials/integrations/slackbot-alert)
 - [Grafana Datasource Plugin](/tutorials/integrations/grafana)
+- [Export Data to OpenTelemetry](/tutorials/integrations/otel)
 
 #### Collecting Custom Data
 
