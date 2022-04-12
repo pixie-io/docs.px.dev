@@ -125,7 +125,7 @@ exports.createPages = ({
             });
             // Create the individual pages.
             qlobjectDocs.forEach((doc) => createPage({
-              path: utils.functionPageUrl(doc.body.name, catPath, '/reference/pxl'), // TODO: fix this
+              path: utils.functionPageUrl('/reference/pxl', catPath, doc.body.name),
               component: path.resolve('./src/templates/mutationDocs.tsx'),
               context: {
                 data: JSON.stringify(doc),
@@ -134,11 +134,11 @@ exports.createPages = ({
             }));
             // Create index page.
             createPage({
-              path: utils.functionPageUrl('', catPath, '/reference/pxl'),
+              path: utils.functionPageUrl('/reference/pxl', catPath, ''),
               component: path.resolve('./src/templates/pxlObjectIndex.tsx'),
               context: {
                 data: JSON.stringify(qlobjectDocs),
-                pagePath: utils.functionPageUrl('', catPath, '/reference/pxl'),
+                pagePath: utils.functionPageUrl('/reference/pxl', catPath, ''),
                 title,
                 description,
               },
@@ -197,12 +197,12 @@ exports.createPages = ({
 
           // create udfDocs index Pages
           createPage({
-            path: utils.functionPageUrl('', 'udf', '/reference/pxl'),
+            path: utils.functionPageUrl('/reference/pxl', 'udf', ''),
             component: path.resolve('./src/templates/udfDocsIndex.tsx'),
             context: {
               data: JSON.stringify(udfDocs),
               title: 'Execution Time Functions',
-              pagePath: utils.functionPageUrl('', 'tracepoint-field', '/reference/pxl'),
+              pagePath: utils.functionPageUrl('/reference/pxl', 'tracepoint-field', ''),
             },
           });
           // create udfDocs Pages
@@ -211,7 +211,7 @@ exports.createPages = ({
           )
             .forEach((functions) => {
               createPage({
-                path: utils.functionPageUrl(functions[0].name, 'udf', '/reference/pxl'),
+                path: utils.functionPageUrl('/reference/pxl', 'udf', functions[0].name),
                 component: path.resolve('./src/templates/udfDocs.tsx'),
                 context: {
                   data: JSON.stringify(functions),
@@ -250,7 +250,7 @@ exports.createPages = ({
           )
             .forEach((table) => {
               createPage({
-                path: utils.functionPageUrl(table[0].name, 'datatables', '/reference'),
+                path: utils.functionPageUrl('/reference', 'datatables', table[0].name),
                 component: path.resolve('./src/templates/datatableDocs.tsx'),
                 context: {
                   data: JSON.stringify(table),

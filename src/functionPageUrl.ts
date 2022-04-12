@@ -18,4 +18,4 @@
 
 const slugify = require('slugify');
 
-exports.functionPageUrl = (name, type, basepath) => (`${basepath}/${slugify(type.toLowerCase())}/${slugify(name.toLowerCase())}`);
+exports.functionPageUrl = (basepath, type, name) => (`${basepath}/${slugify(type.toLowerCase())}/${slugify(name.toLowerCase())}`);

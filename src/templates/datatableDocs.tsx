@@ -41,7 +41,7 @@ const useStyles = makeStyles(() => ({
     textDecoration: 'none',
   },
 }));
-const RenderFunctionRow = ({ docObj }) => (
+const RenderTableRow = ({ docObj }) => (
   <TableRow key={docObj.name}>
     <TableCell component='th' scope='row'>{docObj.name}</TableCell>
     <TableCell>{docObj.type}</TableCell>
@@ -84,7 +84,7 @@ const TableDocsTemplate = ((props: any) => {
             <TableBody>
               {datatables[0].cols
                 .map((f) => (
-                  <RenderFunctionRow docObj={f} />
+                  <RenderTableRow docObj={f} />
                 ))}
             </TableBody>
           </Table>

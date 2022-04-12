@@ -42,7 +42,7 @@ const useStyles = makeStyles(() => ({
     textDecoration: 'none',
   },
 }));
-const RenderFunctionRow = ({ docObj, classes, parentPath }) => (
+const RenderTableRow = ({ docObj, classes, parentPath }) => (
   <TableRow key={docObj.name}>
     <TableCell component='th' scope='row'>
       <Link
@@ -88,7 +88,7 @@ const TableDocsIndexTemplate = ((props: any) => {
             <TableBody>
               {datatables
                 .map((f) => (
-                  <RenderFunctionRow docObj={f} classes={classes} parentPath={pagePath} />
+                  <RenderTableRow docObj={f} classes={classes} parentPath={pagePath} />
                 ))}
             </TableBody>
           </Table>
