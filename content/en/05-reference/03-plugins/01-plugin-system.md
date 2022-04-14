@@ -14,6 +14,8 @@ Pixie's primary focus is to build a real-time debugging platform, not a full-fle
 
 Plugins can be configured from within the Admin UI. 
 
+<svg title='Plugins are accessible through the Admin UI.' src='plugin/plugins_page.png'/>
+
 1. Open the Live UI and navigate to the Plugins tab on the Admin page (`/admin/plugins`).
 2. Find the plugin you wish to enable and click the toggle to enable/disable the plugin.
 3. Expand the plugin row to specify the necessary configuration values. The required set of fields differs per plugin provider, and usually contains information such as API keys which are used for authentication.
@@ -26,6 +28,8 @@ By default, the plugin provider has configured a set of preset scripts. These wi
 
 ### Configuring Preset Export Scripts
 
+<svg title='You can view preset scripts for a plugin in the Data Export page.' src='plugin/preset_scripts.png'/>
+
 1. [Enable a plugin provider](#enabling-a-plugin) which supports longterm data retention. 
 2. Open the Live UI and navigate to the Data Export page in the sidebar (`/configure-data-export`).
 3. All preset scripts are listed under `<Plugin Provider> Scripts`.
@@ -34,6 +38,8 @@ By default, the plugin provider has configured a set of preset scripts. These wi
 6. Click "Save" to update the script with your changes.
 
 ### Creating Custom Export Scripts
+
+<svg title='Create a custom script in the Data Export page by clicking `Create Scripts`.' src='plugin/custom_scripts.png'/>
 
 1. [Enable a plugin provider](#enabling-a-plugin) which supports longterm data retention. 
 2. Open the Live UI and navigate to the Data Export page in the sidebar (`/configure-data-export`).
