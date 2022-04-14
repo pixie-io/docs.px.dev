@@ -32,6 +32,7 @@ order: 50
 
 #### Plugins
 
+- [Pixie Plugin System](/reference/plugins/plugin-system)
 - [Grafana Datasource Plugin](/reference/plugins/grafana)
 
 #### PxL Language
