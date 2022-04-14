@@ -30,4 +30,4 @@ We are building a data plane for Kubernetes rather than a full-fledged observabi
 * Non-Kubernetes environments
 * Alerting (available via Pixie’s New Relic One integration or [Slackbot](/tutorials/integrations/slackbot-alert) API integration)
 * Advanced dashboarding (available with Pixie's [Grafana plugin](/reference/plugins/grafana))
-* Long-term storage (available with [New Relic One integration](https://newrelic.com/platform/kubernetes-pixie))
+* Long-term storage (available with the [Pixie Plugin system](/reference/plugins/plugin-system) and [New Relic One integration](https://newrelic.com/platform/kubernetes-pixie))
