@@ -23,9 +23,7 @@ Plugins can be configured from within the Admin UI.
 
 ## Longterm Data Retention
 
-<Alert variant="outlined" severity="info">
-  Check out the <a href="/tutorials/integrations/otel/">tutorial</a> to learn how to export data in the OTel format.
-</Alert>
+<Alert variant="outlined" severity="info">Check out the <a href="/tutorials/integrations/otel/">tutorial</a> to how to export data in the OTel format.</Alert>
 
 Enable a plugin which offers longterm data retention capabilities to send Pixie data to an external datastore. This plugin allows you to configure PxL scripts to export data at regularly scheduled intervals. This only currently supports exporting data through the [OpenTelemetry](https://opentelemetry.io/) format.
 
