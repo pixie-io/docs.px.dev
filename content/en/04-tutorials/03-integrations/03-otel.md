@@ -21,7 +21,7 @@ Note that [Pixie's API](/using-pixie/api-quick-start/) can also be used to run t
 
 If you don't already have an OTel collector set up, you can follow the directions to deploy our demo collector [here](https://github.com/pixie-io/pixie-demos/tree/main/otel-collector).
 
-Most OTel collectors are configured to forward metrics to Prometheus or Jaeger, but our demo collector simply outputs the metrics it receives to the logs.
+Most OTel collectors are configured to forward metrics to _other tools_ such as Prometheus or Jaeger. For the sake of this tutorial, our demo collector simply outputs the metrics it receives to its logs.
 
 ## Write the PxL script
 
@@ -87,13 +87,13 @@ px.display(df)
 
 <svg title='OTel PxL script output in the Live UI' src='plugin/otel-script-output.png'/>
 
+> This PxL script calculates the rate of HTTP requests made to each pod in your cluster and exports that data as an OTel Gauge metric.
+
 7. To validate that the data has been received by the OTel collector, check logs for the the `otel-collector-*` pod. If the export was successful, you should see logs similar to:
 
 ```bash
 2022-04-15T20:48:20.633Z    INFO    loggingexporter/logging_exporter.go:54    MetricsExporter    {"#metrics": 32}
 ```
-
-> So what does this PxL script actually do? This PxL script calculates the rate of HTTP requests made to each pod in your cluster and exports that data as an OpenTelemetry Gauge metric.
 
 > If this is your first PxL script, you may want to check out the [Writing a PxL Script Tutorial](/tutorials/pxl-scripts/write-pxl-scripts/) to learn more. We'll give a high-level overview of this script below.
 
@@ -142,9 +142,9 @@ endpoint=px.otel.Endpoint(
 ),
 ```
 
-The endpoint url must be an OpenTelemetry grpc endpoint. Don’t specify a protocol prefix. Optionally, you can also specify the headers passed to the endpoint. Some OpenTelemetry collector providers look for authentication tokens or api keys in the connection context. The headers field is where you can add this information.
+The endpoint url must be an OpenTelemetry gRPC endpoint. If the OpenTelemetry gRPC endpoint is not secured with SSL, you can set `insecure=True`. Don’t specify a protocol prefix. Optionally, you can also specify the headers passed to the endpoint. Some OpenTelemetry collector providers look for authentication tokens or api keys in the connection context. The headers field is where you can add this information.
 
-Note that if you’re writing a [plugin script](/reference/plugins/plugin-system), this information should be passed in from the plugin context.
+Note that if you’re writing a [plugin script](/reference/plugins/plugin-system), this information will be passed in by the plugin context and should not be specified. We'll remove this endpoint parameter when we set up the Plugin in Step 3.
 
 ### Transforming Data
 
@@ -184,7 +184,7 @@ data=[
 
 We currently support a limited set of OpenTelemetry signal types: `metric.Gauge`, `metric.Summary` and `trace.Span`. We also support a subset of the available fields for each instrument. You can see the full set of features [in our api documentation.](/reference/pxl/otel-export) If you want support for other fields, please [open an issue](https://github.com/pixie-io/pixie).
 
-## Setup the Plugin System
+## Setup the Plugin
 
 Now that we have a PxL script that exports OTel data, let's set up the [Plugin System](/reference/plugins/plugin-system/) to run this script at regularly scheduled intervals.
 
@@ -204,13 +204,13 @@ Now that we have a PxL script that exports OTel data, let's set up the [Plugin S
 
 <svg title='Select the data export icon.' src='plugin/data-export-icon.png'/>
 
-6. The OpenTelemetry plugin comes with several pre-configured OTel export PxL scripts (more coming soon!). Click the toggle to disable these scripts:
+6. The OpenTelemetry plugin comes with several pre-configured OTel export PxL scripts (more coming soon!). Click the toggle to disable these scripts for now. For the sake of this tutorial, we want to ensure that the data that the collector receives is actually from our custom script.
 
-<svg title='Select the data export icon.' src='plugin/data-export.png'/>
+<svg title='Disable the pre-configured OpenTelemetry scripts.' src='plugin/data-export.png'/>
 
 7. Select the `+ CREATE SCRIPT` button.
 
-8. Enter `HTTP Throughput` for the `Script Name`.
+8. Enter `HTTP Throughput` in the `Script Name` field.
 
 9. Replace the contents of the `PxL` field with the following:
 
@@ -253,13 +253,13 @@ px.export(df, px.otel.Data(
 
 > This is the script we developed in [Step 2](/tutorials/integrations/otel/#write-the-pxl-script) with a few modifications:
 
-> - We've changed the DataFrame's `start_time` argument to use `px.plugin.start_time`. This value can be configured using the `Summary Window` field on this page.
+> - We changed the DataFrame's `start_time` argument to use `px.plugin.start_time`. This value can be configured using the `Summary Window` field on this page.
 
-> - We've removed the `Endpoint` parameter. We configured the plugin with this value in Step 3.
+> - We removed the `Endpoint` parameter. We configured the plugin with this value in Step 3.
 
-> - We removed the `px.display()` call which was used to display the data in the Live UI when developing our script in the Scratch Pad.
+> - We removed the `px.display()` call on the last line. This was used to display the data in the Live UI when developing our script in the Scratch Pad.
 
-10. Select the `OpenTelemetry` option in the `Plugin` field.
+10. Select the `OpenTelemetry` option from the `Plugin` field drop-down menu.
 
 11. Click the `SAVE` button.
 

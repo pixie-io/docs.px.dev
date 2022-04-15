@@ -128,11 +128,7 @@ Go, C++ and Rust are currently supported. The [Roadmap](/about-pixie/roadmap) co
 
 ### How do I export data from the Pixie platform? Import data?
 
-Pixie offers two [client libraries](/reference/api/overview/) (Go, Python) to allow developers to easily integrate Pixie observability data into their existing stack.
-
-Pixie does not currently offer data ingestion.
-
-The [Roadmap](/about-pixie/roadmap) contains plans to support exporting or ingesting data in a variety of additional formats.
+Pixie offers two [client libraries](/reference/api/overview/) (Go, Python) to allow developers to easily integrate Pixie observability data into their existing stack. You can also use Pixie's [Plugin System](/reference/plugins/plugin-system/) to [export data in the OpenTelemetry format](/tutorials/integrations/otel/). Pixie does not currently offer data ingestion. The [Roadmap](/about-pixie/roadmap) contains plans to support exporting or ingesting data in a variety of additional formats.
 
 ### How do I share a Pixie dashboard with others?
 

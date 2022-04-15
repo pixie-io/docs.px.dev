@@ -21,7 +21,7 @@ Pixie’s edge compute engine allows us to apply ML/AI on unsampled data. We wil
 
 ### Support the ecosystem
 
-Pixie has a versatile execution engine which can ingest and export data in a variety of formats. We plan to export and ingest data in the OpenTelemetry format which will enable developers to consume Pixie data along with the data produced by other tools (Jaeger, Prometheus). We also plan to leverage our [client APIs](/reference/api) in order to support tighter integrations with other open source projects.
+Pixie has a versatile execution engine which can ingest and export data in a variety of formats. Pixie currently supports [exporting data in the OpenTelemetry format](/tutorials/integrations/otel/) which enables developers to consume Pixie data along with data produced by other tools (Jaeger, Prometheus. We plan to add ingest in the future. We also plan to leverage our [client APIs](/reference/api) in order to support tighter integrations with other open source projects.
 
 ### Non-goals
 
