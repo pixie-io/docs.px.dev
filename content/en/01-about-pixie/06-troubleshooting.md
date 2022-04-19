@@ -5,7 +5,7 @@ metaDescription: "Troubleshooting problems with Pixie."
 order: 6
 ---
 
-This page describes how to troubleshoot Pixie. We frequently answer questions on our [community Slack](https://slackin.px.dev/) channel and in response to [GitHub issues](https://github.com/pixie-io/pixie/issues). You can also check those two places to see if your question has already been addressed. To better understand how Pixie's various components interact, please see the [Architecture](/about-pixie/architecture/overview) overview.
+This page describes how to troubleshoot Pixie. We frequently answer questions on our [community Slack](https://slackin.px.dev/) channel and in response to [GitHub issues](https://github.com/pixie-io/pixie/issues). You can also check those two places to see if your question has already been addressed. To better understand how Pixie's various components interact, please see the [Architecture](/reference/architecture) overview.
 
 #### Troubleshooting Deployment
 

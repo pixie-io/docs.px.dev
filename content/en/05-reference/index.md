@@ -20,6 +20,9 @@ order: 50
 - [User Management & Sharing](/reference/admin/user-mgmt/)
 - [Version History](/reference/admin/product-updates)
 
+#### Architecture 
+- [Architecture](/reference/architecture)
+
 #### API
 
 - [API Overview](/reference/api/overview)
