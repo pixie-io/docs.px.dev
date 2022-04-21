@@ -3,9 +3,6 @@ title: "Deploy Options"
 metaTitle: "Reference | Admin | Deploy Options"
 metaDescription: "Configuration options for Pixie on deploy"
 order: 4
-redirect_from:
-    - /admin/deploy-options/
-    - /reference/admin/deploy-options/
 ---
 
 ## Labeling Pixie's Resources
