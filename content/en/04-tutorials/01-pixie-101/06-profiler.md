@@ -19,7 +19,7 @@ You will need a Kubernetes cluster with Pixie installed. If you do not have a cl
 
 ### Enabling Java Support
 
-Java support is a beta feature and must be manually enabled during the deployment of Pixie.
+Java support is available for Pixie vizier version 0.10.22+. Instructions for identifying and updating your vizier version can be found [here](https://docs.px.dev/reference/admin/updating-pixie/#updating-pixie-cloud-and-vizier). Java support is a beta feature and must be manually enabled during the deployment of Pixie.
 
 To enable Java support when deploying Pixie with the [Pixie CLI](/installing-pixie/install-schemes/cli/), run:
 
@@ -32,6 +32,8 @@ To enable Java support when deploying Pixie with [Helm](/installing-pixie/instal
 ```
 helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace --set dataCollectorParams.customPEMFlags.PL_PROFILER_JAVA_SYMBOLS=true
 ```
+
+For best results, run Java applications with `-XX:+PreserveFramePointer`.
 
 ## Setup
 
