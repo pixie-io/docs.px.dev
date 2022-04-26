@@ -3,6 +3,8 @@ title: "Troubleshooting"
 metaTitle: "About Pixie | Troubleshooting"
 metaDescription: "Troubleshooting problems with Pixie."
 order: 6
+redirect_from:
+    - /troubleshooting
 ---
 
 This page describes how to troubleshoot Pixie. We frequently answer questions on our [community Slack](https://slackin.px.dev/) channel and in response to [GitHub issues](https://github.com/pixie-io/pixie/issues). You can also check those two places to see if your question has already been addressed. To better understand how Pixie's various components interact, please see the [Architecture](/reference/architecture) overview.
@@ -75,7 +77,7 @@ This step of the deployment checks that the Cloud Connector can successfully com
 
 Confirm that all of the `pl` and `px-operator` namespace pods are ready and available using `px debug pods`. Deploying Pixie usually takes anywhere between 5-7 minutes. Once Pixie is deployed, it can take a few minutes for the UI to show that the cluster is healthy.
 
-To debug, follow the steps in the “Deploy with CLI fails to pass health checks” section in the [above question](/about-pixie/faq/#my-deployment-is-stuck-fails). As long as the Kelvin pod, plus at least one PEM pod is up and running, then your cluster should not show as unavailable.
+To debug, follow the steps in the “Deploy with CLI fails to pass health checks” section in the [above question](/about-pixie/troubleshooting/#troubleshooting-deployment-my-deployment-is-stuck-fails). As long as the Kelvin pod, plus at least one PEM pod is up and running, then your cluster should not show as unavailable.
 
 ## Troubleshooting Operation
 
@@ -105,7 +107,7 @@ If specific services / requests are missing, it is possible that your applicatio
 
 ### Why can’t I see application profiles / flamegraphs for my pod / node?
 
-Continuous profiling currently only supports Go/C++/Rust. The [Roadmap](/about-pixie/roadmap) contains plans to expand this support to Java, Ruby, Python, etc.
+Pixie's [continuous profiler](/tutorials/pixie-101/profiler/) currently supports Go, C++, Rust and Java. Java support is a beta feature and must be [manually enabled](/tutorials/pixie-101/profiler/#prerequisites-enabling-java-support). For best results, run Java applications with `-XX:+PreserveFramePointer`.
 
 ### Why is the vizier-pem pod’s memory increasing?
 

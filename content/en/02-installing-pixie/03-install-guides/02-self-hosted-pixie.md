@@ -20,7 +20,7 @@ Get Pixie fully managed with [Pixie Community Cloud](/installing-pixie/install-g
 ## 1. Deploy Pixie Cloud
 
 <Alert variant="outlined" severity="info">
-  Pixie also offers a free account with Pixie Community Cloud to make getting started even easier and faster. To get Pixie Cloud, check out the community cloud <a href="https://docs.px.dev/installing-pixie/install-guides/community-cloud-for-pixie">Install Guide</a>.
+  Pixie also offers a free account with Pixie Community Cloud to make getting started even easier and faster. To get Pixie Cloud, check out the community cloud <a href="/installing-pixie/install-guides/community-cloud-for-pixie">Install Guide</a>.
 </Alert>
 
 <Alert variant="outlined" severity="warning">

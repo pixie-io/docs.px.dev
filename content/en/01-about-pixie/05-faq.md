@@ -122,7 +122,7 @@ Typical performance overhead for node CPU usage is between 2-5%, depending on th
 
 ### Which languages are supported for continuous profiling?
 
-Go, C++ and Rust are currently supported. The [Roadmap](/about-pixie/roadmap) contains plans to expand support to other languages.
+Pixie's [continuous profiler](/tutorials/pixie-101/profiler/) currently supports Go, C++, Rust and Java. The [Roadmap](/about-pixie/roadmap) contains plans to expand support to other languages.
 
 ## How do I...?
 

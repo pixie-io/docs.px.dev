@@ -36,7 +36,7 @@ If you're interested in troubleshooting HTTP latency, check out the [Service Per
 A developer has noticed that the demo application's `cart` service is reporting errors.
 
 <Alert variant="outlined" severity="info">
-  To see high-level error rates for all of the services in your cluster, check out the <a href="https://docs.px.dev/tutorials/pixie-101/service-performance/#service-graph">Service Graph</a> section of the Service Performance tutorial.
+  To see high-level error rates for all of the services in your cluster, check out the <a href="/tutorials/pixie-101/service-performance/#service-graph">Service Graph</a> section of the Service Performance tutorial.
 </Alert>
 
 Let's use Pixie to look at HTTP requests with specific types of errors:
