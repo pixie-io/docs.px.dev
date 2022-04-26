@@ -125,10 +125,10 @@ Pixie uses memory for two main purposes:
 
 By default, Pixie reserves 60% of allocated memory for short-term data storage (leaving the other 40% for the collection). For a 2Gi deployment, Pixie will therefore reserve by default 1.2Gi for data storage. For developers with [long-term data storage](/about-pixie/faq/#how-do-i...-how-do-i-export-data-from-the-pixie-platform-import-data) Pixie can be configured to use less memory for short-term data storage. Note, this is an advanced option that most developers shouldn't need.
 
-To set Pixie's data store memory limit when deploying with the [Pixie CLI](/installing-pixie/install-schemes/cli/), use the `--pem_memory_request` flag:
+To set Pixie's data store memory limit when deploying with the [Pixie CLI](/installing-pixie/install-schemes/cli/), use the `--pem_flags` flag:
 
 ``` bash
-px deploy --pem_memory_request=1Gi
+px deploy --pem_flags="PL_TABLE_STORE_DATA_LIMIT_MB=1000"
 ```
 
 To set Pixie's memory request when deploying with [Helm](/installing-pixie/install-schemes/helm/), use the `dataCollectorParams.customPEMFlags.PL_TABLE_STORE_DATA_LIMIT_MB` field:
