@@ -78,7 +78,7 @@ The following is a list of Linux distributions that have been tested.
 | Ubuntu       |  18.04+               |
 | Debian       |  10+                  |
 | RHEL         |  8+                   |
-| COS          |  73+                  |
+| CentOS       |  7.3+                  |
 
 Pixie may also work on other distributions.
 
