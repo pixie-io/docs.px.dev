@@ -30,7 +30,7 @@ This tutorial series demonstrates how to write a PxL script to query data automa
 
 ## Writing PxL Scripts with Visualizations
 
-This tutorial series adds visualizations to the PxL script developed in the [Writing PxL Scripts](/tutorials/pxl-scripts/#writing-pxl-scripts) tutorial series. Pixie's Live UI will be used to execute the script.
+This tutorial series adds visualizations to the PxL script developed in the above [Writing PxL Scripts](/tutorials/pxl-scripts/write-pxl-scripts/#writing-pxl-scripts) tutorial series. Pixie's Live UI will be used to execute the script.
 
 - [Prerequisite #1: Learn how to navigate the Live UI.](/using-pixie/using-live-ui)
 - Prerequisite #2: Setup the script dev environment.

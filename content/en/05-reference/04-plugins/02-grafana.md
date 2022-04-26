@@ -2,7 +2,7 @@
 title: "Grafana Datasource Plugin"
 metaTitle: "Reference | Plugins | Grafana Datasource Plugin "
 metaDescription: "Pixie's Grafana Datasource Plugin"
-order: 2 
+order: 2
 ---
 
 The Pixie Datasource plugin allows you to visualize data from the Pixie observability platform in Grafana.

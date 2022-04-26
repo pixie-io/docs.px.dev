@@ -77,7 +77,7 @@ This step of the deployment checks that the Cloud Connector can successfully com
 
 Confirm that all of the `pl` and `px-operator` namespace pods are ready and available using `px debug pods`. Deploying Pixie usually takes anywhere between 5-7 minutes. Once Pixie is deployed, it can take a few minutes for the UI to show that the cluster is healthy.
 
-To debug, follow the steps in the “Deploy with CLI fails to pass health checks” section in the [above question](/about-pixie/faq/#my-deployment-is-stuck-fails). As long as the Kelvin pod, plus at least one PEM pod is up and running, then your cluster should not show as unavailable.
+To debug, follow the steps in the “Deploy with CLI fails to pass health checks” section in the [above question](/about-pixie/troubleshooting/#troubleshooting-deployment-my-deployment-is-stuck-fails). As long as the Kelvin pod, plus at least one PEM pod is up and running, then your cluster should not show as unavailable.
 
 ## Troubleshooting Operation
 
