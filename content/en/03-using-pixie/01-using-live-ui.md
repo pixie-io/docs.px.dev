@@ -114,5 +114,5 @@ To run an [example script](https://github.com/pixie-io/pixie-demos/tree/main/end
 5. Show / hide the script editor using the `ctrl+e` (Windows, Linux) or `cmd+e` (Mac). Alternatively, use the `Open editor` button in the top right.
 
 <Alert variant="outlined" severity="info">
-  Pixie's Live UI will soon support script persistence, but at the moment, any scripts modified in the Live UI will be lost if you refresh or switch to a different script. For extensive script development, we recommend using the <a href="https://docs.px.dev/tutorials/pxl-scripts/script-dev-environment/">Script Developer Environment</a>
+  Pixie's Live UI will soon support script persistence, but at the moment, any scripts modified in the Live UI will be lost if you refresh or switch to a different script. For extensive script development, we recommend using the <a href="/tutorials/pxl-scripts/script-dev-environment/">Script Developer Environment</a>
 </Alert>
