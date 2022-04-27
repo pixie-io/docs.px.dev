@@ -73,13 +73,13 @@ helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-k
 
 ## Configuring Pixie's memory usage
 
-Pixie deploys its PEMs as a DaemonSet on your cluster in order to collect and store telemetry data.
-
 When deploying Pixie, you have three options for configuring PEM memory usage:
 
 - [Set PEM pod memory limit](#configuring-pixie's-memory-usage-setting-the-memory-limit)
 - [Set PEM pod memory request](#configuring-pixie's-memory-usage-setting-the-memory-request)
 - [Set data table storage limit](#configuring-pixie's-memory-usage-setting-the-data-table-storage-memory-limit)
+
+For more information about these options, please refer to the [Tuning Memory Usage](/reference/admin/tuning-mem-usage/) page.
 
 ### Setting the memory limit
 
@@ -117,13 +117,7 @@ helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-k
 
 ### Setting the data table storage memory limit
 
-Pixie uses memory for two main purposes:
-
-- **Collecting telemetry data**: Tracing application traffic, collecting CPU profiles, etc. requires that those those values are stored in memory somewhere as they are processed.
-
-- **Short-term storage of data**: After processing, telemetry data is stored in [data tables](/reference/datatables/) in-memory on the nodes in your cluster. See the [FAQ](/about-pixie/faq/#data-collection-how-much-data-does-pixie-store) for more info about data retention.
-
-By default, Pixie reserves 60% of allocated memory for short-term data storage (leaving the other 40% for the collection). For a 2Gi deployment, Pixie will therefore reserve by default 1.2Gi for data storage. For developers with [long-term data storage](/about-pixie/faq/#how-do-i...-how-do-i-export-data-from-the-pixie-platform-import-data) Pixie can be configured to use less memory for short-term data storage. Note, this is an advanced option that most developers shouldn't need.
+This is an advanced option that most developers shouldn't need. For more discussion see the [Tuning Memory Usage](/reference/admin/tuning-mem-usage/) page.
 
 To set Pixie's data store memory limit when deploying with the [Pixie CLI](/installing-pixie/install-schemes/cli/), use the `--pem_flags` flag:
 

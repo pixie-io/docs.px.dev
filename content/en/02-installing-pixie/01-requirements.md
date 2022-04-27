@@ -99,4 +99,4 @@ Pixie requires the following memory per node:
 | :-------- | :--------------------------------------------------------------------- |
 | 1GiB      | To accommodate application pods, we recommend using no more than 25% of the nodes' total memory for Pixie.  |
 
-Pixie deploys its PEMs as a DaemonSet on your cluster in order to collect and store telemetry data. The default memory limit is 2Gi per PEM. The lowest recommended value is 1Gi per PEM. For more information on how to configure Pixie's memory usage, see the [deploy options](/reference/admin/deploy-options/#configuring-pixie's-memory-usage).
+Pixie deploys its PEMs as a DaemonSet on your cluster in order to collect and store telemetry data. The default memory limit is 2Gi per PEM. The lowest recommended value is 1Gi per PEM. For more information on how to configure Pixie's memory usage, see the [Tuning Memory Usage](/reference/admin/tuning-mem-usage/) page.

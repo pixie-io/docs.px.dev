@@ -116,7 +116,7 @@ This is expected behavior. Pixie stores the data it collects in-memory on the no
 
 When Pixie is first deployed, you can expect to see an increase in memory utilization over time. This is because the temporary data store will go from storing 0B of data to reaching its cap of 1.25G of data (in the default deployment). Once this cap is hit, old data is expired and the memory utilization shouldn’t increase anymore.
 
-Pixie has a minimum 1GiB memory requirement per node. The default deployment is 2GiB of memory. To learn how to configure Pixie's memory usage, see the [deploy options](/reference/admin/deploy-options/#configuring-pixie's-memory-usage).
+Pixie has a minimum 1GiB memory requirement per node. The default deployment is 2GiB of memory. To learn how to configure Pixie's memory usage, see the [Tuning Memory Usage](/reference/admin/tuning-mem-usage/) page.
 
 ### Why is Pixie oomkilling?
 
