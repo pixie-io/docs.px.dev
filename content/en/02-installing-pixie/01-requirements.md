@@ -90,14 +90,13 @@ Pixie requires an `x86-64` architecture.
 Pixie's [Vizier](/reference/architecture/#vizier) module sends outgoing HTTPS/2 requests to Pixie's [Cloud](/reference/architecture/#cloud) on port `443`.
 
 Your cluster's telemetry data flows through Pixie's Cloud via a reverse proxy as encrypted traffic without any persistence. This allows users to access data without being in the same VPC/network as the cluster. Pixie offers [end-to-end encryption](/about-pixie/faq#data-collection-how-does-pixie-secure-its-data) for telemetry data in flight.
-re
 
 ## Memory
 
-Memory requirements for your cluster nodes are as follows:
+Pixie requires the following memory per node:
 
 | Minimum   | Notes                                                                  |
 | :-------- | :--------------------------------------------------------------------- |
-| 1GiB      | To accommodate application pods, 4GiB+ total per node is recommended.  |
+| 1GiB      | To accommodate application pods, we recommend using no more than 25% of the nodes' total memory for Pixie.  |
 
 Pixie deploys its PEMs as a DaemonSet on your cluster in order to collect and store telemetry data. The default memory limit is 2Gi per PEM. The lowest recommended value is 1Gi per PEM. For more information on how to configure Pixie's memory usage, see the [deploy options](/reference/admin/deploy-options/#configuring-pixie's-memory-usage).
