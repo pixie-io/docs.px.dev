@@ -125,7 +125,7 @@ To set Pixie's data store memory limit when deploying with the [Pixie CLI](/inst
 px deploy --pem_flags="PL_TABLE_STORE_DATA_LIMIT_MB=1000"
 ```
 
-To set Pixie's memory request when deploying with [Helm](/installing-pixie/install-schemes/helm/), use the `dataCollectorParams.customPEMFlags.PL_TABLE_STORE_DATA_LIMIT_MB` field:
+To set Pixie's data store memory limit when deploying with [Helm](/installing-pixie/install-schemes/helm/), use the `dataCollectorParams.customPEMFlags.PL_TABLE_STORE_DATA_LIMIT_MB` field:
 
 ```bash
 helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-key-goes-here> --namespace pl --create-namespace --set dataCollectorParams.customPEMFlags.PL_TABLE_STORE_DATA_LIMIT_MB=750
