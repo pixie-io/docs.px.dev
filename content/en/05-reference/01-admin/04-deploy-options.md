@@ -99,7 +99,7 @@ helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-k
 
 ### Setting the memory request
 
-When deploying Pixie, you can specify a different memory [request](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) than limit. This flag is useful for clusters in which the PEM pods are pending because there is not enough memory for them to be scheduled on the node.
+By default, the PEM's memory request will be the same as the limit. When deploying Pixie, you can specify a different memory [request](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) than limit. This flag is useful for clusters in which the PEM pods are pending because there is not enough memory for them to be scheduled on the node.
 
 <Alert variant="outlined" severity="info">Please note that PEM memory request must be less than or equal to the PEM memory limit.</Alert>
 
