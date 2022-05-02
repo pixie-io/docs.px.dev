@@ -45,11 +45,13 @@ For local development, we recommend using Minikube with a VM driver (`kvm2` on L
 
 ## Memory
 
-Memory requirements for your cluster nodes are as follows:
+Pixie requires the following memory per node:
 
 | Minimum   | Notes                                                                  |
 | :-------- | :--------------------------------------------------------------------- |
-| 1GiB      | To accommodate application pods, 4GiB+ total per node is recommended.  |
+| 1GiB      | To accommodate application pods, we recommend using no more than 25% of the nodes' total memory for Pixie.  |
+
+Pixie deploys its PEMs as a DaemonSet on your cluster in order to collect and store telemetry data. The default memory limit is 2Gi per PEM. The lowest recommended value is 1Gi per PEM. For more information on how to configure Pixie's memory usage, see the [Tuning Memory Usage](/reference/admin/tuning-mem-usage/) page.
 
 ## CPU
 

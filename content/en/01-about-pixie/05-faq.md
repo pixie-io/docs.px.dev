@@ -68,11 +68,11 @@ Yes. Pixie Community Cloud is a hosted version of Pixie. Pixie stores all data o
 
 Pixie stores the data it collects in-memory on the nodes in your cluster; no data is sent to a centralized backend outside of the cluster. This is true for both self-hosted Pixie and [Pixie Community Cloud](#general-does-pixie-offer-a-hosted-cloud-offering).
 
-Pixie has a [1GiB memory requirement](/installing-pixie/requirements/#memory) per node. After installing Pixie, it is normal to see a temporary increase in memory usage of the `vizier-pem` pods as they begin to fill their data tables.
+Pixie has a [1GiB memory requirement](/installing-pixie/requirements/#memory) per node. After installing Pixie, it is normal to see a temporary increase in memory usage of the `vizier-pem` pods as they begin to fill their [data tables](/reference/datatables/).
 
 ### How much data does Pixie store?
 
-Retention time depends on the level of traffic in your cluster, but will generally be on the order of hours. Each data table in Pixie (e.g. `http_events`) has its own maximum size. These tables collect data until the maximum size is reached, and then begin dropping the oldest data.
+Retention time depends on the level of traffic in your cluster, but will generally be on the order of hours. Each [data table](/reference/datatables/) in Pixie (e.g. `http_events`) has its own maximum size. These tables collect data until the maximum size is reached, and then begin dropping the oldest data.
 
 Pixie's [Plugin System](/reference/plugins/plugin-system) integrates with other tools to for long-term retention. Other third-party observability tools (such as [New Relic’s integration](https://newrelic.com/platform/kubernetes-pixie)) may also provide this capability.
 

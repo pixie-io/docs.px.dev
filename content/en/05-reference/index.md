@@ -15,12 +15,14 @@ order: 50
 - [Find a Cluster ID](/reference/admin/cluster-id)
 - [Managing API Keys](/reference/admin/api-keys)
 - [Managing Deploy Keys](/reference/admin/deploy-keys)
+- [Tuning Memory Usage](/reference/admin/tuning-mem-usage)
 - [Uninstalling Pixie](/reference/admin/uninstall)
 - [Updating Pixie](/reference/admin/updating-pixie/)
 - [User Management & Sharing](/reference/admin/user-mgmt/)
 - [Version History](/reference/admin/product-updates)
 
-#### Architecture 
+#### Architecture
+
 - [Architecture](/reference/architecture)
 
 #### API

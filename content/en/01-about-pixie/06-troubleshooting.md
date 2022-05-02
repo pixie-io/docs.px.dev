@@ -22,6 +22,7 @@ This page describes how to troubleshoot Pixie. We frequently answer questions on
 - [Why can’t I see data?](#troubleshooting-operation-why-can't-i-see-data)
 - [Why can’t I see application profiles / flamegraphs for my pod / node?](#troubleshooting-operation-why-can't-i-see-application-profiles-flamegraphs-for-my-pod-node)
 - [Why is the vizier-pem pod’s memory increasing?](#troubleshooting-operation-why-is-the-vizier-pem-pod's-memory-increasing)
+- [Why is Pixie being OOMKilled?](#troubleshooting-operation-why-is-pixie-being-oomkilled)
 - [Troubleshooting tracepoint scripts.](#troubleshooting-operation-troubleshooting-pixie-tracepoint-scripts)
 
 ## Troubleshooting Deployment
@@ -113,7 +114,13 @@ Pixie's [continuous profiler](/tutorials/pixie-101/profiler/) currently supports
 
 This is expected behavior. Pixie stores the data it collects in-memory on the nodes in your cluster; data is not sent to any centralized backend cloud outside of the cluster. So what you are observing is simply the data that it is collecting.
 
-Pixie has a minimum 1GiB memory requirement per node. The default deployment is 2GiB of memory. This limit can be configured with the `--pem_memory_limit` flag when deploying Pixie. Using a value less than 1GiB is not currently recommended.
+When Pixie is first deployed, you can expect to see an increase in memory utilization over time. This is because the temporary data store will go from storing 0B of data to reaching its cap of 1.25G of data (in the default deployment). Once this cap is hit, old data is expired and the memory utilization shouldn’t increase anymore.
+
+Pixie has a minimum 1GiB memory requirement per node. The default deployment is 2GiB of memory. To learn how to configure Pixie's memory usage, see the [Tuning Memory Usage](/reference/admin/tuning-mem-usage/) page.
+
+### Why is Pixie being OOMKilled?
+
+This happens when Pixie is using more memory than the limit. Try [increasing the limit](/reference/admin/deploy-options/#configuring-pixie's-memory-usage-setting-the-memory-limit), or [reducing the amount of data stored](/reference/admin/deploy-options/#configuring-pixie's-memory-usage-setting-the-data-table-storage-memory-limit) in the table store. The amount of memory needed for Pixie depends on the application, but a minimum of [1Gi](/installing-pixie/requirements/#memory) is required. However, for most clusters we recommend 2Gi. For more information, see the [Tuning Memory Usage](/reference/admin/tuning-mem-usage/) page.
 
 ### Troubleshooting Pixie tracepoint scripts
 

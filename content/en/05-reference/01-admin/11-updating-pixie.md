@@ -2,7 +2,7 @@
 title: "Updating Pixie"
 metaTitle: "Reference | Admin | Updating Pixie"
 metaDescription: "Steps to update Pixie."
-order: 10
+order: 11
 redirect_from:
     - /installing-pixie/updating-pixie
 ---
