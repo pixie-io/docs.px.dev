@@ -19,7 +19,7 @@ You can install the CLI in one of four ways:
 
 ### Using the install script (easiest)
 
-``` bash
+```bash
 # Copy and run command to install the Pixie CLI.
 bash -c "$(curl -fsSL https://withpixie.ai/install.sh)"
 ```
@@ -35,7 +35,7 @@ bash -c "$(curl -fsSL https://withpixie.ai/install.sh)"
 
 Download the correct binary for your operating system and make it executable:
 
-``` bash
+```bash
 # Download the latest Pixie linux binary.
 curl -o px https://storage.googleapis.com/pixie-dev-public/cli/latest/cli_linux_amd64
 
@@ -53,7 +53,7 @@ mv px /usr/local/bin
 
 ### Using Docker
 
-``` bash
+```bash
 alias px="docker run -i --rm -v ${HOME}/.pixie:/root/.pixie pixielabs/px"
 ```
 
@@ -66,7 +66,7 @@ Download the assets:
 
 Install the Pixie package:
 
-``` bash
+```bash
 # Install Pixie .deb package.
 dpkg -i pixie-px.x86_64.deb
 ```
@@ -80,7 +80,7 @@ Download the assets:
 
 Install the Pixie package:
 
-``` bash
+```bash
 # Install Pixie .rpm package.
 rpm -i pixie-px.x86_64.rpm
 ```
@@ -95,7 +95,7 @@ rpm -i pixie-px.x86_64.rpm
   Please refer to <a href="/reference/admin/environment-configs">Environment-Specific Configurations</a> for other configurations that should be set for your specific Kubernetes environment.
 </Alert>
 
-``` bash
+```bash
 # List Pixie deployment options.
 px deploy --help
 

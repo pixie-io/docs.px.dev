@@ -43,7 +43,7 @@ To configure your cluster to use Data Isolation Mode, use Pixie's CLI tool to
 
 1. Get your Cluster ID:
 
-```
+```bash
 px get viziers
 ```
 
@@ -53,7 +53,7 @@ px get viziers
 
 2. Switch from Passthrough Mode (default) to Data Isolation Mode. Don't forget to copy in your Cluster ID.
 
-```
+```bash
 px config update -c <YOUR_CLUSTER_ID> --passthrough=false
 ```
 
@@ -67,7 +67,7 @@ Once enabled, the Live UI [Admin Page](https://work.withpixie.ai/admin) will sho
 
 To switch from Data Isolation (Direct) Mode to Passthrough Mode, run:
 
-```
+```bash
 px config update -c <YOUR_CLUSTER_ID> --passthrough=true
 ```
 

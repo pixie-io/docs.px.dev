@@ -26,19 +26,19 @@ If you don't have a cluster ready you can set one up based on the [Getting Start
 
 Create a cluster with managed node-pools using [eksctl](https://eksctl.io/usage/creating-and-managing-clusters/):
 
-```
+```bash
 eksctl create cluster
 ```
 
 Update kubeconfig to point to the right cluster:
 
-```
+```bash
 aws eks update-kubeconfig --name <cluster-name>
 ```
 
 Verify that you are pointing to the right cluster
 
-```
+```bash
 kubectl get svc
 ```
 

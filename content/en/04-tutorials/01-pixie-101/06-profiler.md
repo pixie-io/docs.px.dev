@@ -27,13 +27,13 @@ Java support is a beta feature available in Pixie vizier version 0.10.22+, and m
 
 To enable Java support when deploying Pixie with the [Pixie CLI](/installing-pixie/install-schemes/cli/), run:
 
-```
+```bash
 px deploy --pem_flags=PL_PROFILER_JAVA_SYMBOLS=1
 ```
 
 To enable Java support when deploying Pixie with [Helm](/installing-pixie/install-schemes/helm/), run:
 
-```
+```bash
 helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace --set dataCollectorParams.customPEMFlags.PL_PROFILER_JAVA_SYMBOLS=true
 ```
 

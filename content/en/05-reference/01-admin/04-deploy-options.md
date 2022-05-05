@@ -44,7 +44,7 @@ When deploying Pixie, you have the option of adding one or more custom [labels](
 
 To label Pixie's resources when deploying with the [Pixie CLI](/installing-pixie/install-schemes/cli/), use the `--labels` flag:
 
-``` bash
+```bash
 px deploy --labels=key1=value1,key2=value2
 ```
 
@@ -87,7 +87,7 @@ The default memory limit is 2Gi per PEM. The lowest recommended value is [1Gi](/
 
 To set Pixie's memory limit when deploying with the [Pixie CLI](/installing-pixie/install-schemes/cli/), use the `--pem_memory_limit` flag:
 
-``` bash
+```bash
 px deploy --pem_memory_limit=1Gi
 ```
 
@@ -105,7 +105,7 @@ By default, the PEM's memory request will be the same as the limit. When deployi
 
 To set Pixie's memory request when deploying with the [Pixie CLI](/installing-pixie/install-schemes/cli/), use the `--pem_memory_request` flag:
 
-``` bash
+```bash
 px deploy --pem_memory_request=1Gi
 ```
 
@@ -121,7 +121,7 @@ This is an advanced option that most developers shouldn't need. For more discuss
 
 To set Pixie's data store memory limit when deploying with the [Pixie CLI](/installing-pixie/install-schemes/cli/), use the `--pem_flags` flag:
 
-``` bash
+```bash
 px deploy --pem_flags="PL_TABLE_STORE_DATA_LIMIT_MB=1000"
 ```
 

@@ -25,7 +25,7 @@ If deploying Pixie through Helm, ensure you are setting `-set deployOLM=false` o
 
 OpenShift utilizes [SCCs](https://docs.openshift.com/container-platform/4.6/authentication/managing-security-context-constraints.html) to restrict pod actions and access. If your cluster is running a more restrictive set of SCCs, you will need to give Pixie privileged access.
 
-```
+```yaml
 kind: SecurityContextConstraints
 apiVersion:  security.openshift.io/v1
 metadata:

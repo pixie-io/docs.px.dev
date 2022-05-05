@@ -31,7 +31,7 @@ This page describes how to troubleshoot Pixie. We frequently answer questions on
 
 An initial overview of Pixie can be retrieved by listing all `Vizier` pods to verify whether all pods have the status `Running`:
 
-```shell
+```bash
 $ px debug pods
   NAME                                          PHASE    RESTARTS  MESSAGE  REASON  START TIME
   pl/pl-nats-0                                  RUNNING  0                          2022-04-08T13:17:15-07:00

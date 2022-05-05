@@ -21,19 +21,19 @@ Install [gcloud SDK](https://cloud.google.com/sdk/install)
 
 Install the `kubectl` by running:
 
-```
+```bash
 gcloud components install kubectl
 ```
 
 Set a default project:
 
-```
+```bash
 gcloud config set project project-id
 ```
 
 Set a default compute zone:
 
-```
+```bash
 gcloud config set compute/zone compute-zone
 ```
 
@@ -41,7 +41,7 @@ gcloud config set compute/zone compute-zone
 
 Run the following command to create a 2 node cluster:
 
-```
+```bash
 gcloud container clusters create cluster-name --num-nodes=2 --machine-type=e2-standard-2
 ```
 
@@ -51,13 +51,13 @@ Please review, GCP's [docs](https://cloud.google.com/kubernetes-engine/docs/conc
 
 Once created, get authentication credentials:
 
-```
+```bash
 gcloud container clusters get-credentials cluster-name
 ```
 
 And, verify you have the intended nodes active:
 
-```
+```bash
 kubectl get nodes
 ```
 
