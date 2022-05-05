@@ -166,7 +166,7 @@ Lines 55-69 query the collected data, convert known IPs to domain names, and gro
 
 If you'd like to filter the results to a particular service, modify line 67 to include the namespace:
 
-```
+```python
 df = df[px.contains(df['dst'], 'sock-shop')]
 ```
 

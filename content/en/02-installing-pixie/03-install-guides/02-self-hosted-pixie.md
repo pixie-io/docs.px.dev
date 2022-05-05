@@ -137,7 +137,7 @@ export PL_CLOUD_ADDR=dev.withpixie.dev
 
 The easiest way to install Pixie's CLI is using the install script:
 
-``` bash
+```bash
 # Copy and run command to install the Pixie CLI.
 bash -c "$(curl -fsSL https://withpixie.ai/install.sh)"
 ```
@@ -158,7 +158,7 @@ To deploy Pixie using the CLI:
   Please refer to <a href="/reference/admin/environment-configs">Environment-Specific Configurations</a> for other configurations that should be set for your specific Kubernetes environment.
 </Alert>
 
-``` bash
+```bash
 # Deploy the Pixie Platform in your K8s cluster (No OLM present on cluster).
 px deploy --dev_cloud_namespace plc
 

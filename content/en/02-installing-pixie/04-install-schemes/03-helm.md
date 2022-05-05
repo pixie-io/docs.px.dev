@@ -43,7 +43,7 @@ Deploy Pixie in your target cluster by running:
   Please refer to <a href="/reference/admin/environment-configs">Environment-Specific Configurations</a> for other configurations that should be set for your specific Kubernetes environment.
 </Alert>
 
-``` bash
+```bash
 # Add the Pixie operator chart.
 helm repo add pixie-operator https://pixie-operator-charts.storage.googleapis.com
 
@@ -70,7 +70,7 @@ For more deploy options that you can specify to configure Pixie, refer to our [d
 
 To verify that Pixie is running in your environment you can check the [admin page](https://work.withpixie.ai/admin) or run:
 
-``` bash
+```bash
 # Check pods are up
 kubectl get pods -n pl
 

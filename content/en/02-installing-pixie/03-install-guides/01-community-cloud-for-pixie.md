@@ -25,7 +25,7 @@ If you don't have a Kubernetes cluster available, you can set up Minikube as a l
 
 The easiest way to install Pixie's CLI is using the install script:
 
-``` bash
+```bash
 # Copy and run command to install the Pixie CLI.
 bash -c "$(curl -fsSL https://withpixie.ai/install.sh)"
 ```
@@ -46,7 +46,7 @@ To deploy Pixie using the CLI:
   Please refer to <a href="/reference/admin/environment-configs">Environment-Specific Configurations</a> for other configurations that should be set for your specific Kubernetes environment.
 </Alert>
 
-``` bash
+```bash
 # List Pixie deployment options.
 px deploy --help
 
@@ -117,7 +117,7 @@ kubectl get pods -n px-sock-shop
 
 Use `px live` to run a script to demonstrate observability. The `http_data` script shows a sample of the HTTP/2 traffic flowing through your cluster.
 
-``` bash
+```bash
 # List built-in scripts
 px scripts list
 

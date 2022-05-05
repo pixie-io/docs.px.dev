@@ -57,6 +57,6 @@ kustomize build k8s/cloud/public/ | kubectl apply -f - --namespace=plc
 
 6. Update Pixie Vizier with:
 
-```
+```bash
 px update vizier
 ```
