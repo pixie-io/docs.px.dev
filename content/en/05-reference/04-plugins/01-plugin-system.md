@@ -63,3 +63,7 @@ Coming soon!
 Interested in contributing a Pixie plugin?
 
 Check out our [Plugin Repository](https://github.com/pixie-io/pixie-plugin) for more details.
+
+## Troubleshooting
+
+Please check out the **Pixie Plugin** section of our [Troubleshooting](/about-pixie/troubleshooting/#troubleshooting-troubleshooting-the-pixie-plugin) guide.
