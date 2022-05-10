@@ -25,11 +25,11 @@ This page describes how to troubleshoot Pixie. We frequently answer questions on
 - [Why is Pixie being OOMKilled?](#troubleshooting-operation-why-is-pixie-being-oomkilled)
 - [Troubleshooting tracepoint scripts.](#troubleshooting-operation-troubleshooting-pixie-tracepoint-scripts)
 
-#### Troubleshooting the Pixie Plugin
+#### Troubleshooting a Pixie Plugin
 
-- [Why isn't my data exporting?](#troubleshooting-the-pixie-plugin-why-isn't-my-data-exporting-when-i-run-an-opentelemetry-export-script-in-the-live-ui)
-- [How do I check the Pixie logs for plugin errors?](#troubleshooting-the-pixie-plugin-how-do-i-check-the-pixie-logs-for-plugin-errors)
-- [Why isn't my data exporting when I run an OpenTelemetry export script in the Live UI?](#troubleshooting-the-pixie-plugin-why-isn't-my-data-exporting-when-i-run-an-opentelemetry-export-script-in-the-live-ui)
+- [Why isn't my data exporting?](#troubleshooting-a-pixie-plugin-why-isn't-my-data-exporting-when-i-run-an-opentelemetry-export-script-in-the-live-ui)
+- [How do I check the Pixie logs for plugin errors?](#troubleshooting-a-pixie-plugin-how-do-i-check-the-pixie-logs-for-plugin-errors)
+- [Why isn't my data exporting when I run an OpenTelemetry export script in the Live UI?](#troubleshooting-a-pixie-plugin-why-isn't-my-data-exporting-when-i-run-an-opentelemetry-export-script-in-the-live-ui)
 
 ## Troubleshooting Deployment
 
@@ -142,7 +142,7 @@ Run the `px/tracepoint_status` script. It should show a longer error message in 
 
 It is not currently possible to remove a table. Instead, we recommend renaming the table name (e.g. table_name_0) while debugging the script.
 
-## Troubleshooting the Pixie Plugin
+## Troubleshooting a Pixie Plugin
 
 ### Why isn't my data exporting when using the Pixie Plugin?
 
@@ -152,9 +152,9 @@ Here are some things to check if you are not seeing exported data when using the
 
 - Did you [enable the plugin](/reference/plugins/plugin-system/#enabling-a-plugin) from within the Live UI Admin page?
 
-- When you enabled the plugin, did you use the correct endpoint? How to [check the logs](#troubleshooting-the-pixie-plugin-how-do-i-check-the-pixie-logs-for-plugin-errors).
+- When you enabled the plugin, did you use the correct endpoint? How to [check the logs](#troubleshooting-a-pixie-plugin-how-do-i-check-the-pixie-logs-for-plugin-errors).
 
-- When you enabled a third party Pixie Plugin, did you use the correct type of API key? How to [check the logs](#troubleshooting-the-pixie-plugin-how-do-i-check-the-pixie-logs-for-plugin-errors).
+- When you enabled a third party Pixie Plugin, did you use the correct type of API key? How to [check the logs](#troubleshooting-a-pixie-plugin-how-do-i-check-the-pixie-logs-for-plugin-errors).
 
 - Did you [configure the data retention scripts](/reference/plugins/plugin-system/#long-term-data-retention)? You will need to enable one or more preset scripts and/or custom export scripts.
 
