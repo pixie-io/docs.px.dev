@@ -66,4 +66,4 @@ Check out our [Plugin Repository](https://github.com/pixie-io/pixie-plugin) for 
 
 ## Troubleshooting
 
-Please check out the **Pixie Plugin** section of our [Troubleshooting](/about-pixie/troubleshooting/#troubleshooting-troubleshooting-a-pixie-plugin) guide.
+Having problems? Check out the [Pixie Plugin Troubleshooting](/about-pixie/troubleshooting/#troubleshooting-troubleshooting-a-pixie-plugin) guide.
