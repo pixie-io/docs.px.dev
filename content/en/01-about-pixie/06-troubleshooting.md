@@ -25,6 +25,12 @@ This page describes how to troubleshoot Pixie. We frequently answer questions on
 - [Why is Pixie being OOMKilled?](#troubleshooting-operation-why-is-pixie-being-oomkilled)
 - [Troubleshooting tracepoint scripts.](#troubleshooting-operation-troubleshooting-pixie-tracepoint-scripts)
 
+#### Troubleshooting a Pixie Plugin
+
+- [Why isn't my data exporting?](#troubleshooting-a-pixie-plugin-why-isn't-my-data-exporting-when-i-run-an-opentelemetry-export-script-in-the-live-ui)
+- [How do I check the Pixie logs for plugin errors?](#troubleshooting-a-pixie-plugin-how-do-i-check-the-pixie-logs-for-plugin-errors)
+- [Why isn't my data exporting when I run an OpenTelemetry export script in the Live UI?](#troubleshooting-a-pixie-plugin-why-isn't-my-data-exporting-when-i-run-an-opentelemetry-export-script-in-the-live-ui)
+
 ## Troubleshooting Deployment
 
 ### How do I check the status of Pixie's components?
@@ -135,3 +141,53 @@ Run the `px/tracepoint_status` script. It should show a longer error message in 
 *How do I remove a tracepoint table?*
 
 It is not currently possible to remove a table. Instead, we recommend renaming the table name (e.g. table_name_0) while debugging the script.
+
+## Troubleshooting a Pixie Plugin
+
+### Why isn't my data exporting when using the Pixie Plugin?
+
+Here are some things to check if you are not seeing exported data when using the Pixie Plugin:
+
+- Is Pixie working properly? If you just installed Pixie, [did it finish deploying](#troubleshooting-deployment-how-do-i-check-the-status-of-pixie's-components)? Are you able to see data in the [Live UI](/using-pixie/using-live-ui/)?
+
+- Did you [enable the plugin](/reference/plugins/plugin-system/#enabling-a-plugin) from within the Live UI Admin page?
+
+- When you enabled the plugin, did you use the correct endpoint? [Check the logs](#troubleshooting-a-pixie-plugin-how-do-i-check-the-pixie-logs-for-plugin-errors).
+
+- When you enabled a third party Pixie Plugin, did you use the correct type of API key? [Check the logs](#troubleshooting-a-pixie-plugin-how-do-i-check-the-pixie-logs-for-plugin-errors).
+
+- Did you [configure the data retention scripts](/reference/plugins/plugin-system/#long-term-data-retention)? You will need to enable one or more preset scripts and/or custom export scripts.
+
+- If you [added a custom export script](/reference/plugins/plugin-system/#long-term-data-retention-creating-custom-export-scripts), did you first test the script in the Live UI's scratch pad? See the [Export OpenTelemetry Data](/tutorials/integrations/otel/) tutorial for directions.
+
+- Do you see errors in the `kelvin-*` pod logs?
+
+- Do you see errors in the `vizier-query-broker-*` pod logs?
+
+### How do I check the Pixie logs for plugin errors?
+
+1. To debug Pixie Plugin issues, first check for errors in the `kelvin-*` pod logs.
+
+> If you provided an incorrect `custom export URL` (when [enabling the plugin](/reference/plugins/plugin-system/#enabling-a-plugin)), you may see an error like one of the following:
+
+```bash
+Query c6139bff-880d-473a-98aa-2a6ca9543dd3 failed, reason: Internal : OTel export (carnot node_id=157) failed with error 'UNAVAILABLE'. Details: failed to connect to all addresses
+
+# or
+
+Query c6139bff-880d-473a-98aa-2a6ca9543dd3 failed, reason: Internal: OTel export (carnot node_id=55) failed with error 'UNAVAILABLE'. Details: DNS resolution failed for service: otel-collector.default.svc.cluster.local:4317
+```
+
+> If you provided an API key of an incorrect type (when enabling a third party Pixie Plugin), you may see an error like the following:
+
+```bash
+Query fbf952e9-7718-4890-a7d9-7986e18effcf failed, reason: Internal : OTel export (carnot node_id=111) failed with error 'PERMISSION_DENIED'.
+```
+
+2. Next, check for errors in the `vizier-query-broker-*` pod logs.
+
+### Why isn't my data exporting when I run an OpenTelemetry export script in the Live UI?
+
+The Live UI's [`Scratch Pad`](/using-pixie/using-live-ui/#write-your-own-pxl-scripts-use-the-scratch-pad) is great tool for quickly developing PxL scripts to export Pixie data in the OpenTelemetry format.
+
+When developing OpenTelemetry export scripts in the Live UI, make sure that your PxL script calls [`px.display()`](/reference/pxl/operators/px.display). The Live UI requires scripts to call this function in order to execute a query. Note that the PxL scripts used by Pixie Plugins do not have the `px.display()` requirement. For more information, see the [Export OpenTelemetry Data](/tutorials/integrations/otel/) tutorial.
