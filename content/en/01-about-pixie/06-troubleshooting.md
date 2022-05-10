@@ -168,16 +168,14 @@ Here are some things to check if you are not seeing exported data when using the
 
 1. To debug Pixie Plugin issues, first check for errors in the `kelvin-*` pod logs.
 
-> If you're following along with the [Export OpenTelemetry Data](/tutorials/integrations/otel/) tutorial and your OpenTelemetry collector has not started up yet, you'll see the following error:
-
-```bash
-Query c6139bff-880d-473a-98aa-2a6ca9543dd3 failed, reason: Internal: OTel export (carnot node_id=55) failed with error 'UNAVAILABLE'. Details: DNS resolution failed for service: otel-collector.default.svc.cluster.local:4317
-```
-
-> If you provided an incorrect `custom export URL` (when [enabling the plugin](/reference/plugins/plugin-system/#enabling-a-plugin)), you may see an error like the following:
+> If you provided an incorrect `custom export URL` (when [enabling the plugin](/reference/plugins/plugin-system/#enabling-a-plugin)), you may see an error like one of the following:
 
 ```bash
 Query c6139bff-880d-473a-98aa-2a6ca9543dd3 failed, reason: Internal : OTel export (carnot node_id=157) failed with error 'UNAVAILABLE'. Details: failed to connect to all addresses
+
+# or
+
+Query c6139bff-880d-473a-98aa-2a6ca9543dd3 failed, reason: Internal: OTel export (carnot node_id=55) failed with error 'UNAVAILABLE'. Details: DNS resolution failed for service: otel-collector.default.svc.cluster.local:4317
 ```
 
 > If you provided an API key of an incorrect type (when enabling a third party Pixie Plugin), you may see an error like the following:
