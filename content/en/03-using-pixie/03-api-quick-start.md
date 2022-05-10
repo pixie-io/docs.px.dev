@@ -7,7 +7,9 @@ redirect_from:
     - /reference/api/quick-start/
 ---
 
-This guide shows you how to get started with the Pixie API using one of our client libraries. For information on our gRPC API, see the [reference docs](/reference/api/overview).
+This guide will show you how to get started with the Pixie API using one of our [client libraries](/reference/api/overview#client-libraries).
+
+For information on our gRPC API, see the [reference docs](/reference/api/overview).
 
 Check out the following video for a live coding demo using the Go API:
 <YouTube youTubeId="bHlUlVgAE7E"/>
@@ -87,7 +89,7 @@ if err != nil {
 # Define a PxL query with one output table.
 PXL_SCRIPT = """
 import px
-df = px.DataFrame('http_events')[['http_resp_status','req_path']]
+df = px.DataFrame('http_events')[['resp_status','req_path']]
 df = df.head(10)
 px.display(df, 'http_table')
 """
@@ -97,7 +99,7 @@ script = conn.prepare_script(PXL_SCRIPT)
 
 # Print the table output.
 for row in script.results("http_table"):
-    print(row["http_resp_status"], row["req_path"])
+    print(row["resp_status"], row["req_path"])
 ```
 
 ```go
@@ -172,7 +174,7 @@ import pxapi
 # Define a PxL query with one output table.
 PXL_SCRIPT = """
 import px
-df = px.DataFrame('http_events')[['http_resp_status','req_path']]
+df = px.DataFrame('http_events')[['resp_status','req_path']]
 df = df.head(10)
 px.display(df, 'http_table')
 """
@@ -188,7 +190,7 @@ script = conn.prepare_script(PXL_SCRIPT)
 
 # Print the table output.
 for row in script.results("http_table"):
-    print(row["http_resp_status"], row["req_path"])
+    print(row["resp_status"], row["req_path"])
 ```
 
 ```go
