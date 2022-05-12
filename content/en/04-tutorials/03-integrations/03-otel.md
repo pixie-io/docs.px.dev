@@ -7,9 +7,9 @@ redirect_from:
     - /tutorials/otel/
 ---
 
-This tutorial will demonstrate how to export Pixie data in the OpenTelemetry (OTel) format.
+This tutorial will demonstrate how to use the OpenTelemetry plugin for Pixie.
 
-To do this, we will take the following steps:
+To export Pixie data in the OpenTelemetry (OTel) format, we will:
 
 1. Deploy an OTel collector to our cluster.
 2. Write a PxL script that uses the [OTel methods](/reference/pxl/otel-export/) to transformation Pixie DataFrames into OTel data.
@@ -17,11 +17,17 @@ To do this, we will take the following steps:
 
 Note that [Pixie's API](/using-pixie/api-quick-start/) can also be used to run the PxL scripts developed in Step 2, however this tutorial will cover the Plugin System only.
 
+## Prerequisites
+
+1. You will need a Kubernetes cluster. If you don’t already have one, you can create a minikube cluster following the directions [here](/installing-pixie/setting-up-k8s/minikube-setup/).
+
+2. You will need to install Pixie on your cluster using one of our [install guides](/installing-pixie/install-guides/).
+
 ## Deploy the OTel Collector
 
 If you don't already have an OTel collector set up, you can follow the directions to deploy our demo collector [here](https://github.com/pixie-io/pixie-demos/tree/main/otel-collector).
 
-Most OTel collectors are configured to forward metrics to _other tools_ such as Prometheus or Jaeger. For the sake of this tutorial, our demo collector simply outputs the metrics it receives to its logs.
+Most OTel collectors are configured to forward metrics to _other tools_ such as Prçmetheus or Jaeger. For the sake of this tutorial, our demo collector simply outputs the metrics it receives to its logs.
 
 ## Write the PxL script
 
