@@ -27,7 +27,7 @@ Note that [Pixie's API](/using-pixie/api-quick-start/) can also be used to run t
 
 If you don't already have an OTel collector set up, you can follow the directions to deploy our demo collector [here](https://github.com/pixie-io/pixie-demos/tree/main/otel-collector).
 
-Most OTel collectors are configured to forward metrics to _other tools_ such as Prçmetheus or Jaeger. For the sake of this tutorial, our demo collector simply outputs the metrics it receives to its logs.
+Most OTel collectors are configured to forward metrics to _other tools_ such as Prometheus or Jaeger. For the sake of this tutorial, our demo collector simply outputs the metrics it receives to its logs.
 
 ## Write the PxL script
 
