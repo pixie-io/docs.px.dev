@@ -15,7 +15,7 @@ To export Pixie data in the OpenTelemetry (OTel) format, we will:
 2. Write a PxL script that uses the [OTel methods](/reference/pxl/otel-export/) to transformation Pixie DataFrames into OTel data.
 3. Setup the Pixie [Plugin System](/reference/plugins/plugin-system/) to run the PxL script at regularly scheduled intervals.
 
-<YouTube youTubeId="WXY6vhnqpyc"/>
+<YouTube youTubeId="kdcNjlmsxV4"/>
 
 Note that [Pixie's API](/using-pixie/api-quick-start/) can also be used to run the PxL scripts developed in Step 2, however this tutorial will cover the Plugin System only.
 
