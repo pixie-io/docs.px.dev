@@ -7,7 +7,7 @@ redirect_from:
     - /reference/api/quick-start/
 ---
 
-This guide will show you how to get started with the Pixie API using one of our [client libraries](/reference/api/overview#client-libraries). For information on our gRPC API, see the [reference docs](/reference/api/overview).
+This guide shows you how to get started with the Pixie API using one of our client libraries. For information on our gRPC API, see the [reference docs](/reference/api/overview).
 
 Check out the following video for a live coding demo using the Go API:
 <YouTube youTubeId="bHlUlVgAE7E"/>
