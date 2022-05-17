@@ -87,7 +87,7 @@ if err != nil {
 # Define a PxL query with one output table.
 PXL_SCRIPT = """
 import px
-df = px.DataFrame('http_events')[['http_resp_status','http_req_path']]
+df = px.DataFrame('http_events')[['resp_status','req_path']]
 df = df.head(10)
 px.display(df, 'http_table')
 """
@@ -97,7 +97,7 @@ script = conn.prepare_script(PXL_SCRIPT)
 
 # Print the table output.
 for row in script.results("http_table"):
-    print(row["http_resp_status"], row["http_req_path"])
+    print(row["resp_status"], row["req_path"])
 ```
 
 ```go
@@ -105,7 +105,7 @@ for row in script.results("http_table"):
 pxl := `
 import px
 df = px.DataFrame('http_events')
-df = df[['upid', 'http_req_path', 'remote_addr', 'http_req_method']]
+df = df[['upid', 'req_path', 'remote_addr', 'req_method']]
 df = df.head(10)
 px.display(df, 'http')
 `
@@ -172,7 +172,7 @@ import pxapi
 # Define a PxL query with one output table.
 PXL_SCRIPT = """
 import px
-df = px.DataFrame('http_events')[['http_resp_status','http_req_path']]
+df = px.DataFrame('http_events')[['resp_status','req_path']]
 df = df.head(10)
 px.display(df, 'http_table')
 """
@@ -188,7 +188,7 @@ script = conn.prepare_script(PXL_SCRIPT)
 
 # Print the table output.
 for row in script.results("http_table"):
-    print(row["http_resp_status"], row["http_req_path"])
+    print(row["resp_status"], row["req_path"])
 ```
 
 ```go
@@ -210,7 +210,7 @@ var (
 	pxl = `
 import px
 df = px.DataFrame('http_events')
-df = df[['upid', 'http_req_path', 'remote_addr', 'http_req_method']]
+df = df[['upid', 'req_path', 'remote_addr', 'req_method']]
 df = df.head(10)
 px.display(df, 'http')
 `
