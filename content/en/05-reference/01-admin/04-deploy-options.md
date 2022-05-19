@@ -11,6 +11,7 @@ Pixie offers the following deploy options:
 
 - [Annotate Pixie's resources](#annotating-pixie's-resources)
 - [Label Pixie's resources](#labeling-pixie's-resources)
+- [Select a subset of nodes](#selecting-the-nodes-to-deploy-pixie-on)
 - [Provide a custom cluster name](#providing-a-custom-cluster-name)
 - [Configure Pixie's memory usage](#configuring-pixie's-memory-usage)
 - [Set the data access mode](#setting-the-data-access-mode)
@@ -52,6 +53,28 @@ To label Pixie's resources when deploying with [Helm](/installing-pixie/install-
 
 ```bash
 helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-key-goes-here> --namespace pl --create-namespace --set labels=key1=value1,key2=value2
+```
+
+## Selecting the nodes to deploy Pixie on
+
+When deploying Pixie, you have the option of selecting which nodes Pixie will be deployed to in your cluster. For example, Pixie [runs on Linux nodes only](/installing-pixie/requirements/#operating-system), so you would use this option to deploy Pixie to clusters with mixed node types.
+
+To deploy Pixie to a subset of the nodes in your cluster:
+
+1. Add the `pixie=allowed` label to the target nodes.
+
+2. Add a [`nodeSelector`](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) to Pixie's [`vizier-pem`](/reference/architecture/#vizier) datacollector pods during deployment:
+
+> When deploying with the [Pixie CLI](/installing-pixie/install-schemes/cli/), use the `--patches` flag:
+
+```bash
+px deploy --patches='vizier-pem:{\"spec\":{\"template\":{\"spec\":{\"nodeSelector\":{\"pixie\": \"allowed\"}}}}}'
+```
+
+> When deploying with [Helm](/installing-pixie/install-schemes/helm/), use the `patches.vizier-pem` field:
+
+```bash
+helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-key-goes-here> --namespace pl --create-namespace --set patches.vizier-pem='\{\"spec\"\: \{\"template\"\: \{\"spec\"\: \{ \"nodeSelector\"\: \{\"pixie\"\: \"allowed\" \}\}\}\}\}'
 ```
 
 ## Providing a custom cluster name
