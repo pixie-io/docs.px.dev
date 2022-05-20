@@ -61,7 +61,7 @@ When deploying Pixie, you have the option of selecting which nodes Pixie will be
 
 To deploy Pixie to a subset of the nodes in your cluster:
 
-1. Add the `pixie=allowed` label to the target nodes.
+1. [Label the target nodes](https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/#add-a-label-to-a-node) with `pixie=allowed`.
 
 2. Add a [`nodeSelector`](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) to Pixie's [`vizier-pem`](/reference/architecture/#vizier) datacollector pods during deployment:
 
