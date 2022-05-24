@@ -64,7 +64,7 @@ Pixie requires an `x86-64` architecture.
 
 ## Operating System
 
-Pixie runs on Linux nodes only.
+Pixie runs on Linux nodes only. You can configure Pixie to [deploy to a subset of the nodes](/reference/admin/deploy-options#deploy-pixie-to-a-subset-of-nodes) in your cluster.
 
 |         | Support         | Version           |
 | :------ | :-------------  | :---------------- |
