@@ -552,7 +552,7 @@
       "body": {
         "name": "DataFrame.ctx.__getitem__",
         "brief": "Creates the specified metadata as a column.",
-        "desc": "Shorthand for exposing metadata columns in the DataFrame. Each metadata type can be converted from some sets of other metadata types that already exist in the DataFrame.  Attempting to convert to a metadata type that doesn't have the source column will raise a compiler error.  Available keys (and any aliases) as well as the source columns. \n* container_id (): Sources: \"upid\" \n* service_id: Sources: \"upid\",\"service_name\" \n* pod_id: Sources: \"upid\",\"pod_name\" \n* deployment_id: Sources: \"upid\",\"deployment_name\" \n* service_name (\"service\"): Sources: \"upid\",\"service_id\" \n* pod_name (\"pod\"): Sources: \"upid\",\"pod_id\" \n* deployment_name (\"deployment\"): Sources: \"upid\",\"deployment_id\" \n* namespace: Sources: \"upid\" \n* node_name (\"node\"): Sources: \"upid\" \n* hostname (\"host\"): Sources: \"upid\" \n* container_name (\"container\"): Sources: \"upid\" \n* cmdline (\"cmd\"): Sources: \"upid\" \n* asid: Sources: \"upid\" \n* pid: Sources: \"upid\"      ",
+        "desc": "Shorthand for exposing metadata columns in the DataFrame. Each metadata type can be converted from some sets of other metadata types that already exist in the DataFrame.  Attempting to convert to a metadata type that doesn't have the source column will raise a compiler error.  Available keys (and any aliases) as well as the source columns. \n* container_id (): Sources: \"upid\" \n* service_id: Sources: \"upid\",\"service_name\" \n* pod_id: Sources: \"upid\",\"pod_name\" \n* service_name (\"service\"): Sources: \"upid\",\"service_id\" \n* pod_name (\"pod\"): Sources: \"upid\",\"pod_id\" \n* namespace: Sources: \"upid\" \n* node_name (\"node\"): Sources: \"upid\" \n* hostname (\"host\"): Sources: \"upid\" \n* container_name (\"container\"): Sources: \"upid\" \n* cmdline (\"cmd\"): Sources: \"upid\" \n* asid: Sources: \"upid\" \n* pid: Sources: \"upid\"      ",
         "examples": [
           {
             "value": "```\ndf = px.DataFrame('http_events', start_time='-5m')\n# Filter only for data that matches the metadata service.\n# df.ctx['service'] pulls the service column into the DataFrame.\ndf = df[df.ctx['service'] == \"pl/vizier-metadata\"]\n```"
@@ -910,6 +910,36 @@
           }
         ]
       }
+    },
+    {
+      "body": {
+        "name": "px.export",
+        "brief": "Sends a DataFrame from Pixie to the specified output.",
+        "desc": "Writes the data to the specified output destination. For example, can be used to specify an export to OpenTelemetry using the methods available in `px.otel.trace` or `px.otel.metrics`.   ",
+        "examples": [
+          {
+            "value": "```\npx.export(df, px.otel.Data(...))\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "out",
+            "desc": "The DataFrame to write out to the output stream.",
+            "types": [
+              "px.DataFrame"
+            ]
+          },
+          {
+            "ident": "export_spec",
+            "desc": "The destination specification for the DataFrame data.",
+            "types": [
+              "Exporter"
+            ]
+          }
+        ]
+      }
     }
   ],
   "mutationDocs": [
@@ -985,16 +1015,16 @@
       "body": {
         "name": "px.otel.Data",
         "brief": "Specifies the transformation of a DataFrame into OpenTelemetry data.",
-        "desc": "This function makes it easy to transform columnar DataFrame data into single element OpenTelemetry data. User must pass in data configuration(s) (ie `px.otel.metric.Gauge`) and a resource config where `service.name` is one of the attributes.  Optionally, users can specify an endpoint using `px.otel.Endpoint`  ",
+        "desc": "This function makes it easy to transform columnar DataFrame data into single element OpenTelemetry data. User must pass in data configuration(s) (ie `px.otel.metric.Gauge`) and a resource config where `service.name` is one of the attributes.  Optionally, users can specify an endpoint using `px.otel.Endpoint`.  ",
         "examples": []
       },
       "funcDoc": {
         "args": [
           {
             "ident": "data",
-            "desc": "The configuration for the data, describing how the data is created in the DataFrame and what kind of metric to populate in OTel.",
+            "desc": "The list of OTel configurations for the data, describing how the data is created in the DataFrame and what kind of metric to populate in OTel.",
             "types": [
-              "px.otel.Data"
+              "List[px.otel.Data]"
             ]
           },
           {
@@ -1006,7 +1036,7 @@
           },
           {
             "ident": "endpoint",
-            "desc": "The endpoint configuration value. If left out, must be set in the OTel plugin settings.",
+            "desc": "The endpoint configuration value. The endpoint can be omitted if this script is run in the OTel plugin context where an endpoint is configured.",
             "types": [
               "px.otel.Endpoint, optional"
             ]
@@ -1024,7 +1054,7 @@
       "body": {
         "name": "px.otel.Endpoint",
         "brief": "The Collector destination for exported OpenTelemetry data.",
-        "desc": "Describes the endpoint and any connection arguments necessary to talk to an OpenTelemetry collector. Passed as an argument to the different OTel data type configurations in PxL.  ",
+        "desc": "Describes the endpoint and any connection arguments necessary to talk to an OpenTelemetry collector. Passed as an argument to `px.otel.Data`.  ",
         "examples": []
       },
       "funcDoc": {
@@ -1042,6 +1072,13 @@
             "types": [
               "Dict[string,string], optional"
             ]
+          },
+          {
+            "ident": "insecure",
+            "desc": "Whether to allow insecure connections to the OpenTelemetry collector. False by default.",
+            "types": [
+              "bool, optional"
+            ]
           }
         ]
       }
@@ -1050,7 +1087,7 @@
       "body": {
         "name": "px.otel.metric.Gauge",
         "brief": "Defines the DataFrame mapping to an OpenTelemetry Metric Gauge",
-        "desc": "[Gauges](https://opentelemetry.io/docs/reference/specification/metrics/datamodel/#gauge) specify the \"current value\" of a metric at a given time. PxL writers must specify the name foll Gauge describes how to transform a pixie DataFrame into the OpenTelemetry Metric Gauge type.  ",
+        "desc": "[Gauges](https://opentelemetry.io/docs/reference/specification/metrics/datamodel/#gauge) specify the \"current value\" of a metric at a given time. The source DataFrame must have a `time_` column of type `TIME64NS` or the compiler will throw an error.  ",
         "examples": []
       },
       "funcDoc": {
@@ -1082,6 +1119,13 @@
             "types": [
               "Dict[string, string], optional"
             ]
+          },
+          {
+            "ident": "unit",
+            "desc": "The unit string to use for the metric. If not specified, will attempt to use the Semantic Type of the `value` to infer the unit string.",
+            "types": [
+              "string, optional"
+            ]
           }
         ],
         "returnType": {
@@ -1096,7 +1140,7 @@
       "body": {
         "name": "px.otel.metric.Summary",
         "brief": "Defines the DataFrame mapping to an OpenTelemetry Metric Summary",
-        "desc": "Summaries describe quantile summaries of distributions, such as p90 and p99. The unit of this metric will be inferred from the [SemanticType](https://github.com/pixie-io/pixie/blob/main/src/api/proto/vizierpb/vizierapi.proto#L51) of the column `value`.  ",
+        "desc": "Summaries describe distributions by recording quantile values (aka percentile values) such as p50, p90 and p99. User specify as many of these point values as they like, labeling them with the float equivalent position in the distribution. Ie p50 would be labeled `0.5`, p99 as `0.99`. The source DataFrame must have a `time_` column of type `TIME64NS` or the compiler will throw an error. The unit of this metric will be inferred from the [SemanticType](https://github.com/pixie-io/pixie/blob/main/src/api/proto/vizierpb/vizierapi.proto#L51) of the column `value`.  ",
         "examples": []
       },
       "funcDoc": {
@@ -1141,6 +1185,13 @@
             "desc": "A mapping of attribute name to the column name that stores data about the attribute.",
             "types": [
               "Dict[double, Column], optional"
+            ]
+          },
+          {
+            "ident": "unit",
+            "desc": "The unit string to use for the metric. If not specified, will attempt to use the Semantic Type of the quantile values to infer the unit string.",
+            "types": [
+              "string, optional"
             ]
           }
         ],
@@ -1208,6 +1259,13 @@
             "desc": "A mapping of attribute name to the column name that stores data about the attribute.",
             "types": [
               "Dict[string, string], optional"
+            ]
+          },
+          {
+            "ident": "kind",
+            "desc": "The OpenTelemetry SpanKind enum value to assign for all the spans. Defaults to SPAN_KIND_SERVER if not set.",
+            "types": [
+              "int, optional"
             ]
           }
         ],
@@ -1678,124 +1736,12 @@
             {
               "ident": "b",
               "desc": "The value to add to the first argument.",
-              "type": "INT64"
-            }
-          ],
-          "retval": {
-            "desc": "The sum of a and b.",
-            "type": "FLOAT64"
-          }
-        }
-      },
-      {
-        "name": "add",
-        "brief": "Arithmetically add the arguments or concatenate the strings.",
-        "desc": "This function is implicitly invoked by the + operator.\n      If both types are strings, then will concate the strings. Trying to\n      add any other type to a string will cause an error",
-        "examples": [
-          {
-            "value": "```\n# Implicit call.\ndf.sum = df.a + df.b\nExplicit call.\ndf.sum = px.add(df.a, df.b)\n```"
-          }
-        ],
-        "scalarUdfDoc": {
-          "args": [
-            {
-              "ident": "a",
-              "desc": "The value to be added to.",
-              "type": "INT64"
-            },
-            {
-              "ident": "b",
-              "desc": "The value to add to the first argument.",
               "type": "FLOAT64"
             }
           ],
           "retval": {
             "desc": "The sum of a and b.",
             "type": "FLOAT64"
-          }
-        }
-      },
-      {
-        "name": "add",
-        "brief": "Arithmetically add the arguments or concatenate the strings.",
-        "desc": "This function is implicitly invoked by the + operator.\n      If both types are strings, then will concate the strings. Trying to\n      add any other type to a string will cause an error",
-        "examples": [
-          {
-            "value": "```\n# Implicit call.\ndf.sum = df.a + df.b\nExplicit call.\ndf.sum = px.add(df.a, df.b)\n```"
-          }
-        ],
-        "scalarUdfDoc": {
-          "args": [
-            {
-              "ident": "a",
-              "desc": "The value to be added to.",
-              "type": "FLOAT64"
-            },
-            {
-              "ident": "b",
-              "desc": "The value to add to the first argument.",
-              "type": "FLOAT64"
-            }
-          ],
-          "retval": {
-            "desc": "The sum of a and b.",
-            "type": "FLOAT64"
-          }
-        }
-      },
-      {
-        "name": "add",
-        "brief": "Arithmetically add the arguments or concatenate the strings.",
-        "desc": "This function is implicitly invoked by the + operator.\n      If both types are strings, then will concate the strings. Trying to\n      add any other type to a string will cause an error",
-        "examples": [
-          {
-            "value": "```\n# Implicit call.\ndf.sum = df.a + df.b\nExplicit call.\ndf.sum = px.add(df.a, df.b)\n```"
-          }
-        ],
-        "scalarUdfDoc": {
-          "args": [
-            {
-              "ident": "a",
-              "desc": "The value to be added to.",
-              "type": "TIME64NS"
-            },
-            {
-              "ident": "b",
-              "desc": "The value to add to the first argument.",
-              "type": "INT64"
-            }
-          ],
-          "retval": {
-            "desc": "The sum of a and b.",
-            "type": "TIME64NS"
-          }
-        }
-      },
-      {
-        "name": "add",
-        "brief": "Arithmetically add the arguments or concatenate the strings.",
-        "desc": "This function is implicitly invoked by the + operator.\n      If both types are strings, then will concate the strings. Trying to\n      add any other type to a string will cause an error",
-        "examples": [
-          {
-            "value": "```\n# Implicit call.\ndf.sum = df.a + df.b\nExplicit call.\ndf.sum = px.add(df.a, df.b)\n```"
-          }
-        ],
-        "scalarUdfDoc": {
-          "args": [
-            {
-              "ident": "a",
-              "desc": "The value to be added to.",
-              "type": "INT64"
-            },
-            {
-              "ident": "b",
-              "desc": "The value to add to the first argument.",
-              "type": "TIME64NS"
-            }
-          ],
-          "retval": {
-            "desc": "The sum of a and b.",
-            "type": "TIME64NS"
           }
         }
       },
@@ -1824,6 +1770,118 @@
           "retval": {
             "desc": "The sum of a and b.",
             "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "add",
+        "brief": "Arithmetically add the arguments or concatenate the strings.",
+        "desc": "This function is implicitly invoked by the + operator.\n      If both types are strings, then will concate the strings. Trying to\n      add any other type to a string will cause an error",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.sum = df.a + df.b\nExplicit call.\ndf.sum = px.add(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The value to be added to.",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "b",
+              "desc": "The value to add to the first argument.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The sum of a and b.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "add",
+        "brief": "Arithmetically add the arguments or concatenate the strings.",
+        "desc": "This function is implicitly invoked by the + operator.\n      If both types are strings, then will concate the strings. Trying to\n      add any other type to a string will cause an error",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.sum = df.a + df.b\nExplicit call.\ndf.sum = px.add(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The value to be added to.",
+              "type": "INT64"
+            },
+            {
+              "ident": "b",
+              "desc": "The value to add to the first argument.",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "The sum of a and b.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "add",
+        "brief": "Arithmetically add the arguments or concatenate the strings.",
+        "desc": "This function is implicitly invoked by the + operator.\n      If both types are strings, then will concate the strings. Trying to\n      add any other type to a string will cause an error",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.sum = df.a + df.b\nExplicit call.\ndf.sum = px.add(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The value to be added to.",
+              "type": "TIME64NS"
+            },
+            {
+              "ident": "b",
+              "desc": "The value to add to the first argument.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The sum of a and b.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "add",
+        "brief": "Arithmetically add the arguments or concatenate the strings.",
+        "desc": "This function is implicitly invoked by the + operator.\n      If both types are strings, then will concate the strings. Trying to\n      add any other type to a string will cause an error",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.sum = df.a + df.b\nExplicit call.\ndf.sum = px.add(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The value to be added to.",
+              "type": "INT64"
+            },
+            {
+              "ident": "b",
+              "desc": "The value to add to the first argument.",
+              "type": "TIME64NS"
+            }
+          ],
+          "retval": {
+            "desc": "The sum of a and b.",
+            "type": "TIME64NS"
           }
         }
       },
@@ -2079,6 +2137,34 @@
             {
               "ident": "value",
               "desc": "The value to bin.",
+              "type": "TIME64NS"
+            },
+            {
+              "ident": "bin",
+              "desc": "The bin value to clip to.",
+              "type": "TIME64NS"
+            }
+          ],
+          "retval": {
+            "desc": "The value rounded down to the nearest multiple of bin.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "bin",
+        "brief": "Rounds value to the nearest multiple.",
+        "desc": "Takes the passed in value(s) and bin them to the nearest multiple of a bin.",
+        "examples": [
+          {
+            "value": "```\n# bin column b to multiples of 50\ndf.a = px.bin(df.b, 50)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "value",
+              "desc": "The value to bin.",
               "type": "INT64"
             },
             {
@@ -2113,34 +2199,6 @@
               "ident": "bin",
               "desc": "The bin value to clip to.",
               "type": "INT64"
-            }
-          ],
-          "retval": {
-            "desc": "The value rounded down to the nearest multiple of bin.",
-            "type": "TIME64NS"
-          }
-        }
-      },
-      {
-        "name": "bin",
-        "brief": "Rounds value to the nearest multiple.",
-        "desc": "Takes the passed in value(s) and bin them to the nearest multiple of a bin.",
-        "examples": [
-          {
-            "value": "```\n# bin column b to multiples of 50\ndf.a = px.bin(df.b, 50)\n\n```"
-          }
-        ],
-        "scalarUdfDoc": {
-          "args": [
-            {
-              "ident": "value",
-              "desc": "The value to bin.",
-              "type": "TIME64NS"
-            },
-            {
-              "ident": "bin",
-              "desc": "The bin value to clip to.",
-              "type": "TIME64NS"
             }
           ],
           "retval": {
@@ -2219,6 +2277,34 @@
           "retval": {
             "desc": "The ceiling of arg1.",
             "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "cidrs_contain_ip",
+        "brief": "Determine whether an IP is contained in a set of CIDR ranges.",
+        "desc": "Determine whether the given IP is within anyone of the CIDR ranges provided. For example, 10.0.0.1 is contained in the CIDR range 10.0.0.0/24.",
+        "examples": [
+          {
+            "value": "```\ndf.cluster_cidrs = px.get_cidrs()| df.ip_is_in_cluster = px.cidrs_contain_ip(df.cluster_cidrs, df.remote_addr)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "cidrs",
+              "desc": "Json array of CIDR ranges, where each CIDR range is a string of format '\u003cIP\u003e/\u003cprefix_length\u003e'",
+              "type": "STRING"
+            },
+            {
+              "ident": "ip_addr",
+              "desc": "IP address to check for presence in range.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "boolean representing whether the given IP is in any one of the given CIDR ranges.",
+            "type": "BOOLEAN"
           }
         }
       },
@@ -2728,6 +2814,58 @@
           "args": [
             {
               "ident": "b1",
+              "type": "TIME64NS"
+            },
+            {
+              "ident": "b2",
+              "type": "TIME64NS"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "equal",
+        "brief": "Returns whether the values are equal.",
+        "desc": "Determines whether the values are equal. Passing in floating-point values might lead to false negatives. Use `px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.success_http = df.http_status == 200\n# Explicit call.\ndf.success_http = px.equal(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "type": "UINT128"
+            },
+            {
+              "ident": "b2",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "equal",
+        "brief": "Returns whether the values are equal.",
+        "desc": "Determines whether the values are equal. Passing in floating-point values might lead to false negatives. Use `px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.success_http = df.http_status == 200\n# Explicit call.\ndf.success_http = px.equal(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
               "type": "BOOLEAN"
             },
             {
@@ -2811,58 +2949,6 @@
             {
               "ident": "b2",
               "type": "INT64"
-            }
-          ],
-          "retval": {
-            "desc": "True if `b1` is equal to `b2`, False otherwise.",
-            "type": "BOOLEAN"
-          }
-        }
-      },
-      {
-        "name": "equal",
-        "brief": "Returns whether the values are equal.",
-        "desc": "Determines whether the values are equal. Passing in floating-point values might lead to false negatives. Use `px.approxEqual(b1, b2)` to compare floats instead.",
-        "examples": [
-          {
-            "value": "```\n# Implicit call.\ndf.success_http = df.http_status == 200\n# Explicit call.\ndf.success_http = px.equal(df.http_status, 200)\n```"
-          }
-        ],
-        "scalarUdfDoc": {
-          "args": [
-            {
-              "ident": "b1",
-              "type": "UINT128"
-            },
-            {
-              "ident": "b2",
-              "type": "UINT128"
-            }
-          ],
-          "retval": {
-            "desc": "True if `b1` is equal to `b2`, False otherwise.",
-            "type": "BOOLEAN"
-          }
-        }
-      },
-      {
-        "name": "equal",
-        "brief": "Returns whether the values are equal.",
-        "desc": "Determines whether the values are equal. Passing in floating-point values might lead to false negatives. Use `px.approxEqual(b1, b2)` to compare floats instead.",
-        "examples": [
-          {
-            "value": "```\n# Implicit call.\ndf.success_http = df.http_status == 200\n# Explicit call.\ndf.success_http = px.equal(df.http_status, 200)\n```"
-          }
-        ],
-        "scalarUdfDoc": {
-          "args": [
-            {
-              "ident": "b1",
-              "type": "TIME64NS"
-            },
-            {
-              "ident": "b2",
-              "type": "TIME64NS"
             }
           ],
           "retval": {
@@ -2986,6 +3072,22 @@
         }
       },
       {
+        "name": "get_cidrs",
+        "brief": "Get the pod/service CIDRs for the cluster.",
+        "desc": "Get a json-encoded array of pod/service CIDRs for the cluster in 'ip/prefix_length' format. Including CIDRs that include the CNI bridge for pods.",
+        "examples": [
+          {
+            "value": "```\ndf.cidrs = px.get_cidrs()\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "retval": {
+            "desc": "The pod and/or service CIDRs for this cluster, encoded as a json array.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
         "name": "greaterThan",
         "brief": "Compare whether the first argument is greater than the second argument.",
         "desc": "This function is implicitly invoked by the \u003e operator.",
@@ -3005,6 +3107,34 @@
               "ident": "arg2",
               "desc": "The value to check if it is greater than the first argument.",
               "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "Boolean of whether arg1 is greater than arg2.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "greaterThan",
+        "brief": "Compare whether the first argument is greater than the second argument.",
+        "desc": "This function is implicitly invoked by the \u003e operator.",
+        "examples": [
+          {
+            "value": "```\n# Implict call.\ndf.gt = df.a \u003e df.b\nExplicit call.\ndf.gt = px.greaterThan(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The value to be compared to.",
+              "type": "TIME64NS"
+            },
+            {
+              "ident": "arg2",
+              "desc": "The value to check if it is greater than the first argument.",
+              "type": "TIME64NS"
             }
           ],
           "retval": {
@@ -3127,11 +3257,11 @@
       },
       {
         "name": "greaterThanEqual",
-        "brief": "Compare whether the first argument is greater than the second argument.",
-        "desc": "This function is implicitly invoked by the \u003e operator.",
+        "brief": "Compare whether the first argument is greater than or equal to the second argument.",
+        "desc": "This function is implicitly invoked by the \u003e= operator.",
         "examples": [
           {
-            "value": "```\n# Implict call.\ndf.gt = df.a \u003e df.b\nExplicit call.\ndf.gt = px.greaterThan(df.a, df.b)\n```"
+            "value": "```\n# Implict call.\ndf.gte = df.a \u003e= df.b\nExplicit call.\ndf.gte = px.greaterThanEqual(df.a, df.b)\n```"
           }
         ],
         "scalarUdfDoc": {
@@ -3143,23 +3273,23 @@
             },
             {
               "ident": "arg2",
-              "desc": "The value to check if it is greater than the first argument.",
+              "desc": "The value to check if it is greater than or equal to the first argument.",
               "type": "STRING"
             }
           ],
           "retval": {
-            "desc": "Boolean of whether arg1 is greater than arg2.",
+            "desc": "Boolean of whether arg1 is greater than or equal to arg2.",
             "type": "BOOLEAN"
           }
         }
       },
       {
         "name": "greaterThanEqual",
-        "brief": "Compare whether the first argument is greater than the second argument.",
-        "desc": "This function is implicitly invoked by the \u003e operator.",
+        "brief": "Compare whether the first argument is greater than or equal to the second argument.",
+        "desc": "This function is implicitly invoked by the \u003e= operator.",
         "examples": [
           {
-            "value": "```\n# Implict call.\ndf.gt = df.a \u003e df.b\nExplicit call.\ndf.gt = px.greaterThan(df.a, df.b)\n```"
+            "value": "```\n# Implict call.\ndf.gte = df.a \u003e= df.b\nExplicit call.\ndf.gte = px.greaterThanEqual(df.a, df.b)\n```"
           }
         ],
         "scalarUdfDoc": {
@@ -3171,12 +3301,12 @@
             },
             {
               "ident": "arg2",
-              "desc": "The value to check if it is greater than the first argument.",
+              "desc": "The value to check if it is greater than or equal to the first argument.",
               "type": "TIME64NS"
             }
           ],
           "retval": {
-            "desc": "Boolean of whether arg1 is greater than arg2.",
+            "desc": "Boolean of whether arg1 is greater than or equal to arg2.",
             "type": "BOOLEAN"
           }
         }
@@ -3284,6 +3414,29 @@
         }
       },
       {
+        "name": "int64_to_time",
+        "brief": "Converts a int64 value to a time",
+        "desc": "Converts an int64 value to a time value. Used when type-specific UDFs are needed for time on a int64 value.",
+        "examples": [
+          {
+            "value": "```\ndf = df[px.time_to_int64(0) != df.time_]\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "value",
+              "desc": "The int64 value to convert (in nanoseconds).",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "A time value",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
         "name": "invert",
         "brief": "Invert the bits of the given value.",
         "examples": [
@@ -3347,6 +3500,29 @@
           ],
           "retval": {
             "desc": "The service id if it exists, otherwise an empty string.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "itoa",
+        "brief": "Convert an integer into a string.",
+        "desc": "This function converts an integer into a string.",
+        "examples": [
+          {
+            "value": "```\ndf.val = px.itoa(df.int_col)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The integer to convert.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The input converted to a string.",
             "type": "STRING"
           }
         }
@@ -3436,6 +3612,33 @@
             {
               "ident": "b1",
               "desc": "Left side of the expression.",
+              "type": "TIME64NS"
+            },
+            {
+              "ident": "b2",
+              "desc": "Right side of the expression.",
+              "type": "TIME64NS"
+            }
+          ],
+          "retval": {
+            "desc": "Whether the left side is less than the right.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "lessThan",
+        "brief": "Returns which value is less than the other.",
+        "examples": [
+          {
+            "value": "```\n# Implict call.\ndf.lt = df.a \u003c df.b\nExplicit call.\ndf.lt = px.lessThan(df.a, df.b)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "desc": "Left side of the expression.",
               "type": "FLOAT64"
             },
             {
@@ -3560,10 +3763,10 @@
       },
       {
         "name": "lessThanEqual",
-        "brief": "Returns which value is less than the other.",
+        "brief": "Returns which value is less than or equal to the the other.",
         "examples": [
           {
-            "value": "```\n# Implict call.\ndf.lt = df.a \u003c df.b\nExplicit call.\ndf.lt = px.lessThan(df.a, df.b)\n```"
+            "value": "```\n# Implicit call.\ndf.lte = df.cpu1 \u003c= df.cpu2\n# Explicit call.\ndf.lte = px.lessThanOrEqual(df.cpu1, df.cup2)\n\n```"
           }
         ],
         "scalarUdfDoc": {
@@ -3580,7 +3783,7 @@
             }
           ],
           "retval": {
-            "desc": "Whether the left side is less than the right.",
+            "desc": "Whether the left side is less than or equal to the right.",
             "type": "BOOLEAN"
           }
         }
@@ -4297,7 +4500,7 @@
             {
               "ident": "b",
               "desc": "The second value to multiply.",
-              "type": "INT64"
+              "type": "FLOAT64"
             }
           ],
           "retval": {
@@ -4320,12 +4523,12 @@
             {
               "ident": "a",
               "desc": "The first value to multiply.",
-              "type": "INT64"
+              "type": "FLOAT64"
             },
             {
               "ident": "b",
               "desc": "The second value to multiply.",
-              "type": "FLOAT64"
+              "type": "INT64"
             }
           ],
           "retval": {
@@ -4348,7 +4551,7 @@
             {
               "ident": "a",
               "desc": "The first value to multiply.",
-              "type": "FLOAT64"
+              "type": "INT64"
             },
             {
               "ident": "b",
@@ -4576,6 +4779,58 @@
           "args": [
             {
               "ident": "b1",
+              "type": "TIME64NS"
+            },
+            {
+              "ident": "b2",
+              "type": "TIME64NS"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is not equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "notEqual",
+        "brief": "Returns whether the values are not equal.",
+        "desc": "Determines whether the values are not equal. Passing in floating-point values might lead to false positives. Use `not px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.failed_http = df.http_status != 200\n# Explicit call.\ndf.failed_http = px.notEqual(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
+              "type": "UINT128"
+            },
+            {
+              "ident": "b2",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "True if `b1` is not equal to `b2`, False otherwise.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
+        "name": "notEqual",
+        "brief": "Returns whether the values are not equal.",
+        "desc": "Determines whether the values are not equal. Passing in floating-point values might lead to false positives. Use `not px.approxEqual(b1, b2)` to compare floats instead.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.failed_http = df.http_status != 200\n# Explicit call.\ndf.failed_http = px.notEqual(df.http_status, 200)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "b1",
               "type": "BOOLEAN"
             },
             {
@@ -4659,32 +4914,6 @@
             {
               "ident": "b2",
               "type": "INT64"
-            }
-          ],
-          "retval": {
-            "desc": "True if `b1` is not equal to `b2`, False otherwise.",
-            "type": "BOOLEAN"
-          }
-        }
-      },
-      {
-        "name": "notEqual",
-        "brief": "Returns whether the values are not equal.",
-        "desc": "Determines whether the values are not equal. Passing in floating-point values might lead to false positives. Use `not px.approxEqual(b1, b2)` to compare floats instead.",
-        "examples": [
-          {
-            "value": "```\n# Implicit call.\ndf.failed_http = df.http_status != 200\n# Explicit call.\ndf.failed_http = px.notEqual(df.http_status, 200)\n```"
-          }
-        ],
-        "scalarUdfDoc": {
-          "args": [
-            {
-              "ident": "b1",
-              "type": "TIME64NS"
-            },
-            {
-              "ident": "b2",
-              "type": "TIME64NS"
             }
           ],
           "retval": {
@@ -5865,6 +6094,34 @@
             {
               "ident": "b",
               "desc": "The value to subtract.",
+              "type": "FLOAT64"
+            }
+          ],
+          "retval": {
+            "desc": "`a` with `b` subtracted from it.",
+            "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "subtract",
+        "brief": "Arithmetically subtract the first argument by the second argument.",
+        "desc": "This function is implicitly invoked by the - operator.",
+        "examples": [
+          {
+            "value": "```\n# Implicit call.\ndf.subtracted = df.a - df.b\n# Explicit call.\ndf.subtracted = px.subtract(df.a, df.b)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "a",
+              "desc": "The value to be subtracted from.",
+              "type": "FLOAT64"
+            },
+            {
+              "ident": "b",
+              "desc": "The value to subtract.",
               "type": "INT64"
             }
           ],
@@ -5987,34 +6244,6 @@
         }
       },
       {
-        "name": "subtract",
-        "brief": "Arithmetically subtract the first argument by the second argument.",
-        "desc": "This function is implicitly invoked by the - operator.",
-        "examples": [
-          {
-            "value": "```\n# Implicit call.\ndf.subtracted = df.a - df.b\n# Explicit call.\ndf.subtracted = px.subtract(df.a, df.b)\n\n```"
-          }
-        ],
-        "scalarUdfDoc": {
-          "args": [
-            {
-              "ident": "a",
-              "desc": "The value to be subtracted from.",
-              "type": "FLOAT64"
-            },
-            {
-              "ident": "b",
-              "desc": "The value to subtract.",
-              "type": "FLOAT64"
-            }
-          ],
-          "retval": {
-            "desc": "`a` with `b` subtracted from it.",
-            "type": "FLOAT64"
-          }
-        }
-      },
-      {
         "name": "sum",
         "brief": "Calculate the arithmetic sum of the grouped values.",
         "examples": [
@@ -6076,6 +6305,29 @@
           ],
           "result": {
             "desc": "The sum of the data.",
+            "type": "INT64"
+          }
+        }
+      },
+      {
+        "name": "time_to_int64",
+        "brief": "Converts a time value to an int64 value",
+        "desc": "Converts a time value to an int64 value. Used when type-specific UDFs are needed for int64 on a time value.",
+        "examples": [
+          {
+            "value": "```\ndf = df[px.time_to_int64(df.time_) != 0]\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "value",
+              "desc": "The value to convert.",
+              "type": "TIME64NS"
+            }
+          ],
+          "retval": {
+            "desc": "The time (in nanoseconds) as an int64.",
             "type": "INT64"
           }
         }
@@ -6144,6 +6396,67 @@
           "retval": {
             "desc": "The string but with leading and trailing whitespace removed.",
             "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "upid",
+        "brief": "Convert a pid, start_time pair to a UPID.",
+        "desc": "This function creates a UPID from it's underlying components.",
+        "examples": [
+          {
+            "value": "```\ndf.val = px.upid(px.asid(), df.pid, df.pid_start_time)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The asid of the pem where the process is located.",
+              "type": "INT64"
+            },
+            {
+              "ident": "arg2",
+              "desc": "The pid of the process.",
+              "type": "INT64"
+            },
+            {
+              "ident": "arg3",
+              "desc": "The start_time of the process.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The UPID.",
+            "type": "UINT128"
+          }
+        }
+      },
+      {
+        "name": "upid",
+        "brief": "Convert a pid, start_time pair to a UPID.",
+        "desc": "This function creates a UPID from it's underlying components..",
+        "examples": [
+          {
+            "value": "```\ndf.val = px.upid(df.pid, df.pid_start_time)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The pid of the process.",
+              "type": "INT64"
+            },
+            {
+              "ident": "arg2",
+              "desc": "The start_time of the process.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The UPID.",
+            "type": "UINT128"
           }
         }
       },
