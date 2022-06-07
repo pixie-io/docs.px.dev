@@ -89,13 +89,13 @@ const UdfDocsTemplate = ((props: any) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {functions[0].definition.inputs ? functions[0].definition.inputs.map((i, index) => (
+              {functions[0].definition.inputs ? functions[0].definition.inputs.map((arg, index) => (
                 <TableRow>
-                  <TableCell align='left'>{i.ident}</TableCell>
+                  <TableCell align='left'>{arg.ident}</TableCell>
                   <TableCell align='left'>
-                    {[...new Set(functions.map((f) => f.definition).map((d) => d.inputs[index].type))].join(' / ')}
+                    {[...new Set(functions.filter((f) => !!f.definition.inputs[index]).map((f) => f.definition.inputs[index].type))].join(' / ')}
                   </TableCell>
-                  <TableCell align='left'>{i.desc}</TableCell>
+                  <TableCell align='left'>{arg.desc}</TableCell>
                 </TableRow>
               )) : ''}
 
