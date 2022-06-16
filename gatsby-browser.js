@@ -50,7 +50,9 @@ export const onRouteUpdate = () => {
   runZoom();
 
   const mmsc = document.getElementById('main-meu-scroll-container');
-  mmsc.scrollTop = window.mmscScrollTop || 0;
+  if (mmsc) {
+    mmsc.scrollTop = window.mmscScrollTop || 0;
+  }
 };
 
 // eslint-disable-next-line import/prefer-default-export
