@@ -32,6 +32,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: 'fixed',
     top: '100px',
     borderLeft: theme.palette.type === 'light' ? '1px solid #DBDDE0' : '1px solid #353738',
+    width: '240px',
+    textIndent: '-9px',
   },
   link: {
     color: theme.overrides.MuiTypography.body2.color,
@@ -80,7 +82,12 @@ const RightSidebar = ({ tableOfContents }) => {
     <div className={classes.main}>
       <Scrollspy items={toc.map((item) => item.ref)} currentClassName='is-current-' componentTag='div' onUpdate={(e) => onScrollUpdate(e)}>
         {toc.map((item) => (
-          <a key={item.value} href={`#${item.ref}`} className={`${classes.link} ${item.depth === 3 ? classes.indent : ''}  ${activeId === item.ref ? 'is-current' : ''}`} onClick={() => highLight(item.ref)}>
+          <a
+            key={item.value}
+            href={`#${item.ref}`}
+            className={`${classes.link} ${item.depth === 3 ? classes.indent : ''}  ${activeId === item.ref ? 'is-current' : ''}`}
+            onClick={() => highLight(item.ref)}
+          >
             {item.value}
           </a>
         ))}
