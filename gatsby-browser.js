@@ -48,6 +48,9 @@ export const onRouteUpdate = () => {
     sessionStorage.setItem('referrer', window.locations[0]);
   }
   runZoom();
+
+  const mmsc = document.getElementById('main-meu-scroll-container');
+  mmsc.scrollTop = window.mmscScrollTop || 0;
 };
 
 // eslint-disable-next-line import/prefer-default-export

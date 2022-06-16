@@ -227,7 +227,7 @@ const Sidebar = withStyles((theme: Theme) => ({
               firstRun,
               setFirstRun,
             }) => (
-              <div className={classes.main}>
+              <div className={classes.main} id='main-meu-scroll-container'>
                 <ExpandFirstLevelOnce
                   setExpanded={setExpanded}
                   edges={allDocsForExpand}
