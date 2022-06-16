@@ -33,6 +33,14 @@ export const onClientEntry = () => {
   processClientEntry();
 };
 
+export const onInitialClientRender = () => {
+  const gatsbyFocusWrapper = document.getElementById('gatsby-focus-wrapper');
+  if (gatsbyFocusWrapper) {
+    gatsbyFocusWrapper.removeAttribute('style');
+    gatsbyFocusWrapper.removeAttribute('tabIndex');
+  }
+};
+
 export const onRouteUpdate = () => {
   if (typeof window === 'undefined') return;
   window.locations = window.locations || [document.referrer];
