@@ -46,7 +46,7 @@ PxL scripts are used to query telemetry data collected by the Pixie Platform. Ou
 ```python:numbers
 import px
 # Read in the http_events table
-df = px.DataFrame(table='http_events', start_time='-10s')
+df = px.DataFrame(table='http_events', start_time='-10s', end_time=px.now())
 
 # Attach the pod and service metadata
 df.pod = df.ctx['pod']
@@ -113,7 +113,7 @@ The first part of the PxL script (lines 1-19) read in the `http_events` data and
 import px
 
 # Read in the http_events table
-df = px.DataFrame(table='http_events', start_time='-10s')
+df = px.DataFrame(table='http_events', start_time='-10s', end_time=px.now())
 
 # Attach the pod and service metadata
 df.pod = df.ctx['pod']
@@ -225,7 +225,7 @@ Now that we have a PxL script that exports OTel data, let's set up the [Plugin S
 ```python
 import px
 # Read in the http_events table
-df = px.DataFrame(table='http_events', start_time=px.plugin.start_time)
+df = px.DataFrame(table='http_events', start_time=px.plugin.start_time, end_time=px.plugin.end_time)
 
 # Attach the pod and service metadata
 df.pod = df.ctx['pod']
@@ -236,7 +236,7 @@ df = df.groupby(['pod', 'service', 'req_path']).agg(
   time_=('time_', px.max),
 )
 
-# Change the denominator if you change start_time above.
+# Change the denominator if you change summary window size away from 10s.
 df.requests_per_s = df.throughput / 10
 
 px.export(df, px.otel.Data(
@@ -261,9 +261,9 @@ px.export(df, px.otel.Data(
 
 > This is the script we developed in [Step 2](/tutorials/integrations/otel/#write-the-pxl-script) with a few modifications:
 
-> - We changed the DataFrame's `start_time` argument to use `px.plugin.start_time`. This value can be configured using the `Summary Window` field on this page.
+> - We changed the DataFrame's `start_time` and `end_time` arguments to use `px.plugin.start_time` and `px.plugin.end_time`. These are set whenever the plugin executes the script. The size of this window sample can be configured using the `Summary Window` field on this page.
 
-> - We removed the `Endpoint` parameter. We configured the plugin with this value in Step 3.
+> - We removed the `Endpoint` parameter. The plugin sets this value from what We configured in Step 3.
 
 > - We removed the `px.display()` call on the last line. This was used to display the data in the Live UI when developing our script in the Scratch Pad.
 
