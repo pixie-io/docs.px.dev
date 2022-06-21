@@ -28,6 +28,6 @@ Pixie has a versatile execution engine which can ingest and export data in a var
 We are building a data plane for Kubernetes rather than a full-fledged observability solution. Here are some of the items that we do not plan to tackle. Note that our API makes it possible to enable these use cases with downstream applications.
 
 * Non-Kubernetes environments
-* Alerting (available via Pixie’s New Relic One integration or [Slackbot](/tutorials/integrations/slackbot-alert) API integration)
+* Alerting (available with the [Slackbot](/tutorials/integrations/slackbot-alert) API integration, coming soon to the [Pixie Plugin system](/reference/plugins/plugin-system))
 * Advanced dashboarding (available with Pixie's [Grafana plugin](/reference/plugins/grafana))
-* Long-term storage (available with the [Pixie Plugin system](/reference/plugins/plugin-system) and [New Relic One integration](https://newrelic.com/platform/kubernetes-pixie))
+* Long-term storage (available with the [Pixie Plugin system](/reference/plugins/plugin-system))
