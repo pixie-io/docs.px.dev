@@ -1,6 +1,6 @@
 [build]
   publish ="public/"
-  command = "yarn install && yarn lint && gatsby build"
+  command = "gatsby clean && yarn install && yarn lint && gatsby build"
 
 [context.branch-deploy.environment]
   GATSBY_DEPLOY_ENV = "main"

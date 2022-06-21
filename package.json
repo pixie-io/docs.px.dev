@@ -6,6 +6,8 @@
   "license": "Apache-2.0 and CC-BY-4.0",
   "author": "Pixie Labs <support@pixielabs.ai>",
   "scripts": {
+    "clean": "gatsby clean",
+    "serve": "gatsby serve",
     "build": "gatsby build --prefix-paths",
     "start": "gatsby develop",
     "develop": "gatsby develop",
