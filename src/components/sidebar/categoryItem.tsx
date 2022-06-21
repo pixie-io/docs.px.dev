@@ -97,6 +97,9 @@ const CategoryItem = withStyles((theme: Theme) => ({
   };
 
   const goToPage = (link) => {
+    const mmsc = document.getElementById('main-meu-scroll-container');
+    // @ts-ignore
+    window.mmscScrollTop = mmsc.scrollTop;
     navigate(link);
   };
   return (
