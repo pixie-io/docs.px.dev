@@ -67,7 +67,6 @@ const CodeRenderer = withStyles((theme) => ({
   },
 
   copyBtn: {
-    display: 'none',
     position: 'absolute',
     top: '18px',
     transform: 'translateY(-50%)',
