@@ -34,7 +34,7 @@ Pixie automatically traces the following protocols:
 | Protocol      | Support             | Notes                          |
 | :------------ | :------------------ | :----------------------------- |
 | HTTP          | Supported           |                                |
-| HTTP2/gRPC    | Partially Supported | Currently only for Golang apps with [debug information](/reference/admin/debug-info). |
+| HTTP2         | Supported for [Golang gRPC](https://github.com/grpc/grpc-go) (with and without TLS). | Golang apps must have [debug information](/reference/admin/debug-info). |
 | DNS           | Supported           |                                |
 | NATS          | Supported           | Requires a NATS build with [debug information](/reference/admin/debug-info). |
 | MySQL         | Supported           |                                |
