@@ -183,5 +183,3 @@ This script could be used to:
 
 - Examine the balance of a `pod`'s incoming vs outgoing traffic.
 - Investigate if `pods` under the same `service` receive a similar amount of traffic or if there is an imbalance in traffic received.
-
-In [Tutorial #3](/tutorials/pxl-scripts/write-pxl-scripts/custom-pxl-scripts-3) we will learn how to add more visualizations for this script.
