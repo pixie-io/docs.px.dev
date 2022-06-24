@@ -286,6 +286,6 @@ func (s *tableMux) AcceptTable(ctx context.Context, metadata types.TableMetadata
 
 ## End-to-End Encryption
 
-Pixie offers end-to-end encryption for telemetry data requested by the API. For more information, see the [FAQ](/about-pixie/faq#how-does-pixie-secure-its-data).
+Pixie offers end-to-end encryption for telemetry data requested by the API. For more information, see the [FAQ](/about-pixie/faq/#how-does-pixie-secure-its-data).
 
 Encryption is controlled by a flag during client creation. For additional info, see the [Go](https://github.com/pixie-io/pixie/blob/main/src/api/go/pxapi/examples/encryption_example/example.go#L77) or [Python](https://github.com/pixie-io/pixie/blob/main/src/api/python/examples/script_with_single_table.py#L35) encryption examples.

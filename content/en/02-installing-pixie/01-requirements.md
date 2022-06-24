@@ -55,7 +55,7 @@ For local development, we recommend using Minikube with a VM driver (`kvm2` on L
 
 ## Operating System
 
-Pixie runs on Linux nodes only. You can configure Pixie to [deploy to a subset of the nodes](/reference/admin/deploy-options#deploy-pixie-to-a-subset-of-nodes) in your cluster.
+Pixie runs on Linux nodes only. You can configure Pixie to [deploy to a subset of the nodes](/reference/admin/deploy-options/#deploy-pixie-to-a-subset-of-nodes) in your cluster.
 
 |         | Support         | Version           |
 | :------ | :-------------  | :---------------- |
@@ -99,4 +99,4 @@ Pixie deploys its PEMs as a DaemonSet on your cluster in order to collect and st
 
 Pixie's [Vizier](/reference/architecture/#vizier) module sends outgoing HTTPS/2 requests to Pixie's [Cloud](/reference/architecture/#cloud) on port `443`.
 
-Your cluster's telemetry data flows through Pixie's Cloud via a reverse proxy as encrypted traffic without any persistence. This allows users to access data without being in the same VPC/network as the cluster. Pixie offers [end-to-end encryption](/about-pixie/faq#data-collection-how-does-pixie-secure-its-data) for telemetry data in flight.
+Your cluster's telemetry data flows through Pixie's Cloud via a reverse proxy as encrypted traffic without any persistence. This allows users to access data without being in the same VPC/network as the cluster. Pixie offers [end-to-end encryption](/about-pixie/faq/#data-collection-how-does-pixie-secure-its-data) for telemetry data in flight.

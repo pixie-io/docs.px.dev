@@ -149,7 +149,7 @@ px live -f <script.pxl>		# Use Pixie's Live CLI to run the pxl script with the p
 
 ### End-to-End Encryption
 
-Pixie offers end-to-end encryption for telemetry data requested by the CLI. For more information, see the [FAQ](/about-pixie/faq#how-does-pixie-secure-its-data).
+Pixie offers end-to-end encryption for telemetry data requested by the CLI. For more information, see the [FAQ](/about-pixie/faq/#how-does-pixie-secure-its-data).
 
 Encryption is controlled by the `--e2e_encryption` flag during script execution. Enabling E2E encryption adds some overhead to encrypt the results on the Vizier side and decrypt it on the CLI side.
 
