@@ -126,7 +126,7 @@ Pixie has a minimum 1GiB memory requirement per node. The default deployment is 
 
 ### Why is Pixie being OOMKilled?
 
-This happens when Pixie is using more memory than the limit. Try [increasing the limit](/reference/admin/deploy-options/#configuring-pixie's-memory-usage-setting-the-memory-limit), or [reducing the amount of data stored](/reference/admin/deploy-options/#configuring-pixie's-memory-usage-setting-the-data-table-storage-memory-limit) in the table store. The amount of memory needed for Pixie depends on the application, but a minimum of [1Gi](/installing-pixie/requirements/#memory) is required. However, for most clusters we recommend 2Gi. For more information, see the [Tuning Memory Usage](/reference/admin/tuning-mem-usage/) page.
+This happens when Pixie is using more memory than the limit. Try [increasing the limit](/reference/admin/deploy-options/#configure-pixie-memory-usage-setting-the-memory-limit), or [reducing the amount of data stored](/reference/admin/deploy-options/#configure-pixie-memory-usage-setting-the-data-table-storage-memory-limit) in the table store. The amount of memory needed for Pixie depends on the application, but a minimum of [1Gi](/installing-pixie/requirements/#memory) is required. However, for most clusters we recommend 2Gi. For more information, see the [Tuning Memory Usage](/reference/admin/tuning-mem-usage/) page.
 
 ### Troubleshooting Pixie tracepoint scripts
 
