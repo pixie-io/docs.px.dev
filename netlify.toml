@@ -18,6 +18,3 @@
       "public/reference/pxl/operators/dataframe.map",
       "FAIL Failed loading public/reference/pxl/operators/dataframe.map",
     ]
-
-    # Report on all broken links to external pages.
-    checkExternal = true

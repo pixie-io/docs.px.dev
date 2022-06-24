@@ -5,7 +5,7 @@ metaDescription: "Commonly asked questions about Pixie."
 order: 5
 ---
 
-### General
+**General**
 
 - [What is Pixie?](#general-what-is-pixie)
 - [Who created Pixie?](#general-who-created-pixie)
@@ -14,7 +14,7 @@ order: 5
 - [Can I completely self-host Pixie?](#general-can-i-completely-self-host-pixie)
 - [Is there a hosted cloud offering?](#general-does-pixie-offer-a-hosted-cloud-offering)
 
-### Data Collection
+**Data Collection**
 
 - [Where does Pixie store its data?](#data-collection-where-does-pixie-store-its-data)
 - [How much data does Pixie store?](#data-collection-how-much-data-does-pixie-store)
@@ -28,7 +28,7 @@ order: 5
 - [What is the performance impact?](#data-collection-what-is-the-performance-impact)
 - [Which languages are supported for continuous profiling?](#data-collection-which-languages-are-supported-for-continuous-profiling)
 
-### How do I…
+**How do I…**
 
 - [How do I export data from the Pixie platform? Import data?](#how-do-i...-how-do-i-export-data-from-the-pixie-platform-import-data)
 - [How do I share a Pixie dashboard with others?](#how-do-i...-how-do-i-share-a-pixie-dashboard-with-others)
