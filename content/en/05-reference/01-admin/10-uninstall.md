@@ -20,7 +20,7 @@ px delete
 
 Note that `px delete` will not delete the `olm` namespace. During installation, Pixie will install the [Operator Lifecycle Manager](https://docs.openshift.com/container-platform/4.5/operators/understanding/olm/olm-understanding-olm.html) (OLM) if it is not already present. Make sure that no other applications are using the OLM before manually deleting it with `kubectl delete namespace olm`.
 
-## Uninstall using `kubectl`
+## Uninstall using kubectl
 
 To delete Pixie using `kubectl`, run the following commands. These commands assume that Pixie's components were deployed to their default namespaces.
 
