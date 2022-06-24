@@ -37,9 +37,9 @@ For most clusters, we recommend that you initially try deploying Pixie with the 
 If the default memory limit does not work for your cluster, check out the following:
 
 - [How to deploy Pixie with a particular memory limit](#configure-pixie-memory-usage-how-can-i-deploy-pixie-with-a-particular-memory-limit)
-- [If your `vizier-pem` pods fail to schedule during deployment, try reducing the memory request](#configure-pixie-memory-usage-why-did-the-object-object-pods-fail-to-schedule)
-- [If your `vizier-pem` pods get regularly OOMKilled, try increasing the memory limit](#configure-pixie-memory-usage-why-did-my-object-object-pods-get-oomkilled)
-- [If your nodes have limited memory and you are exporting Pixie data to long-term storage, try reducing the memory allocated to data storage](#configure-pixie-memory-usage-(advanced)-how-can-i-configure-object-object-pods-to-reserve-more-or-less-memory-for-data-storage)
+- [If your `vizier-pem` pods fail to schedule during deployment, try reducing the memory request](#configure-pixie-memory-usage-why-did-the-vizier-pem-pods-fail-to-schedule)
+- [If your `vizier-pem` pods get regularly OOMKilled, try increasing the memory limit](#configure-pixie-memory-usage-why-did-my-vizier-pem-pods-get-oomkilled)
+- [If your nodes have limited memory and you are exporting Pixie data to long-term storage, try reducing the memory allocated to data storage](#configure-pixie-memory-usage-(advanced)-how-can-i-configure-vizier-pem-pods-to-reserve-more-or-less-memory-for-data-storage)
 
 ### How can I deploy Pixie with a particular memory limit?
 
