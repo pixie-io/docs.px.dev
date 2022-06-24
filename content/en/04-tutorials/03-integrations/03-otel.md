@@ -284,4 +284,4 @@ Congrats! You're now exporting Pixie data to an OTel collector.
 
 ## Troubleshooting
 
-Having problems? Check out the [Pixie Plugin Troubleshooting](/about-pixie/troubleshooting/#troubleshooting-a-pixie-plugin-troubleshooting-a-pixie-plugin) guide.
+Having problems? Check out the [Pixie Plugin Troubleshooting](/about-pixie/troubleshooting/#troubleshooting-a-pixie-plugin) guide.

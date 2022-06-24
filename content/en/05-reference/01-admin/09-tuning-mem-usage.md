@@ -12,7 +12,7 @@ When Pixie is installed, a `vizier-pem` data collector pod is deployed to each n
 
 After installing Pixie, it is normal to see an increase in memory usage of the `vizier-pem` pods as they begin storing telemetry data. Once the `vizier-pem`'s memory limit is reached, old telemetry data is expired to make room for new data and memory utilization should not increase any further.
 
-### How does Pixie use memory?
+## How does Pixie use memory?
 
 Pixie's `vizier-pem` pods use memory for two main purposes:
 
