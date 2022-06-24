@@ -7,3 +7,6 @@
 
 [context.production.environment]
   GATSBY_DEPLOY_ENV = "prod"
+
+[[plugins]]
+  package = "netlify-plugin-checklinks"
