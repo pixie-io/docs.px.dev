@@ -9,20 +9,20 @@ redirect_from:
 
 ## Overview
 
-Pixie's API uses PxL scripts to both:
+Pixie uses PxL scripts to both:
 
 1. Query telemetry data collected by the Pixie Platform (DNS events, HTTP events, etc).
 2. Extend Pixie to collect new data sources (in addition to those it collects by default).
 
-PxL scripts can be executed by the Pixie platform by using the web based Live UI, CLI or API.
+PxL scripts can be executed by the Pixie platform by using the web based [Live UI](/using-pixie/using-live-ui/), [CLI](/using-pixie/using-cli/) or [API](/using-pixie/api-quick-start/).
 
 ## Setup
 
-Pixie needs to be installed on your Kubernetes cluster. If it is not already installed, please consult our [install guides](/installing-pixie/).
+Pixie needs to be installed on your Kubernetes cluster. If it is not already installed, please consult our [install guides](/installing-pixie/install-guides/).
 
 ## Writing a PxL Script
 
-This tutorial series demonstrates how to write a basic PxL script to query data automatically collected by Pixie's platform. Pixie's CLI will be used to execute the script.
+This tutorial series demonstrates how to write a PxL script to query data automatically collected by Pixie's platform. Pixie's [CLI](/using-pixie/using-cli/) is used to execute the script.
 
 - (Prerequisite) [Install Pixie's CLI tool](/installing-pixie/install-schemes/cli/#1.-install-the-pixie-cli)
 - (Optional Prerequisite) [Learn how to navigate the CLI](/using-pixie/using-cli)
@@ -31,7 +31,7 @@ This tutorial series demonstrates how to write a basic PxL script to query data 
 
 ## Writing a Vis Spec
 
-This tutorial series adds visualizations to the PxL script developed in the above [Writing PxL Scripts](/tutorials/pxl-scripts/write-pxl-scripts/#writing-pxl-scripts) tutorial series. Pixie's Live UI will be used to execute the script.
+This tutorial series demonstrates how to write a Vis Spec to accompany the PxL script developed in Tutorial #1 and Tutorial #2. Pixie's [Live UI](/using-pixie/using-live-ui/) is used to execute the script.
 
 - (Optional Prerequisite) [Learn how to navigate the Live UI](/using-pixie/using-live-ui)
 - [Tutorial #3: Write your first Vis Spec](/tutorials/pxl-scripts/write-pxl-scripts/custom-pxl-scripts-3)
