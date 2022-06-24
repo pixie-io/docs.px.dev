@@ -47,19 +47,19 @@ The default memory limit is `2Gi` per PEM. The lowest recommended value is [`1Gi
 
 To learn how to set Pixie's memory limit when deploying, see the [Deploy Options](/reference/admin/deploy-options#configure-pixie-memory-usage-setting-the-memory-limit) page.
 
-### Why did the `vizier-pem` pods fail to schedule?
+### Why did the vizier-pem pods fail to schedule?
 
 If your `vizier-pem` pods fail to schedule during installation, this is usually because there are node(s) in your cluster that do not have the requested amount of memory. In this situation, you can try reducing the memory [request](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) down as far as `1Gi`. However, keep in mind that if it is a particularly large or active cluster, `1Gi` may not be sufficient for that particular cluster, and some PEM OOMKills might occur, so it might be good to set a higher limit than request, such as `2Gi` for the limit. `1Gi` limit deployments are recommended for smaller clusters with less traffic.
 
 To learn how to set Pixie's memory request when deploying, see the [Deploy Options](/reference/admin/deploy-options#configure-pixie-memory-usage-setting-the-memory-request) page.
 
-### Why did my `vizier-pem` pods get OOMKilled?
+### Why did my vizier-pem pods get OOMKilled?
 
 Part of the benefit of deploying on Kubernetes is that Kubernetes will OOMKill pods that are using too many resources in order to protect the other pods in the cluster. When Pixie is OOMKilled, this means that it is exceeding the memory limit. This is a step that Kubernetes takes to protect the other applications, and therefore will not cause problems on the other pods. For PEMs that are regularly OOMKilling at `2Gi` or greater memory, feel free to file a GitHub issue. A good next step here is usually to [deploy Pixie with more memory](/reference/admin/deploy-options#configure-pixie-memory-usage-setting-the-memory-limit) and see if it reaches a stable state for memory.
 
-### (Advanced) How can I configure `vizie-pem` pods to reserve more or less memory for data storage?
+### (Advanced) How can I configure vizier-pem pods to reserve more or less memory for data storage?
 
-As discussed [above](#configure-pixie-memory-usage-how-does-pixie-use-memory), Pixie's `vizier-pem` data collector pods use memory for two main purposes: collecting data and storing data. By default, `vizier-pem` pods reserve 60% of their allocated memory for short-term data storage (leaving the other 40% for the collection). For the default `2Gi` memory limit, this means that a `vizier-pem` pod will reserve `1.2Gi` memory for data storage.
+As discussed [above](#how-does-pixie-use-memory), Pixie's `vizier-pem` data collector pods use memory for two main purposes: collecting data and storing data. By default, `vizier-pem` pods reserve 60% of their allocated memory for short-term data storage (leaving the other 40% for the collection). For the default `2Gi` memory limit, this means that a `vizier-pem` pod will reserve `1.2Gi` memory for data storage.
 
 To reduce Pixie's memory footprint, developers with a [long-term data storage](/about-pixie/faq/#how-do-i...-how-do-i-export-data-from-the-pixie-platform-import-data) solution can configure Pixie to use less memory for short-term data storage on the node.
 

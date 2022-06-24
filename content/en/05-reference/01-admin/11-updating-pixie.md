@@ -20,7 +20,7 @@ Pixie has three components that can be updated:
 px version
 ```
 
-2. Compare your CLI version with the [latest release](/reference/admin/product-updates/#updating-pixie-cloud-and-vizier-pixie-cli).
+2. Compare your CLI version with the [latest release](/reference/admin/product-updates/#pixie-cli).
 
 3. If necessary, update the CLI with:
 
