@@ -44,6 +44,7 @@ For local development, we recommend using Minikube with a VM driver (`kvm2` on L
 | K8s Environment                 | Support       |
 | :------------------------------ | :------------ |
 | Docker Desktop                  | Not supported |
+| Rancher Desktop               | Supported for containerd container runtime ([not supported for dockerd runtime](https://github.com/pixie-io/pixie/issues/447#issuecomment-1159208761)) |
 | k0s                             | Supported     |
 | k3s                             | Supported     |
 | k3d                             | Not Supported ([k3d runs k3s clusters inside Docker container "nodes"](https://github.com/pixie-io/pixie/issues/337#issuecomment-949012061)) |
