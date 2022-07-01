@@ -24,6 +24,12 @@ You can install the CLI in one of four ways:
 bash -c "$(curl -fsSL https://withpixie.ai/install.sh)"
 ```
 
+### Using Homebrew
+
+```bash
+brew install pixie
+```
+
 ### Directly downloading the binary
 
 #### Assets
