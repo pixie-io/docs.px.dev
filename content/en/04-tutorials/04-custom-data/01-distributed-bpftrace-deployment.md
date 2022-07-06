@@ -13,7 +13,7 @@ Pixie can deploy [bpftrace](https://github.com/iovisor/bpftrace) programs to you
 
 ## Background
 
-Most of the data in Pixie's no-instrumentation monitoring platform is collected by the Pixie Edge Modules ([PEMs](/about-pixie/what-is-pixie#architecture)), which are deployed as a daemonset onto every node in your cluster. These PEMs use eBPF based tracing to collect network transactions without any code changes.
+Most of the data in Pixie's no-instrumentation monitoring platform is collected by the Pixie Edge Modules ([PEMs](/about-pixie/what-is-pixie/#architecture)), which are deployed as a daemonset onto every node in your cluster. These PEMs use eBPF based tracing to collect network transactions without any code changes.
 
 One increasingly popular way to write eBPF programs is to use [bpftrace](https://github.com/iovisor/bpftrace), an open source high-level tracing language for Linux. bpftrace provides a simplified front-end language that makes it easier to write BPF programs when compared to frameworks such as `BCC`. Many bpftrace programs are written as one-liners or stand-alone scripts.
 

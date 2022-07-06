@@ -13,7 +13,7 @@ Pixie offers the following deploy options:
 - [Label Pixie's resources](#labeling-pixie's-resources)
 - [Deploy to a subset of nodes](#deploy-pixie-to-a-subset-of-nodes)
 - [Provide a custom cluster name](#providing-a-custom-cluster-name)
-- [Configure Pixie's memory usage](#configuring-pixie's-memory-usage)
+- [Configure Pixie's memory usage](#configure-pixie-memory-usage)
 - [Set the data access mode](#setting-the-data-access-mode)
 
 To see the full set of deploy options, install the [Pixie CLI](/installing-pixie/install-schemes/cli/) and run `px deploy --help`.
@@ -94,13 +94,13 @@ To provide a custom cluster name when deploying with [Helm](/installing-pixie/in
 helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-key-goes-here> --set clusterName=<CLUSTER_NAME> --namespace pl --create-namespace
 ```
 
-## Configuring Pixie's memory usage
+## Configure Pixie memory usage
 
 When deploying Pixie, you have three options for configuring PEM memory usage:
 
-- [Set PEM pod memory limit](#configuring-pixie's-memory-usage-setting-the-memory-limit)
-- [Set PEM pod memory request](#configuring-pixie's-memory-usage-setting-the-memory-request)
-- [Set data table storage limit](#configuring-pixie's-memory-usage-setting-the-data-table-storage-memory-limit)
+- [Set PEM pod memory limit](#configure-pixie-memory-usage-setting-the-memory-limit)
+- [Set PEM pod memory request](#configure-pixie-memory-usage-setting-the-memory-request)
+- [Set data table storage limit](#configure-pixie-memory-usage-setting-the-data-table-storage-memory-limit)
 
 For more information about these options, please refer to the [Tuning Memory Usage](/reference/admin/tuning-mem-usage/) page.
 

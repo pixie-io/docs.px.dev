@@ -12,7 +12,7 @@ There are multiple hosting options for Pixie.
 - [Community Cloud for Pixie Guide (easiest)](/installing-pixie/install-guides/community-cloud-for-pixie)
 - [Self-Hosted Pixie](/installing-pixie/install-guides/self-hosted-pixie)
 
-Pixie is a hybrid system, with a cloud component (Pixie Cloud) and an in-cluster component for data persistence and storage (Vizier). See [Architecture](/about-pixie/what-is-pixie#architecture) for more details.
+Pixie is a hybrid system, with a cloud component (Pixie Cloud) and an in-cluster component for data persistence and storage (Vizier). See [Architecture](/about-pixie/what-is-pixie/#architecture) for more details.
 
 While Vizier will always be deployed directly onto your Kubernetes cluster, there are multiple options for Pixie Cloud.
 

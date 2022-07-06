@@ -101,7 +101,7 @@ This plugin uses the Pixie Language ([PxL](/reference/pxl)) to query telemetry d
 
 The above PxL query outputs a table of timeseries data showing overall HTTP request throughput. Request throughput is calculated by counting the number HTTP requests that Pixie automatically traces in your cluster.
 
-This query uses the `__time_from` and `__interval` macros to add dashboard context to the query. See the full [list of macros](/reference/plugins/grafana/#macros) supported by this plugin.
+This query uses the `__time_from` and `__interval` macros to add dashboard context to the query. See the full [list of macros](/reference/plugins/grafana/#usage-macros) supported by this plugin.
 
 2. On the Panel tab, under the **Visualization** drop-down menu, select **Time series**.
 

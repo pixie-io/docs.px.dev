@@ -20,7 +20,7 @@ Pixie has three components that can be updated:
 px version
 ```
 
-2. Compare your CLI version with the [latest release](/reference/admin/product-updates/#updating-pixie-cloud-and-vizier-pixie-cli).
+2. Compare your CLI version with the [latest release](/reference/admin/product-updates/#pixie-cli).
 
 3. If necessary, update the CLI with:
 
@@ -39,15 +39,15 @@ Pixie's [CLI tool](/installing-pixie/install-schemes/cli) is required to update 
 px get viziers
 ```
 
-2. Compare your Vizier version to the [latest release](/reference/admin/product-updates/#updating-pixie-cloud-and-vizier-pixie-platform).
+2. Compare your Vizier version to the [latest release](/reference/admin/product-updates/#pixie-platform).
 
 3. Update your fork / clone of the [Pixie repo](https://github.com/pixie-io/pixie).
 
 4. (Optional) Update the version numbers in the [`artifact_tracker_versions.yaml` file](https://github.com/pixie-io/pixie/blob/main/k8s/cloud/public/artifact_tracker_versions.yaml). The release versions in this file are periodically updated, but do not track the latest release. To find the latest release, check the release notes:
 
->> - [PL_VIZIER_VERSION](/reference/admin/product-updates/#updating-pixie-cloud-and-vizier-pixie-platform)
->> - [PL_CLI_VERSION](/reference/admin/product-updates/#updating-pixie-cloud-and-vizier-pixie-cli)
->> - [PL_OPERATOR_VERSION](/reference/admin/product-updates/#updating-pixie-cloud-and-vizier-pixie-operator)
+>> - [PL_VIZIER_VERSION](/reference/admin/product-updates/#pixie-platform)
+>> - [PL_CLI_VERSION](/reference/admin/product-updates/#pixie-cli)
+>> - [PL_OPERATOR_VERSION](/reference/admin/product-updates/#pixie-operator)
 
 5. Re-deploy Pixie Cloud by running the following . This step assumes you previously deployed Pixie cloud to the default namespace (`plc`).
 

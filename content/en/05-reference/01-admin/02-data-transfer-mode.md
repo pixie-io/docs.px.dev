@@ -9,7 +9,7 @@ redirect_from:
     - /installing-pixie/data-transfer-mode
 ---
 
-Pixie stores the data it collects in-memory on the nodes in your cluster. For more information, see the [FAQ](/about-pixie/faq#where-does-pixie-store-its-data).
+Pixie stores the data it collects in-memory on the nodes in your cluster. For more information, see the [FAQ](/about-pixie/faq/#data-collection-where-does-pixie-store-its-data).
 
 Pixie supports two modes for accessing this data by the Live UI.
 
@@ -17,7 +17,7 @@ Pixie supports two modes for accessing this data by the Live UI.
 
 In data passthrough mode, your cluster's data flows through Pixie's control cloud via a reverse proxy as encrypted traffic without any persistence. This allows users to access data without being in the same VPC/network as the cluster.
 
-Pixie offers [end-to-end encryption](/about-pixie/faq#how-does-pixie-secure-its-data) for telemetry data in flight.
+Pixie offers [end-to-end encryption](/about-pixie/faq/#data-collection-how-does-pixie-secure-its-data) for telemetry data in flight.
 
 When enabled, the Live UI [Admin Page](https://work.withpixie.ai/admin) will show your cluster's **Mode** as `Passthrough`.
 
@@ -31,7 +31,7 @@ When enabled, the Live UI [Admin Page](https://work.withpixie.ai/admin) will sho
   We will be removing support for Direct Mode on March 31, 2022. Existing clusters with Direct Mode enabled may continue using Direct Mode until support is discontinued, at which time the cluster will automatically be switched to Passthrough Mode. To manually switch a cluster from Direct to Passthrough mode, see the "Steps to Disable" in the section below. New and existing clusters without Direct Mode enabled will be prevented from enabling Direct Mode moving forward.
 </Alert>
 
-In Data Isolation Mode, the browser directly proxies into Pixie's Vizier Module and no customer data is transferred to Pixie's Control Cloud. Communication to Pixie's Control Cloud is limited to account and Kubernetes control data. See the [FAQ](/about-pixie/faq#how-does-pixie-secure-its-data) and [Architecture Diagram](/about-pixie/what-is-pixie#architecture) for more details.
+In Data Isolation Mode, the browser directly proxies into Pixie's Vizier Module and no customer data is transferred to Pixie's Control Cloud. Communication to Pixie's Control Cloud is limited to account and Kubernetes control data. See the [FAQ](/about-pixie/faq/#data-collection-how-does-pixie-secure-its-data) and [Architecture Diagram](/about-pixie/what-is-pixie/#architecture) for more details.
 
 <Alert variant="outlined" severity="warning">
   Note that you must be behind your cluster's firewall to see data in the Live UI when Data Isolation Mode is enabled.
