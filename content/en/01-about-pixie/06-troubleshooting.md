@@ -29,6 +29,7 @@ This page describes how to troubleshoot Pixie. We frequently answer questions on
 
 - [Why isn't my data exporting?](#troubleshooting-a-pixie-plugin-why-isn't-my-data-exporting-when-i-run-an-opentelemetry-export-script-in-the-live-ui)
 - [How do I check the Pixie logs for plugin errors?](#troubleshooting-a-pixie-plugin-how-do-i-check-the-pixie-logs-for-plugin-errors)
+- [How do I check the status or history of an export script?](#troubleshooting-a-pixie-plugin-how-do-i-check-the-status-or-history-of-an-export-script)
 - [Why isn't my data exporting when I run an OpenTelemetry export script in the Live UI?](#troubleshooting-a-pixie-plugin-why-isn't-my-data-exporting-when-i-run-an-opentelemetry-export-script-in-the-live-ui)
 
 ## Troubleshooting Deployment
@@ -62,7 +63,7 @@ Install Pixie’s [CLI tool](/installing-pixie/install-schemes/cli) and run `px 
 
 We recommend running through the following troubleshooting flow to determine where the deployment has failed.
 
-<svg title='Troubleshooting the Deployment of Pixie' src='troubleshoot-flow.svg' />
+<svg title='Troubleshooting the Deployment of Pixie' src='troubleshooting/troubleshoot-flow.svg' />
 
 *Deploy with CLI gets stuck at “Wait for PEMs/Kelvin”*
 
@@ -158,11 +159,29 @@ Here are some things to check if you are not seeing exported data when using the
 
 - Did you [configure the data retention scripts](/reference/plugins/plugin-system/#long-term-data-retention)? You will need to enable one or more preset scripts and/or custom export scripts.
 
+- Did you [check the export status / history](#troubleshooting-a-pixie-plugin-how-do-i-check-the-status-or-history-of-an-export-script)?
+
 - If you [added a custom export script](/reference/plugins/plugin-system/#long-term-data-retention-creating-custom-export-scripts), did you first test the script in the Live UI's scratch pad? See the [Export OpenTelemetry Data](/tutorials/integrations/otel/) tutorial for directions.
 
 - Do you see errors in the `kelvin-*` pod logs?
 
 - Do you see errors in the `vizier-query-broker-*` pod logs?
+
+### How do I check the status or history of an export script?
+
+1. Navigate to the Live UI's data export configuration page by clicking the database icon in the left side menu:
+
+<svg title='Click the database icon to navigate to the data export configuration page.' src='plugin/data-export-icon.png'/>
+
+2. Pick an export script and click the icon in the **EXPORT STATUS** column.
+
+<svg title='Click the Export Status icon to navigate to the export history page.' src='troubleshooting/plugin-export-status.png'/>
+
+3. Select a cluster from the top right drop-down menu.
+
+<svg title='Click the Export Status icon to navigate to the plugin export logs.' src='troubleshooting/plugin-export-history.png'/>
+
+4. To see the contents of a truncated **ERROR** table cell, click the cell.
 
 ### How do I check the Pixie logs for plugin errors?
 
