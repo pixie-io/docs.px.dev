@@ -39,13 +39,13 @@ Before you can create a dashboard, you will need to add Pixie as a datasource:
 
 5. The Pixie Plugin requires a Pixie API key and cluster ID to execute queries. To create an API Key, follow the directions [here](/reference/admin/api-keys/#create-an-api-key). To find your cluster's ID, follow the directions [here](/reference/admin/cluster-id/#find-the-cluster-id).
 
-::: div image-l
-<svg title='' src='grafana/configure-plugin.png'/>
-:::
-
 <Alert variant="outlined" severity="info">
 The <b>Cluster ID</b> field is used to specify the default cluster to query. If you have Pixie installed on more than one cluster, you can <a href="#create-a-dashboard-panel-of-pixie-data-(optional)-add-dashboard-variables">create a cluster dashboard variable</a> to view data for any cluster in your Pixie organization. If you don't use a cluster dashboard variable, the plugin will default to showing data for the cluster specified in the <b>Cluster ID</b> field.
 </Alert>
+
+::: div image-l
+<svg title='' src='grafana/configure-plugin.png'/>
+:::
 
 6. Select the **Save & Test** button.
 
