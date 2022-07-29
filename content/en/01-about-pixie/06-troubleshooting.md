@@ -115,7 +115,7 @@ If specific services / requests are missing, it is possible that your applicatio
 
 ### Why can’t I see application profiles / flamegraphs for my pod / node?
 
-Pixie's [continuous profiler](/tutorials/pixie-101/profiler/) currently supports Go, C++, Rust and Java. Java support is a beta feature and must be [manually enabled](/tutorials/pixie-101/profiler/#prerequisites-enabling-java-support). For best results, run Java applications with `-XX:+PreserveFramePointer`.
+Pixie's [continuous profiler](/tutorials/pixie-101/profiler/) currently supports Go, C++, Rust and Java. For best results, run Java applications with `-XX:+PreserveFramePointer`.
 
 ### Why is the vizier-pem pod’s memory increasing?
 
