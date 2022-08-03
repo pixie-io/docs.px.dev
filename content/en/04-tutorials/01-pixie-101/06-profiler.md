@@ -9,7 +9,7 @@ redirect_from:
 
 This tutorial will demonstrate how to use Pixie's Always-On Profiling feature to investigate a spike in CPU utilization, using a flamegraph to identify a performance issue within the application code.
 
-Pixie's continuous profiler currently supports Go, C++, and Rust. Java support is a beta feature and must be [manually enabled](#prerequisites-enabling-java-support). Other language support coming soon.
+Pixie's continuous profiler currently supports Go, C++, Rust and Java. For best results, run Java applications with `-XX:+PreserveFramePointer`. Other language support coming soon.
 
 <YouTube youTubeId="Zr-s3EvAey8"/>
 
@@ -17,25 +17,9 @@ Pixie's continuous profiler currently supports Go, C++, and Rust. Java support i
 
 You will need a Kubernetes cluster with Pixie installed. If you do not have a cluster, you can create a minikube cluster and install Pixie using one of our [install guides](/installing-pixie/install-guides/).
 
-### Enabling Java Support
+### Java Support
 
-Java support is a beta feature available in Pixie vizier version 0.10.22+, and must be manually enabled during the deployment of Pixie.
-
-<Alert variant="outlined" severity="info">
-  Instructions for identifying and updating your Pixie vizier version can be found <a href="/reference/admin/updating-pixie/#updating-pixie-cloud-and-vizier">here</a>.
-</Alert>
-
-To enable Java support when deploying Pixie with the [Pixie CLI](/installing-pixie/install-schemes/cli/), run:
-
-```bash
-px deploy --pem_flags=PL_PROFILER_JAVA_SYMBOLS=1
-```
-
-To enable Java support when deploying Pixie with [Helm](/installing-pixie/install-schemes/helm/), run:
-
-```bash
-helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace --set dataCollectorParams.customPEMFlags.PL_PROFILER_JAVA_SYMBOLS=true
-```
+Support for Java profiling is included by default in Pixie.
 
 For best results, run Java applications with `-XX:+PreserveFramePointer`.
 
