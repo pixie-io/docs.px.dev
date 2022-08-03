@@ -9,7 +9,7 @@ redirect_from:
 
 This tutorial will demonstrate how to use Pixie's Always-On Profiling feature to investigate a spike in CPU utilization, using a flamegraph to identify a performance issue within the application code.
 
-Pixie's continuous profiler currently supports Go, C++, and Rust. Java support is a beta feature and must be [manually enabled](#prerequisites-enabling-java-support). Other language support coming soon.
+Pixie's continuous profiler currently supports Go, C++, Rust and Java. For best results, run Java applications with `-XX:+PreserveFramePointer`. Other language support coming soon.
 
 <YouTube youTubeId="Zr-s3EvAey8"/>
 
@@ -19,7 +19,7 @@ You will need a Kubernetes cluster with Pixie installed. If you do not have a cl
 
 ### Java Support
 
-Support for Java profiling is included by default in Pixie. 
+Support for Java profiling is included by default in Pixie.
 
 For best results, run Java applications with `-XX:+PreserveFramePointer`.
 
