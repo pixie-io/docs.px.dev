@@ -46,7 +46,6 @@ Create a directory to save Pixie's manifest files and run the following CLI comm
 </Alert>
 
 ```bash
-
 # Extract YAML (No OLM present on cluster).
 px deploy --extract_yaml <NAME_OF_PIXIE_YAMLS_FOLDER> --deploy_key <PIXIE_DEPLOYMENT_KEY>
 
