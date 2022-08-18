@@ -34,7 +34,7 @@ Create a deployment key following the directions [here](/reference/admin/deploy-
 Create a directory to save Pixie's manifest files and run the following CLI commands to extract them:
 
 <Alert variant="outlined" severity="info">
-  If you are <a href="/installing-pixie/install-guides/self-hosted-pixie/">self-hosting Pixie Cloud</a> use the `--dev_cloud_namespace plc` flag.
+  If you are <a href="/installing-pixie/install-guides/self-hosted-pixie/">self-hosting Pixie Cloud</a>, use the `--dev_cloud_namespace plc` flag.
 </Alert>
 
 <Alert variant="outlined" severity="info">
@@ -50,11 +50,11 @@ Create a directory to save Pixie's manifest files and run the following CLI comm
 # Extract YAML (No OLM present on cluster).
 px deploy --extract_yaml <NAME_OF_PIXIE_YAMLS_FOLDER> --deploy_key <PIXIE_DEPLOYMENT_KEY>
 
-# Extract YAML (No OLM present on cluster).
-px deploy --extract_yaml <NAME_OF_PIXIE_YAMLS_FOLDER> --deploy_key <PIXIE_DEPLOYMENT_KEY>
-
 # Extract YAML (OLM already exists on cluster).
 px deploy --extract_yaml <NAME_OF_PIXIE_YAMLS_FOLDER> --deploy_key <PIXIE_DEPLOYMENT_KEY> --deploy_olm=false
+
+# Extract YAML (Self-hosting Pixie Cloud).
+px deploy --extract_yaml <NAME_OF_PIXIE_YAMLS_FOLDER> --deploy_key <PIXIE_DEPLOYMENT_KEY> --dev_cloud_namespace plc
 
 # Extract YAML (configure Pixie with a specific memory limit - 2Gi is the default, 1Gi is the minimum recommended)
 px deploy --extract_yaml <NAME_OF_PIXIE_YAMLS_FOLDER> --deploy_key <PIXIE_DEPLOYMENT_KEY> --pem_memory_limit=1Gi
