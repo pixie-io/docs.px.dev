@@ -34,7 +34,11 @@ Create a deployment key following the directions [here](/reference/admin/deploy-
 Create a directory to save Pixie's manifest files and run the following CLI commands to extract them:
 
 <Alert variant="outlined" severity="info">
-  If your cluster already has Operator Lifecycle Manager (OLM) deployed, install Pixie using the `deploy_olm=false` flag.
+  If you are <a href="/installing-pixie/install-guides/self-hosted-pixie/">self-hosting Pixie Cloud</a> use the `--dev_cloud_namespace plc` flag.
+</Alert>
+
+<Alert variant="outlined" severity="info">
+  If your cluster already has Operator Lifecycle Manager (OLM) deployed, use the `deploy_olm=false` flag.
 </Alert>
 
 <Alert variant="outlined" severity="info">
@@ -42,13 +46,17 @@ Create a directory to save Pixie's manifest files and run the following CLI comm
 </Alert>
 
 ```bash
+
+# Extract YAML (No OLM present on cluster).
+px deploy --extract_yaml <NAME_OF_PIXIE_YAMLS_FOLDER> --deploy_key <PIXIE_DEPLOYMENT_KEY>
+
 # Extract YAML (No OLM present on cluster).
 px deploy --extract_yaml <NAME_OF_PIXIE_YAMLS_FOLDER> --deploy_key <PIXIE_DEPLOYMENT_KEY>
 
 # Extract YAML (OLM already exists on cluster).
 px deploy --extract_yaml <NAME_OF_PIXIE_YAMLS_FOLDER> --deploy_key <PIXIE_DEPLOYMENT_KEY> --deploy_olm=false
 
-# Deploy Pixie with a specific memory limit (2Gi is the default, 1Gi is the minimum recommended)
+# Extract YAML (configure Pixie with a specific memory limit - 2Gi is the default, 1Gi is the minimum recommended)
 px deploy --extract_yaml <NAME_OF_PIXIE_YAMLS_FOLDER> --deploy_key <PIXIE_DEPLOYMENT_KEY> --pem_memory_limit=1Gi
 
 ```

@@ -36,7 +36,11 @@ Create a deployment key following the directions [here](/reference/admin/deploy-
 Deploy Pixie in your target cluster by running:
 
 <Alert variant="outlined" severity="info">
-  If your cluster already has Operator Lifecycle Manager (OLM) deployed, install Pixie using the `deployOLM=false` flag.
+  If you are <a href="/installing-pixie/install-guides/self-hosted-pixie/">self-hosting Pixie Cloud</a> set `devCloudNamespace plc` flag.
+</Alert>
+
+<Alert variant="outlined" severity="info">
+  If your cluster already has Operator Lifecycle Manager (OLM) deployed, set `deployOLM=false`.
 </Alert>
 
 <Alert variant="outlined" severity="info">
