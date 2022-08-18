@@ -9,6 +9,10 @@ redirect_from:
     - /installing-pixie/install-guides/minikube-setup/
 ---
 
+<Alert variant="outlined" severity="warning">
+  Pixie does not work on minikube on Mac M1 machines. Adding support for ARM machines is scheduled for Q1'2023. For updates, follow <a href="https://github.com/pixie-io/pixie/issues/147">this issue</a>.
+</Alert>
+
 Here are the steps to set-up Pixie in a local K8s environment using [minikube](https://kubernetes.io/docs/getting-started-guides/minikube/).
 
 ## Install kubectl
@@ -29,8 +33,11 @@ To run minikube, your mac will need a way to run a Linux VM. We recommend hyperk
   For minikube versions 1.16+, the flannel CNI (`--cni=flannel`) is required. See the <a href="https://github.com/pixie-io/pixie/issues/298">GitHub issue</a> for updates.
 </Alert>
 
-Run `minikube start --driver=<kvm2|hyperkit> --cni=flannel --cpus=4 --memory=8000 -p=<cluster-name>`.
-Linux users should use the `kvm2`driver and Mac users should use the `hyperkit` driver. Other drivers, including the `docker` driver, are not supported.
+To create the minikube cluster, run the following command. Linux users should use the `kvm2`driver and Mac users should use the `hyperkit` driver. Other drivers, including the `docker` driver, are not supported.
+
+```
+`minikube start --driver=<kvm2|hyperkit> --cni=flannel --cpus=4 --memory=8000 -p=<cluster-name>`.
+```
 
 CPU and memory requirements are set to accommodate the included demo application.
 
