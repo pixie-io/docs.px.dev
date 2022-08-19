@@ -26,6 +26,7 @@ import MainThemeProvider from './src/components/mainThemeProvider.tsx';
 import './src/global.css';
 import SidebarProvider from './src/components/sidebar/sidebarProvider.tsx';
 import SearchProvider from './src/components/search-context.tsx';
+// eslint-disable-next-line import/extensions
 import { processClientEntry, runZoom } from './src/components/image-zoom-modal.plugin.ts';
 import TabSwitcherProvider from './src/components/tabSwitcherProvider.tsx';
 

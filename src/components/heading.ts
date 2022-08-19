@@ -16,7 +16,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import system from 'system-components/emotion';
+import system from '@rebass/components';
 
 const Heading = system(
   {

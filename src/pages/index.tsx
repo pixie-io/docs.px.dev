@@ -17,157 +17,92 @@
  */
 
 import * as React from 'react';
-import {
-  Box, Container, Modal, Theme, Typography,
-} from '@material-ui/core';
 import { graphql, Link } from 'gatsby';
-import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
-import Button from '@material-ui/core/Button';
-import withStyles from '@material-ui/core/styles/withStyles';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import {
+  Box, Container, Modal, Typography, Grid, Hidden, Button,
+} from '@mui/material';
+import withStyles from '@mui/styles/withStyles';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import { styled } from '@mui/material/styles';
 
 import SEO from 'components/seo';
 import { urlFromSlug } from 'components/utils';
 import { Layout } from 'components';
+import Footer from '../components/footer';
 
 import opbrImg from '../images/page-ornaments/ornament-page-bottom-right.svg';
-
 import nextBtn from '../images/btn-next-icon.svg';
 import ornamentLeft from '../images/ornament-left.svg';
 import ornamentRight from '../images/ornament-right.svg';
 import cncfLogoWhite from '../images/cncf-white.svg';
 import cncfLogoColor from '../images/cncf-color.svg';
-import Footer from '../components/footer';
 
-const MainButton = withStyles((theme: Theme) => ({
-  root: {
-    minHeight: '54px',
-    marginBottom: '20px',
-    borderColor: theme.palette.type === 'light' ? '#12D6D6' : '#3FE7E7',
-    [theme.breakpoints.down('sm')]: {
-      minWidth: '200px',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-    },
+const MainButton = styled(Button)(({ theme }) => ({
+  minHeight: '54px',
+  marginBottom: '20px',
+  borderColor: theme.palette.mode === 'light' ? '#12D6D6' : '#3FE7E7',
+  [theme.breakpoints.down('md')]: {
+    minWidth: '200px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
-  label: {
-    flexDirection: 'row',
-
-    fontSize: '14px',
-    '& svg': {
-      marginRight: '3px',
-    },
+  flexDirection: 'row',
+  fontSize: '14px',
+  '& svg': {
+    marginRight: '3px',
   },
   outlined: {
-    color: theme.palette.type === 'light' ? '#12D6D6' : '#3FE7E7',
+    color: theme.palette.mode === 'light' ? '#12D6D6' : '#3FE7E7',
   },
   contained: {
     color: '#0C1714',
-    label: {
-      color: '#0C1714',
-    },
   },
+}));
 
-}))(Button);
-
-const GuideButton = withStyles((theme: Theme) => ({
-  root: {
-    color: '#3FE7E7',
-    borderColor: 'transparent',
-    borderWidth: 1,
-    minHeight: '139px',
-    fontSize: '16px',
-    '&:hover': {
-      backgroundColor: 'transparent',
-      color: theme.palette.primary.main,
-      borderColor: theme.palette.secondary.main,
-    },
-    [theme.breakpoints.down('sm')]: {
-      maxWidth: '200px',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-    },
+const SectionHeading = styled(Typography)(({ theme }) => ({
+  paddingTop: '125px',
+  paddingBottom: '95px',
+  textAlign: 'center',
+  [theme.breakpoints.down('md')]: {
+    fontSize: '28px',
+    lineHeight: '35px',
+    paddingTop: '60px',
   },
-  label: {
-    color: theme.overrides.MuiTypography.body1.color,
-    flexDirection: 'column',
-    '&:hover': {
-      color: theme.palette.primary.dark,
-    },
-  },
+}));
 
-}))(Button);
-
-const NextButton = withStyles(() => ({
-  root: {
-    height: '64px',
-    fontSize: '16px',
-    minWidth: '230px',
+const SectionHeadingGuides = styled(Typography)(({ theme }) => ({
+  textAlign: 'center',
+  paddingTop: '75px',
+  paddingBottom: '95px',
+  [theme.breakpoints.down('md')]: {
+    fontSize: '28px',
+    lineHeight: '35px',
   },
-  label: {
-    justifyContent: 'space-around',
-  },
-}))(Button);
+}));
 
-const ButtonsBar = withStyles((theme: Theme) => ({
-  root: {
-    paddingTop: '57px',
-    display: 'flex',
-    flexDirection: 'row',
-    [theme.breakpoints.down('sm')]: {
-      paddingTop: '30px',
-      flexDirection: 'column',
-    },
+const MainHeading = styled(Typography)(({ theme }) => ({
+  marginTop: '7px',
+  marginBottom: '7px',
+  paddingBottom: '7px',
+  border: 'none',
+  [theme.breakpoints.down('md')]: {
+    fontSize: '30px',
+    lineHeight: '38px',
+    paddingTop: '20px',
+    paddingBottom: '30px',
   },
-}))(Box);
+}));
 
-const GridButton = withStyles((theme: Theme) => ({
-  root: {
-    color: theme.palette.type === 'light' ? '#121212' : '#9696A5',
-    minHeight: '150px',
-    maxWidth: 'calc(100% - 16px)',
-    marginBottom: '16px',
-    borderColor: '#353738',
-    '&:hover': {
-      backgroundColor: theme.palette.secondary.main,
-      color: '#121212',
-      borderColor: theme.palette.secondary.main,
-      '& p': {
-        color: '#121212',
-      },
-      '& h5': {
-        color: '#121212',
-      },
-    },
-  },
-  label: {
-    flexDirection: 'column',
-  },
 
-}))(Button);
-
-const IndexPage = withStyles((theme: Theme) => ({
+const IndexPage = withStyles((theme) => ({
   pageContainer: {
-    backgroundColor: theme.palette.type === 'light' ? theme.palette.background.default : '#161616',
-    [theme.breakpoints.down('sm')]: {
+    backgroundColor: theme.palette.mode === 'light' ? theme.palette.background.default : '#161616',
+    [theme.breakpoints.down('md')]: {
       textAlign: 'center',
     },
   },
-  mainHeading: {
-    marginTop: '7px',
-    marginBottom: '7px',
-    paddingBottom: '7px',
-    border: 'none',
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '30px',
-      lineHeight: '38px',
-      paddingTop: '20px',
-      paddingBottom: '30px',
-    },
-  },
   hero: {
-    background: theme.palette.type === 'light'
+    background: theme.palette.mode === 'light'
       ? ' linear-gradient(0deg, rgba(196, 196, 196, 0) 0.24%, rgba(26, 26, 26, 0.06) 100%)'
       : 'linear-gradient(0deg, rgba(196, 196, 196, 0) 0.81%, rgba(26, 26, 26, 0.06) 100%)',
 
@@ -180,8 +115,46 @@ const IndexPage = withStyles((theme: Theme) => ({
     },
   },
   buttonsBar: {
-    [theme.breakpoints.down('sm')]: {
+    paddingTop: '57px',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    [theme.breakpoints.down('md')]: {
       paddingTop: '50px',
+      flexDirection: 'column',
+    },
+  },
+  guideButton: {
+    [theme.breakpoints.down('md')]: {
+      maxWidth: '200px',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    },
+    '&.MuiButton-outlined': {
+      color: theme.overrides.MuiTypography.body1.color,
+      flexDirection: 'column',
+      '&:hover': {
+        color: theme.palette.primary.dark,
+      },
+    },
+  },
+  gridButton: {
+    color: theme.palette.mode === 'light' ? '#121212' : '#9696A5',
+    minHeight: '150px',
+    maxWidth: 'calc(100% - 16px)',
+    marginBottom: '16px',
+    borderColor: '#353738',
+    flexDirection: 'column',
+    '&:hover': {
+      backgroundColor: theme.palette.secondary.main,
+      color: '#121212',
+      borderColor: theme.palette.secondary.main,
+      '& p': {
+        color: '#121212',
+      },
+      '& h5': {
+        color: '#121212',
+      },
     },
   },
   smallText: {
@@ -224,30 +197,10 @@ const IndexPage = withStyles((theme: Theme) => ({
     maxWidth: '500px',
     margin: '0 auto',
   },
-  sectionHeading: {
-    paddingTop: '125px',
-    paddingBottom: '95px',
-    textAlign: 'center',
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '28px',
-      lineHeight: '35px',
-      paddingTop: '60px',
-    },
-  },
   sectionTitle: {
     marginTop: 0,
     marginBottom: 0,
   },
-  sectionHeading_guides: {
-    textAlign: 'center',
-    paddingTop: '75px',
-    paddingBottom: '95px',
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '28px',
-      lineHeight: '35px',
-    },
-  },
-
   btn_icon: {
     display: 'block',
     padding: '20px',
@@ -268,7 +221,7 @@ const IndexPage = withStyles((theme: Theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       height: '166px',
     },
   },
@@ -293,7 +246,7 @@ const IndexPage = withStyles((theme: Theme) => ({
   heading_image: {
     width: '90%',
     margin: '0 auto',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       marginTop: '70px',
       width: '75%',
       maxWidth: '210px',
@@ -307,7 +260,7 @@ const IndexPage = withStyles((theme: Theme) => ({
     height: '100%',
     '& h4': {
       paddingBottom: '32px',
-      [theme.breakpoints.down('sm')]: {
+      [theme.breakpoints.down('md')]: {
         paddingBottom: 0,
         paddingTop: 0,
         fontSize: '28px',
@@ -319,7 +272,7 @@ const IndexPage = withStyles((theme: Theme) => ({
     fontSize: '28px',
     lineHeight: '35px',
     borderBottom: 'none',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       paddingTop: 0,
     },
   },
@@ -338,13 +291,13 @@ const IndexPage = withStyles((theme: Theme) => ({
     },
   },
   logoWhite: {
-    display: theme.palette.type === 'light' ? 'none' : 'block',
+    display: theme.palette.mode === 'light' ? 'none' : 'block',
     width: '80%',
     maxWidth: '300px',
     margin: '0 auto 40px',
   },
   logoColor: {
-    display: theme.palette.type === 'light' ? 'block' : 'none',
+    display: theme.palette.mode === 'light' ? 'block' : 'none',
     width: '80%',
     maxWidth: '300px',
     margin: '0 auto 40px',
@@ -381,7 +334,7 @@ const IndexPage = withStyles((theme: Theme) => ({
       />
       <div className={classes.pageContainer}>
         <section className={classes.hero}>
-          <Hidden smDown implementation='css'>
+          <Hidden mdDown implementation='css'>
             <img className={classes.ornamentLeft} src={ornamentLeft} />
             <img className={classes.ornamentRight} src={ornamentRight} />
           </Hidden>
@@ -389,20 +342,22 @@ const IndexPage = withStyles((theme: Theme) => ({
             <Grid
               container
               direction='row'
-              justify='center'
-              alignItems='stretch'
-              align='center'
+              sx={{
+                justifyContent: 'center',
+                alignItems: 'stretch',
+                textAlign: 'center',
+              }}
             >
               <Grid item xs={12} md={8}>
-                <Typography variant='h1' className={classes.mainHeading}>
+                <MainHeading variant='h1'>
                   Instant open-source debugging for your applications on Kubernetes
-                </Typography>
+                </MainHeading>
                 <Typography variant='body1'>
                   Learn how to install Pixie, run scripts and write your own playbooks.
                 </Typography>
               </Grid>
-              <ButtonsBar justify='center' className={classes.buttonsBar}>
-                <Hidden smDown implementation='css'>
+              <Box className={classes.buttonsBar}>
+                <Hidden mdDown implementation='css'>
                   <MainButton
                     color='secondary'
                     variant='contained'
@@ -438,20 +393,20 @@ const IndexPage = withStyles((theme: Theme) => ({
                 >
                   Install Guide
                 </MainButton>
-              </ButtonsBar>
+              </Box>
             </Grid>
           </Container>
 
         </section>
         <section>
           <Container id='scripts-section'>
-            <Typography variant='h1' className={classes.sectionHeading}>
+            <SectionHeading variant='h1'>
               Run Pixie Scripts to answer all system performance questions
-            </Typography>
+            </SectionHeading>
             <Grid
               container
               direction='row'
-              justify='center'
+              justifyContent='center'
               alignItems='stretch'
               spacing={3}
             >
@@ -461,12 +416,12 @@ const IndexPage = withStyles((theme: Theme) => ({
                     to={urlFromSlug(section.slug)}
                     style={{ textDecoration: 'none' }}
                   >
-                    <GridButton variant='outlined' fullWidth>
+                    <Button variant='outlined' fullWidth className={classes.gridButton}>
                       <Typography variant='h3' className={classes.sectionTitle}>{section.title}</Typography>
                       <Typography variant='body2'>
                         {section.description}
                       </Typography>
-                    </GridButton>
+                    </Button>
                   </Link>
                 </Grid>
               ))}
@@ -474,26 +429,42 @@ const IndexPage = withStyles((theme: Theme) => ({
             </Grid>
           </Container>
           <Container>
-            <Typography variant='h3' className={classes.sectionHeading_guides}>
+            <SectionHeadingGuides variant='h3'>
               Try one of these getting started guides
-            </Typography>
+            </SectionHeadingGuides>
 
             <Box className={classes.guided_buttons_row}>
-              <Grid container spacing={6} justify='center'>
+              <Grid container justifyContent='center'>
                 {guides.map((guide) => (
-                  <Grid item xs={6} sm={4} md={3} key={guide.id}>
+                  <Grid item xs={6} sm={4} md={3} key={guide.id} sx={{ p: 3 }}>
                     <Link
                       to={urlFromSlug(guide.slug)}
                       style={{ textDecoration: 'none' }}
                     >
-                      <GuideButton variant='outlined' fullWidth>
+                      <Button
+                        variant='outlined'
+                        fullWidth
+                        className={classes.guideButton}
+                        sx={{
+                          borderColor: 'transparent',
+                          borderWidth: 1,
+                          minHeight: '139px',
+                          flexDirection: 'column',
+                          fontSize: '16px',
+                          '&:hover': {
+                            backgroundColor: 'transparent',
+                            color: 'primary.main',
+                            borderColor: 'secondary.main',
+                          },
+                        }}
+                      >
                         <img
                           src={guide.icon.node.publicURL}
                           alt=''
                           className={classes.btn_icon}
                         />
                         {guide.title}
-                      </GuideButton>
+                      </Button>
 
                     </Link>
                   </Grid>
@@ -507,9 +478,15 @@ const IndexPage = withStyles((theme: Theme) => ({
                 to={urlFromSlug('/installing-pixie')}
                 style={{ textDecoration: 'none' }}
               >
-                <NextButton
+                <Button
                   color='secondary'
                   variant='contained'
+                  sx={{
+                    height: '64px',
+                    fontSize: '16px',
+                    minWidth: '230px',
+                    justifyContent: 'space-around',
+                  }}
                   endIcon={(
                     <img
                       src={nextBtn}
@@ -518,7 +495,7 @@ const IndexPage = withStyles((theme: Theme) => ({
                   )}
                 >
                   Get Started
-                </NextButton>
+                </Button>
               </Link>
             </Box>
           </Container>

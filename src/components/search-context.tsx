@@ -50,7 +50,7 @@ export const SearchContext = React.createContext(
     noOfHits: 0,
   },
 );
-export default function SearchProvider({ children }) {
+const SearchProvider = ({ children }) => {
   const [term, setTerm] = React.useState('');
   const [searchQuery, setSearchQuery] = React.useState('');
   const client = algoliasearch(
@@ -100,6 +100,7 @@ export default function SearchProvider({ children }) {
 
   return (
     <SearchContext.Provider
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         term, setTerm, results, doSearch, noOfHits, searchQuery,
       }}
@@ -107,4 +108,6 @@ export default function SearchProvider({ children }) {
       {children}
     </SearchContext.Provider>
   );
-}
+};
+
+export default SearchProvider;

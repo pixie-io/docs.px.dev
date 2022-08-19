@@ -17,10 +17,10 @@
  */
 
 import * as React from 'react';
-import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Link } from 'gatsby';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import BodyClassName from 'react-body-classname';
+import { Link } from 'gatsby';
+import { ClickAwayListener } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { ResultType, SearchContext } from './search-context';
 import searchIcon from './images/search.svg';
 
@@ -28,12 +28,12 @@ import searchIcon from './images/search.svg';
 // trusted, but ideally we'd be sanitizing it anyway to limit vulnerable surface area.
 /* eslint-disable react/no-danger */
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles((theme) => ({
 
   search: {
     position: 'relative',
     display: 'inline',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       width: '40px',
       marginLeft: '20px',
     },
@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         lineHeight: '14px',
         color: '#4A4C4F',
       },
-      [theme.breakpoints.down('sm')]: {
+      [theme.breakpoints.down('md')]: {
         width: '16px',
         '&::placeholder': {
           opacity: 0,

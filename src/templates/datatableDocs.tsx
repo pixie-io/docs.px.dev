@@ -19,13 +19,12 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 // eslint-disable-next-line
-import { makeStyles } from '@material-ui/core/styles';
-import SEO from 'components/seo';
+import { makeStyles } from '@mui/styles';
 import {
   Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography,
-} from '@material-ui/core';
+} from '@mui/material';
+import SEO from 'components/seo';
 import { Layout } from 'components';
-
 import HLink from '../components/mdxComponents/h-link';
 
 const useStyles = makeStyles(() => ({
@@ -71,8 +70,8 @@ const TableDocsTemplate = ((props: any) => {
           {title}
         </HLink>
         <Typography variant='body1'>{datatables[0].desc}</Typography>
-        <TableContainer component={Paper}>
-          <Table className={classes.table} aria-label='table'>
+        <TableContainer component={Paper} sx={{ backgroundImage: 'none' }}>
+          <Table className={classes.table} aria-label='table' sx={{ width: '100%' }}>
             <TableHead>
               <TableRow>
                 <TableCell align='left'>Column</TableCell>

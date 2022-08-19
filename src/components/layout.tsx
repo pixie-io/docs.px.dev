@@ -18,13 +18,14 @@
 
 import * as React from 'react';
 import { ReactElement, useEffect } from 'react';
-import withStyles from '@material-ui/core/styles/withStyles';
-import { useTheme } from '@material-ui/core/styles';
-import { Theme, useMediaQuery } from '@material-ui/core';
-import Drawer from '@material-ui/core/Drawer';
 import { ApolloProvider } from '@apollo/react-hooks';
 import Helmet from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
+
+import { withStyles } from '@mui/styles';
+import { useTheme } from '@mui/material/styles';
+import { useMediaQuery, Drawer } from '@mui/material';
+
 import CookiesBanner from 'components/cookies-banner/cookies-banner';
 import cloudClient from 'apollo/client';
 import Sidebar from './sidebar/sidebar';
@@ -42,7 +43,7 @@ interface PageItemProps {
   availableLanguages: any[],
 }
 
-const Layout = withStyles((theme: Theme) => ({
+const Layout = withStyles((theme) => ({
   pageLayout: {
     display: 'flex',
     position: 'relative',

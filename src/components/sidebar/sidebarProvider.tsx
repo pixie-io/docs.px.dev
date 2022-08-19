@@ -28,7 +28,8 @@ export const SidebarContext = React.createContext(
     setFirstRun: null,
   },
 );
-export default function SidebarProvider({ children }) {
+const SidebarProvider = ({ children }) => {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   const [expanded, _setExpanded] = React.useState([]);
   const [selected, setSelected] = React.useState([]);
   const [firstRun, setFirstRun] = React.useState(true);
@@ -38,6 +39,7 @@ export default function SidebarProvider({ children }) {
 
   return (
     <SidebarContext.Provider
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         expanded, setExpanded, selected, setSelected, firstRun, setFirstRun,
       }}
@@ -45,4 +47,6 @@ export default function SidebarProvider({ children }) {
       {children}
     </SidebarContext.Provider>
   );
-}
+};
+
+export default SidebarProvider;

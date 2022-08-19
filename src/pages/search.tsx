@@ -17,8 +17,8 @@
  */
 
 import * as React from 'react';
-import { Theme, Typography } from '@material-ui/core';
-import withStyles from '@material-ui/core/styles/withStyles';
+import { Typography } from '@mui/material';
+import withStyles from '@mui/styles/withStyles';
 import { Link } from 'gatsby';
 import { SearchContext } from 'components/search-context';
 import Layout from '../components/layout';
@@ -26,7 +26,7 @@ import Layout from '../components/layout';
 // For a use of dangerouslySetInnerHTML later that takes in highlight spans from a search result
 /* eslint-disable react/no-danger */
 
-const SearchResultsPage = withStyles((theme: Theme) => ({
+const SearchResultsPage = withStyles((theme) => ({
   mainContainer: {
     margin: '0 auto',
     padding: '16px',
@@ -46,14 +46,14 @@ const SearchResultsPage = withStyles((theme: Theme) => ({
   resultTitle: {
     fontSize: '20px',
     lineHeight: '32px',
-    color: theme.palette.type === 'light' ? '#000000' : '#B2B5BB',
+    color: theme.palette.mode === 'light' ? '#000000' : '#B2B5BB',
     padding: '2px 0',
     margin: '0',
   },
   excerpt: {
     fontSize: '14px',
     lineHeight: '24px',
-    color: theme.palette.type === 'light' ? '#000000' : '#9696A5',
+    color: theme.palette.mode === 'light' ? '#000000' : '#9696A5',
     padding: '2px 0',
     margin: '0',
     '& em': {

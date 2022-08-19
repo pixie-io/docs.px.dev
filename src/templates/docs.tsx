@@ -18,10 +18,8 @@
 
 import React from 'react';
 import { graphql } from 'gatsby';
-// eslint-disable-next-line
-import { Theme } from '@material-ui/core';
 import { MDXProvider } from '@mdx-js/react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import SEO from 'components/seo';
 import { Layout } from 'components';
@@ -31,7 +29,7 @@ import mdxComponents from '../components/mdxComponents';
 import Footer from '../components/footer';
 import HLink from '../components/mdxComponents/h-link';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles((theme) => ({
   mainContainer: {
     margin: '0 auto',
     padding: '16px',

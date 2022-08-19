@@ -18,7 +18,12 @@
 
 import * as React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
+import { styled } from '@mui/material/styles';
 import { ThemeModeContext } from '../mainThemeProvider';
+
+const Caption = styled('figcaption')(({ theme }) => ({
+  color: theme.overrides.MuiTypography.body1.color,
+}));
 
 const SvgRenderer = ({ src, title }) => (
   <StaticQuery
@@ -62,7 +67,7 @@ const SvgRenderer = ({ src, title }) => (
           {({ theme }) => (
             <figure className='gatsby-resp-image-figure'>
               <img alt='' src={getImageSrc(theme)} className='doc-image' />
-              <figcaption className='gatsby-resp-image-figcaption MuiTypography-body1'>{title}</figcaption>
+              <Caption className='gatsby-resp-image-figcaption MuiTypography-body1'>{title}</Caption>
             </figure>
           )}
         </ThemeModeContext.Consumer>

@@ -19,11 +19,11 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 // eslint-disable-next-line
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import SEO from 'components/seo';
 import {
   Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
-} from '@material-ui/core';
+} from '@mui/material';
 import slugify from 'slugify';
 import { groupBy } from 'lodash';
 
@@ -94,8 +94,8 @@ const UdfFunctionsTemplate = ((props: any) => {
         <HLink id='scalar-functions' variant='h2'>
           Scalar Functions
         </HLink>
-        <TableContainer component={Paper}>
-          <Table className={classes.table} aria-label='table'>
+        <TableContainer component={Paper} sx={{ backgroundImage: 'none' }}>
+          <Table className={classes.table} aria-label='table' sx={{ width: '100%' }}>
             <TableHead>
               <TableRow>
                 <TableCell align='left'>Function</TableCell>
@@ -112,7 +112,7 @@ const UdfFunctionsTemplate = ((props: any) => {
         <HLink id='aggregate-functions' variant='h2'>
           Aggregate Functions
         </HLink>
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} sx={{ backgroundImage: 'none' }}>
           <Table className={classes.table} aria-label='table'>
             <TableHead>
               <TableRow>

@@ -16,8 +16,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { ApolloClient } from '@apollo/client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import { ApolloClient } from 'apollo-client';
 import { setContext } from 'apollo-link-context';
 import { createHttpLink } from 'apollo-link-http';
 

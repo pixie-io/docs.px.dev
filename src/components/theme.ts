@@ -16,15 +16,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
-import { createStyles } from '@material-ui/core';
+import { createTheme } from '@mui/material';
+import { createStyles } from '@mui/styles';
 
-const breakpoints = createBreakpoints({});
-
+const theme = createTheme();
 const common = {
   spacing: 4,
   shadows: ['none'],
-
   typography: {
     fontFamily: ['Roboto'],
     textRendering: 'optimizeLegibility',
@@ -73,7 +71,7 @@ const common = {
       fontSize: '16px',
       lineHeight: '20px',
       WebkitFontSmoothing: 'antialiased',
-      [breakpoints.down('md')]: {
+      [theme.breakpoints.down('md')]: {
         fontSize: '14px',
         lineHeight: '18px',
       },
@@ -125,7 +123,7 @@ const appThemeOptions = createStyles({
   light: {
     ...common,
     palette: {
-      type: 'light',
+      mode: 'light',
       primary: {
         main: '#000000',
       },
@@ -163,7 +161,7 @@ const appThemeOptions = createStyles({
           color: 'red',
         },
         regular: {
-          [breakpoints.up('xs')]: {
+          [theme.breakpoints.up('xs')]: {
             minHeight: '54px',
           },
         },
@@ -246,11 +244,142 @@ const appThemeOptions = createStyles({
         },
       },
     },
+    components: {
+      MuiTreeItem: {
+        styleOverrides: {
+          group: {
+            marginLeft: '10px',
+          },
+        },
+      },
+      MuiPopover: {
+        styleOverrides: {
+          root: {
+            zIndex: '1303 !important',
+          },
+        },
+      },
+      MuiDrawer: {
+        styleOverrides: {
+          paper: {
+            height: 'calc(100vh - 54px)',
+          },
+        },
+      },
+      MuiToolbar: {
+        styleOverrides: {
+          root: {
+            minHeight: '54px',
+            backgroundColor: '#212324',
+            boxShadow: '0px 4px 8px 0px rgba(0,0,0,0.35)',
+          },
+          icon: {
+            color: 'red',
+          },
+          regular: {
+            [theme.breakpoints.up('xs')]: {
+              minHeight: '54px',
+            },
+          },
+        },
+      },
+      MuiGrid: {
+        styleOverrides: {
+          root: {
+            position: 'relative',
+          },
+        },
+      },
+      MuiTable: {
+        styleOverrides: {
+          root: {
+            width: 'auto',
+            minWidth: '50%',
+            marginBottom: '24px',
+          },
+        },
+      },
+      MuiTableHead: {
+        styleOverrides: {
+          root: {
+            borderBottomWidth: '3px',
+            borderBottomStyle: 'solid',
+          },
+        },
+      },
+      MuiTableRow: {
+        styleOverrides: {
+          root: {
+            borderBottomWidth: '1px',
+            borderBottomStyle: 'solid',
+            '&:last-child': {
+              borderBottom: 'none',
+            },
+          },
+        },
+      },
+      MuiTableCell: {
+        styleOverrides: {
+          root: {
+            borderBottom: 'none',
+            padding: '4px',
+          },
+          head: {
+            fontWeight: 'bold',
+          },
+        },
+      },
+      MuiTab: {
+        styleOverrides: {
+          root: {
+            '&$textColorInherit': {
+              color: 'rgb(126, 127, 132)',
+            },
+            '&$selected': {
+              color: '#17AAAA',
+            },
+          },
+          wrapper: {
+            fontWeight: 500,
+          },
+        },
+      },
+      MuiTypography: {
+        styleOverrides: {
+          h1: {
+            color: '#000000',
+            borderBottomColor: '#DBDDE0',
+          },
+          h2: {
+            color: '#17AAAA',
+            borderBottomColor: '#DBDDE0',
+          },
+          h3: {
+            color: '#000000',
+          },
+          h4: {
+            color: '#000000',
+          },
+          h5: {
+            color: '#272822',
+          },
+          h6: {
+            color: '#000000',
+          },
+          body2: {
+            color: '#272822',
+          },
+          body1: {
+            color: '#4F4F4F',
+          },
+        },
+      },
+    },
   },
   dark: {
     ...common,
     palette: {
-      type: 'dark',
+      mode: 'dark',
       primary: {
         main: '#ffffff',
       },
@@ -291,7 +420,7 @@ const appThemeOptions = createStyles({
           color: 'red',
         },
         regular: {
-          [breakpoints.up('xs')]: {
+          [theme.breakpoints.up('xs')]: {
             minHeight: '54px',
           },
         },
@@ -327,7 +456,6 @@ const appThemeOptions = createStyles({
         root: {
           borderBottom: 'none',
           padding: '4px',
-
         },
         head: {
           fontWeight: 'bold',
@@ -372,6 +500,137 @@ const appThemeOptions = createStyles({
         },
         body1: {
           color: '#E2E5EE',
+        },
+      },
+    },
+    components: {
+      MuiTreeItem: {
+        styleOverrides: {
+          group: {
+            marginLeft: '10px',
+          },
+        },
+      },
+      MuiPopover: {
+        styleOverrides: {
+          root: {
+            zIndex: '1303 !important',
+          },
+        },
+      },
+      MuiDrawer: {
+        styleOverrides: {
+          paper: {
+            height: 'calc(100vh - 54px)',
+          },
+        },
+      },
+      MuiToolbar: {
+        styleOverrides: {
+          root: {
+            backgroundColor: '#161616',
+            minHeight: '54px',
+            boxShadow: '0px 4px 8px 0px rgba(0,0,0,0.30)',
+          },
+          icon: {
+            color: 'red',
+          },
+          regular: {
+            [theme.breakpoints.up('xs')]: {
+              minHeight: '54px',
+            },
+          },
+        },
+      },
+      MuiGrid: {
+        styleOverrides: {
+          root: {
+            position: 'relative',
+          },
+        },
+      },
+      MuiTable: {
+        styleOverrides: {
+          root: {
+            width: 'auto',
+            minWidth: '50%',
+            marginBottom: '24px',
+          },
+        },
+      },
+      MuiTableHead: {
+        styleOverrides: {
+          root: {
+            borderBottomWidth: '3px',
+            borderBottomStyle: 'solid',
+          },
+        },
+      },
+      MuiTableRow: {
+        styleOverrides: {
+          root: {
+            borderBottomWidth: '1px',
+            borderBottomStyle: 'solid',
+            '&:last-child': {
+              borderBottom: 'none',
+            },
+          },
+        },
+      },
+      MuiTableCell: {
+        styleOverrides: {
+          root: {
+            borderBottom: 'none',
+            padding: '4px',
+          },
+          head: {
+            fontWeight: 'bold',
+          },
+        },
+      },
+      MuiTab: {
+        styleOverrides: {
+          root: {
+            '&$textColorInherit': {
+              color: 'rgb(126, 127, 132)',
+            },
+            '&$selected': {
+              color: '#3EF3F3',
+            },
+          },
+          wrapper: {
+            fontWeight: 500,
+          },
+        },
+      },
+      MuiTypography: {
+        styleOverrides: {
+          h1: {
+            color: '#ffffff',
+            borderBottomColor: '#353738',
+          },
+          h2: {
+            color: '#3EF3F3',
+            borderBottomColor: '#353738',
+          },
+          h3: {
+            color: '#ffffff',
+          },
+          h4: {
+            color: '#ffffff',
+          },
+          h5: {
+            color: '#ffffff',
+          },
+          h6: {
+            color: '#D2D5DD',
+          },
+          body2: {
+            color: '#D2D5DD',
+          },
+          body1: {
+            color: '#E2E5EE',
+          },
         },
       },
     },

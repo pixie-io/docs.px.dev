@@ -3,8 +3,6 @@ title: "How to Write a PxL Script"
 metaTitle: "Tutorials | PxL Scripts | How to Write a PxL Script"
 metaDescription: "Write Custom PxL Scripts"
 order: 10
-redirect_from:
-    - /tutorials/pxl-scripts
 ---
 
 ## Overview

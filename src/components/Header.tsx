@@ -17,19 +17,21 @@
  */
 
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import { makeStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
-import { graphql, Link, StaticQuery } from 'gatsby';
 import BodyClassName from 'react-body-classname';
+import { graphql, Link, StaticQuery } from 'gatsby';
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Hidden,
+  Button,
+  ClickAwayListener,
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import { makeStyles } from '@mui/styles';
 
-import Hidden from '@material-ui/core/Hidden';
-import Button from '@material-ui/core/Button';
-import Brightness7Icon from '@material-ui/icons/Brightness7';
-import Brightness4Icon from '@material-ui/icons/Brightness4';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import logoImg from '../images/pixie-logo-header.svg';
 import slackIcon from './images/slack-icon.svg';
 import githubIcon from './images/github-icon.svg';
@@ -37,16 +39,6 @@ import SearchResultsDropdown from './search-results-dropdown';
 import languages from '../../available-languages';
 
 const useStyles = makeStyles((theme) => ({
-  appBar: {
-    zIndex: theme.zIndex.modal + 1,
-  },
-  toolbar: {
-    flexGrow: 1,
-    [theme.breakpoints.up('md')]: {
-      padding: '0 30px',
-      paddingLeft: '5px',
-    },
-  },
   middle: {
     flexGrow: 1,
   },
@@ -80,25 +72,30 @@ const useStyles = makeStyles((theme) => ({
   dropMenu: {
     position: 'absolute',
     top: `calc(${theme.overrides.MuiToolbar.root.minHeight} / 2 - 4px)`,
-    boxShadow: theme.palette.type === 'light' ? '0px 15px 130px 0px rgba(0,0,0,0.10)' : '0px 15px 130px 0px rgba(0,0,0,0.45)',
+    boxShadow:
+      theme.palette.mode === 'light'
+        ? '0px 15px 130px 0px rgba(0,0,0,0.10)'
+        : '0px 15px 130px 0px rgba(0,0,0,0.45)',
     right: 0,
     zIndex: 1,
-    backgroundColor: theme.palette.type === 'light' ? '#212324' : '#212324',
+    backgroundColor: theme.palette.mode === 'light' ? '#212324' : '#212324',
     width: '189px',
     borderRadius: '7px',
   },
   langMenu: {
     position: 'absolute',
     top: `calc(${theme.overrides.MuiToolbar.root.minHeight} / 2 - 4px)`,
-    boxShadow: theme.palette.type === 'light' ? '0px 15px 130px 0px rgba(0,0,0,0.10)' : '0px 15px 130px 0px rgba(0,0,0,0.45)',
+    boxShadow:
+      theme.palette.mode === 'light'
+        ? '0px 15px 130px 0px rgba(0,0,0,0.10)'
+        : '0px 15px 130px 0px rgba(0,0,0,0.45)',
     right: 0,
     zIndex: 1,
-    backgroundColor: theme.palette.type === 'light' ? '#212324' : '#212324',
+    backgroundColor: theme.palette.mode === 'light' ? '#212324' : '#212324',
     borderRadius: '7px',
-
   },
   langMenuItem: {
-    color: theme.palette.type === 'light' ? '#B2B5BB' : '#B2B5BB',
+    color: theme.palette.mode === 'light' ? '#B2B5BB' : '#B2B5BB',
     fontSize: '14px',
     lineHeight: '24px',
     padding: '14px',
@@ -114,7 +111,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   dropMenuItem: {
-    color: theme.palette.type === 'light' ? '#B2B5BB' : '#B2B5BB',
+    color: theme.palette.mode === 'light' ? '#B2B5BB' : '#B2B5BB',
     fontSize: '14px',
     lineHeight: '24px',
     padding: '14px',
@@ -133,30 +130,25 @@ const useStyles = makeStyles((theme) => ({
       display: 'block',
     },
   },
-  menuItem: {
-    color: '#ffffff',
-  },
-
 }));
 
 interface Props {
-  location: string,
-  availableLanguages: { lang: string, slug: string }[],
-  lang: string,
-  theme: string,
-  onThemeTypeSwitch: any
-  setDrawerOpen: any,
-  drawerOpen: boolean,
-  setSidebarOpen: any,
-  sidebarOpen: boolean
+  availableLanguages: { lang: string; slug: string }[];
+  lang: string;
+  theme: string;
+  onThemeTypeSwitch: any;
+  setDrawerOpen: any;
+  drawerOpen: boolean;
+  setSidebarOpen: any;
+  sidebarOpen: boolean;
 }
 
 interface RenderProps {
   site: {
     siteMetadata: {
-      title: string
-    }
-  }
+      title: string;
+    };
+  };
 }
 
 const Header = ({
@@ -178,25 +170,42 @@ const Header = ({
   const [openLanguageMenu, setOpenLanguageMenu] = React.useState(false);
 
   const classes = useStyles();
-  const getLanguageLabel = (languageId) => (languageId === 'en' ? 'English' : languages.find((l) => l.id === languageId).label);
+  const getLanguageLabel = (languageId) => (languageId === 'en'
+    ? 'English'
+    : languages.find((l) => l.id === languageId).label);
+
   return (
     <StaticQuery
       query={graphql`
-      query headerTitleQuery {
-        site {
-          siteMetadata {
-            title
+        query headerTitleQuery {
+          site {
+            siteMetadata {
+              title
+            }
           }
         }
-      }
-    `}
+      `}
       render={(data: RenderProps) => {
         const siteTitle = data.site.siteMetadata.title;
         return (
-          <AppBar title={siteTitle} position='fixed' className={classes.appBar}>
+          // eslint-disable-next-line @typescript-eslint/no-shadow
+          <AppBar title={siteTitle} position='fixed' sx={{ zIndex: (theme) => theme.zIndex.modal + 1 }}>
             <BodyClassName className={`theme-${theme}`} />
-            <Toolbar className={classes.toolbar}>
-              <IconButton onClick={toggleToc} className={classes.mainTocButton}>
+            <Toolbar
+              sx={{
+                flexGrow: 1,
+                padding: { md: '0 30px' },
+                paddingLeft: { md: '5px' },
+              }}
+            >
+              <IconButton
+                onClick={toggleToc}
+                sx={{
+                  color: '#ffffff',
+                  marginRight: '12px',
+                }}
+                size='large'
+              >
                 <MenuIcon />
               </IconButton>
               <Link to='/'>
@@ -205,20 +214,30 @@ const Header = ({
               <div className={classes.middle} />
               <div className={classes.buttons}>
                 <IconButton
-                  className={classes.menuItem}
+                  sx={{
+                    padding: '3px',
+                    color: '#fff',
+                  }}
                   size='small'
                   onClick={(e) => {
                     e.preventDefault();
                     onThemeTypeSwitch();
                   }}
                 >
-                  {theme === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
+                  {theme === 'light' ? (
+                    <Brightness4Icon />
+                  ) : (
+                    <Brightness7Icon />
+                  )}
                 </IconButton>
-                <Hidden smDown implementation='css'>
-                  <ClickAwayListener onClickAway={() => setOpenSupportMenu(false)}>
+                <Hidden mdDown implementation='css'>
+                  <ClickAwayListener
+                    onClickAway={() => setOpenSupportMenu(false)}
+                  >
                     <Button
-                      className={classes.menuItem}
-                      color='default'
+                      sx={{
+                        color: '#fff',
+                      }}
                       size='inherit'
                       aria-controls='support-menu'
                       aria-haspopup='true'
@@ -269,13 +288,15 @@ const Header = ({
                     ) : null}
                   </div>
                 </Hidden>
-                {availableLanguages
-                && (
-                  <Hidden smDown implementation='css'>
-                    <ClickAwayListener onClickAway={() => setOpenLanguageMenu(false)}>
+                {availableLanguages && (
+                  <Hidden mdDown implementation='css'>
+                    <ClickAwayListener
+                      onClickAway={() => setOpenLanguageMenu(false)}
+                    >
                       <Button
-                        className={classes.menuItem}
-                        color='default'
+                        sx={{
+                          color: '#fff',
+                        }}
                         size='inherit'
                         aria-controls='support-menu'
                         aria-haspopup='true'
@@ -303,20 +324,21 @@ const Header = ({
                               </Link>
                             </div>
                           ))}
-
                         </div>
                       ) : null}
                     </div>
                   </Hidden>
                 )}
                 <SearchResultsDropdown />
-                <Hidden mdDown implementation='css'>
-                  <Button href='https://px.dev' size='small' color='secondary' variant='contained'>
-                    Back
-                    to
-                    Pixie
-                  </Button>
-                </Hidden>
+                <Button
+                  href='https://px.dev'
+                  size='small'
+                  color='secondary'
+                  variant='contained'
+                  sx={{ display: { xs: 'none', md: 'block' } }}
+                >
+                  Back to Pixie
+                </Button>
               </div>
             </Toolbar>
           </AppBar>
