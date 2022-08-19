@@ -9,8 +9,9 @@ redirect_from:
 
 There are multiple hosting options for Pixie.
 
-- [Community Cloud for Pixie Guide (easiest)](/installing-pixie/install-guides/community-cloud-for-pixie)
+- [Community Cloud for Pixie (easiest)](/installing-pixie/install-guides/community-cloud-for-pixie)
 - [Self-Hosted Pixie](/installing-pixie/install-guides/self-hosted-pixie)
+- [Air Gapped Pixie](/installing-pixie/install-guides/airgap-pixie)
 
 Pixie is a hybrid system, with a cloud component (Pixie Cloud) and an in-cluster component for data persistence and storage (Vizier). See [Architecture](/about-pixie/what-is-pixie/#architecture) for more details.
 
@@ -25,6 +26,10 @@ With Community Cloud for Pixie, telemetry data is exclusively stored on your Kub
 ## Self-Hosted Pixie
 
 Pixie also supports for self-hosting of the entire platform, including Pixie Cloud. Follow the [Self-Hosted Pixie Guide](/installing-pixie/install-guides/self-hosted-pixie) for the steps.
+
+## Air Gapped Pixie
+
+Pixie works in air gapped environments. Follow the [Air Gapped Pixie Guide](/installing-pixie/install-guides/airgap-pixie) for the install steps.
 
 ## Add Your Own
 
