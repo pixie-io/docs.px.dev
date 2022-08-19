@@ -31,10 +31,14 @@ Create a deployment key following the directions [here](/reference/admin/deploy-
 
 ## 4. Extract Manifests
 
-Create a directory to save Pixie's manifest files and run the following CLI commands to extract them:
+Run the following CLI command to extract Pixie's manifest files:
 
 <Alert variant="outlined" severity="info">
-  If your cluster already has Operator Lifecycle Manager (OLM) deployed, install Pixie using the `deploy_olm=false` flag.
+  If you are <a href="/installing-pixie/install-guides/self-hosted-pixie/">self-hosting Pixie Cloud</a>, use the `--dev_cloud_namespace plc` flag.
+</Alert>
+
+<Alert variant="outlined" severity="info">
+  If your cluster already has Operator Lifecycle Manager (OLM) deployed, use the `deploy_olm=false` flag.
 </Alert>
 
 <Alert variant="outlined" severity="info">
@@ -43,13 +47,16 @@ Create a directory to save Pixie's manifest files and run the following CLI comm
 
 ```bash
 # Extract YAML (No OLM present on cluster).
-px deploy --extract_yaml <NAME_OF_PIXIE_YAMLS_FOLDER> --deploy_key <PIXIE_DEPLOYMENT_KEY>
+px deploy --extract_yaml ./ --deploy_key <PIXIE_DEPLOYMENT_KEY>
 
 # Extract YAML (OLM already exists on cluster).
-px deploy --extract_yaml <NAME_OF_PIXIE_YAMLS_FOLDER> --deploy_key <PIXIE_DEPLOYMENT_KEY> --deploy_olm=false
+px deploy --extract_yaml ./ --deploy_key <PIXIE_DEPLOYMENT_KEY> --deploy_olm=false
 
-# Deploy Pixie with a specific memory limit (2Gi is the default, 1Gi is the minimum recommended)
-px deploy --extract_yaml <NAME_OF_PIXIE_YAMLS_FOLDER> --deploy_key <PIXIE_DEPLOYMENT_KEY> --pem_memory_limit=1Gi
+# Extract YAML (Self-hosting Pixie Cloud).
+px deploy --extract_yaml ./ --deploy_key <PIXIE_DEPLOYMENT_KEY> --dev_cloud_namespace plc
+
+# Extract YAML (configure Pixie with a specific memory limit - 2Gi is the default, 1Gi is the minimum recommended)
+px deploy --extract_yaml ./ --deploy_key <PIXIE_DEPLOYMENT_KEY> --pem_memory_limit=1Gi
 
 ```
 
@@ -60,8 +67,9 @@ px deploy --extract_yaml <NAME_OF_PIXIE_YAMLS_FOLDER> --deploy_key <PIXIE_DEPLOY
 Deploy Pixie in your target cluster by running:
 
 ```bash
-# Deploy
-kubectl apply --recursive -f <NAME_OF_PIXIE_YAMLS_FOLDER>
+# Deploy Pixie
+tar -xvf yamls.tar
+kubectl apply -f pixie_yamls/
 ```
 
 Pixie will deploy pods to the `pl`, `px-operator`, and `olm`(if deploying the OLM) namespaces.
