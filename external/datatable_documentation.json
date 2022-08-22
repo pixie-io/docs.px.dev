@@ -1,6 +1,84 @@
 {
  "datatableDocs": [
   {
+   "name": "amqp_events",
+   "desc": "AMQP table pair events",
+   "cols": [
+    {
+     "name": "time_",
+     "type": "TIME64NS",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Timestamp when the data record was collected."
+    },
+    {
+     "name": "upid",
+     "type": "UINT128",
+     "pattern": "GENERAL",
+     "desc": "An opaque numeric ID that globally identify a running process inside the cluster."
+    },
+    {
+     "name": "remote_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the remote endpoint."
+    },
+    {
+     "name": "remote_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the remote endpoint."
+    },
+    {
+     "name": "trace_role",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "frame_type",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "AMQP request command"
+    },
+    {
+     "name": "req_class_id",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "AMQP request for request class_id"
+    },
+    {
+     "name": "req_method_id",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "AMQP request for request method_id"
+    },
+    {
+     "name": "resp_class_id",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "AMQP request for request class_id"
+    },
+    {
+     "name": "resp_method_id",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "AMQP request for request method_id"
+    },
+    {
+     "name": "req_msg",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "AMQP message req"
+    },
+    {
+     "name": "resp_msg",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "AMQP message resp"
+    }
+   ]
+  },
+  {
    "name": "conn_stats",
    "desc": "Connection-level stats. This table contains statistics on the communications made between client-server pairs. For network-level information such as RX/TX errors and drops, see the Network-Layer Stats (network_stats) table.",
    "cols": [
@@ -745,6 +823,54 @@
    ]
   },
   {
+   "name": "probe_status",
+   "desc": "This table contains the deployment status of eBPF probes in different Stirling source connectors and the error messages if deployment failed",
+   "cols": [
+    {
+     "name": "time_",
+     "type": "TIME64NS",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Timestamp when the data record was collected."
+    },
+    {
+     "name": "upid",
+     "type": "UINT128",
+     "pattern": "GENERAL",
+     "desc": "An opaque numeric ID that globally identify a running process inside the cluster."
+    },
+    {
+     "name": "source_connector",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "The source connector whose status is reported"
+    },
+    {
+     "name": "tracepoint",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "The tracepoint in the source connector of interest"
+    },
+    {
+     "name": "status",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "The status of the deployment or event"
+    },
+    {
+     "name": "error",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "The error messages of the deployment or event, if any"
+    },
+    {
+     "name": "info",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "Optional extra info provided as a JSON"
+    }
+   ]
+  },
+  {
    "name": "proc_exit_events",
    "desc": "Traces all abnormal process exits",
    "cols": [
@@ -957,6 +1083,48 @@
      "type": "INT64",
      "pattern": "METRIC_GAUGE",
      "desc": "Number of times the stack trace has been sampled."
+    }
+   ]
+  },
+  {
+   "name": "stirling_error",
+   "desc": "This table contains the status of tracepoints in different Stirling source connectors and the error messages.",
+   "cols": [
+    {
+     "name": "time_",
+     "type": "TIME64NS",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Timestamp when the data record was collected."
+    },
+    {
+     "name": "upid",
+     "type": "UINT128",
+     "pattern": "GENERAL",
+     "desc": "An opaque numeric ID that globally identify a running process inside the cluster."
+    },
+    {
+     "name": "source_connector",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "The source connector whose status is reported"
+    },
+    {
+     "name": "status",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "The status of the deployment or event"
+    },
+    {
+     "name": "error",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "The error messages of the deployment or event, if any"
+    },
+    {
+     "name": "context",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "The context in which the error occurred"
     }
    ]
   }
