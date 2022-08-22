@@ -238,28 +238,28 @@
     {
       "body": {
         "name": "px.parse_duration",
-        "brief": "Parse a duration string to a duration in nanoseconds.",
-        "desc": "Parse a duration string (\"-5m\") to integer nanoseconds (-3,000,000,000) while preserving the sign from the string.   ",
+        "brief": "Parse the various time formats into a unified format.",
+        "desc": "This function can unify all possible time formats into a single consistent type. Useful for doing calculations on these values in a way that is agnostic to their format.   ",
         "examples": [
           {
-            "value": "```\n# duration = -300000000000\nduration = px.parse_duration(\"-5m\")\n# duration = 300000000000\nduration = px.parse_duration(\"5m\")\n```"
+            "value": "```\n## As a relative time string.\n# time = now -300000000000\ntime = px.parse_time(\"-5m\")\n# time = now + 300000000000\ntime = px.parse_time(\"5m\")\n# Takes in px.Time\ntime = px.parse_time(px.strptime(\"2020-03-12 19:39:59 -0200\", \"%Y-%m-%d %H:%M:%S %z\"))\n# Takes in int\ntime = px.parse_time(10)\n```"
           }
         ]
       },
       "funcDoc": {
         "args": [
           {
-            "ident": "duration",
-            "desc": "The duration in string form.",
+            "ident": "time",
+            "desc": "The time as a string, int, or px.Time.",
             "types": [
-              "string"
+              "string, int, time"
             ]
           }
         ],
         "returnType": {
-          "desc": "The duration in nanoseconds.",
+          "desc": "The unix timestamp in nanoseconds.",
           "types": [
-            "px.Duration"
+            "px.Time"
           ]
         }
       }
@@ -1291,7 +1291,7 @@
           {
             "name": "def connect_to_cluster",
             "declaration": "def connect_to_cluster(self, cluster: Union[str, pxapi.client.Cluster]) -\u003e pxapi.client.Conn",
-            "docstring": "Connect to a cluster.\n\nReturns a connection object that you can use to create `ScriptExecutor`s.\nYou may pass in a `ClusterID` string or a `Cluster` object that comes\nfrom `list_all_healthy_clusters()`."
+            "docstring": "Connect to a cluster.\n\nReturns a connection object that you can use to create `ScriptExecutor`s.\nYou may pass in a `ClusterID` string or a `Cluster` object that comes\nfrom `list_healthy_clusters()`."
           },
           {
             "name": "def list_healthy_clusters",
@@ -1311,11 +1311,6 @@
             "name": "def name",
             "declaration": "def name(self) -\u003e str",
             "docstring": "Returns the name if that info exists, otherwise returns the id."
-          },
-          {
-            "name": "def passthrough",
-            "declaration": "def passthrough(self) -\u003e bool",
-            "docstring": ""
           }
         ]
       },
@@ -1882,6 +1877,57 @@
           "retval": {
             "desc": "The sum of a and b.",
             "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "amqp_frame_type_name",
+        "brief": "Convert a AMQP frame type to its name.",
+        "desc": "UDF to convert AMQP frame type into their corresponding human-readable names.",
+        "examples": [
+          {
+            "value": "```\ndf.frame_type_name = px.amqp_frame_type_name(df.req_cmd)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "frame_type",
+              "desc": "An AMQP frame_type in numeric value",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The AMQP Frame Type name.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "amqp_method_name",
+        "brief": "Convert a AMQP method id to its name.",
+        "desc": "UDF to convert AMQP method id into their corresponding human-readable names.",
+        "examples": [
+          {
+            "value": "```\ndf.method_name = px.amqp_method_name(df.class_id, df.method_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "class_id",
+              "desc": "An AMQP class_id in numeric value",
+              "type": "INT64"
+            },
+            {
+              "ident": "method_id",
+              "desc": "An AMQP method_id in numeric value",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The AMQP Method name.",
+            "type": "STRING"
           }
         }
       },
@@ -2612,6 +2658,236 @@
         }
       },
       {
+        "name": "deployment_id_to_deployment_name",
+        "brief": "Get the Deployment Name from a Deployment ID.",
+        "desc": "Gets the Kubernetes Deployment Name for the Deployment ID.If the given ID doesn't have an associated Kubernetes Deployment, this function returns an empty string",
+        "examples": [
+          {
+            "value": "```\ndf.deployment_name = px.deployment_id_to_deployment_name(deployment_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "deployment_id",
+              "desc": "The ID of the Deployment to get the name for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The Kubernetes Deployment Name for the ID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "deployment_id_to_namespace",
+        "brief": "Get the namespace of a Deployment from its ID.",
+        "desc": "Gets the namespace of a Deployment from its ID.",
+        "examples": [
+          {
+            "value": "```\ndf.namespace = px.deployment_id_id_to_namespace(deployment_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "deployment_id",
+              "desc": "The Deployment ID of the Deployment to get the namespace for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The namespace for the Deployment ID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "deployment_id_to_start_time",
+        "brief": "Get the start time of a Deployment from its ID.",
+        "desc": "Gets the start time (in nanosecond unix time format) of a Deployment from its ID.",
+        "examples": [
+          {
+            "value": "```\ndf.deployment_start_time = px.deployment_id_to_start_time(deployment_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "deployment_id",
+              "desc": "The Deployment ID of the Deployment to get the start time for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The start time (as an integer) for the Deployment ID passed in.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "deployment_id_to_status",
+        "brief": "Get the status of a Deployment from its ID.",
+        "desc": "Gets the status of a Deployment from its ID.",
+        "examples": [
+          {
+            "value": "```\ndf.status = px.deployment_id_to_status(deployment_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "deployment_id",
+              "desc": "The Deployment ID of the Deployment to get the status for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The status for the Deployment ID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "deployment_id_to_stop_time",
+        "brief": "Get the stop time of a Deployment from its ID.",
+        "desc": "Gets the stop time (in nanosecond unix time format) of a Deployment from its ID.",
+        "examples": [
+          {
+            "value": "```\ndf.deployment_stop_time = px.deployment_id_to_stop_time(deployment_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "deployment_id",
+              "desc": "The Deployment ID of the Deployment to get the stop time for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The stop time (as an integer) for the Deployment ID passed in.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "deployment_name_to_deployment_id",
+        "brief": "Get the Deployment ID from a Deployment name.",
+        "desc": "Gets the Kubernetes Deployment ID for the Deployment name.If the given name doesn't have an associated Kubernetes Deployment, this function returns an empty string",
+        "examples": [
+          {
+            "value": "```\ndf.deployment_id = px.deployment_name_to_deployment_id(deployment_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "deployment_name",
+              "desc": "The name of the Deployment to get the ID for. The name includes the namespace of the Deployment. i.e. \"ns/deployment_name\"",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The Kubernetes Deployment ID for the name passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "deployment_name_to_namespace",
+        "brief": "Get the namespace of a Deployment from its name.",
+        "desc": "Gets the namespace of a Deployment from its name.",
+        "examples": [
+          {
+            "value": "```\ndf.namespace = px.deployment_name_to_namespace(deployment_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "deployment_name",
+              "desc": "The name of the Deployment to get the name for. The name includes the namespace of the Deployment. i.e. \"ns/deployment_name\"",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The namespace for the Deployment name passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "deployment_name_to_start_time",
+        "brief": "Get the start time of a Deployment from its name.",
+        "desc": "Gets the start time (in nanosecond unix time format) of a Deployment from its name.",
+        "examples": [
+          {
+            "value": "```\ndf.deployment_start_time = px.deployment_id_to_start_time(deployment_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "deployment_name",
+              "desc": "The name of the Deployment to get the name for. The name includes the namespace of the Deployment. i.e. \"ns/deployment_name\"",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The start time (as an integer) for the Deployment name passed in.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "deployment_name_to_status",
+        "brief": "Get the status of a Deployment from its name.",
+        "desc": "Gets the status of a Deployment from its name.",
+        "examples": [
+          {
+            "value": "```\ndf.status = px.deployment_id_to_status(deployment_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "deployment_name",
+              "desc": "The name of the Deployment to get the name for. The name includes the namespace of the Deployment. i.e. \"ns/deployment_name\"",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The status for the Deployment name passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "deployment_name_to_stop_time",
+        "brief": "Get the stop time of a Deployment from its name.",
+        "desc": "Gets the stop time (in nanosecond unix time format) of a Deployment from its name.",
+        "examples": [
+          {
+            "value": "```\ndf.deployment_stop_time = px.deployment_name_to_stop_time(deployment_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "deployment_name",
+              "desc": "The name of the Deployment to get the name for. The name includes the namespace of the Deployment. i.e. \"ns/deployment_name\"",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The stop time (as an integer) for the Deployment name passed in.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
         "name": "divide",
         "brief": "Arithmetically divide the two arguments.",
         "desc": "This function is implicitly invoked by the / operator.",
@@ -3312,6 +3588,28 @@
         }
       },
       {
+        "name": "grpc_status_code_to_str",
+        "brief": "Converts the GRPC status code into a readable string error.",
+        "examples": [
+          {
+            "value": "```\ndf.err_reason = px.grpc_status_code_to_str(12)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "status_code",
+              "desc": "The GRPC status code to convert.",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "A string representation of the GRPC status code.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
         "name": "has_service_id",
         "brief": "Determine if a particular service ID is present",
         "desc": "Checks to see if a given service ID is present. Can include matching an individual service ID, or checking against a list of service IDs.",
@@ -3368,6 +3666,34 @@
         }
       },
       {
+        "name": "has_value",
+        "brief": "Determine if a value is present in an array.",
+        "desc": "Checks to see if a given value is present in an array. Can include matching an individual value, or checking against an array of services.",
+        "examples": [
+          {
+            "value": "```\ndf = df[px.has_value(df.ctx[\"replica_set\"], \"kube-system/kube-dns-79c57c8c9b\")]\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "array_or_value",
+              "desc": "Array or value to check.",
+              "type": "STRING"
+            },
+            {
+              "ident": "value",
+              "desc": "The value to check for in passed in value.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "True if value is present in the input, otherwise false.",
+            "type": "BOOLEAN"
+          }
+        }
+      },
+      {
         "name": "hex_to_ascii",
         "brief": "Convert an input hex sequence in ASCII to bytes.",
         "desc": "This function converts an input hex sequence in ASCII to bytes. The input must be a well-formed hex representation, with optional separator.If the input is invalid, it will return an empty string.",
@@ -3419,7 +3745,7 @@
         "desc": "Converts an int64 value to a time value. Used when type-specific UDFs are needed for time on a int64 value.",
         "examples": [
           {
-            "value": "```\ndf = df[px.time_to_int64(0) != df.time_]\n\n```"
+            "value": "```\ndf = df[px.int64_to_time(0) != df.time_]\n\n```"
           }
         ],
         "scalarUdfDoc": {
@@ -5058,6 +5384,52 @@
         }
       },
       {
+        "name": "pod_id_to_deployment_id",
+        "brief": "Get the ID of the Deployment which controls the pod with pod ID.",
+        "desc": "Gets the Kubernetes ID for the Deployment that owns the Pod (specified by Pod ID).If this pod is not controlled by any Deployment, returns an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.deployment_id = px.pod_id_to_deployment_id(df.pod_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_id",
+              "desc": "The Pod ID of the Pod to get the Deployment ID for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s Deployment ID wich controls the Pod with the Pod ID.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pod_id_to_deployment_name",
+        "brief": "Get the name of the Deployment which controls the pod with pod ID.",
+        "desc": "Gets the Kubernetes name for the Deployment that owns the Pod (specified by Pod ID).If this pod is not controlled by any Deployment, returns an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.replicaset_name = px.pod_id_to_deployment_name(df.pod_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_id",
+              "desc": "The Pod ID of the Pod to get the Deployment name for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s Deployment name wich controls the Pod with the Pod ID.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
         "name": "pod_id_to_namespace",
         "brief": "Get the Kubernetes namespace from a pod ID.",
         "desc": "Gets the Kubernetes namespace that the Pod ID belongs to.",
@@ -5104,6 +5476,52 @@
         }
       },
       {
+        "name": "pod_id_to_owner_references",
+        "brief": "Get the owner references for a given pod ID.",
+        "desc": "Gets the owner references for the pod. If there is no owner references associated to this pod, then this function returns an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.owner_references = px.pod_id_to_owner_references(df.pod_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_id",
+              "desc": "The Pod ID of the Pod to get owner references for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s owner references for the Pod ID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pod_id_to_pod_labels",
+        "brief": "Get labels of a pod from its pod ID.",
+        "desc": "Gets the kubernetes pod labels for the pod from its pod ID.",
+        "examples": [
+          {
+            "value": "```\ndf.labels = px.pod_id_to_pod_labels(df.pod_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_id",
+              "desc": "The pod ID of the pod to get the labels for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s pod labels for the pod ID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
         "name": "pod_id_to_pod_name",
         "brief": "Get the name of a pod from its pod ID.",
         "desc": "Gets the kubernetes name for the pod from its pod ID.",
@@ -5122,6 +5540,52 @@
           ],
           "retval": {
             "desc": "The k8s pod name for the pod ID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pod_id_to_replicaset_id",
+        "brief": "Get the ID of the Replica Set which controls the pod with pod ID.",
+        "desc": "Gets the Kubernetes ID for the Replica Set that owns the Pod (specified by Pod ID).If this pod is not controlled by any Replica Set, returns an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.replicaset_id = px.pod_id_to_replicaset_id(df.pod_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_id",
+              "desc": "The Pod ID of the Pod to get the Replica Set ID for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s Replica Set ID wich controls the Pod with the Pod ID.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pod_id_to_replicaset_name",
+        "brief": "Get the name of the Replica Set which controls the pod with pod ID.",
+        "desc": "Gets the Kubernetes name for the Replica Set that owns the Pod (specified by Pod ID).If this pod is not controlled by any Replica Set, returns an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.replicaset_name = px.pod_id_to_replicaset_name(df.pod_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_id",
+              "desc": "The Pod ID of the Pod to get the Replica Set name for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s Replica Set name wich controls the Pod with the Pod ID.",
             "type": "STRING"
           }
         }
@@ -5219,6 +5683,52 @@
         }
       },
       {
+        "name": "pod_name_to_deployment_id",
+        "brief": "Get the ID of the Deployment which controls the pod with the specified pod name.",
+        "desc": "Gets the Kubernetes ID for the Deployment that owns the Pod (specified by pod name).If this pod is not controlled by any Deployment, returns an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.replica_set_id = px.pod_name_to_deployment_id(df.pod_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_name",
+              "desc": "The Pod name of the Pod to get the Deployment ID for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s Deployment ID wich controls the Pod with the Pod ID.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pod_name_to_deployment_name",
+        "brief": "Get the name of the Deployment which controls the pod with the specified pod name.",
+        "desc": "Gets the Kubernetes name for the Deployment that owns the Pod (specified by pod name).If this pod is not controlled by any Deployment, returns an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.replica_set_name = px.pod_name_to_deployment_name(df.pod_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_name",
+              "desc": "The Pod name of the Pod to get the Deployment name for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s Deployment name wich controls the Pod with the Pod ID.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
         "name": "pod_name_to_namespace",
         "brief": "Get the Kubernetes namespace from a pod name.",
         "desc": "Gets the Kubernetes namespace that the pod belongs to.",
@@ -5237,6 +5747,29 @@
           ],
           "retval": {
             "desc": "The k8s namespace for the pod passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pod_name_to_owner_references",
+        "brief": "Get the owner references for a given pod name.",
+        "desc": "Gets the owner references for the pod (specified by the pod_name). If there is no owner references associated to this pod, then this function returns an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.owner_references = px.pod_name_to_owner_references(df.pod_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_name",
+              "desc": "The Pod name of the Pod to get service ID for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s owner references for the Pod name passed in.",
             "type": "STRING"
           }
         }
@@ -5283,6 +5816,52 @@
           ],
           "retval": {
             "desc": "The pod IP for the pod name passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pod_name_to_replicaset_id",
+        "brief": "Get the ID of the Replica Set which controls the pod with the specified pod name.",
+        "desc": "Gets the Kubernetes ID for the Replica Set that owns the Pod (specified by pod name).If this pod is not controlled by any Replica Set, returns an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.replica_set_id = px.pod_name_to_replicaset_id(df.pod_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_name",
+              "desc": "The Pod name of the Pod to get the Replica Set ID for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s Replica Set ID wich controls the Pod with the Pod ID.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "pod_name_to_replicaset_name",
+        "brief": "Get the name of the Replica Set which controls the pod with the specified pod name.",
+        "desc": "Gets the Kubernetes name for the Replica Set that owns the Pod (specified by pod name).If this pod is not controlled by any Replica Set, returns an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.replica_set_name = px.pod_name_to_replicaset_name(df.pod_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_name",
+              "desc": "The Pod name of the Pod to get the Replica Set name for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The k8s Replica Set name wich controls the Pod with the Pod ID.",
             "type": "STRING"
           }
         }
@@ -5362,7 +5941,7 @@
         "desc": "Gets the Kubernetes status information for the pod with the given name. The status is a subset of the Kubernetes PodStatus object returned as JSON. The keys included are state, message, and reason. See https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#podstatus-v1-core for more info about this object. ",
         "examples": [
           {
-            "value": "```\ndf.pod_status = px.pod_name_to_pod_status(df.pod_name)\n```"
+            "value": "```\ndf.pod_status = px.pod_name_to_status(df.pod_name)\n```"
           }
         ],
         "scalarUdfDoc": {
@@ -5566,7 +6145,7 @@
       {
         "name": "redact_pii_best_effort",
         "brief": "Make a best effort to redact Personally Identifiable Information (PII).",
-        "desc": "Replace instances of PII with '\u003cREDACTED_$TYPE\u003e' eg. '\u003cREDACTED_EMAIL\u003e' or '\u003cREDACTED_IPv4\u003e'. Currently, it will (on a best effort basis) redact IP addresses, email addresses, MAC addresses, IMEI numbers and credit card numbers. However, the redaction is not perfect, so it should not be used in a context where privacy needs to be guaranteed.",
+        "desc": "Replace instances of PII with '\u003cREDACTED_$TYPE\u003e' eg. '\u003cREDACTED_EMAIL\u003e' or '\u003cREDACTED_IPv4\u003e'. Currently, it will (on a best effort basis) redact IP addresses, email addresses, MAC addresses, IMEI numbers, credit card numbers, and IBAN numbers. However, the redaction is not perfect, so it should not be used in a context where privacy needs to be guaranteed.",
         "examples": [
           {
             "value": "```\ndf.redacted = px.redact_pii_best_effort(df.req_body)\n```"
@@ -5644,6 +6223,374 @@
           "retval": {
             "desc": "The original string with all occurrences of the pattern replaced by the substitution string.",
             "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "replicaset_id_to_deployment_id",
+        "brief": "Get the Deployment ID of a Replica Set from its ID.",
+        "desc": "Gets the Deployment ID of a Replica Set from its ID.",
+        "examples": [
+          {
+            "value": "```\ndf.deployment_id =px.replicaset_id_to_deployment_id(replica_set_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "replica_set_id",
+              "desc": "The Replica Set ID of the Replica Set to get the Deployment ID for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The Deployment ID for the Replica Set ID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "replicaset_id_to_deployment_name",
+        "brief": "Get the Deployment name of a Replica Set from its ID.",
+        "desc": "Gets the Deployment name of a Replica Set from its ID.",
+        "examples": [
+          {
+            "value": "```\ndf.deployment_name =px.replicaset_id_to_deployment_name(replica_set_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "replica_set_id",
+              "desc": "The Replica Set ID of the Replica Set to get the Deployment name for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The Deployment name for the Replica Set ID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "replicaset_id_to_namespace",
+        "brief": "Get the namespace of a Replica Set from its ID.",
+        "desc": "Gets the namespace of a Replica Set from its ID.",
+        "examples": [
+          {
+            "value": "```\ndf.namespace = px.replicaset_id_to_namespace(replica_set_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "replica_set_id",
+              "desc": "The Replica Set ID of the Replica Set to get the namespace for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The namespace for the Replica Set ID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "replicaset_id_to_owner_references",
+        "brief": "Get the owner references of a Replica Set from its ID.",
+        "desc": "Gets the owner references of a Replica Set from its ID.",
+        "examples": [
+          {
+            "value": "```\ndf.owner_references = px.replicaset_id_to_owner_references(replica_set_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "replica_set_id",
+              "desc": "The Replica Set ID of the Replica Set to get the owner references for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The owner references for the Replica Set ID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "replicaset_id_to_replicaset_name",
+        "brief": "Get the Replica Set Name from a Replica Set ID.",
+        "desc": "Gets the Kubernetes Replica Set Name for the Replica Set ID.If the given ID doesn't have an associated Kubernetes Replica Set, this function returns an empty string",
+        "examples": [
+          {
+            "value": "```\ndf.replica_set_name = px.replicaset_id_to_replicaset_name(replica_set_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "replica_set_id",
+              "desc": "The UID of the Replica Set to get the name for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The Kubernetes Replica Set Name for the UID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "replicaset_id_to_start_time",
+        "brief": "Get the start time of a Replica Set from its ID.",
+        "desc": "Gets the start time (in nanosecond unix time format) of a Replica Set from its ID.",
+        "examples": [
+          {
+            "value": "```\ndf.rs_start_time = px.replicaset_id_to_start_time(replica_set_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "replica_set_id",
+              "desc": "The Replica Set ID of the Replica Set to get the start time for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The start time (as an integer) for the Replica Set ID passed in.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "replicaset_id_to_status",
+        "brief": "Get the status of a Replica Set from its ID.",
+        "desc": "Gets the status of a Replica Set from its ID.",
+        "examples": [
+          {
+            "value": "```\ndf.status = px.replicaset_id_to_status(replica_set_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "replica_set_id",
+              "desc": "The Replica Set ID of the Replica Set to get the status for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The status for the Replica Set ID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "replicaset_id_to_stop_time",
+        "brief": "Get the stop time of a Replica Set from its ID.",
+        "desc": "Gets the stop time (in nanosecond unix time format) of a Replica Set from its ID.",
+        "examples": [
+          {
+            "value": "```\ndf.rs_stop_time = px.replicaset_id_to_stop_time(replica_set_id)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "replica_set_id",
+              "desc": "The Replica Set ID of the Replica Set to get the stop time for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The stop time (as an integer) for the Replica Set ID passed in.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "replicaset_name_to_deployment_id",
+        "brief": "Get the Deployment ID of a Replica Set from its name.",
+        "desc": "Gets the Deployment ID of a Replica Set from its name.",
+        "examples": [
+          {
+            "value": "```\ndf.deployment_id = px.replicaset_name_to_deployment_id(replica_set_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "replica_set_name",
+              "desc": "The Replica Set name of the Replica Set to get the Deployment ID for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The Deployment ID for the Replica Set name passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "replicaset_name_to_deployment_name",
+        "brief": "Get the Deployment name of a Replica Set from its name.",
+        "desc": "Gets the Deployment name of a Replica Set from its name.",
+        "examples": [
+          {
+            "value": "```\ndf.deployment_name = px.replicaset_name_to_deployment_name(replica_set_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "replica_set_name",
+              "desc": "The Replica Set name of the Replica Set to get the Deployment name for.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The Deployment name for the Replica Set name passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "replicaset_name_to_namespace",
+        "brief": "Get the namespace of a Replica Set from its name.",
+        "desc": "Gets the namespace of a Replica Set from its name.",
+        "examples": [
+          {
+            "value": "```\ndf.namespace = px.replicaset_name_to_namespace(replica_set_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "replica_set_name",
+              "desc": "The name of the Replica Set to get the name for. The name includes the namespace of the Replica Set. i.e. \"ns/rs_name\"",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The namespace for the Replica Set name passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "replicaset_name_to_owner_references",
+        "brief": "Get the owner references of a Replica Set from its name.",
+        "desc": "Gets the owner references of a Replica Set from its name.",
+        "examples": [
+          {
+            "value": "```\ndf.owner_references = px.replicaset_name_to_owner_references(replica_set_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "replica_set_name",
+              "desc": "The name of the Replica Set to get the name for. The name includes the namespace of the Replica Set. i.e. \"ns/rs_name\"",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The owner references for the Replica Set name passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "replicaset_name_to_replicaset_id",
+        "brief": "Get the Replica Set ID from a Replica Set name.",
+        "desc": "Gets the Kubernetes Replica Set ID for the Replica Set name.If the given name doesn't have an associated Kubernetes Replica Set, this function returns an empty string",
+        "examples": [
+          {
+            "value": "```\ndf.replica_set_id = px.replicaset_name_to_replicaset_id(replica_set_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "replica_set_name",
+              "desc": "The name of the Replica Set to get the name for. The name includes the namespace of the Replica Set. i.e. \"ns/rs_name\"",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The Kubernetes Replica Set ID for the name passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "replicaset_name_to_start_time",
+        "brief": "Get the start time of a Replica Set from its name.",
+        "desc": "Gets the start time (in nanosecond unix time format) of a Replica Set from its name.",
+        "examples": [
+          {
+            "value": "```\ndf.rs_start_time = px.replicaset_name_to_start_time(replica_set_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "replica_set_name",
+              "desc": "The name of the Replica Set to get the name for. The name includes the namespace of the Replica Set. i.e. \"ns/rs_name\"",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The start time (as an integer) for the Replica Set name passed in.",
+            "type": "TIME64NS"
+          }
+        }
+      },
+      {
+        "name": "replicaset_name_to_status",
+        "brief": "Get the status of a Replica Set from its name.",
+        "desc": "Gets the status of a Replica Set from its name.",
+        "examples": [
+          {
+            "value": "```\ndf.owner_references = px.replicaset_name_to_status(replica_set_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "replica_set_name",
+              "desc": "The name of the Replica Set to get the name for. The name includes the namespace of the Replica Set. i.e. \"ns/rs_name\"",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The status for the Replica Set name passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "replicaset_name_to_stop_time",
+        "brief": "Get the stop time of a Replica Set from its name.",
+        "desc": "Gets the stop time (in nanosecond unix time format) of a Replica Set from its name.",
+        "examples": [
+          {
+            "value": "```\ndf.rs_stop_time = px.replicaset_name_to_stop_time(replica_set_name)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "replica_set_name",
+              "desc": "The name of the Replica Set to get the name for. The name includes the namespace of the Replica Set. i.e. \"ns/rs_name\"",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The stop time (as an integer) for the Replica Set name passed in.",
+            "type": "TIME64NS"
           }
         }
       },
@@ -6435,7 +7382,7 @@
       {
         "name": "upid",
         "brief": "Convert a pid, start_time pair to a UPID.",
-        "desc": "This function creates a UPID from it's underlying components..",
+        "desc": "This function creates a UPID from it's underlying components.",
         "examples": [
           {
             "value": "```\ndf.val = px.upid(df.pid, df.pid_start_time)\n```"
@@ -6548,6 +7495,52 @@
           ],
           "retval": {
             "desc": "The k8s container name for the UPID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "upid_to_deployment_id",
+        "brief": "Get the Deployment ID from a UPID.",
+        "desc": "Gets the Kubernetes Deployment ID for the process with the given Unique Process ID (UPID). If the given process doesn't have an associated Kubernetes Deployment, this function returns an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.deployment_id = px.upid_to_deployment_id(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The UPID of the process to get the Deployment ID for.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The Kubernetes Deployment ID for the UPID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "upid_to_deployment_name",
+        "brief": "Get the Deployment Name from a UPID.",
+        "desc": "Gets the Kubernetes Deployment Name for the process with the given Unique Process ID (UPID). If the given process doesn't have an associated Kubernetes Deployment, this function returns an empty string",
+        "examples": [
+          {
+            "value": "```\ndf.deployment_name = px.upid_to_deployment_name(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The UPID of the process to get the Deployment name for.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The Kubernetes Deployment Name for the UPID passed in.",
             "type": "STRING"
           }
         }
@@ -6732,6 +7725,52 @@
           ],
           "retval": {
             "desc": "The Kubernetes PodStatus for the UPID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "upid_to_replicaset_id",
+        "brief": "Get the Replica Set ID from a UPID.",
+        "desc": "Gets the Kubernetes Replica Set ID for the process with the given Unique Process ID (UPID). If the given process doesn't have an associated Kubernetes Replica Set, this function returns an empty string.",
+        "examples": [
+          {
+            "value": "```\ndf.replica_set_id = px.upid_to_replicaset_id(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The UPID of the process to get the service ID for.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The Kubernetes Replica Set ID for the UPID passed in.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "upid_to_replicaset_name",
+        "brief": "Get the Replica Set Name from a UPID.",
+        "desc": "Gets the Kubernetes Replica Set Name for the process with the given Unique Process ID (UPID). If the given process doesn't have an associated Kubernetes Replica Set, this function returns an empty string",
+        "examples": [
+          {
+            "value": "```\ndf.replica_set_name = px.upid_to_replicaset_name(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The UPID of the process to get the service name for.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The Kubernetes Replica Set Name for the UPID passed in.",
             "type": "STRING"
           }
         }
