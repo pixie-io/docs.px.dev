@@ -148,30 +148,19 @@ After logging into the Pixie UI using the admin account, you will see a blank UI
 
 <svg title='' src='airgap/ui-error.png' />
 
-To resolve these errors, you'll need to do one of the following:
-
-- [Setup the script dev environment](/installing-pixie/install-guides/airgap-pixie/#deploy-pixie-cloud-setup-the-script-dev-environment)
-- [Override the `SCRIPT_BUNDLE_URLS` environment variable](https://github.com/pixie-io/pixie/issues/485#issuecomment-1191969058)
-
-#### Setup the Script Dev Environment
-
-To setup the script dev environment:
+To resolve these errors, you'll need to set up the script dev environment:
 
 ```
-
 git clone https://github.com/pixie-io/pixie.git
 cd pixie/src/pxl_scripts
 make dev
-
 ```
 
 Open Chrome’s DevTools console and run the following:
 
 ```
-
 localStorage.setItem('px-custom-oss-bundle-path', 'http://127.0.0.1:8000/bundle-oss.json')
 localStorage.setItem('px-custom-core-bundle-path', 'http://127.0.0.1:8000/bundle-oss.json')
-
 ```
 
 Once you have set these variables, do a **soft** reload of the UI webpage (a hard reload will clear the variable you just set).
@@ -191,7 +180,7 @@ curl https://storage.googleapis.com/pixie-dev-public/vizier/latest/vizier_yamls.
 cd yamls
 ```
 
-2. Update the `deploy-key` and `PX_CLUSTER_NAME` values in the `vizier/secrets.yaml` file. Remember that you previously created the deploy key in Pixie UI's.
+2. Update the `deploy-key` and `PX_CLUSTER_NAME` values in the `vizier/secrets.yaml` file. Remember that you previously created the deploy key in [this step](#serve-the-script-bundle).
 
 3. Deploy the `vizier/secrets.yaml` file.
 
@@ -219,14 +208,16 @@ kubectl apply -f vizier/secrets.yaml
 cat images/vizier_image_list.txt
 ```
 
-7. Apply the yamls. _Note: the below commands assume you are deploying Pixie without `etcd`._
+7. Modify the yaml files you selected in **Step 5** to pull the images from your private image registry.
+
+8. Apply the yamls. _Note: the below commands assume you are deploying Pixie without `etcd`._
 
 ```
 kubectl apply -f vizier_deps/nats_prod.yaml
 kubectl apply -f vizier/vizier_metadata_persist_prod.yaml
 ```
 
-8. Wait for the pods in the `pl` namespace to become ready and available:
+9. Wait for the pods in the `pl` namespace to become ready and available:
 
 ```
 kubectl get pods -n pl
