@@ -36,7 +36,7 @@ To run minikube, your mac will need a way to run a Linux VM. We recommend hyperk
 To create the minikube cluster, run the following command. Linux users should use the `kvm2`driver and Mac users should use the `hyperkit` driver. Other drivers, including the `docker` driver, are not supported.
 
 ```
-`minikube start --driver=<kvm2|hyperkit> --cni=flannel --cpus=4 --memory=8000 -p=<cluster-name>`
+minikube start --driver=<kvm2|hyperkit> --cni=flannel --cpus=4 --memory=8000 -p=<cluster-name>
 ```
 
 CPU and memory requirements are set to accommodate the included demo application.
