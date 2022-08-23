@@ -101,3 +101,5 @@ Pixie deploys its PEMs as a DaemonSet on your cluster in order to collect and st
 Pixie's [Vizier](/reference/architecture/#vizier) module sends outgoing HTTPS/2 requests to Pixie's [Cloud](/reference/architecture/#cloud) on port `443`.
 
 Your cluster's telemetry data flows through Pixie's Cloud via a reverse proxy as encrypted traffic without any persistence. This allows users to access data without being in the same VPC/network as the cluster. Pixie offers [end-to-end encryption](/about-pixie/faq/#data-collection-how-does-pixie-secure-its-data) for telemetry data in flight.
+
+<Alert variant="outlined" severity="info">To install Pixie in an air gapped environment, see this <a href="/installing-pixie/install-guides/airgap-pixie">install guide</a>.</Alert>
