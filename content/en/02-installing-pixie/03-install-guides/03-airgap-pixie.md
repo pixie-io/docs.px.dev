@@ -180,7 +180,7 @@ curl https://storage.googleapis.com/pixie-dev-public/vizier/latest/vizier_yamls.
 cd yamls
 ```
 
-2. Update the `deploy-key` and `PX_CLUSTER_NAME` values in the `vizier/secrets.yaml` file. Remember that you previously created the deploy key in [this step](#serve-the-script-bundle).
+2. Update the `deploy-key` and `PX_CLUSTER_NAME` values in the `vizier/secrets.yaml` file. Remember that you previously created the deploy key in [this step](#deploy-pixie-cloud-serve-the-script-bundle).
 
 3. Deploy the `vizier/secrets.yaml` file.
 
