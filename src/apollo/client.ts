@@ -17,10 +17,8 @@
  */
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ApolloClient } from '@apollo/client';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { setContext } from 'apollo-link-context';
-import { createHttpLink } from 'apollo-link-http';
+import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 
 const cloudFetch = (uri, options) => window.fetch(uri, options).then((resp) => {
   const result = {};
@@ -31,7 +29,7 @@ const cloudFetch = (uri, options) => window.fetch(uri, options).then((resp) => {
   return result;
 });
 
-const cloudLink = createHttpLink({
+const cloudLink = new HttpLink({
   uri: 'https://withpixie.ai/api/unauthenticated/graphql',
   fetch: cloudFetch,
 });

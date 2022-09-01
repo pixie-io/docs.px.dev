@@ -65,24 +65,9 @@ const algolia = {
 const plugins = [
   'gatsby-plugin-sitemap',
   'gatsby-plugin-sharp',
-  'gatsby-plugin-emotion',
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-material-ui',
   'gatsby-plugin-styled-components',
-  'gatsby-transformer-json',
-  {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      name: 'external',
-      path: `${__dirname}/external`,
-    },
-  },
-  {
-    resolve: 'gatsby-transformer-remark',
-    options: {
-      plugins: ['gatsby-remark-images'],
-    },
-  },
   {
     resolve: 'gatsby-plugin-mdx',
     options: {
@@ -167,7 +152,6 @@ const plugins = [
       display: 'block',
     },
   },
-  '@pauliescanlon/gatsby-mdx-embed',
   'gatsby-plugin-remove-serviceworker',
   'gatsby-plugin-meta-redirect',
   {
