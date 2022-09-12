@@ -1,7 +1,7 @@
 ---
-title: "Exporting Live View data to a plugin"
+title: "Exporting Live View Scripts to a Plugin"
 metaTitle: "Tutorials | Integrations and Alerts | Exporting a Live View Script"
-metaDescription: "Export Live view data to a plugin"
+metaDescription: "Export Live View Scripts to a Plugin"
 order: 4
 redirect_from:
     - /tutorials/export-live-view/
@@ -12,8 +12,7 @@ Plugin scripts make it easy to extend Pixie's capabilities: you can enable a wid
 including long-term storage and [control signals for autoscalers](https://blog.px.dev/autoscaling-custom-k8s-metric/).
 
 We have talked about exporting data from [Pixie](https://blog.px.dev/plugin-system/) before via
-the [OTel Exporter](/tutorials/integrations/otel). Here we expand on the OTel Exporter feature by automating the script writing
-process.
+the [OTel Exporter](/tutorials/integrations/otel). Here we expand on this feature by automating the script writing process.
 
 In this short tutorial, we'll show you how to use this new feature to convert your custom PxL scripts into export scripts using a few simple steps.
 
@@ -96,7 +95,7 @@ Now that we have our Live View script, let's export it.
 So you've now deployed your first OpenTelemetry script using the auto-generating export. You can
 dive deeper into PxL scripts by checking out our ["How to Write a PxL Script"](/tutorials/pxl-scripts/write-pxl-scripts/) series or by reading through the [PxL documentation](/reference/pxl/).
 
-You can also learn how to more deeply interact with Pixie's OpenTelemetry integration [in this tutorial](/reference/pxl/otel-export/) and through the [OTel Export documentation](/reference/pxl/otel-export/)
+You can also learn how to more deeply interact with Pixie's OpenTelemetry integration [in this tutorial](/reference/pxl/otel-export/) and through the [OTel Export documentation](/reference/pxl/otel-export/).
 
 
 ## Troubleshooting
