@@ -88,8 +88,15 @@ Now that we have our Live View script, let's export it.
 <svg src='plugin/plugin_times.png'/>
 
 13. Check over the generated PxL one last time and make any desired modifications.
-14. Click `Create` and you should see `my-export-script` in the "Custom Scripts" section. Your data should now be sent to whatever Plugin you configured. Happy hacking!
+14. Click `Create` and you should see `my-export-script` in the "Custom Scripts" section. Your data should now be sent to whatever Plugin you configured.
 <svg src='plugin/export_status.png'/>
+
+
+## Next Steps
+So you've now deployed your first OpenTelemetry script using the auto-generating export. You can
+dive deeper into PxL scripts by checking out our ["How to Write a PxL Script"](/tutorials/pxl-scripts/write-pxl-scripts/) series or by reading through the [PxL documentation](/reference/pxl/).
+
+You can also learn how to more deeply interact with Pixie's OpenTelemetry integration [in this tutorial](/reference/pxl/otel-export/) and through the [OTel Export documentation](/reference/pxl/otel-export/)
 
 
 ## Troubleshooting
