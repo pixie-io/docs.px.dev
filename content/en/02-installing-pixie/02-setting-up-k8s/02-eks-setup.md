@@ -44,6 +44,12 @@ kubectl get svc
 
 You can deploy clusters with alternate configurations or by using the AWS console. You can view our [requirements](/installing-pixie/requirements) to determine recommended node level compute requirements.
 
+### Verify whether your cluster has a storage class
+
+If you want to use the default settings for installing Pixie's Vizier module, you'll want to ensure that your EKS cluster has [persistent volume and storage classes](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html) set up.
+
+If your cluster does not have an accessible storage class type, you'll want to deploy with the [etcd operator](/reference/admin/deploy-options/#select-metadata-storage-option). Note that self-hosted Pixie Cloud requires persistent volumes.
+
 ## Deploy Pixie
 
 Once connected, follow the [install steps](/installing-pixie/install-guides) to deploy Pixie.

@@ -15,6 +15,7 @@ Pixie offers the following deploy options:
 - [Provide a custom cluster name](#providing-a-custom-cluster-name)
 - [Configure Pixie's memory usage](#configure-pixie-memory-usage)
 - [Set the data access mode](#setting-the-data-access-mode)
+- [Select metadata storage option](#select-metadata-storage-option)
 
 To see the full set of deploy options, install the [Pixie CLI](/installing-pixie/install-schemes/cli/) and run `px deploy --help`.
 
@@ -177,3 +178,21 @@ helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-k
 ```
 
 You may also directly update the `dataAccess` field in your `values.yaml` file.
+
+## Select metadata storage option
+
+By default, Pixie uses a persistent volume to store 24 hours' worth of Kubernetes metadata updates.
+
+For clusters that don't support persistent volumes, we have an alternative mode that uses the etcd operator.
+
+To deploy using the etcd operator using `px deploy`, use the `--use_etcd_operator` flag.
+
+```bash
+px deploy --use_etcd_operator
+```
+
+To deploy with Helm using the etcd operator, use the `--useEtcdOperator` flag.
+
+```bash
+helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-key-goes-here> --namespace pl --create-namespace --set pixie-chart.useEtcdOperator=true
+```
