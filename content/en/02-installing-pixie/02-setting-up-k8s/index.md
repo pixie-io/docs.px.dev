@@ -16,3 +16,4 @@ If you already have a Kubernetes environment, you can skip these steps. If you a
 - [Managed - EKS](/installing-pixie/setting-up-k8s/eks-setup)
 - [Managed - GKE](/installing-pixie/setting-up-k8s/gke-setup)
 - [Managed - AKS](/installing-pixie/setting-up-k8s/aks-setup)
+- [Other environments](/installing-pixie/setting-up-k8s/other-environments)
