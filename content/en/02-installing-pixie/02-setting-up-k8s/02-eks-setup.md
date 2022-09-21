@@ -9,6 +9,10 @@ redirect_from:
     - /installing-pixie/install-guides/eks-setup/
 ---
 
+<Alert variant="outlined" severity="info">
+  For a guided tutorial of how to install and use Pixie with AWS EKS, check out the <a href="https://www.eksworkshop.com/intermediate/241_pixie/">Pixie EKS Workshop</a>. Note that you’ll need to complete the <a href="https://www.eksworkshop.com/020_prerequisites/">Start the Workshop</a> and <a href="https://www.eksworkshop.com/030_eksctl/">Launch Using eksctl</a> sections prior to beginning the Pixie workshop.
+</Alert>
+
 ## Set up your EKS Cluster
 
 Note: Skip this section if you already you have a target cluster set up.
