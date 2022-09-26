@@ -13,6 +13,14 @@ Follow these instructions to install Pixie in an air gapped environment. An air 
   Air Gapped Pixie is a beta feature. For questions or updates, see this <a href="https://github.com/pixie-io/pixie/issues/266"> GitHub issue</a>.
 </Alert>
 
+<Alert variant="outlined" severity="info">
+  The <a href="/reference/plugins/plugin-system/">Pixie Plugin System</a> does not work with Air Gapped Pixie.
+</Alert>
+
+<Alert variant="outlined" severity="info">
+  The <a href="/installing-pixie/install-schemes/cli/">Pixie CLI</a> does not work with Air Gapped Pixie.
+</Alert>
+
 ## Prerequisites
 
 - Review Pixie's [requirements](/installing-pixie/requirements) to make sure that your Kubernetes cluster is supported.
@@ -42,13 +50,15 @@ mkcert -install
 kubectl create namespace plc
 ```
 
-5. Create the Pixie Cloud secrets. From the top level `pixie/` directory, run:
+5. (Optional) If you are using a custom domain, find and replace `dev.withpixie.dev` with your own domain in the `./scripts/create_cloud_secrets.sh` file.
+
+6. Create the Pixie Cloud secrets. From the top level `pixie/` directory, run:
 
 ```bash
 ./scripts/create_cloud_secrets.sh
 ```
 
-6. Collect and publish the required images to a private image registry. To list the images needed to deploy Pixie Cloud, run these commands:
+7. Collect and publish the required images to a private image registry. To list the images needed to deploy Pixie Cloud, run these commands:
 
 ```
 curl https://storage.googleapis.com/pixie-dev-public/cloud/latest/pixie_cloud.tar.gz | tar xj
@@ -56,24 +66,29 @@ cd pixie_cloud
 cat cloud_image_list.txt
 ```
 
-7. Modify the yaml files in the `pixie_cloud/yamls` folder to pull the images from your private image registry.
+8. Modify the yaml files in the `pixie_cloud/yamls` folder to pull the images from your private image registry.
 
-8. Modify the `pixie_cloud/yamls/cloud.yaml` file to remove the `plugin-db-updater-job` job.
+9. Modify the `pixie_cloud/yamls/cloud.yaml` file to remove the `plugin-db-updater-job` job.
 
-9. Deploy Pixie Cloud dependencies and wait for all pods within the `plc` namespace to become ready and available before proceeding to the next step. If there is an error, you may need to retry this step.
+10. Deploy Pixie Cloud dependencies and wait for all pods within the `plc` namespace to become ready and available before proceeding to the next step. If there is an error, you may need to retry this step.
 
 ```
 kubectl apply -f yamls/cloud_deps_elastic_operator.yaml
 kubectl apply -f yamls/cloud_deps.yaml
 ```
 
-10. Deploy Pixie Cloud:
+11. (Optional) If you are using a custom domain, make the following two edits to the `yamls/cloud.yaml` file:
+
+- Replace the `dev.withpixie.dev` value for `PL_DOMAIN_NAME` in the `pl-domain-config` ConfigMap with your own domain.
+- Replace the `- suffix: "dev.withpixie.dev"` line in the `proxy-envoy-config` ConfigMap with `-prefix: "*"`.
+
+12. Deploy Pixie Cloud:
 
 ```
 kubectl apply -f yamls/cloud.yaml
 ```
 
-11. Wait for all pods within the `plc` namespace to become ready and available. Note that you may have one or more `create-hydra-client-job` pod errors, but as long as long as another instance of that pod successfully completes, that is ok.
+13. Wait for all pods within the `plc` namespace to become ready and available. Note that you may have one or more `create-hydra-client-job` pod errors, but as long as long as another instance of that pod successfully completes, that is ok.
 
 ```bash
 kubectl get pods -n plc
