@@ -104,7 +104,7 @@ on the "Create Export Script" page.
 You've now converted your first PxL script into an OpenTelemetry export script. You can
 dive deeper into PxL scripts by checking out our ["How to Write a PxL Script"](/tutorials/pxl-scripts/write-pxl-scripts/) series or by reading through the [PxL documentation](/reference/pxl/).
 
-You can also learn how to more deeply interact with Pixie's OpenTelemetry integration [in this tutorial](/reference/pxl/otel-export/) and through the [OpenTelemetry Export documentation](/reference/pxl/otel-export/).
+You can also learn more about Pixie's OpenTelemetry integration [in this tutorial](/tutorials/integrations/otel/) and through the [OpenTelemetry Export documentation](/reference/pxl/otel-export/).
 
 ## Troubleshooting
 
