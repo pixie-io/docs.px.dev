@@ -13,10 +13,6 @@ Follow these instructions to install Pixie in an air gapped environment. An air 
   Air Gapped Pixie is a beta feature. For questions or updates, see this <a href="https://github.com/pixie-io/pixie/issues/266"> GitHub issue</a>.
 </Alert>
 
-<Alert variant="outlined" severity="info">
-  The <a href="/reference/plugins/plugin-system/">Pixie Plugin System</a> does not work with Air Gapped Pixie.
-</Alert>
-
 ## Prerequisites
 
 - Review Pixie's [requirements](/installing-pixie/requirements) to make sure that your Kubernetes cluster is supported.
