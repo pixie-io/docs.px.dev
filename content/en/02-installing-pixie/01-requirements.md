@@ -12,6 +12,7 @@ Before installing Pixie to your Kubernetes cluster, please ensure that your syst
 - [CPU](/installing-pixie/requirements/#cpu)
 - [Memory](/installing-pixie/requirements/#memory)
 - [Network](/installing-pixie/requirements/#network-traffic)
+- [Security](/installing-pixie/requirements/#pod-security-context)
 
 Please refer to the [install guides](/installing-pixie/install-guides/) for information on how to install Pixie to your K8s cluster.
 
