@@ -31,6 +31,7 @@ This page describes how to troubleshoot Pixie. We frequently answer questions on
 - [How do I check the Pixie logs for plugin errors?](#troubleshooting-a-pixie-plugin-how-do-i-check-the-pixie-logs-for-plugin-errors)
 - [How do I check the status or history of an export script?](#troubleshooting-a-pixie-plugin-how-do-i-check-the-status-or-history-of-an-export-script)
 - [Why isn't my data exporting when I run an OpenTelemetry export script in the Live UI?](#troubleshooting-a-pixie-plugin-why-isn't-my-data-exporting-when-i-run-an-opentelemetry-export-script-in-the-live-ui)
+- ["OTel export ... failed with error 'UNIMPLEMENTED'. Details: unknown service"](#otel-export-failed-with-error-unimplemented-details-unknown-service)
 
 ## Troubleshooting Deployment
 
@@ -210,3 +211,7 @@ Query fbf952e9-7718-4890-a7d9-7986e18effcf failed, reason: Internal : OTel expor
 The Live UI's [`Scratch Pad`](/using-pixie/using-live-ui/#write-your-own-pxl-scripts-use-the-scratch-pad) is great tool for quickly developing PxL scripts to export Pixie data in the OpenTelemetry format.
 
 When developing OpenTelemetry export scripts in the Live UI, make sure that your PxL script calls [`px.display()`](/reference/pxl/operators/px.display). The Live UI requires scripts to call this function in order to execute a query. Note that the PxL scripts used by Pixie Plugins do not have the `px.display()` requirement. For more information, see the [Export OpenTelemetry Data](/tutorials/integrations/otel/) tutorial.
+
+### "OTel export failed with error 'UNIMPLEMENTED'. Details: unknown service"
+If you see this error, the collector endpoint that you configured for your plugin does not implement the OpenTelemetry Collector protocol. You should verify that the endpoint is correct.
+Alternatively you can deploy a demo collector by following the directions [here](https://github.com/pixie-io/pixie-demos/tree/main/otel-collector).
