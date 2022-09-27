@@ -1,7 +1,7 @@
 ---
-title: 'Integrations and Alerts'
-metaTitle: 'Tutorials | Integrations and Alerts'
-metaDescription: 'Learn how to use Pixie integrations.'
+title: "Integrations and Alerts"
+metaTitle: "Tutorials | Integrations and Alerts"
+metaDescription: "Learn how to use Pixie integrations."
 order: 30
 ---
 

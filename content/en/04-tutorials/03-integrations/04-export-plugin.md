@@ -1,7 +1,7 @@
 ---
-title: 'Exporting PxL Scripts to a Plugin'
-metaTitle: 'Tutorials | Integrations and Alerts | Exporting a PxL Script'
-metaDescription: 'Export PxL Scripts to a Plugin'
+title: "Exporting PxL Scripts to a Plugin"
+metaTitle: "Tutorials | Integrations and Alerts | Exporting a PxL Script"
+metaDescription: "Export PxL Scripts to a Plugin"
 order: 4
 redirect_from:
   - /tutorials/export-live-view/

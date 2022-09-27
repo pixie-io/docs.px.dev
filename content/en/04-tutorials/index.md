@@ -1,7 +1,7 @@
 ---
-title: 'Tutorials'
-metaTitle: 'Tutorials'
-metaDescription: 'Tutorials for using Pixie'
+title: "Tutorials"
+metaTitle: "Tutorials"
+metaDescription: "Tutorials for using Pixie"
 order: 40
 ---
 
