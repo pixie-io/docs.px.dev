@@ -10,3 +10,4 @@ Tutorials:
 - [Slack Alerts using the Pixie API](/tutorials/integrations/slackbot-alert)
 - [Grafana Datasource Plugin](/tutorials/integrations/grafana)
 - [Export Data to OpenTelemetry](/tutorials/integrations/otel)
+- [Exporting PxL Scripts to a Plugin](/tutorials/integrations/export-plugin)
