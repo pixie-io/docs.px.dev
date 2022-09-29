@@ -16,6 +16,7 @@ Pixie offers the following deploy options:
 - [Configure Pixie's memory usage](#configure-pixie-memory-usage)
 - [Set the data access mode](#setting-the-data-access-mode)
 - [Select metadata storage option](#select-metadata-storage-option)
+- [Configure a custom image registry](#custom-image-registry) 
 
 To see the full set of deploy options, install the [Pixie CLI](/installing-pixie/install-schemes/cli/) and run `px deploy --help`.
 
@@ -195,4 +196,82 @@ To deploy with Helm using the etcd operator, use the `--useEtcdOperator` flag.
 
 ```bash
 helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-key-goes-here> --namespace pl --create-namespace --set pixie-chart.useEtcdOperator=true
+```
+
+## Custom Image Registry
+
+By default, Pixie uses images hosted on `gcr.io`. Pixie allows you to specify a custom image registry for clusters which may not have access to `gcr.io` or for users who simply want to host their own images. 
+
+Pixie expects hosted images to adhere to the following format: `${custom_registry}/${defaultImagePath | sed 's/\//-/g'}`. In other words, Pixie will expect your images to be hosted on your registry, where the image name in your registry is Pixie's full image path with any `/` replaced with `-`. For example: `gcr.io/pixie-oss/pixie-dev/vizier/metadata_server_image:latest` should pushed to `$registry/gcr.io-pixie-oss-pixie-dev-vizier-metadata_server_image:latest`.
+
+### Finding all images
+
+1. Download the Vizier artifacts:
+
+```bash
+curl https://storage.googleapis.com/pixie-dev-public/vizier/latest/vizier_yamls.tar | tar x
+cd yamls
+```
+
+2. Determine whether you'd like to deploy Pixie with or without etcd. We recommend installing Pixie without etcd as long as your cluster supports Pixie creating and using PVs.
+To deploy Pixie without etcd, use the following yamls:
+
+```
+vizier/vizier_metadata_persist_prod.yaml
+vizier_deps/nats_prod.yaml
+```
+
+To deploy Pixie with etcd, use the following yamls:
+
+```
+vizier/vizier_etcd_metadata_prod.yaml
+vizier_deps/etcd_prod.yaml
+```
+
+3. Collect and publish the required Pixie Vizier images to your custom registry. Note: the below commands assume you are deploying Pixie without etcd.
+To list the images needed to deploy Vizier:
+
+```bash
+cat images/vizier_image_list.txt
+```
+
+4. Pixie also depends on OLM to deploy its operator. The required OLM images are listed below:
+
+```
+quay.io/operator-framework/olm
+quay.io/operator-framework/olm@sha256:b706ee6583c4c3cf8059d44234c8a4505804adcc742bcddb3d1e2f6eff3d6519
+quay.io/operator-framework/configmap-operator-registry:latest
+```
+
+5. You will also need to build your own OLM bundle. To do so, you will first need to download [opm](https://docs.openshift.com/container-platform/4.6/cli_reference/opm-cli.html).
+
+```bash
+opm index export --index gcr.io/pixie-oss/pixie-prod/operator/bundle_index:0.0.1 
+```
+
+Find the current operator version from `downloaded/pixie-operator/package.yaml` and locate the operator's csv in `downloaded/pixie-operator/<version>/csv.yaml`.
+In the `csv.yaml`, remove `replaces` line and update the image tag for `gcr.io/pixie-oss/pixie-prod/operator/operator_image:<version>` to your hosted image.
+
+Next, build your bundle by running the following:
+
+```bash
+opm alpha bundle generate --package pixie-operator --channels stable --default stable --directory downloaded/pixie-operator/<version>
+docker build -t ${registry}/bundle:<version> -f bundle.Dockerfile .
+docker push ${registry}/bundle:<version>
+opm index add --bundles ${registry}/bundle:<version> --tag ${registry}/pixie-oss-pixie-prod-operator-bundle_index:0.0.1 -u docker
+docker push ${registry}/pixie-oss-pixie-prod-operator-bundle_index:0.0.1 
+```
+
+6. Deploy Vizier using the `registry` flag.
+
+From the CLI:
+
+```bash
+px deploy --registry <your-registry>
+```
+
+Through Helm:
+
+```bash
+helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-key-goes-here> --namespace pl --create-namespace --set registry=<your registry> 
 ```
