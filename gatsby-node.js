@@ -459,6 +459,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   }
   type SitePage implements Node {
     fields: SitePageFields
+    context: SitePageContext
   }
   type SitePageFields {
     slug: String
@@ -466,6 +467,9 @@ exports.createSchemaCustomization = ({ actions }) => {
     title: String
     level: Int
     directory: Boolean
+  }
+  type SitePageContext {
+    description: String
   }
   `;
   createTypes(typeDefs);
