@@ -5,7 +5,7 @@ metaDescription: "Commonly asked questions about Pixie."
 order: 5
 ---
 
-**General**
+***General***
 
 - [What is Pixie?](#general-what-is-pixie)
 - [Who created Pixie?](#general-who-created-pixie)
