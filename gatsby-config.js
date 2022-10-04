@@ -68,6 +68,7 @@ const plugins = [
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-material-ui',
   'gatsby-plugin-styled-components',
+  'gatsby-plugin-netlify',
   {
     resolve: 'gatsby-plugin-mdx',
     options: {
