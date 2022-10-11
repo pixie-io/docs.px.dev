@@ -31,7 +31,7 @@ This page describes how to troubleshoot Pixie. We frequently answer questions on
 - [How do I check the Pixie logs for plugin errors?](#troubleshooting-a-pixie-plugin-how-do-i-check-the-pixie-logs-for-plugin-errors)
 - [How do I check the status or history of an export script?](#troubleshooting-a-pixie-plugin-how-do-i-check-the-status-or-history-of-an-export-script)
 - [Why isn't my data exporting when I run an OpenTelemetry export script in the Live UI?](#troubleshooting-a-pixie-plugin-why-isn't-my-data-exporting-when-i-run-an-opentelemetry-export-script-in-the-live-ui)
-- ["OTel export ... failed with error 'UNIMPLEMENTED'. Details: unknown service"](#otel-export-failed-with-error-unimplemented-details-unknown-service)
+- ["OTel export ... failed with error 'UNIMPLEMENTED'. Details: unknown service"](#troubleshooting-a-pixie-plugin-"otel-export-failed-with-error-'unimplemented'.-details:-unknown-service")
 
 ## Troubleshooting Deployment
 
