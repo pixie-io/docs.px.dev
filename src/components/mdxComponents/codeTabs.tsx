@@ -18,9 +18,8 @@
 
 import * as React from 'react';
 import { useContext, useEffect, useState } from 'react';
-import withStyles from '@material-ui/core/styles/withStyles';
-import Tabs from '@material-ui/core/Tabs';
-import { Tab } from '@material-ui/core';
+import withStyles from '@mui/styles/withStyles';
+import { Tab, Tabs } from '@mui/material';
 import { TabSwitcherProviderContext } from '../tabSwitcherProvider';
 
 // human readable versions of names
@@ -68,15 +67,8 @@ export function useCodeContextState(fetcher) {
 
 const CodeTabs = withStyles((theme) => ({
   codeTabsWrapper: {
-    color: theme.palette.type === 'light' ? '#3EF3F3' : '#17AAAA',
+    color: theme.palette.mode === 'light' ? '#3EF3F3' : '#17AAAA',
   },
-  codeTabsRow: {
-    position: 'relative',
-    bottom: '-14px',
-    fontWeight: 'bold',
-
-  },
-
 }))((props: any) => {
   const {
     children,
@@ -84,15 +76,14 @@ const CodeTabs = withStyles((theme) => ({
   } = props;
   const tabCtx = useContext(TabSwitcherProviderContext);
 
-  // eslint-disable-next-line no-underscore-dangle
-  let _children;
+  let tempChildren;
   if (!Array.isArray(children)) {
-    _children = [children];
+    tempChildren = [children];
   } else {
-    _children = [...children];
+    tempChildren = [...children];
   }
 
-  _children.sort((a, b) => {
+  tempChildren.sort((a, b) => {
     function makeKey({
       language,
       title,
@@ -112,7 +103,7 @@ const CodeTabs = withStyles((theme) => ({
     tabCtx.setSharedChoice(e);
   };
 
-  let possibleChoices = _children.map((x) => {
+  let possibleChoices = tempChildren.map((x) => {
     const {
       title,
       language,
@@ -154,17 +145,17 @@ const CodeTabs = withStyles((theme) => ({
   if (actualDifferentChoices.length === 1) {
     return possibleChoices.map((c, idx) => (
       <div
-        key={_children[idx]}
+        key={tempChildren[idx]}
         className='tab-content'
       >
-        {_children[idx]}
+        {tempChildren[idx]}
       </div>
     ));
   }
 
   const names = possibleChoices.map((choice, idx) => {
     if (choice === finalSelection) {
-      code = _children[idx];
+      code = tempChildren[idx];
     }
     return (
       <Tab
@@ -181,7 +172,16 @@ const CodeTabs = withStyles((theme) => ({
   return (
     possibleChoices.length === 1 ? code : (
       <div className={classes.codeTabsWrapper}>
-        <Tabs value={finalSelection} className={classes.codeTabsRow}>
+        <Tabs
+          value={finalSelection}
+          sx={{
+            position: 'relative',
+            bottom: '-14px',
+            fontWeight: 'bold',
+          }}
+          indicatorColor='secondary'
+          textColor='secondary'
+        >
           {names}
         </Tabs>
         <div className='tab-content'>{code}</div>

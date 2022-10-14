@@ -16,8 +16,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import withStyles from '@material-ui/core/styles/withStyles';
-import { Box, Tooltip } from '@material-ui/core';
+import withStyles from '@mui/styles/withStyles';
+import { Box, Tooltip } from '@mui/material';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import * as React from 'react';
 import vsLight from 'prism-react-renderer/themes/duotoneLight';
@@ -31,7 +31,7 @@ const LineNumber = withStyles((theme) => ({
     width: '20px',
     textAlign: 'right',
     paddingRight: '20px',
-    color: theme.palette.type === 'light' ? '#ccc' : '#e0ebf7',
+    color: theme.palette.mode === 'light' ? '#ccc' : '#e0ebf7',
     fontFamily: '"Roboto Mono", Monospace',
     userSelect: 'none',
   },
@@ -40,9 +40,9 @@ const LineNumber = withStyles((theme) => ({
 
 const CodeRenderer = withStyles((theme) => ({
   code: {
-    backgroundColor: theme.palette.type === 'light' ? '#f3f3f3' : '#292929',
+    backgroundColor: theme.palette.mode === 'light' ? '#f3f3f3' : '#292929',
     borderRadius: '5px',
-    boxShadow: theme.palette.type === 'light' ? '0 2px 2px rgba(0,0,0, 0.15)' : '0px 4px 16px rgba(0, 0, 0, 0.15)',
+    boxShadow: theme.palette.mode === 'light' ? '0 2px 2px rgba(0,0,0, 0.15)' : '0px 4px 16px rgba(0, 0, 0, 0.15)',
     marginBottom: '32px',
     marginTop: '12px',
     position: 'relative',

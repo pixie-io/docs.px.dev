@@ -17,8 +17,8 @@
  */
 
 import * as React from 'react';
-import { makeStyles, TypographyVariant } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@mui/styles';
+import { TypographyVariant, Typography } from '@mui/material';
 import clipLink from '../images/clip-link.png';
 
 const useStyles = makeStyles(() => ({

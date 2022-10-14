@@ -49,6 +49,7 @@ const algolia = {
     apiKey: algoliaApiKey,
     indexName: algoliaIndex, // for all queries
     // eslint-disable-next-line global-require
+    // eslint-disable-next-line import/extensions
     queries: require('./src/utils/algolia-queries.ts').queries,
     settings: {
       // optional, any index settings
@@ -63,11 +64,11 @@ const algolia = {
 
 const plugins = [
   'gatsby-plugin-sitemap',
-  {
-    resolve: 'gatsby-plugin-material-ui',
-
-  },
+  'gatsby-plugin-sharp',
+  'gatsby-plugin-react-helmet',
+  'gatsby-plugin-material-ui',
   'gatsby-plugin-styled-components',
+  'gatsby-plugin-netlify',
   {
     resolve: 'gatsby-plugin-mdx',
     options: {
@@ -76,7 +77,7 @@ const plugins = [
           resolve: 'gatsby-remark-relative-images',
         },
         {
-          resolve: require.resolve('./src/plugins/gatsby-plugin-code-tabs.ts'),
+          resolve: require.resolve('./src/plugins/gatsby-plugin-code-tabs'),
         },
         {
           resolve: 'gatsby-remark-images',
@@ -94,21 +95,17 @@ const plugins = [
       extensions: ['.mdx', '.md'],
     },
   },
-  'gatsby-plugin-sharp',
-  'gatsby-plugin-emotion',
-  'gatsby-plugin-force-trailing-slashes',
-  'gatsby-plugin-react-helmet',
-  {
-    resolve: 'gatsby-plugin-react-helmet-canonical-urls',
-    options: {
-      siteUrl: 'https://docs.px.dev',
-    },
-  },
   {
     resolve: 'gatsby-source-filesystem',
     options: {
       name: 'en',
       path: `${__dirname}/content/`,
+    },
+  },
+  {
+    resolve: 'gatsby-plugin-react-helmet-canonical-urls',
+    options: {
+      siteUrl: 'https://docs.px.dev',
     },
   },
   {
@@ -141,9 +138,9 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-sass',
     options: {
-      includePaths: ['node_modules', './src/scss'],
-      // eslint-disable-next-line global-require
-      implementation: require('sass'),
+      sassOptions: {
+        includePaths: ['node_modules', './src/scss'],
+      },
     },
   },
   {
@@ -156,15 +153,14 @@ const plugins = [
       display: 'block',
     },
   },
-  '@pauliescanlon/gatsby-mdx-embed',
   'gatsby-plugin-remove-serviceworker',
+  'gatsby-plugin-meta-redirect',
   {
     resolve: 'gatsby-redirect-from',
     options: {
       query: 'allMdx',
     },
   },
-  'gatsby-plugin-meta-redirect',
 ];
 
 if ('GATSBY_ALGOLIA_APP_ID' in process.env) {
@@ -173,6 +169,7 @@ if ('GATSBY_ALGOLIA_APP_ID' in process.env) {
 
 module.exports = {
   pathPrefix: config.gatsby.pathPrefix,
+  trailingSlash: 'always',
   siteMetadata: {
     title: config.siteMetadata.title,
     description: config.siteMetadata.description,

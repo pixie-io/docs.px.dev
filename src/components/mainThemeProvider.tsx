@@ -18,42 +18,46 @@
 
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
-import { ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme, useMediaQuery } from '@material-ui/core';
+import { createTheme, ThemeProvider, Theme } from '@mui/material/styles';
+import { useMediaQuery, StyledEngineProvider } from '@mui/material';
 
 import './styles.css';
 import AppThemeOptions from './theme';
 
-export const ThemeModeContext = React.createContext(
-  {
-    theme: null,
-    toggleTheme: null,
-  },
-);
-export default function MainThemeProvider({ children }) {
+declare module '@mui/styles/defaultTheme' {
+  interface DefaultTheme extends Theme {}
+}
+
+export const ThemeModeContext = React.createContext({
+  theme: null,
+  toggleTheme: null,
+});
+
+const MainThemeProvider = ({ children }) => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const [theme, setTheme] = React.useState('dark');
   const firstRun = useRef(true);
-  useEffect(
-    () => {
-      if (firstRun.current) {
-        firstRun.current = false;
-        return;
-      }
-      setTheme(prefersDarkMode ? 'dark' : 'light');
-    }, [prefersDarkMode],
-  );
+  useEffect(() => {
+    if (firstRun.current) {
+      firstRun.current = false;
+      return;
+    }
+    setTheme(prefersDarkMode ? 'dark' : 'light');
+  }, [prefersDarkMode]);
 
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
-  const muiTheme = createMuiTheme(AppThemeOptions[theme]);
+  const muiTheme = createTheme(AppThemeOptions[theme]);
 
   return (
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
     <ThemeModeContext.Provider value={{ theme, toggleTheme }}>
-      <ThemeProvider theme={muiTheme}>
-        {children}
-      </ThemeProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={muiTheme}>{children}</ThemeProvider>
+      </StyledEngineProvider>
     </ThemeModeContext.Provider>
   );
-}
+};
+
+export default MainThemeProvider;

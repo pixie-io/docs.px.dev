@@ -16,8 +16,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import withStyles from '@material-ui/core/styles/withStyles';
 import * as React from 'react';
+import withStyles from '@mui/styles/withStyles';
 
 const Note = withStyles(() => ({
   note: {

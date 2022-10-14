@@ -18,11 +18,11 @@
 
 import React from 'react';
 // eslint-disable-next-line
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import SEO from 'components/seo';
 
 import { Layout } from 'components';
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 import { graphql } from 'gatsby';
 import HLink from '../components/mdxComponents/h-link';
 import parseMd from '../components/parseMd';

@@ -17,33 +17,28 @@
  */
 
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import withStyles from '@material-ui/core/styles/withStyles';
-// eslint-disable-next-line
-import { Theme } from '@material-ui/core';
+
+import { withStyles } from '@mui/styles';
+import { Button } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import Link from 'components/link';
 import { urlFromSlug } from 'components/utils';
 import nextBtn from '../images/btn-next-icon.svg';
 import prevBtn from '../images/btn-prev-icon.svg';
 
-const NextPrevButton = withStyles((theme: Theme) => ({
-  root: {
-    height: '62px',
-    fontSize: '16px',
-    lineHeight: '20px',
-    minWidth: '230px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    marginBottom: '24px',
-    borderColor: theme.palette.type === 'light' ? '#DBDDE0' : '#353738',
-  },
-  label: {
-    color: theme.palette.primary.main,
-  },
+const NextPrevButton = styled(Button)(({ theme }) => ({
+  height: '62px',
+  fontSize: '16px',
+  lineHeight: '20px',
+  minWidth: '230px',
+  display: 'flex',
+  justifyContent: 'space-between',
+  marginBottom: '24px',
+  borderColor: theme.palette.mode === 'light' ? '#DBDDE0' : '#353738',
+  color: theme.palette.primary.main,
+}));
 
-}))(Button);
-
-const NextPrevious = withStyles((theme: Theme) => ({
+const NextPrevious = withStyles((theme) => ({
   main: {
     paddingTop: theme.spacing(14),
     paddingBottom: theme.spacing(14),

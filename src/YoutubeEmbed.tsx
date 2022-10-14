@@ -18,7 +18,7 @@
 
 import * as React from 'react';
 import './components/styles.css';
-import withStyles from '@material-ui/core/styles/withStyles';
+import { withStyles } from '@mui/styles';
 
 const YoutubeEmbed = withStyles(() => ({
   videoResponsive: {

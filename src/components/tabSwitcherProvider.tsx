@@ -24,12 +24,16 @@ export const TabSwitcherProviderContext = React.createContext(
     setSharedChoice: null,
   },
 );
-export default function TabSwitcherProvider({ children }) {
+
+const TabSwitcherProvider = ({ children }) => {
   const [sharedChoice, setSharedChoice] = React.useState(null);
 
   return (
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
     <TabSwitcherProviderContext.Provider value={{ sharedChoice, setSharedChoice }}>
       {children}
     </TabSwitcherProviderContext.Provider>
   );
-}
+};
+
+export default TabSwitcherProvider;

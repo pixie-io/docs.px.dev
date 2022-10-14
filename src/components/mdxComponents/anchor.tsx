@@ -18,10 +18,9 @@
 
 import * as React from 'react';
 import { Link } from 'gatsby';
-import { makeStyles } from '@material-ui/core/styles';
-import { Theme } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles((theme) => ({
   link: {
     color: theme.palette.secondary.main,
     fontFamily: 'inherit',

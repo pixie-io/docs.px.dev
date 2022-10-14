@@ -1,0 +1,7 @@
+{
+  "name": "gatsby-plugin-code-tabs",
+  "version": "1.0.0",
+  "description": "Log stuff in a Gatsby site's build process",
+  "main": "index.ts",
+  "license": "MIT"
+}

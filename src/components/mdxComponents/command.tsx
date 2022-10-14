@@ -16,16 +16,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import withStyles from '@material-ui/core/styles/withStyles';
-import { Theme } from '@material-ui/core';
 import * as React from 'react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import withStyles from '@mui/styles/withStyles';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-const Command = withStyles((theme: Theme) => ({
+const Command = withStyles((theme) => ({
   input: {
-    backgroundColor: theme.palette.type === 'light' ? '#212324' : '#292929',
+    backgroundColor: theme.palette.mode === 'light' ? '#212324' : '#292929',
     borderRadius: '5px',
     boxShadow: '0px 4px 16px rgba(0, 0, 0, 0.15)',
     marginBottom: '16px',

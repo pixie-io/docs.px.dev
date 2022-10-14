@@ -18,27 +18,14 @@
 
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
-import withStyles from '@material-ui/core/styles/withStyles';
-import { Theme } from '@material-ui/core';
+import { withStyles } from '@mui/styles';
 import { Layout } from 'components';
 import SEO from 'components/seo';
 import img404 from '../images/404.svg';
 
-interface Props {
-  data: {
-    site: {
-      siteMetadata: {
-        title: string
-      }
-    }
-    allMdx: any
-    mainCategories: any
-  }
-}
-
-const NotFoundPage = withStyles((theme: Theme) => ({
+const NotFoundPage = withStyles((theme) => ({
   pageContainer: {
-    backgroundColor: theme.palette.type === 'light' ? theme.palette.background.default : '#212324',
+    backgroundColor: theme.palette.mode === 'light' ? theme.palette.background.default : '#212324',
     textAlign: 'center',
     paddingTop: '100px',
     color: theme.overrides.MuiTypography.body1.color,

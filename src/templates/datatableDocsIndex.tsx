@@ -19,11 +19,11 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 // eslint-disable-next-line
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import SEO from 'components/seo';
 import {
   Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 import slugify from 'slugify';
 import { Layout } from 'components';
 
@@ -77,8 +77,8 @@ const TableDocsIndexTemplate = ((props: any) => {
           {title}
         </HLink>
         <Typography variant='body1'>List of data sources automatically collected by Pixie.</Typography>
-        <TableContainer component={Paper}>
-          <Table className={classes.table} aria-label='table'>
+        <TableContainer component={Paper} sx={{ backgroundImage: 'none' }}>
+          <Table className={classes.table} aria-label='table' sx={{ width: '100%' }}>
             <TableHead>
               <TableRow>
                 <TableCell align='left'>Table</TableCell>

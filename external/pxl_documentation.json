@@ -1285,7 +1285,7 @@
         "def": {
           "name": "class Client",
           "declaration": "Client(self, token: str, server_url: str = 'work.withpixie.ai', use_encryption: bool = False, channel_fn: Callable[[str], grpc.Channel] = None, conn_channel_fn: Callable[[str], grpc.aio._base_channel.Channel] = None )",
-          "docstring": "Client is the main entry point to the Pixie API.\n\nTo setup the client, you need to generate an API token\nand pass it in as the first argument.\nSee: https://docs.px.dev/using-pixie/api-quick-start/\nfor more info."
+          "docstring": "Client is the main entry point to the Pixie API.\n\nTo setup the client, you need to generate an API token\nand pass it in as the first argument.\nSee: [https://docs.px.dev/using-pixie/api-quick-start/](https://docs.px.dev/using-pixie/api-quick-start/)\nfor more info."
         },
         "methods": [
           {
@@ -1384,7 +1384,7 @@
         "def": {
           "name": "class Row",
           "declaration": "Row(self, table: pxapi.data._TableStream, data: List[Any])",
-          "docstring": "Row represents a row of data for a particular table. You can easily access\ndata in the row by using the column name from the associated table.\n\nSpecifically designed to avoid allocation memory for the relation for each row.\n\nExamples:\n  \u003e\u003e\u003e tableA = Table(\"a\", relation=((\"cola\",int), (\"colb\", int), (\"colc\", string)))\n  \u003e\u003e\u003e row = Row(tableA, [1,2,\"three\"])\n  \u003e\u003e\u003e row[\"cola\"]\n  1\n  \u003e\u003e\u003e row[\"colb\"]\n  2\n  \u003e\u003e\u003e row[\"colc\"]\n  \"three\"\n  \u003e\u003e\u003e row\n  { \"cola\": 1, \"colb\": 2, \"colc\": \"three\" }"
+          "docstring": "Row represents a row of data for a particular table. You can easily access\ndata in the row by using the column name from the associated table.\n\nSpecifically designed to avoid allocation memory for the relation for each row.\n\nExamples:\n  \u003e\u003e\u003e tableA = Table(\"a\", relation=((\"cola\",int), (\"colb\", int), (\"colc\", string)))\n  \u003e\u003e\u003e row = Row(tableA, [1,2,\"three\"])\n  \u003e\u003e\u003e row[\"cola\"]\n  1\n  \u003e\u003e\u003e row[\"colb\"]\n  2\n  \u003e\u003e\u003e row[\"colc\"]\n  \"three\"\n  \u003e\u003e\u003e row\n  {`{ \"cola\": 1, \"colb\": 2, \"colc\": \"three\" }`}"
         },
         "methods": []
       },
@@ -6145,7 +6145,7 @@
       {
         "name": "redact_pii_best_effort",
         "brief": "Make a best effort to redact Personally Identifiable Information (PII).",
-        "desc": "Replace instances of PII with '\u003cREDACTED_$TYPE\u003e' eg. '\u003cREDACTED_EMAIL\u003e' or '\u003cREDACTED_IPv4\u003e'. Currently, it will (on a best effort basis) redact IP addresses, email addresses, MAC addresses, IMEI numbers, credit card numbers, and IBAN numbers. However, the redaction is not perfect, so it should not be used in a context where privacy needs to be guaranteed.",
+        "desc": "Replace instances of PII with {`'\u003cREDACTED_$TYPE\u003e'`} eg. {`'\u003cREDACTED_EMAIL\u003e'`} or {`'\u003cREDACTED_IPv4\u003e'`}. Currently, it will (on a best effort basis) redact IP addresses, email addresses, MAC addresses, IMEI numbers, credit card numbers, and IBAN numbers. However, the redaction is not perfect, so it should not be used in a context where privacy needs to be guaranteed.",
         "examples": [
           {
             "value": "```\ndf.redacted = px.redact_pii_best_effort(df.req_body)\n```"

@@ -17,9 +17,8 @@
  */
 
 import * as React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
-import { Link } from 'gatsby';
 import github from './images/github-icon.svg';
 
 const useStyles = makeStyles(() => ({
@@ -75,11 +74,11 @@ const Footer = () => {
     <footer style={{ position: 'relative' }}>
       <div className={classes.copyrightBar}>
         <div className={classes.verticalCenter}>
-          <Link to='https://www.linuxfoundation.org/terms' className={classes.mutedLink}>Terms of Service</Link>
+          <a href='https://www.linuxfoundation.org/terms' className={classes.mutedLink}>Terms of Service</a>
           <span>
             |
           </span>
-          <Link to='https://www.linuxfoundation.org/privacy' className={classes.mutedLink}>Privacy Policy</Link>
+          <a href='https://www.linuxfoundation.org/privacy' className={classes.mutedLink}>Privacy Policy</a>
         </div>
         <div className={classes.centerContent}>
           Copyright © 2018- The Pixie Authors. All Rights Reserved. |

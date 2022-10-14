@@ -16,61 +16,65 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import withStyles from '@material-ui/core/styles/withStyles';
-import { Theme } from '@material-ui/core';
-import * as React from 'react';
-import { useEffect } from 'react';
-
+import React, { useEffect } from 'react';
 import { navigate } from 'gatsby';
-import { TreeItem } from '@material-ui/lab';
+import { styled } from '@mui/material/styles';
+import { TreeItem } from '@mui/lab';
 import { normalizePath, urlFromSlug } from 'components/utils';
 
-const CategoryItem = withStyles((theme: Theme) => ({
-  category: {
-    color: theme.palette.type === 'light' ? '#000000' : '#ffffff',
-    marginTop: 0,
-    marginBottom: 0,
-    marginLeft: '5px',
-  },
-  label_1: {
-    color: theme.palette.type === 'light' ? '#000000' : '#ffffff',
-    textRendering: 'optimizeLegibility',
-    fontFamily: 'Roboto',
-    fontWeight: 'bold',
-    fontSize: '14px',
-    lineHeight: '28px',
-    marginTop: '4px',
-    marginBottom: '4px',
-    WebkitFontSmoothing: 'antialiased',
-  },
-  label_2: {
-    color: theme.palette.type === 'light' ? '#4F4F4F' : '#D2D5DD',
-    textRendering: 'optimizeLegibility',
-    fontSize: '14px',
-    fontFamily: 'Roboto',
-    lineHeight: '17.5px',
-    marginTop: '4px',
-    marginBottom: '4px',
-    WebkitFontSmoothing: 'antialiased',
-  },
-  label_4: {
-    color: theme.palette.type === 'light' ? '#4F4F4F' : '#D2D5DD',
-    textRendering: 'optimizeLegibility',
-    fontSize: '14px',
-    fontFamily: 'Roboto',
-    lineHeight: '17.5px',
-    marginTop: '4px',
-    marginBottom: '4px',
-    WebkitFontSmoothing: 'antialiased',
-    marginLeft: '-10px',
-  },
-  iconContainer: {},
+type InputProps = {
+  level: number
+};
 
-}))(({
-  category, classes, location, expanded, setExpanded, setSelected,
+const StyledTreeItemRoot = styled(TreeItem)<InputProps>(({ theme, level }) => ({
+  color: theme.palette.mode === 'light' ? '#000000' : '#ffffff',
+  marginTop: 0,
+  marginBottom: 0,
+  marginLeft: '5px',
+  '.MuiTreeItem-content': {
+    padding: 0,
+    // eslint-disable-next-line no-nested-ternary
+    '& .MuiTreeItem-label': level === 1 ? {
+      color: theme.palette.mode === 'light' ? '#000000' : '#ffffff',
+      textRendering: 'optimizeLegibility',
+      fontFamily: 'Roboto',
+      fontWeight: 'bold',
+      fontSize: '14px',
+      lineHeight: '28px',
+      marginTop: '4px',
+      marginBottom: '4px',
+      WebkitFontSmoothing: 'antialiased',
+    } : (level === 2 || level === 3 ? {
+      color: theme.palette.mode === 'light' ? '#4F4F4F' : '#D2D5DD',
+      textRendering: 'optimizeLegibility',
+      fontWeight: 'normal',
+      fontSize: '14px',
+      fontFamily: 'Roboto',
+      lineHeight: '17.5px',
+      marginTop: '4px',
+      marginBottom: '4px',
+      WebkitFontSmoothing: 'antialiased',
+    } : {
+      color: theme.palette.mode === 'light' ? '#4F4F4F' : '#D2D5DD',
+      textRendering: 'optimizeLegibility',
+      fontSize: '14px',
+      fontWeight: 'normal',
+      fontFamily: 'Roboto',
+      lineHeight: '17.5px',
+      marginTop: '4px',
+      marginBottom: '4px',
+      WebkitFontSmoothing: 'antialiased',
+      marginLeft: '-10px',
+    }),
+  },
+}));
+
+const CategoryItem = (({
+  category, location, expanded, setExpanded, setSelected,
 }: any) => {
   const active = normalizePath(category.slug) === normalizePath(location.pathname);
   const needsExpand = normalizePath(location.pathname).includes(normalizePath(category.slug));
+
   useEffect(
     () => {
       if (category && category.id) {
@@ -84,34 +88,19 @@ const CategoryItem = withStyles((theme: Theme) => ({
     }, [],
   );
 
-  const getLevelClass = (level) => {
-    switch (level) {
-      case 1:
-        return classes.label_1;
-      case 2:
-      case 3:
-        return classes.label_2;
-      default:
-        return classes.label_4;
-    }
-  };
-
   const goToPage = (link) => {
     const mmsc = document.getElementById('main-meu-scroll-container');
     // @ts-ignore
     window.mmscScrollTop = mmsc.scrollTop;
     navigate(link);
   };
+
   return (
-    <TreeItem
-      className={classes.category}
+    <StyledTreeItemRoot
       nodeId={category.id}
       label={category.title}
-      classes={{
-        label: getLevelClass(category.level),
-        iconContainer: classes.iconContainer,
-      }}
-      onLabelClick={() => goToPage(urlFromSlug(category.slug))}
+      level={category.level}
+      onClick={() => goToPage(urlFromSlug(category.slug))}
     >
       {category.subCategories && category.subCategories.length
         ? category.subCategories.map((sub) => (
@@ -124,7 +113,7 @@ const CategoryItem = withStyles((theme: Theme) => ({
             expanded={expanded}
           />
         )) : null}
-    </TreeItem>
+    </StyledTreeItemRoot>
   );
 });
 export default CategoryItem;

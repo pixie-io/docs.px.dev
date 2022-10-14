@@ -22,12 +22,20 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 import React from 'react';
+import * as ReactDOM from 'react-dom';
 import MainThemeProvider from './src/components/mainThemeProvider.tsx';
 import './src/global.css';
 import SidebarProvider from './src/components/sidebar/sidebarProvider.tsx';
 import SearchProvider from './src/components/search-context.tsx';
+// eslint-disable-next-line import/extensions
 import { processClientEntry, runZoom } from './src/components/image-zoom-modal.plugin.ts';
 import TabSwitcherProvider from './src/components/tabSwitcherProvider.tsx';
+
+export const  replaceHydrateFunction = () => {
+  return (element, container, callback) => {
+    ReactDOM.render(element, container, callback);
+  };
+};
 
 export const onClientEntry = () => {
   processClientEntry();

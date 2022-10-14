@@ -16,12 +16,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import * as React from 'react';
+import React, { createElement } from 'react';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import ReactMarkdown from 'react-markdown';
-import { createElement } from 'react';
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 import AnchorTag from './anchor';
 
 const dateOptions = {

@@ -16,6 +16,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 const visit = require('unist-util-visit');
 
 function getFullMeta(node) {
@@ -35,7 +36,6 @@ module.exports = ({ markdownAST }, { className = 'code-tabs-wrapper' }) => {
   let lastParent = null;
   let pendingCode = [];
   let toRemove = [];
-
   function flushPendingCode() {
     if (pendingCode.length === 0) {
       return;

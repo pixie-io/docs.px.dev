@@ -17,12 +17,12 @@
  */
 
 import * as React from 'react';
-import { darken, lighten, makeStyles } from '@material-ui/core/styles';
 import Scrollspy from 'react-scrollspy';
-import { Theme } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
+import { darken, lighten } from '@mui/material';
 import { idFromSlug } from 'components/utils';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(theme => ({
   main: {
     marginTop: theme.spacing(4),
     marginLeft: theme.spacing(8),
@@ -31,7 +31,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     paddingLeft: 0,
     position: 'fixed',
     top: '100px',
-    borderLeft: theme.palette.type === 'light' ? '1px solid #DBDDE0' : '1px solid #353738',
+    borderLeft:
+      theme.palette.mode === 'light'
+        ? '1px solid #DBDDE0'
+        : '1px solid #353738',
     width: '240px',
     textIndent: '-9px',
   },
@@ -52,14 +55,17 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     '&.is-current': {
       borderLeft: `3px solid ${theme.palette.secondary.main}`,
-      paddingLeft: `calc(${theme.spacing(4)}px - 3px)`,
+      paddingLeft: `calc(${theme.spacing(4)} - 3px)`,
     },
   },
   indent: {
-    paddingLeft: `${theme.spacing(8)}px`,
-    color: theme.palette.type === 'light' ? lighten(theme.overrides.MuiTypography.body2.color, 0.4) : darken(theme.overrides.MuiTypography.body2.color, 0.4),
+    paddingLeft: theme.spacing(8),
+    color:
+      theme.palette.mode === 'light'
+        ? lighten(theme.overrides.MuiTypography.body2.color, 0.4)
+        : darken(theme.overrides.MuiTypography.body2.color, 0.4),
     '&.is-current': {
-      paddingLeft: `calc(${theme.spacing(8)}px - 3px)`,
+      paddingLeft: `calc(${theme.spacing(8)} - 3px)`,
     },
   },
 }));
@@ -77,15 +83,25 @@ const RightSidebar = ({ tableOfContents }) => {
     setActiveId(id);
   };
 
-  const toc = tableOfContents.map((item) => ({ ...item, ref: idFromSlug(item.value, item.depth) }));
+  const toc = tableOfContents.map((item) => ({
+    ...item,
+    ref: idFromSlug(item.value, item.depth),
+  }));
   return (
     <div className={classes.main}>
-      <Scrollspy items={toc.map((item) => item.ref)} currentClassName='is-current-' componentTag='div' onUpdate={(e) => onScrollUpdate(e)}>
+      <Scrollspy
+        items={toc.map((item) => item.ref)}
+        currentClassName='is-current-'
+        componentTag='div'
+        onUpdate={e => onScrollUpdate(e)}
+      >
         {toc.map((item) => (
           <a
             key={item.value}
             href={`#${item.ref}`}
-            className={`${classes.link} ${item.depth === 3 ? classes.indent : ''}  ${activeId === item.ref ? 'is-current' : ''}`}
+            className={`${classes.link} ${
+              item.depth === 3 ? classes.indent : ''
+            }  ${activeId === item.ref ? 'is-current' : ''}`}
             onClick={() => highLight(item.ref)}
           >
             {item.value}

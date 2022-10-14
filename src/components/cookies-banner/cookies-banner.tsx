@@ -16,11 +16,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import * as React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Cookies from 'js-cookie';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import { makeStyles } from '@mui/styles';
+import Button from '@mui/material/Button';
 
 const useStyles = makeStyles(() => ({
   banner: {
@@ -77,7 +76,12 @@ const CookiesBanner = () => {
         <a className={classes.link} href='https://linuxfoundation.org/cookies/' target='_blank' rel='noopener noreferrer'>use of cookies</a>
         .
       </div>
-      <Button type='button' className={classes.closeButton} onClick={() => close()}>
+      <Button
+        type='button'
+        className={classes.closeButton}
+        onClick={() => close()}
+        sx={{ border: '1px solid white' }}
+      >
         Close
       </Button>
     </div>

@@ -16,22 +16,21 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import withStyles from '@material-ui/core/styles/withStyles';
-import { Theme, createStyles, WithStyles } from '@material-ui/core';
 import React from 'react';
+import { WithStyles, withStyles, createStyles } from '@mui/styles';
 
-const styles = (theme: Theme) => createStyles({
+const styles = (theme) => createStyles({
   code: {
     fontFamily: '"Roboto Mono", Monospace',
-    color: theme.palette.type === 'light' ? '#c7254e' : '#E0EBF7',
+    color: theme.palette.mode === 'light' ? '#c7254e' : '#E0EBF7',
     borderWidth: '0.5px',
     borderStyle: 'solid',
     borderRadius: '4px',
     padding: '2.72px 5.44px',
     margin: 0,
     fontSize: '85%',
-    backgroundColor: theme.palette.type === 'light' ? '#f9f7fb' : '#292929',
-    borderColor: theme.palette.type === 'light' ? '#ede7f3' : '#171717',
+    backgroundColor: theme.palette.mode === 'light' ? '#f9f7fb' : '#292929',
+    borderColor: theme.palette.mode === 'light' ? '#ede7f3' : '#171717',
   },
 });
 

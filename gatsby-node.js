@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /*
  * Copyright 2018- The Pixie Authors.
  *
@@ -262,15 +263,24 @@ exports.createPages = ({
     );
   });
 };
-exports.onCreateWebpackConfig = ({ actions }) => {
+exports.onCreateWebpackConfig = ({ actions, plugins }) => {
   actions.setWebpackConfig({
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
       alias: { $components: path.resolve(__dirname, 'src/components') },
+      fallback: { 
+        fs: false,
+        path: require.resolve('path-browserify'),
+        process: require.resolve('process/browser'),
+        buffer: require.resolve('buffer'),
+      },
     },
-    node: {
-      fs: 'empty',
-    },
+    plugins: [
+      plugins.provide({
+        process: 'process/browser',
+        Buffer: ['buffer', 'Buffer'],
+      }),
+    ],
   });
 };
 
@@ -441,13 +451,26 @@ exports.onCreateNode = ({
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   const typeDefs = `
-            type Mdx implements Node {
-            frontmatter: MdxFrontmatter
-            }
-            type MdxFrontmatter @infer {
-
-            hidden: Boolean
-            }
-            `;
+  type Mdx implements Node {
+    frontmatter: MdxFrontmatter
+  }
+  type MdxFrontmatter @infer {
+    hidden: Boolean
+  }
+  type SitePage implements Node {
+    fields: SitePageFields
+    context: SitePageContext
+  }
+  type SitePageFields {
+    slug: String
+    id: String
+    title: String
+    level: Int
+    directory: Boolean
+  }
+  type SitePageContext {
+    description: String
+  }
+  `;
   createTypes(typeDefs);
 };

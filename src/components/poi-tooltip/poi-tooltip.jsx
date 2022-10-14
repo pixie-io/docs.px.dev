@@ -18,7 +18,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './poi-tooltip.module.scss';
+import * as styles from './poi-tooltip.module.scss';
 
 const PoiTooltip = ({ children, top, left }) => (
   <div className={styles.main} style={{ top: `${top}%`, left: `${left}%` }}>

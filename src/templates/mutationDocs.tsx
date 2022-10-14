@@ -19,12 +19,13 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 // eslint-disable-next-line
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import SEO from 'components/seo';
 import { Layout } from 'components';
 import parseMd from '../components/parseMd';
 import HLink from '../components/mdxComponents/h-link';
+// import parseMd from 'components/parseMd';
 
 const useStyles = makeStyles(() => ({
   mainContainer: {
@@ -67,8 +68,8 @@ const DocsTemplate = ((props: any) => {
         <HLink id='arguments' variant='h2'>
           Arguments
         </HLink>
-        <TableContainer component={Paper}>
-          <Table className={classes.table} aria-label='simple table'>
+        <TableContainer component={Paper} sx={{ backgroundImage: 'none' }}>
+          <Table className={classes.table} aria-label='simple table' sx={{ width: '100%' }}>
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
@@ -89,15 +90,15 @@ const DocsTemplate = ((props: any) => {
             </TableBody>
           </Table>
         </TableContainer>
-        {returnType && (
-          <div>
-            <HLink id='returns' variant='h2'>
-              Returns
-            </HLink>
-            <Typography variant='body1'>
-              {parseMd(`\`${returnType.types}\`: ${returnType.desc}`)}
-            </Typography>
-          </div>
+        {returnType && returnType.types && returnType.desc && (
+        <div>
+          <HLink id='returns' variant='h2'>
+            Returns
+          </HLink>
+          <Typography variant='body1'>
+            {parseMd(`\`${returnType.types}\`: ${returnType.desc}`)}
+          </Typography>
+        </div>
         )}
         {examples && examples.length ? (
           <div>

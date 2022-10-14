@@ -19,8 +19,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 // eslint-disable-next-line
-import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import SEO from 'components/seo';
 import { Layout } from 'components';
 import parseUdf from 'utils/parseUdf';
@@ -79,8 +79,8 @@ const UdfDocsTemplate = ((props: any) => {
         <HLink id='arguments' variant='h2'>
           Arguments
         </HLink>
-        <TableContainer component={Paper}>
-          <Table className={classes.table} aria-label='simple table'>
+        <TableContainer component={Paper} sx={{ backgroundImage: 'none' }}>
+          <Table className={classes.table} aria-label='simple table' sx={{ width: '100%' }}>
             <TableHead>
               <TableRow>
                 <TableCell align='left'>Variable</TableCell>

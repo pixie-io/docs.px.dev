@@ -16,7 +16,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 const notificationTypes = {
   warning: {

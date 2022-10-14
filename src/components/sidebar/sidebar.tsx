@@ -20,14 +20,12 @@ import * as React from 'react';
 import { useEffect } from 'react';
 
 import { graphql, StaticQuery } from 'gatsby'; // import navigate from gatsby
-import { Theme } from '@material-ui/core';
-import withStyles from '@material-ui/core/styles/withStyles';
-
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import { TreeView } from '@material-ui/lab';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import withStyles from '@mui/styles/withStyles';
+import { TreeView } from '@mui/lab';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { SidebarContext } from './sidebarProvider';
 import CategoryItem from './categoryItem';
 
@@ -42,28 +40,28 @@ export const GET_ARTIFACTS = gql`
 `;
 
 const ExpandFirstLevelOnce = (props) => {
-  const {
-    firstRun,
-    setFirstRun,
-    setExpanded,
-    edges,
-  } = props;
-  useEffect(
-    () => {
-      if (firstRun) {
-        setTimeout(() => setExpanded(edges
-          .filter((e) => e.node.fields && e.node.fields.level === 1)
-          .map((e) => e.node.fields.id)));
-        setFirstRun(false);
-      }
-    }, [],
-  );
+  const { firstRun, setFirstRun, setExpanded, edges } = props;
+  useEffect(() => {
+    if (firstRun) {
+      setTimeout(() =>
+        setExpanded(
+          edges
+            .filter((e) => e.node.fields && e.node.fields.level === 1)
+            .map((e) => e.node.fields.id),
+        ),
+      );
+      setFirstRun(false);
+    }
+  }, []);
   return null;
 };
-const Sidebar = withStyles((theme: Theme) => ({
+const Sidebar = withStyles((theme) => ({
   main: {
     backgroundColor: theme.palette.background.default,
-    borderRight: theme.palette.type === 'light' ? '1px solid #DBDDE0' : '1px solid #353738',
+    borderRight:
+      theme.palette.mode === 'light'
+        ? '1px solid #DBDDE0'
+        : '1px solid #353738',
     minWidth: '260px',
     boxSizing: 'border-box',
     height: 'calc(100vh - 54px)',
@@ -118,7 +116,11 @@ const Sidebar = withStyles((theme: Theme) => ({
     variables: { artifactName },
   });
 
-  const handleToggle = (event: React.ChangeEvent<{}>, nodeIds: string[], setExpanded) => {
+  const handleToggle = (
+    event: React.ChangeEvent<{}>,
+    nodeIds: string[],
+    setExpanded,
+  ) => {
     setExpanded(nodeIds);
   };
 
@@ -133,80 +135,80 @@ const Sidebar = withStyles((theme: Theme) => ({
 
   const processCategories = (edges) => {
     const newedges = edges.filter((e) => e.node.fields?.title);
-    const fields1 = newedges.map((e) => e.node.fields)
-      .filter((e) => e.level === 1);
-    const fields2 = newedges.map((e) => e.node.fields)
-      .filter((e) => e.level === 2);
-    const fields3 = newedges.map((e) => e.node.fields)
-      .filter((e) => e.level === 3);
-    const fields4 = newedges.map((e) => e.node.fields)
-      .filter((e) => e.level === 4);
-    return fields1
-      .map((e) => ({
-        title: e.title,
-        slug: e.slug,
-        id: e.id,
-        level: 1,
-        subCategories: fields2
-          .filter((item) => item.slug.split('/')[1] === e.slug.split('/')[1])
-          .map((subCat) => {
-            const thirdLevelCategories = fields3
-              .filter((item) => item.slug.split('/')[2] === subCat.slug.split('/')[2]);
-            return {
-              ...subCat,
-              ...{
-                subCategories: thirdLevelCategories.map((sc) => ({
-                  ...sc,
-                  subCategories: fields4.filter((item) => item.slug.split('/')[3] === sc.slug.split('/')[3]),
-                })),
-              },
-            };
-          }),
-      }));
+    const fields1 = newedges.map((e) => e.node.fields).filter((e) => e.level === 1);
+    const fields2 = newedges.map((e) => e.node.fields).filter((e) => e.level === 2);
+    const fields3 = newedges.map((e) => e.node.fields).filter((e) => e.level === 3);
+    const fields4 = newedges.map((e) => e.node.fields).filter((e) => e.level === 4);
+    return fields1.map((e) => ({
+      title: e.title,
+      slug: e.slug,
+      id: e.id,
+      level: 1,
+      subCategories: fields2
+        .filter((item) => item.slug.split('/')[1] === e.slug.split('/')[1])
+        .map((subCat) => {
+          const thirdLevelCategories = fields3.filter(
+            (item) => item.slug.split('/')[2] === subCat.slug.split('/')[2],
+          );
+          return {
+            ...subCat,
+            ...{
+              subCategories: thirdLevelCategories.map((sc) => ({
+                ...sc,
+                subCategories: fields4.filter(
+                  (item) => item.slug.split('/')[3] === sc.slug.split('/')[3],
+                ),
+              })),
+            },
+          };
+        }),
+    }));
   };
-
   return (
     <StaticQuery
       query={graphql`
-      query {
-        allSitePage(sort: {fields: fields___slug}) {
-          edges {
-            node {
-              fields {
-                slug
-                title
-                level
-                id
-                directory
+        query {
+          allSitePage(sort: {fields: fields___slug}) {
+            edges {
+              node {
+                fields {
+                  slug
+                  title
+                  level
+                  id
+                  directory
+                }
+              }
+            }
+          }
+          allMdx(
+            sort: { fields: [frontmatter___order], order: ASC }
+            filter: { frontmatter: { hidden: { ne: true } } }
+          ) {
+            edges {
+              node {
+                fields {
+                  slug
+                  title
+                  level
+                  lang
+                  id
+                  directory
+                }
               }
             }
           }
         }
-        allMdx(sort: {fields: [frontmatter___order], order: ASC}, filter: { frontmatter: {hidden: {ne: true}}}) {
-          edges {
-            node {
-              fields {
-                slug
-                title
-                level
-                lang
-                id
-                directory
-              }
-            }
-          }
-        }
-      }
-    `}
-      render={({
-        allMdx,
-        allSitePage,
-      }) => {
+      `}
+      render={({ allMdx, allSitePage }) => {
         const filteredMdxEdges = allMdx.edges.filter((n) => {
           if (lang !== 'en') {
-            if (n.node.fields.lang === lang
-              || !allMdx.edges.filter((nn) => nn.node.fields.lang === lang)
-                .find((e) => e.node.fields.slug.includes(n.node.fields.slug))) {
+            if (
+              n.node.fields.lang === lang
+              || !allMdx.edges
+                .filter((nn) => nn.node.fields.lang === lang)
+                .find((e) => e.node.fields.slug.includes(n.node.fields.slug))
+            ) {
               return true;
             }
             return false;
@@ -235,25 +237,21 @@ const Sidebar = withStyles((theme: Theme) => ({
                   setFirstRun={setFirstRun}
                 />
                 <div className={classes.toc}>
-
-                  {expanded.length
-                    ? (
-                      <div
-                        className={classes.toggle}
-                        onClick={() => setExpanded([])}
-                      >
-                        COLLAPSE ALL
-                      </div>
-                    )
-                    : (
-                      <div
-                        className={classes.toggle}
-                        onClick={() => setExpanded(getAllIds(allDocs))}
-                      >
-                        EXPAND ALL
-                      </div>
-
-                    )}
+                  {expanded.length ? (
+                    <div
+                      className={classes.toggle}
+                      onClick={() => setExpanded([])}
+                    >
+                      COLLAPSE ALL
+                    </div>
+                  ) : (
+                    <div
+                      className={classes.toggle}
+                      onClick={() => setExpanded(getAllIds(allDocs))}
+                    >
+                      EXPAND ALL
+                    </div>
+                  )}
                   <TreeView
                     defaultCollapseIcon={<ExpandMoreIcon />}
                     defaultExpandIcon={<ChevronRightIcon />}
@@ -271,17 +269,16 @@ const Sidebar = withStyles((theme: Theme) => ({
                         level: 1,
                       }}
                     />
-                    {processCategories(allDocs)
-                      .map((category) => (
-                        <CategoryItem
-                          setExpanded={setExpanded}
-                          setSelected={setSelected}
-                          expanded={expanded}
-                          key={category.id}
-                          location={location}
-                          category={category}
-                        />
-                      ))}
+                    {processCategories(allDocs).map((category) => (
+                      <CategoryItem
+                        setExpanded={setExpanded}
+                        setSelected={setSelected}
+                        expanded={expanded}
+                        key={category.id}
+                        location={location}
+                        category={category}
+                      />
+                    ))}
                   </TreeView>
                 </div>
                 <div className={classes.footer}>
@@ -303,7 +300,9 @@ const Sidebar = withStyles((theme: Theme) => ({
                   </a>
                   <div className={classes.version}>
                     Ver.&nbsp;
-                    {data && data.artifacts.items ? data.artifacts.items[0].version : 'n/a'}
+                    {data && data.artifacts.items
+                      ? data.artifacts.items[0].version
+                      : 'n/a'}
                   </div>
                 </div>
               </div>

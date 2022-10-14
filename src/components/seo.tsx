@@ -22,9 +22,9 @@ import Helmet from 'react-helmet';
 import favDark from '../images/favicon-dark.png';
 import favGreen from '../images/favicon-green.png';
 
-function SEO({
+const SEO = ({
   description, title, meta, type,
-}) {
+}) => {
   const favicon = {
     rel: 'icon',
     type: 'image/png',
@@ -144,7 +144,7 @@ function SEO({
       <script type='application/ld+json'>{JSON.stringify(structuredDataOrganization)}</script>
     </Helmet>
   );
-}
+};
 
 SEO.defaultProps = {
   meta: [],
@@ -155,7 +155,7 @@ SEO.defaultProps = {
 SEO.propTypes = {
   type: PropTypes.string,
   description: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
+  meta: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object])),
   title: PropTypes.string.isRequired,
 };
 

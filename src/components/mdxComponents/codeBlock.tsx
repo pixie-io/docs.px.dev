@@ -23,7 +23,7 @@ import {
   LiveProvider, LiveEditor, LiveError, LivePreview,
 } from 'react-live';
 
-import { CSSProperties } from '@material-ui/styles';
+import { CSSProperties } from '@mui/styles';
 import Pre from 'components/mdxComponents/pre';
 
 /** Removes the last token from a code example if it's empty. */
