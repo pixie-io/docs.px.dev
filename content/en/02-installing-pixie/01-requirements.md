@@ -18,7 +18,7 @@ Please refer to the [install guides](/installing-pixie/install-guides/) for info
 
 ## Kubernetes
 
-Kubernetes `v1.16+` is required.
+Kubernetes `v1.21+` is required.
 
 The following tables list Kubernetes environments that have been tested with Pixie.
 
