@@ -7,7 +7,7 @@ featuredGuide: true
 icon: k0s-logo.svg
 ---
 
-To set up Pixie on [k0s](https://kubernetes.io/docs/getting-started-guides/minikube/), you'll need to:
+To set up Pixie on [k0s](https://k0sproject.io/), you'll need to:
 
 1. Create a k0s cluster
 2. (Optional) Install a volume provisioner in the cluster
