@@ -141,16 +141,14 @@ Add users to your organization to share access to Pixie Live Views, query runnin
     export PL_CLOUD_ADDR=dev.withpixie.dev
     ```
 
-1. Install Pixie's CLI
-
-The easiest way to install Pixie's CLI is using the install script:
+1. Install Pixie's CLI. The easiest way to install Pixie's CLI is using the install script:
 
     ```bash
     # Copy and run command to install the Pixie CLI.
     bash -c "$(curl -fsSL https://withpixie.ai/install.sh)"
     ```
 
-For alternate install options (Docker, Debian package, RPM, direct download of the binary) see the [CLI Install](/installing-pixie/install-schemes/cli/) page.
+    For alternate install options (Docker, Debian package, RPM, direct download of the binary) see the [CLI Install](/installing-pixie/install-schemes/cli/) page.
 
 ## 3. Deploy Pixie 🚀
 
