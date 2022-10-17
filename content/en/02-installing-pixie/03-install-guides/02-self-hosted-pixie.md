@@ -34,42 +34,50 @@ git clone https://github.com/pixie-io/pixie.git
 cd pixie
 ```
 
-2. Install `mkcert` following the directions [here](https://github.com/FiloSottile/mkcert#installation). Pixie uses SSL to securely communicate between Pixie Cloud and the UI. Self-managed Pixie Cloud requires managing your own certificates. `mkcert` is a simple tool to create and install a local certificate authority (CA) in the system root store in order to generate locally-trusted certificates.
+2. (Optional) By default, the self-hosted Pixie Cloud will be accessible through `dev.withpixie.dev`. If you wish to use a custom domain name, replace all occurances of `dev.withpixie.dev` in the following files with the domain name of your choice.
+```bash
+k8s/cloud/public/proxy_envoy.yaml
+k8s/cloud/public/domain_config.yaml
+k8s/cloud/base/domain_config.yaml
+scripts/create_cloud_secrets.sh
+```
 
-3. Start `mkcert`. This command will set up local CA and create a root certificate that Chrome and your CLI will now trust. To access Pixie Cloud from different machine that the one it was set up on, you will need to install this certificate there as well.
+3. Install `mkcert` following the directions [here](https://github.com/FiloSottile/mkcert#installation). Pixie uses SSL to securely communicate between Pixie Cloud and the UI. Self-managed Pixie Cloud requires managing your own certificates. `mkcert` is a simple tool to create and install a local certificate authority (CA) in the system root store in order to generate locally-trusted certificates.
+
+4. Start `mkcert`. This command will set up local CA and create a root certificate that Chrome and your CLI will now trust. To access Pixie Cloud from different machine that the one it was set up on, you will need to install this certificate there as well.
 
 ```bash
 mkcert -install
 ```
 
-4. Create the `plc` namespace. This namespace is not currently configurable. Several of the install scripts expect Pixie Cloud to be deployed to the `plc` namespace.
+5. Create the `plc` namespace. This namespace is not currently configurable. Several of the install scripts expect Pixie Cloud to be deployed to the `plc` namespace.
 
 ```bash
 kubectl create namespace plc
 ```
 
-5. Create the Pixie Cloud secrets. From the top level `pixie/` directory, run:
+6. Create the Pixie Cloud secrets. From the top level `pixie/` directory, run:
 
 ```bash
 ./scripts/create_cloud_secrets.sh
 ```
 
-6. Install `kustomize` following the directions [here](https://kubectl.docs.kubernetes.io/installation/kustomize/).
+7. Install `kustomize` following the directions [here](https://kubectl.docs.kubernetes.io/installation/kustomize/).
 
-7. Deploy Pixie Cloud dependencies and wait for all pods within the `plc` namespace to become ready and available before proceeding to the next step. If there is an error, you may need to retry this step.
+8. Deploy Pixie Cloud dependencies and wait for all pods within the `plc` namespace to become ready and available before proceeding to the next step. If there is an error, you may need to retry this step.
 
 ```bash
 kustomize build k8s/cloud_deps/base/elastic/operator | kubectl apply -f -
 kustomize build k8s/cloud_deps/public | kubectl apply -f -
 ```
 
-8. Deploy Pixie Cloud.
+9. Deploy Pixie Cloud.
 
 ```bash
 kustomize build k8s/cloud/public/ | kubectl apply -f -
 ```
 
-9. Wait for all pods within the `plc` namespace to become ready and available. Note that you may have one or more `create-hydra-client-job` pod errors, but as long as long as another instance of that pod successfully completes, that is ok.
+10. Wait for all pods within the `plc` namespace to become ready and available. Note that you may have one or more `create-hydra-client-job` pod errors, but as long as long as another instance of that pod successfully completes, that is ok.
 
 ```bash
 kubectl get pods -n plc
@@ -91,7 +99,7 @@ kubectl get service vzconn-service -n plc
 go build src/utils/dev_dns_updater/dev_dns_updater.go
 ```
 
-3. You'll need to hardcode in your kube config. Leave this tab open.
+3. You'll need to hardcode in your kube config. If you are using a custom domain name, specify it as the value of the `--domain-name` flag. Leave this tab open.
 
 ```bash
 ./dev_dns_updater --domain-name="dev.withpixie.dev"  --kubeconfig=$HOME/.kube/config --n=plc
@@ -127,7 +135,7 @@ Add users to your organization to share access to Pixie Live Views, query runnin
 
 ## 2. Install the Pixie CLI
 
-1. Set the cloud address with an environment variable:
+1. Set the cloud address with an environment variable. If you configured a custom domain name, use that as the variable's value:
 
 ```bash
 export PL_CLOUD_ADDR=dev.withpixie.dev
