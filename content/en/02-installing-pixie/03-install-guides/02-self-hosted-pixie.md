@@ -119,15 +119,15 @@ Self-managed Pixie Cloud only supports one organization.
 
 1. Open the URL from the pod's logs to set the password for the `admin@default.com` user.
 
-<Alert variant="outlined" severity="warning">
-  If you've visited dev.withpixie.dev before, make sure to clear the cookies for this site or you'll get a login error.
-</Alert>
+    <Alert variant="outlined" severity="warning">
+      If you've visited dev.withpixie.dev before, make sure to clear the cookies for this site or you'll get a login error.
+    </Alert>
 
 1. Once the password has been set, login using `admin@default.com` for the `identifier` and your new password.
 
-<Alert variant="outlined" severity="warning">
-  There is a known issue with login on self-managed Pixie Cloud on Safari and Firefox. For now, use Chrome.
-</Alert>
+    <Alert variant="outlined" severity="warning">
+      There is a known issue with login on self-managed Pixie Cloud on Safari and Firefox. For now, use Chrome.
+    </Alert>
 
 ### Invite others to your organization (optional)
 
