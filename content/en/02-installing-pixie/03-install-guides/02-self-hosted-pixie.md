@@ -34,6 +34,24 @@ Get Pixie fully managed with [Pixie Community Cloud](/installing-pixie/install-g
     cd pixie
     ```
 
+1. Pick a cloud release version from the [tags](https://github.com/pixie-io/pixie/tags) on the repo. The following should pick the latest release for you.
+
+    ```bash
+    export LATEST_CLOUD_RELEASE=$(git tag | grep 'release/cloud'  | sort -r | head -n 1 | awk -F/ '{print $NF}')
+    ```
+
+1. Checkout the release tag.
+
+    ```bash
+    git checkout "release/cloud/prod/${LATEST_CLOUD_RELEASE}"
+    ```
+
+1. Update the versions in the appropriate kustomization file.
+
+    ```bash
+    perl -pi -e "s|newTag: latest|newTag: \"${LATEST_CLOUD_RELEASE}\"|g" k8s/cloud/public/kustomization.yaml
+    ```
+
 1. (Optional) By default, the self-hosted Pixie Cloud will be accessible through `dev.withpixie.dev`. If you wish to use a custom domain name, replace all occurances of `dev.withpixie.dev` in the following files with the domain name of your choice.
 
     ```bash
@@ -77,7 +95,7 @@ Get Pixie fully managed with [Pixie Community Cloud](/installing-pixie/install-g
     kustomize build k8s/cloud/public/ | kubectl apply -f -
     ```
 
-10. Wait for all pods within the `plc` namespace to become ready and available. Note that you may have one or more `create-hydra-client-job` pod errors, but as long as long as another instance of that pod successfully completes, that is ok.
+1. Wait for all pods within the `plc` namespace to become ready and available. Note that you may have one or more `create-hydra-client-job` pod errors, but as long as long as another instance of that pod successfully completes, that is ok.
 
     ```bash
     kubectl get pods -n plc
