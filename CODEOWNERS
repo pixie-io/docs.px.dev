@@ -1,0 +1,5 @@
+# The default assignees if none of the subpaths match.
+*               @pixie-io/core-maintainers
+
+content/        @pixie-io/docs
+src/            @pixie-io/ui
