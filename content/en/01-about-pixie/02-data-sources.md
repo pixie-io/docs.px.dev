@@ -42,6 +42,7 @@ Pixie automatically traces the following protocols:
 | Cassandra     | Supported           |                                |
 | Redis         | Supported           |                                |
 | Kafka         | Supported           |                                |
+| AMQP         | Beta Feature        | Must be [manually enabled](/reference/admin/deploy-options#set-a-pem-flag) during deployment using the `STIRLING_ENABLE_AMQP_TRACING` PEM flag. |
 
 Additional protocols are under development.
 
