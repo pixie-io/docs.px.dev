@@ -296,7 +296,7 @@ kubectl apply -f yamls/vizier_deps/etcd_prod.yaml
 
 ## Set a PEM flag
 
-PEM flags are used to configure the [Pixie Edge Module](https://docs.px.dev/reference/architecture/#vizier-components), Pixie's data collector component. PEM flags are often used to enable beta features.
+PEM flags are used to configure the [Pixie Edge Module](/reference/architecture/#vizier-components), Pixie's data collector component. PEM flags are often used to enable beta features.
 
 For example, to enable `STIRLING_ENABLE_AMQP_TRACING` when deploying with the [Pixie CLI](/installing-pixie/install-schemes/cli/), use the `--pem_flags` flag:
 
