@@ -440,14 +440,14 @@
           },
           {
             "ident": "start_time",
-            "desc": "The earliest timestamp of data to load. The format can be one of the following: (1) relative time with format \"-5m\" or \"-3h\", (2) absolute time with format \"2020-07-13 18:02:5.00 +0000\", or (3) absolute time in nanoseconds.",
+            "desc": "The earliest timestamp of data to load. The format can be one of the following: (1) relative time with format \"-5m\" or \"-3h\", (2) absolute time with format \"2020-07-13 18:02:5.00 +0000\", (3) absolute time in nanoseconds, or (4) `None`. Defaults to `None`. If `start_time` is `None`, then it begins with the first record in the table.",
             "types": [
               "px.Time"
             ]
           },
           {
             "ident": "end_time",
-            "desc": "The last timestamp of data to load. The format can be one of the following: (1) relative time with format \"-5m\" or \"-3h\", (2) absolute time with format \"2020-07-13 18:02:5.00 +0000\", or (3) absolute time in nanoseconds.",
+            "desc": "The last timestamp of data to load. The format can be one of the following: (1) relative time with format \"-5m\" or \"-3h\", (2) absolute time with format \"2020-07-13 18:02:5.00 +0000\", (3) absolute time in nanoseconds, or (4) `None`. Defaults to `None`. If `end_time` is `None` and `df.stream()` was not called on this DataFrame, then this DataFrame will process data until the last record that was in the table at the beginning of query execution. If `end_time` is `None` and `df.stream()` was called on this DataFrame, then this DataFrame will process data indefinitely.",
             "types": [
               "px.Time"
             ]
@@ -996,7 +996,7 @@
             "ident": "target",
             "desc": "The process or shared object to trace as specified by unique Vizier PID.",
             "types": [
-              "Union[px.UPID,px.SharedObject,px.Pod,pxtrace.Process]"
+              "Union[px.UPID,px.SharedObject,pxtrace.PodProcess,pxtrace.LabelSelector]"
             ]
           },
           {
@@ -1029,9 +1029,9 @@
           },
           {
             "ident": "resource",
-            "desc": "A description of the resource that creates this data. Must include 'service.name' but can also include other data as well.",
+            "desc": "A description of the resource that creates this data. Is a mapping of attribute name to a string or a column that stores data about the attribute. Must include 'service.name' as one attribute.",
             "types": [
-              "Dict[string, Column]"
+              "Dict[string, Column|string]"
             ]
           },
           {
@@ -1115,9 +1115,9 @@
           },
           {
             "ident": "attributes",
-            "desc": "A mapping of attribute name to the column name that stores data about the attribute.",
+            "desc": "A mapping of attribute name to a string or the column that stores data about the attribute.",
             "types": [
-              "Dict[string, string], optional"
+              "Dict[string, Column|string], optional"
             ]
           },
           {
@@ -1182,9 +1182,9 @@
           },
           {
             "ident": "attributes",
-            "desc": "A mapping of attribute name to the column name that stores data about the attribute.",
+            "desc": "A mapping of attribute name to a string or the column that stores data about the attribute.",
             "types": [
-              "Dict[double, Column], optional"
+              "Dict[string, Column|string], optional"
             ]
           },
           {
@@ -1256,9 +1256,9 @@
           },
           {
             "ident": "attributes",
-            "desc": "A mapping of attribute name to the column name that stores data about the attribute.",
+            "desc": "A mapping of attribute name to a string or the column that stores data about the attribute.",
             "types": [
-              "Dict[string, string], optional"
+              "Dict[string, Column|string], optional"
             ]
           },
           {
@@ -1470,6 +1470,52 @@
           "desc": "A materialized column pointer to use in output table definitions.",
           "types": [
             "px.TracingField"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "pxtrace.LabelSelector",
+        "brief": "Creates a Tracepoint target for a process.",
+        "desc": "Defines a tracepoint target for a process based a set of k8s labels representing a set of pods matching all of this labels. Optionally, a container and process can be provided.  ",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "labels",
+            "desc": "The K8s labels that can be resolved to a set of pods. Must be of a dictionary of key value pairs.",
+            "types": [
+              "dict\u003cstr, str\u003e"
+            ]
+          },
+          {
+            "ident": "namespace",
+            "desc": "The namespace that target pods are in.",
+            "types": [
+              "str"
+            ]
+          },
+          {
+            "ident": "container_name",
+            "desc": "The name of the container that's running the process. Specify this argument if a pod has more than one containers. The compiler will error out if a pod has multiple containers and this is not specified.",
+            "types": [
+              "str, optional"
+            ]
+          },
+          {
+            "ident": "process_name",
+            "desc": "A regexp that matches any substrings of the command line of the target process. Specify this if a container has more than one process. The compiler will error out if a container has multiple processes and this is not specified.",
+            "types": [
+              "str, optional"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "A pointer to that Process that can be passed as a target to UpsertTracepoint.",
+          "types": [
+            "ProcessTarget"
           ]
         }
       }
@@ -2658,6 +2704,29 @@
         }
       },
       {
+        "name": "cql_opcode_name",
+        "brief": "Convert a CQL op code to its name.",
+        "desc": "UDF to convert CQL request opcodes into their corresponding names.",
+        "examples": [
+          {
+            "value": "```\ndf.cmd = px.cql_opcode_name(df.req_op)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "req_op",
+              "desc": "A CQL opcode",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The request opcode's name.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
         "name": "deployment_id_to_deployment_name",
         "brief": "Get the Deployment Name from a Deployment ID.",
         "desc": "Gets the Kubernetes Deployment Name for the Deployment ID.If the given ID doesn't have an associated Kubernetes Deployment, this function returns an empty string",
@@ -2996,6 +3065,29 @@
           "retval": {
             "desc": "The value of arg1 divided by arg2.",
             "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "dns_rcode_name",
+        "brief": "Convert a DNS rcode to its name.",
+        "desc": "UDF to convert DNS rcodes into their corresponding names.",
+        "examples": [
+          {
+            "value": "```\ndf.rcode_name = px.dns_rcode_name(df.rcode)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "rcode",
+              "desc": "A DNS rcode",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The request opcode's name.",
+            "type": "STRING"
           }
         }
       },
@@ -4888,6 +4980,29 @@
           "retval": {
             "desc": "The product of `a` and `b`.",
             "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "mux_frame_type_name",
+        "brief": "Convert a Mux frame type to its name.",
+        "desc": "UDF to convert Mux frame type into their corresponding human-readable names.",
+        "examples": [
+          {
+            "value": "```\ndf.frame_type_name = px.mux_frame_type_name(df.req_cmd)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "frame_type",
+              "desc": "A Mux frame_type in numeric value",
+              "type": "INT64"
+            }
+          ],
+          "retval": {
+            "desc": "The mux frame type name.",
+            "type": "STRING"
           }
         }
       },
