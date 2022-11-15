@@ -127,21 +127,7 @@ Get Pixie fully managed with [Pixie Community Cloud](/installing-pixie/install-g
 
 ### Authentication using Kratos / Hydra
 
-Self-managed Pixie Cloud only supports one organization.
-
-1. To setup the default admin account, check the logs for the `create-admin-job` pod by running:
-
-    ```bash
-    kubectl logs create-admin-job-<pod_string> -n plc
-    ```
-
-1. Open the URL from the pod's logs to set the password for the `admin@default.com` user.
-
-    <Alert variant="outlined" severity="warning">
-      If you've visited dev.withpixie.dev before, make sure to clear the cookies for this site or you'll get a login error.
-    </Alert>
-
-1. Once the password has been set, login using `admin@default.com` for the `identifier` and your new password.
+Self-managed Pixie Cloud only supports one organization and precreates an admin account by default. Login using `admin@default.com` with `admin` as the password.
 
     <Alert variant="outlined" severity="warning">
       There is a known issue with login on self-managed Pixie Cloud on Safari and Firefox. For now, use Chrome.
