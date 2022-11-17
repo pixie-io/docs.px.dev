@@ -127,11 +127,13 @@ Get Pixie fully managed with [Pixie Community Cloud](/installing-pixie/install-g
 
 ### Authentication using Kratos / Hydra
 
-Self-managed Pixie Cloud only supports one organization and precreates an admin account by default. Login using `admin@default.com` with `admin` as the password.
+1. Login to the admin account using `admin@default.com` for the email and `admin` for the password. 
 
-    <Alert variant="outlined" severity="warning">
-      There is a known issue with login on self-managed Pixie Cloud on Safari and Firefox. For now, use Chrome.
-    </Alert>
+If you would like to change the admin account credentials, modify the email and password values for the `ADMIN_IDENTITY` in `k8s/cloud/base/ory_auth/kratos/kratos_deployment.yaml`. You will need to redeploy from scratch if you've already deployed with the default admin account, since the admin account is automatically provisioned for you.
+
+<Alert variant="outlined" severity="warning">
+  There is a known issue with login on self-managed Pixie Cloud on Safari and Firefox. For now, use Chrome.
+</Alert>
 
 ### Invite others to your organization (optional)
 
