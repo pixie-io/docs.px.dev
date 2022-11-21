@@ -16,4 +16,5 @@ In this section we'll cover steps to install Pixie in specific K8s environments:
 - [Install Guides](/installing-pixie/install-guides)
     - [Community Cloud for Pixie](/installing-pixie/install-guides/community-cloud-for-pixie)
     - [Self-Hosted Pixie](/installing-pixie/install-guides/self-hosted-pixie)
+    - [Production Readiness - Shared Cloud](/installing-pixie/install-guides/production-readiness-shared-cloud)
 - [Additional Install Schemes (optional)](/installing-pixie/install-schemes)
