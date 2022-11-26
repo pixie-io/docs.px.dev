@@ -23,7 +23,7 @@ Install the NGINX Ingress Controller in your Kubernetes cluster. Please refer th
 
 Thereafter note the IP address assigned to the Ingress Controller service. All requests to the Pixie Cloud will be sent through this.
 
-E.g. Following image shows the services created in the namespace where the NGINX Ingress Controller was installed. We need to note the IP address in  the `EXTERNAL-IP` column of the `ingress-nginx-controller` Load Balancer service.
+E.g. Following image shows the services created in the namespace where the NGINX Ingress Controller was installed. We need to note the IP address in the `EXTERNAL-IP` column of the `ingress-nginx-controller` Load Balancer service.
 
 <svg title='' src='production-readiness/ingress-controller-ip.png'/>
 
@@ -56,7 +56,7 @@ A TLS certificate is required for the custom domains that you wish to use with P
 
 Suppose that your Pixie custom domain name is `pixie.example.com`. You need to obtain a single certificate that is valid for both `pixie.example.com` and `work.pixie.example.com`. Finally, create a Kubernetes secret (of type `kubernetes.io/tls`) named `cloud-proxy-tls-certs` in the `plc` namespace using the certificate.
 
-One way to obtain it is by creating a Let's Encrypt certificate using [cert-manager](https://cert-manager.io/). [Securing NGINX-ingress tutorial](https://cert-manager.io/docs/tutorials/acme/nginx-ingress/) tutorial from cert-manager has detailed information about the process.
+One way to obtain it is by creating a Let's Encrypt certificate using [cert-manager](https://cert-manager.io/). [Securing NGINX-ingress tutorial](https://cert-manager.io/docs/tutorials/acme/nginx-ingress/) from cert-manager has detailed information about the process.
 
 Following are sample resources that you can use with cert-manager.
 
