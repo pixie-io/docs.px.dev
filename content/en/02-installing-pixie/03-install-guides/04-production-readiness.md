@@ -1,6 +1,6 @@
 ---
-title: "Production Readiness - Shared Cloud"
-metaTitle: "Production Readiness - Shared Cloud"
+title: "Production Readiness"
+metaTitle: "Production Readiness"
 metaDescription: "Sharing a single Pixie Cloud across multiple Pixie deployments"
 order: 4
 ---
@@ -19,7 +19,13 @@ This guide explains how to share a Pixie Cloud instance across multiple Pixie de
 
 ## 1. Install the NGINX Ingress Controller
 
-Install the NGINX Ingress Controller in your Kubernetes cluster. Thereafter note the IP address assigned to the `ingress-nginx-controller` Load Balancer service. All requests to the Pixie Cloud will be sent through this.
+Install the NGINX Ingress Controller in your Kubernetes cluster. Please refer the [NGINX Ingress Controller Installation Guide](https://kubernetes.github.io/ingress-nginx/deploy/) for more information.
+
+Thereafter note the IP address assigned to the Ingress Controller service. All requests to the Pixie Cloud will be sent through this.
+
+E.g. Following image shows the services created in the namespace where the NGINX Ingress Controller was installed. We need to note the IP address in  the `EXTERNAL-IP` column of the `ingress-nginx-controller` Load Balancer service.
+
+<svg title='' src='production-readiness/ingress-controller-ip.png'/>
 
 ## 2. Create DNS A records
 
@@ -34,9 +40,9 @@ work.pixie.example.com      a.b.c.d
 ## 3. Install Pixie Cloud
 
 If you are using the [Self-Hosted installation](/installing-pixie/install-guides/self-hosted-pixie/),
-1. Follow steps 1 - 5 and 8 in [Deploy Pixie cloud](/installing-pixie/install-guides/self-hosted-pixie/#1.-deploy-pixie-cloud).
+1. Follow steps 1 - 5 and 8 in [Deploy Pixie Cloud](/installing-pixie/install-guides/self-hosted-pixie/#1.-deploy-pixie-cloud).
 2. Comment lines 94 to 106 in `./scripts/create_cloud_secrets.sh`
-3. Execute the script as explained in step 9 of [Deploy Pixie cloud](/installing-pixie/install-guides/self-hosted-pixie/#1.-deploy-pixie-cloud)
+3. Execute the script as explained in step 9 of [Deploy Pixie Cloud](/installing-pixie/install-guides/self-hosted-pixie/#1.-deploy-pixie-cloud)
 
 If you are using the [Air Gapped installation](/installing-pixie/install-guides/airgap-pixie/),
 1. Follow steps 1 and 4 in [Deploy Pixie Cloud](/installing-pixie/install-guides/airgap-pixie/#deploy-pixie-cloud)
@@ -93,13 +99,11 @@ spec:
 
 Two Kubernetes Ingresses are required for Pixie Cloud; One for HTTPs and the other for gRPCs communication.
 
-Create two ingresses using the following configurations
-
-1. [HTTPs]
-2. [gRPCs]
+Create two ingresses as follows.
 
 ```bash
-kubectl apply -f <filename>
+kubectl apply -f k8s/cloud/overlays/exposed_services_nginx/cloud_ingress_grpcs.yaml
+kubectl apply -f k8s/cloud/overlays/exposed_services_nginx/cloud_ingress_https.yaml
 ```
 
 ## 6. Install Pixie Cloud (contd)
