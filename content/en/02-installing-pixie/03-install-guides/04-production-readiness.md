@@ -110,19 +110,32 @@ kubectl apply -f k8s/cloud/overlays/exposed_services_nginx/cloud_ingress_https.y
 
 If you are using the [Self-Hosted installation](/installing-pixie/install-guides/self-hosted-pixie/),
 
-1. Complete steps 10 - 13 in [Deploy Pixie cloud](/installing-pixie/install-guides/self-hosted-pixie/#1.-deploy-pixie-cloud)
-2. Skip the [Set up DNS](/installing-pixie/install-guides/self-hosted-pixie/#1.-deploy-pixie-cloud-set-up-dns) section
-3. Complete the steps in [Authentication using Kratos / Hydra](/installing-pixie/install-guides/self-hosted-pixie/#1.-deploy-pixie-cloud-authentication-using-kratos-hydra)
-4. (Optional) - Complete the steps in [Invite others to your organization (optional)](/installing-pixie/install-guides/self-hosted-pixie/#1.-deploy-pixie-cloud-invite-others-to-your-organization-(optional))
-5. Install the Pixie CLI as explained in [Install the Pixie CLI](/installing-pixie/install-guides/self-hosted-pixie/#2.-install-the-pixie-cli)
+1. In `k8s/cloud/public/domain_config.yaml` set the value of `PASSTHROUGH_PROXY_PORT` to be empty.
+
+    i.e.
+```bash
+PASSTHROUGH_PROXY_PORT: ""
+```
+2. Complete steps 10 - 13 in [Deploy Pixie cloud](/installing-pixie/install-guides/self-hosted-pixie/#1.-deploy-pixie-cloud)
+3. Skip the [Set up DNS](/installing-pixie/install-guides/self-hosted-pixie/#1.-deploy-pixie-cloud-set-up-dns) section
+4. Complete the steps in [Authentication using Kratos / Hydra](/installing-pixie/install-guides/self-hosted-pixie/#1.-deploy-pixie-cloud-authentication-using-kratos-hydra)
+5. (Optional) - Complete the steps in [Invite others to your organization (optional)](/installing-pixie/install-guides/self-hosted-pixie/#1.-deploy-pixie-cloud-invite-others-to-your-organization-(optional))
+6. Install the Pixie CLI as explained in [Install the Pixie CLI](/installing-pixie/install-guides/self-hosted-pixie/#2.-install-the-pixie-cli)
 
 If you are using the [Air Gapped installation](/installing-pixie/install-guides/airgap-pixie/),
 
-1. Complete the remaining steps (from step 7 onwards) in [Deploy Pixie Cloud](/installing-pixie/install-guides/airgap-pixie/#deploy-pixie-cloud)
-2. Skip the [Set up DNS](/installing-pixie/install-guides/airgap-pixie/#deploy-pixie-cloud-set-up-dns) section
-3. Complete the steps in [Authentication using Kratos / Hydra](/installing-pixie/install-guides/airgap-pixie/#deploy-pixie-cloud-authentication-using-kratos-hydra)
-4. Complete the steps in [Serve the Script Bundle](/installing-pixie/install-guides/airgap-pixie/#deploy-pixie-cloud-serve-the-script-bundle)
-5. (Optional) - Complete the steps in [Invite others to your organization (optional)](/installing-pixie/install-guides/self-hosted-pixie/#1.-deploy-pixie-cloud-invite-others-to-your-organization-(optional))
+1. Complete steps 7 - 11 in [Deploy Pixie Cloud](/installing-pixie/install-guides/airgap-pixie/#deploy-pixie-cloud)
+2. In `yamls/cloud.yaml`, find the ConfigMap named `pl-domain-config`. Set the value of `PASSTHROUGH_PROXY_PORT` in it to be empty.
+
+    i.e.
+```bash
+PASSTHROUGH_PROXY_PORT: ""
+```
+3. Complete the remaining steps (from step 12 onwards) in [Deploy Pixie Cloud](/installing-pixie/install-guides/airgap-pixie/#deploy-pixie-cloud)
+4. Skip the [Set up DNS](/installing-pixie/install-guides/airgap-pixie/#deploy-pixie-cloud-set-up-dns) section
+5. Complete the steps in [Authentication using Kratos / Hydra](/installing-pixie/install-guides/airgap-pixie/#deploy-pixie-cloud-authentication-using-kratos-hydra)
+6. Complete the steps in [Serve the Script Bundle](/installing-pixie/install-guides/airgap-pixie/#deploy-pixie-cloud-serve-the-script-bundle)
+7. (Optional) - Complete the steps in [Invite others to your organization (optional)](/installing-pixie/install-guides/self-hosted-pixie/#1.-deploy-pixie-cloud-invite-others-to-your-organization-(optional))
 
 
 ## 6. Deploy Pixie
