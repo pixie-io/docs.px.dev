@@ -13,17 +13,17 @@ This guide explains how to share a Pixie Cloud instance across multiple Pixie de
 ## Prerequisites
 
 - A domain name that you own
-- Prerequisites of the install method your choice; [Self-hosted Pixie](/installing-pixie/install-guides/self-hosted-pixie/#prerequisites) or [Air gapped Pixie](/installing-pixie/install-guides/airgap-pixie/#prerequisites)
+- Prerequisites of the install method your choice; [Self-hosted Pixie](/installing-pixie/install-guides/self-hosted-pixie/#prerequisites) or [Air Gapped Pixie](/installing-pixie/install-guides/airgap-pixie/#prerequisites)
 
 ## Steps
 
 ## 1. Install the NGINX Ingress Controller
 
-Install the NGINX Ingress Controller in your Kubernetes cluster. Please refer the [NGINX Ingress Controller Installation Guide](https://kubernetes.github.io/ingress-nginx/deploy/) for more information.
+Install the NGINX Ingress Controller in your Kubernetes cluster. Please refer to the [NGINX Ingress Controller Installation Guide](https://kubernetes.github.io/ingress-nginx/deploy/) for more information.
 
-Thereafter note the IP address assigned to the Ingress Controller service. All requests to the Pixie Cloud will be sent through this.
+Note the IP address assigned to the Ingress Controller service. All requests to the Pixie Cloud will be sent through this.
 
-E.g. Following image shows the services created in the namespace where the NGINX Ingress Controller was installed. We need to note the IP address in the `EXTERNAL-IP` column of the `ingress-nginx-controller` Load Balancer service.
+E.g. The following image shows the services created in the namespace where the NGINX Ingress Controller was installed. Note the IP address in the `EXTERNAL-IP` column of the `ingress-nginx-controller` Load Balancer service.
 
 <svg title='' src='production-readiness/ingress-controller-ip.png'/>
 
@@ -58,7 +58,7 @@ Suppose that your Pixie custom domain name is `pixie.example.com`. You need to o
 
 One way to obtain it is by creating a Let's Encrypt certificate using [cert-manager](https://cert-manager.io/). [Securing NGINX-ingress tutorial](https://cert-manager.io/docs/tutorials/acme/nginx-ingress/) from cert-manager has detailed information about the process.
 
-Following are sample resources that you can use with cert-manager.
+Here are sample resources that can be used with cert-manager:
 
 Sample `ClusterIssuer` resource
 ```yaml
@@ -112,7 +112,6 @@ If you are using the [Self-Hosted installation](/installing-pixie/install-guides
 
 1. In `k8s/cloud/public/domain_config.yaml` set the value of `PASSTHROUGH_PROXY_PORT` to be empty.
 
-    i.e.
 ```bash
 PASSTHROUGH_PROXY_PORT: ""
 ```
@@ -127,7 +126,6 @@ If you are using the [Air Gapped installation](/installing-pixie/install-guides/
 1. Complete steps 7 - 11 in [Deploy Pixie Cloud](/installing-pixie/install-guides/airgap-pixie/#deploy-pixie-cloud)
 2. In `yamls/cloud.yaml`, find the ConfigMap named `pl-domain-config`. Set the value of `PASSTHROUGH_PROXY_PORT` in it to be empty.
 
-    i.e.
 ```bash
 PASSTHROUGH_PROXY_PORT: ""
 ```
