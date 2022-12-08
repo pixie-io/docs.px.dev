@@ -219,6 +219,8 @@ If you select this option, each of your Pixie deployments will point to the same
 - Ensure your cloud TLS certificates are for your new Pixie Cloud domain.
 - Ping the new Pixie Cloud address from the new cluster before deploying Pixie to make sure traffic is successfully reaching Pixie Cloud.
 
+Please refer to the [Production Readiness](/installing-pixie/install-guides/production-readiness) guide for detailed instructions.
+
 ## Get Help
 
 Please see our [Troubleshooting](/about-pixie/troubleshooting/) guide, reach out on our [Community Slack](https://slackin.px.dev/) or file an issue on [GitHub](https://github.com/pixie-io/pixie/issues).
