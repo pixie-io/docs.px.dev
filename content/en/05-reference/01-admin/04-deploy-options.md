@@ -258,7 +258,7 @@ opm index export --index gcr.io/pixie-oss/pixie-prod/operator/bundle_index:0.0.1
 opm alpha bundle generate --package pixie-operator --channels stable --default stable --directory downloaded/pixie-operator/<version>
 docker build -t ${registry}/bundle:<version> -f bundle.Dockerfile .
 docker push ${registry}/bundle:<version>
-opm index add --bundles ${registry}/bundle:<version> --tag ${registry}/pixie-oss-pixie-prod-operator-bundle_index:0.0.1 -u docker
+opm index add --bundles ${registry}/bundle:<version> --tag ${registry}/gcr.io-pixie-oss-pixie-prod-operator-bundle_index:0.0.1 -u docker
 docker push ${registry}/pixie-oss-pixie-prod-operator-bundle_index:0.0.1
 ```
 
