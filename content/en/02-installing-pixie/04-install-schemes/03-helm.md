@@ -61,7 +61,7 @@ helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-k
 helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace --set deployOLM=false
 
 # Install the Pixie chart (Self-hosting Pixie Cloud)
-helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace --set devCloudNamespace plc
+helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace --set devCloudNamespace=plc
 
 # Install Pixie with a memory limit for the PEM pods (per node). 2Gi is the default, 1Gi is the minimum recommended.
 helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace --set deployOLM=false --set pemMemoryLimit=1Gi
