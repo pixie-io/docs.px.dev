@@ -129,24 +129,18 @@ go build src/utils/dev_dns_updater/dev_dns_updater.go
 
 ### Authentication using Kratos / Hydra
 
-Self-managed Pixie Cloud only supports one organization.
-
-1. To setup the default admin account, check the logs for the `create-admin-job` pod by running:
-
-```bash
-kubectl logs create-admin-job-<pod_string> -n plc
-```
-
-2. Open the URL from the pod's logs to set the password for the `admin@default.com` user.
+<Alert variant="outlined" severity="warning">
+  There is a known issue with login on self-managed Pixie Cloud on Safari and Firefox. For now, use Chrome.
+</Alert>
 
 <Alert variant="outlined" severity="warning">
   If you've visited dev.withpixie.dev before, make sure to clear the cookies for this site or you'll get a login error.
 </Alert>
 
-3. Once the password has been set, login using `admin@default.com` for the `identifier` and your new password.
+1. Login to the admin account using `admin@default.com` for the email and `admin` for the password.
 
-<Alert variant="outlined" severity="warning">
-  There is a known issue with login on self-managed Pixie Cloud on Safari and Firefox. For now, use Chrome.
+<Alert variant="outlined" severity="info">
+    If you would like to change the admin account credentials, modify the email and password values for the `ADMIN_IDENTITY` in `k8s/cloud/base/ory_auth/kratos/kratos_deployment.yaml`. You will need to redeploy from scratch if you've already deployed with the default admin account, since the admin account is automatically provisioned for you.
 </Alert>
 
 ### Serve the Script Bundle
