@@ -55,8 +55,8 @@ Get Pixie fully managed with [Pixie Community Cloud](/installing-pixie/install-g
 1. (Optional) By default, the self-hosted Pixie Cloud will be accessible through `dev.withpixie.dev`. If you wish to use a custom domain name, replace all occurances of `dev.withpixie.dev` in the following files with the domain name of your choice.
 
     ```bash
-    k8s/cloud/public/proxy_envoy.yaml
-    k8s/cloud/public/domain_config.yaml
+    k8s/cloud/public/base/proxy_envoy.yaml
+    k8s/cloud/public/base/domain_config.yaml
     scripts/create_cloud_secrets.sh
     ```
 
