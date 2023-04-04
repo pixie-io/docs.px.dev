@@ -37,7 +37,7 @@ Get Pixie fully managed with [Pixie Community Cloud](/installing-pixie/install-g
 1. Pick a cloud release version from the [tags](https://github.com/pixie-io/pixie/tags) on the repo. The following should pick the latest release for you.
 
     ```bash
-    export LATEST_CLOUD_RELEASE=$(git tag | grep 'release/cloud'  | sort -r | head -n 1 | awk -F/ '{print $NF}')
+    export LATEST_CLOUD_RELEASE=$(git tag | grep 'release/cloud/prod'  | sort -r | head -n 1 | awk -F/ '{print $NF}')
     ```
 
 1. Checkout the release tag.
