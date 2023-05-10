@@ -2,7 +2,7 @@
 title: "Deploy Options"
 metaTitle: "Reference | Admin | Deploy Options"
 metaDescription: "Configuration options for Pixie on deploy"
-order: 4
+order: 3
 redirect_from:
     - /admin/deploy-options/
 ---

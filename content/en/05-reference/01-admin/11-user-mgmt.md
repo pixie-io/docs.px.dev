@@ -2,7 +2,7 @@
 title: "User Management & Sharing"
 metaTitle: "Reference | Admin | User Management & Sharing"
 metaDescription: "Share and manage access to your Pixie data."
-order: 12
+order: 11
 redirect_from:
     - /admin/permissions/
 ---

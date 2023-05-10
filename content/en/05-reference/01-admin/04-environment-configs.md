@@ -2,7 +2,7 @@
 title: "Environment-Specific Configurations"
 metaTitle: "Reference | Admin | Environment Configurations"
 metaDescription: "Configurations for running Pixie on specific Kubernetes environments"
-order: 5
+order: 4
 ---
 
 Due to differences across various Kubernetes environments and providers, extra configurations may be necessary to run Pixie.
