@@ -10,7 +10,6 @@ redirect_from:
 Documentation on how to configure and manage Pixie:
 
 - [Authentication](/reference/admin/authentication)
-- [Configure Data Transfer Mode](/reference/admin/data-transfer-mode)
 - [Debug Information](/reference/admin/debug-info)
 - [Deploy Options](/reference/admin/deploy-options)
 - [Environment-Specific Configurations](/reference/admin/environment-configs)

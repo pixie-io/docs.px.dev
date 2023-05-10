@@ -2,7 +2,7 @@
 title: "Tuning Memory Usage"
 metaTitle: "Reference | Admin | Tuning Memory Usage"
 metaDescription: "Tuning Pixie vizier-pem memory usage"
-order: 9
+order: 8
 ---
 
 One of Pixie's unique features is that it collects, stores and queries all telemetry data *locally in your cluster*. Unless you choose to configure a [plugin](/reference/plugins/plugin-system/) or export data using [Pixie's API](/reference/api/overview/), no telemetry data is transferred to a centralized backend outside of the cluster.

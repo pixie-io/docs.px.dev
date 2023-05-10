@@ -2,7 +2,7 @@
 title: "Managing API Keys"
 metaTitle: "Reference | Admin | API Keys"
 metaDescription: "Why and when to use API keys."
-order: 7
+order: 6
 ---
 
 API keys are used to authenticate custom applications that use the [Pixie API](/reference/api/overview) to query data from the Pixie Platform.
