@@ -60,7 +60,22 @@ cat cloud_image_list.txt
 
 8. Modify the yaml files in the `pixie_cloud/yamls` folder to pull the images from your private image registry.
 
-9. Modify the `pixie_cloud/yamls/cloud.yaml` file to remove the `plugin-db-updater-job` job.
+9. Modify the `pixie_cloud/yamls/cloud.yaml` file to apply the following changes:
+
+    9.1 Remove the `plugin-db-updater-job` job.
+
+    9.2 In `kratos-config` ConfigMap, modify the content of `kratos.yaml` key to disable kratos `haveibeenpwned`:
+
+      Replace
+
+        password:
+          enabled: true
+      By
+
+        password:
+          enabled: true
+          config:
+            haveibeenpwned_enabled: false
 
 10. Deploy Pixie Cloud dependencies and wait for all pods within the `plc` namespace to become ready and available before proceeding to the next step. If there is an error, you may need to retry this step.
 
