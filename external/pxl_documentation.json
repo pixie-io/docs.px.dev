@@ -238,6 +238,35 @@
     {
       "body": {
         "name": "px.parse_duration",
+        "brief": "Parse a duration string to a duration in nanoseconds.",
+        "desc": "Parse a duration string (\"-5m\") to integer nanoseconds (-3,000,000,000) while preserving the sign from the string.   ",
+        "examples": [
+          {
+            "value": "```\n# duration = -300000000000\nduration = px.parse_duration(\"-5m\")\n# duration = 300000000000\nduration = px.parse_duration(\"5m\")\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "duration",
+            "desc": "The duration in string form.",
+            "types": [
+              "string"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "The duration in nanoseconds.",
+          "types": [
+            "px.Duration"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
+        "name": "px.parse_time",
         "brief": "Parse the various time formats into a unified format.",
         "desc": "This function can unify all possible time formats into a single consistent type. Useful for doing calculations on these values in a way that is agnostic to their format.   ",
         "examples": [
@@ -552,7 +581,7 @@
       "body": {
         "name": "DataFrame.ctx.__getitem__",
         "brief": "Creates the specified metadata as a column.",
-        "desc": "Shorthand for exposing metadata columns in the DataFrame. Each metadata type can be converted from some sets of other metadata types that already exist in the DataFrame.  Attempting to convert to a metadata type that doesn't have the source column will raise a compiler error.  Available keys (and any aliases) as well as the source columns. \n* container_id (): Sources: \"upid\" \n* service_id: Sources: \"upid\",\"service_name\" \n* pod_id: Sources: \"upid\",\"pod_name\" \n* service_name (\"service\"): Sources: \"upid\",\"service_id\" \n* pod_name (\"pod\"): Sources: \"upid\",\"pod_id\" \n* namespace: Sources: \"upid\" \n* node_name (\"node\"): Sources: \"upid\" \n* hostname (\"host\"): Sources: \"upid\" \n* container_name (\"container\"): Sources: \"upid\" \n* cmdline (\"cmd\"): Sources: \"upid\" \n* asid: Sources: \"upid\" \n* pid: Sources: \"upid\"      ",
+        "desc": "Shorthand for exposing metadata columns in the DataFrame. Each metadata type can be converted from some sets of other metadata types that already exist in the DataFrame.  Attempting to convert to a metadata type that doesn't have the source column will raise a compiler error.  Available keys (and any aliases) as well as the source columns. \n* container_id (): Sources: \"upid\" \n* service_id: Sources: \"upid\",\"service_name\" \n* service_name (\"service\"): Sources: \"upid\",\"service_id\" \n* pod_id: Sources: \"upid\",\"pod_name\" \n* pod_name (\"pod\"): Sources: \"upid\",\"pod_id\" \n* deployment_id: Sources: \"deployment_name\",\"pod_id\",\"pod_name\",\"replicaset_name\", \"replicaset_id\" \n* deployment_name (\"deployment\"): Sources: \"upid\",\"deployment_id\",\"pod_id\",\"pod_name\",\"replicaset_name\", \"replicaset_id\" \n* replicaset_id (\"replica_set_id\"): Sources: \"upid\",\"pod_id\",\"pod_name\", \"replicaset_name\" \n* replicaset_name (\"replica_set\", \"replicaset\"): Sources: \"upid\",\"pod_id\",\"pod_name\", \"replicaset_id\" \n* namespace: Sources: \"upid\" \n* node_name (\"node\"): Sources: \"upid\" \n* hostname (\"host\"): Sources: \"upid\" \n* container_name (\"container\"): Sources: \"upid\" \n* cmdline (\"cmd\"): Sources: \"upid\" \n* asid: Sources: \"upid\" \n* pid: Sources: \"upid\"      ",
         "examples": [
           {
             "value": "```\ndf = px.DataFrame('http_events', start_time='-5m')\n# Filter only for data that matches the metadata service.\n# df.ctx['service'] pulls the service column into the DataFrame.\ndf = df[df.ctx['service'] == \"pl/vizier-metadata\"]\n```"
@@ -1079,6 +1108,13 @@
             "types": [
               "bool, optional"
             ]
+          },
+          {
+            "ident": "timeout",
+            "desc": "The number of seconds before the request should timeout when exporting to the OTel collector.",
+            "types": [
+              "int, optional"
+            ]
           }
         ]
       }
@@ -1342,12 +1378,12 @@
         "methods": [
           {
             "name": "def add_callback",
-            "declaration": "def add_callback(self, table_name: str, fn: Callable[[pxapi.data.Row], NoneType] ) -\u003e None",
+            "declaration": "def add_callback(self, table_name: str, fn: Callable[[pxapi.data.Row], NoneType]) -\u003e None",
             "docstring": "Adds a callback fn that will be invoked on every row of `table_name` as\nthey arrive.\n\nCallbacks are not invoked until you call `run()` (or `run_async()`) on\nthe object.\n\nIf you `add_callback` on a table not produced by the script, `run()`(or `run_async()`) will\nraise a ValueError when the underlying gRPC channel closes.\n\nThe internals of `ScriptExecutor` use the python async api and the callback `fn`\nwill be called concurrently while the ScriptExecutor is running. Note that callbacks\nthemselves should not be async functions.\n\nCallbacks will block the rest of script execution so expensive and unending\ncallbacks should not be used.\n\nRaises:\n    ValueError: If called on a table that's already been passed as arg to\n        `subscribe` or `add_callback`.\n    ValueError: If called after `run()` or `run_async()` for a particular\n        `ScriptExecutor`"
           },
           {
             "name": "def results",
-            "declaration": "def results(self, table_name: str ) -\u003e Generator[pxapi.data.Row, NoneType, NoneType]",
+            "declaration": "def results(self, table_name: str) -\u003e Generator[pxapi.data.Row, NoneType, NoneType]",
             "docstring": "Runs script and return results for the table.\nExamples:\n    for row in script.results(\"http_table\"):\n        print(row)\nRaises:\n    ValueError: If `table_name` is never sent during lifetime of script.\n    ValueError: If called after `run()` or `run_async()` for a particular\n        `ScriptExecutor`."
           },
           {
@@ -1367,7 +1403,7 @@
           },
           {
             "name": "def subscribe_all_tables",
-            "declaration": "def subscribe_all_tables(self ) -\u003e Callable[[], AsyncGenerator[pxapi.client.TableSub, NoneType]]",
+            "declaration": "def subscribe_all_tables(self) -\u003e Callable[[], AsyncGenerator[pxapi.client.TableSub, NoneType]]",
             "docstring": "Returns an async generator that outputs table subscriptions as they arrive.\n\nYou can use this generator to call PxL scripts without knowing the tables\nthat are output beforehand. If you do know the tables beforehand, you should\n`subscribe`, `add_callback` or even `results` instead to prevent your api from\nkeeping data for tables that you don't use.\n\nThis generator will only start iterating after `run_async()` has been\ncalled. For the best performance, you will want to call the consumer of\nthe object returned by `subscribe_all_tables` concurrently with `run_async()`"
           }
         ]
@@ -5079,7 +5115,7 @@
         "desc": "Replaces constants with '?' placeholder.Outputs the normalized query along with the values of the parameters",
         "examples": [
           {
-            "value": "```\n# Normalize the SQL query.\ndf.normalized_sql_json = px.normalize_mysql(df.sql_query_string)\n# Pluck the relevant values from the json.\ndf.normed_query = px.pluck(df.normalized_sql_json, 'query')\ndf.params = px.pluck(df.normalized_sql_json, 'params')\n\n```"
+            "value": "```\n# Normalize the SQL query.\n# px.mysql_command_code(3) == 'Query'\ndf.normalized_sql_json = px.normalize_mysql(\"SELECT * FROM test WHERE prop=@a AND prop2='abcd'\", 3)\n# Pluck the relevant values from the json.\n# Value: 'SELECT * FROM test WHERE prop=@a AND prop2=?'\ndf.normed_query = px.pluck(df.normalized_sql_json, 'query')\n# Value: ['abcd']\ndf.params = px.pluck(df.normalized_sql_json, 'params')\n\n```"
           }
         ],
         "scalarUdfDoc": {
@@ -5096,7 +5132,7 @@
             }
           ],
           "retval": {
-            "desc": "The normalized query with the values of the parameters in the query as JSON.",
+            "desc": "The normalized query with the values of the parameters in the query as JSON. Available keys: ['query', 'params', 'error']. Error will be non-empty if the query could not be normalized.",
             "type": "STRING"
           }
         }
@@ -5107,7 +5143,7 @@
         "desc": "Replaces constants with '$n' placeholders.Outputs the normalized query along with the values of the parameters",
         "examples": [
           {
-            "value": "```\n# Normalize the SQL query.\ndf.normalized_sql_json = px.normalize_pgsql(df.sql_query_string)\n# Pluck the relevant values from the json.\ndf.normed_query = px.pluck(df.normalized_sql_json, 'query')\ndf.params = px.pluck(df.normalized_sql_json, 'params')\n\n```"
+            "value": "```\n# Normalize the SQL query.\ndf.normalized_sql_json = px.normalize_pgsql('SELECT * FROM test WHERE prop='abcd', 'Query')\n# Pluck the relevant values from the json.\n# Value: 'SELECT * FROM test WHERE prop=$1'\ndf.normed_query = px.pluck(df.normalized_sql_json, 'query')\n# Value: ['abcd']\ndf.params = px.pluck(df.normalized_sql_json, 'params')\n\n```"
           }
         ],
         "scalarUdfDoc": {
@@ -5124,7 +5160,7 @@
             }
           ],
           "retval": {
-            "desc": "The normalized query with the values of the parameters in the query as JSON.",
+            "desc": "The normalized query with the values of the parameters in the query as JSON. Available keys: ['query', 'params', 'error']. Error will be non-empty if the query could not be normalized.",
             "type": "STRING"
           }
         }
@@ -7013,6 +7049,29 @@
         }
       },
       {
+        "name": "shared_libraries",
+        "brief": "Get the shared libraries for a given pid.",
+        "desc": "Get the shared libraries for a given pid.",
+        "examples": [
+          {
+            "value": "```\ndf.libraries = px.shared_libraries(df.pid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pid",
+              "desc": "The process ID",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "Stringified vector of shared libraries.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
         "name": "sqrt",
         "brief": "Compute the sqrt",
         "desc": "Computes the sqrt",
@@ -7933,6 +7992,29 @@
           "retval": {
             "desc": "The Kubernetes Service Name for the UPID passed in.",
             "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "upid_to_start_ts",
+        "brief": "Get the starting timestamp of the process for the given UPID.",
+        "desc": "Get the starting timestamp for the process referred to by the Unique Process ID (UPID). ",
+        "examples": [
+          {
+            "value": "```\ndf.timestamp = px.upid_to_start_ts(df.upid)\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "upid",
+              "desc": "The unique process ID of the process to get the starting timestamp for.",
+              "type": "UINT128"
+            }
+          ],
+          "retval": {
+            "desc": "The starting timestamp for the UPID passed in.",
+            "type": "TIME64NS"
           }
         }
       },
