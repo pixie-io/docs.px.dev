@@ -8146,6 +8146,22 @@
             "type": "STRING"
           }
         }
+      },
+      {
+        "name": "vizier_namespace",
+        "brief": "Get the namespace where Vizier is deployed.",
+        "desc": "Get the Kubernetes namespace in which the Vizier is deployed.",
+        "examples": [
+          {
+            "value": "```\ndf.vizier_namespace = px.vizier_namespace()\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "retval": {
+            "desc": "The Kubernetes namespace in which Vizier is deployed",
+            "type": "STRING"
+          }
+        }
       }
     ]
   }
