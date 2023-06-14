@@ -23,8 +23,6 @@ import { graphql, StaticQuery } from 'gatsby'; // import navigate from gatsby
 import { Theme } from '@material-ui/core';
 import withStyles from '@material-ui/core/styles/withStyles';
 
-import { useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
 import { TreeView } from '@material-ui/lab';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';

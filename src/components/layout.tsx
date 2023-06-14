@@ -22,7 +22,6 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import { useTheme } from '@material-ui/core/styles';
 import { Theme, useMediaQuery } from '@material-ui/core';
 import Drawer from '@material-ui/core/Drawer';
-import { ApolloProvider } from '@apollo/react-hooks';
 import Helmet from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
 import CookiesBanner from 'components/cookies-banner/cookies-banner';
@@ -114,8 +113,7 @@ const Layout = withStyles((theme: Theme) => ({
   };
 
   return (
-    <ApolloProvider client={cloudClient}>
-
+    <>
       <Helmet link={[favicon]}>
 
         {metaTitle ? <title>{metaTitle}</title> : null}
@@ -186,7 +184,7 @@ const Layout = withStyles((theme: Theme) => ({
 
         )}
       </ThemeModeContext.Consumer>
-    </ApolloProvider>
+    </>
   );
 });
 
