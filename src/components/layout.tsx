@@ -25,7 +25,6 @@ import Drawer from '@material-ui/core/Drawer';
 import Helmet from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
 import CookiesBanner from 'components/cookies-banner/cookies-banner';
-import cloudClient from 'apollo/client';
 import Sidebar from './sidebar/sidebar';
 import Header from './Header';
 import { ThemeModeContext } from './mainThemeProvider';
