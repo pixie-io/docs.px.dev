@@ -19,14 +19,12 @@
 import * as React from 'react';
 
 import baseComponents from './baseComponents';
-import Releases from './releases';
 import SvgRenderer from './svg';
 import Command from './command';
 import CodeTabs from './codeTabs';
 
 export default {
   ...baseComponents,
-  releases: (props: any) => <Releases {...props} />,
   svg: (props: any) => <SvgRenderer {...props} />,
   command: (props: any) => <Command {...props} />,
   CodeTabs,

@@ -23,23 +23,11 @@ import { graphql, StaticQuery } from 'gatsby'; // import navigate from gatsby
 import { Theme } from '@material-ui/core';
 import withStyles from '@material-ui/core/styles/withStyles';
 
-import { useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
 import { TreeView } from '@material-ui/lab';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { SidebarContext } from './sidebarProvider';
 import CategoryItem from './categoryItem';
-
-export const GET_ARTIFACTS = gql`
-  query artifacts($artifactName: String!) {
-    artifacts(artifactName: $artifactName) {
-      items {
-        version
-      }
-    }
-  }
-`;
 
 const ExpandFirstLevelOnce = (props) => {
   const {
@@ -111,13 +99,8 @@ const Sidebar = withStyles((theme: Theme) => ({
 }))(({
   location,
   classes,
-  artifactName,
   lang,
 }: any) => {
-  const { data } = useQuery(GET_ARTIFACTS, {
-    variables: { artifactName },
-  });
-
   const handleToggle = (event: React.ChangeEvent<{}>, nodeIds: string[], setExpanded) => {
     setExpanded(nodeIds);
   };
@@ -301,10 +284,6 @@ const Sidebar = withStyles((theme: Theme) => ({
                   >
                     Slack Us
                   </a>
-                  <div className={classes.version}>
-                    Ver.&nbsp;
-                    {data && data.artifacts.items ? data.artifacts.items[0].version : 'n/a'}
-                  </div>
                 </div>
               </div>
             )}

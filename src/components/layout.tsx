@@ -22,11 +22,9 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import { useTheme } from '@material-ui/core/styles';
 import { Theme, useMediaQuery } from '@material-ui/core';
 import Drawer from '@material-ui/core/Drawer';
-import { ApolloProvider } from '@apollo/react-hooks';
 import Helmet from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
 import CookiesBanner from 'components/cookies-banner/cookies-banner';
-import cloudClient from 'apollo/client';
 import Sidebar from './sidebar/sidebar';
 import Header from './Header';
 import { ThemeModeContext } from './mainThemeProvider';
@@ -114,8 +112,7 @@ const Layout = withStyles((theme: Theme) => ({
   };
 
   return (
-    <ApolloProvider client={cloudClient}>
-
+    <>
       <Helmet link={[favicon]}>
 
         {metaTitle ? <title>{metaTitle}</title> : null}
@@ -165,7 +162,6 @@ const Layout = withStyles((theme: Theme) => ({
               >
                 <Sidebar
                   location={location}
-                  artifactName='vizier'
                   lang={lang}
                   globalUrlTree={globalUrlTree}
                 />
@@ -177,7 +173,6 @@ const Layout = withStyles((theme: Theme) => ({
                 lang={lang}
                 globalUrlTree={globalUrlTree}
                 className={classes.drawer}
-                artifactName='vizier'
               />
             )}
             <div className={classes.content}>
@@ -188,7 +183,7 @@ const Layout = withStyles((theme: Theme) => ({
 
         )}
       </ThemeModeContext.Consumer>
-    </ApolloProvider>
+    </>
   );
 });
 
