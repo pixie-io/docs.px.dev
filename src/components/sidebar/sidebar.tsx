@@ -31,16 +31,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { SidebarContext } from './sidebarProvider';
 import CategoryItem from './categoryItem';
 
-export const GET_ARTIFACTS = gql`
-  query artifacts($artifactName: String!) {
-    artifacts(artifactName: $artifactName) {
-      items {
-        version
-      }
-    }
-  }
-`;
-
 const ExpandFirstLevelOnce = (props) => {
   const {
     firstRun,
@@ -111,13 +101,8 @@ const Sidebar = withStyles((theme: Theme) => ({
 }))(({
   location,
   classes,
-  artifactName,
   lang,
 }: any) => {
-  const { data } = useQuery(GET_ARTIFACTS, {
-    variables: { artifactName },
-  });
-
   const handleToggle = (event: React.ChangeEvent<{}>, nodeIds: string[], setExpanded) => {
     setExpanded(nodeIds);
   };
@@ -301,10 +286,6 @@ const Sidebar = withStyles((theme: Theme) => ({
                   >
                     Slack Us
                   </a>
-                  <div className={classes.version}>
-                    Ver.&nbsp;
-                    {data && data.artifacts.items ? data.artifacts.items[0].version : 'n/a'}
-                  </div>
                 </div>
               </div>
             )}

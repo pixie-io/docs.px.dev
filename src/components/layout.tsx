@@ -165,7 +165,6 @@ const Layout = withStyles((theme: Theme) => ({
               >
                 <Sidebar
                   location={location}
-                  artifactName='vizier'
                   lang={lang}
                   globalUrlTree={globalUrlTree}
                 />
@@ -177,7 +176,6 @@ const Layout = withStyles((theme: Theme) => ({
                 lang={lang}
                 globalUrlTree={globalUrlTree}
                 className={classes.drawer}
-                artifactName='vizier'
               />
             )}
             <div className={classes.content}>
