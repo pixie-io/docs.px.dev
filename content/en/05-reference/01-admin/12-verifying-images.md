@@ -11,20 +11,10 @@ Pixie’s container images are signed with [cosign](https://github.com/sigstore/
 
 1. Download cosign by following the instructions [here](https://docs.sigstore.dev/cosign/installation/).
 
-2. Download Pixie’s public key:
+2. Run cosign to verify the image:
 
 ```bash
-wget https://raw.githubusercontent.com/pixie-io/px.dev/main/static/cosign.pub
+cosign verify --key https://px.dev/cosign.pub <image path>
 ```
 
-3. Run cosign to verify the image:
-
-```bash
-cosign verify --key cosign.pub <image path>
-```
-
-4. Running `cosign verify` will return an exit code of 0 if the signature matches the public key. To check the exit code, you can run:
-
-```bash
-echo $?
-```
+3. Running `cosign verify` will log the verification to stdout and return an exit code of 0 if the signature matches the public key.
