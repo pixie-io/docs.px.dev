@@ -20,4 +20,5 @@ Documentation on how to configure and manage Pixie:
 - [Uninstalling Pixie](/reference/admin/uninstall)
 - [Updating Pixie](/reference/admin/updating-pixie/)
 - [User Management & Sharing](/reference/admin/user-mgmt/)
+- [Verifying Images](/reference/admin/verifying-images/)
 - [Version History](https://github.com/pixie-io/pixie/releases)
