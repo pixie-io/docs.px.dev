@@ -66,6 +66,35 @@
     },
     {
       "body": {
+        "name": "px.format_duration",
+        "brief": "Convert a duration in nanoseconds to a duration string.",
+        "desc": "Convert an integer in nanoseconds (-3,000,000,000) to a duration string (\"-5m\") while preserving the sign. This function converts to whole milliseconds, seconds, minutes, hours or days. This means it will round down to the nearest whole number time unit.   ",
+        "examples": [
+          {
+            "value": "```\n# duration = \"-5m\"\nduration = px.format_duration(-5 * 60 * 1000 * 1000 * 1000)\n# duration = \"5m\" duration is rounded down to nearest whole minute.\nduration = px.parse_duration(-5 * 60 * 1000 * 1000 * 1000 + 5)\n# duration = \"-5h\"\nduration = px.format_duration(-5 * 60 * 60 * 1000 * 1000 * 1000)\n```"
+          }
+        ]
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "duration",
+            "desc": "The duration in nanoseconds.",
+            "types": [
+              "int64"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "The string representing the human readable duration (i.e. -5m, -10h).",
+          "types": [
+            "string"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
         "name": "px.hours",
         "brief": "Gets the specified number of hours.",
         "examples": [
@@ -3936,6 +3965,34 @@
         }
       },
       {
+        "name": "ip_to_pod_id",
+        "brief": "Convert IP address to the kubernetes pod ID that runs the backing service given the time that the request was made.",
+        "desc": "Converts the IP address into a kubernetes pod ID at the given time for that IP address if it exists, otherwise returns an empty string. Converting to a pod ID means you can then extract the corresponding service name using `px.pod_id_to_service_name`.\nNote that this will not be able to convert IP addresses into DNS names generally as this is limited to internal Kubernetes state.",
+        "examples": [
+          {
+            "value": "```\n# Convert to the Kubernetes pod ID.\ndf.pod_id = px.ip_to_pod_id(df.remote_addr, df.time_)\n# Convert the ID to a readable name.\ndf.service = px.pod_id_to_service_name(df.pod_id)\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "pod_ip",
+              "desc": "The IP of a pod to convert.",
+              "type": "STRING"
+            },
+            {
+              "ident": "time",
+              "desc": "The time at which this trace was captured.",
+              "type": "TIME64NS"
+            }
+          ],
+          "retval": {
+            "desc": "The Kubernetes ID of the pod if it exists, otherwise an empty string.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
         "name": "ip_to_service_id",
         "brief": "Get the service ID for a given IP.",
         "desc": "Converts the IP address into a Kubernetes service ID for the service associated to the IP. If there is no service associated with the given IP address, return an empty string.",
@@ -6221,6 +6278,39 @@
           "retval": {
             "desc": "The value x^y",
             "type": "FLOAT64"
+          }
+        }
+      },
+      {
+        "name": "pprof",
+        "brief": "Convert perf profiling data to pprof format.",
+        "desc": "Converts perf profiling stack traces into pprof format.",
+        "examples": [
+          {
+            "value": "```\n# Get the stack traces, the underlying data we want; populate an ASID column\n# to join with profiler sampling period (see next).\nstack_traces = px.DataFrame(table='stack_traces.beta', start_time='-1m')\nstack_traces.asid = px.asid()\n        | # Get the profiler sampling period for all deployed PEMs, then merge to stack traces on ASID.\nsample_period = px.GetProfilerSamplingPeriodMS()\ndf = stack_traces.merge(sample_period, how='inner', left_on=['asid'], right_on=['asid'])\n        | # The pprof UDA requires that each underlying dataset have the same sampling period.\n# Thus, group by sampling period (normally this results in just one group).\ndf = df.groupby(['profiler_sampling_period_ms']).agg(pprof=('stack_trace', 'count', 'profiler_sampling_period_ms', px.pprof))\n\n```"
+          }
+        ],
+        "udaDoc": {
+          "updateArgs": [
+            {
+              "ident": "stack_trace",
+              "desc": "Stack trace string.",
+              "type": "STRING"
+            },
+            {
+              "ident": "count",
+              "desc": "Count of the stack trace string.",
+              "type": "INT64"
+            },
+            {
+              "ident": "profiler_period_ms",
+              "desc": "Profiler stack trace sampling period in ms.",
+              "type": "INT64"
+            }
+          ],
+          "result": {
+            "desc": "A single row that aggregates all the stack traces and counts into pprof format.",
+            "type": "STRING"
           }
         }
       },
