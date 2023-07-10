@@ -85,7 +85,7 @@ helm repo add pixie-vizier https://artifacts.px.dev/helm_charts/vizier
 helm repo update
 
 # Install the Pixie chart (Self-hosting Pixie Cloud)
-helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace --set devCloudNamespace=plc
+helm install pixie pixie-vizier/vizier-chart --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace --set devCloudNamespace=plc
 ```
 
 ## 4. Verify
