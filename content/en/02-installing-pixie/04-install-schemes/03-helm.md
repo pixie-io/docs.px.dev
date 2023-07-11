@@ -75,7 +75,7 @@ For more deploy options that you can specify to configure Pixie, refer to our [d
 
 ### Deploying Non-Operator Pixie
 
-In general, we recommend you deploy the operator-managed version of Pixie. The operator helps rollout configuration changes, surface deployment status, and auto-repairs common error states. However, we also offer a non-operator deployment of Pixie. The deploy options and values available with the operator-managed version of Pixie are the same.
+In general, we recommend you deploy the operator-managed version of Pixie. The operator helps roll out configuration changes, surface deployment status, and auto-repair common error states. However, we also offer a non-operator deployment of Pixie. The deploy options and values available with the operator-managed version of Pixie are the same.
 
 ```bash
 # Add the Pixie Vizier chart.
