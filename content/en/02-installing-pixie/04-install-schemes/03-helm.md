@@ -49,7 +49,7 @@ Deploy Pixie in your target cluster by running:
 
 ```bash
 # Add the Pixie operator chart.
-helm repo add pixie-operator https://pixie-operator-charts.storage.googleapis.com
+helm repo add pixie-operator https://artifacts.px.dev/helm_charts/operator
 
 # Get latest information about Pixie chart.
 helm repo update
@@ -72,6 +72,21 @@ Pixie will deploy pods to the `pl`, `px-operator`, and `olm`(if deploying the OL
 ### More Deploy Options
 
 For more deploy options that you can specify to configure Pixie, refer to our [deploy options](/reference/admin/deploy-options).
+
+### Deploying Non-Operator Pixie
+
+In general, we recommend you deploy the operator-managed version of Pixie. The operator helps roll out configuration changes, surface deployment status, and auto-repair common error states. However, we also offer a non-operator deployment of Pixie. The deploy options and values available with the operator-managed version of Pixie are the same.
+
+```bash
+# Add the Pixie Vizier chart.
+helm repo add pixie-vizier https://artifacts.px.dev/helm_charts/vizier
+
+# Get latest information about Pixie chart.
+helm repo update
+
+# Install the Pixie chart (Self-hosting Pixie Cloud)
+helm install pixie pixie-vizier/vizier-chart --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace --set devCloudNamespace=plc
+```
 
 ## 4. Verify
 
