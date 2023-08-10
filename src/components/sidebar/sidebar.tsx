@@ -107,7 +107,7 @@ const Sidebar = withStyles((theme: Theme) => ({
 
   const getAllIds = (edges) => {
     const allIds = [];
-    const fields1 = edges.filter((e) => e.node.fields.title)
+    const fields1 = edges.filter((e) => e.node.fields?.title)
       .map((e) => e.node.fields)
       .filter((e) => e.level === 1);
     fields1.forEach((e) => allIds.push(e.id));
