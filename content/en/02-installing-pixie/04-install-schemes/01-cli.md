@@ -63,6 +63,8 @@ mv px /usr/local/bin
 alias px="docker run -i --rm -v ${HOME}/.pixie:/root/.pixie pixielabs/px"
 ```
 
+You may validate the signature on the docker image by [verifying the image with cosign](/reference/admin/verifying-images/).
+
 ### Using Debian package
 
 Download the assets:
