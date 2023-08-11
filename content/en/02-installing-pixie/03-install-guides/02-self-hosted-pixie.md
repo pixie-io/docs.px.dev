@@ -82,7 +82,7 @@ Get Pixie fully managed with [Pixie Community Cloud](/installing-pixie/install-g
 
 1. Install `kustomize` following the directions [here](https://kubectl.docs.kubernetes.io/installation/kustomize/).
 
-1. Deploy Pixie Cloud dependencies and wait for all pods within the `plc` namespace to become ready and available before proceeding to the next step. If there is an error, you may need to retry this step.
+1. Deploy Pixie Cloud dependencies and wait for all pods within the `plc` namespace to become ready and available before proceeding to the next step. If there is an error, you may need to retry this step. You may verify any of the images in the generated Kustomize files by following the steps in [Verifying Images](/reference/admin/verifying-images/).
 
     ```bash
     kustomize build k8s/cloud_deps/base/elastic/operator | kubectl apply -f -
