@@ -58,3 +58,4 @@ Pixie supports tracing of traffic encrypted with the following libraries:
 | :------------------------------------------- | :------------------------------------------ |
 | [OpenSSL](https://www.openssl.org/)          | Version 1.1.0, 1.1.1 or 3.x dynamically linked. |
 | [Go TLS](https://golang.org/pkg/crypto/tls/) -- standard and [boringcrypto](https://pkg.go.dev/crypto/internal/boring) | Requires a build with [debug information](/reference/admin/debug-info).                |
+| [BoringSSL](https://github.com/google/boringssl) | |
