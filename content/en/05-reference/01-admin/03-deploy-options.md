@@ -223,7 +223,7 @@ cat images/vizier_image_list.txt
 > To list the images required to deploy Pixie _with_ etcd:
 
 ```
-cat vizier_etcd_image_list.txt
+cat images/vizier_etcd_image_list.txt
 ```
 
 3. Collect and publish the images listed in **Step 2** to your custom registry.
