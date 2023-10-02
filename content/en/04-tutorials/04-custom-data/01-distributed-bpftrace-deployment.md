@@ -170,6 +170,43 @@ If you'd like to filter the results to a particular service, modify line 67 to i
 df = df[px.contains(df['dst'], 'sock-shop')]
 ```
 
+### Deploying different BPFtrace programs depending on properties of the host
+
+Pixie has introduced a `TraceProgram` object in the `pxtrace` module, which allows you to specify deployment restrictions for your BPFtrace programs. You can use the `TraceProgram` object to define a BPFtrace program and specify the kernel versions on which it should be deployed (more selectors may be added in the future).
+
+The `TraceProgram` object currently accepts the following parameters:
+
+- `program`: The BPFtrace program as a string.
+- `max_kernel`: The maximum kernel version on which the program should be deployed.
+- `min_kernel`: The minimum kernel version on which the program should be deployed.
+
+You can use the `TraceProgram` object to deploy different BPFtrace programs based on the kernel version of the nodes in your cluster. For example, you might have one version of a BPFtrace program that works on kernel versions up to 5.18, and another version that works on kernel versions 5.19 and above. $0 and $1 are placeholders for BPFtrace programs. You can define two `TraceProgram` objects and use them both in the `UpsertTracepoint` function.
+
+Here's an example:
+
+```python
+import pxtrace
+import px
+
+before_518_trace_program = pxtrace.TraceProgram(
+  program="""$0""",
+  max_kernel='5.18',
+)
+after_519_trace_program = pxtrace.TraceProgram(
+  program="""$1""",
+  min_kernel='5.19',
+)
+
+table_name = 'tcp_drop_table'
+pxtrace.UpsertTracepoint('tcp_drop_tracer',
+                          table_name,
+                          [before_518_trace_program, after_519_trace_program],
+                          pxtrace.kprobe(),
+                          '10m')
+```
+
+In this example, the `before_518_trace_program` will be deployed on nodes with kernel versions up to 5.18, and the `after_519_trace_program` will be deployed on nodes with kernel versions 5.19 and above.
+
 ### Tracepoint status
 
 Run `px/tracepoint_status` to see the information about all of the tracepoints running on your cluster. The `STATUS` column can be used to debug why a tracepoint fails to deploy.
