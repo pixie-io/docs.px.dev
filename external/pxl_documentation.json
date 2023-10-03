@@ -1022,6 +1022,51 @@
     },
     {
       "body": {
+        "name": "pxtrace.TraceProgram",
+        "brief": "Creates a trace program. Selectors for supported hosts can be specified using key-value arguments.",
+        "examples": []
+      },
+      "funcDoc": {
+        "args": [
+          {
+            "ident": "program",
+            "desc": "The BPFtrace program string.",
+            "types": [
+              "str"
+            ]
+          },
+          {
+            "ident": "min_kernel",
+            "desc": "The minimum kernel version that the tracepoint is supported on. Format is `\u003cversion\u003e.\u003cmajor\u003e.\u003cminor\u003e`.",
+            "types": [
+              "str, optional"
+            ]
+          },
+          {
+            "ident": "max_kernel",
+            "desc": "The maximum kernel version that the tracepoint is supported on. Format is `\u003cversion\u003e.\u003cmajor\u003e.\u003cminor\u003e`.",
+            "types": [
+              "str, optional"
+            ]
+          },
+          {
+            "ident": "host_name",
+            "desc": "Restrict the tracepoint to a specific host.",
+            "types": [
+              "str, optional"
+            ]
+          }
+        ],
+        "returnType": {
+          "desc": "A pointer to the TraceProgram that can be passed as a probe_fn to UpsertTracepoint.",
+          "types": [
+            "TraceProgram"
+          ]
+        }
+      }
+    },
+    {
+      "body": {
         "name": "pxtrace.UpsertTracepoint",
         "brief": "Deploys a tracepoint on a process and collects the traced data into a table.",
         "desc": "Deploys the tracepoint on the process (UPID) for the specified amount of time (TTL). The provided name uniquely identifies the tracepoint, and is used to manage the tracepoint (e.g. future calls to `UpsertTracepoint` or `DeleteTracepoint`.) A call to `UpsertTracepoint` on an existing tracepoint resets the TTL, but otherwise has no effect. A call to `UpsertTracepoint` on an existing tracepoint with a different tracepoint function will fail. UpsertTracepoint automatically creates a table with the provided name should it not exist; if the table exists but has a different schema, the deployment will fail.  ",
@@ -1045,9 +1090,9 @@
           },
           {
             "ident": "probe_fn",
-            "desc": "The tracepoint function.",
+            "desc": "The tracepoint function, BPFTrace program or pxtrace.TraceProgram to deploy.",
             "types": [
-              "px.ProbeFn"
+              "Union[px.ProbeFn, str, pxtrace.TraceProgram, List[pxtrace.TraceProgram]]"
             ]
           },
           {
@@ -5118,6 +5163,29 @@
           ],
           "retval": {
             "desc": "The request code's name.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
+        "name": "namespace_name_to_namespace_id",
+        "brief": "Get the Kubernetes UID of the given namespace name.",
+        "desc": "Get the Kubernetes UID of the given namespace name.",
+        "examples": [
+          {
+            "value": "```\ndf.kube_system_namespace_uid = px.namespace_name_to_namespace_id('kube-system')\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "arg1",
+              "desc": "The name of the namespace to get the UID of.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "The Kubernetes UID of the given namespace name",
             "type": "STRING"
           }
         }
