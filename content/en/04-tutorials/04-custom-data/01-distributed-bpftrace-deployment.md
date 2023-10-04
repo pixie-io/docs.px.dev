@@ -54,10 +54,10 @@ In this demo, we'll deploy Dale Hamel's bpftrace [TCP retransmit tool](https://g
 
 ### Running the PxL Script in the Live UI
 
-We've incorporated this trace into a PxL script called [`px/tcp_retransmits`](https://github.com/pixie-io/pixie/tree/main/src/pxl_scripts/px/tcp_retransmits). To run this script:
+We've incorporated this trace into a PxL script called [`bpftrace/tcp_retransmits`](https://github.com/pixie-io/pixie/tree/main/src/pxl_scripts/bpftrace/tcp_retransmits). To run this script:
 
 - Open up Pixie's [Live View](https://work.withpixie.ai) and select your cluster.
-- Select the `px/tcp_retransmits` script using the drop down `script` menu or with Pixie Command. Pixie Command can be opened with the `ctrl/cmd+k` keyboard shortcut.
+- Select the `bpftrace/tcp_retransmits` script using the drop down `script` menu or with Pixie Command. Pixie Command can be opened with the `ctrl/cmd+k` keyboard shortcut.
 - Run the script using the Run button in the top right, or with the `ctrl/cmd+enter` keyboard shortcut.
 
 Once the probe is deployed to all the nodes in the cluster, the probes will begin to push out data into tables. The PxL script queries this data and the Vis Spec defines how this data will be displayed.
