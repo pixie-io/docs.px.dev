@@ -203,6 +203,9 @@ helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-k
 
 By default, Pixie uses images hosted on `gcr.io`. Pixie allows you to specify a custom image registry for clusters which may not have access to `gcr.io` or for users who simply want to host their own images.
 
+### Prerequisites
+* Install the [crane](https://github.com/google/go-containerregistry/blob/a748190e18d49e759b7e28309f576dba82280d47/cmd/crane/README.md#install-from-releases) cli utility. This will be used to copy Pixie's source images to your registry while keeping the the image digest intact. Note that `docker tag` and other tools that change the image digest will fail to install during the final deploy step.
+
 ### Collect the Vizier images
 
 1. Download the Vizier artifacts:
@@ -228,7 +231,13 @@ cat images/vizier_etcd_image_list.txt
 
 3. Collect and publish the images listed in **Step 2** to your custom registry.
 
-> Note that Pixie expects hosted images to adhere to the following format: `${custom_registry}/${defaultImagePath | sed 's/\//-/g'}`. In other words, Pixie will expect your images to be hosted on your registry, where the image name in your registry is Pixie's full image path with any `/` replaced with `-`. For example: `gcr.io/pixie-oss/pixie-dev/vizier/metadata_server_image:latest` should pushed to `$registry/gcr.io-pixie-oss-pixie-dev-vizier-metadata_server_image:latest`.
+> Note that Pixie expects hosted images to adhere to the following format: `${custom_registry}/${defaultImagePath | sed 's/\//-/g'}`. In other words, Pixie will expect your images to be hosted on your registry, where the image name in your registry is Pixie's full image path with any `/` replaced with `-`. For example: `gcr.io/pixie-oss/pixie-dev/vizier/metadata_server_image:latest` should pushed to `$registry/gcr.io-pixie-oss-pixie-dev-vizier-metadata_server_image:latest` and contain the same image digest.
+
+> This can be accomplished with the crane cli tool and an example of it's copy command is shown below:
+
+```
+crane cp gcr.io/pixie-oss/pixie-dev/vizier-metadata_server_image:latest $registry/gcr.io-pixie-oss-pixie-dev-vizier-metadata_server_image:latest
+```
 
 ### Collect the OLM images
 
