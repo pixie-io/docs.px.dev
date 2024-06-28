@@ -29,16 +29,40 @@
      "desc": "Port of the remote endpoint."
     },
     {
+     "name": "local_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the local endpoint."
+    },
+    {
+     "name": "local_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the local endpoint."
+    },
+    {
      "name": "trace_role",
      "type": "INT64",
      "pattern": "GENERAL_ENUM",
      "desc": "The role (client-or-server) of the process that owns the connections."
     },
     {
+     "name": "encrypted",
+     "type": "BOOLEAN",
+     "pattern": "GENERAL_ENUM",
+     "desc": "If the protocol trace happened over an encrypted connection"
+    },
+    {
      "name": "frame_type",
      "type": "INT64",
      "pattern": "GENERAL",
      "desc": "AMQP request command"
+    },
+    {
+     "name": "channel",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "AMQP channel"
     },
     {
      "name": "req_class_id",
@@ -75,6 +99,12 @@
      "type": "STRING",
      "pattern": "GENERAL",
      "desc": "AMQP message resp"
+    },
+    {
+     "name": "latency",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "Request-response latency."
     }
    ]
   },
@@ -191,10 +221,28 @@
      "desc": "Port of the remote endpoint."
     },
     {
+     "name": "local_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the local endpoint."
+    },
+    {
+     "name": "local_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the local endpoint."
+    },
+    {
      "name": "trace_role",
      "type": "INT64",
      "pattern": "GENERAL_ENUM",
      "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "encrypted",
+     "type": "BOOLEAN",
+     "pattern": "GENERAL_ENUM",
+     "desc": "If the protocol trace happened over an encrypted connection"
     },
     {
      "name": "req_op",
@@ -257,10 +305,28 @@
      "desc": "Port of the remote endpoint."
     },
     {
+     "name": "local_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the local endpoint."
+    },
+    {
+     "name": "local_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the local endpoint."
+    },
+    {
      "name": "trace_role",
      "type": "INT64",
      "pattern": "GENERAL_ENUM",
      "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "encrypted",
+     "type": "BOOLEAN",
+     "pattern": "GENERAL_ENUM",
+     "desc": "If the protocol trace happened over an encrypted connection"
     },
     {
      "name": "req_header",
@@ -323,10 +389,28 @@
      "desc": "Port of the remote endpoint."
     },
     {
+     "name": "local_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the local endpoint."
+    },
+    {
+     "name": "local_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the local endpoint."
+    },
+    {
      "name": "trace_role",
      "type": "INT64",
      "pattern": "GENERAL_ENUM",
      "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "encrypted",
+     "type": "BOOLEAN",
+     "pattern": "GENERAL_ENUM",
+     "desc": "If the protocol trace happened over an encrypted connection"
     },
     {
      "name": "major_version",
@@ -491,10 +575,28 @@
      "desc": "Port of the remote endpoint."
     },
     {
+     "name": "local_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the local endpoint."
+    },
+    {
+     "name": "local_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the local endpoint."
+    },
+    {
      "name": "trace_role",
      "type": "INT64",
      "pattern": "GENERAL_ENUM",
      "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "encrypted",
+     "type": "BOOLEAN",
+     "pattern": "GENERAL_ENUM",
+     "desc": "If the protocol trace happened over an encrypted connection"
     },
     {
      "name": "req_cmd",
@@ -519,6 +621,90 @@
      "type": "STRING",
      "pattern": "GENERAL",
      "desc": "Kafka response"
+    },
+    {
+     "name": "latency",
+     "type": "INT64",
+     "pattern": "METRIC_GAUGE",
+     "desc": "Request-response latency."
+    }
+   ]
+  },
+  {
+   "name": "mongodb_events",
+   "desc": "MongoDB request-response pair events",
+   "cols": [
+    {
+     "name": "time_",
+     "type": "TIME64NS",
+     "pattern": "METRIC_COUNTER",
+     "desc": "Timestamp when the data record was collected."
+    },
+    {
+     "name": "upid",
+     "type": "UINT128",
+     "pattern": "GENERAL",
+     "desc": "An opaque numeric ID that globally identify a running process inside the cluster."
+    },
+    {
+     "name": "remote_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the remote endpoint."
+    },
+    {
+     "name": "remote_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the remote endpoint."
+    },
+    {
+     "name": "local_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the local endpoint."
+    },
+    {
+     "name": "local_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the local endpoint."
+    },
+    {
+     "name": "trace_role",
+     "type": "INT64",
+     "pattern": "GENERAL_ENUM",
+     "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "encrypted",
+     "type": "BOOLEAN",
+     "pattern": "GENERAL_ENUM",
+     "desc": "If the protocol trace happened over an encrypted connection"
+    },
+    {
+     "name": "req_cmd",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "MongoDB request command"
+    },
+    {
+     "name": "req_body",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "MongoDB request body"
+    },
+    {
+     "name": "resp_status",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "MongoDB response status"
+    },
+    {
+     "name": "resp_body",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "MongoDB response body"
     },
     {
      "name": "latency",
@@ -557,10 +743,28 @@
      "desc": "Port of the remote endpoint."
     },
     {
+     "name": "local_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the local endpoint."
+    },
+    {
+     "name": "local_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the local endpoint."
+    },
+    {
      "name": "trace_role",
      "type": "INT64",
      "pattern": "GENERAL_ENUM",
      "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "encrypted",
+     "type": "BOOLEAN",
+     "pattern": "GENERAL_ENUM",
+     "desc": "If the protocol trace happened over an encrypted connection"
     },
     {
      "name": "req_type",
@@ -605,10 +809,28 @@
      "desc": "Port of the remote endpoint."
     },
     {
+     "name": "local_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the local endpoint."
+    },
+    {
+     "name": "local_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the local endpoint."
+    },
+    {
      "name": "trace_role",
      "type": "INT64",
      "pattern": "GENERAL_ENUM",
      "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "encrypted",
+     "type": "BOOLEAN",
+     "pattern": "GENERAL_ENUM",
+     "desc": "If the protocol trace happened over an encrypted connection"
     },
     {
      "name": "req_cmd",
@@ -671,10 +893,28 @@
      "desc": "Port of the remote endpoint."
     },
     {
+     "name": "local_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the local endpoint."
+    },
+    {
+     "name": "local_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the local endpoint."
+    },
+    {
      "name": "trace_role",
      "type": "INT64",
      "pattern": "GENERAL_ENUM",
      "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "encrypted",
+     "type": "BOOLEAN",
+     "pattern": "GENERAL_ENUM",
+     "desc": "If the protocol trace happened over an encrypted connection"
     },
     {
      "name": "cmd",
@@ -791,10 +1031,28 @@
      "desc": "Port of the remote endpoint."
     },
     {
+     "name": "local_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the local endpoint."
+    },
+    {
+     "name": "local_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the local endpoint."
+    },
+    {
      "name": "trace_role",
      "type": "INT64",
      "pattern": "GENERAL_ENUM",
      "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "encrypted",
+     "type": "BOOLEAN",
+     "pattern": "GENERAL_ENUM",
+     "desc": "If the protocol trace happened over an encrypted connection"
     },
     {
      "name": "req_cmd",
@@ -1019,10 +1277,28 @@
      "desc": "Port of the remote endpoint."
     },
     {
+     "name": "local_addr",
+     "type": "STRING",
+     "pattern": "GENERAL",
+     "desc": "IP address of the local endpoint."
+    },
+    {
+     "name": "local_port",
+     "type": "INT64",
+     "pattern": "GENERAL",
+     "desc": "Port of the local endpoint."
+    },
+    {
      "name": "trace_role",
      "type": "INT64",
      "pattern": "GENERAL_ENUM",
      "desc": "The role (client-or-server) of the process that owns the connections."
+    },
+    {
+     "name": "encrypted",
+     "type": "BOOLEAN",
+     "pattern": "GENERAL_ENUM",
+     "desc": "If the protocol trace happened over an encrypted connection"
     },
     {
      "name": "req_cmd",
