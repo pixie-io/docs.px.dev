@@ -35,10 +35,22 @@ import slackIcon from './images/slack-icon.svg';
 import githubIcon from './images/github-icon.svg';
 import SearchResultsDropdown from './search-results-dropdown';
 import languages from '../../available-languages';
+import { CloudLinkContext } from './cloudLinkProvider';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
     zIndex: theme.zIndex.modal + 1,
+  },
+  link: {
+    color: theme.palette.secondary.main,
+    fontFamily: 'inherit',
+    fontStyle: 'inherit',
+    fontSize: 'inherit',
+    textDecoration: 'none',
+    '&:hover': {
+      color: theme.palette.secondary.main,
+      textDecoration: 'underline',
+    },
   },
   toolbar: {
     flexGrow: 1,
@@ -113,6 +125,34 @@ const useStyles = makeStyles((theme) => ({
       color: 'inherit',
     },
   },
+  cloudLink: {
+    paddingLeft: '5px',
+  },
+  cloudMenu: {
+    position: 'absolute',
+    top: `calc(${theme.overrides.MuiToolbar.root.minHeight} / 2 - 4px)`,
+    boxShadow: theme.palette.type === 'light' ? '0px 15px 130px 0px rgba(0,0,0,0.10)' : '0px 15px 130px 0px rgba(0,0,0,0.45)',
+    right: 0,
+    zIndex: 1,
+    backgroundColor: theme.palette.type === 'light' ? '#212324' : '#212324',
+    borderRadius: '10px',
+  },
+  cloudMenuItem: {
+    color: theme.palette.type === 'light' ? '#B2B5BB' : '#B2B5BB',
+    fontSize: '14px',
+    lineHeight: '24px',
+    padding: '14px',
+    textAlign: 'center',
+    width: '60px',
+    '& a': {
+      textDecoration: 'none',
+      display: 'block',
+      margin: '-20px',
+      padding: '14px',
+      fontStyle: 'inherit',
+      color: 'inherit',
+    },
+  },
   dropMenuItem: {
     color: theme.palette.type === 'light' ? '#B2B5BB' : '#B2B5BB',
     fontSize: '14px',
@@ -141,7 +181,8 @@ const useStyles = makeStyles((theme) => ({
 
 interface Props {
   location: string,
-  availableLanguages: { lang: string, slug: string }[],
+  availableLanguages: { lang: string, baseUrl: string }[],
+  availableClouds: { name: string, baseUrl: string }[],
   lang: string,
   theme: string,
   onThemeTypeSwitch: any
@@ -163,6 +204,7 @@ const Header = ({
   drawerOpen,
   setDrawerOpen,
   availableLanguages,
+  availableClouds,
   lang = 'en',
   setSidebarOpen,
   sidebarOpen,
@@ -176,6 +218,7 @@ const Header = ({
 
   const [openSupportMenu, setOpenSupportMenu] = React.useState(false);
   const [openLanguageMenu, setOpenLanguageMenu] = React.useState(false);
+  const [openCloudMenu, setOpenCloudMenu] = React.useState(false);
 
   const classes = useStyles();
   const getLanguageLabel = (languageId) => (languageId === 'en' ? 'English' : languages.find((l) => l.id === languageId).label);
@@ -309,6 +352,57 @@ const Header = ({
                     </div>
                   </Hidden>
                 )}
+                {(availableClouds
+                  && (
+                    <CloudLinkContext.Consumer>
+                      {
+                        ({ selectedCloud, setSelectedCloud }) => (
+                          <Hidden implementation='css'>
+                            <ClickAwayListener onClickAway={() => setOpenCloudMenu(false)}>
+                              <Button
+                                className={classes.menuItem}
+                                color='default'
+                                size='inherit'
+                                aria-controls='support-menu'
+                                aria-haspopup='true'
+                                onClick={() => setOpenCloudMenu((prev) => !prev)}
+                              >
+                                Cloud backend:
+                                <div className={`${classes.link} ${classes.cloudLink}`}>
+                                  {selectedCloud?.name}
+                                </div>
+                                <span className={classes.dropIcon} />
+                              </Button>
+                            </ClickAwayListener>
+                            <div className={classes.dropMenuRef}>
+                              {openCloudMenu ? (
+                                <div className={classes.cloudMenu}>
+                                  {(availableClouds || []).map((cloud) => (
+                                    <div
+                                      key={cloud.name}
+                                      className={classes.cloudMenuItem}
+                                      onClick={() => {
+                                        setSelectedCloud(cloud);
+                                        setOpenSupportMenu(false);
+                                      }}
+                                    >
+                                      <Link
+                                        rel='noopener noreferrer'
+                                        className={classes.cloudMenuItem}
+                                      >
+                                        {cloud.name}
+                                      </Link>
+                                    </div>
+                                  ))}
+
+                                </div>
+                              ) : null}
+                            </div>
+                          </Hidden>
+                        )
+                      }
+                    </CloudLinkContext.Consumer>
+                  ))}
                 <SearchResultsDropdown />
                 <Hidden mdDown implementation='css'>
                   <Button href='https://px.dev' size='small' color='secondary' variant='contained'>

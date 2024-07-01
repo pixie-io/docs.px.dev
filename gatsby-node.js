@@ -27,6 +27,17 @@ const tableDocumentation = require('./external/datatable_documentation.json');
 const globalUrlTree = [];
 const languages = require('./available-languages');
 
+const availableClouds = [
+  {
+    name: 'New Relic Cloud',
+    baseUrl: 'https://work.withpixie.ai',
+  },
+  {
+    name: 'Second Cloud',
+    baseUrl: 'https://secondcloud.com',
+  },
+];
+
 const removeLanguageFromUrl = (url) => {
   const slugTree = url.split('/')
     .filter((n) => n);
@@ -105,6 +116,7 @@ exports.createPages = ({
                 languages,
                 globalUrlTree,
                 availableLanguages,
+                availableClouds,
               },
             });
           });

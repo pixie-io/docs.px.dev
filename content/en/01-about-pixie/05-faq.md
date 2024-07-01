@@ -136,7 +136,7 @@ See the [User Management & Sharing](/reference/admin/user-mgmt) reference docs.
 
 ### How do I set up RBAC?
 
-Pixie does not yet offer full RBAC support. However, you can enable “Approvals” under the [Org Settings](https://work.withpixie.ai/admin/org) tab on the admin page. This requires each user who registers in the org to be manually approved on the [Users](https://work.withpixie.ai/admin/users) tab before they can log in.
+Pixie does not yet offer full RBAC support. However, you can enable “Approvals” under the <CloudLink url="/admin/org">Org Settings</CloudLink> tab on the admin page. This requires each user who registers in the org to be manually approved on the <CloudLink url="/admin/users">Users</CloudLink> tab before they can log in.
 
 ### How do I send alerts?
 

@@ -38,7 +38,7 @@ When debugging issues with microservices, it helps to start at a high-level view
 
 For a global view of the services in your cluster, we'll use the `px/cluster` script:
 
-1. Open the [Live UI](http://work.withpixie.ai/) and select `px/cluster` from the `script` drop-down menu at the top.
+1. Open the <CloudLink url="/">Live UI</CloudLink> and select `px/cluster` from the `script` drop-down menu at the top.
 
 > This script shows a graph of the HTTP traffic between the services in your cluster, along with latency, error, and throughput rate per service.
 
@@ -169,7 +169,7 @@ Let's look at latency by logical service endpoint:
 
 This tutorial demonstrated a few of Pixie's [community scripts](https://github.com/pixie-io/pixie/tree/main/src/pxl_scripts). For more insight into the health of your services, check out the following scripts:
 
-- [`px/pod`](http://work.withpixie.ai/script/pod) shows a CPU flamegraph for the pod to see how your Go/C++/Rust applications are spending their time. To learn more about how use Pixie for application profiling, check out the [Profiling with Flamegraphs](/tutorials/pixie-101/profiler) tutorial.
-- [`px/services`](http://work.withpixie.ai/script/services) shows LET over time for all services in the given namespace, along with a  service graph.
-- [`px/service_stats`](http://work.withpixie.ai/script/service_stats) shows LET over time for the given service, along with a service graph and summary of incoming and outgoing traffic.
-- [`px/service_edge_stats`](http://work.withpixie.ai/script/service_edge_stats) shows statistics about the traffic between two services.
+- <CloudLink url="/script/pod">px/pod</CloudLink> shows a CPU flamegraph for the pod to see how your Go/C++/Rust applications are spending their time. To learn more about how use Pixie for application profiling, check out the [Profiling with Flamegraphs](/tutorials/pixie-101/profiler) tutorial.
+- <CloudLink url="/script/services">px/services</CloudLink> shows LET over time for all services in the given namespace, along with a  service graph.
+- <CloudLink url="/script/service_stats">px/service_stats</CloudLink> shows LET over time for the given service, along with a service graph and summary of incoming and outgoing traffic.
+- <CloudLink url="/script/service_edge_stats">px/service_edge_stats</CloudLink> shows statistics about the traffic between two services.

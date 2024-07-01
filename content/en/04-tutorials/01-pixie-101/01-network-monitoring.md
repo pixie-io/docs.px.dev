@@ -29,7 +29,7 @@ A global view of the network traffic flowing within a cluster can be used to:
 
 Let’s use the `px/net_flow_graph` script to see a graph of all of the network traffic passing through the cluster:
 
-1. Open the [Live UI](http://work.withpixie.ai/) and select `px/net_flow_graph` from the `script` drop-down menu at the top.
+1. Open the <CloudLink url="/">Live View</CloudLink> and select `px/net_flow_graph` from the `script` drop-down menu at the top.
 
 > When the script opens, you’ll get an error indicating a value is missing for the `namespace` required argument. The UI denotes required script arguments with an asterisk after the argument name.
 
@@ -161,5 +161,5 @@ for a different view of the graph.
 
 This tutorial demonstrated three of Pixie's [community scripts](https://github.com/pixie-io/pixie/tree/main/src/pxl_scripts). For more insight into your network, check out the following scripts:
 
-- [`px/dns_data`](https://work.withpixie.ai/script/dns_data) shows the most recent DNS requests in your cluster, including the full request and response bodies.
-- [`bpftrace/tcp_retransmits`](https://work.withpixie.ai/script/bpftrace/tcp_retransmits) graphs the TCP retransmission counts across your cluster. Don't forget to click the RUN button.
+- <CloudLink url="script/dns_data">px/dns_data</CloudLink> shows the most recent DNS requests in your cluster, including the full request and response bodies.
+- <CloudLink url="script/bpftrace/tcp_retransmits">bpftrace/tcp_retransmits</CloudLink> graphs the TCP retransmission counts across your cluster. Don't forget to click the RUN button.

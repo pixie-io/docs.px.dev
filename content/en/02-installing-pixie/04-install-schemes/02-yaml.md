@@ -80,7 +80,7 @@ For more deploy options that you can specify to configure Pixie, refer to our [d
 
 ## 6. Verify
 
-To verify that Pixie is running in your environment you can check the [admin page](https://work.withpixie.ai/admin) or run:
+To verify that Pixie is running in your environment you can check the <CloudLink url="/admin">admin page</CloudLink> or run:
 
 ```bash
 # Check pods are up

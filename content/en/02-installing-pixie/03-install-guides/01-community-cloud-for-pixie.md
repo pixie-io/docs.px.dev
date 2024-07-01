@@ -1,6 +1,6 @@
 ---
-title: "Community Cloud for Pixie"
-metaTitle: "Install | Install Guides | Community Cloud for Pixie"
+title: "New Relic - Community Cloud"
+metaTitle: "Install | Install Guides | New Relic - Community Cloud"
 metaDescription: "Getting started guide to setup Pixie"
 order: 1
 ---

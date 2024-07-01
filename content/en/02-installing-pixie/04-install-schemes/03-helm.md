@@ -90,7 +90,7 @@ helm install pixie pixie-vizier/vizier-chart --set deployKey=<deploy-key-goes-he
 
 ## 4. Verify
 
-To verify that Pixie is running in your environment you can check the [admin page](https://work.withpixie.ai/admin) or run:
+To verify that Pixie is running in your environment you can check the <CloudLink url="/admin">admin page</CloudLink> or run:
 
 ```bash
 # Check pods are up

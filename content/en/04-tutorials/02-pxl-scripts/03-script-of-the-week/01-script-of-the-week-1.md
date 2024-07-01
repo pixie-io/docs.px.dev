@@ -29,7 +29,7 @@ Pixie (>= v0.4.0) needs to be installed on your Kubernetes cluster. If it is not
 
 Steps to run the script:
 
-- Open up Pixie's [Live UI](https://work.withpixie.ai) and select your cluster.
+- Open up Pixie's <CloudLink url="/">Live UI</CloudLink> and select your cluster.
 - Select the `px/net_flow_graph` script using the drop down menu or with the Pixie Command button (`cmd/ctrl+k` keyboard shortcut).
 
 <svg title='' src='sotw-1/enter-script.png'/>
