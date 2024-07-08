@@ -39,14 +39,10 @@ yarn build
 
 ### Updating Automated Content
 
-To pull the latest reference docs, run:
+The `external/` directory contains files from the pixie repo that are machine generated.
 
-```shell
-./update_docs.sh
-```
+There is automation that updates the `external/pxl_documentation.json` file automatically, while the `datatable_documentation.json` file must be manually updated.
 
-This will overwrite `external/pxl_documentation.json`.
-Add the changed file to the repo and submit a pull request.
 
 ### Deploy Previews
 
