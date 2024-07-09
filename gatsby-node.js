@@ -32,10 +32,6 @@ const availableClouds = [
     name: 'New Relic Cloud',
     baseUrl: 'https://work.withpixie.ai',
   },
-  {
-    name: 'Second Cloud',
-    baseUrl: 'https://secondcloud.com',
-  },
 ];
 
 const removeLanguageFromUrl = (url) => {
