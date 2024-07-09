@@ -32,6 +32,10 @@ const availableClouds = [
     name: 'New Relic Cloud',
     baseUrl: 'https://work.withpixie.ai',
   },
+  {
+    name: 'Cosmic Cloud',
+    baseUrl: 'https://work.getcosmic.ai',
+  },
 ];
 
 const removeLanguageFromUrl = (url) => {

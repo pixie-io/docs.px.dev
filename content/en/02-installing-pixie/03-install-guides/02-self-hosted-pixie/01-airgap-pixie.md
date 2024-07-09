@@ -5,6 +5,7 @@ metaDescription: "How to install Pixie in an air gapped environment."
 order: 3
 redirect_from:
     - /airgap
+    - /installing-pixie/install-guides/airgap-pixie
 ---
 
 Follow these instructions to install Pixie in an air gapped environment. An air gapped environment is any environment that is not directly connected to the Internet.

@@ -3,6 +3,8 @@ title: "Production Readiness"
 metaTitle: "Production Readiness"
 metaDescription: "Sharing a single Pixie Cloud across multiple Pixie deployments"
 order: 4
+redirect_from:
+    - /installing-pixie/install-guides/production-readiness
 ---
 
 Pixie allows you to connect multiple Kubernetes clusters to a single Pixie Cloud instance. The main advantage of such a deployment is that you can monitor all your Kubernetes clusters from a single point. 

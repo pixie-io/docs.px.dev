@@ -1,6 +1,6 @@
 ---
-title: "New Relic - Community Cloud"
-metaTitle: "Install | Install Guides | New Relic - Community Cloud"
+title: "Cosmic Cloud"
+metaTitle: "Install | Install Guides | Cosmic Cloud"
 metaDescription: "Getting started guide to setup Pixie"
 order: 1
 ---
@@ -15,7 +15,7 @@ order: 1
 
 ## 1. Sign up
 
-Visit our [product page](https://work.withpixie.ai/) and sign up.
+Visit our [product page](https://work.getcosmic.ai/) and sign up.
 
 ## 2. Set up a Kubernetes cluster (optional)
 
@@ -27,7 +27,7 @@ The easiest way to install Pixie's CLI is using the install script:
 
 ```bash
 # Copy and run command to install the Pixie CLI.
-bash -c "$(curl -fsSL https://withpixie.ai/install.sh)"
+bash -c "$(curl -fsSL https://getcosmic.ai/install.sh)"
 ```
 
 For alternate install options (Docker, Debian package, RPM, direct download of the binary) see the [CLI Install](/installing-pixie/install-schemes/cli/) page.
@@ -47,6 +47,9 @@ To deploy Pixie using the CLI:
 </Alert>
 
 ```bash
+# PL_CLOUD_ADDR must be set before any pixie cli commands are run!
+export PL_CLOUD_ADDR=getcosmic.ai
+
 # List Pixie deployment options.
 px deploy --help
 
@@ -129,7 +132,7 @@ For more information, checkout our [CLI guide](/using-pixie/using-cli/).
 
 ### Explore the web app
 
-Open [Pixie's Live UI](https://work.withpixie.ai) in a new tab.
+Open [Pixie's Live UI](https://work.getcosmic.ai) in a new tab.
 
 1. After reviewing the hints, click the X in the upper left hand corner of the screen.
 2. Select your cluster (you may see other clusters from members of your organization).

@@ -5,7 +5,7 @@ metaDescription: "Getting started guide to setup 100% self-hosted Pixie"
 order: 2
 ---
 
-Get Pixie fully managed with [Pixie Community Cloud](/installing-pixie/install-guides/community-cloud-for-pixie) (free forever) or run on your own infrastructure with the following self-managed option.
+Get Pixie fully managed with one of the [Hosted Pixie](/installing-pixie/install-guides/hosted-pixie) or run on your own infrastructure with the following self-managed option.
 
 ## Prerequisites
 
@@ -18,10 +18,6 @@ Get Pixie fully managed with [Pixie Community Cloud](/installing-pixie/install-g
 - Pixie interacts with the Linux kernel to install BPF programs to collect telemetry data. In order to install BPF programs, Pixie [`vizier-pem-*`](/about-pixie/what-is-pixie/#architecture) pods require [privileged access](https://github.com/pixie-io/pixie/blob/e03434a5e41d82159aa7602638804159830f9949/k8s/vizier/base/pem_daemonset.yaml#L115).
 
 ## 1. Deploy Pixie Cloud
-
-<Alert variant="outlined" severity="info">
-  Pixie also offers a free account with Pixie Community Cloud to make getting started even easier and faster. To get Pixie Cloud, check out the community cloud <a href="/installing-pixie/install-guides/community-cloud-for-pixie">Install Guide</a>.
-</Alert>
 
 <Alert variant="outlined" severity="warning">
   There is a known issue with login on self-managed Pixie Cloud on Safari and Firefox. For now, use Chrome.
