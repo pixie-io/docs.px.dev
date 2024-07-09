@@ -38,6 +38,7 @@ interface PageItemProps {
   lang: string,
   globalUrlTree: any[],
   availableLanguages: any[],
+  availableClouds: any[],
 }
 
 const Layout = withStyles((theme: Theme) => ({
@@ -68,6 +69,7 @@ const Layout = withStyles((theme: Theme) => ({
   lang,
   globalUrlTree,
   availableLanguages,
+  availableClouds,
 }: PageItemProps) => {
   const { site } = useStaticQuery(
     graphql`
@@ -141,6 +143,7 @@ const Layout = withStyles((theme: Theme) => ({
           <div className={classes.pageLayout}>
             <Header
               availableLanguages={availableLanguages}
+              availableClouds={availableClouds}
               lang={lang}
               location={location}
               drawerOpen={drawerOpen}

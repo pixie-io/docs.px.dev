@@ -49,7 +49,7 @@ You should see something similar to the following:
 
 We are going to use Pixie to check the health of a specific pod.
 
-1. Open Pixie's [Live UI](https://work.withpixie.ai/)
+1. Open Pixie's <CloudLink url="/">Live UI</CloudLink>
 
 2. Select your cluster and the `px/namespaces` script from the drop-down menus in the top bar.
 

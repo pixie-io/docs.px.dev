@@ -33,7 +33,7 @@ This tutorial will demonstrate how to use Pixie to monitor MySQL:
 
 To see MySQL latency, error, and throughput rate for all pods in your cluster, we’ll use the `px/mysql_stats` script:
 
-1. Open the [Live UI](http://work.withpixie.ai/) and select `px/mysql_stats` from the `script` drop-down menu.
+1. Open the <CloudLink url="/">Live UI</CloudLink> and select `px/mysql_stats` from the `script` drop-down menu.
 
 > This script shows latency, error and throughput over time for all MySQL requests in the cluster.
 
@@ -197,17 +197,17 @@ This tutorial demonstrated a few of Pixie's [community scripts](https://github.c
 
 #### PostgreSQL
 
-- [`px/pgsql_data`](https://work.withpixie.ai/script/pgsql_data) shows the most recent Postgres requests in the cluster.
-- [`px/pgsql_stats`](https://work.withpixie.ai/script/pgsql_stats) shows latency, error, and throughput rate for a pod's PostgreSQL requests.
-- [`px/pgsql_flow_graph`](https://work.withpixie.ai/script/pgsql_flow_graph) shows a graph of the PostgreSQL messages in the cluster with latency stats.
+- <CloudLink url="/script/pgsql_data">px/pgsql_data</CloudLink> shows the most recent Postgres requests in the cluster.
+- <CloudLink url="/script/pgsql_stats">px/pgsql_stats</CloudLink> shows latency, error, and throughput rate for a pod's PostgreSQL requests.
+- <CloudLink url="/script/pgsql_flow_graph">px/pgsql_flow_graph</CloudLink> shows a graph of the PostgreSQL messages in the cluster with latency stats.
 
 #### Redis
 
-- [`px/redis_data`](https://work.withpixie.ai/script/redis_data) shows the most recent Redis requests in the cluster.
-- [`px/redis_stats`](https://work.withpixie.ai/script/redis_stats) shows latency, error, and throughput rate for a pod's Redis requests.
-- [`px/redis_flow_graph`](https://work.withpixie.ai/script/redis_flow_graph) shows a graph of the Redis messages in the cluster with latency stats.
+- <CloudLink url="/script/redis_data">px/redis_data</CloudLink> shows the most recent Redis requests in the cluster.
+- <CloudLink url="/script/redis_stats">px/redis_stats</CloudLink> shows latency, error, and throughput rate for a pod's Redis requests.
+- <CloudLink url="/script/redis_flow_graph">px/redis_flow_graph</CloudLink> shows a graph of the Redis messages in the cluster with latency stats.
 
 #### Cassandra
 
-- [`px/cql_data`](https://work.withpixie.ai/script/cql_data) shows the most recent Cassandra requests in the cluster.
-- [`px/cql_stats`](https://work.withpixie.ai/script/cql_stats) shows latency, error, and throughput rate for a pod's Cassandra requests.
+- <CloudLink url="/script/cql_data">px/cql_data</CloudLink> shows the most recent Cassandra requests in the cluster.
+- <CloudLink url="/script/cql_stats">px/cql_stats</CloudLink> shows latency, error, and throughput rate for a pod's Cassandra requests.

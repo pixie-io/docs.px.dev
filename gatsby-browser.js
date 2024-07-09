@@ -25,6 +25,7 @@ import React from 'react';
 import MainThemeProvider from './src/components/mainThemeProvider.tsx';
 import './src/global.css';
 import SidebarProvider from './src/components/sidebar/sidebarProvider.tsx';
+import CloudLinkProvider from './src/components/cloudLinkProvider.tsx';
 import SearchProvider from './src/components/search-context.tsx';
 import { processClientEntry, runZoom } from './src/components/image-zoom-modal.plugin.ts';
 import TabSwitcherProvider from './src/components/tabSwitcherProvider.tsx';
@@ -59,11 +60,13 @@ export const onRouteUpdate = () => {
 export const wrapRootElement = ({ element }) => (
   <TabSwitcherProvider>
     <MainThemeProvider>
-      <SidebarProvider>
-        <SearchProvider>
-          {element}
-        </SearchProvider>
-      </SidebarProvider>
+      <CloudLinkProvider>
+        <SidebarProvider>
+          <SearchProvider>
+            {element}
+          </SearchProvider>
+        </SidebarProvider>
+      </CloudLinkProvider>
     </MainThemeProvider>
   </TabSwitcherProvider>
 );

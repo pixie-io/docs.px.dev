@@ -72,7 +72,7 @@ const MDXDocsRender = ((props: any) => {
     pageContext,
   } = props;
   // eslint-disable-next-line react/destructuring-assignment
-  const { availableLanguages, lang } = pageContext;
+  const { availableClouds, availableLanguages, lang } = pageContext;
   const {
     allMdx,
     mdx,
@@ -92,6 +92,7 @@ const MDXDocsRender = ((props: any) => {
       lang={lang}
       globalUrlTree={pageContext.globalUrlTree}
       availableLanguages={availableLanguages}
+      availableClouds={availableClouds}
     >
       <SEO
         title={mdx.frontmatter.metaTitle}

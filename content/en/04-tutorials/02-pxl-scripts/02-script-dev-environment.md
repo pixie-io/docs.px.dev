@@ -43,7 +43,7 @@ make dev
 
 <svg title='' src='script-dev-env/dev-env-2.png'/>
 
-5. (Soft) reload the [Live UI](https://work.withpixie.ai) webpage. A hard reload will clear the variable you just set.
+5. (Soft) reload the <CloudLink url="/">Live View</CloudLink> webpage. A hard reload will clear the variable you just set.
 
 ## Prepare your Script
 
@@ -60,7 +60,7 @@ cp -r px/http_data_filtered px/my_pxl_script
 	- Edit `manifest.json` to change the script description.
 	- Edit optional `vis.json` to change the charts and table visualizations.
 
-3. (Soft) reload the [Live UI](https://work.withpixie.ai) webpage to see your script appear as an option in the drop-down cluster menu. The script will appear under the foldername from step 1 (e.g. `my_pxl_script`).
+3. (Soft) reload the <CloudLink url="/">Live View</CloudLink> webpage to see your script appear as an option in the drop-down cluster menu. The script will appear under the foldername from step 1 (e.g. `my_pxl_script`).
 
 4. Use your favorite editor to edit the `script_name.pxl` and `vis.json` files. Make sure to soft reload the Live UI webpage to reflect any saved edits to the script.
 
@@ -80,7 +80,7 @@ localStorage.clear('px-custom-bundle-path')
 
 <svg title='' src='script-dev-env/dev-env-3.png'/>
 
-3. Reload the [Live UI](https://work.withpixie.ai) webpage.
+3. Reload the <CloudLink url="/">Live View</CloudLink> webpage.
 
 ## Contribute Your Script (Optional)
 

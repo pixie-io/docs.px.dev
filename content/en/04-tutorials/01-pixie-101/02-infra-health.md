@@ -24,7 +24,7 @@ This tutorial will demonstrate how to use Pixie to:
 
 Let’s use the `px/nodes` script to get high-level resource usage information for all of the nodes in our cluster:
 
-1. Open the [Live UI](http://work.withpixie.ai/) and select `px/nodes` from the `script` drop-down menu at the top.
+1. Open the <CloudLink url="/">Live UI</CloudLink> and select `px/nodes` from the `script` drop-down menu at the top.
 
 > This script lists all of the nodes in the cluster along with their CPU usage, memory consumption, and network traffic stats. It also displays a list of pods that were on each node during the time window.
 
@@ -112,18 +112,18 @@ This tutorial demonstrated a few of Pixie's [community scripts](https://github.c
 
 #### Resource usage by Kubernetes object
 
-- [`px/namespaces`](https://work.withpixie.ai/script/namespaces) lists the namespaces on the cluster with their pod and service counts. It also lists the high-level resource consumption by namespace.
-- [`px/namespace`](https://work.withpixie.ai/script/namespace) lists the pods and services in a given namespace, as well as a service map.
-- [`px/pods`](https://work.withpixie.ai/script/pods) shows an overview of the pods in the specified namespace along with their high-level application metrics (latency, error, throughput) and resource usage (cpu, writes, reads).
+- <CloudLink url="/script/namespaces">px/namespaces</CloudLink> lists the namespaces on the cluster with their pod and service counts. It also lists the high-level resource consumption by namespace.
+- <CloudLink url="/script/namespace">px/namespace</CloudLink> lists the pods and services in a given namespace, as well as a service map.
+- <CloudLink url="/script/pods">px/pods</CloudLink> shows an overview of the pods in the specified namespace along with their high-level application metrics (latency, error, throughput) and resource usage (cpu, writes, reads).
 
 #### Memory usage
 
-- [`px/pid_memory_usage`](https://work.withpixie.ai/script/pid_memory_usage) shows the virtual and average memory useage for all processes in the cluster.
-- [`px/service_memory_usage`](https://work.withpixie.ai/script/service_memory_usage) shows the virtual and average memory useage for all services in the cluster.
-- [`px/pod_lifetime_resource`](https://work.withpixie.ai/script/pod_lifetime_resource) shows the total resource usage of a pod over its lifetime.
+- <CloudLink url="script/pid_memory_usage">px/pid_memory_usage</CloudLink> shows the virtual and average memory useage for all processes in the cluster.
+- <CloudLink url="script/service_memory_usage">px/service_memory_usage</CloudLink> shows the virtual and average memory useage for all services in the cluster.
+- <CloudLink url="script/pod_lifetime_resource">px/pod_lifetime_resource</CloudLink> shows the total resource usage of a pod over its lifetime.
 
 #### Miscellaneous / other
 
-- [`px/perf_flamegraph`](https://work.withpixie.ai/script/perf_flamegraph) shows stack trace samples that indicate where your applications are spending their time. Optional filters refine the results by namespace, node or pod.
-- [`px/upids`](https://work.withpixie.ai/script/upids) shows a list of UPIDs running in the specified namespace.
-- [`px/jvm_stats`](https://work.withpixie.ai/script/jvm_stats) shows JVM stats for Java processes running on the cluster.
+- <CloudLink url="script/perf_flamegraph">px/perf_flamegraph</CloudLink> shows stack trace samples that indicate where your applications are spending their time. Optional filters refine the results by namespace, node or pod.
+- <CloudLink url="script/upids">px/upids</CloudLink> shows a list of UPIDs running in the specified namespace.
+- <CloudLink url="script/jvm_stats">px/jvm_stats</CloudLink> shows JVM stats for Java processes running on the cluster.

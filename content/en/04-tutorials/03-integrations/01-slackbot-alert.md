@@ -135,7 +135,7 @@ Congrats, your Pixie Alerts App will now post automated alerts to the `#pixie-al
 
 The slackbot can be modified to alert based on any information available from Pixie's observability platform. Some notes:
 
-- We recommend testing your PxL code in the [Live UI](https://work.withpixie.ai/). Once it works, you can replace the `PXL_SCRIPT` string in the slackbot app code.
+- We recommend testing your PxL code in the <CloudLink url="/">Live View</CloudLink>. Once it works, you can replace the `PXL_SCRIPT` string in the slackbot app code.
 
 - The example `PXL_SCRIPT` filters for services in the `px-sock-shop` namespace only. Make sure to modify or remove this line to fit your cluster's needs.
 

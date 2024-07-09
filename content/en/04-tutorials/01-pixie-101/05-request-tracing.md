@@ -139,9 +139,9 @@ If services are backed by multiple pods, it is worth inspecting the individual p
 
 This tutorial demonstrated a few of Pixie's [community scripts](https://github.com/pixie-io/pixie/tree/main/src/pxl_scripts). To see full body requests for a specific protocol, check out the following scripts:
 
-- [`px/http_data`](https://work.withpixie.ai/script/http_data) shows the most recent HTTP/2 requests in the cluster.
-- [`px/dns_data`](https://work.withpixie.ai/script/dns_data) shows the most recent DNS requests in the cluster.
-- [`px/mysql_data`](https://work.withpixie.ai/script/mysql_data) shows the most recent MySQL requests in the cluster.
-- [`px/pgsql_data`](https://work.withpixie.ai/script/pgsql_data) shows the most recent Postgres requests in the cluster.
-- [`px/redis_data`](https://work.withpixie.ai/script/redis_data) shows the most recent Redis requests in the cluster.
-- [`px/cql_data`](https://work.withpixie.ai/script/cql_data) shows the most recent Cassandra requests in the cluster.
+- <CloudLink url="/script/http_data">px/http_data</CloudLink> shows the most recent HTTP/2 requests in the cluster.
+- <CloudLink url="/script/dns_data">px/dns_data</CloudLink> shows the most recent DNS requests in the cluster.
+- <CloudLink url="/script/mysql_data">px/mysql_data</CloudLink> shows the most recent MySQL requests in the cluster.
+- <CloudLink url="/script/pgsql_data">px/pgsql_data</CloudLink> shows the most recent Postgres requests in the cluster.
+- <CloudLink url="/script/redis_data">px/redis_data</CloudLink> shows the most recent Redis requests in the cluster.
+- <CloudLink url="/script/cql_data">px/cql_data</CloudLink> shows the most recent Cassandra requests in the cluster.

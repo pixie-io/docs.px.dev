@@ -17,7 +17,7 @@ Pixie needs to be installed on your Kubernetes cluster. If it is not already ins
 
 ## Running your First PxL Script
 
-1. Open Pixie's [Live UI](https://work.withpixie.ai).
+1. Open Pixie's <CloudLink url="/">Live UI</CloudLink>.
 
 2. Select your cluster using the `cluster` drop-down menu.
 
