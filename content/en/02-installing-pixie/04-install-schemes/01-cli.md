@@ -108,12 +108,15 @@ rpm -i pixie-px.x86_64.rpm
 px deploy --help
 
 # Deploy the Pixie Platform in your K8s cluster (No OLM present on cluster).
+export PL_CLOUD_ADDR=<getcosmic.ai or withpixie.ai>
 px deploy
 
 # Deploy the Pixie Platform in your K8s cluster (OLM already exists on cluster).
+export PL_CLOUD_ADDR=<getcosmic.ai or withpixie.ai>
 px deploy --deploy_olm=false
 
 # Deploy Pixie with a specific memory limit (2Gi is the default, 1Gi is the minimum recommended)
+export PL_CLOUD_ADDR=<getcosmic.ai or withpixie.ai>
 px deploy --pem_memory_limit=1Gi
 ```
 

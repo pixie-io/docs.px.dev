@@ -60,13 +60,13 @@ Yes. See the self-hosted [Install Guide](/installing-pixie/install-guides/self-h
 
 ### Does Pixie offer a hosted cloud offering?
 
-Yes. Pixie Community Cloud is a hosted version of Pixie. Pixie stores all data on the customer's cluster, resulting in a very small cloud footprint which allows Pixie to offer the Community Cloud offering 100% free for all Pixie users. See the Community Cloud [Install Guide](/installing-pixie/install-guides/community-cloud-for-pixie) to get started.
+Yes, there are a few versions of hosted Pixie. Please see the [Hosted Pixie](/installing-pixie/install-guides/hosted-pixie) page for all the current offerings.
 
 ## Data Collection
 
 ### Where does Pixie store its data?
 
-Pixie stores the data it collects in-memory on the nodes in your cluster; no data is sent to a centralized backend outside of the cluster. This is true for both self-hosted Pixie and [Pixie Community Cloud](#general-does-pixie-offer-a-hosted-cloud-offering).
+Pixie stores the data it collects in-memory on the nodes in your cluster; no data is sent to a centralized backend outside of the cluster. This is true for both [hosted](#general-does-pixie-offer-a-hosted-cloud-offering) and self-hosted Pixie.
 
 Pixie has a [1GiB memory requirement](/installing-pixie/requirements/#memory) per node. After installing Pixie, it is normal to see a temporary increase in memory usage of the `vizier-pem` pods as they begin to fill their [data tables](/reference/datatables/).
 
@@ -80,7 +80,7 @@ Pixie's [Plugin System](/reference/plugins/plugin-system) integrates with third-
 
 Pixie stores the telemetry data it collects in-memory on the nodes in your cluster. Data processing and script execution are also performed in the cluster. End-to-end encryption is offered for data in flight between in-cluster storage and presentation in the UI, CLI, and API.
 
-Pixie Cloud (self-hosted or Pixie Community Cloud) hosts the UI and stores limited metadata related to account (user, organization) and Kubernetes control data (cluster name, number of nodes, etc). All communication with Pixie Cloud is TLS encrypted.
+Pixie Cloud (hosted or self-hosted Pixie) hosts the UI and stores limited metadata related to account (user, organization) and Kubernetes control data (cluster name, number of nodes, etc). All communication with Pixie Cloud is TLS encrypted.
 
 Data flows through Pixie's Cloud via a reverse proxy as encrypted traffic without any persistence. This allows developers to access data without being in the same network as the cluster.
 
