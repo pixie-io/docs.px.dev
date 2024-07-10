@@ -5,7 +5,7 @@ metaDescription: "Getting started guide to setup 100% self-hosted Pixie"
 order: 2
 ---
 
-Get Pixie fully managed with one of the [Hosted Pixie](/installing-pixie/install-guides/hosted-pixie) or run on your own infrastructure with the following self-managed option.
+Get Pixie fully managed with one of the [Hosted Pixie offerings](/installing-pixie/install-guides/hosted-pixie) or run on your own infrastructure with the following self-managed option.
 
 ## Prerequisites
 
