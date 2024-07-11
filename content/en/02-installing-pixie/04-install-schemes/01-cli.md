@@ -108,13 +108,13 @@ rpm -i pixie-px.x86_64.rpm
 # List Pixie deployment options.
 px deploy --help \n
 # Deploy the Pixie Platform in your K8s cluster (No OLM present on cluster).
-export PX_CLOUD_ADDR=@@
+export PX_CLOUD_ADDR=@PLACEHOLDER@
 px deploy \n
 # Deploy the Pixie Platform in your K8s cluster (OLM already exists on cluster).
-export PX_CLOUD_ADDR=@@
+export PX_CLOUD_ADDR=@PLACEHOLDER@
 px deploy --deploy_olm=false \n
 # Deploy Pixie with a specific memory limit (2Gi is the default, 1Gi is the minimum recommended)
-export PX_CLOUD_ADDR=@@
+export PX_CLOUD_ADDR=@PLACEHOLDER@
 px deploy --pem_memory_limit=1Gi
   `}
 />

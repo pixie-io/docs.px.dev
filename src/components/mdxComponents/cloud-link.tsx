@@ -46,7 +46,7 @@ export const TemplatedCodeBlock: React.FC<Props> = ({ code }) => {
     <CloudLinkContext.Consumer>
       {({ selectedCloud }) => (
         <CodeRenderer
-          code={code.replaceAll('@@', selectedCloud.cloudAddr)}
+          code={code.replaceAll('@PLACEHOLDER@', selectedCloud.cloudAddr)}
           language='bash'
         />
       )}

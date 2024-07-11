@@ -21,7 +21,7 @@ Check if your K8s cluster meets Pixie's [requirements](/installing-pixie/require
 
 <TemplatedCodeBlock
   code={`
-export PX_CLOUD_ADDR=@@
+export PX_CLOUD_ADDR=@PLACEHOLDER@
 px deploy --check_only
   `}
 />
@@ -51,16 +51,16 @@ Run the following CLI command to extract Pixie's manifest files:
 <TemplatedCodeBlock
   code={`
 # Extract YAML (No OLM present on cluster).
-export PX_CLOUD_ADDR=@@
+export PX_CLOUD_ADDR=@PLACEHOLDER@
 px deploy --extract_yaml ./ --deploy_key <PIXIE_DEPLOYMENT_KEY> \n
 # Extract YAML (OLM already exists on cluster).
-export PX_CLOUD_ADDR=@@
+export PX_CLOUD_ADDR=@PLACEHOLDER@
 px deploy --extract_yaml ./ --deploy_key <PIXIE_DEPLOYMENT_KEY> --deploy_olm=false \n
 # Extract YAML (Self-hosting Pixie Cloud).
-export PX_CLOUD_ADDR=@@
+export PX_CLOUD_ADDR=@PLACEHOLDER@
 px deploy --extract_yaml ./ --deploy_key <PIXIE_DEPLOYMENT_KEY> --dev_cloud_namespace plc \n
 # Extract YAML (configure Pixie with a specific memory limit - 2Gi is the default, 1Gi is the minimum recommended)
-export PX_CLOUD_ADDR=@@
+export PX_CLOUD_ADDR=@PLACEHOLDER@
 px deploy --extract_yaml ./ --deploy_key <PIXIE_DEPLOYMENT_KEY> --pem_memory_limit=1Gi
   `}
 />
@@ -92,7 +92,7 @@ To verify that Pixie is running in your environment you can check the <CloudLink
 # Check pods are up
 kubectl get pods -n pl \n
 # Check Pixie Platform and PEM status
-export PX_CLOUD_ADDR=@@
+export PX_CLOUD_ADDR=@PLACEHOLDER@
 px get viziers
 px get pems
   `}
