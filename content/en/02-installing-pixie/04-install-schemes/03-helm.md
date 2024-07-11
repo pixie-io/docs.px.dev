@@ -23,7 +23,7 @@ Check if your K8s cluster meets Pixie's [requirements](/installing-pixie/require
 
 <TemplatedCodeBlock
   code={`
-export PL_CLOUD_ADDR=@@
+export PX_CLOUD_ADDR=@@
 px deploy --check_only
   `}
 />
@@ -97,7 +97,7 @@ To verify that Pixie is running in your environment you can check the <CloudLink
 # Check pods are up
 kubectl get pods -n pl \n
 # Check Pixie Platform and PEM status
-export PL_CLOUD_ADDR=@@
+export PX_CLOUD_ADDR=@@
 px get viziers
 px get pems
   `}
