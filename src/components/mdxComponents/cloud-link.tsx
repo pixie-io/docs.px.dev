@@ -36,31 +36,17 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface Props { }
+interface Props {
+  code: string;
+}
 
-export const CliDeployInstructions: React.FC<Props> = () => {
-  const codeBlock = `
-# List Pixie deployment options.
-px deploy --help
-
-# Deploy the Pixie Platform in your K8s cluster (No OLM present on cluster).
-export PL_CLOUD_ADDR=@@
-px deploy
-
-# Deploy the Pixie Platform in your K8s cluster (OLM already exists on cluster).
-export PL_CLOUD_ADDR=@@
-px deploy --deploy_olm=false
-
-# Deploy Pixie with a specific memory limit (2Gi is the default, 1Gi is the minimum recommended)
-export PL_CLOUD_ADDR=@@
-px deploy --pem_memory_limit=1Gi
-
-  `;
+// eslint-disable-next-line arrow-body-style
+export const TemplatedCodeBlock: React.FC<Props> = ({ code }) => {
   return (
     <CloudLinkContext.Consumer>
       {({ selectedCloud }) => (
         <CodeRenderer
-          code={codeBlock.replaceAll('@@', selectedCloud.cloudAddr)}
+          code={code.replaceAll('@@', selectedCloud.cloudAddr)}
           language='bash'
         />
       )}

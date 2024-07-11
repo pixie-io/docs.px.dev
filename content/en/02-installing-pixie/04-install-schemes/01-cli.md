@@ -103,8 +103,21 @@ rpm -i pixie-px.x86_64.rpm
   Please refer to <a href="/reference/admin/environment-configs">Environment-Specific Configurations</a> for other configurations that should be set for your specific Kubernetes environment.
 </Alert>
 
-<CliDeployInstructions />
-
+<TemplatedCodeBlock
+  code={`
+# List Pixie deployment options.
+px deploy --help \n
+# Deploy the Pixie Platform in your K8s cluster (No OLM present on cluster).
+export PL_CLOUD_ADDR=@@
+px deploy \n
+# Deploy the Pixie Platform in your K8s cluster (OLM already exists on cluster).
+export PL_CLOUD_ADDR=@@
+px deploy --deploy_olm=false \n
+# Deploy Pixie with a specific memory limit (2Gi is the default, 1Gi is the minimum recommended)
+export PL_CLOUD_ADDR=@@
+px deploy --pem_memory_limit=1Gi
+  `}
+/>
 
 Pixie will deploy pods to the `pl`, `px-operator`, and `olm`(if deploying the OLM) namespaces.
 
