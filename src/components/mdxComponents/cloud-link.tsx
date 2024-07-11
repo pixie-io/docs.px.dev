@@ -36,11 +36,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface Props {
-  children: string;
-}
+interface Props { }
 
-export const CliDeployInstructions: React.FC<Props> = ({ children }) => {
+export const CliDeployInstructions: React.FC<Props> = () => {
   const codeBlock = `
 # List Pixie deployment options.
 px deploy --help
@@ -62,8 +60,9 @@ px deploy --pem_memory_limit=1Gi
     <CloudLinkContext.Consumer>
       {({ selectedCloud }) => (
         <CodeRenderer
-          code={codeBlock.replaceAll("@@", selectedCloud.cloudAddr)}
-          language='bash' />
+          code={codeBlock.replaceAll('@@', selectedCloud.cloudAddr)}
+          language='bash'
+        />
       )}
     </CloudLinkContext.Consumer>
   );
