@@ -21,9 +21,12 @@ Install the Pixie CLI following the directions [here](/installing-pixie/install-
 
 Check if your K8s cluster meets Pixie's [requirements](/installing-pixie/requirements) by running:
 
-```bash
+<TemplatedCodeBlock
+  code={`
+export PL_CLOUD_ADDR=@@
 px deploy --check_only
-```
+  `}
+/>
 
 If your cluster fails any checks, you may still proceed with installation, but it is unlikely that Pixie will work on your cluster.
 
@@ -47,25 +50,22 @@ Deploy Pixie in your target cluster by running:
   Please refer to <a href="/reference/admin/environment-configs">Environment-Specific Configurations</a> for other configurations that should be set for your specific Kubernetes environment.
 </Alert>
 
-```bash
+<TemplatedCodeBlock
+  code={`
 # Add the Pixie operator chart.
-helm repo add pixie-operator https://artifacts.px.dev/helm_charts/operator
-
+helm repo add pixie-operator https://artifacts.px.dev/helm_charts/operator \n
 # Get latest information about Pixie chart.
-helm repo update
-
+helm repo update \n
 # Install the Pixie chart (No OLM present on cluster).
-helm install pixie pixie-operator/pixie-operator-chart --set cloudAddr=<getcosmic.ai:443 or withpixie.ai:443> --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace
-
+helm install pixie pixie-operator/pixie-operator-chart --set cloudAddr=@@ --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace \n
 # Install the Pixie chart (OLM already exists on cluster).
-helm install pixie pixie-operator/pixie-operator-chart --set cloudAddr=<getcosmic.ai:443 or withpixie.ai:443> --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace --set deployOLM=false
-
+helm install pixie pixie-operator/pixie-operator-chart --set cloudAddr=@@ --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace --set deployOLM=false \n
 # Install the Pixie chart (Self-hosting Pixie Cloud)
-helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace --set devCloudNamespace=plc
-
+helm install pixie pixie-operator/pixie-operator-chart --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace --set devCloudNamespace=plc \n
 # Install Pixie with a memory limit for the PEM pods (per node). 2Gi is the default, 1Gi is the minimum recommended.
-helm install pixie pixie-operator/pixie-operator-chart --set cloudAddr=<getcosmic.ai:443 or withpixie.ai:443> --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace --set deployOLM=false --set pemMemoryLimit=1Gi
-```
+helm install pixie pixie-operator/pixie-operator-chart --set cloudAddr=@@ --set deployKey=<deploy-key-goes-here> --set clusterName=<cluster-name> --namespace pl --create-namespace --set deployOLM=false --set pemMemoryLimit=1Gi
+  `}
+/>
 
 Pixie will deploy pods to the `pl`, `px-operator`, and `olm`(if deploying the OLM) namespaces.
 
@@ -92,13 +92,13 @@ helm install pixie pixie-vizier/vizier-chart --set deployKey=<deploy-key-goes-he
 
 To verify that Pixie is running in your environment you can check the <CloudLink url="/admin">admin page</CloudLink> or run:
 
-```bash
+<TemplatedCodeBlock
+  code={`
 # Check pods are up
-kubectl get pods -n pl
-
-# Check Pixie Platform status
+kubectl get pods -n pl \n
+# Check Pixie Platform and PEM status
+export PL_CLOUD_ADDR=@@
 px get viziers
-
-# Check PEM stats
 px get pems
-```
+  `}
+/>
