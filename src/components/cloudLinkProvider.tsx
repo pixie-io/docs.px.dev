@@ -21,6 +21,7 @@ import * as React from 'react';
 const initialCloud = {
   name: 'New Relic Cloud',
   baseUrl: 'https://work.withpixe.ai',
+  cloudAddr: 'withpixie.ai',
 };
 
 export const CloudLinkContext = React.createContext(

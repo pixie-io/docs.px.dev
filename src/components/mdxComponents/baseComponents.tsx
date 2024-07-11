@@ -32,7 +32,7 @@ import AnchorTag from './anchor';
 import CodeRenderer from './codeRenderer';
 import ListItem from './listItem';
 import HLink from './h-link';
-import CloudLink from './cloud-link';
+import { CloudLink, CliDeployInstructions } from './cloud-link';
 import PoiTooltip from '../poi-tooltip/poi-tooltip';
 
 const getChildren = (props) => props.children;
@@ -92,4 +92,5 @@ export default {
   Alert,
   PoiTooltip,
   CloudLink: (props: any) => <CloudLink {...props} />,
+  CliDeployInstructions: (props: any) => <CliDeployInstructions {...props} />,
 };
