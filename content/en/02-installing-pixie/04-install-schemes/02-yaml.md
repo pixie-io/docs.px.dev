@@ -57,7 +57,6 @@ px deploy --extract_yaml ./ --deploy_key <PIXIE_DEPLOYMENT_KEY> \n
 export PX_CLOUD_ADDR=@PLACEHOLDER@
 px deploy --extract_yaml ./ --deploy_key <PIXIE_DEPLOYMENT_KEY> --deploy_olm=false \n
 # Extract YAML (Self-hosting Pixie Cloud).
-export PX_CLOUD_ADDR=@PLACEHOLDER@
 px deploy --extract_yaml ./ --deploy_key <PIXIE_DEPLOYMENT_KEY> --dev_cloud_namespace plc \n
 # Extract YAML (configure Pixie with a specific memory limit - 2Gi is the default, 1Gi is the minimum recommended)
 export PX_CLOUD_ADDR=@PLACEHOLDER@
