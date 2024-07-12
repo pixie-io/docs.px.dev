@@ -85,7 +85,7 @@ Pixie requires an `x86-64` architecture.
 |         | Support           |
 | :------ | :---------------- |
 | x86-64  | Supported         |
-| ARM     | Not Supported     |
+| ARM     | Supported         |
 
 ## Memory
 
