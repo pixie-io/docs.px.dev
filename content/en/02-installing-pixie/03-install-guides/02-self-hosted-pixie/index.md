@@ -146,7 +146,7 @@ Add users to your organization to share access to Pixie Live Views, query runnin
 1. Set the cloud address with an environment variable. If you configured a custom domain name, use that as the variable's value:
 
     ```bash
-    export PL_CLOUD_ADDR=dev.withpixie.dev
+    export PX_CLOUD_ADDR=dev.withpixie.dev
     ```
 
 1. Install Pixie's CLI. The easiest way to install Pixie's CLI is using the install script:

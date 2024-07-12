@@ -47,8 +47,8 @@ To deploy Pixie using the CLI:
 </Alert>
 
 ```bash
-# PL_CLOUD_ADDR must be set before any pixie cli commands are run!
-export PL_CLOUD_ADDR=getcosmic.ai
+# PX_CLOUD_ADDR must be set before any pixie cli commands are run!
+export PX_CLOUD_ADDR=getcosmic.ai
 
 # List Pixie deployment options.
 px deploy --help

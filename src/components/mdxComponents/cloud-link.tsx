@@ -20,6 +20,7 @@ import * as React from 'react';
 import path from 'path';
 import { makeStyles } from '@material-ui/core/styles';
 import { CloudLinkContext } from '../cloudLinkProvider';
+import CodeRenderer from './codeRenderer';
 
 const useStyles = makeStyles((theme: Theme) => ({
   link: {
@@ -36,11 +37,29 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface Props {
+  code: string;
+}
+
+// eslint-disable-next-line arrow-body-style
+export const TemplatedCodeBlock: React.FC<Props> = ({ code }) => {
+  return (
+    <CloudLinkContext.Consumer>
+      {({ selectedCloud }) => (
+        <CodeRenderer
+          code={code.replaceAll('@PLACEHOLDER@', selectedCloud.cloudAddr)}
+          language='bash'
+        />
+      )}
+    </CloudLinkContext.Consumer>
+  );
+};
+
+interface CloudLinkProps {
   children: string;
   url: string;
 }
 
-const CloudLink: React.FC<Props> = ({ children, url }) => {
+export const CloudLink: React.FC<CloudLinkProps> = ({ children, url }) => {
   const classes = useStyles();
   return (
     <CloudLinkContext.Consumer>
@@ -52,4 +71,3 @@ const CloudLink: React.FC<Props> = ({ children, url }) => {
     </CloudLinkContext.Consumer>
   );
 };
-export default CloudLink;

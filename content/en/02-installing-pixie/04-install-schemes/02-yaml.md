@@ -19,9 +19,12 @@ The CLI is used to get Pixie's YAML files. You can install the Pixie CLI followi
 
 Check if your K8s cluster meets Pixie's [requirements](/installing-pixie/requirements) by running:
 
-```bash
+<TemplatedCodeBlock
+  code={`
+export PX_CLOUD_ADDR=@PLACEHOLDER@
 px deploy --check_only
-```
+  `}
+/>
 
 If your cluster fails any checks, you may still proceed with installation, but it is unlikely that Pixie will work on your cluster.
 
@@ -45,20 +48,21 @@ Run the following CLI command to extract Pixie's manifest files:
   Please refer to <a href="/reference/admin/environment-configs">Environment-Specific Configurations</a> for other configurations that should be set for your specific Kubernetes environment.
 </Alert>
 
-```bash
+<TemplatedCodeBlock
+  code={`
 # Extract YAML (No OLM present on cluster).
-px deploy --extract_yaml ./ --deploy_key <PIXIE_DEPLOYMENT_KEY>
-
+export PX_CLOUD_ADDR=@PLACEHOLDER@
+px deploy --extract_yaml ./ --deploy_key <PIXIE_DEPLOYMENT_KEY> \n
 # Extract YAML (OLM already exists on cluster).
-px deploy --extract_yaml ./ --deploy_key <PIXIE_DEPLOYMENT_KEY> --deploy_olm=false
-
+export PX_CLOUD_ADDR=@PLACEHOLDER@
+px deploy --extract_yaml ./ --deploy_key <PIXIE_DEPLOYMENT_KEY> --deploy_olm=false \n
 # Extract YAML (Self-hosting Pixie Cloud).
-px deploy --extract_yaml ./ --deploy_key <PIXIE_DEPLOYMENT_KEY> --dev_cloud_namespace plc
-
+px deploy --extract_yaml ./ --deploy_key <PIXIE_DEPLOYMENT_KEY> --dev_cloud_namespace plc \n
 # Extract YAML (configure Pixie with a specific memory limit - 2Gi is the default, 1Gi is the minimum recommended)
+export PX_CLOUD_ADDR=@PLACEHOLDER@
 px deploy --extract_yaml ./ --deploy_key <PIXIE_DEPLOYMENT_KEY> --pem_memory_limit=1Gi
-
-```
+  `}
+/>
 
 **Note:** The extracted YAMls does not include manifests for each sub-component of Pixie. It includes manifests for etcd, NATS and the cloud-connector service which downloads the manifests for the necessary services and daemonsets.
 
@@ -82,13 +86,13 @@ For more deploy options that you can specify to configure Pixie, refer to our [d
 
 To verify that Pixie is running in your environment you can check the <CloudLink url="/admin">admin page</CloudLink> or run:
 
-```bash
+<TemplatedCodeBlock
+  code={`
 # Check pods are up
-kubectl get pods -n pl
-
-# Check Pixie Platform status
+kubectl get pods -n pl \n
+# Check Pixie Platform and PEM status
+export PX_CLOUD_ADDR=@PLACEHOLDER@
 px get viziers
-
-# Check PEM stats
 px get pems
-```
+  `}
+/>
