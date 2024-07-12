@@ -29,14 +29,14 @@ const languages = require('./available-languages');
 
 const availableClouds = [
   {
-    name: 'New Relic Cloud',
-    baseUrl: 'https://work.withpixie.ai',
-    cloudAddr: 'withpixie.ai',
-  },
-  {
     name: 'Cosmic Cloud',
     baseUrl: 'https://work.getcosmic.ai',
     cloudAddr: 'getcosmic.ai',
+  },
+  {
+    name: 'New Relic Cloud',
+    baseUrl: 'https://work.withpixie.ai',
+    cloudAddr: 'withpixie.ai',
   },
 ];
 
