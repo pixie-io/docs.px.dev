@@ -18,11 +18,20 @@
 
 import * as React from 'react';
 
-const initialCloud = {
-  name: 'New Relic Cloud',
-  baseUrl: 'https://work.withpixe.ai',
-  cloudAddr: 'withpixie.ai',
-};
+const availableClouds = [
+  {
+    name: 'Cosmic Cloud',
+    baseUrl: 'https://work.getcosmic.ai',
+    cloudAddr: 'getcosmic.ai',
+  },
+  {
+    name: 'New Relic Cloud',
+    baseUrl: 'https://work.withpixie.ai',
+    cloudAddr: 'withpixie.ai',
+  },
+];
+
+const initialCloud = availableClouds[0];
 
 export const CloudLinkContext = React.createContext(
   {
