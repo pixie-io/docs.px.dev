@@ -43,6 +43,7 @@ Pixie automatically traces the following protocols:
 | Redis         | Supported           |                                |
 | Kafka         | Supported           |                                |
 | AMQP          | Supported           |                                |
+| MongoDB       | Supported           |                                |
 
 Additional protocols are under development.
 
