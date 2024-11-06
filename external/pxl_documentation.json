@@ -7230,6 +7230,34 @@
         }
       },
       {
+        "name": "split",
+        "brief": "Splits a string by a delimiter and a returns JSON encoded array of strings.",
+        "desc": "This function splits a string by a delimiter and returns a JSON encoded array of strings. The function is useful for splitting strings and then passing the result to px.pluck_array in order to access individual values of a delimited string.",
+        "examples": [
+          {
+            "value": "```\ndf = px.DataFrame('http_events', start_time='-5m')\n# Returns By=http://frontend.px.dev;URI=http://testclient.px.dev\ndf.xfcc_hdr = px.pluck(df.req_headers, 'X-Forwarded-Client-Cert')\ndf.xfcc_parts = px.split(df.xfcc_hdr, ';')\ndf.by = px.pluck_array(df.xfcc_hdr, 0) # Returns \"By=http://frontend.px.dev\"\ndf.uri = px.pluck_array(df.xfcc_hdr, 1) # Returns \"URI=http://testclient.px.dev\"\n\n```"
+          }
+        ],
+        "scalarUdfDoc": {
+          "args": [
+            {
+              "ident": "input_str",
+              "desc": "The string to split.",
+              "type": "STRING"
+            },
+            {
+              "ident": "delimiter",
+              "desc": "The string value to split the input string.",
+              "type": "STRING"
+            }
+          ],
+          "retval": {
+            "desc": "A JSON encoded array of the split strings.",
+            "type": "STRING"
+          }
+        }
+      },
+      {
         "name": "sqrt",
         "brief": "Compute the sqrt",
         "desc": "Computes the sqrt",
