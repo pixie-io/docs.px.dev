@@ -33,6 +33,7 @@ The following tables list Kubernetes environments that have been tested with Pix
 | EKS Fargate      | Not Supported ([Fargate does not support eBPF](https://github.com/aws/containers-roadmap/issues/1027)) |
 | GKE              | Supported                                                       |
 | GKE Autopilot    | Not Supported ([Autopilot does not support eBPF](https://github.com/pixie-io/pixie/issues/278#issuecomment-853269290)) |
+| [LKE](https://www.linode.com/products/kubernetes/) | Supported |
 | OKE              | Supported                                                       |
 | OpenShift        | Supported                                                       |
 | kOps             | Supported                                                       |
