@@ -35,6 +35,8 @@ allowHostPID: true
 allowHostIPC: false
 allowHostPorts: false
 readOnlyRootFilesystem: false
+seccompProfiles:
+- runtime/default
 allowedCapabilities:
 - SYS_ADMIN
 - SYS_PTRACE
@@ -46,6 +48,10 @@ seLinuxContext:
  type: RunAsAny
 users:
 - system:serviceaccount:pl:default
+- system:serviceaccount:pl:query-broker-service-account
+- system:serviceaccount:pl:pl-cert-provisioner-service-account
+- system:serviceaccount:pl:cloud-conn-service-account
+
 ```
 
 Note: Make sure to set the namespace on the serviceAccount to the namespace you deployed Pixie to.
