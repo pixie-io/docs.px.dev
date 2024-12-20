@@ -48,9 +48,11 @@ seLinuxContext:
  type: RunAsAny
 users:
 - system:serviceaccount:pl:default
-- system:serviceaccount:pl:query-broker-service-account
-- system:serviceaccount:pl:pl-cert-provisioner-service-account
 - system:serviceaccount:pl:cloud-conn-service-account
+- system:serviceaccount:pl:metadata-service-account
+- system:serviceaccount:pl:pl-cert-provisioner-service-account
+- system:serviceaccount:pl:pl-updater-service-account
+- system:serviceaccount:pl:query-broker-service-account
 
 ```
 
