@@ -40,6 +40,7 @@ seccompProfiles:
 allowedCapabilities:
 - SYS_ADMIN
 - SYS_PTRACE
+- NET_RAW
 allowHostNetwork: true
 allowHostDirVolumePlugin: true
 runAsUser:
