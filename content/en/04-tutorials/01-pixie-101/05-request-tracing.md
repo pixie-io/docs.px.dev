@@ -28,7 +28,7 @@ If you're interested in troubleshooting HTTP latency, check out the [Service Per
 2. You will need to install the demo microservices application, using Pixie's CLI:
 
 > - [Install the Pixie CLI](/installing-pixie/install-schemes/cli/#1.-install-the-pixie-cli).
-> - Run `px demo deploy px-sock-shop` to install Weavework's [Sock Shop](https://microservices-demo.github.io/) demo app.
+> - Run `px demo deploy px-sock-shop` to install Weavework's [Sock Shop](https://github.com/microservices-demo/microservices-demo) demo app.
 > - Run `kubectl get pods -n px-sock-shop` to make sure all pods are ready before proceeding. The demo app can take up to 5 minutes to deploy.
 
 ## Full-Body HTTP Request
