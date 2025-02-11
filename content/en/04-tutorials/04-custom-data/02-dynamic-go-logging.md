@@ -232,7 +232,7 @@ Dynamic logging is an alpha feature. It is currently only supports logging of Go
 
 Dynamic Go Logging works using [debug information](/reference/admin/debug-info). By default, `go build` compiles your program with debug information and is compatible with Dynamic Go Logging. However, if you compile with -ldflags '-w -s' or strip the debug symbols after compiling, then you will not be able use Dynamic Go Logging.
 
-Additionally, Dynamic logging works for Golang versions up to 1.16 only (the go compiler for 1.17 changed the calling convention, and the Dynamic Logging feature has not yet been updated to support those changes).
+Additionally, Dynamic logging works for Golang versions 1.17 and later (the go compiler for 1.16 and earlier has a different calling convention that is no longer supported).
 
 ### Limitations
 
