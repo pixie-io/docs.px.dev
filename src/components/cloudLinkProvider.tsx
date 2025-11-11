@@ -22,12 +22,12 @@ const availableClouds = [
   {
     name: 'Cosmic Cloud',
     baseUrl: 'https://work.getcosmic.ai',
-    cloudAddr: 'getcosmic.ai',
+    cloudAddr: 'getcosmic.ai:443',
   },
   {
     name: 'New Relic Cloud',
     baseUrl: 'https://work.withpixie.ai',
-    cloudAddr: 'withpixie.ai',
+    cloudAddr: 'withpixie.ai:443',
   },
 ];
 
